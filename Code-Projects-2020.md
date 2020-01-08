@@ -1,4 +1,4 @@
-# Log for Code_Each_Day - Wendy Anthony
+# Log for #Code_Each_Day - Wendy Anthony
 
 **The log of my #100DaysOfCode challenge. Started on 2020-01-01**  
 [My Code](https://github.com/WendyAnthony/100-days-of-code/tree/master/My-Code)
@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**  
+- [R1D5 2020-01-07](#R1D7)
 - [R1D5 2020-01-06](#R1D6)
 - [R1D5 2020-01-05](#R1D5) 
 - **[Week I](#weekI)**    
@@ -17,6 +18,19 @@
 
 ***
 # Week II <a name="weekII"/>
+***
+## R1D7 2020-01-07 <a name="R1D6"/>
+**Today's Progress**: 
+- Playing around in Google Earth Engine GEE, with scripts for Canadian Datasets: NRC_CDEM, NASA/ORNL/DAYMET_V3
+
+**Thoughts:** 
+- would like to know how to export the map image created
+
+**Links to code work:** 
+- [NRC_CDEM](https://code.earthengine.google.com/1ff3a12cac70d5e5d5836dd58dcb7a1c
+- [NASA/ORNL/DAYMET_V3](https://code.earthengine.google.com/1ff3a12cac70d5e5d5836dd58dcb7a1c)
+
+[TOC](#TOC)
 ***
 ## R1D6 2020-01-06 <a name="R1D6"/>
 **Today's Progress**: 
@@ -94,28 +108,5 @@
 **Links to code work:**  
 1. https://wendyanthony.shinyapps.io/VicCensusApp/
 2. https://github.com/WendyAnthony/100-days-of-code/blob/master/My-Code/windrose.R
-
-[TOC](#TOC)
-***
-
-## R1D1 2020-01-01 <a name="R1D1"/>
-**Today's Progress**: Started a Weather App. Worked on the draft layout of the app, struggled with ```OpenWeather API```  
-
-**Thoughts:** Coding takes patience and lots of trial-&-errors, then EUREKA!!
-
-[TOC](#TOC)
-<br />
-***  
-***
-# Wish-List <a name="wishlist"/>  
-- [x] Create log of coding work done as progress
-- [x] Make UVic website responsive & with more up-to-date styling
-- [x] Formatting ```.md``` pages (like this one)
-- [x] become more comfortable using ```github```
-- Use eBird data
-- Use iNaturalist data
-- use historical weather data
-- Shiny - add different choices
-- learn to do more stuff with R [R Resource Links](https://wendyanthony.github.io/R_Stats_Links-io.html)
 
 [TOC](#TOC)
