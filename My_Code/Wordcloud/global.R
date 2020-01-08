@@ -1,3 +1,5 @@
+# http://www.baoruidata.com/examples/082-word-cloud/
+
 library(tm)
 library(wordcloud)
 library(memoise)

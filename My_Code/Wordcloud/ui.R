@@ -1,3 +1,5 @@
+# http://www.baoruidata.com/examples/082-word-cloud/
+
 fluidPage(
   # Application title
   titlePanel("Word Cloud"),
