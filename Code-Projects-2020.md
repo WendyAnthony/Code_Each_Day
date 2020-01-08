@@ -110,3 +110,27 @@
 2. https://github.com/WendyAnthony/100-days-of-code/blob/master/My-Code/windrose.R
 
 [TOC](#TOC)
+***
+
+## R1D1 2020-01-01 <a name="R1D1"/>
+**Today's Progress**: Started a Weather App. Worked on the draft layout of the app, struggled with ```OpenWeather API```  
+
+**Thoughts:** Coding takes patience and lots of trial-&-errors, then EUREKA!!
+
+[TOC](#TOC)
+<br />
+***  
+***
+# Wish-List <a name="wishlist"/>  
+- [x] Create log of coding work done as progress
+- [x] Make UVic website responsive & with more up-to-date styling
+- [x] Formatting ```.md``` pages (like this one)
+- [x] become more comfortable using ```github```
+- Use eBird data
+- Use iNaturalist data
+- use historical weather data
+- Shiny - add different choices
+- learn to do more stuff with R [R Resource Links](https://wendyanthony.github.io/R_Stats_Links-io.html)
+
+[TOC](#TOC)
+
