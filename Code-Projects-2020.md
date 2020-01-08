@@ -147,6 +147,8 @@
 
 [TOC](#TOC)
 ***
+# Week 0 <a name="week0"/>
+***
 
 ## R1D0-3 2019-12-30 <a name="R1D0-3"/>
 **Today's Progress**: 
