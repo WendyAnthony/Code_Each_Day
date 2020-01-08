@@ -27,7 +27,7 @@
 - would like to know how to export the map image created
 
 **Links to code work:** 
-- [NRC_CDEM](https://code.earthengine.google.com/1ff3a12cac70d5e5d5836dd58dcb7a1c
+- [NRC_CDEM](https://code.earthengine.google.com/1ff3a12cac70d5e5d5836dd58dcb7a1c)
 - [NASA/ORNL/DAYMET_V3](https://code.earthengine.google.com/1ff3a12cac70d5e5d5836dd58dcb7a1c)
 
 [TOC](#TOC)
