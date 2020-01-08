@@ -107,7 +107,7 @@
 
 **Links to code work:**  
 1. https://wendyanthony.shinyapps.io/VicCensusApp/
-2. https://github.com/WendyAnthony/100-days-of-code/blob/master/My-Code/windrose.R
+2. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/windrose.R
 
 [TOC](#TOC)
 ***
