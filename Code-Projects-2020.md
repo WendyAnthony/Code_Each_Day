@@ -26,9 +26,11 @@
 - Vancouver Census shiny app: copy/paste change Victoria to Vancouver
 
 **Thoughts:** 
+- would like to figure out how to put both Victoria & Vancouver Census apps in one shiny app, with options to choose one or the other
 
 **Links to code work:** 
 - https://wendyanthony.shinyapps.io/VicCensusApp/
+- https://wendyanthony.shinyapps.io/VanCensus/
 
 [TOC](#TOC)
 ***
