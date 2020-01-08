@@ -26,6 +26,8 @@
 - Vancouver Census shiny app: copy/paste change Victoria to Vancouver
 - put both Vancouver & Victoria Census app in an iframe
 - created screenshots of 2018 monthly max temperature using GEE NASA/ORNL/DAYMET_V3 dataset
+  - created animation using [R code](https://stackoverflow.com/questions/51310892/import-png-files-and-convert-to-animation-mp4-in-r)
+  - created animation using [photoshop](https://blog.hootsuite.com/how-to-make-gif/)
 
 **Thoughts:** 
 - would like to figure out how to put both Victoria & Vancouver Census apps in one shiny app, with options to choose one or the other
