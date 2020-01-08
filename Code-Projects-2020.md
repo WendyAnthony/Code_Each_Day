@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**  
+- [R1D5 2020-01-08](#R1D8)
 - [R1D5 2020-01-07](#R1D7)
 - [R1D5 2020-01-06](#R1D6)
 - [R1D5 2020-01-05](#R1D5) 
@@ -18,6 +19,17 @@
 
 ***
 # Week II <a name="weekII"/>
+***
+## R1D7 2020-01-08 <a name="R1D8"/>
+**Today's Progress**: 
+- Changed column names; added data dictionary to map column names from original data; added raw data table
+
+**Thoughts:** 
+
+**Links to code work:** 
+- https://wendyanthony.shinyapps.io/VicCensusApp/
+
+[TOC](#TOC)
 ***
 ## R1D7 2020-01-07 <a name="R1D7"/>
 **Today's Progress**: 
