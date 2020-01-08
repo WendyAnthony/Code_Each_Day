@@ -1,4 +1,4 @@
-# Log for #100DaysOfCode - Round 1 - Wendy Anthony
+# Log for Code_Each_Day - Wendy Anthony
 
 **The log of my #100DaysOfCode challenge. Started on 2020-01-01**  
 [My Code](https://github.com/WendyAnthony/100-days-of-code/tree/master/My-Code)
@@ -119,4 +119,3 @@
 - learn to do more stuff with R [R Resource Links](https://wendyanthony.github.io/R_Stats_Links-io.html)
 
 [TOC](#TOC)
-
