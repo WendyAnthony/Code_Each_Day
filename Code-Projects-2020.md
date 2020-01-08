@@ -1,6 +1,6 @@
 # Log for #Code_Each_Day - Wendy Anthony
 
-**The log of my #100DaysOfCode challenge. Started on 2020-01-01**  
+**The log of my #100DaysOfCode challenge. Started on 2020-01-01 (2019-12-28)**  
 [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 
 ***
@@ -15,6 +15,10 @@
   - [R1D3 2020-01-03](#R1D3)  
   - [R1D2 2020-01-02](#R1D2)  
   - [R1D1 2020-01-01](#R1D1)  
+- **[Week 0](#week0)**  
+  - [R1D0.3 2019-12-30](#R1D0.3)
+  - [R1D0.2 2019-12-29](#R1D0.2)
+  - [R1D0.1 2019-12-28](#R1D0.1)
 - **[Wishlist](#wishlist)**
 
 ***
@@ -142,6 +146,49 @@
 **Thoughts:** Coding takes patience and lots of trial-&-errors, then EUREKA!!
 
 [TOC](#TOC)
+***
+***
+
+## R1D0.3 2019-12-30 <a name="R1D0.3"/>
+**Today's Progress**: 
+- updating [R Stats Resource Links](https://wendyanthony.github.io/R_Stats_Links-io.html)
+
+**Thoughts:** 
+- I'd like to do some coding every day, when I first get up
+
+[TOC](#TOC)
+
+## R1D0.2 2019-12-29 <a name="R1D0.2"/>
+**Today's Progress**: 
+- learning how to make a Shiny [US Census app](https://shiny.rstudio.com/tutorial/written-tutorial/lesson5/)
+
+**Thoughts:** 
+- I'd like to make a Census app using Victoria Census info
+
+
+[TOC](#TOC)
+***
+
+## R1D0.1 2019-12-28 <a name="R1D0.1"/>
+**Today's Progress**: Learning to create a [Wordcloud in R](http://www.baoruidata.com/examples/082-word-cloud/) with Old-Time Tunes titles, and text from books
+
+**Thoughts:** 
+- based on text from Gutenberg library - I added list of Old-Time Tunes titles
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
+
+[TOC](#TOC)
+***
+***
+
+## R1D1 2020-01-01 <a name="R1D1"/>
+**Today's Progress**: Started a Weather App. Worked on the draft layout of the app, struggled with ```OpenWeather API```  
+
+**Thoughts:** Coding takes patience and lots of trial-&-errors, then EUREKA!!
+
+[TOC](#TOC)
+***
 <br />
 ***  
 ***
