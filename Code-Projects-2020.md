@@ -22,7 +22,8 @@
 ***
 ## R1D7 2020-01-08 <a name="R1D8"/>
 **Today's Progress**: 
-- Changed column names; added data dictionary to map column names from original data; added raw data table
+- Victoria Census shiny app: Changed column names; added data dictionary to map column names from original data; added raw data table
+- Vancouver Census shiny app: copy/paste change Victoria to Vancouver
 
 **Thoughts:** 
 
