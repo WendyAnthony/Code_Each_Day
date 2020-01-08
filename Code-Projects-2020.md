@@ -179,8 +179,6 @@
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
 
 [TOC](#TOC)
-
-<br />
 ***  
 ***
 # Wish-List <a name="wishlist"/>  
