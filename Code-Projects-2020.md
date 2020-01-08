@@ -147,7 +147,6 @@
 
 [TOC](#TOC)
 ***
-***
 
 ## R1D0-3 2019-12-30 <a name="R1D0-3"/>
 **Today's Progress**: 
@@ -157,6 +156,7 @@
 - I'd like to do some coding every day, when I first get up
 
 [TOC](#TOC)
+***
 
 ## R1D0-2 2019-12-29 <a name="R1D0-2"/>
 **Today's Progress**: 
