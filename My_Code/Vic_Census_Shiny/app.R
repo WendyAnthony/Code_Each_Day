@@ -1,11 +1,16 @@
 ########################
 #  used for shiny app  #
+# Victoria census app  #
 ########################
 ## To update app > Run App in RStudio, then Republish ------------------------
 ## using normalized polygon data == divided by # households of each polygon
 
 # ------------------------
 # code to get_census data ------------------------
+# variable names and CMA codes, etc
+# Region selection > CMA > click on region > Overview > regions
+# Victoria: 59933  Vancouver CMA: 59933
+# https://censusmapper.ca/api
 # https://mountainmath.github.io/cancensus/reference/get_census.html
 # code to select tmap variables ------------------------
 # https://rdrr.io/cran/tmap/man/renderTmap.html
