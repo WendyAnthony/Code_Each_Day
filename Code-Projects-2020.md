@@ -21,7 +21,7 @@
 ***
 ## R1D7 2020-01-07 <a name="R1D7"/>
 **Today's Progress**: 
-- Playing around in Google Earth Engine GEE, with scripts for Canadian Datasets: NRC_CDEM, NASA/ORNL/DAYMET_V3
+- Playing around in Google Earth Engine GEE, with scripts for Canadian Datasets: NRC_CDEM, NASA/ORNL/DAYMET_V3 (learned to change date range, map centre & zoom)
 
 **Thoughts:** 
 - would like to know how to export the map image created
