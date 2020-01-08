@@ -1,7 +1,7 @@
 # Log for #Code_Each_Day - Wendy Anthony
 
 **The log of my #100DaysOfCode challenge. Started on 2020-01-01**  
-[My Code](https://github.com/WendyAnthony/100-days-of-code/tree/master/My-Code)
+[My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 
 ***
 ## Table of Contents  <a name="TOC"/>
