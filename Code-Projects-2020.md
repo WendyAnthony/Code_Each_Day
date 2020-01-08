@@ -24,6 +24,8 @@
 **Today's Progress**: 
 - Victoria Census shiny app: Changed column names; added data dictionary to map column names from original data; added raw data table
 - Vancouver Census shiny app: copy/paste change Victoria to Vancouver
+- put both Vancouver & Victoria Census app in an iframe
+- created screenshots of 2018 monthly max temperature using GEE
 
 **Thoughts:** 
 - would like to figure out how to put both Victoria & Vancouver Census apps in one shiny app, with options to choose one or the other
@@ -31,6 +33,9 @@
 **Links to code work:** 
 - https://wendyanthony.shinyapps.io/VicCensusApp/
 - https://wendyanthony.shinyapps.io/VanCensus/
+- [iFrame for Victoria & Vancouver Census shiny apps](http://people.geog.uvic.ca/wanthony/website/etc/test-shiny-iframe.htm)
+- [2018 monthly max temp animated gif loop](http://people.geog.uvic.ca/wanthony/website/etc/animation.gif)
+- [2018 monthly max temp animated gif_once](http://people.geog.uvic.ca/wanthony/website/etc/2018-month-maxtemp-NASA-ORNL-DAYMET_V3.gif)
 
 [TOC](#TOC)
 ***
