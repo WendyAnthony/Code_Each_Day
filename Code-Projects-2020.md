@@ -31,6 +31,8 @@
 - learning to make dashboards in ```R Markdown``` using ```flexdashboard``` with column layout, multiple pages, & storyboards
 
 **Thoughts:** 
+- was able to create an internal link to another page in the multiple page layout
+  - trying, without success to create internal links to one of the storyboards
 
 **Links to code work:** 
 - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html  
