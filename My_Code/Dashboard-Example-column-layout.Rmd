@@ -1,0 +1,54 @@
+---
+title: "Multiple Pages Dashboard Example"
+author: "Wendy"
+date: "January 9, 2020"
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+# install.packages("flexdashboard")
+library("flexdashboard")
+```
+**Dashboard Layout**  
+https://bookdown.org/yihui/rmarkdown/layout.html
+
+
+Text {data-icon="fa-file-alt"}
+====================================================================
+
+### Text 1
+
+for icons at top of page navigation use  
+https://fontawesome.com/icons
+
+```{r}
+```
+
+### Text 2
+```{r}
+```
+
+Visualizations {data-icon="fa-signal"}
+====================================================================
+
+### Chart 1
+
+```{r}
+```
+
+### Chart 2
+
+```{r}
+```
+
+Tables {data-icon="fa-table"}
+====================================================================
+
+### Table 1
+```{r}
+```
+
+
+### Table 2
+```{r}
+```
