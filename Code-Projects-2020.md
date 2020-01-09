@@ -27,7 +27,7 @@
 ***
 ## R1D8 2020-01-09 <a name="R1D9"/>
 **Today's Progress**: 
-- adding more R resource links (collected on iPad) to links resource webpage, using ```.rmd``` document knitted to ```.html```
+- adding more **R resource links** (collected on iPad) to links resource webpage, using ```.rmd``` document knitted to ```.html```
 
 **Thoughts:** 
 
@@ -38,8 +38,8 @@
 
 ## R1D8 2020-01-08 <a name="R1D8"/>
 **Today's Progress**: 
-- Victoria Census shiny app: Changed column names; added data dictionary to map column names from original data; added raw data table
-- Vancouver Census shiny app: copy/paste change Victoria to Vancouver
+- **Victoria Census shiny app**: Changed column names; added data dictionary to map column names from original data; added raw data table
+- **Vancouver Census shiny app**: copy/paste change Victoria to Vancouver
 - put both Vancouver & Victoria Census app in an iframe
 - created screenshots of 2018 monthly max temperature using GEE NASA/ORNL/DAYMET_V3 dataset
   - created animation using [R code](https://stackoverflow.com/questions/51310892/import-png-files-and-convert-to-animation-mp4-in-r)
@@ -60,7 +60,7 @@
 ***
 ## R1D7 2020-01-07 <a name="R1D7"/>
 **Today's Progress**: 
-- Playing around in Google Earth Engine GEE, with scripts for Canadian Datasets: NRC_CDEM, NASA/ORNL/DAYMET_V3 (learned to change date range, map centre & zoom)
+- Playing around in **Google Earth Engine GEE**, with scripts for Canadian Datasets: NRC_CDEM, NASA/ORNL/DAYMET_V3 (learned to change date range, map centre & zoom)
 
 **Thoughts:** 
 - would like to know how to export the map image created
@@ -73,7 +73,7 @@
 ***
 ## R1D6 2020-01-06 <a name="R1D6"/>
 **Today's Progress**: 
-- learning to organize my forked github repositories by making new 'organizations' and 'transfering ownership' from my main repository (200+ forked repositories) to new forked-organizations
+- learning to organize my **forked github repositories** by making new 'organizations' and 'transfering ownership' from my main repository (200+ forked repositories) to new forked-organizations
 
 **Thoughts:** 
 - too bad github didn't build-in some way to simplify organization of repositories, to make them easier to find than a search
@@ -91,8 +91,8 @@
 ***
 ## R1D5 2020-01-05 <a name="R1D5"/>
 **Today's Progress**: 
-- experimenting using highcharts r wrapper ```highcharter```
-- trying to get iNaturalist to work in R ```library("rinat")```  
+- experimenting using **highcharts r wrapper** ```highcharter```
+- trying to get **iNaturalist** to work in R ```library("rinat")```  
   - finally got my personal iNaturalist observations to show in R !!!
 
 **Thoughts:** 
@@ -114,7 +114,7 @@
 ***
 ## R1D4 2020-01-04 <a name="R1D4"/>
 **Today's Progress**: 
-- Continued work on UVic website
+- Continued work on **my UVic website**
 - Learning more about ```.md``` styling 
   - e.g. Table of Contents, list items
 - trying ```eBird auk``` [auk](https://cran.r-project.org/web/packages/auk/vignettes/auk.html) package
@@ -128,7 +128,7 @@
 ***
 
 ## R1D3 2020-01-03 <a name="R1D3"/>
-**Today's Progress**: Fixed absolute URLs in UVic student website (over 2400 files)
+**Today's Progress**: Fixed absolute URLs in **my UVic student website** (over 2400 files)
 
 **Thoughts:** Continued work with weather data to better understand how to process it
 
@@ -139,8 +139,8 @@
 
 ## R1D2 2020-01-02 <a name="R1D2"/>
 **Today's Progress**: 
-1. [x] Reworked ```Shiny App``` for UVic Census data, creating normalized value columns for comparing polygons (variable / #households)
-2. [x] Figured out how to make windrose with weather data  
+1. [x] Reworked ```Shiny App``` for **Victoria Census data**, creating normalized value columns for comparing polygons (variable / #households)
+2. [x] Figured out how to make **windrose** with weather data  
 
 **Thoughts:** 
 
@@ -153,7 +153,7 @@
 ***
 
 ## R1D1 2020-01-01 <a name="R1D1"/>
-**Today's Progress**: Started a Weather App. Worked on the draft layout of the app, struggled with ```OpenWeather API```  
+**Today's Progress**: Started a **Weather App**. Worked on the draft layout of the app, struggled with ```OpenWeather API```  
 
 **Thoughts:** Coding takes patience and lots of trial-&-errors, then EUREKA!!
 
@@ -174,7 +174,7 @@
 
 ## R1D0-2 2019-12-29 <a name="R1D0-2"/>
 **Today's Progress**: 
-- learning how to make a Shiny [US Census app](https://shiny.rstudio.com/tutorial/written-tutorial/lesson5/)
+- learning how to make a **Shiny [US Census app](https://shiny.rstudio.com/tutorial/written-tutorial/lesson5/)**
 
 **Thoughts:** 
 - I'd like to make a Census app using Victoria Census info
@@ -184,7 +184,7 @@
 ***
 
 ## R1D0-1 2019-12-28 <a name="R1D0-1"/>
-**Today's Progress**: Learning to create a [Wordcloud in R](http://www.baoruidata.com/examples/082-word-cloud/) with Old-Time Tunes titles, and text from books
+**Today's Progress**: Learning to create a **[Wordcloud in R](http://www.baoruidata.com/examples/082-word-cloud/)** with Old-Time Tunes titles, and text from books
 
 **Thoughts:** 
 - based on text from Gutenberg library - I added list of Old-Time Tunes titles
@@ -201,7 +201,7 @@
 - [x] Formatting ```.md``` pages (like this one)
 - [x] become more comfortable using ```github```
 - Use eBird data
-- Use iNaturalist data
+- [x] Use iNaturalist data
 - use historical weather data
 - Shiny - add different choices
 - learn to do more stuff with R [R Resource Links @ github.io](https://wendyanthony.github.io/R_Stats_Links-io.html)  
