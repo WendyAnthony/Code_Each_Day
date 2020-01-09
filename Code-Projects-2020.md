@@ -39,8 +39,9 @@
 **Links to code work:** 
 - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html  
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Dashboards  
-- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/weather-underground.R  
-  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/2019-MeanTemp-VictoriaInnerHarbour.png  
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/weather-underground.R  
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/2019-MinTemp-VictoriaInnerHarbour.png
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/2019-MeanTemp-VictoriaInnerHarbour.png
   
 [TOC](#TOC)
 ***
@@ -156,7 +157,7 @@
 **Links to code work:**  
 1. https://wendyanthony.shinyapps.io/VicCensusApp/
 2. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Vic_Census_Shiny/app.R
-3. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/windrose.R
+3. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/windrose.R
 
 [TOC](#TOC)
 ***
