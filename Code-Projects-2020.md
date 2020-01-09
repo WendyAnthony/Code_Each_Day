@@ -28,11 +28,13 @@
 ## R1D8 2020-01-09 <a name="R1D9"/>
 **Today's Progress**: 
 - adding more **R resource links** (collected on iPad) to links resource webpage, using ```.rmd``` document knitted to ```.html```
+- learning to make dashboards in ```R Markdown``` with column layout, multiple pages, & storyboards
 
 **Thoughts:** 
 
 **Links to code work:** 
-- http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
+- http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html  
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Dashboards
 [TOC](#TOC)
 ***
 
