@@ -42,6 +42,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/weather-underground.R  
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/2019-MinTemp-VictoriaInnerHarbour.png
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/2019-MeanTemp-VictoriaInnerHarbour.png
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/2019-MaxTemp-VictoriaInnerHarbour.png
   
 [TOC](#TOC)
 ***
