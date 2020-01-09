@@ -28,7 +28,7 @@
 ## R1D8 2020-01-09 <a name="R1D9"/>
 **Today's Progress**: 
 - adding more **R resource links** (collected on iPad) to links resource webpage, using ```.rmd``` document knitted to ```.html```
-- learning to make dashboards in ```R Markdown``` with column layout, multiple pages, & storyboards
+- learning to make dashboards in ```R Markdown``` using ```flexdashboard``` with column layout, multiple pages, & storyboards
 
 **Thoughts:** 
 
