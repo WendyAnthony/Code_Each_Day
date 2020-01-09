@@ -51,7 +51,7 @@ ggplot(vihas_weather,aes(x = Mean.TemperatureC,y=months,height=..density..))+
         axis.ticks.y=element_blank(),
         strip.text.y = element_text(angle = 180, hjust = 1))+
   labs(title='Temperatures in Victoria Inner Harbour Airport Station',
-       subtitle='Median temperatures (Celsius) by month for 2019\nData: Original CSV from the Weather Underground', x = "Mean Tempterature [ºC]")
+       subtitle='Median temperatures (Celsius) by month for 2019\nData: Original CSV from the Weather Underground', x = "Mean Temperature [ºC]")
 ## in color
 ggplot(vihas_weather, aes(x = `Mean.TemperatureC`, y = `months`, fill = ..x..)) +
   geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
@@ -74,7 +74,7 @@ ggplot(vihas_weather,aes(x = Min.TemperatureC,y=months,height=..density..))+
         axis.ticks.y=element_blank(),
         strip.text.y = element_text(angle = 180, hjust = 1))+
   labs(title='Temperatures in Victoria Inner Harbour Airport Station',
-       subtitle='Min temperatures (Celsius) by month for 2019\nData: Original CSV from the Weather Underground', x = "Min Tempterature [ºC]")
+       subtitle='Min temperatures (Celsius) by month for 2019\nData: Original CSV from the Weather Underground', x = "Min Temperature [ºC]")
 ## in color
 ggplot(vihas_weather, aes(x = `Min.TemperatureC`, y = `months`, fill = ..x..)) +
   geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
@@ -84,4 +84,26 @@ ggplot(vihas_weather, aes(x = `Min.TemperatureC`, y = `months`, fill = ..x..)) +
   labs(title = 'Temperatures in Victoria Inner Harbour Airport Station',
        subtitle = 'Min temperatures (Celsius) by month for 2019\nData: Original CSV from the Weather Underground', 
        x = "Min Temperature") +
+  theme_ridges(font_size = 13, grid = TRUE) + theme(axis.title.y = element_blank())
+
+
+# max Temp
+ggplot(vihas_weather,aes(x = Max.TemperatureC,y=months,height=..density..))+
+  geom_joy(scale=3) +
+  scale_x_continuous(limits = c(mins,maxs))+
+  theme_ipsum(grid=F)+
+  theme(axis.title.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        strip.text.y = element_text(angle = 180, hjust = 1))+
+  labs(title='Temperatures in Victoria Inner Harbour Airport Station',
+       subtitle='Max temperatures (Celsius) by month for 2019\nData: Original CSV from the Weather Underground', x = "Min Temperature [ºC]")
+## in color
+ggplot(vihas_weather, aes(x = `Max.TemperatureC`, y = `months`, fill = ..x..)) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  scale_fill_viridis(name = "Temp. [ºC]", option = "C") +
+  labs(title = 'Temperatures in Victoria Inner Harbour Airport Station',
+       subtitle = 'Max temperatures (Celsius) by month for 2019\nData: Original CSV from the Weather Underground', 
+       x = "Max Temperature") +
   theme_ridges(font_size = 13, grid = TRUE) + theme(axis.title.y = element_blank())
