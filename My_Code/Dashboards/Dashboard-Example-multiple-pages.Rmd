@@ -1,0 +1,52 @@
+---
+title: "Dashboard Example"
+author: "yihui"
+date: "January 9, 2020"
+output: flexdashboard::flex_dashboard
+---
+
+```{r setup, include=FALSE}
+# install.packages("flexdashboard")
+library("flexdashboard")
+```
+# Dashboard Layout  
+https://bookdown.org/yihui/rmarkdown/layout.html
+```{r}
+```
+"Note that a series of dashes under a line of text is the alternative Markdown syntax for the second-level section header" - equivalent to ## Column 1  
+" By default, the second-level sections generate columns on a dashboard, and the third level sections will be stacked vertically inside columns. You do not have to have columns on a dashboard: when all you have are the third-level sections in the source document, they will be stacked vertically as one column in the output."  
+"The text of the second-level headers will not be displayed in the output. The second-level headers are for the sole purpose of layout, so the actual content of the headers does not matter at all. By contrast, the first-level and third-level headers will be displayed as titles."  
+
+Column 1
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+```
+
+
+Column 2
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+```
+
+### Chart C
+
+```{r}
+```
+
+Narrow Column 3 {data-width = 350}
+----------------------------------------------------------------
+### Chart D
+
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+```{r}
+```
+
+
