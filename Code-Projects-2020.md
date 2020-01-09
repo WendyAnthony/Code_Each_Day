@@ -192,7 +192,8 @@
 - Use iNaturalist data
 - use historical weather data
 - Shiny - add different choices
-- learn to do more stuff with R [R Resource Links](https://wendyanthony.github.io/R_Stats_Links-io.html)
+- learn to do more stuff with R [R Resource Links @ github.io](https://wendyanthony.github.io/R_Stats_Links-io.html)  
+  - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
 
 [TOC](#TOC)
 
