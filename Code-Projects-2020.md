@@ -29,6 +29,8 @@
 **Today's Progress**: 
 - adding more **R resource links** (collected on iPad) to links resource webpage, using ```.rmd``` document knitted to ```.html```
 - learning to make dashboards in ```R Markdown``` using ```flexdashboard``` with column layout, multiple pages, & storyboards
+- testing some highlighter shiny apps
+- testing some weather code using ```ggplot2```
 
 **Thoughts:** 
 - was able to create an internal link to another page in the multiple page layout
@@ -37,6 +39,8 @@
 **Links to code work:** 
 - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html  
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Dashboards
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/weather-underground.R
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/2019-MeanTemp-VictoriaInnerHarbour.png
 [TOC](#TOC)
 ***
 
