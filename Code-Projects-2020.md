@@ -6,9 +6,10 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**  
-  - [R1D5 2020-01-08](#R1D8)
-  - [R1D5 2020-01-07](#R1D7)
-  - [R1D5 2020-01-06](#R1D6)
+  - [R1D9 2020-01-09](#R1D9)
+  - [R1D8 2020-01-08](#R1D8)
+  - [R1D7 2020-01-07](#R1D7)
+  - [R1D6 2020-01-06](#R1D6)
   - [R1D5 2020-01-05](#R1D5) 
 - **[Week I](#weekI)**    
   - [R1D4 2020-01-04](#R1D4)  
@@ -24,7 +25,18 @@
 ***
 # Week II <a name="weekII"/>
 ***
-## R1D7 2020-01-08 <a name="R1D8"/>
+## R1D8 2020-01-09 <a name="R1D9"/>
+**Today's Progress**: 
+- adding R resource links to liks resource webpage, using ```.rmd``` document knitted to ```.html```
+
+**Thoughts:** 
+
+**Links to code work:** 
+- http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
+[TOC](#TOC)
+***
+
+## R1D8 2020-01-08 <a name="R1D8"/>
 **Today's Progress**: 
 - Victoria Census shiny app: Changed column names; added data dictionary to map column names from original data; added raw data table
 - Vancouver Census shiny app: copy/paste change Victoria to Vancouver
