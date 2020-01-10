@@ -378,6 +378,7 @@ class(vic_UVic_dy_2015_2019$Season) # character
 # change character to factor
 vic_UVic_dy_2015_2019$Season <- as.factor(vic_UVic_dy_2015_2019$Season)
 
+# https://www.datanovia.com/en/blog/how-to-change-ggplot-legend-order/
 # Or specify the factor levels in the order you want to change legend label order
 vic_UVic_dy_2015_2019$Season <- factor(vic_UVic_dy_2015_2019$Season, levels = c("Winter", "Spring", "Summer", "Autumn"))
 
