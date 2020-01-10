@@ -39,7 +39,7 @@
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/weather-ug-UVic.R
-  - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Weather
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/vic_UVic_dy_2015_2019_p1.png
   
 [TOC](#TOC)
 ***
