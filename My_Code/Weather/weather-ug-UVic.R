@@ -355,6 +355,7 @@ UVic_maxtemp_plot_2015_2019 + facet_wrap(~year, nrow = 2, scales = "free") +
 str(vic_UVic_dy_2015_2019)
 names(vic_UVic_dy_2015_2019)
 
+# https://stackoverflow.com/questions/7658316/create-new-column-based-on-4-values-in-another-column
 # Create new values in new column season based on meteorological seasons
 vic_UVic_dy_2015_2019$Season <- rep(NA, nrow(vic_UVic_dy_2015_2019))
 vic_UVic_dy_2015_2019[vic_UVic_dy_2015_2019$months == "December", ][, "Season"] <- "Winter"
