@@ -371,6 +371,7 @@ vic_UVic_dy_2015_2019[vic_UVic_dy_2015_2019$months == "October", ][, "Season"] <
 vic_UVic_dy_2015_2019[vic_UVic_dy_2015_2019$months == "November", ][, "Season"] <- "Autumn"
 vic_UVic_dy_2015_2019
 
+# https://stackoverflow.com/questions/9202413/how-do-you-delete-a-column-by-name-in-data-table
 # drop mispelled column "seson"
 vic_UVic_dy_2015_2019$Seson = NULL
 names(vic_UVic_dy_2015_2019)
