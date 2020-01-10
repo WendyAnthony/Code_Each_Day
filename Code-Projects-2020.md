@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**  
+  - [R1D10 2020-01-10](#R1D10)
   - [R1D9 2020-01-09](#R1D9)
   - [R1D8 2020-01-08](#R1D8)
   - [R1D7 2020-01-07](#R1D7)
@@ -25,12 +26,30 @@
 ***
 # Week II <a name="weekII"/>
 ***
-## R1D8 2020-01-09 <a name="R1D9"/>
+## R1D10 2020-01-10 <a name="R1D10"/>
+**Today's Progress**:
+- created ggplot2 weather visualization using ```weathercan``` to download 5 years of UVic weather data, and append rows of another year of data using ```rbind``` 
+- created facet plots of multiple yearly plot data together
+- created new column for meteorological seasons to create a 5 year temp plot coloured by seasons
+- had to spend some time to figure out how to reorder the items on the legend (from alphabetic)
+- saved plots to ```.png``` files
+
+**Thoughts:** 
+- wanted to do some more weather visualizations using ggplot2, over multiple years, and create facets
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/weather-ug-UVic.R
+  - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Weather
+  
+[TOC](#TOC)
+***
+
+## R1D9 2020-01-09 <a name="R1D9"/>
 **Today's Progress**: 
 - adding more **R resource links** (collected on iPad) to links resource webpage, using ```.rmd``` document knitted to ```.html```
 - learning to make dashboards in ```R Markdown``` using ```flexdashboard``` with column layout, multiple pages, & storyboards
 - testing some highlighter shiny apps
-- testing some weather code using ```ggplot2```
+- testing some weather code using ```ggplot2``` and ```ggridges```
 
 **Thoughts:** 
 - was able to create an internal link to another page in the multiple page layout
