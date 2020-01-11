@@ -384,10 +384,13 @@ vic_UVic_dy_2015_2019$Season <- as.factor(vic_UVic_dy_2015_2019$Season)
 # Or specify the factor levels in the order you want to change legend label order
 vic_UVic_dy_2015_2019$Season <- factor(vic_UVic_dy_2015_2019$Season, levels = c("Winter", "Spring", "Summer", "Autumn"))
 
+#### -----------------------------------------
+# Plot Seasons
+####
 # https://cedricscherer.netlify.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/
 vic_UVic_dy_2015_2019_p1 <- ggplot(vic_UVic_dy_2015_2019, aes(x = date, y = mean_temp,
   color = Season)) +
-  geom_point() +
+  geom_point(size = 0.5) +
   geom_rug() +
   scale_fill_discrete(breaks=c("Spring", "Summer", "Autumn", "Winter")) + # change legend order from A, Sp, Su, W
   labs(x = "Year", y = "Temperature (°C)")
