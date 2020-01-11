@@ -30,9 +30,11 @@
 ## R1D11 2020-01-11 <a name="R1D11"/>
 **Today's Progress**:
 - learn to use ```unix commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
+- redid uvic seasonal weather plot in ggplot2 using smaller point size for 'dots' > makes chart easier to read
 
 **Thoughts:** 
--  typing commands into terminal is a lot less intimidating than I was expecting
+- typing commands into terminal is a lot less intimidating than I was expecting
+- ```ggplot2``` makes some beautiful charts!
 
 **Links to code work:** 
   
