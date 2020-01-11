@@ -29,7 +29,7 @@
 ***
 ## R1D11 2020-01-11 <a name="R1D11"/>
 **Today's Progress**:
-- learn to use ```unix commands``` in ```Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
+- learn to use ```unix commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
 
 **Thoughts:** 
 -  typing commands into terminal is a lot less intimidating than I was expecting
