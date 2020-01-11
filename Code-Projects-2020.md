@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**  
+  - [R1D11 2020-01-11](#R1D11)
   - [R1D10 2020-01-10](#R1D10)
   - [R1D9 2020-01-09](#R1D9)
   - [R1D8 2020-01-08](#R1D8)
@@ -26,6 +27,18 @@
 ***
 # Week II <a name="weekII"/>
 ***
+## R1D11 2020-01-11 <a name="R1D11"/>
+**Today's Progress**:
+- learn to use ```unix commands``` in ```Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
+
+**Thoughts:** 
+-  typing commands into terminal is a lot less intimidating than I was expecting
+
+**Links to code work:** 
+  
+[TOC](#TOC)
+***
+
 ## R1D10 2020-01-10 <a name="R1D10"/>
 **Today's Progress**:
 - created ggplot2 weather visualization using ```weathercan``` to download 5 years of UVic weather data, and append rows of another year of data using ```rbind``` 
