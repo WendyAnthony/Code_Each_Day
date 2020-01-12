@@ -5,6 +5,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week III](#weekII)**  
+  - [R1D12 2020-01-12](#R1D12)
 - **[Week II](#weekII)**  
   - [R1D11 2020-01-11](#R1D11)
   - [R1D10 2020-01-10](#R1D10)
@@ -25,11 +27,27 @@
 - **[Wishlist](#wishlist)**
 
 ***
+# Week III <a name="weekIII"/>
+***
+## R1D12 2020-01-12 <a name="R1D12"/>
+**Today's Progress**:
+- retrying use of ```Linux UNIX commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
+- trying, without success to 'Compile UNIX software packages' ... couldn't get the syntax correct to ```./configure --prefix=$HOME/units174``` to generate / install in correct directory, after trying multiple different ways
+
+**Thoughts:** 
+- I always thought compiling programs in terminal would be a challenge, and indeed this is - install not working correctly yet??
+
+**Links to code work:** 
+
+  
+[TOC](#TOC)
+***
+
 # Week II <a name="weekII"/>
 ***
 ## R1D11 2020-01-11 <a name="R1D11"/>
 **Today's Progress**:
-- learn to use ```unix commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
+- learn to use ```UNIX commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
 - redid uvic seasonal weather plot in ggplot2 using smaller point size for 'dots' > makes chart easier to read
 
 **Thoughts:** 
