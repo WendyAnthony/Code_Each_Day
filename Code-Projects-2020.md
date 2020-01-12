@@ -32,7 +32,7 @@
 ## R1D12 2020-01-12 <a name="R1D12"/>
 **Today's Progress**:
 - retrying use of ```Linux UNIX commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
-- trying, without success to 'Compile UNIX software packages' ... couldn't get the syntax correct to ```./configure --prefix=$HOME/units174``` to generate / install in correct directory, after trying multiple different ways
+- trying, without success to 'Compile UNIX software packages' ... couldn't get the syntax correct to ```./configure --prefix=$HOME/units174``` to generate / install in correct directory, after trying multiple different ways (I was able to create new directory, just not configure / install to it - not sure how to find the right syntax)
 
 **Thoughts:** 
 - I always thought compiling programs in terminal would be a challenge, and indeed this is - install not working correctly yet??
