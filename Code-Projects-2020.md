@@ -5,7 +5,7 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week III](#weekII)**  
+- **[Week III](#weekIII)**  
   - [R1D12 2020-01-12](#R1D12)
 - **[Week II](#weekII)**  
   - [R1D11 2020-01-11](#R1D11)
