@@ -1,7 +1,8 @@
 library("shiny")
 library("leaflet")
 library("rinat")
-library("lubridate") # for dates
+#library("lubridate") # for dates
+library("data.table")
 
 # dir <- "/Users/wendyanthony/Documents/R/iNaturalist-shiny-leaflet-app"
 # setwd(dir)
