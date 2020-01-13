@@ -39,7 +39,9 @@
 - cleaning and preparing data takes a lot of work - much more than trying to figure out the code sometimes!
 
 **Links to code work:** 
-- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/iNaturalist
+- https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
+
 
 [TOC](#TOC)
 ***
