@@ -261,6 +261,7 @@
 
 **Thoughts:** 
 - I'd like to make a Census app using Victoria Census info
+- https://www.shinyapps.io/admin/#/dashboard
 
 
 [TOC](#TOC)
