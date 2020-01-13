@@ -3,9 +3,9 @@ library("leaflet")
 library("rinat")
 library("lubridate") # for dates
 
-dir <- "/Users/wendyanthony/Documents/R/"
-setwd(dir)
-getwd()
+# dir <- "/Users/wendyanthony/Documents/R/iNaturalist-shiny-leaflet-app"
+# setwd(dir)
+# getwd()
 
 wa_inat_userstats <- get_inat_obs_user("wendy_anthony", maxresults = "3000")
 wa_inat_userstats_research <- wa_inat_userstats[which(wa_inat_userstats$quality_grade == "research" ),] #Extract just research grade observations
