@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week III](#weekIII)**  
+  - [R1D13 2020-01-13](#R1D13)
   - [R1D12 2020-01-12](#R1D12)
 - **[Week II](#weekII)**  
   - [R1D11 2020-01-11](#R1D11)
@@ -29,13 +30,29 @@
 ***
 # Week III <a name="weekIII"/>
 ***
+## R1D13 2020-01-13 <a name="R1D13"/>
+**Today's Progress**:
+- created code to access my iNaturalist observations
+- created ```leafet r``` map for my 1243 research-grade iNaturalist observations @ https://www.inaturalist.org/observations/wendy_anthony
+
+**Thoughts:** 
+- cleaning and preparing data takes a lot of work - much more than trying to figure out the code sometimes!
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/iNaturalist
+
+[TOC](#TOC)
+***
+
 ## R1D12 2020-01-12 <a name="R1D12"/>
 **Today's Progress**:
-- retrying use of ```Linux UNIX commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
+- reviewing use of ```Linux UNIX commands``` in ```MacOSX Terminal``` with Unix Tutorial (for Synoptic Meteorology course Geog484)
 - trying, without success to 'Compile UNIX software packages' ... couldn't get the syntax correct to ```./configure --prefix=$HOME/units174``` to generate / install in correct directory, after trying multiple different ways (I was able to create new directory, just not configure / install to it - not sure how to find the right syntax)
+- working on a ```ggplot2``` precipitation visualization, got it working, then did something to mess it up ... now nothing works!!
 
 **Thoughts:** 
 - I always thought compiling programs in terminal would be a challenge, and indeed this is - install not working correctly yet??
+- I need to save a code file when it is working, and try other stuff on a copy - 'twould save me a lot of heart-ache!!
 
 **Links to code work:** 
 
