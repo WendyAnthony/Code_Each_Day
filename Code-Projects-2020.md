@@ -41,10 +41,10 @@
 ## R1D19 2020-01-19 <a name="R1D19"/>
 **Today's Progress**:
 - trying to get D3 to run with R shiny
-- testing ```highcharter```, adding more types & themes, also trying different data
+- testing ```highcharter``` in ```Shiny```, adding more types & themes, also trying different data
 
 **Thoughts:** 
-- would like to find a way to 
+- would like to find a way to add different data choices to ```highcharter``` in ```Shiny```
 
 **Links to code work:** 
 - https://github.com/jbkunst/d3wordcloud
