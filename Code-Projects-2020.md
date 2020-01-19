@@ -11,6 +11,7 @@
   - [R1D18 2020-01-18](#R1D18)
   - [R1D17 2020-01-17](#R1D17)
   - [R1D16 2020-01-16](#R1D16)
+  - [R1D15 2020-01-15](#R1D15)
   - [R1D13 2020-01-13](#R1D13)
   - [R1D12 2020-01-12](#R1D12)
 - **[Week II](#weekII)**  
@@ -84,6 +85,30 @@
 4. Make frames from layers > select all > set loop count for all selected
 5. Play button to view
 6. File > Save for Web > Preset: GI  128 Dithered; Colors: 256 > Preview > Save
+
+[TOC](#TOC)
+***
+
+## R1D15 2020-01-15 <a name="R1D15"/>
+**Today's Progress**:
+- tried to get cluster code to show more markers when zoomed in
+
+**Thoughts:** 
+- cleaning and preparing data takes a lot of work - much more than trying to figure out the code sometimes!
+
+**Links to code work:** 
+- https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
+
+[TOC](#TOC)
+***
+
+## R1D14 2020-01-14 <a name="R1D14"/>
+**Today's Progress**:
+- learned to make non-linear presentation in Powerpoint, using sections and linking to each section with images in a TOC
+
+**Thoughts:** 
+- in older version of Powerpoint 2016, this doesn't work as simply as newer versions, so I had to figure out what would work with older version
 
 [TOC](#TOC)
 ***
