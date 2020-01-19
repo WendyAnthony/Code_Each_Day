@@ -44,6 +44,7 @@
 - testing ```highcharter``` in ```Shiny```, adding more types & themes, also trying different data
 
 **Thoughts:** 
+- very interested in the interactivity of ```D3``` & ```Shiny``` in combination, though having trouble accessing different data
 - would like to find a way to add different data choices to ```highcharter``` in ```Shiny```
 
 **Links to code work:** 
