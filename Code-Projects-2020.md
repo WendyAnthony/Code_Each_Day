@@ -41,12 +41,14 @@
 ## R1D19 2020-01-19 <a name="R1D19"/>
 **Today's Progress**:
 - trying to get D3 to run with R shiny
+- testing ```highcharter```, adding more types & themes, also trying different data
 
 **Thoughts:** 
-- other people's code examples may work fine, sometimes they don't without explanations
+- would like to find a way to 
 
 **Links to code work:** 
 - https://github.com/jbkunst/d3wordcloud
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Highcharter
 
 [TOC](#TOC)
 ***
