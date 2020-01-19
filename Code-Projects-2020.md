@@ -5,7 +5,12 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week IV](#weekIV)**  
+  - [R1D19 2020-01-19](#R1D19)
 - **[Week III](#weekIII)**  
+  - [R1D18 2020-01-18](#R1D18)
+  - [R1D17 2020-01-17](#R1D17)
+  - [R1D16 2020-01-16](#R1D16)
   - [R1D13 2020-01-13](#R1D13)
   - [R1D12 2020-01-12](#R1D12)
 - **[Week II](#weekII)**  
@@ -28,8 +33,61 @@
 - **[Wishlist](#wishlist)**
 
 ***
+
+# Week IV <a name="weekIV"/>
+***
+## R1D19 2020-01-19 <a name="R1D19"/>
+**Today's Progress**:
+- trying to get D3 to run with R shiny
+
+**Thoughts:** 
+- other people's code examples may work fine, sometimes they don't without explanations
+
+**Links to code work:** 
+- https://github.com/jbkunst/d3wordcloud
+
+[TOC](#TOC)
+***
+
 # Week III <a name="weekIII"/>
 ***
+## R1D18 2020-01-18 <a name="R1D18"/>
+**Today's Progress**:
+- trying to get webscraping html tables to work in R, but had trouble with tables that had columns that spanned over multiple columns
+
+**Thoughts:** 
+- make sure I don't create messy tables with multiple spanning columns
+
+[TOC](#TOC)
+***
+
+## R1D17 2020-01-17 <a name="R1D17"/>
+**Today's Progress**:
+- trying to get shiny apps to work using ```golem``` package
+
+**Thoughts:** 
+
+[TOC](#TOC)
+***
+
+## R1D16 2020-01-16 <a name="R1D16"/>
+**Today's Progress**:
+- found a way to generate animated gifs from environment canada forecasts using Photoshop
+
+**Thoughts:** 
+- animating weather forecasts helps to understand change over time
+
+**Links to code work:** 
+1. File > Scriptw > Load files into stack > Browse for files > open > OK
+2. set loop count (dropdown arrow below first gif)
+3. hamburger menu at top right of animation frames window
+4. Make frames from layers > select all > set loop count for all selected
+5. Play button to view
+6. File > Save for Web > Preset: GI  128 Dithered; Colors: 256 > Preview > Save
+
+[TOC](#TOC)
+***
+
 ## R1D13 2020-01-13 <a name="R1D13"/>
 **Today's Progress**:
 - created code to access my iNaturalist observations
@@ -41,7 +99,6 @@
 **Links to code work:** 
 - https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
-
 
 [TOC](#TOC)
 ***
