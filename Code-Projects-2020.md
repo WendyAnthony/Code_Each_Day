@@ -77,8 +77,8 @@
 **Thoughts:** 
 - animating weather forecasts helps to understand change over time
 
-**Links to code work:** 
-**Make animated gifs with Photoshop (CS5)**
+**Links to code work:**  
+**Make animated gifs with Photoshop (CS5)**  
 1. File > Scriptw > Load files into stack > Browse for files > open > OK
 2. set loop count (dropdown arrow below first gif)
 3. hamburger menu at top right of animation frames window
