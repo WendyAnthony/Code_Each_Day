@@ -41,7 +41,7 @@
 ***
 ## R1D20 2020-01-20 <a name="R1D20"/>
 **Today's Progress**:
-- trying some more ```highcharter``` functions to make charts with new series of data, bands on the y-axis  
+- trying some more ```highcharter``` functions to make charts with new series of data, bands on the y-axis, grouping together values
 
   
 **Thoughts:** 
