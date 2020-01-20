@@ -6,7 +6,8 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week IV](#weekIV)**  
-  - [R1D19 2020-01-19](#R1D19)
+  - [R1D20 2020-01-20](#R1D20)
+  - [R1D19 2020-01-19](#R1D19)  
 - **[Week III](#weekIII)**  
   - [R1D18 2020-01-18](#R1D18)
   - [R1D17 2020-01-17](#R1D17)
@@ -37,6 +38,18 @@
 ***
 
 # Week IV <a name="weekIV"/>
+***
+## R1D20 2020-01-20 <a name="R1D20"/>
+**Today's Progress**:
+- trying some more ```highcharter``` functions to make charts with new series of data, bands on the y-axis  
+  https://rstudio-pubs-static.s3.amazonaws.com/136836_45410b2aedcf49a5b46567f3fd6015bc.html
+  
+**Thoughts:** 
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
 ***
 ## R1D19 2020-01-19 <a name="R1D19"/>
 **Today's Progress**:
