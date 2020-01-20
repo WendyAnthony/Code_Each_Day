@@ -48,7 +48,8 @@
 - when there are errors working from someone's demo tutorial, or code doesn't work, don't assume it's me - sometimes the original has code spelling errors, or leaves out repeat info that need to know how to add to without being told
 
 **Links to code work:** 
-- https://rstudio-pubs-static.s3.amazonaws.com/136836_45410b2aedcf49a5b46567f3fd6015bc.html (quite a few code errors)
+- https://rstudio-pubs-static.s3.amazonaws.com/136836_45410b2aedcf49a5b46567f3fd6015bc.html 
+  - (quite a few code errors)
 - http://jkunst.com/highcharter/index.html
 
 [TOC](#TOC)
