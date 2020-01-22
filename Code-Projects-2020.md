@@ -6,7 +6,8 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week IV](#weekIV)**  
-  - [R1D20 2020-01-20](#R1D20)
+  - [R1D21 2020-01-21](#R1D21)
+  - [R1D20 2020-01-20](#R1D20)  
   - [R1D19 2020-01-19](#R1D19)  
 - **[Week III](#weekIII)**  
   - [R1D18 2020-01-18](#R1D18)
@@ -39,11 +40,24 @@
 
 # Week IV <a name="weekIV"/>
 ***
+## R1D21 2020-01-21 <a name="R1D21"/>
+**Today's Progress**:
+- trying some more ```highcharter``` advanced mapping, creating a map by importing geojson files, using code samples from the package maker; the map shows the continents, country boundaries, plate boundaries, marine currents, volcano locations; with interactive tooltips
+
+**Thoughts:** 
+- map wouldn't work, I had to tweak the code, and was successful! ;)
+
+**Links to code work:** 
+- http://jkunst.com/highcharter/highmaps.html
+  - tweaked the code to get world map to show: changed to ```data = world``` added ```geojson = TRUE```
+
+[TOC](#TOC)
+
+***
 ## R1D20 2020-01-20 <a name="R1D20"/>
 **Today's Progress**:
 - trying some more ```highcharter``` functions to make charts with new series of data, bands on the y-axis, grouping together values
 
-  
 **Thoughts:** 
 - when there are errors working from someone's demo tutorial, or code doesn't work, don't assume it's me - sometimes the original has code spelling errors, or leaves out repeat info that need to know how to add to without being told
 
@@ -54,7 +68,7 @@
 
 [TOC](#TOC)
 
-***
+**
 ## R1D19 2020-01-19 <a name="R1D19"/>
 **Today's Progress**:
 - trying to get D3 to run with R shiny
