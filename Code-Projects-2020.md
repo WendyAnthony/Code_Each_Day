@@ -45,7 +45,7 @@
 - trying some more ```highcharter``` advanced mapping, creating a map by importing geojson files, using code samples from the package maker; the map shows the continents, country boundaries, plate boundaries, marine currents, volcano locations; with interactive tooltips
 
 **Thoughts:** 
-- map wouldn't work, I had to tweak the code, and was successful! ;)
+- map wouldn't work, I had to tweak the code, and was successful - I'm pretty proud of myself for figuring out what to do to make the code work! ;)
 
 **Links to code work:** 
 - http://jkunst.com/highcharter/highmaps.html
