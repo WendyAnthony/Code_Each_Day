@@ -5,6 +5,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week V](#weekV)**  
+  - [R1D26 2020-01-26](#R1D26)
 - **[Week IV](#weekIV)**  
   - [R1D21 2020-01-21](#R1D21)
   - [R1D20 2020-01-20](#R1D20)  
@@ -35,6 +37,22 @@
   - [R1D0-2 2019-12-29](#R1D0-2)
   - [R1D0-1 2019-12-28](#R1D0-1)
 - **[Wishlist](#wishlist)**
+
+***
+# Week V <a name="weekV"/>
+***
+## R1D26 2020-01-26 <a name="R1D26"/>
+**Today's Progress**:
+- trying out a variety of R packages ... 
+   - found a package '''MapPalettes''' that will ```get_color_from_image("")``` supplying hex colour code for colours found in image 
+
+**Thoughts:** 
+- what a cool way to find the colours in an image URL
+
+**Links to code work:** 
+- https://github.com/disarm-platform/MapPalettes
+
+[TOC](#TOC)
 
 ***
 
