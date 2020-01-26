@@ -44,7 +44,7 @@
 ## R1D26 2020-01-26 <a name="R1D26"/>
 **Today's Progress**:
 - trying out a variety of R packages ... 
-   - found a package '''MapPalettes''' that will ```get_color_from_image("")``` supplying hex colour code for colours found in image 
+   - found a package ```MapPalettes``` that will ```get_color_from_image("")``` supplying hex colour code for colours found in image 
 
 **Thoughts:** 
 - what a cool way to find the colours in an image URL
