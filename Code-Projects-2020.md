@@ -51,7 +51,7 @@
 - takes a long time for map to process - wasn't sure if I'd done something wrong ... just need patience!
 
 **Links to code work:** 
-https://geocompr.github.io/post/2019/ggplot2-inset-maps/
+- https://geocompr.github.io/post/2019/ggplot2-inset-maps/
 
 [TOC](#TOC)
 
