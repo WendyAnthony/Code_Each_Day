@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week V](#weekV)**  
+  - [R1D28 2020-01-28](#R1D28)
   - [R1D26 2020-01-26](#R1D26)
 - **[Week IV](#weekIV)**  
   - [R1D21 2020-01-21](#R1D21)
@@ -40,6 +41,20 @@
 
 ***
 # Week V <a name="weekV"/>
+***
+## R1D28 2020-01-28 <a name="R1D28"/>
+**Today's Progress**:
+- playing around with leaflet maps, then found a code snippet adding WMS Web Map Service tiles,  https://rstudio.github.io/leaflet/basemaps.html#wms-tiles, did some further searching and found https://mesonet.agron.iastate.edu/docs/nexrad_mosaic/, using mosaics of NEXRAD base reflectivity
+
+**Thoughts:** 
+- I get quite excited when I can get some code to work, after tweaking for local relevance
+- I'm very interested to do more weather visualizations
+
+**Links to code work:** 
+- http://people.geog.uvic.ca/wanthony/website/meteorology/WMS-T-App.html
+
+[TOC](#TOC)
+
 ***
 ## R1D26 2020-01-26 <a name="R1D26"/>
 **Today's Progress**:
