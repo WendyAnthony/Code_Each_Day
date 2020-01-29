@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week V](#weekV)**  
+  - [R1D29 2020-01-29](#R1D29)
   - [R1D28 2020-01-28](#R1D28)
   - [R1D26 2020-01-26](#R1D26)
 - **[Week IV](#weekIV)**  
@@ -42,6 +43,20 @@
 ***
 # Week V <a name="weekV"/>
 ***
+## R1D29 2020-01-29 <a name="R1D29"/>
+**Today's Progress**:
+- more mapping in R: inset maps with ```ggplot2```
+
+**Thoughts:** 
+- takes a long time for map to process - wasn't sure if I'd done something wrong ... just need patience!
+
+**Links to code work:** 
+https://geocompr.github.io/post/2019/ggplot2-inset-maps/
+
+[TOC](#TOC)
+
+***
+
 ## R1D28 2020-01-28 <a name="R1D28"/>
 **Today's Progress**:
 - playing around with leaflet maps, then found a code snippet adding WMS Web Map Service tiles,  https://rstudio.github.io/leaflet/basemaps.html#wms-tiles, did some further searching and found https://mesonet.agron.iastate.edu/docs/nexrad_mosaic/, using mosaics of NEXRAD base reflectivity
