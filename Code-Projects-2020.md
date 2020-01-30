@@ -47,12 +47,15 @@
 ## R1D30 2020-01-30 <a name="R1D30"/>
 **Today's Progress**:
 - trying my hand at Tidy Tuesday's San Francisco's Trees; using ```patchwork``` & ```ggtext``` packages
+- learning to use ```GSODR``` to download weather data
 
 **Thoughts:** 
 - my image file didn't turn out the same as source, so I played with code a bit
+- takes some time to download, but works!!
 
 **Links to code work:** 
 - https://github.com/cnicault/tidytuesday/blob/master/2020-05-San-Francisco-trees/sf_trees.R
+- https://docs.ropensci.org/GSODR/
 
 [TOC](#TOC)
 
