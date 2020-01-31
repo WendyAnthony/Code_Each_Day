@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week V](#weekV)**  
+  - [R1D31 2020-01-31](#R1D31)
   - [R1D30 2020-01-30](#R1D30)
   - [R1D29 2020-01-29](#R1D29)  
   - [R1D28 2020-01-28](#R1D28)
@@ -44,14 +45,32 @@
 ***
 # Week V <a name="weekV"/>
 ***
+## R1D31 2020-01-31 <a name="R1D31"/>
+**Today's Progress**:
+- ```ImageMagick``` used ```convert``` to animate gifs of weather charts downloaded from Environment Canada
+- testing different loops (default is 1 time through); open in Chrome to run animation; can also use Powerpoint (use slideshow  > play from current slide)
+
+**Thoughts:** 
+- Trying to animate 1700 jpg just hung Terminal for almost an hour (had to use Ctrl+D to quit) - 500 seems about right (500 images takes 7 min; 200 images takes 4 minutes)
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
+***
+
 ## R1D30 2020-01-30 <a name="R1D30"/>
 **Today's Progress**:
 - trying my hand at Tidy Tuesday's San Francisco's Trees; using ```patchwork``` & ```ggtext``` packages
 - learning to use ```GSODR``` to download weather data
+- learning to use GEMPAK through VM virtual 
+- got help from Prof to see if I'd installed ```ImageMagick``` properly 
 
 **Thoughts:** 
 - my image file didn't turn out the same as source, so I played with code a bit
 - takes some time to download, but works!!
+- GEMPAK - I messed up by trying to copy gem file from download to virtual desktop - should have copied from explorer-finder window
+- ```ImageMagick``` can't use ```animate``` as MacOS needs ```QXII```, but ```Homebrew``` won't use options to install
 
 **Links to code work:** 
 - https://github.com/cnicault/tidytuesday/blob/master/2020-05-San-Francisco-trees/sf_trees.R
