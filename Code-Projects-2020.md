@@ -54,7 +54,7 @@
 - Trying to animate 1700 jpg just hung Terminal for almost an hour (had to use Ctrl+D to quit) - 500 seems about right (500 images takes 7 min; 200 images takes 4 minutes)
 
 **Links to code work:** 
-- convert -delay 30 goes_wcan*.jpg anim-goes-wcan-2020-01-23to26_30.gif
+- ```convert -delay 30 goes_wcan*.jpg anim-goes-wcan-2020-01-23to26_30.gif```
 
 [TOC](#TOC)
 
