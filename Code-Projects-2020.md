@@ -5,12 +5,14 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week VI](#weekVI)**  
+  - [R1D27 2020-02-04](#R1D27)
 - **[Week V](#weekV)**  
-  - [R1D31 2020-01-31](#R1D31)
-  - [R1D30 2020-01-30](#R1D30)
-  - [R1D29 2020-01-29](#R1D29)  
-  - [R1D28 2020-01-28](#R1D28)
-  - [R1D26 2020-01-26](#R1D26)
+  - [R1D26 2020-01-31](#R1D26)
+  - [R1D25 2020-01-30](#R1D25)
+  - [R1D24 2020-01-29](#R1D24)  
+  - [R1D23 2020-01-28](#R1D23)
+  - [R1D22 2020-01-26](#R1D22)
 - **[Week IV](#weekIV)**  
   - [R1D21 2020-01-21](#R1D21)
   - [R1D20 2020-01-20](#R1D20)  
@@ -42,10 +44,29 @@
   - [R1D0-1 2019-12-28](#R1D0-1)
 - **[Wishlist](#wishlist)**
 
+
+***
+# Week VI <a name="weekVI"/>
+***
+## R1D27 2020-02-04 <a name="R1D27"/>
+**Today's Progress**:
+- ```ImageMagick``` used ```montage``` to create a series of 4 tiles of gifs of weather charts downloaded from Environment Canada
+- animating montages with convert
+
+**Thoughts:** 
+- trying to find a way to make sense of changing weather patterns by animating upper air charts and surface charts for specific date spans
+
+**Links to code work:** 
+- ```montage -label '%f' SurfaceChart-mean-sealevelPressure-2020-02-01-00-947_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-06-951_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-12-935_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-18-941_100.gif -tile x1 -frame 5 -geometry '895x765+10+10>' -pointsize 30 -title 'Surface Charts 2020-02-01-00 to 2020-02-01-18' montage-label-title-size30-tile1-895x765x1790x1531-gap10+10-frame-SurfaceCharts-2020-02-01-00-to-01-18.gif```
+- ```convert -delay 1650 montage-label-title-size30*.gif anim-montage-x1-30-surface-mean-sealevel-Pressure-2020-02-01to04_1650.gif```
+- ```montage -label '%f' SurfaceChart-mean-sealevelPressure-2020-02-01-00-947_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-06-951_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-12-935_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-18-941_100.gif -tile 2x2 -frame 5 -geometry '+10+10>' -pointsize 50 -title 'Surface Charts 2020-02-01-00 to 2020-02-01-18' montage-label-title-size50-tile2-gap10+10-frame-SurfaceCharts-2020-02-01-00-to-01-18.gif```
+
+[TOC](#TOC)
+
 ***
 # Week V <a name="weekV"/>
 ***
-## R1D31 2020-01-31 <a name="R1D31"/>
+## R1D26 2020-01-31 <a name="R1D26"/>
 **Today's Progress**:
 - ```ImageMagick``` used ```convert``` to animate gifs of weather charts downloaded from Environment Canada
 - testing different loops (default is 1 time through); open in Chrome to run animation; can also use Powerpoint (use slideshow  > play from current slide)
@@ -60,7 +81,7 @@
 
 ***
 
-## R1D30 2020-01-30 <a name="R1D30"/>
+## R1D25 2020-01-30 <a name="R1D25"/>
 **Today's Progress**:
 - trying my hand at Tidy Tuesday's San Francisco's Trees; using ```patchwork``` & ```ggtext``` packages
 - learning to use ```GSODR``` to download weather data
@@ -81,7 +102,7 @@
 
 ***
 
-## R1D29 2020-01-29 <a name="R1D29"/>
+## R1D24 2020-01-29 <a name="R1D24"/>
 **Today's Progress**:
 - more mapping in R: inset maps with ```ggplot2```
 
@@ -95,7 +116,7 @@
 
 ***
 
-## R1D28 2020-01-28 <a name="R1D28"/>
+## R1D23 2020-01-28 <a name="R1D23"/>
 **Today's Progress**:
 - playing around with leaflet maps, then found a code snippet adding WMS Web Map Service tiles,  https://rstudio.github.io/leaflet/basemaps.html#wms-tiles, did some further searching and found https://mesonet.agron.iastate.edu/docs/nexrad_mosaic/, using mosaics of NEXRAD base reflectivity
 
@@ -109,7 +130,7 @@
 [TOC](#TOC)
 
 ***
-## R1D26 2020-01-26 <a name="R1D26"/>
+## R1D22 2020-01-26 <a name="R1D22"/>
 **Today's Progress**:
 - trying out a variety of R packages ... 
    - found a package ```MapPalettes``` that will ```get_color_from_image("")``` supplying hex colour code for colours found in image 
