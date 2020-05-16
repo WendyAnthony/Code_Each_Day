@@ -6,7 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week IX of COVID-19 Lockdown Week XXV](#weekXXV)**  
-- [R1D135 2020-05-14](#R1D135)
+  - [R1D135 2020-05-14](#R1D135)
 - **[Week VI](#weekVI)**  
   - [R1D27 2020-02-04](#R1D27)
 - **[Week V](#weekV)**  
