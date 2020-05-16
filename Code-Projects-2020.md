@@ -51,7 +51,7 @@
 ***
 ## R1D134 2020-05-13 <a name="R1D134"/>
 **Today's Progress**: 
-- tried new-to-me package 'tidycovid19', merging data from 9 different sources, creating familiar charts
+- tried new-to-me package ```tidycovid19```, merging data from 9 different sources, creating familiar charts
 
 **Thoughts:**
 - I hadn't done any coding since finishing my Adv Weather Course, so after taking some time out from moving everything on-line mid-way, writing 2 exams and finishing 3 assignments, I've had just over 3 weeks to take a break before wanting to play with R ... COVID-19 lockdown time starting to phase into different stage seemed like a perfect time to try to make some of the COVID-19 data viz charts I've been seeing on Twitter
