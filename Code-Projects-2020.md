@@ -5,7 +5,7 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week IX of COVID-19 Lockdown Week XXV](#weekXXV)**  
+- **[Week IX of COVID-19 Lockdown - Week XXV](#weekXXV)**  
   - [R1D134 2020-05-13](#R1D134)
 - **[Week VI](#weekVI)**  
   - [R1D27 2020-02-04](#R1D27)
@@ -47,7 +47,7 @@
 - **[Wishlist](#wishlist)**
 
 ***
-# Week IX of COVID-19 Lockdown <a name="weekXXV"/>
+# Week IX of COVID-19 Lockdown - Week XXV <a name="weekXXV"/>
 ***
 ## R1D134 2020-05-13 <a name="R1D134"/>
 **Today's Progress**: 
