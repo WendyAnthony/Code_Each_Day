@@ -54,7 +54,7 @@
 - tried new-to-me package ```tidycovid19```, merging data from 9 different sources, creating familiar charts
 
 **Thoughts:**
-- I hadn't done any coding since finishing my Adv Weather Course, so after taking some time out from moving everything on-line mid-way, writing 2 exams and finishing 3 assignments, I've had just over 3 weeks to take a break before wanting to play with R ... COVID-19 lockdown time starting to phase into different stage seemed like a perfect time to try to make some of the COVID-19 data viz charts I've been seeing on Twitter
+- I hadn't done any coding since finishing my Adv Weather Course, exams and assignments, so after a 3 week break I've been itching to play with R ... COVID-19 lockdown time is starting to phase into different stage, and seems like a perfect time to try to make some of the COVID-19 data viz charts I've been seeing on Twitter
 
 **Links to code work:** 
 
