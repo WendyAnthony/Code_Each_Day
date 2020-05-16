@@ -57,6 +57,7 @@
 - I hadn't done any coding since finishing my Adv Weather Course, exams and assignments, so after a 3 week break I've been itching to play with R ... COVID-19 lockdown time is starting to phase into different stage, and seems like a perfect time to try to make some of the COVID-19 data viz charts I've been seeing on Twitter
 
 **Links to code work:** 
+ - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/tidycovid19.R
 
 [TOC](#TOC)
 ***
