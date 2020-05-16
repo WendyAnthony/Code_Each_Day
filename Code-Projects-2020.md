@@ -1,6 +1,6 @@
 # Log for #Code_Each_Day - Wendy Anthony
 
-**The log of my #100DaysOfCode challenge. Started on 2020-01-01 (2019-12-28)**  
+**The log of Round 1 of my #100DaysOfCode challenge. Started on 2020-01-01 (2019-12-28)**  
 [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 
 ***
