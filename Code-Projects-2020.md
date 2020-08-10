@@ -59,7 +59,7 @@
 - Time to up my game with Leaflet for R
 
 **Links to code work:** 
- - 
+ - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/Leaflet-iNaturalistPhoto-Map-Webpage.R
  - https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
