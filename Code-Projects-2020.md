@@ -5,6 +5,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXXVIII](#weekXXXVIII)**  
+  - [R1D223 2020-08-10](#R1D223)
 - **[Week IX of COVID-19 Lockdown - Week XXV](#weekXXV)**  
   - [R1D134 2020-05-13](#R1D134)
 - **[Week VI](#weekVI)**  
@@ -46,6 +48,22 @@
   - [R1D0-1 2019-12-28](#R1D0-1)
 - **[Wishlist](#wishlist)**
 
+***
+# Week XXXVIII <a name="XXXVIII"/>
+***
+## R1D223 2020-08-10 <a name="R1D223"/>
+**Today's Progress**: 
+- working with Leaflet for R to create another interactive webpage map for my iNaturalist observations, using similar mapping code to my shiny app
+
+**Thoughts:**
+- Time to up my game with Leaflet for R
+
+**Links to code work:** 
+ - 
+ - https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
+ - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
+
+[TOC](#TOC)
 ***
 # Week IX of COVID-19 Lockdown - Week XXV <a name="weekXXV"/>
 ***
