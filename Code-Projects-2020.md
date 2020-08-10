@@ -54,6 +54,7 @@
 ## R1D223 2020-08-10 <a name="R1D223"/>
 **Today's Progress**: 
 - working with Leaflet for R to create another interactive webpage map for my iNaturalist observations, using similar mapping code to my shiny app
+- used the R packages ```rinat``` (to access iNaturalist data), ```lubridate``` (to manage the dates), ```leaflet```, ```htmlwidgets``` (to export html file)
 
 **Thoughts:**
 - Time to up my game with Leaflet for R
