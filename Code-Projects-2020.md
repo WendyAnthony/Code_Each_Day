@@ -58,7 +58,7 @@
 
 **Thoughts:**
 - Time to up my game with Leaflet for R
-- Marker clusters - when too many markers are close together the clusters aren't separating into single markers
+- Marker clusters - when too many markers are close together the clusters aren't separating into single markers (e.g. https://github.com/Leaflet/Leaflet.markercluster)
 
 **Links to code work:** 
  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/Leaflet-iNaturalistPhoto-Map-Webpage.R
