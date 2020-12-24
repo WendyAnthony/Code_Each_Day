@@ -56,6 +56,7 @@
 ## R1D259 2020-12-24 <a name="R1D259"/>
 **Today's Progress**: 
 - working with Leaflet kml plugin to create a interactive map with Leaflet
+- using .kml file created in my just-finished Anthropology Indigenous Ethnography & Cartography course 
 
 **Thoughts:**
 - excited to find different ways to use kml and leaflet
