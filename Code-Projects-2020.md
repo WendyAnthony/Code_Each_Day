@@ -5,6 +5,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week L](#weekL)**  
+  - [R1D259 2020-12-24](#R1D259)
 - **[Week XXXVIII](#weekXXXVIII)**  
   - [R1D223 2020-08-10](#R1D223)
 - **[Week IX of COVID-19 Lockdown - Week XXV](#weekXXV)**  
@@ -47,6 +49,23 @@
   - [R1D0-2 2019-12-29](#R1D0-2)
   - [R1D0-1 2019-12-28](#R1D0-1)
 - **[Wishlist](#wishlist)**
+
+***
+# Week L <a name="L"/>
+***
+## R1D259 2020-12-24 <a name="R1D259"/>
+**Today's Progress**: 
+- working with Leaflet kml plugin to create a interactive map with Leaflet
+
+**Thoughts:**
+- excited to find different ways to use kml and leaflet
+- now I want to figure out how to create different Leaflet layers for different kml folders
+
+**Links to code work:** 
+- http://people.geog.uvic.ca/wanthony/website/maps/leaflet/leaflet-kml.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/kml
+ 
+[TOC](#TOC)
 
 ***
 # Week XXXVIII <a name="XXXVIII"/>
