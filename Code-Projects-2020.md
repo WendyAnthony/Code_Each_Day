@@ -73,8 +73,6 @@
 [TOC](#TOC)
 
 ***
-# Week LI <a name="LI"/>
-***
 ## R1D259 2020-12-24 <a name="R1D259"/>
 **Today's Progress**: 
 - working with Leaflet kml plugin http://people.geog.uvic.ca/wanthony/website/maps/leaflet/leaflet-kml.html to create a interactive map with Leaflet
@@ -91,8 +89,6 @@
 [TOC](#TOC)
 
 ***
-# Week LI <a name="LI"/>
-***
 ## R1D258 2020-12-23 <a name="R1D258"/>
 **Today's Progress**: 
 - revisiting and playing with weather data in R ggplot2
@@ -106,8 +102,6 @@
  
 [TOC](#TOC)
 
-***
-# Week LI <a name="LI"/>
 ***
 ## R1D257 2020-12-22 <a name="R1D257"/>
 **Today's Progress**: 
@@ -141,6 +135,7 @@
  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
 [TOC](#TOC)
+
 ***
 # Week IX of COVID-19 Lockdown - Week XXV <a name="weekXXV"/>
 ***
