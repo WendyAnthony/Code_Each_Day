@@ -9,6 +9,10 @@
   - [R1D260 2020-12-25](#R1D260)
 - **[Week L](#weekL)**  
   - [R1D259 2020-12-24](#R1D259)
+  - **[Week XLIX](#weekXLIX)**  
+  - [R1D258 2020-12-23](#R1D258)
+  - **[Week XLVIII](#weekXLVIII)**  
+  - [R1D257 2020-12-22](#R1D257)
 - **[Week XXXVIII](#weekXXXVIII)**  
   - [R1D223 2020-08-10](#R1D223)
 - **[Week IX of COVID-19 Lockdown - Week XXV](#weekXXV)**  
@@ -86,6 +90,39 @@
 **Links to code work:** 
 - http://people.geog.uvic.ca/wanthony/website/maps/leaflet/leaflet-kml.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/kml
+ 
+[TOC](#TOC)
+
+***
+# Week XLIX <a name="XLIX"/>
+***
+## R1D258 2020-12-23 <a name="R1D258"/>
+**Today's Progress**: 
+- revisiting and playing with weather data in R ggplot2
+
+**Thoughts:**
+- at end of year download complete 2020 data
+- redo some plots
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Weather
+ 
+[TOC](#TOC)
+
+***
+# Week XLVIII <a name="XLVIII"/>
+***
+## R1D257 2020-12-22 <a name="R1D257"/>
+**Today's Progress**: 
+- 5 hour Learning Sprint with ggplot2 
+- using most excellent, and thorough tutorial by https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/
+
+**Thoughts:**
+- had trouble with Google fonts, had to learn later how to install on Mac to use in R
+- want to do more with ggplot2
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Weather
  
 [TOC](#TOC)
 
