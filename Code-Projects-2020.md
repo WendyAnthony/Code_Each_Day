@@ -7,11 +7,8 @@
 ## Table of Contents  <a name="TOC"/>
 - **[Week LI](#weekLI)**  
   - [R1D260 2020-12-25](#R1D260)
-- **[Week L](#weekL)**  
   - [R1D259 2020-12-24](#R1D259)
-  - **[Week XLIX](#weekXLIX)**  
-  - [R1D258 2020-12-23](#R1D258)
-  - **[Week XLVIII](#weekXLVIII)**  
+  - [R1D258 2020-12-23](#R1D258)  
   - [R1D257 2020-12-22](#R1D257)
 - **[Week XXXVIII](#weekXXXVIII)**  
   - [R1D223 2020-08-10](#R1D223)
@@ -76,7 +73,7 @@
 [TOC](#TOC)
 
 ***
-# Week L <a name="L"/>
+# Week LI <a name="LI"/>
 ***
 ## R1D259 2020-12-24 <a name="R1D259"/>
 **Today's Progress**: 
@@ -94,7 +91,7 @@
 [TOC](#TOC)
 
 ***
-# Week XLIX <a name="XLIX"/>
+# Week LI <a name="LI"/>
 ***
 ## R1D258 2020-12-23 <a name="R1D258"/>
 **Today's Progress**: 
@@ -110,7 +107,7 @@
 [TOC](#TOC)
 
 ***
-# Week XLVIII <a name="XLVIII"/>
+# Week LI <a name="LI"/>
 ***
 ## R1D257 2020-12-22 <a name="R1D257"/>
 **Today's Progress**: 
