@@ -761,7 +761,7 @@
 		</Pair>
 		<Pair>
 			<key>highlight</key>
-			<styleUrl>#sh_poi</styleUrl>
+			<styleUrl>#sh_poi0</styleUrl>
 		</Pair>
 	</StyleMap>
 	<Style id="falseColor300">
@@ -1833,6 +1833,23 @@
 			<gx:labelVisibility>1</gx:labelVisibility>
 		</LineStyle>
 	</Style>
+	<Style id="sh_poi">
+		<IconStyle>
+			<scale>2.36364</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/poi.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>fffdb8f2</color>
+			<scale>2</scale>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Style id="sh_supernaturaltransformation2">
 		<IconStyle>
 			<scale>2</scale>
@@ -2010,6 +2027,33 @@
 			<styleUrl>#sh_ylw-pushpin0</styleUrl>
 		</Pair>
 	</StyleMap>
+	<Style id="sn_poi0">
+		<IconStyle>
+			<scale>2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/poi.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>fffdb8f2</color>
+			<scale>2</scale>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_poi0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_poi0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_poi</styleUrl>
+		</Pair>
+	</StyleMap>
 	<StyleMap id="msn_fish13">
 		<Pair>
 			<key>normal</key>
@@ -2020,7 +2064,7 @@
 			<styleUrl>#sh_fish25</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="sh_poi">
+	<Style id="sh_poi0">
 		<IconStyle>
 			<scale>2.36364</scale>
 			<Icon>
@@ -2063,22 +2107,19 @@
 		<Placemark>
 			<name>MAP INTRO</name>
 			<description><![CDATA[<div width="600">
-<h2>Mapping Upriver Stó:lō Territory Traditional Land Use & Occupancy</h2> 
-This Map is based on research data from primary source ethnographies, particularly Wilson Duff (see Original Source References below). Documenting the locations and storied depth of Traditionally significant Stó:lō places adds to the Traditional Territorial Knowledge needed to assert and prove Territorial Rights of Use and Occupancy so necessary for a variety of legal and environmental issues of concern to these unceded Territories.
+<b>Mapping Upriver Stó:lō Territory Traditional Land Use & Occupancy</b> 
+This Map was created by Wendy Anthony for Dr. Brian Thom's Anth460 UVic class, and is based on research data from primary source ethnographies, particularly Wilson Duff (see Original Source References below). Documenting the locations and storied depth of Traditionally significant Stó:lō places adds to the Traditional Territorial Knowledge needed to assert and prove Territorial Rights of Use and Occupancy so necessary for a variety of legal and environmental issues of concern to these unceded Territories.
 <br><br>
 <b>Territories: </b>The mainland Coast Salish are Halq'eméylem speaking peoples of the Stó:lō Territory, which consists of a number of smaller territories, arranged from the northeast, along both sides of the Fraser River from Five-Mile Creek south of Spuzzum (the boundary between the Stó:lō and Thompson Territories) to the southeast mouth of the Fraser River at the Strait of Georgia (Duff 1952). <b>Upriver Stó:lō Territories:</b> <i>(from NE to SW)</i> Tait, Chehalis, Pilalt, Chilliwack, C’i’ckam, Scowlitz, Nicomen, Sumas. <b>Downriver Stó:lō Territories:</b> Hatzic, Sxa'yuks, Matsqui, Whonnock, Katzie, Coquitlam, Qeqa'yt, Kwantlen, Musqueam (Duff 1952, Galloway 1993).<br />
 <hr>
-<h2>Using This Map</h2>
+<h3>Using This Map</h3>
 <p><b>Disclaimer: </b>I am a non-Indigenous student cartographer with a beginner's imperfect understanding of the Halq'eméylem language, orthography and culture. Location data is derived from original source ethnography manuscript descriptions and simple handdrawn maps, guided by Google Earth satellite imagery. Though none of this mapped data would be appropriate to use for other than educational purposes, particularly without ground-truthing locations and confirming correct Halq'eméylem orthography, the format could be used as a template for including one of many layers that collectively tell the many storied depths of Traditional Places over time.<br />
 <b>Multi-Media: </b>Some placemarks have associated video, audio or images to sample the multi-media experience potential on this map.<br />
 <b>To Access Placemark Info: </b>Click directly on the map icon.<br />
 <b>Villages, Graveyards and Mythic site: </b>Locations of Traditional Territorial Occupancy.<br/>
 <b>Harvest Resources: </b>Locations of Traditional Use and Harvesting of Resources.<br />
-<b>Territory &amp; Reserve Boundaries: </b>When Territory boundary outlines layer is turned on, clicking anywhere within the boundary will bring up an Information Balloon with information about the area. 
-<br />Territory boundaries have been traced from Galloway (1993, Map 2). Duff's map (1952, 20) only included the northern border for Tait boundary, with all other Territories north of the Fraser River having no northern boundary. <br />
-DownRiver Territory boundaries are not included, just the Territory names in the centroid position, as the focus of this project is on UpRiver Territories.<br />
-<b>Legend: </b>Icons help identify type of place<br />
-<b>Place Name Label Colours: </b><b>Upriver Territories</b> - large orange; <b>Downriver Territories</b>: small orange; <b>Villages</b> - yellow; <b>Lakes, Rivers, Creeks</b> - blue; <b>Trails</b> - green </p>
+<b>Territory &amp; Reserve Boundaries: </b>Clicking anywhere within the boundary will bring up an Information Balloon with information about the area. Territory boundaries have been traced from Galloway (1993, Map 2). DownRiver Territory names are located in the centroid position.<br />
+<b>Legend: </b>Icons help identify type of place.</p>
 <hr>
 <h3>Intro to the Data</h3>
 <p><b>Ethnographic data: </b>Derived from original source ethnography descriptions and old maps (see Bibliography: esp. Duff 1952; Wells 1965, 1966; Galloway 1993).<br />
@@ -2197,7 +2238,8 @@ DownRiver Territory boundaries are not included, just the Territory names in the
 				<roll>85.04940404630118</roll>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</Camera>
-			<styleUrl>#msn_poi</styleUrl>
+			<styleUrl>#msn_poi0</styleUrl>
+			<gx:balloonVisibility>1</gx:balloonVisibility>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-123.3631053811044,49.53374439608279,0</coordinates>
