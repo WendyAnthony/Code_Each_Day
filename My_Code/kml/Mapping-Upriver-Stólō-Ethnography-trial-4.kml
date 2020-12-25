@@ -2132,45 +2132,36 @@ Documenting the locations and storied depth of Traditionally significant Stó:l�
 <li>Hatzic</li><li>Sxa'yuks</li><li>Matsqui</li><li>Whonnock</li><li>Katzie</li><li>Coquitlam</li><li>Qeqa'yt</li><li>Kwantlen</li><li>Musqueam</li>
 </ul>
 </ul>
+ (Duff 1952, Galloway 1993).
 
-<br>
-<b>Island Territories:</b> <i>(Halq̓eméylem)</i><br />
-Nanaimo (NW), Chemainus (W), Cowichan (SW)<br /><br />
-<b>Neighbouring Territories:</b><br />
-Tsawassem (SW), Squamish (NW), Lillooet (N), Thompson RIver (NE), Snohomish (S)  (Suttles 1957), and Nooksack (S), Semiahmoo (SW) (Duff 1952, Galloway 1993).
-
-<br><br>
-<div>
+<div width="600">
 <h2>Using This Map</h2>
 <p><b>Disclaimer: </b>I am a non-Indigenous student cartographer with a beginner's imperfect understanding of the Halq'eméylem language, orthography and culture. 
-<br /><br />
+<br />
 Location data is derived from original source ethnography manuscript descriptions and simple handdrawn maps, guided by Google Earth satellite imagery. 
-<br /><br />
+<br />
 Though none of this mapped data would be appropriate to use for other than educational purposes, particularly without ground-truthing locations and confirming correct Halq'eméylem orthography, the format could be used as a template for including one of many layers that collectively tell the many storied depths of Traditional Places over time.</p>
 <p><b>Multi-Media: </b>Some placemarks have associated video, audio or images to sample the multi-media experience potential on this map.</p>
 <p><b>To Access Placemark Info: </b>Click directly on the map icon.</p>
 <p><b>Villages, Graveyards and Mythic site: </b>Locations of Traditional Territorial Occupancy.</p>
 <p><b>Harvest Resources: </b>Locations of Traditional Use and Harvesting of Resources.</p>
 <p><b>Territory &amp; Reserve Boundaries: </b>When Territory boundary outlines layer is turned on, clicking anywhere within the boundary will bring up an Information Balloon with information about the area. 
-<br /><br />
+<br />
 Territory boundaries have been traced from Galloway (1993, Map 2). Duff's map (1952, 20) only included the northern border for Tait boundary, with all other Territories north of the Fraser River having no northern boundary. 
-<br /><br />
+<br />
 DownRiver Territory boundaries are not included, just the Territory names in the centroid position, as the focus of this project is on UpRiver Territories.</p>
 <p><b>Legend: </b>Icons help identify type of place</p>
 <p><b>Place Name Label Colours: </b><b>Upriver Territories</b> - large orange; <b>Downriver Territories</b>: small orange; <b>Villages</b> - yellow; <b>Lakes, Rivers, Creeks</b> - blue; <b>Trails</b> - green </p>
-<br /><hr><br />
+<hr>
 <h3>Intro to the Data</h3>
 <p><b>Ethnographic data: </b>Derived from original source ethnography descriptions and old maps (see Bibliography: esp. Duff 1952; Wells 1965, 1966; Galloway 1993).</p>
 <p> <b>Description of Key Fields: </b><br /><b>Common Name: </b>Name commonly known; <b>Halq'eméylem : </b>Indigenous Place Name; <b>Pronounciation: </b>Orthography; <b>A.K.A.: </b>Also known as; <b>Description: </b>Description from ethnography; <b>Territory: </b>Associated Territory; <b>Informant Quote: </b>Source of quote from Indigenous informant to ethnographer; <b>Location Accuracy: </b>based on 1-5 scale, from unknown guess to highly accurate (see below); <b>Time: </b>Year of data used; <b>ID Key: </b>Unique identifying number key for each data item; <b>References: </b>Bibliography of sources used for data; <b>Audio/Video: </b>Multi-media data additions</p>
 <p><b>Describe Accuracy scale decisions: </b>Scale 1-5: 1-very unsure of location (best guess); 2-location in approximate area (based on tracing of distorted hand-drawn map overlay); 3-location near known area (best guess based on satellite imagery topography and landmarks); 4-location associated with an identifiable area (e.g. within a Reserve); 5-location recognizeably identifiable from Google Earth</p>
 <p><b>How data was managed and organized: </b>Data from ethnographic text was input into an Excel spreadsheet, using a unique identifying key for each location, based on place typology categories (see table below), arranged by common data themes, formatted with html using concatenated code and cell data, and copied to Google Earth Placemarks balloons to ensure a consistent format style between places</p>
-<p></p>
-<p></p>
 </div>
 
-<br /><hr><br />
+<hr>
 <h3>Place Typology</h3>
-<br />
 <div id="Typology_21095" align=left x:publishsource="Excel">
 
 <table border=0 cellpadding=0 cellspacing=0 width=326 style='border-collapse:
@@ -2288,7 +2279,6 @@ Smith, Marian W. 1950. 'The Nooksack. the Chilliwack, and the Middle Fraser'. <i
 <br /><br />
 Wells, Oliver N. 1965. <i>A Vocabulary of Native Words in the Halkomelem Language as Used by The Native People of the Lower Fraser Valley, B.C.</i> https://archive.org/details/vocabularyofnati0000well/mode/2up
 <br /><br />
-<br /><br />
 <b>Maps</b><br />
 Admiralty, British, and Walker, J & C, engraver. 1860. <i>Admiralty Chart No 1922 Fraser River and Burrard Inlet</i>. [Map]. https://www.raremaps.com/gallery/detail/68029/vancouver-fraser-river-and-burrard-inlet-british-admiralty. https://commons.wikimedia.org/wiki/File:Admiralty_Chart_No_1922_Fraser_River_and_Burrard_Inlet,_Published_1860.jpg
 <br /><br />
@@ -2305,7 +2295,6 @@ Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 
 McColl, William. 1864. <i>A Rough Diagram Shewing the Position of the ‘Reserves’ Laid off for Government Purposes on the Fraser, Chilliwhyeuk, Sumass & Masquee.</i> [Map]. https://vault.library.uvic.ca/concern/generic_works/70a259f0-431d-47eb-98e0-471494d52f57?locale=en
 <br /><br />
 Wells, Oliver N. 1966. <i>Indian Territory 1858</i>. http://www.sccp.ca/sites/default/files/species-habitat/documents/Indian%20Territory%201858%20drawn%20by%20Oliver%20Wells%201960s%20full.pdf
-<br /><br />
 <br /><br />
 <b>Images</b><br />
 BC Archives. n.d. BC Archives A Salmon Cache near Yale on the Fraser River. BC Archives. Audio Visual Collection. [Image: Maynard, collector, Photographer Unknown]. https://search-bcarchives.royalbcmuseum.bc.ca/salmon-cache-near-yale-on-fraser-river 
@@ -2328,7 +2317,6 @@ The Reach. 2020. <i>Semá:th Xo:tsa: Halq'eméylem Pronunciation Guide</i>. [Vid
 <br /><br />
 UVic Ethnographic Mapping Lab, James Gray, designer. 2019. <i>Indigenous Mapping Icons.</i> [Google Earth Icons]. University of Victoria Department of Anthropology. https://www.uvic.ca/socialsciences/ethnographicmapping/resources/indigenous-mapping-icons/index.php
 <br /><br />
-<br /><br />
 <b>Language</b><br />
 Fehr, Amanda Beth. 2008. <I>The Relationships Of Place: A Study Of Change And Continuity In Stó:Lõ Understandings Of I:Yem.</i> U of Saskatoon. https://harvest.usask.ca/bitstream/handle/10388/etd-09262008-134019/fehr_a.pdf?sequence=1&isAllowed=y.
 <br /><br />
@@ -2344,11 +2332,8 @@ Herring, Elizabeth. 2015. <i>Shxweli- Seabird. Qw’emqw’em Li Te Sq’ewqel. 
 <br /><br />
 The Reach. 2020. <i>Semá:th Xo:tsa: Halq'eméylem Pronunciation Guide.</i> [Video. 2:34]. [Semá:th Xo:tsa Exibition]. https://www.youtube.com/watch?v=FJoKS9YyU5w
 <br /><br />
-<br /><br />
 <b>GPS Data</b><br />
 Geo BC and British Columbia Ministry of Forests, Lands, Natural Resource Operations and Rural Development. 2020. <i>First Nation Statement of Intent Boundaries BC</i> [KML Network Link - Data Catalogue]. https://catalogue.data.gov.bc.ca/dataset/first-nation-statement-of-intent-boundaries-bc/resource/ab4af309-6ce0-4bc9-a010-6213190b8541
-<br /><br />
-Geo BC and British Columbia Ministry of Forests, Lands, Natural Resource Operations and Rural Development. 2014. <i>Indian Reserves - Administrative Boundaries</i>. [Shape File - Data Catalogue]. https://catalogue.data.gov.bc.ca/dataset/indian-reserves-administrative-boundaries#edc-pow
 <br /><br />
 Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 km. SIO, NOAA, U.S. Navy, NGA, GEBCO, Landsat, Copernicus. Digital Globe 2020. https://www.google.com/earth/versions/#earth-pro
 </div>]]></description>
