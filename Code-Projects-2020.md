@@ -137,7 +137,7 @@
 [TOC](#TOC)
 
 ***
-# Week IX of COVID-19 Lockdown - Week XXV <a name="weekXXV"/>
+# Week XXV  ..... (Week IX of COVID-19 Lockdown) <a name="weekXXV"/>
 ***
 ## R1D134 2020-05-13 <a name="R1D134"/>
 **Today's Progress**: 
