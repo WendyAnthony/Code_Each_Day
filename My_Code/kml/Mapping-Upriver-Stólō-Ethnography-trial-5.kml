@@ -2239,7 +2239,6 @@ This Map was created by Wendy Anthony for Dr. Brian Thom's Anth460 UVic class, a
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</Camera>
 			<styleUrl>#msn_poi0</styleUrl>
-			<gx:balloonVisibility>1</gx:balloonVisibility>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-123.3631053811044,49.53374439608279,0</coordinates>
@@ -2247,7 +2246,7 @@ This Map was created by Wendy Anthony for Dr. Brian Thom's Anth460 UVic class, a
 		</Placemark>
 		<Placemark>
 			<name>LEGEND</name>
-			<description><![CDATA[<img src="http://people.geog.uvic.ca/wanthony/website/maps/leaflet/Legend-Icons.png">]]></description>
+			<description><![CDATA[<img src="http://people.geog.uvic.ca/wanthony/website/maps/leaflet/Legend-Icons.png" width="500">]]></description>
 			<Camera>
 				<longitude>-122.3371021508786</longitude>
 				<latitude>48.93080682044128</latitude>
@@ -2257,7 +2256,7 @@ This Map was created by Wendy Anthony for Dr. Brian Thom's Anth460 UVic class, a
 				<roll>85.04940404630118</roll>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</Camera>
-			<styleUrl>#msn_poi</styleUrl>
+			<styleUrl>#msn_poi0</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-123.2990932524272,49.18087647414823,0</coordinates>
