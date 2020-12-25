@@ -2106,7 +2106,8 @@
 		</Camera>
 		<Placemark>
 			<name>MAP INTRO</name>
-			<description><![CDATA[<img src="http://people.geog.uvic.ca/wanthony/website/maps/leaflet/TitleOverlay.png">
+			<description><![CDATA[<div width="600">
+<img src="http://people.geog.uvic.ca/wanthony/website/maps/leaflet/TitleOverlay.png">
 <br /><br />
 <br /><br />
 <br /><br />
@@ -2349,7 +2350,8 @@ Geo BC and British Columbia Ministry of Forests, Lands, Natural Resource Operati
 <br /><br />
 Geo BC and British Columbia Ministry of Forests, Lands, Natural Resource Operations and Rural Development. 2014. <i>Indian Reserves - Administrative Boundaries</i>. [Shape File - Data Catalogue]. https://catalogue.data.gov.bc.ca/dataset/indian-reserves-administrative-boundaries#edc-pow
 <br /><br />
-Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 km. SIO, NOAA, U.S. Navy, NGA, GEBCO, Landsat, Copernicus. Digital Globe 2020. https://www.google.com/earth/versions/#earth-pro]]></description>
+Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 km. SIO, NOAA, U.S. Navy, NGA, GEBCO, Landsat, Copernicus. Digital Globe 2020. https://www.google.com/earth/versions/#earth-pro
+</div>]]></description>
 			<Camera>
 				<longitude>-121.6264574863871</longitude>
 				<latitude>48.86112831491057</latitude>
