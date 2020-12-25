@@ -1,21 +1,36 @@
-<html>
-    <head>
+<!DOCTYPE html>
+    <head>  
+        <title>Leaflet and KML</title>
         <link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
         <script src="http://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
         <script src="http://people.geog.uvic.ca/wanthony/website/maps/leaflet/L.KML.js"></script>
         <!-- Leaflet KML layer plugin: https://github.com/windycom/leaflet-kml -->
+        <style>
+                     /* map title code from:; http://leafletplayback.theoutpost.io/examples/example_0.html */
+         #titleDiv {z-index: 10000;position: fixed; left: 70px; color: red; text-align: center; font-size: 40%; padding: 4px;}
+         /* label code source https://gis.stackexchange.com/questions/59571/how-to-add-text-only-labels-on-leaflet-map-with-no-icon  */
+         .leaflet-popup-content {max-width: 700px; max-height: 500px; overflow-y: scroll;} /* this is the line that lets you scroll through multiple photos*/
+
+        </style>
     </head>
     <body>
+        <div id="titleDiv">
+            <h1>Mapping Upriver Stólo Ethnography</h1>
+            <span style="font-size: 90%">Wendy Anthony<br />webCartographer<br />2020-12-25<br />from map made for Brian Thom's Anth460</span>
+            <!-- revised 2019-01-28 -->
+        </div>
         <div style="width: 100vw; height: 100vh" id="map"></div>
         <script type="text/javascript">
             // Make basemap
-            const map = new L.Map('map', { center: new L.LatLng(49.09141, -123.12378), zoom: 12 });
+            const map = new L.Map('map', { center: new L.LatLng(49.39707, -122.41379), zoom: 15 });
             const osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
             map.addLayer(osm);
 
             // Load kml file
-            fetch('https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/kml/Mapping-Upriver-Stólō-Ethnography-trial-2.kml')
+            fetch('https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/kml/Mapping-Upriver-Stólō-Ethnography-trial-5.kml')
                 .then(res => res.text())
                 .then(kmltext => {
                     // Create new kml overlay
