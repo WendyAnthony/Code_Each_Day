@@ -12,7 +12,7 @@
   - [R1D257 2020-12-22](#R1D257)
 - **[Week XXXVIII](#weekXXXVIII)**  
   - [R1D223 2020-08-10](#R1D223)
-- **[Week XXV .... Week IX of COVID-19 Lockdown](#weekXXV)**  
+- **[Week XXV .... (Week IX of COVID-19 Lockdown)](#weekXXV)**  
   - [R1D134 2020-05-13](#R1D134)
 - **[Week VI](#weekVI)**  
   - [R1D27 2020-02-04](#R1D27)
