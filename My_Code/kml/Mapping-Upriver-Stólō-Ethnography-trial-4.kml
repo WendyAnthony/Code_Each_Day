@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-	<name>Mapping-Upriver-Stólō-Ethnography-trial-4.kml</name>
+	<name>Mapping-Upriver-Stólō-Ethnography-trial-3.kml</name>
+	<open>1</open>
 	<Schema name="FraserValleyReserves" id="S_FraserValleyReserves_SSSSSDDD0">
 		<SimpleField type="string" name="CLAB_ID"><displayName>&lt;b&gt;CLAB_ID&lt;/b&gt;</displayName>
 </SimpleField>
@@ -2116,23 +2117,8 @@ This Upriver Stó:lō Territory Traditional Land Use & Occupancy Map is based on
 Documenting the locations and storied depth of Traditionally significant Stó:lō places adds to the Traditional Territorial Knowledge needed to assert and prove Territorial Rights of Use and Occupancy so necessary for a variety of legal and environmental issues of concern to these unceded Territories.
 <br><br>
 <h3>Territories</h3>The mainland Coast Salish are Halq'eméylem speaking peoples of the Stó:lō Territory, which consists of a number of smaller territories, arranged from the northeast, along both sides of the Fraser River from Five-Mile Creek south of Spuzzum (the boundary between the Stó:lō and Thompson Territories) to the southeast mouth of the Fraser River at the Strait of Georgia (Duff 1952).<br><br>
-<b>Stó:lō Territories:</b> <i>(from NE to SW)</i>
-<ul>
-
-<li><b>Upriver</b> <i>(Hul̓q̓umín̓um̓)</i></li>
-<ul>
-<li>Tait</li><li>Chehalis</li><li>Pilalt</li><li>Chilliwack</li>
-<li>C’i’ckam</li><li>Scowlitz</li><li>Nicomen</li><li>Sumas</li>
-</ul>
-</ul>
-
-<ul>
-<li><b>Downriver</b> <i>(Hən̓q̓əmin̓əm̓)</i></li>
-<ul>
-<li>Hatzic</li><li>Sxa'yuks</li><li>Matsqui</li><li>Whonnock</li><li>Katzie</li><li>Coquitlam</li><li>Qeqa'yt</li><li>Kwantlen</li><li>Musqueam</li>
-</ul>
-</ul>
- (Duff 1952, Galloway 1993).
+<b>Upriver Stó:lō Territories:</b> <i>(from NE to SW)</i> Tait, Chehalis, Pilalt, Chilliwack, C’i’ckam, Scowlitz, Nicomen, Sumas<br />
+<b>Downriver Stó:lō Territories:</b> Hatzic, Sxa'yuks, Matsqui, Whonnock, Katzie, Coquitlam, Qeqa'yt, Kwantlen, Musqueam (Duff 1952, Galloway 1993).<br />
 
 <div width="600">
 <h2>Using This Map</h2>
@@ -2162,8 +2148,7 @@ DownRiver Territory boundaries are not included, just the Territory names in the
 
 <hr>
 <h3>Place Typology</h3>
-<div id="Typology_21095" align=left x:publishsource="Excel">
-
+<div align=left>
 <table border=0 cellpadding=0 cellspacing=0 width=326 style='border-collapse:
  collapse;table-layout:fixed;width:244pt'>
  <col class=xl65 width=80 style='mso-width-source:userset;mso-width-alt:2560;
@@ -2280,8 +2265,6 @@ Smith, Marian W. 1950. 'The Nooksack. the Chilliwack, and the Middle Fraser'. <i
 Wells, Oliver N. 1965. <i>A Vocabulary of Native Words in the Halkomelem Language as Used by The Native People of the Lower Fraser Valley, B.C.</i> https://archive.org/details/vocabularyofnati0000well/mode/2up
 <br /><br />
 <b>Maps</b><br />
-Admiralty, British, and Walker, J & C, engraver. 1860. <i>Admiralty Chart No 1922 Fraser River and Burrard Inlet</i>. [Map]. https://www.raremaps.com/gallery/detail/68029/vancouver-fraser-river-and-burrard-inlet-british-admiralty. https://commons.wikimedia.org/wiki/File:Admiralty_Chart_No_1922_Fraser_River_and_Burrard_Inlet,_Published_1860.jpg
-<br /><br />
 Douglas, James. 1858. <i>Sketch of Fraser’s River, from Fort Hope to the Forks of Thompson’s River, Showing the Auriferous Districts.</I> [Map]. UVic Digital Collections Early British Columbia Maps. http://contentdm.library.uvic.ca/cdm/ref/collection/collection5/id/99
 <br /><br />
 Duff, Wilson. 1952. <i>The Upper Stalo Indians Of The Fraser River Of B.C.</i> [Maps]. Anthropology in British Columbia, Memoir No.1, Victoria, BC: British Columbia Provincial Royal Museum.
@@ -2291,8 +2274,6 @@ Galloway, Brent Douglas. 1993. <i>A Grammar of Upriver Halkomelem. University of
 Galloway, Brent Douglas. 1993. <i>A Grammar of Upriver Halkomelem. University of California Press</i>. [Map 2. Upriver Halkomelem Dialect Area]. https://doi.org/10.1525/9780520945180
 <br /><br />
 Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 km. SIO, NOAA, U.S. Navy, NGA, GEBCO, Landsat, Copernicus. Digital Globe 2020. https://www.google.com/earth/versions/#earth-pro
-<br /><br />
-McColl, William. 1864. <i>A Rough Diagram Shewing the Position of the ‘Reserves’ Laid off for Government Purposes on the Fraser, Chilliwhyeuk, Sumass & Masquee.</i> [Map]. https://vault.library.uvic.ca/concern/generic_works/70a259f0-431d-47eb-98e0-471494d52f57?locale=en
 <br /><br />
 Wells, Oliver N. 1966. <i>Indian Territory 1858</i>. http://www.sccp.ca/sites/default/files/species-habitat/documents/Indian%20Territory%201858%20drawn%20by%20Oliver%20Wells%201960s%20full.pdf
 <br /><br />
