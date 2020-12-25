@@ -5,6 +5,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week LI](#weekLI)**  
+  - [R1D260 2020-12-25](#R1D260)
 - **[Week L](#weekL)**  
   - [R1D259 2020-12-24](#R1D259)
 - **[Week XXXVIII](#weekXXXVIII)**  
@@ -49,6 +51,25 @@
   - [R1D0-2 2019-12-29](#R1D0-2)
   - [R1D0-1 2019-12-28](#R1D0-1)
 - **[Wishlist](#wishlist)**
+
+***
+# Week LI <a name="LI"/>
+***
+## R1D260 2020-12-25 <a name="R1D260"/>
+**Today's Progress**: 
+- In Google Earth (GE) added placemarks with title, map intro & bibliography, and saved as .kml file 
+- in html file, added style for title overlay, and style to allow scrolling long text in the balloons
+
+**Thoughts:**
+- excited to find different ways to use kml and leaflet
+- I did spend some time trying to figure out how to create different Leaflet layers for different kml folders >> no luck
+- I did try converting kml to geojson, but all the icon info is lost!
+
+**Links to code work:** 
+- http://people.geog.uvic.ca/wanthony/website/maps/leaflet/leaflet-kml.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/kml
+ 
+[TOC](#TOC)
 
 ***
 # Week L <a name="L"/>
