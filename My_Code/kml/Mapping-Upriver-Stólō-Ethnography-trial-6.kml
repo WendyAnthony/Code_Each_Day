@@ -2257,10 +2257,9 @@ Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
 			<styleUrl>#msn_poi</styleUrl>
-			<gx:balloonVisibility>1</gx:balloonVisibility>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-121.1775592112789,49.57058234355119,0</coordinates>
+				<coordinates>-121.0998798710218,49.33750969999353,0</coordinates>
 			</Point>
 		</Placemark>
 		<Placemark>
@@ -2278,7 +2277,7 @@ Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 
 			<styleUrl>#msn_poi</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-121.1495564067321,49.46003202186326,0</coordinates>
+				<coordinates>-121.0779685088121,49.18497334830931,0</coordinates>
 			</Point>
 		</Placemark>
 		<Folder>
