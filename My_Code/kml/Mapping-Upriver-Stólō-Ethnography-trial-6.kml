@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-	<name>Mapping-Upriver-Stólō-Ethnography-trial-5.kml</name>
-	<open>1</open>
+	<name>Mapping-Upriver-Stólō-Ethnography-trial-6.kml</name>
 	<Schema name="Downriver_Centroids" id="Downriver_Centroids">
 		<SimpleField type="string" name="timestamp"></SimpleField>
 		<SimpleField type="string" name="begin"></SimpleField>
@@ -302,21 +301,6 @@
 			<text><![CDATA[<b>$[name]</b>$[description]]]></text>
 		</BalloonStyle>
 	</Style>
-	<Style id="sh_poi">
-		<IconStyle>
-			<scale>2.36364</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/poi.png</href>
-			</Icon>
-			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
-		</IconStyle>
-		<LabelStyle>
-			<color>fffdb8f2</color>
-			<scale>2</scale>
-		</LabelStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
 	<StyleMap id="lake-marker0">
 		<Pair>
 			<key>normal</key>
@@ -327,21 +311,6 @@
 			<styleUrl>#lake-marker1</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="sn_poi0">
-		<IconStyle>
-			<scale>2</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/poi.png</href>
-			</Icon>
-			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
-		</IconStyle>
-		<LabelStyle>
-			<color>fffdb8f2</color>
-			<scale>2</scale>
-		</LabelStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
 	<Style id="sn_fc_tombstone0">
 		<IconStyle>
 			<scale>2</scale>
@@ -565,6 +534,16 @@
 			<gx:labelVisibility>1</gx:labelVisibility>
 		</LineStyle>
 	</Style>
+	<StyleMap id="msn_poi">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_poi</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_poi</styleUrl>
+		</Pair>
+	</StyleMap>
 	<StyleMap id="lake-marker11">
 		<Pair>
 			<key>normal</key>
@@ -610,16 +589,6 @@
 			<text><![CDATA[<b>$[name]</b>$[description]]]></text>
 		</BalloonStyle>
 	</Style>
-	<StyleMap id="msn_poi0">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#sn_poi0</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#sh_poi</styleUrl>
-		</Pair>
-	</StyleMap>
 	<StyleMap id="lake-marker7">
 		<Pair>
 			<key>normal</key>
@@ -1746,6 +1715,22 @@
 			<styleUrl>#sh_fc_mountain1</styleUrl>
 		</Pair>
 	</StyleMap>
+	<Style id="sh_poi">
+		<IconStyle>
+			<scale>2.95455</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/poi.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>fffdb8f2</color>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Style id="line-B2EBF2-6619-normal0">
 		<BalloonStyle>
 			<text><![CDATA[<b>$[name]</b>$[description]]]></text>
@@ -1753,6 +1738,22 @@
 		<LineStyle>
 			<color>ffffff20</color>
 		</LineStyle>
+	</Style>
+	<Style id="sn_poi">
+		<IconStyle>
+			<scale>2.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/poi.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>fffdb8f2</color>
+		</LabelStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
 	</Style>
 	<Style id="sh_ylw-pushpin1100">
 		<IconStyle>
@@ -2255,7 +2256,7 @@ Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 
 				<range>150794.9643656122</range>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
-			<styleUrl>#msn_poi0</styleUrl>
+			<styleUrl>#msn_poi</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-121.1775592112789,49.57058234355119,0</coordinates>
@@ -2273,7 +2274,7 @@ Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 
 				<range>150794.9643656122</range>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
-			<styleUrl>#msn_poi0</styleUrl>
+			<styleUrl>#msn_poi</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-121.1495564067321,49.46003202186326,0</coordinates>
