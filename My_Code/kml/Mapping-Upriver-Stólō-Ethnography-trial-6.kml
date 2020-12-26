@@ -2257,6 +2257,7 @@ Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
 			<styleUrl>#msn_poi</styleUrl>
+			<gx:balloonVisibility>1</gx:balloonVisibility>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-121.1775592112789,49.57058234355119,0</coordinates>
@@ -2264,7 +2265,7 @@ Google Earth v 7.3.3.7786. 2020. <i>Lower Fraser Valley</i>. Eye Altitude 71.53 
 		</Placemark>
 		<Placemark>
 			<name>LEGEND</name>
-			<description><![CDATA[<img src="http://people.geog.uvic.ca/wanthony/website/maps/leaflet/Legend-Icons.png" width="500">]]></description>
+			<description><![CDATA[<img src="http://people.geog.uvic.ca/wanthony/website/maps/leaflet/Legend-Icons.png" width="250">]]></description>
 			<LookAt>
 				<longitude>-121.9143379367465</longitude>
 				<latitude>49.25337591719934</latitude>
