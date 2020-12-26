@@ -6,6 +6,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week LI](#weekLI)**  
+  - [R1D261 2020-12-26](#R1D261)
   - [R1D260 2020-12-25](#R1D260)
   - [R1D259 2020-12-24](#R1D259)
   - [R1D258 2020-12-23](#R1D258)  
@@ -55,6 +56,23 @@
 
 ***
 # Week LI <a name="LI"/>
+***
+## R1D261 2020-12-26 <a name="R1D261"/>
+**Today's Progress**: 
+- playing with Leaflet for R
+- found code to add a search box
+- found code to create to create timeline in Leaflet for R
+
+**Thoughts:**
+- excited to find different ways to use leaflet
+
+**Links to code work:** 
+- [Leaflet Extras](https://www.rdocumentation.org/packages/leaflet.extras/versions/1.0.0)
+- https://www.youtube.com/watch?v=gh8VMFUv91o
+- [Leaftime](https://github.com/timelyportfolio/leaftime)
+
+[TOC](#TOC)
+
 ***
 ## R1D260 2020-12-25 <a name="R1D260"/>
 **Today's Progress**: 
