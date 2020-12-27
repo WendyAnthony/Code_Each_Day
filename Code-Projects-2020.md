@@ -69,8 +69,8 @@
 
 **Links to code work:** 
 - [Leaflet Extras](https://www.rdocumentation.org/packages/leaflet.extras/versions/1.0.0)
-- https://www.youtube.com/watch?v=gh8VMFUv91o
-- [Leaftime](https://github.com/timelyportfolio/leaftime)
+  - https://www.youtube.com/watch?v=gh8VMFUv91o
+  - [Leaftime](https://github.com/timelyportfolio/leaftime)
 - `RGEE` https://r-spatial.github.io/rgee/reference/Map.html
 
 [TOC](#TOC)
