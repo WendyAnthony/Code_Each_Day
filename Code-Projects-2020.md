@@ -60,8 +60,9 @@
 ## R1D261 2020-12-26 <a name="R1D261"/>
 **Today's Progress**: 
 - playing with Leaflet for R
-- found code to add a search box
-- found code to create to create timeline in Leaflet for R
+  - found code to add a search box
+  - found code to create to create timeline in Leaflet for R
+- found a package & some R code to work with Google Earth Engine `RGEE`
 
 **Thoughts:**
 - excited to find different ways to use leaflet
@@ -70,6 +71,7 @@
 - [Leaflet Extras](https://www.rdocumentation.org/packages/leaflet.extras/versions/1.0.0)
 - https://www.youtube.com/watch?v=gh8VMFUv91o
 - [Leaftime](https://github.com/timelyportfolio/leaftime)
+- `RGEE` https://r-spatial.github.io/rgee/reference/Map.html
 
 [TOC](#TOC)
 
