@@ -6,11 +6,12 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week LI](#weekLI)**  
-  - [R1D261 2020-12-26](#R1D261)
-  - [R1D260 2020-12-25](#R1D260)
-  - [R1D259 2020-12-24](#R1D259)
-  - [R1D258 2020-12-23](#R1D258)  
-  - [R1D257 2020-12-22](#R1D257)
+  - [R1D261 2020-12-30](#R1D365)
+  - [R1D261 2020-12-26](#R1D361)
+  - [R1D260 2020-12-25](#R1D360)
+  - [R1D259 2020-12-24](#R1D359)
+  - [R1D258 2020-12-23](#R1D358)  
+  - [R1D257 2020-12-22](#R1D357)
 - **[Week XXXVIII](#weekXXXVIII)**  
   - [R1D223 2020-08-10](#R1D223)
 - **[Week XXV .... (Week IX of COVID-19 Lockdown)](#weekXXV)**  
@@ -57,7 +58,23 @@
 ***
 # Week LI <a name="LI"/>
 ***
-## R1D261 2020-12-26 <a name="R1D261"/>
+## R1D365 2020-12-30 <a name="R1D365"/>
+**Today's Progress**: 
+- Victoria precip data as a heatmap calendar
+  - had to tweak font
+  - download Victoria 2020 weather data, change column names
+  - Lubridate epiweek()needed to change week start to Sunday vs Monday
+
+**Thoughts:**
+- Still finding cool things to do with R data
+
+**Links to code work:** 
+- https://dominicroye.github.io/en/2020/a-heatmap-as-calendar/
+
+[TOC](#TOC)
+
+***
+## R1D361 2020-12-26 <a name="R1D361"/>
 **Today's Progress**: 
 - playing with Leaflet for R
   - found code to add a search box
@@ -76,7 +93,7 @@
 [TOC](#TOC)
 
 ***
-## R1D260 2020-12-25 <a name="R1D260"/>
+## R1D360 2020-12-25 <a name="R1D360"/>
 **Today's Progress**: 
 - In Google Earth (GE) added placemarks with title, map intro & bibliography, and saved as .kml file 
 - in html file, added style for title overlay, and style to allow scrolling long text in the balloons
@@ -93,7 +110,7 @@
 [TOC](#TOC)
 
 ***
-## R1D259 2020-12-24 <a name="R1D259"/>
+## R1D359 2020-12-24 <a name="R1D359"/>
 **Today's Progress**: 
 - working with Leaflet kml plugin http://people.geog.uvic.ca/wanthony/website/maps/leaflet/leaflet-kml.html to create a interactive map with Leaflet
 - using .kml file created in my just-finished Anthropology Indigenous Ethnography & Cartography course: Stólō Territory Ethnography Mapping Project
@@ -109,7 +126,7 @@
 [TOC](#TOC)
 
 ***
-## R1D258 2020-12-23 <a name="R1D258"/>
+## R1D358 2020-12-23 <a name="R1D358"/>
 **Today's Progress**: 
 - revisiting and playing with weather data in R ggplot2
 
@@ -123,7 +140,7 @@
 [TOC](#TOC)
 
 ***
-## R1D257 2020-12-22 <a name="R1D257"/>
+## R1D357 2020-12-22 <a name="R1D357"/>
 **Today's Progress**: 
 - 5 hour Learning Sprint with ggplot2 
 - using most excellent, and thorough tutorial by https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/
