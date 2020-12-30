@@ -60,7 +60,7 @@
 ***
 ## R1D365 2020-12-30 <a name="R1D365"/>
 **Today's Progress**: 
-- Victoria precip data as a heatmap calendar
+- Victoria precip data as a heatmap calendar, a most excellent tutorial by Dominic Royé
   - had to tweak font
   - download Victoria 2020 weather data, change column names
   - Lubridate epiweek()needed to change week start to Sunday vs Monday
@@ -70,6 +70,8 @@
 
 **Links to code work:** 
 - https://dominicroye.github.io/en/2020/a-heatmap-as-calendar/
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/heatmap_calendar.R
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/heatmap_calendar_2020_Precip.png
 
 [TOC](#TOC)
 
