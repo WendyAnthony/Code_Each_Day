@@ -37,7 +37,8 @@
 ***
 ## R2D3 2021-01-03 <a name="R2D3"/>
 **Today's Progress**: 
-- refound my ```R Shiny``` Wordcloud app code, I added Trump-only text, needing to up the word count to 7000!
+- revisiting ```R Shiny``` apps formatting, including using a ```global.R``` file for the data prep ...
+  - refound my ```R Shiny``` Wordcloud app code, I added Trump-only text, needing to up the word count to 7000!
 
 **Thoughts:** 
 - after hearing fragments of Trump's 1-hour recorded rant/request of 'finding' GA votes, I decided to find a transcript to analyze using an ```R``` Wordcloud
@@ -51,26 +52,16 @@
 ***
 # Week I <a name="weekI"/>
 ***
-## R2D2 2021-01-02 <a name="R2D2"/>
-**Today's Progress**: 
-
-
-**Thoughts:** 
-
-
-**Links to code work:** 
-
-[TOC](#TOC)
-
-***
 ## R2D1 2021-01-01 <a name="R2D1"/>
 **Today's Progress**: 
-
+- playing with ```calendR.R``` to create gridded calendars
 
 **Thoughts:** 
-
+- learned how to create different coloured backgrounds for specific days, and how to make more than one day the same colour
 
 **Links to code work:** 
+- https://r-coder.com/calendar-plot-r/
+  - https://github.com/soundarya24/MyRSpace/blob/main/MyCalendar2021/my2021_calendar_github.R
 
 [TOC](#TOC)
 
