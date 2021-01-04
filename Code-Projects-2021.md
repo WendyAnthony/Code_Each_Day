@@ -37,12 +37,14 @@
 ***
 ## R2D3 2021-01-03 <a name="R2D3"/>
 **Today's Progress**: 
-- 
+- refound my ```R Shiny``` Wordcloud app code, I added Trump-only text, needing to up the word count to 7000!
 
 **Thoughts:** 
-
+- after hearing fragments of Trump's 1-hour recorded rant/request of 'finding' GA votes, I decided to find a transcript to analyze using an ```R``` Wordcloud
 
 **Links to code work:** 
+- https://github.com/WendyAnthony/ShinyStuff/tree/master/Wordcloud
+  - https://github.com/WendyAnthony/ShinyStuff
 
 [TOC](#TOC)
 
@@ -51,7 +53,7 @@
 ***
 ## R2D2 2021-01-02 <a name="R2D2"/>
 **Today's Progress**: 
-- 
+
 
 **Thoughts:** 
 
@@ -63,7 +65,7 @@
 ***
 ## R2D1 2021-01-01 <a name="R2D1"/>
 **Today's Progress**: 
-- 
+
 
 **Thoughts:** 
 
