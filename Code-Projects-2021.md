@@ -6,12 +6,56 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week I](#weekI)**  
+- **[Week II](#weekII)**  
+  - [R2D4 2021-01-04](#R2D4)
+  - [R2D3 2021-01-03](#R2D3)
+- **[Week I](#weekI)**    
+  - [R2D2 2021-01-02](#R2D2)  
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
 ***
+# Week II <a name="weekII"/>
+***
+## R2D4 2021-01-04 <a name="R2D4"/>
+**Today's Progress**: 
+- Just for fun tried making Voronoi tesselations in R, and creating mandalas in random palettes and ```ggplot2```
+
+**Thoughts:** 
+- doing something simply for the beauty in it, without actually understanding the math behind it ...
+
+**Links to code work:** 
+- [Veroni Mandala Workshop](https://bitbucket.org/aschinchon/estalmat_0218/src/master/) <i>in Spanish</i>
+  - [Colored Mandalas Tutorial](https://fronkonstin.com/2018/03/11/mandalas-colored/)
+
+[TOC](#TOC)
+
+***
+## R2D3 2021-01-03 <a name="R2D3"/>
+**Today's Progress**: 
+- 
+
+**Thoughts:** 
+
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
+***
 # Week I <a name="weekI"/>
+***
+## R2D2 2021-01-02 <a name="R2D2"/>
+**Today's Progress**: 
+- 
+
+**Thoughts:** 
+
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
 ***
 ## R2D1 2021-01-01 <a name="R2D1"/>
 **Today's Progress**: 
@@ -23,6 +67,7 @@
 **Links to code work:** 
 
 [TOC](#TOC)
+
 ***  
 ***
 # Wish-List <a name="wishlist"/>  
