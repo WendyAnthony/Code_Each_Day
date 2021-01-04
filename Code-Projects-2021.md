@@ -19,12 +19,16 @@
 ***
 ## R2D4 2021-01-04 <a name="R2D4"/>
 **Today's Progress**: 
+- tried to get code working for my ```R Shiny``` app of Victoria Census ...
 - Just for fun tried making Voronoi tesselations in R, and creating mandalas in random palettes and ```ggplot2```
 
 **Thoughts:** 
+- though my ```R Shiny``` app online works, I couldn't get the code to work in R Studio - not sure why, but very early in am, and not quite making sense of finding the problem
 - doing something simply for the beauty in it, without actually understanding the math behind it ...
 
 **Links to code work:** 
+- https://wendyanthony.shinyapps.io/VicCensusApp/
+  - https://github.com/WendyAnthony/ShinyStuff
 - [Veroni Mandala Workshop](https://bitbucket.org/aschinchon/estalmat_0218/src/master/) <i>in Spanish</i>
   - [Colored Mandalas Tutorial](https://fronkonstin.com/2018/03/11/mandalas-colored/)
 
