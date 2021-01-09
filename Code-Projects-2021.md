@@ -7,7 +7,8 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**  
-  - [R2D4 2021-01-04](#R2D4)
+  - [R2D9 2021-01-09](#R2D9)
+  - [R2D4 2021-01-04](#R2D4)  
   - [R2D3 2021-01-03](#R2D3)
 - **[Week I](#weekI)**    
   - [R2D2 2021-01-02](#R2D2)  
@@ -16,6 +17,21 @@
   
 ***
 # Week II <a name="weekII"/>
+***
+## R2D9 2021-01-09 <a name="R2D9"/>
+**Today's Progress**: 
+- more ```R Stats``` ... plotting bathymetry and glacier data with ```ggOceanMaps``` and ```ggplot2```
+
+**Thoughts:** 
+- playing with different colour palletes and lat/long bounds
+
+**Links to code work:** 
+- https://mikkovihtakari.github.io/ggOceanMaps/articles/ggOceanMaps.html
+  - https://github.com/MikkoVihtakari/ggOceanMaps
+  - 
+
+[TOC](#TOC)
+
 ***
 ## R2D4 2021-01-04 <a name="R2D4"/>
 **Today's Progress**: 
