@@ -1,5 +1,5 @@
 # setup
-## Install / load packages: ```{googledrive}``` and ```{tidyverse}```
+## Install / load packages: {googledrive} and {tidyverse}
 ## https://googledrive.tidyverse.org/ 
 
 # install.packages("googledrive")
