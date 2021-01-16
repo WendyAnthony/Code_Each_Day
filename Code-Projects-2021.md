@@ -36,7 +36,7 @@
 - https://googledrive.tidyverse.org/index.html
   - https://googledrive.tidyverse.org/articles/articles/file-identification.html
  - https://community.rstudio.com/t/googledrive-resources-how-to-get-modified-date/6247/2
-    - <b>sort by newest createdTime:</b> ```gd_find_Time_all<- drive_find(n_max = 100) %>% drive_reveal("path") %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime")) %>% arrange(desc(created))``` 
+    - <b>sort by newest createdTime:</b> ```gd_find_Time<- drive_find(n_max = 100) %>% drive_reveal("path") %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime")) %>% arrange(desc(created))``` 
     - <b>Create csv file:</b> ```currentDate <- Sys.Date()```
           ```csvFileName <- paste("googleDrive_files",currentDate,".csv",sep="")```
           ```write.csv(gd_find_Time_sort_csv, file=csvFileName)```
