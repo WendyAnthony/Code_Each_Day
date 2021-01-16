@@ -1,6 +1,12 @@
+###############################################################
+# -------- Create csv file listing google drive files, folders
+# -------- and time created and modified
+###############################################################
+
+## https://googledrive.tidyverse.org/ 
+
 # setup
 ## Install / load packages: {googledrive} and {tidyverse}
-## https://googledrive.tidyverse.org/ 
 
 # install.packages("googledrive")
 library("googledrive")
