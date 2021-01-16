@@ -36,16 +36,7 @@
 - https://googledrive.tidyverse.org/index.html
   - https://googledrive.tidyverse.org/articles/articles/file-identification.html
  - https://community.rstudio.com/t/googledrive-resources-how-to-get-modified-date/6247/2
-    - ```gd_find <- drive_find(order_by = NULL, n_max = 150)```
-    - ```gd_find_modTime <- gd_find %>% mutate(modified = map_chr(drive_resource, "modifiedTime"))```
-    - ```gd_find_createTime <- gd_find %>% mutate(created = map_chr(drive_resource, "createdTime"))```
-    - ```gd_find_Time <- gd_find %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime"))```
-    - ```gd_find_Time_all_2 <- drive_find(order_by = NULL, n_max = 1700) %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime"))```
-    - <b>Add path column:</b> ```gd_find_Time_sort <- drive_find(n_max = 1700) %>% drive_reveal("path") %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime")) %>% arrange(created) # oldest first```
-    - <b>sort by oldest createdTime:</b> ```gd_find_Time_all_2 <- drive_find(order_by = NULL, n_max = 1700) %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime")) %>% arrange(created)```
-    - <b>sort by newest createdTime:</b> ```gd_find_Time_all_2 <- drive_find(order_by = NULL, n_max = 1700) %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime")) %>% arrange(desc(created))``` 
-    - <b>Create csv file:</b> ```gd_find_Time_sort_csv <- gd_find_Time_sort %>% select(name, path, id, created, modified)```
-        ```write_csv(gd_find_Time_sort_csv, "googleDrive_files.csv")```
+    - <b>sort by newest createdTime:</b> ```gd_find_Time_all<- drive_find(n_max = 100) %>% drive_reveal("path") %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime")) %>% arrange(desc(created))``` 
     - <b>Create csv file:</b> ```currentDate <- Sys.Date()```
           ```csvFileName <- paste("googleDrive_files",currentDate,".csv",sep="")```
           ```write.csv(gd_find_Time_sort_csv, file=csvFileName)```
