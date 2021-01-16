@@ -21,6 +21,7 @@ gd_find_Time_10 <- drive_find(n_max = 10) %>%
          modified = map_chr(drive_resource, "modifiedTime")) %>%
   select(name, path, id, created, modified) %>% # oldest first 
   arrange(created)
+# arrange(desc(created)) # newest first
 
 print(gd_find_Time_10)
 
