@@ -25,15 +25,17 @@
 ***
 ## R2D16 2021-01-16 <a name="R2D16"/>
 **Today's Progress**: 
-- test drive of ```googldrive```
+- test drive of ```googledrive```
 
 **Thoughts:** 
 - need to give access to googledrive api
   - not so obvious to see any folder structure / url link of resource
+  - want to find out created/modified time
 
 **Links to code work:** 
 - https://googledrive.tidyverse.org/index.html
   - https://googledrive.tidyverse.org/articles/articles/file-identification.html
+  - https://community.rstudio.com/t/googledrive-resources-how-to-get-modified-date/6247/2
 
 [TOC](#TOC)
 
