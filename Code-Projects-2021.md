@@ -40,6 +40,7 @@
     - ```gd_find_modTime <- gd_find %>% mutate(modified = map_chr(drive_resource, "modifiedTime"))```
     - ```gd_find_createTime <- gd_find %>% mutate(created = map_chr(drive_resource, "createdTime"))```
     - ```gd_find_Time <- gd_find %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime"))```
+    - ```gd_find_Time_all_2 <- drive_find(order_by = NULL, n_max = 1700) %>% mutate(created = map_chr(drive_resource, "createdTime"), modified = map_chr(drive_resource, "modifiedTime"))```
 
 [TOC](#TOC)
 
