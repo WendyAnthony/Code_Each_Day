@@ -35,7 +35,13 @@
 **Links to code work:** 
 - https://googledrive.tidyverse.org/index.html
   - https://googledrive.tidyverse.org/articles/articles/file-identification.html
-  - https://community.rstudio.com/t/googledrive-resources-how-to-get-modified-date/6247/2
+ - https://community.rstudio.com/t/googledrive-resources-how-to-get-modified-date/6247/2
+  - ```gd_find <- drive_find(order_by = NULL, n_max = 150)
+  gd_find_modTime <- gd_find %>% 
+  mutate(modified = map_chr(drive_resource, "modifiedTime"))
+gd_find_createTime <- gd_find %>% 
+  mutate(created = map_chr(drive_resource, "createdTime"))```
+
 
 [TOC](#TOC)
 
