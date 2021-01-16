@@ -25,7 +25,7 @@
 ***
 ## R2D16 2021-01-16 <a name="R2D16"/>
 **Today's Progress**: 
-- test drive of ```googledrive```
+- test drive of r package ```{googledrive}```
 
 **Thoughts:** 
 - need to give access to googledrive api
