@@ -6,6 +6,11 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week III](#weekIII)**  
+  - [R2D16 2021-01-16](#R2D16)
+  - [R2D15 2021-01-15](#R2D15)
+  - [R2D14 2021-01-14](#R2D14)
+  - [R2D13 2021-01-13](#R2D13)
 - **[Week II](#weekII)**  
   - [R2D9 2021-01-09](#R2D9)
   - [R2D4 2021-01-04](#R2D4)  
@@ -15,6 +20,62 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week III <a name="weekIII"/>
+***
+## R2D16 2021-01-16 <a name="R2D16"/>
+**Today's Progress**: 
+- test drive of ```googldrive```
+
+**Thoughts:** 
+- need to give access to googledrive api
+  - not so obvious to see any folder structure / url link of resource
+
+**Links to code work:** 
+- https://googledrive.tidyverse.org/index.html
+  - https://googledrive.tidyverse.org/articles/articles/file-identification.html
+
+[TOC](#TOC)
+
+***
+## R2D15 2021-01-15 <a name="R2D15"/>
+**Today's Progress**: 
+- #tidytuesday tweets created a ```.rmd``` file
+  - San Fransisco trees
+  - Ausie fires rain plot
+- ```gggiraph```
+
+**Thoughts:** 
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
+***
+## R2D14 2021-01-14 <a name="R2D14"/>
+**Today's Progress**: 
+- working through lecture notes chapter 2 for ES482 R Stats course
+  - created a ```.rmd``` file
+- ```ggOceanMaps``` Canada_bathymetry  
+  
+**Thoughts:** 
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
+***
+## R2D13 2021-01-13 <a name="R2D13"/>
+**Today's Progress**: 
+- working through lecture notes chapter 1 for ES482 R Stats course
+  - created a ```.rmd``` file
+
+**Thoughts:** 
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
 ***
 # Week II <a name="weekII"/>
 ***
@@ -30,7 +91,6 @@
   - https://github.com/MikkoVihtakari/ggOceanMaps
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ggplot2/ggOceanMaps/ggOceanMaps_Canada_bathymetry_viridis.png
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ggplot2/ggOceanMaps/ggOceanMaps.R
-
 
 [TOC](#TOC)
 
