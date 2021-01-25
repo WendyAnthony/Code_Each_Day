@@ -1,7 +1,7 @@
-########################################
+##########################################
 # Shiny leaflet app for iNaturalist obs
-# 2020-10-13
-########################################
+# 2020-10-13  >> fixed spider cluster zoom
+##########################################
 
 library("shiny")
 library("leaflet")
@@ -90,7 +90,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
     output$mymap <- renderLeaflet({
         # leaflet map with popup of many characters & image link
-        map <- leaflet(height="2800px", width = "100%") %>%
+        map <- leaflet(height="3800px", width = "100%") %>%
             setView(lng = -125.52,  # 49.54782, -125.5188
                     lat = 49.54,
                     zoom = 7) %>% 
@@ -122,7 +122,7 @@ server <- function(input, output, session) {
         str4 <- paste("These are the 'research-grade' observations that have been verified by at least one other naturalist @ iNaturalist")
         str5 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R", "Shiny app Code")
         str6 <- tags$a(href="https://www.inaturalist.org/observations/wendy_anthony", "iNaturalist Observations")
-        str7 <- paste("Created by Wendy Anthony 2020-01-13")
+        str7 <- paste("Created by Wendy Anthony 2020-01-13, updated 2020-01-25")
         HTML(paste(str1, str2, str3, str4, str5, str6, str7, sep = "<br /><br />"))
     })
     # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny  
