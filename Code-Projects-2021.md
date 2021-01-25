@@ -35,8 +35,8 @@
 2. trial and error testing until something works
 
 **Links to code work:** 
-1. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/RStudio/RStudio-devtools-AddBackgroundImg-rclick-InspectElements.png  
-2a. https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/  
+1. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/RStudio/RStudio-devtools-AddBackgroundImg-rclick-InspectElements.png
+2.a. https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
 2.b. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
 [TOC](#TOC)
