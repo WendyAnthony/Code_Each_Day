@@ -74,57 +74,58 @@ maptypes <- c("Stamen.TerrainBackground",
 ### ---------------------------------------
 # shiny app
 ui <- fluidPage(
-  titlePanel("My Research-grade iNaturalist Observations"),
-  tags$br(),
-  tags$p("Click marker clusters to find individual observations"),
-  tags$br(),
-  
-  mainPanel(
-    tabsetPanel(
-      tabPanel("iNaturalist Leaflet Map Viz", leafletOutput("mymap")),
-      tabPanel("About", tableOutput("text"))
+    titlePanel("My Research-grade iNaturalist Observations"),
+    tags$br(),
+    tags$p("Click marker clusters to find individual observations"),
+    tags$br(),
+    
+    mainPanel(
+        tabsetPanel(
+            tabPanel("iNaturalist Leaflet Map Viz", leafletOutput("mymap")),
+            tabPanel("About", tableOutput("text"))
+        )
     )
-  )
 )  
 
 server <- function(input, output, session) {
-  output$mymap <- renderLeaflet({
-    # leaflet map with popup of many characters & image link
-    map <- leaflet(height="2800px", width = "100%") %>%
-      setView(lng = -125.52,  # 49.54782, -125.5188
-              lat = 49.54,
-              zoom = 7) %>% 
-      addTiles(group = "OSM (default)") %>%
-      addProviderTiles(providers$Stamen.Toner, group = "Toner") %>%
-      addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
-      addProviderTiles(providers$Stamen.TerrainBackground, group = "Terrain") %>%
-      addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World") %>%
-
-      
-#      addProviderTiles("Esri.WorldImagery") %>% 
-#     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
-      addMarkers(lat = wa_inat_userstats_research_append$latitude, 
-                 lng = wa_inat_userstats_research_append$longitude,
-                 clusterOptions = markerClusterOptions(),
-             #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
-                 popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  wa_inat_userstats_research_append$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", wa_inat_userstats_research_append$common_name, "<br>", "<b>", "Place:", "</b>", wa_inat_userstats_research_append$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", wa_inat_userstats_research_append$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", wa_inat_userstats_research_append$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", wa_inat_userstats_research_append$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", wa_inat_userstats_research_append$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", wa_inat_userstats_research_append$user_login )) %>%
-      addLayersControl(
-        baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Terrain", "ESRI World"),
-        options = layersControlOptions(collapsed = TRUE)
-      )
+    output$mymap <- renderLeaflet({
+        # leaflet map with popup of many characters & image link
+        map <- leaflet(height="2800px", width = "100%") %>%
+            setView(lng = -125.52,  # 49.54782, -125.5188
+                    lat = 49.54,
+                    zoom = 7) %>% 
+            addTiles(group = "OSM (default)",
+                     options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+            addProviderTiles(providers$Stamen.Toner, group = "Toner") %>%
+            addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
+            addProviderTiles(providers$Stamen.TerrainBackground, group = "Terrain") %>%
+            addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World") %>%
+            
+            
+            #      addProviderTiles("Esri.WorldImagery") %>% 
+            #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
+            addMarkers(lat = wa_inat_userstats_research_append$latitude, 
+                       lng = wa_inat_userstats_research_append$longitude,
+                       clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
+                       #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
+                       popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  wa_inat_userstats_research_append$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", wa_inat_userstats_research_append$common_name, "<br>", "<b>", "Place:", "</b>", wa_inat_userstats_research_append$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", wa_inat_userstats_research_append$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", wa_inat_userstats_research_append$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", wa_inat_userstats_research_append$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", wa_inat_userstats_research_append$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", wa_inat_userstats_research_append$user_login )) %>%
+            addLayersControl(
+                baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Terrain", "ESRI World"),
+                options = layersControlOptions(collapsed = TRUE)
+            )
     })
     
-  output$text <- renderUI({
-    str1 <- tags$h2("iNaturalist observation Visualization")
-    str2 <- paste("iNaturalists observations by Wendy Anthony")
-    str3 <- tags$h2("About these observations")
-    str4 <- paste("These are the 'research-grade' observations that have been verified by at least one other naturalist @ iNaturalist")
-    str5 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R", "Shiny app Code")
-    str6 <- tags$a(href="https://www.inaturalist.org/observations/wendy_anthony", "iNaturalist Observations")
-    str7 <- paste("Created by Wendy Anthony 2020-01-13")
-    HTML(paste(str1, str2, str3, str4, str5, str6, str7, sep = "<br /><br />"))
-  })
-  # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny  
+    output$text <- renderUI({
+        str1 <- tags$h2("iNaturalist observation Visualization")
+        str2 <- paste("iNaturalists observations by Wendy Anthony")
+        str3 <- tags$h2("About these observations")
+        str4 <- paste("These are the 'research-grade' observations that have been verified by at least one other naturalist @ iNaturalist")
+        str5 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R", "Shiny app Code")
+        str6 <- tags$a(href="https://www.inaturalist.org/observations/wendy_anthony", "iNaturalist Observations")
+        str7 <- paste("Created by Wendy Anthony 2020-01-13")
+        HTML(paste(str1, str2, str3, str4, str5, str6, str7, sep = "<br /><br />"))
+    })
+    # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny  
 }
 
 
