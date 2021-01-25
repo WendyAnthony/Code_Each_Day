@@ -27,13 +27,17 @@
 ***
 ## R2D25 2021-01-25 <a name="R2D25"/>
 **Today's Progress**: 
-- learned you can add a background image to RStudio!! (thanx to Ihaddaden M. EL Fodil, Ph.D @moh_fodil)
+1. learned you can add a background image to RStudio!! (thanx to Ihaddaden M. EL Fodil, Ph.D @moh_fodil)
+2. updated ```Shiny iNaturalist app``` to allow cluster markers to spiderfy for all zoom levels
 
 **Thoughts:** 
-- playing around with tech tricks instead of ```serious``` work ;)
+1. playing around with tech tricks instead of ```serious``` work ;)
+2. trial and error testing until something works
 
 **Links to code work:** 
-- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/RStudio/RStudio-devtools-AddBackgroundImg-rclick-InspectElements.png
+1. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/RStudio/RStudio-devtools-AddBackgroundImg-rclick-InspectElements.png
+2a. https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
+2.b. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
 [TOC](#TOC)
 
