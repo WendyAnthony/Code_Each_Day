@@ -6,6 +6,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week V](#weekV)**  
+  - [R2D25 2021-01-25](#R2D25)
 - **[Week III](#weekIII)**  
   - [R2D16 2021-01-16](#R2D16)
   - [R2D15 2021-01-15](#R2D15)
@@ -20,6 +22,21 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week V <a name="weekV"/>
+***
+## R2D25 2021-01-25 <a name="R2D25"/>
+**Today's Progress**: 
+- learned you can add a background image to RStudio!! (thanx to Ihaddaden M. EL Fodil, Ph.D @moh_fodil)
+
+**Thoughts:** 
+- playing around with tech tricks instead of ```serious``` work ;)
+
+**Links to code work:** 
+
+
+[TOC](#TOC)
+
 ***
 # Week III <a name="weekIII"/>
 ***
