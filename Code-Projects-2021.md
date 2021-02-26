@@ -6,6 +6,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week IX](#weekIX)**  
+  - [R2D46 2021-02-25](#R2D46)
 - **[Week V](#weekV)**  
   - [R2D25 2021-01-25](#R2D25)
 - **[Week III](#weekIII)**  
@@ -23,6 +25,24 @@
 - **[Wishlist](#wishlist)**  
   
 ***
+# Week IX <a name="weekIX"/>
+***
+## R2D46 2021-02-25 <a name="R2D46"/>
+**Today's Progress**: 
+- learning to use  R programs ```pagedown``` and ```pagedreport``` to create business cards, resume, thesis
+
+**Thoughts:** 
+- having a hard time figuring out the paging ... learned to add css @page
+
+**Links to code work:** 
+- ```@page:first{  /* Remove page numbers for the cover */
+  @bottom-right {
+    content: none;
+  }}```
+
+[TOC](#TOC)
+
+***
 # Week V <a name="weekV"/>
 ***
 ## R2D25 2021-01-25 <a name="R2D25"/>
@@ -39,9 +59,7 @@
 2. https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/  
   2.b. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
-[TOC](#TOC)
-
-***
+[TOC](#TOC)***
 # Week III <a name="weekIII"/>
 ***
 ## R2D16 2021-01-16 <a name="R2D16"/>
