@@ -36,10 +36,7 @@
 
 **Links to code work:** 
 - Remove page numbers for the cover
-    - ```@page:first{  
-  @bottom-right {
-    content: none;
-  }}```
+    @ page: first{@bottom-right {content: none;}}
 
 [TOC](#TOC)
 
