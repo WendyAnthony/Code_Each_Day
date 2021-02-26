@@ -35,8 +35,8 @@
 - having a hard time figuring out the paging ... learned to add css @page
 
 **Links to code work:** 
-- Remove page numbers for the cover
-    @ page: first{@bottom-right {content: none;}}
+- Remove page numbers for the cover 
+    @page: first{@bottom-right {content: none;}}
 
 [TOC](#TOC)
 
