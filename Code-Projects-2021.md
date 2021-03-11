@@ -6,6 +6,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XI](#weekXI)**  
+  - [R2D70 2021-03-11](#R2D70)
 - **[Week IX](#weekIX)**  
   - [R2D46 2021-02-25](#R2D46)
 - **[Week V](#weekV)**  
@@ -24,6 +26,25 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XI <a name="weekXI"/>
+***
+## R2D70 2021-03-11 <a name="R2D70"/>
+**Today's Progress**: 
+- updating list of R website resources
+- playing with wordcloud shiny app to visualize readings for final assignment
+
+**Thoughts:** 
+- time to try out some of these new R links / packages
+- just add new text to Wordcloud global file
+
+**Links to code work:** 
+- [R Resource Links @ github.io](https://wendyanthony.github.io/R_Stats_Links-io.html)  
+  - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
+  
+[TOC](#TOC)
+
 ***
 # Week IX <a name="weekIX"/>
 ***
