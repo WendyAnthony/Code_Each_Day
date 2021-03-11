@@ -36,7 +36,7 @@
 
 **Thoughts:** 
 - time to try out some of these new R links / packages
-- just add new text to Wordcloud global file
+- just add new text file to Wordcloud global file, and include file.txt in the same directory as global.r ui.r server.r
 
 **Links to code work:** 
 - [R Resource Links @ github.io](https://wendyanthony.github.io/R_Stats_Links-io.html)  
