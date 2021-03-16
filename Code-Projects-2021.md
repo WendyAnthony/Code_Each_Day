@@ -7,6 +7,8 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XI](#weekXI)**  
+  - [R2D74 2021-03-15](#R2D74)
+- **[Week XI](#weekXI)**  
   - [R2D70 2021-03-11](#R2D70)
 - **[Week IX](#weekIX)**  
   - [R2D46 2021-02-25](#R2D46)
@@ -26,6 +28,26 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XI <a name="weekXI"/>
+***
+## R2D74 2021-03-15 <a name="R2D74"/>
+**Today's Progress**: 
+- wanting to find out the colour palette from an image of Herring spawn, I found R package `imgpalr`, which finds the hex colour values
+- using a 'dummy' plot to test with different colours, instead of copy/paste different hex codes, I used the relative position of hex code in the character string of values e.g. str(imgpal) >> ##  chr [1:9] "#67A49B" "#487977" "#66A398" "#355B5A" "#3F6E61" "#233C3E" ... >> imgpal[3] >> ## [1] "#66A398"
+- interested to know the name of some of these hex colour I found code to create a dataframe of hex colour names, but couldn't yet find a way to use these in plots
+
+**Thoughts:** 
+- I see a need, then look for how to fullfill it through trial & error ...
+- Best results: crop image to reduce amount of background colour i.e. I was only interested in milky blue cyans, so I cropped-out the darker pixel areas, and got better colour palette results
+- test-driving new code in a  `.rmd` file instead of regular script, for reproducability 
+
+**Links to code work:** 
+- https://rdrr.io/cran/imgpalr/
+- 
+  
+[TOC](#TOC)
+
 ***
 # Week XI <a name="weekXI"/>
 ***
