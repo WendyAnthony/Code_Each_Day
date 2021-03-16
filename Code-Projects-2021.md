@@ -44,7 +44,7 @@
 
 **Links to code work:** 
 - https://rdrr.io/cran/imgpalr/
-- 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/imgpalr.Rmd
   
 [TOC](#TOC)
 
