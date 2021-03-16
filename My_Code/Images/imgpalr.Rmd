@@ -1,0 +1,108 @@
+---
+title: "Image Colour Palette"
+author: "Wendy Anthony"
+date: "15/03/2021"
+output:
+  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## `imgpalr`
+<https://rdrr.io/cran/imgpalr/>
+
+```{r install_imgpalr}
+#install.packages("imgpalr")
+library(imgpalr)
+#help("imgpalr")
+```
+working directory
+```{r wd}
+getwd()
+```
+
+# create herringspawn Sentinel 2 image palette
+```{r load_image, results=FALSE}
+# use image cropped to desired colour for best results
+image_load("imgpalr-hs-1.png")
+```
+
+## create string of palette hex codes
+```{r imgpalr}
+# does a very coarse pass over image colour, not much differentiation if the desired area of colour is too small >> crop image & try again
+imgpal_1 <- image_pal("imgpalr-hs-1.png",
+           n = 9,
+  type = c("qual", "seq", "div"),
+  k = 10,
+  bw = c(0, 1),
+  brightness = c(0, 1),
+  saturation = c(0, 1),
+  seq_by = "hsv",
+  div_center = "#FFFFFF",
+  seed = NULL,
+  plot = FALSE,
+  labels = TRUE,
+  label_size = 1,
+  label_color = "#000000",
+  keep_asp = TRUE,
+  quantize = FALSE
+)
+```
+
+## summary info about string of hex colour characters
+```{r imgpal_values}
+imgpal_1
+class(imgpal_1) # "character"
+str(imgpal_1) # chr [1:9] 
+imgpal_1[3] # value of 3 item of character string
+```
+
+## create dataframe of hex colour names
+<https://stat.ethz.ch/pipermail/r-help/2015-April/427663.html>
+```{r hex_colnames_create_dataframe}
+clrs <- data.frame(Color=colors(), 
+                   hex=rgb(t(col2rgb(colors())),  
+                           maxColorValue=255),
+                   stringsAsFactors=FALSE)
+  str(clrs)
+```
+
+## find name of hex values imported from image using `plotrix` package
+```{r x}
+# https://stat.ethz.ch/pipermail/r-help/2015-April/427663.html
+x <- sapply(imgpal_1, plotrix::color.id)
+x
+class(x) # list
+x[3]
+```
+
+## summary info about string of hex colour names
+```{r x_value}
+x
+class(x) # "character"
+str(x) # chr [1:9] 
+x[7] # value of 3 item of character string
+```
+
+### create test plot using colours with character string position for colour and name of plot title
+```{r colour_test_plot}
+# using location of character string from image palette hex results
+temp <- c(5,7,6,4,8)
+barplot(temp, main="By default")
+barplot(temp, col=imgpal_1[1], main=imgpal_1[1]) # 
+barplot(temp, col=imgpal_1[2], main=imgpal_1[2]) # 
+barplot(temp, col=imgpal_1[3], main=imgpal_1[3]) # 
+barplot(temp, col=imgpal_1[4], main=imgpal_1[4]) # 
+barplot(temp, col=imgpal_1[5], main=imgpal_1[5]) # 
+barplot(temp, col=imgpal_1[6], main=imgpal_1[6]) # 
+barplot(temp, col=imgpal_1[7], main=imgpal_1[7]) # 
+# barplot(temp, col=imgpal_1[7], main=x[7]) # can't use
+barplot(temp, col=imgpal_1[8], main=imgpal_1[8]) # 
+barplot(temp, col=imgpal_1[9], main=imgpal_1[9]) # 
+barplot(temp, col="#577582", main="With dark blue coloring") # 
+```
+
+
+
