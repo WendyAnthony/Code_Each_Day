@@ -63,6 +63,7 @@
 **Links to code work:** 
 - [R Resource Links @ github.io](https://wendyanthony.github.io/R_Stats_Links-io.html)  
   - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
+  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/R_Code/R_Stats_Links.Rmd
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
   
 [TOC](#TOC)
