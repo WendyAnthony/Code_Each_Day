@@ -6,7 +6,9 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week XI](#weekXI)**  
+- **[Week XXX](#weekXX)**  
+  - [R2D74 2021-05-09](#R2D74)
+- **[Week XII](#weekXII)**  
   - [R2D74 2021-03-15](#R2D74)
 - **[Week XI](#weekXI)**  
   - [R2D70 2021-03-11](#R2D70)
@@ -29,7 +31,7 @@
 - **[Wishlist](#wishlist)**  
   
 ***
-# Week XI <a name="weekXI"/>
+# Week XII <a name="weekXII"/>
 ***
 ## R2D74 2021-03-15 <a name="R2D74"/>
 **Today's Progress**: 
