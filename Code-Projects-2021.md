@@ -49,8 +49,8 @@
 - even when working from someone else's code, there is likely to be some command that no longer works
 
 **Links to code work:** 
-- [Extracting EXIF data from photos using R](https://www.r-bloggers.com/2016/11/extracting-exif-data-from-photos-using-r/)
-- [Days of the week](https://www.calendar-365.com/day-numbers/2021.html)
+- [Extracting EXIF data from photos using R](https://www.r-bloggers.com/2016/11/extracting-exif-data-from-photos-using-r/) by Bluecology blog
+- Website to find [Days of the week](https://www.calendar-365.com/day-numbers/2021.html)
    
 [TOC](#TOC)
 
