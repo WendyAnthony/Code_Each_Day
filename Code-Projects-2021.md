@@ -50,7 +50,7 @@
 
 **Links to code work:** 
 - [Extracting EXIF data from photos using R](https://www.r-bloggers.com/2016/11/extracting-exif-data-from-photos-using-r/)
-- [Days of the week(https://www.calendar-365.com/day-numbers/2021.html)
+- [Days of the week](https://www.calendar-365.com/day-numbers/2021.html)
    
 [TOC](#TOC)
 
