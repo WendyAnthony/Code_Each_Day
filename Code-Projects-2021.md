@@ -6,8 +6,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week XXX](#weekXX)**  
-  - [R2D74 2021-05-09](#R2D74)
+- **[Week XIX](#weekXIX)**  
+  - [R2D129 2021-05-09](#R2D129)
 - **[Week XII](#weekXII)**  
   - [R2D74 2021-03-15](#R2D74)
 - **[Week XI](#weekXI)**  
@@ -30,6 +30,30 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XIX <a name="weekXIX"/>
+***
+## R2D129 2021-05-09 <a name="R2D129"/>
+**Today's Progress**: 
+- Trying to map Geo-referenced photos using ```R``` and ```Leaflet```
+- access EXIF data from photos ```exifr```
+- ```exifr(files)``` doesn't work, but ```read_exif(files)``` does!
+- .csv and .html files will be saved to working directory - I tried to find a way not to have to keep changing directory, but no luck
+- get popup to show image >>> had to make image smaller to fit in popup window
+- added ```markerClusterOptions()``` to show how many images in one place, but then map Tiles don't show at highest zoom - was able to get ```Stamen.TonerLite``` to work
+- figured out how to add text to popup window
+
+**Thoughts:** 
+- I need to cull my photos, or at least put the special ones in a separate directory
+- wasn't able to figure out how to make the resulting map responsive html?
+- even when working from someone else's code, there is likely to be some command that no longer works
+
+**Links to code work:** 
+- [Extracting EXIF data from photos using R](https://www.r-bloggers.com/2016/11/extracting-exif-data-from-photos-using-r/)
+- [Days of the week(https://www.calendar-365.com/day-numbers/2021.html)
+   
+[TOC](#TOC)
+
 ***
 # Week XII <a name="weekXII"/>
 ***
