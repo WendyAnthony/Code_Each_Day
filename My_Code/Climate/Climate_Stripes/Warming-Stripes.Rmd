@@ -1,0 +1,204 @@
+---
+title: "Warming Stripes"
+author: "Wendy Anthony"
+date: "09/05/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Based on 2018 code by Dominic Royé for [How to Create Warming Stripes in R](https://www.r-bloggers.com/how-to-create-warming-stripes-in-r/)
+
+# Install Packages
+```lubridate```    for dates ymd( )  
+```tidyverse```    for ggplot2; stringr str_c( )  
+```RColorBrewer``` for colour scheme  
+
+```{r install_packages, include=FALSE, echo=FALSE}
+if(!require("lubridate")) install.packages("lubridate")
+if(!require("tidyverse")) install.packages("tidyverse")
+if(!require("RColorBrewer")) install.packages("RColorBrewer")
+```
+
+## Load Libraries
+
+```{r load_libraries, echo=TRUE, include=TRUE}
+library("tidyverse")
+library("lubridate")
+library("RColorBrewer")
+```
+
+## Working Directory
+
+```{r working_directory}
+dir <- "/Users/wanthony/Documents/R/Climate-Weather"
+setwd(dir)
+getwd()
+```
+
+# DATA
+## import .csv file of monthly time-series data 
+
+Historical Data: [Search for monthly Environment Canada Station Data](https://climate.weather.gc.ca/historical_data/search_historic_data_stations_e.html?searchType=stnName&timeframe=1&txtStationName=victoria+Int%27l&searchMethod=contains&optLimit=yearRange&StartYear=1840&EndYear=2021&Year=2021&Month=5&Day=9&selRowPerPage=25)  
+* .csv file will need some data cleaning / manipulation before use
+* columns have monthly and seasonal values, and  annual temperature value
+
+```{r load_data}
+temp_victoria <- read_csv("VictoriaTemp-1941-2012.csv")
+```
+
+## get data info
+
+```{r data_info}
+class(temp_victoria)
+str(temp_victoria)
+head(temp_victoria)
+```
+
+## Select Columns: Year and Year Average temperature  
+
+```{r select_columns_temp_year}
+temp_victoria_yr <- select(temp_victoria,Year,YearAvg)
+temp_victoria_yr
+```
+
+## rename the temperature column
+
+```{r rename_column}
+temp_victoria_yr <- rename(temp_victoria_yr, TempMean=YearAvg)
+temp_victoria_yr
+```
+
+### Check summary stats to see if data contains any missing values i.e. 999.9 (this would show as the max value)  
+
+```{r summary_stats}
+summary(temp_victoria_yr)
+```
+
+### Use the ifelse( ) function to replace missing values 999.9 with NA  
+
+```{r missing_values}
+temp_victoria_yr <- mutate(temp_victoria_yr, 
+                           TempMean = ifelse(TempMean == 999.9, NA, TempMean))
+temp_victoria_yr
+```
+
+# Convert year variable to a date object for ease of use with ```Lubridate``` and ```ggplot2``` packages  
+* tidyverse::str_c() function enables character combinations by specifiying a separator sep="-"  
+* lubridate::ymd() function converts date character to Date object
+
+```{r mutate_date}
+temp_victoria_yr <- mutate(temp_victoria_yr, 
+                           date = str_c(Year, "01-01", sep = "-") %>%
+                           ymd())
+temp_victoria_yr
+```
+
+# Create the Stripes
+## Create default theme_minimal() style 
+
+```{r theme_minimal}
+theme_strip <- theme_minimal()+
+                 theme(axis.text.y = element_blank(),
+                       axis.line.y = element_blank(),
+                       axis.title = element_blank(),
+                       panel.grid.major=element_blank(),
+                       legend.title = element_blank(),
+                       axis.text.x=element_text(vjust=3),
+                       panel.grid.minor=element_blank(),
+                       plot.title=element_text(size=14,face="bold")
+                       )
+```
+
+## Assign colours using RColorBrewer  
+[ColorBrewer](https://colorbrewer2.org/)  
+
+```{r color_assignment}
+# get names of colours
+brewer.pal.info
+
+## assign the colors from RColorBrewer to object col_srip.
+col_strip <- brewer.pal(11,"RdBu")
+
+```
+
+# Create graphic with color-bar legend using ggplot2
+* data doesn't have a value for Y axis, so dummy value of 1 is used  
+* geometry used geom_tile()  
+* guide_colorbar(barwidth = 1) controls width of legend color bar  
+
+```{r ggplot_graphic_legend}
+## stripes plot with the legend
+stplt_lg <- ggplot(temp_victoria_yr,
+             aes(x = date, y = 1, fill = TempMean)) +
+        geom_tile() +
+           scale_x_date(date_breaks = "6 years",
+                     date_labels = "%Y",
+                     expand = c(0, 0)) +
+           scale_y_continuous(expand = c(0, 0)) +
+           scale_fill_gradientn(colors = rev(col_strip)) +
+             guides(fill = guide_colorbar(barwidth = 1)) +
+            labs(title = "Victoria BC 1941-2012",
+                caption = "Annual Average Temperature Analysis (Celsius)\nUsing historical climate data from Environment Canada\nhttps://climate.weather.gc.ca/historical_data/search_historic_data_e.html") +
+          theme_strip
+stplt_lg
+```
+
+
+# Create image files with legend
+
+```{r create_image_files_legend}
+# png files have very poor resolution
+png("VictoriaClimateStripes-1941-2012-lg.png")
+stplt_lg
+dev.off()
+
+# pdf files have better resolution
+pdf("VictoriaClimateStripes-1941-2012-lg.pdf")
+stplt_lg
+dev.off()
+
+# tiff files have best resolution, with a larger file-size; specify size and resolution
+tiff("VictoriaClimateStripes-1941-2012-lg.tiff", units="in", width=5, height=5, res=300)
+stplt_lg
+dev.off()
+```
+
+# Create graphic stripes only, without a color-bar legend
+* geom_tile(show.legend = FALSE)  
+* use theme_void() to remove all theme styling  
+* NA values can have a different color by adding na.value = "gray70" to scale_fill_gradientn()  
+
+```{r ggplot_graphic_no_legend}
+stplt <- ggplot(temp_victoria_yr,
+             aes(x = date, y = 1, fill = TempMean)) +
+        geom_tile(show.legend = FALSE) +
+           scale_x_date(date_breaks = "6 years",
+                     date_labels = "%Y",
+                     expand = c(0, 0)) +
+           scale_y_discrete(expand = c(0, 0)) +
+           scale_fill_gradientn(colors = rev(col_strip), na.value = "gray70") +
+             theme_void()
+stplt
+```
+
+# Create image files with no legend
+
+```{r create_image_files_no_legend}
+# png files have very poor resolution
+png("VictoriaClimateStripes-1941-2012-lg.png")
+stplt
+dev.off()
+
+# pdf files have better resolution
+pdf("VictoriaClimateStripes-1941-2012-lg.pdf")
+stplt
+dev.off()
+
+# tiff files have best resolution, with a larger file-size; specify size and resolution
+tiff("VictoriaClimateStripes-1941-2012-lg.tiff", units="in", width=5, height=5, res=300)
+stplt
+dev.off()
+```
