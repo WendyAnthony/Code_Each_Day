@@ -7,6 +7,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XIX](#weekXIX)**  
+  - [R2D130 2021-05-10](#R2D130)
   - [R2D129 2021-05-09](#R2D129)
 - **[Week XII](#weekXII)**  
   - [R2D74 2021-03-15](#R2D74)
@@ -32,6 +33,19 @@
   
 ***
 # Week XIX <a name="weekXIX"/>
+***
+## R2D130 2021-05-10 <a name="R2D130"/>
+**Today's Progress**: 
+- revisiting my ```Climatology``` Rscript to remember how to make a column of named months from numerical months, and to create a column for seasons
+
+**Thoughts:** 
+- I need to find some way of documenting my hard-won code snippets in order to find easier when needed next
+
+**Links to code work:** 
+- 
+   
+[TOC](#TOC)
+
 ***
 ## R2D129 2021-05-09 <a name="R2D129"/>
 **Today's Progress**: 
