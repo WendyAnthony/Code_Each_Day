@@ -63,15 +63,18 @@
 - wanting to find out the colour palette from an image of Herring spawn, I found R package `imgpalr`, which finds the hex colour values
 - using a 'dummy' plot to test with different colours, instead of copy/paste different hex codes, I used the relative position of hex code in the character string of values e.g. str(imgpal) >> ##  chr [1:9] "#67A49B" "#487977" "#66A398" "#355B5A" "#3F6E61" "#233C3E" ... >> imgpal[3] >> ## [1] "#66A398"
 - interested to know the name of some of these hex colour I found code to create a dataframe of hex colour names, but couldn't yet find a way to use these in plots
+- reworked Climate Stripes code
 
 **Thoughts:** 
 - I see a need, then look for how to fullfill it through trial & error ...
 - Best results: crop image to reduce amount of background colour i.e. I was only interested in milky blue cyans, so I cropped-out the darker pixel areas, and got better colour palette results
 - test-driving new code in a  `.rmd` file instead of regular script, for reproducability 
+- need to find a way to clean up Environment Canada historic climate date within R
 
 **Links to code work:** 
 - https://rdrr.io/cran/imgpalr/
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/imgpalr.Rmd
+- 
   
 [TOC](#TOC)
 
