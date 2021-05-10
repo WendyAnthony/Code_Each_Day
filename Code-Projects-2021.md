@@ -52,6 +52,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/photo-exif-map-popPhoto.R
 - [Extracting EXIF data from photos using R](https://www.r-bloggers.com/2016/11/extracting-exif-data-from-photos-using-r/) by Bluecology blog
 - Website to find [Days of the week](https://www.calendar-365.com/day-numbers/2021.html)
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Climate/Warming_Stripes
    
 [TOC](#TOC)
 
