@@ -94,15 +94,15 @@ maptypes <- c("Stamen.TerrainBackground",
 ### ---------------------------------------
 # shiny app
 ui <- fluidPage(
-  titlePanel("ARME iNaturalist Observations"),
+  titlePanel("ARME iNaturalist Observations Leaflet Map Viz"),
   tags$br(),
   tags$p("Click marker clusters to find individual observations"),
   tags$br(),
   
   mainPanel(
     tabsetPanel(
-      tabPanel("iNaturalist ARME Leaflet Map Viz North", leafletOutput("mymap_n")),
-      tabPanel("iNaturalist ARME Leaflet Map Viz South", leafletOutput("mymap_s")),
+      tabPanel("ARME North", leafletOutput("mymap_n")),
+      tabPanel("ARME South", leafletOutput("mymap_s")),
       tabPanel("About", tableOutput("text"))
     )
   )
@@ -175,10 +175,10 @@ server <- function(input, output, session) {
     str1 <- tags$h2("iNaturalist observation Visualization")
     str2 <- paste("iNaturalists observations of Arbutus menziesii")
     str3 <- tags$h2("About these observations")
-    str4 <- paste("These are the 'research-grade' observations that have been verified by at least one other naturalist @ iNaturalist")
+    str4 <- paste("These are observations collected using @ iNaturalist")
     str5 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/app.R", "Shiny app Code")
     str6 <- tags$a(href="https://www.inaturalist.org/observations?locale=en&subview=map&taxon_id=51046", "iNaturalist Observations")
-    str7 <- paste("Created by Wendy Anthony 2020-01-13, updated 2021-06-03 (fixed spider cluster max zoom)")
+    str7 <- paste("Created by Wendy Anthony 2021-06-03")
     HTML(paste(str1, str2, str3, str4, str5, str6, str7, sep = "<br /><br />"))
   })
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny  
