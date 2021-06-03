@@ -1,5 +1,6 @@
 ##########################################
 # Shiny leaflet app for iNaturalist obs
+# Arbutus menziesii
 # 2020-10-13  >> 
 # 2021-01-25 << fixed spider cluster zoom
 # 2021-06-03 >> madrone
