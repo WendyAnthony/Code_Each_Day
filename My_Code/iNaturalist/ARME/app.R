@@ -175,7 +175,7 @@ server <- function(input, output, session) {
     str2 <- paste("iNaturalists observations of Arbutus menziesii")
     str3 <- tags$h2("About these observations")
     str4 <- paste("These are the 'research-grade' observations that have been verified by at least one other naturalist @ iNaturalist")
-    str5 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R", "Shiny app Code")
+    str5 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/app.R", "Shiny app Code")
     str6 <- tags$a(href="https://www.inaturalist.org/observations?locale=en&subview=map&taxon_id=51046", "iNaturalist Observations")
     str7 <- paste("Created by Wendy Anthony 2020-01-13, updated 2021-06-03 (fixed spider cluster max zoom)")
     HTML(paste(str1, str2, str3, str4, str5, str6, str7, sep = "<br /><br />"))
