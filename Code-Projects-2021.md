@@ -163,7 +163,9 @@
 2. https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/  
   2.b. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
-[TOC](#TOC)***
+[TOC](#TOC)
+
+***
 # Week III <a name="weekIII"/>
 ***
 ## R2D16 2021-01-16 <a name="R2D16"/>
