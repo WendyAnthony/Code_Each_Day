@@ -34,7 +34,7 @@ library("rinat")
 ### 10000 max maxresults
 
 iNat_ARME <- get_inat_obs(
-  query = "Arbutus menziesii",
+  taxon_id = 51046,
   maxresults = 10000
 )
 
