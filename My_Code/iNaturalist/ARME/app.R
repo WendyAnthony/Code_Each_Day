@@ -33,6 +33,17 @@ iNat_ARME <- get_inat_obs(
   query = "Arbutus menziesii",
   maxresults = 10000
 )
+
+# Research Grade Results
+iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ),] 
+
+# write.csv(iNat_ARME_research, "iNat_ARME_research.csv", row.names = FALSE)
+# write.csv(iNat_ARME, "iNat_ARME.csv", row.names = FALSE)
+# str(iNat_ARME_research)
+# class(iNat_ARME_research)
+# View(iNat_ARME_research)
+
+#Extract just research grade observations
 # 
 # iNat_ARME_id_query <- get_inat_obs(
 #   taxon_id = 51046,
@@ -104,15 +115,18 @@ iNat_ARME <- get_inat_obs(
 # iNat_ARME_s_bounds
 #################
 
-maptypes <- c("Stamen.TerrainBackground",
-              "Esri.WorldImagery",
-              "OpenStreetMap",
-              "Stamen.Watercolor")
+# "Stamen.TerrainBackground",
+# "Esri.WorldImagery",
+# "OpenStreetMap",
+# "Stamen.Watercolor"
+# maptypes <- c("Stamen.TerrainBackground",
+#              "Esri.WorldImagery",
+#              "OpenStreetMap")
 
 ### ---------------------------------------
 # shiny app
 ui <- fluidPage(
-  titlePanel("ARME iNaturalist Observations Leaflet Map Viz"),
+  titlePanel("iNaturalist Observations: Arbutus menziesii"),
   #tags$br(),
   tags$p("Click marker clusters to find individual observations"),
   #tags$br(),
@@ -120,16 +134,17 @@ ui <- fluidPage(
   mainPanel(
     tabsetPanel(
     #  tabPanel("ARME North", leafletOutput("mymap_n")),
-      tabPanel("ARME 10000", leafletOutput("mymap")),
-      #tabPanel("ARME South (Wash)", leafletOutput("mymap_s")),
-     # tabPanel("ARME South", leafletOutput("mymap_s_2")),
+      tabPanel("ARME Research-Grade", leafletOutput("mymap_r")),
+    #  tabPanel("ARME 10000", leafletOutput("mymap")),
+    #  tabPanel("ARME South (Wash)", leafletOutput("mymap_s")),
+    #  tabPanel("ARME South", leafletOutput("mymap_s_2")),
       tabPanel("About", tableOutput("text"))
     )
   )
 )  
 
 server <- function(input, output, session) {
-  output$mymap <- renderLeaflet({
+  output$mymap_r <- renderLeaflet({
     # leaflet map with popup of many characters & image link
     map <- leaflet(height="3800px", width = "100%") %>%
       setView(lng = -118.34,  # 47.61912, -118.34473
@@ -137,10 +152,10 @@ server <- function(input, output, session) {
               zoom = 4) %>% 
       addTiles(group = "OSM (default)",
                options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-      addProviderTiles(providers$Stamen.Toner, group = "Toner",
-                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-      addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
-                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+#      addProviderTiles(providers$Stamen.Toner, group = "Toner",
+#                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+#      addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
+#                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
       addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
                        options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
       addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
@@ -149,16 +164,52 @@ server <- function(input, output, session) {
       
       #      addProviderTiles("Esri.WorldImagery") %>% 
       #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
-      addMarkers(lat = iNat_ARME$latitude, 
-                 lng = iNat_ARME$longitude,
+      addMarkers(lat = iNat_ARME_research$latitude, 
+                 lng = iNat_ARME_research$longitude,
                  clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
                  #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
-                 popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  iNat_ARME$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", iNat_ARME$common_name, "<br>", "<b>", "Place:", "</b>", iNat_ARME$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", iNat_ARME$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", iNat_ARME$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", iNat_ARME$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", iNat_ARME$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", iNat_ARME$user_login )) %>%
+                 popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  iNat_ARME_research$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", iNat_ARME_research$common_name, "<br>", "<b>", "Place:", "</b>", iNat_ARME_research$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", iNat_ARME_research$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", iNat_ARME_research$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", iNat_ARME_research$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", iNat_ARME_research$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", iNat_ARME_research$user_login )) %>%
       addLayersControl(
-        baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
+#        baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
+        baseGroups = c("OSM (default)", "Nat Geo", "ESRI World"),
         options = layersControlOptions(collapsed = TRUE)
       )
   })
+  
+  ##############
+  ## 10000 observations - max
+  # output$mymap <- renderLeaflet({
+  #   # leaflet map with popup of many characters & image link
+  #   map <- leaflet(height="3800px", width = "100%") %>%
+  #     setView(lng = -118.34,  # 47.61912, -118.34473
+  #             lat = 47.61,
+  #             zoom = 4) %>% 
+  #     addTiles(group = "OSM (default)",
+  #              options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+  #     addProviderTiles(providers$Stamen.Toner, group = "Toner",
+  #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+  #     addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
+  #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+  #     addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
+  #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+  #     addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
+  #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+  #     
+  #     #      addProviderTiles("Esri.WorldImagery") %>% 
+  #     #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
+  #     addMarkers(lat = iNat_ARME$latitude, 
+  #                lng = iNat_ARME$longitude,
+  #                clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
+  #                #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
+  #                popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  iNat_ARME$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", iNat_ARME$common_name, "<br>", "<b>", "Place:", "</b>", iNat_ARME$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", iNat_ARME$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", iNat_ARME$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", iNat_ARME$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", iNat_ARME$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", iNat_ARME$user_login )) %>%
+  #     addLayersControl(
+  #       baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
+  #       options = layersControlOptions(collapsed = TRUE)
+  #     )
+  # })
+  
+  ##############
+  ## map of northern bounds
   #   output$mymap_n <- renderLeaflet({
   #   # leaflet map with popup of many characters & image link
   #   map <- leaflet(height="3800px", width = "100%") %>%
@@ -190,7 +241,8 @@ server <- function(input, output, session) {
   #     )
   # })
   
-  # 
+  ##############
+  ## map of southern bounds
   # output$mymap_s <- renderLeaflet({
   #   # leaflet map with popup of many characters & image link
   #   map <- leaflet(height="3800px", width = "100%") %>%
@@ -254,16 +306,18 @@ server <- function(input, output, session) {
   # })
   
   output$text <- renderUI({
-    str1 <- tags$h2("iNaturalist observation Visualization")
-    str2 <- paste("iNaturalists observations of Arbutus menziesii")
-    str3 <- tags$h2("About these observations")
-    str4 <- paste("These are observations collected using @ iNaturalist")
+    str1 <- tags$h2("Leaflet Map Visualization")
+    str2 <- paste("iNaturalist research-grade observations of Arbutus menziesii (ARME) visualized using interactive Leaflet map ")
+    str3 <- paste("<hr>")
+    str4 <- tags$h3("About these observations")
     str5 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/app.R", "Shiny app Code")
     str6 <- tags$a(href="https://www.inaturalist.org/observations?locale=en&subview=map&taxon_id=51046", "iNaturalist Observations")
-    str7 <- tags$a(href="https://www.arbutusarme.org/home", "Arubuts website home")
+    str7 <- tags$a(href="https://www.arbutusarme.org/home", "Arubutus website home")
     str8 <- tags$a(href="https://treesnap.org/map/?center=47.66351640199509,-121.52321502871439&zoom=8", "Treesnap Observations")
-    str9 <- paste("Created by Wendy Anthony 2021-06-03")
-    HTML(paste(str1, str2, str3, str4, str5, str6, str7, str8, str9, sep = "<br /><br />"))
+    str9 <- paste("<hr>")
+    str10 <- paste("Created by Wendy Anthony 2021-06-03")
+    HTML(paste(str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, sep = "<br />"))
+    #     HTML(paste(str1, str2, str3, str4, str5, str6, str7, str8, sep = "<br /><br />"))
   })
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny  
 }
