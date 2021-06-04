@@ -51,12 +51,14 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
 
 #############################################
 ### info about data
+
 # str(iNat_ARME_research) # data type
 # class(iNat_ARME_research) # data frame
 # View(iNat_ARME_research) # view spreadsheet
 
 #############################################
 ### search by taxon_name and year
+
 # iNat_ARME <- get_inat_obs(
 #   taxon_name = "51046-Arbutus-menziesii", 
 #   year = 2020,
@@ -65,6 +67,7 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
 
 #############################################
 ### search by taxon_id
+
 # iNat_ARME_id_query <- get_inat_obs(
 #   taxon_id = 51046,
 #   maxresults = 3000
@@ -73,22 +76,24 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
 #############################################
 ### Search by lat long Bounds
 #############################################
-### Filter by lat long bounds: North
-# n_bounds <- c(48.38362, -134.0332, 56.13178, -120.10254)
-# iNat_ARME_n_bounds <- get_inat_obs(
-#   query = "Arbutus menziesii", 
-#   bounds = n_bounds,
-#   maxresults = 10000   #3743 actual
-# )
-
-#############################################
 ### Filter by lat long bounds: North >>> ++ results
-### use this one >>> more observations
+### *** use this one >>> more observations ***
+
 # n_bounds_2 <- c(46.8968, -134.36279, 55.25956, -117.33398)
 # iNat_ARME_n_bounds_2 <- get_inat_obs(
 #   query = "Arbutus menziesii", 
 #   bounds = n_bounds_2,
 #   maxresults = 10000   #5292 actual
+# )
+
+#############################################
+### Filter by lat long bounds: North
+
+# n_bounds <- c(48.38362, -134.0332, 56.13178, -120.10254)
+# iNat_ARME_n_bounds <- get_inat_obs(
+#   query = "Arbutus menziesii", 
+#   bounds = n_bounds,
+#   maxresults = 10000   #3743 actual
 # )
 
 #############################################
@@ -99,7 +104,8 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
 #   bounds = s_bounds_2,
 #   maxresults = 10000 #2530 actual
 # )
-### same resulting number
+
+### these diff bounds create same resulting number
 # s_bounds <- c(40.37166, -125.68359, 48.2082, -106.17187)
 # iNat_ARME_s_bounds <- get_inat_obs(
 #   query = "Arbutus menziesii",
@@ -111,6 +117,7 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
 ### Bounds
 #############################################
 ### Filter by lat long bounds: North
+## order of bounds for code
 # southern latitude, western longitude, northern latitude, and eastern longitude.
 
 # n_bounds_2
@@ -138,19 +145,12 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
 #############################################
 #############################################
 ### data objects created in this app
+
 # iNat_ARME_query_10000
 # iNat_ARME_n_bounds
 # iNat_ARME_n_bounds_2
 # View(iNat_ARME_n_bounds_2)
 # iNat_ARME_s_bounds
-
-#############################################
-#############################################
-## maptypes 
-# maptypes <- c("Stamen.TerrainBackground",
-#              "Esri.WorldImagery",
-#              "OpenStreetMap",
-#              "Stamen.Watercolor")
 
 #############################################
 #############################################
@@ -190,10 +190,6 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
                          options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
         addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
                          options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-        
-        
-        #     addProviderTiles("Esri.WorldImagery") %>% 
-        #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
         addMarkers(lat = iNat_ARME_research$latitude, 
                    lng = iNat_ARME_research$longitude,
                    clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
@@ -224,9 +220,6 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
     #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
     #     addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
     #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-    #     
-    #     #      addProviderTiles("Esri.WorldImagery") %>% 
-    #     #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
     #     addMarkers(lat = iNat_ARME$latitude, 
     #                lng = iNat_ARME$longitude,
     #                clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
@@ -255,11 +248,6 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
     #     addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
     #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
     #     addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
-    #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-    #     
-    #     
-    #     #      addProviderTiles("Esri.WorldImagery") %>% 
-    #     #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
     #     addMarkers(lat = iNat_ARME_n_bounds_2$latitude, 
     #                lng = iNat_ARME_n_bounds_2$longitude,
     #                clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
@@ -289,10 +277,6 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
     #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
     #     addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
     #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-    #     
-    #     
-    #     #      addProviderTiles("Esri.WorldImagery") %>% 
-    #     #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
     #     addMarkers(lat = iNat_ARME_s_bounds$latitude, 
     #                lng = iNat_ARME_s_bounds$longitude,
     #                clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
@@ -320,10 +304,6 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
     #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
     #     addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
     #                      options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-    #     
-    #     
-    #     #      addProviderTiles("Esri.WorldImagery") %>% 
-    #     #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
     #     addMarkers(lat = iNat_ARME_s_bounds_2$latitude, 
     #                lng = iNat_ARME_s_bounds_2$longitude,
     #                clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
@@ -348,7 +328,7 @@ iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ]
       str10 <- paste("Created by Wendy Anthony 2021-06-03")
       HTML(paste(str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, sep = "<br />"))
     })
-    # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny  
+    ### text output code idea from https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny  
   }
   
   shinyApp(ui, server)
