@@ -42,6 +42,9 @@
 
 **Thoughts:** 
 - I had trouble getting date formatting, though I didn't need it for this app
+- Shiny app won't open/publish in Shinyapps.io online: 
+  - Error Message: "An error has occurred: Unable to connect to worker after 60.00 seconds; startup took too long."
+  - I'd like to try to figure out how to import iNaturalist info separate from app and just use the shiny app to visualize data already downloaded ??
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/app.R
