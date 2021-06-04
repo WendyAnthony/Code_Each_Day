@@ -5,6 +5,9 @@
 # 2021-01-25 << fixed spider cluster zoom
 # 2021-06-03 >> madrone
 ##########################################
+# install.packages("shiny")
+# install.packages("leaflet")
+# install.packages("rinat")
 
 library("shiny")
 library("leaflet")
