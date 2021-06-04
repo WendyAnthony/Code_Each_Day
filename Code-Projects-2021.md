@@ -6,6 +6,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXII](#weekXXII)**  
+  - [R2D154 2021-06-03](#R2D154)
 - **[Week XIX](#weekXIX)**  
   - [R2D130 2021-05-10](#R2D130)
   - [R2D129 2021-05-09](#R2D129)
@@ -31,6 +33,21 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XXII <a name="weekXXII"/>
+***
+## R2D154 2021-06-03 <a name="R2D154"/>
+**Today's Progress**: 
+- recreate Shiny app for iNaturalist observations of Arbutus menziesii
+
+**Thoughts:** 
+- I had trouble getting date formatting, though I didn't need it for this app
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/app.R
+   
+[TOC](#TOC)
+
 ***
 # Week XIX <a name="weekXIX"/>
 ***
