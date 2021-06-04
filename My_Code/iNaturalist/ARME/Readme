@@ -15,3 +15,5 @@ i.e. place cursor at beginning of line library("Shiny") and press keys Command+E
 >>> the Shiny app should open in a separate popup window
 
 >>> to open Shiny app in browser, click button "Open in Browser" 
+
+@ 2021-06-04 16:53 PDT
