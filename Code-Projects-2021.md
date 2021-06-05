@@ -7,6 +7,8 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XXII](#weekXXII)**  
+  - [R2D156 2021-06-05](#R2D156)
+- **[Week XXII](#weekXXII)**  
   - [R2D154 2021-06-03](#R2D154)
 - **[Week XIX](#weekXIX)**  
   - [R2D130 2021-05-10](#R2D130)
@@ -33,6 +35,23 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XXII <a name="weekXXII"/>
+***
+## R2D156 2021-06-05 <a name="R2D156"/>
+**Today's Progress**: 
+- finally got the ARME iNaturalist Shiny App to publish
+
+**Thoughts:** 
+- worked with a search of 6000 records, but would NOT work when searching max 10,000 records
+- I'd like to try to find a way to do more searches from the shiny app, and also export a csv of results
+- I'd like to find out how to access the observation fields for ARME Project
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/Shiny/app.R
+   
+[TOC](#TOC)
+
 ***
 # Week XXII <a name="weekXXII"/>
 ***
