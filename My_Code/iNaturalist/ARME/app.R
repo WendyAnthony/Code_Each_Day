@@ -9,23 +9,19 @@
 
 ### Read-Me
 #' Research-grade iNaturalist ARME observations in an interactive leaflet map Shiny app
-#' 
 #' To get the Shiny app to work on your local computer in RStudio:
-#'   
-#'   * Download app.R
+#' * Download app.R
 #' * Open in RStudio
 #' 
 #' * I'm sorry to say that this app doesn't seem to always play nice with the 'Run App' button ... so ...
 #' 
-#' * Go through each code line to install libraries and download data separately
-#' i.e. place cursor at beginning of line library("Shiny") and press keys Command+Enter (Mac) - probably Control+Enter(Win)
+#' * highlight the whole file code and press keys Command+Enter (Mac) - probably Control+Enter(Win)
 #' 
-#' * at beginning of Shiny App section, highlight this whole section and press keys Command+Enter (Mac) - probably Control+Enter(Win)
+#' * NOTE: downloading 10,000 observations from iNaturalist will take a few minutes
 #' 
 #' >>> the Shiny app should open in a separate popup window
 #' 
 #' >>> to open Shiny app in browser, click button "Open in Browser" 
-#' 
 #' @ 2021-06-04 16:53 PDT
 
 #############################################
