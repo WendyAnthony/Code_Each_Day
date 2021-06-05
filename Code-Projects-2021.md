@@ -8,7 +8,6 @@
 ## Table of Contents  <a name="TOC"/>
 - **[Week XXII](#weekXXII)**  
   - [R2D156 2021-06-05](#R2D156)
-- **[Week XXII](#weekXXII)**  
   - [R2D154 2021-06-03](#R2D154)
 - **[Week XIX](#weekXIX)**  
   - [R2D130 2021-05-10](#R2D130)
