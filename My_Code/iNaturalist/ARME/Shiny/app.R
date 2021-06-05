@@ -6,7 +6,8 @@
 # 2020-10-13  >> created first iNat app
 # 2021-01-25 << fixed spider cluster zoom
 # 2021-06-05 >> try with less max to 
-# "    "     >> attempt Shiny publish
+# "    "     >> Shiny publish
+# >>> add casual/needs ID >> workds @15:03
 
 ### Read-Me
 #' Research-grade iNaturalist ARME observations in an interactive leaflet map Shiny app
@@ -99,7 +100,7 @@ iNat_ARME_needs_id_n_bounds_3 <- iNat_ARME_n_bounds_3[which(iNat_ARME_n_bounds_3
   ### ---------------------------------------
   # shiny app
   ui <- fluidPage(
-    titlePanel("iNaturalist Observations: Arbutus menziesii"),
+    titlePanel("iNaturalist Observations: Arbutus menziesii (North)"),
     #tags$br(),
     tags$p("Click marker clusters to find individual observations"),
     #tags$br(),
@@ -107,18 +108,21 @@ iNat_ARME_needs_id_n_bounds_3 <- iNat_ARME_n_bounds_3[which(iNat_ARME_n_bounds_3
     mainPanel(
       tabsetPanel(
         tabPanel("ARME Research-Grade", leafletOutput("mymap_r_n_3")),
+        tabPanel("ARME Casual", leafletOutput("mymap_casual")),
+        tabPanel("ARME Needs ID", leafletOutput("mymap_needs_id")),
         tabPanel("About", tableOutput("text"))
       )
     )
   )  
   
   server <- function(input, output, session) {
+    # research grade observation map
     output$mymap_r_n_3 <- renderLeaflet({
       # leaflet map with popup of many characters & image link
       map <- leaflet(height="100%", width = "auto") %>%
-        setView(lng = -118.34,  # 47.61912, -118.34473
-                lat = 47.61,
-                zoom = 4) %>% 
+        setView(lng = -122.01,  # 53.13194, -122.91504  
+                lat = 49.51,
+                zoom = 5) %>% 
         addTiles(group = "OSM (default)",
                  options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
         addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
@@ -132,6 +136,64 @@ iNat_ARME_needs_id_n_bounds_3 <- iNat_ARME_n_bounds_3[which(iNat_ARME_n_bounds_3
                    popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  iNat_ARME_research_n_bounds_3$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", iNat_ARME_research_n_bounds_3$common_name, "<br>", "<b>", "Place:", "</b>", iNat_ARME_research_n_bounds_3$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", iNat_ARME_research_n_bounds_3$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", iNat_ARME_research_n_bounds_3$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", iNat_ARME_research_n_bounds_3$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", iNat_ARME_research_n_bounds_3$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", iNat_ARME_research_n_bounds_3$user_login )) %>%
         addLayersControl(
           baseGroups = c("OSM (default)", "Nat Geo", "ESRI World"),
+          options = layersControlOptions(collapsed = TRUE)
+        )
+    })
+    
+    ##############
+    ## casual observations - max
+    output$mymap_casual <- renderLeaflet({
+      # leaflet map with popup of many characters & image link
+      map <- leaflet(height="3800px", width = "100%") %>%
+        setView(lng = -122.01,  # 53.13194, -122.91504  
+                lat = 49.51,
+                zoom = 5) %>% 
+        addTiles(group = "OSM (default)",
+                 options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Stamen.Toner, group = "Toner",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addMarkers(lat = iNat_ARME_casual_n_bounds_3$latitude,
+                   lng = iNat_ARME_casual_n_bounds_3$longitude,
+                   clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
+                   #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
+                   popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  iNat_ARME_casual_n_bounds_3$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", iNat_ARME_casual_n_bounds_3$common_name, "<br>", "<b>", "Place:", "</b>", iNat_ARME_casual_n_bounds_3$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", iNat_ARME_casual_n_bounds_3$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", iNat_ARME_casual_n_bounds_3$image_url, "'width='200px' />", "<br>", "<b>", "Observation Date:", "</b>", iNat_ARME_casual_n_bounds_3$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", iNat_ARME_casual_n_bounds_3$user_login )) %>%
+        addLayersControl(
+          baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
+          options = layersControlOptions(collapsed = TRUE)
+        )
+    })
+    
+    ##############
+    ## needs_id observations - max
+    output$mymap_needs_id <- renderLeaflet({
+      # leaflet map with popup of many characters & image link
+      map <- leaflet(height="3800px", width = "100%") %>%
+        setView(lng = -122.01,  # 53.13194, -122.91504  
+                lat = 49.51,
+                zoom = 5) %>% 
+        addTiles(group = "OSM (default)",
+                 options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Stamen.Toner, group = "Toner",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
+                         options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+        addMarkers(lat = iNat_ARME_needs_id_n_bounds_3$latitude,
+                   lng = iNat_ARME_needs_id_n_bounds_3$longitude,
+                   clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
+                   #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
+                   popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  iNat_ARME_needs_id_n_bounds_3$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", iNat_ARME_needs_id_n_bounds_3$common_name, "<br>", "<b>", "Place:", "</b>", iNat_ARME_needs_id_n_bounds_3$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", iNat_ARME_needs_id_n_bounds_3$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", iNat_ARME_needs_id_n_bounds_3$image_url, "'width='200px' />", "<br>", "<b>", "Observation Date:", "</b>", iNat_ARME_needs_id_n_bounds_3$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", iNat_ARME_needs_id_n_bounds_3$user_login )) %>%
+        addLayersControl(
+          baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
           options = layersControlOptions(collapsed = TRUE)
         )
     })
