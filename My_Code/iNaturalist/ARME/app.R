@@ -59,7 +59,7 @@ iNat_ARME <- get_inat_obs(
 #############################################
 ### Filter for Research Grade Results
 
-iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ), ] 
+iNat_ARME_research <- iNat_ARME[which(iNat_ARME$quality_grade == "research" ),] 
 
 #############################################
 ### write csv files to working directory
