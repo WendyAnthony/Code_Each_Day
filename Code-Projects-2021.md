@@ -38,7 +38,7 @@
 - **[Wishlist](#wishlist)**  
   
 ***
-# Week XXII <a name="weekXXII"/>
+# Week XXII <a name="weekXXIII"/>
 ***
 ## R2D158 2021-06-07 <a name="R2D158"/>
 **Today's Progress**: 
@@ -56,8 +56,6 @@
    
 [TOC](#TOC)
 
-***
-# Week XXIII <a name="weekXXII"/>
 ***
 ## R2D157 2021-06-06 <a name="R2D157"/>
 **Today's Progress**: 
@@ -92,6 +90,7 @@
    
 [TOC](#TOC)
 
+***
 ## R2D154 2021-06-03 <a name="R2D154"/>
 **Today's Progress**: 
 - recreate Shiny app for iNaturalist observations of Arbutus menziesii
@@ -106,6 +105,10 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/app.R
    
 [TOC](#TOC)
+
+***
+# Week XIX <a name="weekXIX"/>
+***
 
 ## R2D130 2021-05-10 <a name="R2D130"/>
 **Today's Progress**: 
