@@ -1,4 +1,9 @@
-Another Shiny app version using rinat to download data for ARME
-Runs fine locally, however ...
+Another Shiny app version using rinat to download current data for ARME to display interactively on a leaflet map
+displays different tabs for north and south data, ARME project data, observations needing ID, and casual observations (missing some critical info, or just wrong)
+
+Runs fine locally in RStudio, however ...
+As this app downloads 10,000 maximum records it won't run on a Shiny server
+
+The Download button will prompt to download a dated .csv file to local computer
+
 Download button doesn't seem to want to display when published in Shiny server, so I must be missing something? ... 
-so, as download button won't work on Shiny server, and can't download 10,000 maximum records on Shiny server, this locally-run RStudio file displays north and south data and
