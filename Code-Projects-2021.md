@@ -9,6 +9,7 @@
 - **[Week XXII](#weekXXII)**  
   - [R2D158 2021-06-07](#R2D158)
   - [R2D157 2021-06-06](#R2D157)
+- **[Week XXII](#weekXXII)**  
   - [R2D156 2021-06-05](#R2D156)
   - [R2D154 2021-06-03](#R2D154)
 - **[Week XIX](#weekXIX)**  
@@ -56,7 +57,7 @@
 [TOC](#TOC)
 
 ***
-# Week XXII <a name="weekXXII"/>
+# Week XXIII <a name="weekXXII"/>
 ***
 ## R2D157 2021-06-06 <a name="R2D157"/>
 **Today's Progress**: 
@@ -73,9 +74,6 @@
    
 [TOC](#TOC)
 
-***
-# Week XXII <a name="weekXXII"/>
-***
 ## R2D156 2021-06-05 <a name="R2D156"/>
 **Today's Progress**: 
 - finally got the ARME iNaturalist Shiny App to publish
@@ -109,9 +107,6 @@
    
 [TOC](#TOC)
 
-***
-# Week XIX <a name="weekXIX"/>
-***
 ## R2D130 2021-05-10 <a name="R2D130"/>
 **Today's Progress**: 
 - revisiting my ```Climatology``` Rscript to remember how to make a column of named months from numerical months, and to create a column for seasons
