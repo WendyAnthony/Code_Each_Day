@@ -6,7 +6,7 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week XXII](#weekXXII)**  
+- **[Week XXIII](#weekXXII)**  
   - [R2D158 2021-06-07](#R2D158)
   - [R2D157 2021-06-06](#R2D157)
 - **[Week XXII](#weekXXII)**  
@@ -74,6 +74,9 @@
    
 [TOC](#TOC)
 
+***
+# Week XXII <a name="weekXXII"/>
+***
 ## R2D156 2021-06-05 <a name="R2D156"/>
 **Today's Progress**: 
 - finally got the ARME iNaturalist Shiny App to publish
@@ -89,9 +92,6 @@
    
 [TOC](#TOC)
 
-***
-# Week XXII <a name="weekXXII"/>
-***
 ## R2D154 2021-06-03 <a name="R2D154"/>
 **Today's Progress**: 
 - recreate Shiny app for iNaturalist observations of Arbutus menziesii
