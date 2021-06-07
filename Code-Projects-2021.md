@@ -7,6 +7,8 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XXII](#weekXXII)**  
+  - [R2D158 2021-06-07](#R2D158)
+  - [R2D157 2021-06-06](#R2D157)
   - [R2D156 2021-06-05](#R2D156)
   - [R2D154 2021-06-03](#R2D154)
 - **[Week XIX](#weekXIX)**  
@@ -34,6 +36,43 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XXII <a name="weekXXII"/>
+***
+## R2D158 2021-06-07 <a name="R2D158"/>
+**Today's Progress**: 
+- created a single local-loading Shiny app 
+- to include download button, research, north, south, needs-ID, casual
+
+**Thoughts:** 
+- would like to figure out how to use JSON query to download iNat observations, including annotations
+- I wonder if I can figure out how to get around using Shiny and figure out how to make api calls to a leaflet map?
+
+**Links to code work:** 
+- https://wendyanthony.shinyapps.io/iNaturalist-madrone-shiny-leaflet-app/
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/iNaturalist/ARME/DownloadData
+
+   
+[TOC](#TOC)
+
+***
+# Week XXII <a name="weekXXII"/>
+***
+## R2D157 2021-06-06 <a name="R2D157"/>
+**Today's Progress**: 
+- created a download button for .csv data for iNat shiny app, 
+- but download button won't show up when published ???
+
+**Thoughts:** 
+- I need to learn more about the intricicacies of Shiny publishing
+- I wonder if a Shiny server could be installed in Geography website - I might ask Rick to see?
+
+**Links to code work:** 
+- https://wendyanthony.shinyapps.io/iNaturalist-madrone-shiny-leaflet-app/
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/Shiny/app.R
+   
+[TOC](#TOC)
+
 ***
 # Week XXII <a name="weekXXII"/>
 ***
