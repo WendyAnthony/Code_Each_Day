@@ -6,6 +6,6 @@ A Download button will prompt to download a dated .csv file to local computer
 
 This app Runs fine locally in RStudio, however ...
 
-As this app downloads 10,000 maximum records it won't run on a Shiny server
-
 Download button doesn't seem to want to display when published in Shiny server, so I must be missing something? ... 
+
+And as this app downloads 10,000 maximum records, due to size / time-out, even without the Download button, it won't run on a Shiny server
