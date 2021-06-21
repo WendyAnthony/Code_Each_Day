@@ -48,6 +48,7 @@
 
 **Thoughts:** 
 - had to do some tweaking, and figure out why lib folder of dependencies wasn't copying (not sure why, but I did finally get it to work)
+  - I think the fix was htmlwidgets::saveWidget(selfcontained = TRUE) vs FALSE
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/photo-exif-map-test-lib.R
