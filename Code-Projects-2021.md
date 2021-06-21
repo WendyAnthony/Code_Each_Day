@@ -6,6 +6,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXV](#weekXXV)**  
+  - [R2D173 2021-06-21](#R2D173)
 - **[Week XXIII](#weekXXII)**  
   - [R2D158 2021-06-07](#R2D158)
   - [R2D157 2021-06-06](#R2D157)
@@ -37,6 +39,22 @@
   - [R2D1 2021-01-01](#R2D1)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XXV <a name="weekXXV"/>
+***
+## R2D173 2021-06-21 <a name="R2D173"/>
+**Today's Progress**: 
+- revisit getting exif data from photo and plotting on R leaflet map
+
+**Thoughts:** 
+- had to do some tweaking, and figure out why lib folder of dependencies wasn't copying (not sure why, but I did finally get it to work)
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/photo-exif-map-test-lib.R
+
+   
+[TOC](#TOC)
+
 ***
 # Week XXII <a name="weekXXIII"/>
 ***
