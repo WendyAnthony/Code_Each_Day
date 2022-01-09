@@ -9,6 +9,8 @@
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**    
   - [R3D9 2022-01-09](#R3D1)
+- **[Week I](#weekI)**    
+  - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
   
 ***
@@ -28,7 +30,21 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Climate/Warming_Stripes/VictoriaClimateStripes-1941-2021-lg-anom.png
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Climate/Warming_Stripes/VictoriaClimateStripes-1941-2021-lg.png
 
-   
+[TOC](#TOC)
+
+***
+# Week I <a name="weekI"/>
+***
+## R3D3 2022-01-03 <a name="R2D3"/>
+**Today's Progress**: 
+- Created chart of my thyroid RX daily consumption, from csv exported from .xls file using 'ggplot2'
+
+**Thoughts:** 
+- 
+
+**Links to code work:** 
+- 
+
 [TOC](#TOC)
 
 ***  
