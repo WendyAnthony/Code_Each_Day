@@ -38,9 +38,13 @@
 ## R3D3 2022-01-03 <a name="R3D3"/>
 **Today's Progress**: 
 - Created chart of my thyroid RX daily consumption, from csv exported from .xls file using `ggplot2`
+- using point, line, and smooth (central line of mean and shaded error)
+- combined plots for Imitrex (points) &amp; Thyroid (line) - was able to use one axis
+  - couldn't also add the smooth line with error ???
+- couldn't seem to get 2nd y-axis to work
 
 **Thoughts:** 
-- 
+- couldn't seem to get 2nd y-axis to work >>> tried lots of different things
 
 **Links to code work:** 
 - 
