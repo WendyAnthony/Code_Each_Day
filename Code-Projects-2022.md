@@ -16,7 +16,7 @@
 ***
 # Week II <a name="weekII"/>
 ***
-## R3D9 2022-01-09 <a name="R2D9"/>
+## R3D9 2022-01-09 <a name="R3D9"/>
 **Today's Progress**: 
 - Revisited Climate Warming Stripes code and updated to 2021
   - added code for anomaly temp based on 1971-2000 Climate normals
@@ -35,9 +35,9 @@
 ***
 # Week I <a name="weekI"/>
 ***
-## R3D3 2022-01-03 <a name="R2D3"/>
+## R3D3 2022-01-03 <a name="R3D3"/>
 **Today's Progress**: 
-- Created chart of my thyroid RX daily consumption, from csv exported from .xls file using 'ggplot2'
+- Created chart of my thyroid RX daily consumption, from csv exported from .xls file using `ggplot2`
 
 **Thoughts:** 
 - 
