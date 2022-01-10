@@ -66,11 +66,11 @@ class(climate_victoria)
 head(climate_victoria)
 ```
 
-<details><summary>Click here
+<details><summary><b><i>Click to see results of `str(climate_victoria)`</i></b></summary><p>
 ```{r}
 str(climate_victoria)
 ```
-</summary></details>
+</p></details>
 
 # Select Columns: Year and Year Average temperature  
 
@@ -101,15 +101,17 @@ temp_victoria_yr
 ```
 
 ## Create Date Column
-* lubridate::ymd() function converts date character to Date object
-
+* lubridate::ymd() function converts date character to Date object  
 ```{r create_date_column}
-
 temp_victoria_yr$Date <- paste(temp_victoria_yr$Year, temp_victoria_yr$Month, temp_victoria_yr$Day, sep="-") %>% ymd() %>% as.Date()
+```
 
+<details><summary><b><i>Click to see results of `str(temp_victoria_yr$Date)`</i></b></summary><p>
+```{r explore_date_column}
 str(temp_victoria_yr$Date)
 temp_victoria_yr$Date
 ```
+</p></details>
 
 
 ## Filter for one year
@@ -140,7 +142,7 @@ groupby_temp_victoria
 ```
 
 # Create the Stripes
-## Create default theme_minimal() style 
+## Theme Create default theme_minimal() style 
 
 ```{r theme_minimal}
 theme_strip <- theme_minimal()+
@@ -205,9 +207,10 @@ stplt_lg <- ggplot(groupby_temp_victoria,
            scale_y_continuous(expand = c(0, 0)) +
            scale_fill_gradientn(colors = rev(col_strip)) +
              guides(fill = guide_colorbar(barwidth = 1)) +
-            labs(title = "Victoria BC Intl. Airport \nAverage °C Temperature 1941-2021",
-                caption = "Annual Average Temperature Analysis (°Celsius)\nUsing historical climate data from Environment Canada\nhttps://climate.weather.gc.ca/historical_data/search_historic_data_e.html\n\n by Wendy Anthony") +
-          theme_strip
+            labs(title = "Victoria BC Intl. Airport Average Yearly Mean °C Temperature 1941-2021",
+                caption = "Using historical climate data from Environment Canada\nhttps://climate.weather.gc.ca/historical_data/search_historic_data_e.html\n chart by Wendy Anthony") +
+          theme_strip +
+          theme(plot.title=element_text(size = 12)) # smaller text size, no line break
 stplt_lg
 ```
 
@@ -307,14 +310,14 @@ stplt_lg_anom <- ggplot(groupby_temp_victoria,
            scale_y_continuous(expand = c(0, 0)) +
            scale_fill_gradientn(colors = rev(col_strip)) +
              guides(fill = guide_colorbar(barwidth = 1)) +
-            labs(title = "Victoria BC Intl. Airport\n°C Temperature Anomaly 1941-2021",
+            labs(title = "Victoria BC Intl. Airport\nAnnual °C Temperature Anomaly 1941-2021",
                  subtitle = "(Based on Victoria INT'L Airport Climate Normals 1971-2000)",
-                caption = "Annual Temperature Anomaly Analysis (°Celsius)\nUsing historical climate data from Environment Canada\nhttps://climate.weather.gc.ca/historical_data/search_historic_data_e.html \n\n chart by Wendy Anthony") +
+                caption = "Using historical climate data from Environment Canada\nhttps://climate.weather.gc.ca/historical_data/search_historic_data_e.html \n chart by Wendy Anthony") +
           theme_strip
 stplt_lg_anom
 ```
 
-### create plot files
+### create plot files of anomaly with legend
 ```{r create_image_files_legend_anomaly}
 # png files have very poor resolution >>> add res = 300
 png("VictoriaClimateStripes-1941-2021-lg-anom.png", units="in", width=6, height=5, res = 300)
@@ -329,5 +332,58 @@ dev.off()
 # tiff files have best resolution, with a larger file-size; specify size and resolution
 tiff("VictoriaClimateStripes-1941-2021-lg-anom.tiff", units="in", width=5, height=5, res=300)
 stplt_lg_anom
+dev.off()
+```
+
+
+
+## create anomaly plot with no legend
+```{r ggplot_graphic_no_legend_anomaly}
+## stripes plot with the legend
+
+# Define Start and end times for the subset as R objects that are the time class
+startTime <- as.Date("1941-01-01")
+endTime <- as.Date("2021-01-01")
+
+# create a start and end time R object >>> scale_x_date(limits=start.end,
+start.end <- c(startTime,endTime)
+start.end
+
+stplt_nolg_anom <- ggplot(groupby_temp_victoria,
+             aes(x = date, y = 1, fill = Anomaly)) +
+        geom_tile() +
+           scale_x_date(limits=start.end,
+                        date_breaks = "5 years",
+                        date_labels = "%Y",
+                        expand = c(0, 0)) +
+           scale_y_continuous(expand = c(0, 0)) +
+           scale_fill_gradientn(colors = rev(col_strip)) +
+           guides(fill = guide_colorbar(barwidth = 1)) +
+           labs(title = "Victoria BC Intl. Airport Mean Temperature°C Anomaly 1941-2021",
+                subtitle = "(Based on Env Canada Victoria INT'L Airport Climate Normals 1971-2000)") +
+          theme_strip +
+          theme(   # modify theme_strip
+            legend.position = "none", # no legend
+            plot.title=element_text(size = 8), # smaller text size, no line break
+            plot.subtitle=element_text(size = 7), # smaller text size
+            axis.text.x = element_blank()) # no x-axis text
+stplt_nolg_anom
+```
+
+### create plot files of anomaly without legend
+```{r create_image_files_legend_anomaly}
+# png files have very poor resolution >>> add res = 300
+png("VictoriaClimateStripes-1941-2021-nolg-anom.png", units="in", width=6, height=5, res = 300)
+stplt_nolg_anom
+dev.off()
+
+# pdf files have better resolution
+pdf("VictoriaClimateStripes-1941-2021-nolg-anom.pdf")
+stplt_nolg_anom
+dev.off()
+
+# tiff files have best resolution, with a larger file-size; specify size and resolution
+tiff("VictoriaClimateStripes-1941-2021-nolg-anom.tiff", units="in", width=5, height=5, res=300)
+stplt_nolg_anom
 dev.off()
 ```
