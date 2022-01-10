@@ -8,7 +8,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week II](#weekII)**    
-  - [R3D9 2022-01-09](#R3D1)
+  - [R3D9 2022-01-09](#R3D9)
 - **[Week I](#weekI)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
@@ -29,6 +29,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Climate/Warming_Stripes/Warming-Stripes-Victoria.Rmd
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Climate/Warming_Stripes/VictoriaClimateStripes-1941-2021-lg-anom.png
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Climate/Warming_Stripes/VictoriaClimateStripes-1941-2021-lg.png
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Climate/Warming_Stripes
 
 [TOC](#TOC)
 
