@@ -7,14 +7,14 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week II](#weekII)**    
+- **[Week III](#weekIII)**    
   - [R3D9 2022-01-09](#R3D9)
-- **[Week I](#weekI)**    
+- **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
   
 ***
-# Week II <a name="weekII"/>
+# Week III <a name="weekIII"/>
 ***
 ## R3D9 2022-01-09 <a name="R3D9"/>
 **Today's Progress**: 
@@ -34,7 +34,7 @@
 [TOC](#TOC)
 
 ***
-# Week I <a name="weekI"/>
+# Week II <a name="weekII"/>
 ***
 ## R3D3 2022-01-03 <a name="R3D3"/>
 **Today's Progress**: 
