@@ -9,6 +9,8 @@
 ## Table of Contents  <a name="TOC"/>
 - **[Week XII](#weekXII)**    
   - [R3D80 2022-03-21](#R3D80)
+- **[Week XI](#weekXI)**    
+  - [R3D72 2022-03-13](#R3D72)  
 - **[Week III](#weekIII)**    
   - [R3D9 2022-01-09](#R3D9)
 - **[Week II](#weekII)**    
@@ -36,7 +38,25 @@
 [TOC](#TOC)
 
 ***
-# Week III <a name="weekIII"/>
+# Week XI <a name="weekXI"/>
+***
+## R3D72 2022-03-13 <a name="R3D72"/>
+**Today's Progress**: 
+- Revisited Climate Warming Stripes code
+- learned to make presentation slides RMarkdown output: ioslides_presentation 
+- learned hack to use github as webserver
+  - get github URL for page, change URL to remove ```blob/```, add raw. and change github to githack
+  - https:// raw.githack.com/ ... with only /master/, not /blob/master/
+
+**Thoughts:** 
+- nice way to make slides from Rmd document >> learn to make concise
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Climate/Warming_Stripes/Warming-Stripes-present-Victoria.html#1
+
+[TOC](#TOC)
+
+***
 ***
 ## R3D9 2022-01-09 <a name="R3D9"/>
 **Today's Progress**: 
@@ -55,6 +75,7 @@
 
 [TOC](#TOC)
 
+***
 ***
 # Week II <a name="weekII"/>
 ***
