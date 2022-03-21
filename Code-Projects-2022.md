@@ -7,12 +7,34 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XII](#weekXII)**    
+  - [R3D80 2022-03-21](#R3D80)
 - **[Week III](#weekIII)**    
   - [R3D9 2022-01-09](#R3D9)
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
   
+***
+# Week XII <a name="weekXII"/>
+***
+## R3D80 2022-03-21 <a name="R3D80"/>
+**Today's Progress**: 
+- Created interactive linked map / chart for Canada COVID vaccination status
+- multiple charts linked together for different status dates
+- created columns for % vaccinated, and found way to make new column in % format vs decimal
+
+**Thoughts:** 
+- I had to find Canada map, to replace US map in code
+
+**Links to code work:** 
+- [COVID-Canada.Rmd](https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/COVID-Canada.Rmd)
+- [Interactive COVID-Canada Vaccine web Widget](https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/my_widget_page-multi.html)
+- used Canada map https://github.com/kjhealy/canmap  
+- inspired by https://www.infoworld.com/article/3626911/easy-interactive-ggplot-graphs-in-r-with-ggiraph.html
+
+[TOC](#TOC)
+
 ***
 # Week III <a name="weekIII"/>
 ***
