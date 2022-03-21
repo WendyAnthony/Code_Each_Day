@@ -692,6 +692,7 @@ theme_map <- function(base_size=9, base_family="") {
               legend.justification = c(0,0),
               legend.position = c(0,0), 
               plot.title = element_text(face = "bold", colour = "black", size = 12),
+              plot.subtitle = element_text(face = "italic", colour = "black", size = 8, hjust = 0.5, vjust = 1),
               plot.caption = element_text(hjust = 0.5, face = "italic", size = 8, vjust = 1)
               )
 }
@@ -799,6 +800,7 @@ p_can_out <- p_can + geom_sf(color = "gray60",
   scale_fill_manual(values = map_colors) + 
   guides(fill = FALSE) + 
       labs(title = "Canada COVID \nvaccination Status 2020-2022",
+           subtitle = "(hover over map or chart)",
        caption = "Data from https://resources-covid19canada.hub.arcgis.com"
        ) +
   theme_map() + 
@@ -815,7 +817,8 @@ p_can_out
 
 ```{r link-map-barchart-can}
  prov_map <- ggplot() +
-      labs(title = "Canada COVID vaccination Status 2020-2022\n(interactive map & chart)",
+      labs(title = "Canada COVID vaccination Status 2020-2022",
+                      subtitle = "(hover over map or chart for interactivity)",
        caption = "Data from https://resources-covid19canada.hub.arcgis.com"
        ) +
    geom_sf_interactive(data = canada_cd, size = 0.125, 
