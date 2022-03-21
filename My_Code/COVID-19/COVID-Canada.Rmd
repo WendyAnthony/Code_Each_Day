@@ -877,15 +877,9 @@ girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_g
 
 
 
-HTML knit error  
- "png not found in resource path Error: pandoc document conversion failed with error 99"
- 
- getwd()  
-
 ---
 
 # Things I'd Like To Do TO Make This Better ...
-1. change x axis tick marks to 90 for all
-2. make x axis (y) full range for multiples
+1. make x axis (y) full range for multiples
 
 
