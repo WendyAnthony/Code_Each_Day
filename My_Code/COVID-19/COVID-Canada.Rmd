@@ -1,0 +1,888 @@
+---
+title: "COVID-Canada"
+author: "Wendy Anthony"
+date: "2022/03/15"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+# ggiraph
+interactive ggplot graphs in R with ggiraph  
+https://www.infoworld.com/article/3626911/easy-interactive-ggplot-graphs-in-r-with-ggiraph.html
+
+---
+
+"Use a ggiraph interactive geom instead of a “regular” ggplot geom.  
+The format is easy to remember: Just add _interactive to your usual geom.  
+So, geom_col() for a regular bar chart would be geom_col_interactive(), geom_point() would be geom_point_interactive(), and so on.  
+Add at least one interactive argument to the graph’s aes() mapping: tooltip, data_id, or onclick.  
+That data_id argument is what connects two graphics, letting you hover over one and affect the display of another one — all without Shiny."  
+  
+"After creating your ggiraph dataviz object, use the girafe() function to turn it into a JavaScript graphic.  
+Yes, that’s girafe() like the animal but with one f - the creator of ggiraph, David Gohel, lives in Paris."
+
+# Install packages
+
+# Load libraries
+```{r load-libraries}
+library(dplyr)
+library(ggplot2)
+library(ggiraph)
+library(patchwork)
+library(lubridate)
+
+library(scales) # For the percent_format() function
+
+# for Canada map
+library(sf) # for st_read
+```
+
+# Get data
+https://health-infobase.canada.ca/covid-19/epidemiological-summary-covid-19-cases.html
+https://resources-covid19canada.hub.arcgis.com/datasets/provincial-daily-totals/explore
+
+```{r get-data-COVID-Canada}
+data_url_can <- "Provincial_Daily_Totals.csv"
+```
+
+# Get 2021 Canada census population data for provinces
+```{r get-data-pop-Canada}
+data_url_can_pop <- "1710000901-eng-Canada-Census-2021-pop.csv"
+```
+
+## Read csv Canada COVID data
+
+```{r read-csv-covid-can}
+all_data_can <- read.csv(data_url_can)
+```
+
+## Read csv Canada population data
+need to remove meta data ... first 9 rows  
+
+```{r read-csv-pop-can}
+pop_data_can <- read.csv(data_url_can_pop, skip = 10, header = F)
+```
+
+## rename column names
+```{r rename-columns-pop}
+names(pop_data_can)[1] <- "Province"
+names(pop_data_can)[2] <- "Population"
+```
+
+## Convert population data.frame to all capitals to match all_data_can
+```{r capitalize-pop}
+pop_data_can$Province = toupper(pop_data_can$Province)
+pop_data_can$Province
+```
+
+## rename row values
+```{r rename-rows-pop}
+pop_data_can$Province[pop_data_can$Province=="NUNAVUT 5"] <- "NUNAVUT"
+#pop_data_can$Province[pop_data_can$Province=="NEWFOUNDLAND AND LABRADOR"] <- "NL"
+pop_data_can$Province[pop_data_can$Province=="PRINCE EDWARD ISLAND"] <- "PEI"
+pop_data_can$Province[pop_data_can$Province=="NORTHWEST TERRITORIES 5"] <- "NWT"
+# pop_data_can$Province[pop_data_can$Province=="BRITISH COLUMBIA"] <- "BC"
+```
+
+## remove last 8 rows of meta data
+
+```{r remove-last-rows}
+pop_data_can <- pop_data_can[-c(15:22), ]
+pop_data_can$Province
+```
+
+## data info
+
+```{r data_info}
+head(all_data_can)
+str(all_data_can)
+
+class(pop_data_can)
+head(pop_data_can)
+str(pop_data_can)
+glimpse(pop_data_can)
+```
+
+
+
+## find unique-values
+```{r unique-values-pop}
+unique(all_data_can[c("Province")])
+```
+
+
+
+### vector of not provinces to filter out
+
+```{r not_provinces}
+not_provinces <- c("CANADA", "REPATRIATED", "REPATRIATED CDN")
+```
+
+
+# Create new date column for date
+
+```{r date-column}
+class(all_data_can$SummaryDate) # character
+
+# create new column
+all_data_can$Date <- ""
+
+# move position of Date column
+# moved date column to first column
+# https://stackoverflow.com/questions/3369959/moving-columns-within-a-data-frame-without-retyping
+data.table::setcolorder(all_data_can, "Date")
+# move Date column to 7th position
+data.table::setcolorder(all_data_can, 2:6)
+```
+
+## convert date
+
+```{r convert-date}
+all_data_can$Date <- as.Date(all_data_can$SummaryDate)
+class(all_data_can$Date) # date
+```
+
+### filter out non-provinces tot vac
+```{r filter-out-non-provinces-tot}
+bar_graph_data_recent_can <- all_data_can %>%  
+  filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
+  select(Province, TotalVaccinated)
+```
+
+# TV - Create bar graph total vaccination
+
+```{r create-bar-graph-totvac}
+bar_graph_totvac <- ggplot(bar_graph_data_recent_can, 
+                aes(x = reorder(Province, TotalVaccinated), 
+                    y = TotalVaccinated)) +
+  geom_col(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 10)) +
+  labs(title = "Fully Vaccinated March  23, 2022",
+       subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
+       ) +
+   ylab("") +
+   xlab("") +
+  scale_y_continuous(labels = comma_format()) +
+  coord_flip()
+```
+
+## TV-View bar_graph totvac
+
+```{r bar-graph-totvac}
+bar_graph_totvac
+```
+
+## TV-Create a tooltip column in R
+
+```{r tootip-column-totvac}
+bar_graph_data_recent_can <- bar_graph_data_recent_can %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", 
+                   TotalVaccinated, " (#)")
+  )
+```
+
+## Make the bar chart interactive with ggiraph totvac
+
+```{r ggiraph-interactive-barchart-totvac}
+latest_vax_graph <- ggplot(bar_graph_data_recent_can, 
+                aes(x = reorder(Province, TotalVaccinated), 
+                    y = TotalVaccinated,
+                    tooltip = tooltip_text, data_id = Province #<<
+                    )) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +  #<<
+  labs(title = "Fully Vaccinated March 23, 2022",
+       subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
+       ) +
+   ylab("") +
+   xlab("") +
+  scale_y_continuous(labels = comma_format()) +  
+  coord_flip()
+
+girafe(ggobj = latest_vax_graph, width_svg = 5, height_svg = 4)
+```
+
+
+
+
+---
+
+
+# Merge 2 data.frames for pop
+```{r merge}
+all_data_can_pop <- merge(all_data_can, pop_data_can, by="Province")
+
+# move population column to beginning
+data.table::setcolorder(all_data_can_pop, "Population")
+```
+
+```{r new-column}
+# create new column for PercentVaccinated
+all_data_can_pop$PercentVaccinated <- ""
+
+# move PercentVaccinated column to beginning
+data.table::setcolorder(all_data_can_pop, "PercentVaccinated")
+
+# move PercentVaccinated column to 23th position
+data.table::setcolorder(all_data_can_pop, 2:22)
+```
+
+---
+
+## calculate Percent Vaccinated
+```{r calculate-percent-vaccinated}
+class(all_data_can_pop$PercentVaccinated)   # character >> numeric
+class(all_data_can_pop$TotalVaccinated) # integer > numeric >>>> total vaccinated is adding up dose 1 + dose 2 + 
+class(all_data_can_pop$Population)  # character
+
+# Change character to numeric >> worked
+all_data_can_pop$PercentVaccinated <- as.numeric(all_data_can_pop$PercentVaccinated)
+all_data_can_pop$TotalVaccinated <- as.numeric(all_data_can_pop$TotalVaccinated)
+
+
+# N/A introduced by coercion???? trying to convert Population from character to numeric with NAs
+# all_data_can_pop$Population1 <- as.numeric(all_data_can_pop$Population)
+
+class(all_data_can_pop$Population)   # character >> factor >> numeric
+# Population column has commas, which wouldn't let the characters be converted to numeric,
+# after removing commas, it converts properly
+all_data_can_pop$Population <- as.numeric(gsub(",", "", all_data_can_pop$Population))  
+```
+
+
+# calculate percentage >>> total vaccinated is actual dose 1 + dose 2 >>> % of pop is > 1
+```{r calculate-percentage}
+all_data_can_pop <- dplyr::mutate(all_data_can_pop, PercentVaccinated = TotalVaccinated / Population)
+
+all_data_can_pop <- dplyr::mutate(all_data_can_pop, PercentVaccinatedDose1 = TotalDose1 / Population)
+all_data_can_pop <- dplyr::mutate(all_data_can_pop, PercentVaccinatedDose2 = TotalDose2 / Population)
+all_data_can_pop <- dplyr::mutate(all_data_can_pop, PercentVaccinatedBooster = TotalBooster / Population)
+```
+
+```{r move-columns-percent}
+# move position of percentage columns
+# moved date column to first column
+# https://stackoverflow.com/questions/3369959/moving-columns-within-a-data-frame-without-retyping
+data.table::setcolorder(all_data_can_pop, "PercentVaccinatedDose1")
+# move Date column to 7th position
+data.table::setcolorder(all_data_can_pop, 2:25)
+
+data.table::setcolorder(all_data_can_pop, "PercentVaccinatedDose2")
+data.table::setcolorder(all_data_can_pop, 2:28)
+
+data.table::setcolorder(all_data_can_pop, "PercentVaccinatedBooster")
+data.table::setcolorder(all_data_can_pop, 2:32)
+```
+
+
+# type of variables
+```{r str}
+str(all_data_can_pop)
+```
+
+## make new columns for percentage format, not decimal
+```{r new-column-percentage-format}
+# create new column for PercentVaccinated
+all_data_can_pop$PercentVaccinatedDose1_percent <- ""
+all_data_can_pop$PercentVaccinatedDose2_percent <- ""
+all_data_can_pop$PercentVaccinatedBooster_percent <- ""
+```
+
+## make % percent vacinated columns a percentage not decimal
+```{r percentage-not-decimal}
+all_data_can_pop$PercentVaccinatedDose1_percent <- percent(all_data_can_pop$PercentVaccinatedDose1, accuracy = .01)
+all_data_can_pop$PercentVaccinatedDose2_percent <- percent(all_data_can_pop$PercentVaccinatedDose2, accuracy = .01)
+all_data_can_pop$PercentVaccinatedBooster_percent <- percent(all_data_can_pop$PercentVaccinatedBooster, accuracy = .01)
+```
+
+
+---
+# Dose 1
+## filter out non-provinces dose1
+```{r filter-out-non-provinces-dose1}
+bar_graph_data_recent_can_dose1 <- all_data_can_pop %>%  
+  filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
+  select(Province, PercentVaccinatedDose1_percent)
+```
+
+## Create bar graph % Dose 1
+
+```{r create-bar-graph-%-dose1}
+#str(all_data_can_pop)
+bar_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1, 
+                aes(x = reorder(Province, PercentVaccinatedDose1_percent), 
+                    y = PercentVaccinatedDose1_percent)) +
+  geom_col(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 8)) +
+  labs(title = "Dose 1 % Vaccinated \nMarch  23, 2022") +
+   ylab("") +
+   xlab("") +
+  coord_flip()
+```
+
+## View bar_graph-%-dose1 
+
+```{r bar-graph-%-dose1}
+#bar_graph_dose1
+```
+
+## Create a tooltip column in R dose1
+
+```{r tootip-column-%-dose1-recent}
+bar_graph_data_recent_can_dose1 <- bar_graph_data_recent_can_dose1 %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", 
+                   PercentVaccinatedDose1_percent, "")
+  )
+```
+
+## Make the bar chart interactive with ggiraph dose 1
+
+```{r ggiraph-interactive-barchart-%-dose1}
+latest_vax_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1, 
+                aes(x = reorder(Province, PercentVaccinatedDose1_percent), 
+                    y = PercentVaccinatedDose1_percent,
+                    tooltip = tooltip_text, data_id = Province #<<
+                    )) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +  #<<
+  labs(title = "Dose 1 % Vaccinated \n@ 2022-03-23") +
+   ylab("") +
+   xlab("") +
+  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  coord_flip()
+
+girafe(ggobj = latest_vax_graph_dose1, width_svg = 5, height_svg = 4)
+```
+
+
+# Link multiple graphs dose 1
+
+
+
+## create data frame early dose1
+
+```{r create-data-frame-%-dose1}
+bar_graph_data_early_dose1 <- all_data_can_pop %>%
+  filter(Date == "2021-06-17", !(Province %in% not_provinces)) %>%
+  arrange() %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", PercentVaccinatedDose1_percent, "")
+  ) %>%
+  select(Province, PercentVaccinatedDose1_percent, tooltip_text)
+```
+
+# Create a tooltip column in R data early
+
+```{r tootip-column-%-dose1-early}
+bar_graph_data_early_dose1 <- bar_graph_data_early_dose1 %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", 
+                   PercentVaccinatedDose1_percent)
+  )
+```
+
+## create ggplot from data frame dose1
+
+```{r ggplot-data-frame-%-dose1}
+early_vax_graph_dose1 <- ggplot(bar_graph_data_early_dose1, 
+                                aes(x = reorder(Province, PercentVaccinatedDose1_percent), 
+                                    y = PercentVaccinatedDose1_percent, 
+                                    tooltip = tooltip_text, data_id = Province)) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +
+  labs(title = "Dose 1 % Vaccinated \n@ 2021-06-17") +
+  ylab("") +
+  xlab("") +
+  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  coord_flip()
+
+girafe(ggobj = early_vax_graph_dose1, width_svg = 5, height_svg = 4)
+```
+
+---
+
+# Dose 2
+## filter out non-provinces dose2
+```{r filter-out-non-provinces-dose2}
+bar_graph_data_recent_can_dose2 <- all_data_can_pop %>%  
+  filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
+  select(Province, PercentVaccinatedDose2_percent)
+```
+
+## Create bar graph % Dose 2
+
+```{r create-bar-graph-%-dose2}
+#str(all_data_can_pop)
+bar_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2, 
+                aes(x = reorder(Province, PercentVaccinatedDose2_percent), 
+                    y = PercentVaccinatedDose2_percent)) +
+  geom_col(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 8)) +
+  labs(title = "Dose 2 % \nVaccinated March  23, 2022",
+       subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
+       ) +
+   ylab("") +
+   xlab("") +
+#   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+  coord_flip()
+```
+
+## View bar_graph-%-dose2
+
+```{r bar-graph-%-dose2}
+#bar_graph_dose2
+```
+
+## Create a tooltip column in R
+
+```{r tootip-column-%-dose2-recent}
+bar_graph_data_recent_can_dose2 <- bar_graph_data_recent_can_dose2 %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", 
+                   PercentVaccinatedDose2_percent)
+  )
+```
+
+## Make the bar chart interactive with ggiraph
+
+```{r ggiraph-interactive-barchart-%-dose2}
+latest_vax_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2, 
+                aes(x = reorder(Province, PercentVaccinatedDose2_percent), 
+                    y = PercentVaccinatedDose2_percent,
+                    tooltip = tooltip_text, data_id = Province #<<
+                    )) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +  #<<
+  labs(title = "Dose 2 % Vaccinated \n@ 2022-03-23") +
+   ylab("") +
+   xlab("") +
+  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  coord_flip()
+
+girafe(ggobj = latest_vax_graph_dose2, width_svg = 5, height_svg = 4)
+```
+
+
+
+
+## create data frame early dose2
+
+```{r create-data-frame-%-dose2}
+bar_graph_data_early_dose2 <- all_data_can_pop %>%
+  filter(Date == "2021-06-17", !(Province %in% not_provinces)) %>%
+  arrange() %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", PercentVaccinatedDose2_percent)
+  ) %>%
+  select(Province, PercentVaccinatedDose2_percent, tooltip_text)
+```
+
+## Create a tooltip column in R data early
+
+```{r tootip-column-%-dose2-early}
+bar_graph_data_early_dose2 <- bar_graph_data_early_dose2 %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", 
+                   PercentVaccinatedDose2_percent)
+  )
+```
+
+## create ggplot from data frame dose2
+
+```{r ggplot-data-frame-%-dose2}
+early_vax_graph_dose2 <- ggplot(bar_graph_data_early_dose2, 
+                                aes(x = reorder(Province, PercentVaccinatedDose2_percent), 
+                                    y = PercentVaccinatedDose2_percent, 
+                                    tooltip = tooltip_text, data_id = Province)) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +
+  labs(title = "Dose 2 % Vaccinated \n@ 2021-06-17") +
+  ylab("") +
+  xlab("") +
+  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  coord_flip()
+
+girafe(ggobj = early_vax_graph_dose2, width_svg = 5, height_svg = 4)
+```
+
+
+---
+
+# Booster
+
+# Booster
+## filter out non-provinces Booster
+```{r filter-out-non-provinces-Booster}
+bar_graph_data_recent_can_Booster <- all_data_can_pop %>%  
+  filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
+  select(Province, PercentVaccinatedBooster_percent)
+```
+
+## Create bar graph % Booster
+
+```{r create-bar-graph-%-Booster}
+#str(all_data_can_pop)
+bar_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster, 
+                aes(x = reorder(Province, PercentVaccinatedBooster_percent), 
+                    y = PercentVaccinatedBooster_percent)) +
+  geom_col(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 8)) +
+  labs(title = "Booster % Vaccinated \nMarch  23, 2022") +
+   ylab("") +
+   xlab("") +
+  coord_flip()
+```
+
+## View bar_graph-%-Booster
+
+```{r bar-graph-%-Booster}
+#bar_graph_Booster
+```
+
+## Create a tooltip column in R
+
+```{r tootip-column-%-Booster-recent}
+bar_graph_data_recent_can_Booster <- bar_graph_data_recent_can_Booster %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", 
+                   PercentVaccinatedBooster_percent)
+  )
+```
+
+## Make the bar chart interactive with ggiraph
+
+```{r ggiraph-interactive-barchart-%-Booster}
+latest_vax_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster, 
+                aes(x = reorder(Province, PercentVaccinatedBooster_percent), 
+                    y = PercentVaccinatedBooster_percent,
+                    tooltip = tooltip_text, data_id = Province #<<
+                    )) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +  #<<
+  labs(title = "Booster % Vaccinated \n@ 2022-03-23") +
+   ylab("") +
+   xlab("") +
+  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  coord_flip()
+
+girafe(ggobj = latest_vax_graph_Booster, width_svg = 5, height_svg = 4)
+```
+
+
+
+
+## create data frame early Booster
+
+```{r create-data-frame-%-Booster}
+bar_graph_data_early_Booster <- all_data_can_pop %>%
+  filter(Date == "2021-12-20", !(Province %in% not_provinces)) %>%
+  arrange() %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", PercentVaccinatedBooster_percent)
+  ) %>%
+  select(Province, PercentVaccinatedBooster_percent, tooltip_text)
+```
+
+## Create a tooltip column in R data early
+
+```{r tootip-column-%-early-booster}
+bar_graph_data_early_Booster <- bar_graph_data_early_Booster %>%
+  mutate(
+    tooltip_text = paste0(toupper(Province), "\n", 
+                   PercentVaccinatedBooster_percent)
+  )
+```
+
+## create ggplot from data frame Booster
+
+```{r ggplot-data-frame-%-Booster}
+early_vax_graph_Booster <- ggplot(bar_graph_data_early_Booster, 
+                                aes(x = reorder(Province, PercentVaccinatedBooster_percent), 
+                                    y = PercentVaccinatedBooster_percent, 
+                                    tooltip = tooltip_text, data_id = Province)) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +
+  labs(title = "Booster % Vaccinated\n@ 2021-12-20") +
+  ylab("") +
+  xlab("") +
+  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  coord_flip()
+
+girafe(ggobj = early_vax_graph_Booster, width_svg = 5, height_svg = 4)
+```
+
+
+# Link multiple graphs with ggiraph -%-dose1
+
+```{r link-multiple-graphs-%-dose1}
+girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster), 
+       width_svg = 8, height_svg = 5) %>% 
+  girafe_options(opts_hover(css = "fill:cyan;"))
+```
+
+
+
+
+===================================  
+===================================  
+
+# Canada Map
+
+https://github.com/kjhealy/canmap/blob/master/canmap.Rmd
+
+
+===================================  
+===================================  
+
+---
+
+---
+
+# Need to get Canada map for this
+```see canmap.Rmd```
+
+## read geojson from Canada shapefile >> download into data folder
+https://github.com/kjhealy/canmap
+
+```{r}
+canada_cd <- st_read("data/canada_cd_sim.geojson", quiet = TRUE)
+
+canada_cd
+```
+
+# Map Theme
+```{r map_theme}
+## Map theme
+theme_map <- function(base_size=9, base_family="") {
+    require(grid)
+    theme_bw(base_size=base_size, base_family=base_family) %+replace%
+        theme(axis.line=element_blank(),
+              axis.text=element_blank(),
+              axis.ticks=element_blank(),
+              axis.title=element_blank(),
+              panel.background=element_blank(),
+              panel.border=element_blank(),
+              panel.grid=element_blank(),
+              panel.spacing=unit(0, "lines"),
+              plot.background=element_blank(),
+              legend.justification = c(0,0),
+              legend.position = c(0,0), 
+              plot.title = element_text(face = "bold", colour = "black", size = 12),
+              plot.caption = element_text(hjust = 0.5, face = "italic", size = 8, vjust = 1)
+              )
+}
+
+theme_set(theme_map())
+```
+
+# Data
+
+## Create directory for figures
+```{r figdir, echo = FALSE, results = 'hide'}
+## Make a "figures" directory if one doesn't exist
+# getwd()
+ifelse(!dir.exists(file.path("figures")), dir.create(file.path("figures")), FALSE)
+```
+
+## Transform coordinates
+Transform the coordinates to a Lambert Conformal Conic Projection.  
+See  https://www.statcan.gc.ca/pub/92-195-x/2011001/other-autre/mapproj-projcarte/m-c-eng.htm
+
+```{r transform_coordinates}
+canada_cd <- st_transform(canada_cd, crs = "+proj=lcc +lat_1=49 +lat_2=77 +lon_0=-91.52 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs")
+
+canada_cd
+```
+
+## Make vector map fill
+Make a vector of repeated colors---just to fill in the map, for decoration only
+"as I don't have any Canadian data to merge in at present".
+
+```{r vector_map_fill, layout = 'l-screen-inset'}
+map_colors <-  RColorBrewer::brewer.pal(8, "Pastel1")
+map_colors <- rep(map_colors, 37)
+```
+
+## Draw map in ggplot
+```{r draw_map}
+## Draw the map
+p <- ggplot(data = canada_cd, 
+            mapping = aes(fill = PRUID))
+p_out <- p + geom_sf(color = "gray60", 
+                    size = 0.1) + 
+  scale_fill_manual(values = map_colors) + 
+  guides(fill = FALSE) + 
+  theme_map() + 
+  theme(panel.grid.major = element_line(color = "white"),
+        legend.key = element_rect(color = "gray40", size = 0.1))
+
+ggsave("figures/canada.pdf", p_out, height = 12, width = 15)
+
+p_out
+```
+
+
+
+
+
+## rename column names
+```{r rename-columns-can}
+names(canada_cd)[5] <- "Province"
+```
+
+## Convert population data.frame to all capitals to match all_data_can
+```{r capitalize-Prov-can}
+canada_cd$Province = toupper(canada_cd$Province)
+canada_cd$Province
+```
+
+```{r prov-info}
+pop_data_can$Province
+```
+
+## find unique-values
+```{r unique-values-can}
+# unique(all_data_can[c("Province")])
+canada_cd$Province
+unique(canada_cd[c("Province")])
+```
+
+## rename row values
+```{r rename-rows-can}
+canada_cd$Province[canada_cd$Province=="PRINCE EDWARD ISLAND / ÎLE-DU-PRINCE-ÉDOUARD"] <- "PEI"
+canada_cd$Province[canada_cd$Province=="NORTHWEST TERRITORIES / TERRITOIRES DU NORD-OUEST"] <- "NWT"
+canada_cd$Province[canada_cd$Province=="NEWFOUNDLAND AND LABRADOR / TERRE-NEUVE-ET-LABRADOR"] <- "NEWFOUNDLAND AND LABRADOR"
+canada_cd$Province[canada_cd$Province=="BRITISH COLUMBIA / COLOMBIE-BRITANNIQUE"] <- "BRITISH COLUMBIA"
+canada_cd$Province[canada_cd$Province=="QUEBEC / QUÉBEC"] <- "QUEBEC"
+canada_cd$Province[canada_cd$Province=="NOVA SCOTIA / NOUVELLE-ÉCOSSE"] <- "NOVA SCOTIA"
+canada_cd$Province[canada_cd$Province=="NEW BRUNSWICK / NOUVEAU-BRUNSWICK"] <- "NEW BRUNSWICK"
+```
+
+```{r check-name-change}
+canada_cd$Province
+class(canada_cd)
+str(canada_cd)
+```
+
+
+# Create Map
+
+```{r ggplot-canada-map}
+p_can <- ggplot(data = canada_cd, 
+            mapping = aes(fill = PRUID))
+p_can_out <- p_can + geom_sf(color = "gray60", 
+                    size = 0.1) + 
+  scale_fill_manual(values = map_colors) + 
+  guides(fill = FALSE) + 
+      labs(title = "Canada COVID \nvaccination Status 2020-2022",
+       caption = "Data from https://resources-covid19canada.hub.arcgis.com"
+       ) +
+  theme_map() + 
+  theme(panel.grid.major = element_line(color = "white"),
+        legend.key = element_rect(color = "gray40", size = 0.1))
+
+#ggsave("figures/canada.pdf", p_can_out, height = 12, width = 15)
+
+p_can_out
+```
+
+
+# Link a map and bar chart with ggiraph
+
+```{r link-map-barchart-can}
+ prov_map <- ggplot() +
+      labs(title = "Canada COVID vaccination Status 2020-2022\n(interactive map & chart)",
+       caption = "Data from https://resources-covid19canada.hub.arcgis.com"
+       ) +
+   geom_sf_interactive(data = canada_cd, size = 0.125, 
+                       aes(data_id = Province, tooltip = Province)) +
+   theme_map()
+```
+
+## Display map and graph using girafe() and its ggobj
+
+```{r display-map-graph}
+ girafe(ggobj = prov_map + latest_vax_graph, 
+        width_svg = 10, height_svg = 5) %>%
+   girafe_options(opts_hover(css = "fill:cyan;"))
+```
+
+## display-map-multi-graph
+```{r display-map-multi-graph}
+girafe(ggobj = prov_map + early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster, 
+                     width_svg = 12, height_svg = 8) %>%
+   girafe_options(opts_hover(css = "fill:cyan;"))
+```
+
+
+# HTML Widgets
+
+## HTML Widget for one graph and map
+
+```{r html-widget-one-graph-map}
+my_widget <- girafe(ggobj = prov_map + latest_vax_graph, 
+                     width_svg = 10, height_svg = 5) %>%
+   girafe_options(opts_hover(css = "fill:cyan;"))
+
+ htmlwidgets::saveWidget(my_widget, "my_widget_page.html", 
+                         selfcontained = TRUE)
+```
+
+## HTML Widget for multiple graph and map
+```{r html-widget-multi-graph-map, eval = TRUE, echo = TRUE, include=FALSE}
+my_widget_multi <- girafe(ggobj = prov_map + early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster, 
+                     width_svg = 10, height_svg = 8) %>%
+   girafe_options(opts_hover(css = "fill:cyan;"))
+
+ htmlwidgets::saveWidget(my_widget_multi, "my_widget_page-multi.html", 
+                         selfcontained = TRUE)
+ # Warning: Removed 1 rows containing missing values (position_stack).
+ 
+#  Warning in mean.default(X[[i]], ...) :
+#  argument is not numeric or logical: returning NA
+```
+
+```{r, eval = TRUE, echo = TRUE}
+girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster), 
+       width_svg = 8, height_svg = 5) %>% 
+  girafe_options(opts_hover(css = "fill:cyan;"))
+```
+
+
+
+HTML knit error  
+ "png not found in resource path Error: pandoc document conversion failed with error 99"
+ 
+ getwd()  
+
+---
+
+# Things I'd Like To Do TO Make This Better ...
+1. change x axis tick marks to 90 for all
+2. make x axis (y) full range for multiples
+
+
