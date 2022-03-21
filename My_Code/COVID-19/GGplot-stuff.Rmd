@@ -1,0 +1,223 @@
+---
+title: "GGplot-stuff"
+author: "Wendy Anthony"
+date: "14/03/2022"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+# ggiraph
+interactive ggplot graphs in R with ggiraph  
+https://www.infoworld.com/article/3626911/easy-interactive-ggplot-graphs-in-r-with-ggiraph.html
+
+---
+
+"Use a ggiraph interactive geom instead of a “regular” ggplot geom.  
+The format is easy to remember: Just add _interactive to your usual geom.  
+So, geom_col() for a regular bar chart would be geom_col_interactive(), geom_point() would be geom_point_interactive(), and so on.  
+Add at least one interactive argument to the graph’s aes() mapping: tooltip, data_id, or onclick.  
+That data_id argument is what connects two graphics, letting you hover over one and affect the display of another one — all without Shiny."  
+  
+"After creating your ggiraph dataviz object, use the girafe() function to turn it into a JavaScript graphic.  
+Yes, that’s girafe() like the animal but with one f - the creator of ggiraph, David Gohel, lives in Paris."
+
+# Install packages
+## install-albersusa for map
+https://github.com/hrbrmstr/albersusa
+
+```{r install-albersusa}
+devtools::install_github("hrbrmstr/albersusa")
+```
+
+# Load libraries
+```{r load-libraries}
+library(dplyr)
+library(ggplot2)
+library(ggiraph)
+library(patchwork)
+library(albersusa) # USA Albers mapping
+```
+
+# Get data
+
+```{r get-data}
+data_url <- "https://github.com/owid/covid-19-data/raw/master/public/data/vaccinations/us_state_vaccinations.csv"
+```
+
+## Read csv
+change name of New York column
+
+```{r read-csv}
+all_data <- read.csv(data_url)
+all_data$location[all_data$location == "New York State"] <- "New York"
+```
+
+### vector of not states to filter out
+
+```{r not_states}
+not_states_or_dc <- c("American Samoa", "Bureau of Prisons", 
+  "Dept of Defense", "Federated States of Micronesia", "Guam", 
+  "Indian Health Svc", "Long Term Care", "Marshall Islands", 
+  "Northern Mariana Islands", "Puerto Rico", "Republic of Palau", 
+  "United States", "Veterans Health", "Virgin Islands")
+```
+
+### filter out non-states
+```{r filter-out-non-states}
+bar_graph_data_recent <- all_data %>%  
+  filter(date == max(date), !(location %in% not_states_or_dc)) %>%  
+  mutate(
+   PctFullyVaccinated = round(people_fully_vaccinated_per_hundred, 1)  
+  ) %>%  
+  select(State = location, PctFullyVaccinated)
+```
+
+# Create bar graph
+
+```{r create-bar-graph}
+bar_graph <- ggplot(bar_graph_data_recent, 
+                aes(x = reorder(State, PctFullyVaccinated), 
+                    y = PctFullyVaccinated)) +
+  geom_col(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 10)) +
+  labs(title = "Percent Fully Vaccinated July 2021",
+       subtitle = "Data from Our World in Data GitHub repo"
+       ) +
+   ylab("") +
+   xlab("") +
+  coord_flip()
+```
+
+## View bar_graph
+
+```{r bar-graph}
+bar_graph
+```
+
+# Create a tooltip column in R
+
+```{r tootip-column}
+bar_graph_data_recent <- bar_graph_data_recent %>%
+  mutate(
+    tooltip_text = paste0(toupper(State), "\n", 
+                   PctFullyVaccinated, "%")
+  )
+```
+
+# Make the bar chart interactive with ggiraph
+"To create a ggiraph interactive bar chart, I changed geom_col() to geom_col_interactive()  
+and added tooltip and data_id to the aes() mapping.  
+I also reduced the size of the axis text, because the ggplot size ended up being too large."  
+  
+"Then I displayed the interactive graph object with the girafe() function.  
+You can set the graph width and height with width_svg and height_svg arguments within girafe(). "
+
+```{r ggiraph-interactive-barchart}
+latest_vax_graph <- ggplot(bar_graph_data_recent, 
+                aes(x = reorder(State, PctFullyVaccinated), 
+                    y = PctFullyVaccinated,
+                    tooltip = tooltip_text, data_id = State #<<
+                    )) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +  #<<
+  labs(title = "Percent Fully Vaccinated July 2021",
+       subtitle = "Data from Our World in Data GitHub repo"
+       ) +
+   ylab("") +
+   xlab("") +
+  coord_flip()
+
+girafe(ggobj = latest_vax_graph, width_svg = 5, height_svg = 4)
+```
+
+# Link multiple graphs
+## create data frame
+
+```{r create-data-frame}
+bar_graph_data_early <- all_data %>%
+  filter(date == "2021-02-14", !(location %in% not_states_or_dc)) %>%
+  arrange(people_fully_vaccinated_per_hundred) %>%
+  mutate(
+    PctFullyVaccinated = round(people_fully_vaccinated_per_hundred, 1),
+    tooltip_text = paste0(toupper(location), "\n", PctFullyVaccinated, "%")
+  ) %>%
+  select(State = location, PctFullyVaccinated, tooltip_text)
+```
+
+## create ggplot from data frame
+
+```{r ggplot-data-frame}
+early_vax_graph <- ggplot(bar_graph_data_early, aes(x = reorder(State, PctFullyVaccinated), y = PctFullyVaccinated, tooltip = tooltip_text, data_id = State)) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +
+  labs(title = "Fully Vaccinated as of February 14, 2021",
+       subtitle = "Data from Our World in Data"
+  ) +
+  ylab("") +
+  xlab("") +
+  coord_flip()
+```
+
+### ggplot-early-vax-graph
+
+```{r ggplot-early-vax-graph}
+early_vax_graph
+```
+
+
+## Link multiple graphs with ggiraph
+
+```{r link-multiple-graphs}
+girafe(code = print(early_vax_graph + latest_vax_graph), 
+       width_svg = 8, height_svg = 4) %>% 
+  girafe_options(opts_hover(css = "fill:cyan;"))
+```
+
+
+# Link a map and bar chart with ggiraph
+use library(albersusa)
+```{r link-map-barchart}
+us_sf <- usa_sf("lcc") %>%
+  mutate(State = as.character(name))
+
+state_map <- ggplot() +
+  geom_sf_interactive(data = us_sf, size = 0.125, 
+                      aes(data_id = State, tooltip = State)) +
+  theme_void()
+```
+
+## Display map and graph using girafe() and its ggobj
+
+```{r display-map-graph}
+girafe(ggobj = state_map + latest_vax_graph, 
+       width_svg = 10, height_svg = 5) %>%
+  girafe_options(opts_hover(css = "fill:cyan;"))
+```
+
+
+
+# HTML Widget
+
+```{r html-widget}
+my_widget <- girafe(ggobj = state_map + latest_vax_graph, 
+                    width_svg = 10, height_svg = 5) %>%
+  girafe_options(opts_hover(css = "fill:cyan;"))
+
+htmlwidgets::saveWidget(my_widget, "my_widget_page.html", 
+                        selfcontained = TRUE)
+```
+
