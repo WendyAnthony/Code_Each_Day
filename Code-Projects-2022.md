@@ -22,8 +22,9 @@
 ***
 ## R3D80 2022-03-21 <a name="R3D80"/>
 **Today's Progress**: 
+- interactive ggplot graphs in R with ```ggiraph```
 - Created interactive linked map / chart for Canada COVID vaccination status
-- multiple charts linked together for different status dates
+- multiple charts linked together for different vaccination status, early & late dates
 - created columns for % vaccinated, and found way to make new column in % format vs decimal
 
 **Thoughts:** 
