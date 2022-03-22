@@ -329,7 +329,7 @@ bar_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1,
   geom_col(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
-  labs(title = "Dose 1 % Vaccinated \nMarch  23, 2022") +
+  labs(title = "Dose1 2022-03-23") +
    ylab("") +
    xlab("") +
   coord_flip()
@@ -362,7 +362,7 @@ latest_vax_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1,
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +  #<<
-  labs(title = "Dose 1 % Vaccinated \n@ 2022-03-23") +
+  labs(title = "Dose1 2022-03-23") +
    ylab("") +
    xlab("") +
   scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -408,7 +408,7 @@ early_vax_graph_dose1 <- ggplot(bar_graph_data_early_dose1,
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +
-  labs(title = "Dose 1 % Vaccinated \n@ 2021-06-17") +
+  labs(title = "Dose1 2021-06-17") +
   ylab("") +
   xlab("") +
   scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -437,7 +437,7 @@ bar_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2,
   geom_col(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
-  labs(title = "Dose 2 % \nVaccinated March  23, 2022",
+  labs(title = "Dose2 2022-03-23",
        subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
        ) +
    ylab("") +
@@ -473,7 +473,7 @@ latest_vax_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2,
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +  #<<
-  labs(title = "Dose 2 % Vaccinated \n@ 2022-03-23") +
+  labs(title = "Dose2 2022-03-23") +
    ylab("") +
    xlab("") +
   scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -517,7 +517,7 @@ early_vax_graph_dose2 <- ggplot(bar_graph_data_early_dose2,
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +
-  labs(title = "Dose 2 % Vaccinated \n@ 2021-06-17") +
+  labs(title = "Dose2 2021-06-17") +
   ylab("") +
   xlab("") +
   scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -549,7 +549,7 @@ bar_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster,
   geom_col(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
-  labs(title = "Booster % Vaccinated \nMarch  23, 2022") +
+  labs(title = "Booster 2022-03-23") +
    ylab("") +
    xlab("") +
   coord_flip()
@@ -582,7 +582,7 @@ latest_vax_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster,
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +  #<<
-  labs(title = "Booster % Vaccinated \n@ 2022-03-23") +
+  labs(title = "Booster 2022-03-23") +
    ylab("") +
    xlab("") +
   scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -626,7 +626,7 @@ early_vax_graph_Booster <- ggplot(bar_graph_data_early_Booster,
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +
-  labs(title = "Booster % Vaccinated\n@ 2021-12-20") +
+  labs(title = "Booster 2021-12-20") +
   ylab("") +
   xlab("") +
   scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -691,9 +691,9 @@ theme_map <- function(base_size=9, base_family="") {
               plot.background=element_blank(),
               legend.justification = c(0,0),
               legend.position = c(0,0), 
-              plot.title = element_text(face = "bold", colour = "black", size = 12),
-              plot.subtitle = element_text(face = "italic", colour = "black", size = 8, hjust = 0.5, vjust = 1),
-              plot.caption = element_text(hjust = 0.5, face = "italic", size = 8, vjust = 1)
+              plot.title = element_text(face = "bold", colour = "black", size = 10),
+              plot.subtitle = element_text(face = "italic", colour = "black", size = 6, hjust = 0.5, vjust = 1),
+              plot.caption = element_text(hjust = 0.1, face = "italic", size = 6, vjust = 1)
               )
 }
 
@@ -799,10 +799,8 @@ p_can_out <- p_can + geom_sf(color = "gray60",
                     size = 0.1) + 
   scale_fill_manual(values = map_colors) + 
   guides(fill = FALSE) + 
-      labs(title = "Canada COVID \nvaccination Status 2020-2022",
-           subtitle = "(hover over map or chart)",
-       caption = "Data from https://resources-covid19canada.hub.arcgis.com"
-       ) +
+      labs(title = "Canada COVID % Vaccination 2021-2022",
+           subtitle = "click for interactive map/chart (Data:resources-covid19canada.hub.arcgis.com)") +
   theme_map() + 
   theme(panel.grid.major = element_line(color = "white"),
         legend.key = element_rect(color = "gray40", size = 0.1))
@@ -817,10 +815,8 @@ p_can_out
 
 ```{r link-map-barchart-can}
  prov_map <- ggplot() +
-      labs(title = "Canada COVID vaccination Status 2020-2022",
-                      subtitle = "(hover over map or chart for interactivity)",
-       caption = "Data from https://resources-covid19canada.hub.arcgis.com"
-       ) +
+      labs(title = "Canada COVID % Vaccination 2021-2022",
+           subtitle = "click for interactive map/chart (Data:resources-covid19canada.hub.arcgis.com)") +
    geom_sf_interactive(data = canada_cd, size = 0.125, 
                        aes(data_id = Province, tooltip = Province)) +
    theme_map()
