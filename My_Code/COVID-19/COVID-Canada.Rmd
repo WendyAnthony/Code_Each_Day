@@ -888,5 +888,7 @@ girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_g
 
 # Things I'd Like To Do TO Make This Better ...
 1. change bar colours?
+2. make a shiny app to choose which vaccine chart, and have larger map
+3. how to make map larger?
 
 
