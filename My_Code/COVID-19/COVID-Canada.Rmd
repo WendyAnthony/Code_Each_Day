@@ -172,7 +172,7 @@ bar_graph_totvac <- ggplot(bar_graph_data_recent_can,
   labs(title = "Fully Vaccinated March  23, 2022",
        subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
        ) +
-   ylab("") +
+   ylab("Total Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = comma_format()) +
   coord_flip()
@@ -208,7 +208,7 @@ latest_vax_graph <- ggplot(bar_graph_data_recent_can,
   labs(title = "Fully Vaccinated March 23, 2022",
        subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
        ) +
-   ylab("") +
+   ylab("Total Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = comma_format()) +  
   coord_flip()
@@ -330,7 +330,7 @@ bar_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1,
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
   labs(title = "Dose1 2022-03-23") +
-   ylab("") +
+   ylab(" Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   coord_flip()
@@ -364,7 +364,7 @@ latest_vax_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1,
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +  #<<
   labs(title = "Dose1 2022-03-23") +
-   ylab("") +
+   ylab("% Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
 #  scale_y_discrete(guide = guide_axis(angle = 90)) + # if using PercentVaccinatedDose1_percent as axis
@@ -411,7 +411,7 @@ early_vax_graph_dose1 <- ggplot(bar_graph_data_early_dose1,
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +
   labs(title = "Dose1 2021-06-17") +
-  ylab("") +
+  ylab("% Vaccinated") +
   xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
 #  scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -443,7 +443,7 @@ bar_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2,
   labs(title = "Dose2 2022-03-23",
        subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
        ) +
-   ylab("") +
+   ylab("% Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
 #   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
@@ -478,7 +478,7 @@ latest_vax_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2,
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +  #<<
   labs(title = "Dose2 2022-03-23") +
-   ylab("") +
+   ylab("% Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
 #  scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -523,7 +523,7 @@ early_vax_graph_dose2 <- ggplot(bar_graph_data_early_dose2,
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +
   labs(title = "Dose2 2021-06-17") +
-  ylab("") +
+  ylab("% Vaccinated") +
   xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   # scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -558,7 +558,7 @@ bar_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster,
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
   labs(title = "Booster 2022-03-23") +
-   ylab("") +
+   ylab("% Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   coord_flip()
@@ -592,7 +592,7 @@ latest_vax_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster,
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +  #<<
   labs(title = "Booster 2022-03-23") +
-   ylab("") +
+   ylab("% Vaccinated") +
    xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   # scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -637,7 +637,7 @@ early_vax_graph_Booster <- ggplot(bar_graph_data_early_Booster,
   theme_minimal() +
   theme(axis.text=element_text(size = 6)) +
   labs(title = "Booster 2021-12-20") +
-  ylab("") +
+  ylab("% Vaccinated") +
   xlab("") +
   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   # scale_y_discrete(guide = guide_axis(angle = 90)) +
@@ -695,6 +695,7 @@ theme_map <- function(base_size=9, base_family="") {
               axis.text=element_blank(),
               axis.ticks=element_blank(),
               axis.title=element_blank(),
+              axis.title.x = element_text(size = 8),
               panel.background=element_blank(),
               panel.border=element_blank(),
               panel.grid=element_blank(),
