@@ -316,7 +316,7 @@ all_data_can_pop$PercentVaccinatedBooster_percent <- percent(all_data_can_pop$Pe
 ```{r filter-out-non-provinces-dose1}
 bar_graph_data_recent_can_dose1 <- all_data_can_pop %>%  
   filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
-  select(Province, PercentVaccinatedDose1_percent)
+  select(Province, PercentVaccinatedDose1, PercentVaccinatedDose1_percent)
 ```
 
 ## Create bar graph % Dose 1
@@ -324,14 +324,15 @@ bar_graph_data_recent_can_dose1 <- all_data_can_pop %>%
 ```{r create-bar-graph-%-dose1}
 #str(all_data_can_pop)
 bar_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1, 
-                aes(x = reorder(Province, PercentVaccinatedDose1_percent), 
-                    y = PercentVaccinatedDose1_percent)) +
+                aes(x = reorder(Province, PercentVaccinatedDose1), 
+                    y = PercentVaccinatedDose1)) +
   geom_col(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
   labs(title = "Dose1 2022-03-23") +
    ylab("") +
    xlab("") +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   coord_flip()
 ```
 
@@ -347,7 +348,7 @@ bar_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1,
 bar_graph_data_recent_can_dose1 <- bar_graph_data_recent_can_dose1 %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
-                   PercentVaccinatedDose1_percent, "")
+                   PercentVaccinatedDose1_percent)
   )
 ```
 
@@ -355,8 +356,8 @@ bar_graph_data_recent_can_dose1 <- bar_graph_data_recent_can_dose1 %>%
 
 ```{r ggiraph-interactive-barchart-%-dose1}
 latest_vax_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1, 
-                aes(x = reorder(Province, PercentVaccinatedDose1_percent), 
-                    y = PercentVaccinatedDose1_percent,
+                aes(x = reorder(Province, PercentVaccinatedDose1), 
+                    y = PercentVaccinatedDose1,
                     tooltip = tooltip_text, data_id = Province #<<
                     )) +
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
@@ -365,7 +366,8 @@ latest_vax_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1,
   labs(title = "Dose1 2022-03-23") +
    ylab("") +
    xlab("") +
-  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+#  scale_y_discrete(guide = guide_axis(angle = 90)) + # if using PercentVaccinatedDose1_percent as axis
   coord_flip()
 
 girafe(ggobj = latest_vax_graph_dose1, width_svg = 5, height_svg = 4)
@@ -378,14 +380,14 @@ girafe(ggobj = latest_vax_graph_dose1, width_svg = 5, height_svg = 4)
 
 ## create data frame early dose1
 
-```{r create-data-frame-%-dose1}
+```{r create-data-frame-%-dose1-early}
 bar_graph_data_early_dose1 <- all_data_can_pop %>%
   filter(Date == "2021-06-17", !(Province %in% not_provinces)) %>%
   arrange() %>%
   mutate(
-    tooltip_text = paste0(toupper(Province), "\n", PercentVaccinatedDose1_percent, "")
+    tooltip_text = paste0(toupper(Province), "\n", PercentVaccinatedDose1_percent)
   ) %>%
-  select(Province, PercentVaccinatedDose1_percent, tooltip_text)
+  select(Province, PercentVaccinatedDose1, PercentVaccinatedDose1_percent, tooltip_text)
 ```
 
 # Create a tooltip column in R data early
@@ -400,10 +402,10 @@ bar_graph_data_early_dose1 <- bar_graph_data_early_dose1 %>%
 
 ## create ggplot from data frame dose1
 
-```{r ggplot-data-frame-%-dose1}
+```{r ggplot-data-frame-%-dose1-early}
 early_vax_graph_dose1 <- ggplot(bar_graph_data_early_dose1, 
-                                aes(x = reorder(Province, PercentVaccinatedDose1_percent), 
-                                    y = PercentVaccinatedDose1_percent, 
+                                aes(x = reorder(Province, PercentVaccinatedDose1), 
+                                    y = PercentVaccinatedDose1, 
                                     tooltip = tooltip_text, data_id = Province)) +
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
@@ -411,7 +413,8 @@ early_vax_graph_dose1 <- ggplot(bar_graph_data_early_dose1,
   labs(title = "Dose1 2021-06-17") +
   ylab("") +
   xlab("") +
-  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+#  scale_y_discrete(guide = guide_axis(angle = 90)) +
   coord_flip()
 
 girafe(ggobj = early_vax_graph_dose1, width_svg = 5, height_svg = 4)
@@ -424,7 +427,7 @@ girafe(ggobj = early_vax_graph_dose1, width_svg = 5, height_svg = 4)
 ```{r filter-out-non-provinces-dose2}
 bar_graph_data_recent_can_dose2 <- all_data_can_pop %>%  
   filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
-  select(Province, PercentVaccinatedDose2_percent)
+  select(Province, PercentVaccinatedDose2, PercentVaccinatedDose2_percent)
 ```
 
 ## Create bar graph % Dose 2
@@ -432,8 +435,8 @@ bar_graph_data_recent_can_dose2 <- all_data_can_pop %>%
 ```{r create-bar-graph-%-dose2}
 #str(all_data_can_pop)
 bar_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2, 
-                aes(x = reorder(Province, PercentVaccinatedDose2_percent), 
-                    y = PercentVaccinatedDose2_percent)) +
+                aes(x = reorder(Province, PercentVaccinatedDose2), 
+                    y = PercentVaccinatedDose2)) +
   geom_col(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
@@ -442,6 +445,7 @@ bar_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2,
        ) +
    ylab("") +
    xlab("") +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
 #   scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   coord_flip()
 ```
@@ -466,8 +470,8 @@ bar_graph_data_recent_can_dose2 <- bar_graph_data_recent_can_dose2 %>%
 
 ```{r ggiraph-interactive-barchart-%-dose2}
 latest_vax_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2, 
-                aes(x = reorder(Province, PercentVaccinatedDose2_percent), 
-                    y = PercentVaccinatedDose2_percent,
+                aes(x = reorder(Province, PercentVaccinatedDose2), 
+                    y = PercentVaccinatedDose2,
                     tooltip = tooltip_text, data_id = Province #<<
                     )) +
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
@@ -476,7 +480,8 @@ latest_vax_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2,
   labs(title = "Dose2 2022-03-23") +
    ylab("") +
    xlab("") +
-  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+#  scale_y_discrete(guide = guide_axis(angle = 90)) +
   coord_flip()
 
 girafe(ggobj = latest_vax_graph_dose2, width_svg = 5, height_svg = 4)
@@ -494,7 +499,7 @@ bar_graph_data_early_dose2 <- all_data_can_pop %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", PercentVaccinatedDose2_percent)
   ) %>%
-  select(Province, PercentVaccinatedDose2_percent, tooltip_text)
+  select(Province, PercentVaccinatedDose2, PercentVaccinatedDose2_percent, tooltip_text)
 ```
 
 ## Create a tooltip column in R data early
@@ -511,8 +516,8 @@ bar_graph_data_early_dose2 <- bar_graph_data_early_dose2 %>%
 
 ```{r ggplot-data-frame-%-dose2}
 early_vax_graph_dose2 <- ggplot(bar_graph_data_early_dose2, 
-                                aes(x = reorder(Province, PercentVaccinatedDose2_percent), 
-                                    y = PercentVaccinatedDose2_percent, 
+                                aes(x = reorder(Province, PercentVaccinatedDose2), 
+                                    y = PercentVaccinatedDose2, 
                                     tooltip = tooltip_text, data_id = Province)) +
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
@@ -520,7 +525,8 @@ early_vax_graph_dose2 <- ggplot(bar_graph_data_early_dose2,
   labs(title = "Dose2 2021-06-17") +
   ylab("") +
   xlab("") +
-  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+  # scale_y_discrete(guide = guide_axis(angle = 90)) +
   coord_flip()
 
 girafe(ggobj = early_vax_graph_dose2, width_svg = 5, height_svg = 4)
@@ -536,22 +542,25 @@ girafe(ggobj = early_vax_graph_dose2, width_svg = 5, height_svg = 4)
 ```{r filter-out-non-provinces-Booster}
 bar_graph_data_recent_can_Booster <- all_data_can_pop %>%  
   filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
-  select(Province, PercentVaccinatedBooster_percent)
+  select(Province, PercentVaccinatedBooster, PercentVaccinatedBooster_percent)
+#   select(Province, PercentVaccinatedBooster, PercentVaccinatedBooster_percent)
 ```
 
 ## Create bar graph % Booster
-
+note: Newfoundland has a na value, which plots wrong  
+https://stackoverflow.com/questions/17216358/eliminating-nas-from-a-ggplot
 ```{r create-bar-graph-%-Booster}
 #str(all_data_can_pop)
 bar_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster, 
-                aes(x = reorder(Province, PercentVaccinatedBooster_percent), 
-                    y = PercentVaccinatedBooster_percent)) +
+                aes(x = reorder(Province, PercentVaccinatedBooster), 
+                    y = PercentVaccinatedBooster)) +
   geom_col(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 8)) +
   labs(title = "Booster 2022-03-23") +
    ylab("") +
    xlab("") +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
   coord_flip()
 ```
 
@@ -575,8 +584,8 @@ bar_graph_data_recent_can_Booster <- bar_graph_data_recent_can_Booster %>%
 
 ```{r ggiraph-interactive-barchart-%-Booster}
 latest_vax_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster, 
-                aes(x = reorder(Province, PercentVaccinatedBooster_percent), 
-                    y = PercentVaccinatedBooster_percent,
+                aes(x = reorder(Province, PercentVaccinatedBooster), 
+                    y = PercentVaccinatedBooster,
                     tooltip = tooltip_text, data_id = Province #<<
                     )) +
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
@@ -585,7 +594,8 @@ latest_vax_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster,
   labs(title = "Booster 2022-03-23") +
    ylab("") +
    xlab("") +
-  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+  # scale_y_discrete(guide = guide_axis(angle = 90)) +
   coord_flip()
 
 girafe(ggobj = latest_vax_graph_Booster, width_svg = 5, height_svg = 4)
@@ -603,7 +613,7 @@ bar_graph_data_early_Booster <- all_data_can_pop %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", PercentVaccinatedBooster_percent)
   ) %>%
-  select(Province, PercentVaccinatedBooster_percent, tooltip_text)
+  select(Province, PercentVaccinatedBooster, PercentVaccinatedBooster_percent, tooltip_text)
 ```
 
 ## Create a tooltip column in R data early
@@ -620,8 +630,8 @@ bar_graph_data_early_Booster <- bar_graph_data_early_Booster %>%
 
 ```{r ggplot-data-frame-%-Booster}
 early_vax_graph_Booster <- ggplot(bar_graph_data_early_Booster, 
-                                aes(x = reorder(Province, PercentVaccinatedBooster_percent), 
-                                    y = PercentVaccinatedBooster_percent, 
+                                aes(x = reorder(Province, PercentVaccinatedBooster), 
+                                    y = PercentVaccinatedBooster, 
                                     tooltip = tooltip_text, data_id = Province)) +
   geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +
   theme_minimal() +
@@ -629,7 +639,8 @@ early_vax_graph_Booster <- ggplot(bar_graph_data_early_Booster,
   labs(title = "Booster 2021-12-20") +
   ylab("") +
   xlab("") +
-  scale_y_discrete(guide = guide_axis(angle = 90)) +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+  # scale_y_discrete(guide = guide_axis(angle = 90)) +
   coord_flip()
 
 girafe(ggobj = early_vax_graph_Booster, width_svg = 5, height_svg = 4)
@@ -640,7 +651,7 @@ girafe(ggobj = early_vax_graph_Booster, width_svg = 5, height_svg = 4)
 
 ```{r link-multiple-graphs-%-dose1}
 girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster), 
-       width_svg = 8, height_svg = 5) %>% 
+       width_svg = 12, height_svg = 8) %>% 
   girafe_options(opts_hover(css = "fill:cyan;"))
 ```
 
@@ -867,7 +878,7 @@ my_widget_multi <- girafe(ggobj = prov_map + early_vax_graph_dose1 + latest_vax_
 
 ```{r, eval = TRUE, echo = TRUE}
 girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster), 
-       width_svg = 8, height_svg = 5) %>% 
+       width_svg = 10, height_svg = 5) %>% 
   girafe_options(opts_hover(css = "fill:cyan;"))
 ```
 
@@ -876,6 +887,6 @@ girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_g
 ---
 
 # Things I'd Like To Do TO Make This Better ...
-1. make x axis (y) full range for multiples
+1. change bar colours?
 
 
