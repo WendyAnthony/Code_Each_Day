@@ -30,6 +30,7 @@
 - I had to find Canada map, to replace US map in code
 
 **Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/COVID-Canada.html
 - [COVID-Canada.Rmd](https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/COVID-Canada.Rmd)
 - [Interactive COVID-Canada Vaccine web Widget](https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/my_widget_page-multi.html)
 - used Canada map https://github.com/kjhealy/canmap  
