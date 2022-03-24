@@ -8,7 +8,8 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XII](#weekXII)**    
-  - [R3D80 2022-03-21](#R3D80)
+  - [R3D83 2022-03-24](#R3D83)
+  - [R3D80 2022-03-21](#R3D80) 
 - **[Week XI](#weekXI)**    
   - [R3D72 2022-03-13](#R3D72)  
 - **[Week III](#weekIII)**    
@@ -19,6 +20,22 @@
   
 ***
 # Week XII <a name="weekXII"/>
+***
+## R3D83 2022-03-24 <a name="R3D83"/>
+**Today's Progress**: 
+- making functions for some of COVID-Canada.Rmd code chunks
+  - interactive tooltips
+  - for creating data object excluding 'notprov'
+  - create data object, choosing Date and 2 different columns !!
+
+**Thoughts:** 
+- very proud of myself as this is the first time I've tried to create a function in R - and it worked!!
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/COVID-Canada.html
+- [COVID-Canada.Rmd](https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/COVID-Canada.Rmd)
+
+[TOC](#TOC)
 ***
 ## R3D80 2022-03-21 <a name="R3D80"/>
 **Today's Progress**: 
@@ -39,6 +56,7 @@
 
 [TOC](#TOC)
 
+***
 ***
 # Week XI <a name="weekXI"/>
 ***
