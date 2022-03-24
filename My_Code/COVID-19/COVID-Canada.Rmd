@@ -35,22 +35,22 @@ Yes, that’s girafe() like the animal but with one f - the creator of ggiraph, 
 # Install packages
 
 # Load libraries
-```{r load-libraries}
+```{r load-libraries, message=FALSE}
 library(dplyr)
 library(ggplot2)
 library(ggiraph)
 library(patchwork)
 library(lubridate)
 
-library(scales) # For the percent_format() function
+library(scales) # For the percent_format() function in ggplot axis
 
 # for Canada map
 library(sf) # for st_read
 ```
 
 # Get data
-https://health-infobase.canada.ca/covid-19/epidemiological-summary-covid-19-cases.html
-https://resources-covid19canada.hub.arcgis.com/datasets/provincial-daily-totals/explore
+https://health-infobase.canada.ca/covid-19/epidemiological-summary-covid-19-cases.html  
+https://resources-covid19canada.hub.arcgis.com/datasets/provincial-daily-totals/explore  
 
 ```{r get-data-COVID-Canada}
 data_url_can <- "Provincial_Daily_Totals.csv"
@@ -166,7 +166,7 @@ bar_graph_data_recent_can <- all_data_can %>%
 bar_graph_totvac <- ggplot(bar_graph_data_recent_can, 
                 aes(x = reorder(Province, TotalVaccinated), 
                     y = TotalVaccinated)) +
-  geom_col(color = "black", fill="#0072B2", size = 0.5) +
+  geom_col(color = "black", fill="#6a8de1", size = 0.5) +
   theme_minimal() +
   theme(axis.text=element_text(size = 10)) +
   labs(title = "Fully Vaccinated March  23, 2022",
@@ -185,12 +185,12 @@ bar_graph_totvac
 ```
 
 ## TV-Create a tooltip column in R
-
-```{r tootip-column-totvac}
+to create comma-separated integers used scales::comma(columnname, 1)
+```{r tooltip-column-totvac}
 bar_graph_data_recent_can <- bar_graph_data_recent_can %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
-                   TotalVaccinated, " (#)")
+                   scales::comma(TotalVaccinated, 1), " (#)")
   )
 ```
 
@@ -344,7 +344,7 @@ bar_graph_dose1 <- ggplot(bar_graph_data_recent_can_dose1,
 
 ## Create a tooltip column in R dose1
 
-```{r tootip-column-%-dose1-recent}
+```{r tooltip-column-%-dose1-recent}
 bar_graph_data_recent_can_dose1 <- bar_graph_data_recent_can_dose1 %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
@@ -392,7 +392,7 @@ bar_graph_data_early_dose1 <- all_data_can_pop %>%
 
 # Create a tooltip column in R data early
 
-```{r tootip-column-%-dose1-early}
+```{r tooltip-column-%-dose1-early}
 bar_graph_data_early_dose1 <- bar_graph_data_early_dose1 %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
@@ -458,7 +458,7 @@ bar_graph_dose2 <- ggplot(bar_graph_data_recent_can_dose2,
 
 ## Create a tooltip column in R
 
-```{r tootip-column-%-dose2-recent}
+```{r tooltip-column-%-dose2-recent}
 bar_graph_data_recent_can_dose2 <- bar_graph_data_recent_can_dose2 %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
@@ -504,7 +504,7 @@ bar_graph_data_early_dose2 <- all_data_can_pop %>%
 
 ## Create a tooltip column in R data early
 
-```{r tootip-column-%-dose2-early}
+```{r tooltip-column-%-dose2-early}
 bar_graph_data_early_dose2 <- bar_graph_data_early_dose2 %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
@@ -572,7 +572,7 @@ bar_graph_Booster <- ggplot(bar_graph_data_recent_can_Booster,
 
 ## Create a tooltip column in R
 
-```{r tootip-column-%-Booster-recent}
+```{r tooltip-column-%-Booster-recent}
 bar_graph_data_recent_can_Booster <- bar_graph_data_recent_can_Booster %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
@@ -618,7 +618,7 @@ bar_graph_data_early_Booster <- all_data_can_pop %>%
 
 ## Create a tooltip column in R data early
 
-```{r tootip-column-%-early-booster}
+```{r tooltip-column-%-early-booster}
 bar_graph_data_early_Booster <- bar_graph_data_early_Booster %>%
   mutate(
     tooltip_text = paste0(toupper(Province), "\n", 
@@ -652,7 +652,7 @@ girafe(ggobj = early_vax_graph_Booster, width_svg = 5, height_svg = 4)
 ```{r link-multiple-graphs-%-dose1}
 girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster), 
        width_svg = 12, height_svg = 8) %>% 
-  girafe_options(opts_hover(css = "fill:cyan;"))
+  girafe_options(opts_hover(css = "fill:#e1be6a;"))
 ```
 
 
@@ -745,7 +745,7 @@ map_colors <- rep(map_colors, 37)
 ## Draw the map
 p <- ggplot(data = canada_cd, 
             mapping = aes(fill = PRUID))
-p_out <- p + geom_sf(color = "gray60", 
+p_out <- p + geom_sf(color = "gray80", 
                     size = 0.1) + 
   scale_fill_manual(values = map_colors) + 
   guides(fill = FALSE) + 
@@ -770,18 +770,11 @@ names(canada_cd)[5] <- "Province"
 ## Convert population data.frame to all capitals to match all_data_can
 ```{r capitalize-Prov-can}
 canada_cd$Province = toupper(canada_cd$Province)
-canada_cd$Province
+#canada_cd$Province
 ```
 
 ```{r prov-info}
 pop_data_can$Province
-```
-
-## find unique-values
-```{r unique-values-can}
-# unique(all_data_can[c("Province")])
-canada_cd$Province
-unique(canada_cd[c("Province")])
 ```
 
 ## rename row values
@@ -796,7 +789,7 @@ canada_cd$Province[canada_cd$Province=="NEW BRUNSWICK / NOUVEAU-BRUNSWICK"] <- "
 ```
 
 ```{r check-name-change}
-canada_cd$Province
+# canada_cd$Province
 class(canada_cd)
 str(canada_cd)
 ```
@@ -807,7 +800,7 @@ str(canada_cd)
 ```{r ggplot-canada-map}
 p_can <- ggplot(data = canada_cd, 
             mapping = aes(fill = PRUID))
-p_can_out <- p_can + geom_sf(color = "gray60", 
+p_can_out <- p_can + geom_sf(color = "gray80", 
                     size = 0.1) + 
   scale_fill_manual(values = map_colors) + 
   guides(fill = FALSE) + 
@@ -831,6 +824,8 @@ p_can_out
            subtitle = "click for interactive map/chart (Data:resources-covid19canada.hub.arcgis.com)") +
    geom_sf_interactive(data = canada_cd, size = 0.125, 
                        aes(data_id = Province, tooltip = Province)) +
+        geom_sf(color = "gray80", 
+                    size = 0.1) + 
    theme_map()
 ```
 
@@ -839,14 +834,14 @@ p_can_out
 ```{r display-map-graph}
  girafe(ggobj = prov_map + latest_vax_graph, 
         width_svg = 10, height_svg = 5) %>%
-   girafe_options(opts_hover(css = "fill:cyan;"))
+   girafe_options(opts_hover(css = "fill:#e1be6a;"))
 ```
 
 ## display-map-multi-graph
 ```{r display-map-multi-graph}
 girafe(ggobj = prov_map + early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster, 
                      width_svg = 12, height_svg = 8) %>%
-   girafe_options(opts_hover(css = "fill:cyan;"))
+   girafe_options(opts_hover(css = "fill:#e1be6a;"))
 ```
 
 
@@ -857,7 +852,7 @@ girafe(ggobj = prov_map + early_vax_graph_dose1 + latest_vax_graph_dose1 + early
 ```{r html-widget-one-graph-map}
 my_widget <- girafe(ggobj = prov_map + latest_vax_graph, 
                      width_svg = 10, height_svg = 5) %>%
-   girafe_options(opts_hover(css = "fill:cyan;"))
+   girafe_options(opts_hover(css = "fill:#e1be6a;"))
 
  htmlwidgets::saveWidget(my_widget, "my_widget_page.html", 
                          selfcontained = TRUE)
@@ -867,7 +862,7 @@ my_widget <- girafe(ggobj = prov_map + latest_vax_graph,
 ```{r html-widget-multi-graph-map, eval = TRUE, echo = TRUE, include=FALSE}
 my_widget_multi <- girafe(ggobj = prov_map + early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster, 
                      width_svg = 10, height_svg = 8) %>%
-   girafe_options(opts_hover(css = "fill:cyan;"))
+   girafe_options(opts_hover(css = "fill:#e1be6a;"))
 
  htmlwidgets::saveWidget(my_widget_multi, "my_widget_page-multi.html", 
                          selfcontained = TRUE)
@@ -880,16 +875,211 @@ my_widget_multi <- girafe(ggobj = prov_map + early_vax_graph_dose1 + latest_vax_
 ```{r, eval = TRUE, echo = TRUE}
 girafe(code = print(early_vax_graph_dose1 + latest_vax_graph_dose1 + early_vax_graph_dose2 + latest_vax_graph_dose2 + early_vax_graph_Booster + latest_vax_graph_Booster), 
        width_svg = 10, height_svg = 5) %>% 
-  girafe_options(opts_hover(css = "fill:cyan;"))
+  girafe_options(opts_hover(css = "fill:#e1be6a;"))
 ```
-
 
 
 ---
 
-# Things I'd Like To Do TO Make This Better ...
-1. change bar colours?
-2. make a shiny app to choose which vaccine chart, and have larger map
-3. how to make map larger?
+--- 
+---  
+
+===================================  
+===================================  
+
+# Functions
+
+===================================  
+===================================  
+
+# Functions for filtering non-province and creating df for specific date
+
+
+---
+
+## Dose1 TEST
+Message: Note: Using an external vector in selections is ambiguous.  (instead of select(Province, x, y))
+ℹ Use `all_of(x)` instead of `x` to silence this message.  
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>
+```{r function-filter-non-prov-dose1-TEST}
+dose_TEST <- function(Date, x, y){
+  all_data_can_pop %>%  
+  filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
+  select(Province, all_of(x), all_of(y))
+}
+```
+
+### TEST function >>> WORKS!!
+
+## Dose1 function test
+... instead of having a separate function for each dose, specifying column
+To specify which columns and date
+fill in (date, "col1, "col2)
+```{r function-filter-non-prov-dose-test}
+dose1_TEST <- dose_TEST(2021-06-17, "PercentVaccinatedDose1", "PercentVaccinatedDose1_percent")
+```
+
+---
+
+### Don't need separate function for each dose / column e.g. Dose1
+```{r function-filter-non-prov-dose1}
+# dose1 <- function(Date){
+#   dose1 <- all_data_can_pop %>%  
+#   filter(Date == max(Date), !(Province %in% not_provinces)) %>%  
+#   select(Province, PercentVaccinatedDose1, PercentVaccinatedDose1_percent)
+# }
+```
+
+```{r funtion-filter-non-prov-date}
+# e.g. try Data = 2021-06-17 (early dose1 and dose2); 2021-12-20 (for early booster)
+dose1_TEST <- dose_TEST(2021-06-17, "PercentVaccinatedDose1", "PercentVaccinatedDose1_percent")
+dose2_TEST <- dose_TEST(2021-06-17, "PercentVaccinatedDose2", "PercentVaccinatedDose2_percent")
+booster_TEST <- dose_TEST(2021-12-20, "PercentVaccinatedBooster", "PercentVaccinatedBooster_percent")
+
+# one function works same as 3 separate functions
+# dose1_data_2021_06_17 <- dose1(2021-06-17)
+# dose2_data_2021_06_17 <- dose2(2021-06-17)
+# booster_data_2021_12_21 <- booster(2021-12-20)
+```
+
+## Function Create a tooltip for % column values
+
+```{r function-tooltip-column-percent}
+tootip_per_col <- function(data, x, y){
+    data %>%
+      mutate(
+        tooltip_text_TEST = paste0(toupper("Province"), "\n", 
+                   x, "(%)") 
+      )
+    }
+```
+
+### TEST function
+need to fill in values tooltip_per_col(data, "columname")  
+creates a tooltext column in data object, with % symbol
+```{r function-tootip-TEST-colnam}
+tootip_per_col(bar_graph_data_recent_can, "TotalVaccinated")
+```
+
+## Function Create a tooltip for # column values
+
+```{r function-tooltip-column-number}
+tootip_num_col <- function(data, x, y){
+    data %>%
+      mutate(
+        tooltip_text_TEST = paste0(toupper("Province"), "\n", 
+                   x, "(#)") 
+      )
+    }
+```
+
+### TEST function
+need to fill in values tooltip_per_col(data, "columnname")  
+creates a tooltext column in data objectm, with # symbol
+```{r function_tootip_TEST}
+tootip_num_col(bar_graph_data_recent_can, "TotalVaccinated")
+```
+
+
+### TEST Function tooltip for interactive bar chart 
+
+```{r ggiraph-interactive-barchart-totvac-TEST}
+latest_vax_graph_TEST <- ggplot(bar_graph_data_recent_can, 
+                aes(x = reorder(Province, TotalVaccinated), 
+                    y = TotalVaccinated,
+                    tooltip = tooltip_text_TEST, data_id = Province #<<
+                    )) +
+  geom_col_interactive(color = "black", fill="#0072B2", size = 0.5) +  #<<
+  theme_minimal() +
+  theme(axis.text=element_text(size = 6)) +  #<<
+  labs(title = "Fully Vaccinated March 23, 2022",
+       subtitle = "Data from https://resources-covid19canada.hub.arcgis.com"
+       ) +
+   ylab("Total Vaccinated") +
+   xlab("") +
+  scale_y_continuous(labels = comma_format()) +  
+  coord_flip()
+
+girafe(ggobj = latest_vax_graph, width_svg = 5, height_svg = 4)
+```
+
+
+===  
+===  
+
+## TEST Function Create a tooltip for comma-separated column values
+- this gives comma format, but I can't seem to make a vunction to choose different columns to use  
+- can at least use to choose which data to use, then manually change the column to use
+```{r function-tooltip-column-comma-TEST}
+tootip_com_col <- function(data){
+    data %>%
+      mutate(
+        tooltip_text_TEST = paste0(toupper("Province"), "\n", 
+                   scales::comma(TotalVaccinated, 1)) 
+      )
+    }
+```
+
+### TEST function
+need to fill in values tooltip_per_col(data, "columname")  
+creates a tooltext column in data object, with % symbol
+```{r function_tootip_TEST_colnam}
+tootip_com_col(bar_graph_data_recent_can)
+```
+
+
+---
+
+===  
+===  
+
+
+===  
+=== 
+
+# TEST Function for ggplot
+function works to grab data into ggplot_fun  
+??? can I add column ???
+```{r function-ggplot}
+ggplot_fun <- function(data, x){
+ggplot(data, 
+                aes(x = reorder(Province, PercentVaccinatedDose2), 
+                    y = PercentVaccinatedDose2)) +
+  geom_col(color = "black", fill="#0072B2", size = 0.5) +
+  theme_minimal() +
+  theme(axis.text=element_text(size = 8)) +
+  labs(title = "Dose1 2022-03-23") +
+   ylab(" Vaccinated") +
+   xlab("") +
+  scale_y_continuous(labels = percent_format(), limits=c(0,1)) +
+  coord_flip()
+}
+```
+
+## TEST ggplot function
+fill in (data, col1, col2))
+```{r function-ggplot-TEST}
+ggplot_fun(bar_graph_data_recent_can_dose2, PercentVaccinatedDose2_percent)
+```
+
+
+---
+
+
+
+---  
+---  
+
+---
+
+# Things I'd Like To Do TO Make This Better ...  
+1. change bar colours?  
+2. make a shiny app to choose which vaccine chart, and have larger map  
+3. how to make map larger?  
+4. make a function to avoid repeating code for different vaccine dose  
+   - done:  >> tested both in a ggplot barchart
+     - tootip
+     - create data object with only Province (not not prov)
+     - create data object, choosing only Date, and 2 columns !!
 
 
