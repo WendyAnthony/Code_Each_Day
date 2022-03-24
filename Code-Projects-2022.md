@@ -32,7 +32,8 @@
 - very proud of myself as this is the first time I've tried to create a function in R - and it worked!!
 
 **Links to code work:** 
-- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/COVID-Canada.html
+- New with functions, html version: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/COVID-Canada.html
+- Old html version: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/COVID-Canada-2022-03-21.html
 - [COVID-Canada.Rmd](https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/COVID-Canada.Rmd)
 
 [TOC](#TOC)
