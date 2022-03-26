@@ -1,0 +1,346 @@
+---
+title: "Photo-folder-exif-map"
+author: "Wendy Anthony"
+date: "25/03/2022"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load Libraries
+```{r load-Libraries, message=FALSE}
+library(exifr)
+library(dplyr)
+library(leaflet)
+library(htmlwidgets) # for responsive web map
+```
+
+# Data
+
+## change working directory
+Session > Set working directory > choose directory  
+seems easiest to copy this file to fold with the images, which auto makes that the working directory
+```{r set-dir-folder}
+# Session > Set working directory > choose directory 
+# then run setwd()
+# setwd("/Volumes/MyPassportForMac/Pictures/!Nikon-Camera/Nikon-Coolpix-GPS/2022-03-25-CattlePoint-UplandsPark-BIrdWithGeoffrey-HarlingPoint-BeaconHillPark")
+getwd()
+
+# create variable for directory
+folder <- getwd()
+folder
+```
+
+## list files in directory & read exif data
+```{r list-files-jpg}
+files <- list.files(pattern = "*.JPG")
+```
+
+## Extract exif
+```{r read-exif}
+dat <- read_exif(files)
+```
+
+
+## explore data
+```{r explore-data}
+View(dat)
+head(dat)
+str(dat)
+dat$GPSLongitude
+dat$GPSLatitude
+head(dat)
+```
+
+# Clean data using dplyr::select
+## select columns
+```{r select-columns-gps}
+# dplyr::select
+dat2 <- select(dat,
+               SourceFile, DateTimeOriginal,
+               GPSLongitude, GPSLatitude,
+               GPSTimeStamp)
+# View(dat2)
+```
+
+## select columns
+```{r select-columns-gps-exif}
+# include camera EXIF data
+dat3 <- select(dat,
+               SourceFile, DateTimeOriginal, GPSTimeStamp,
+               GPSLongitude, GPSLatitude,
+               ExposureTime, FNumber, ISO, FocalLength)
+# View(dat3)
+```
+
+## write csv files
+```{r}
+# create csv file >>> saves in working directory
+write.csv(dat2, 'Exifdata.csv',
+          row.names = FALSE)
+
+write.csv(dat3, 'ExifCameradata.csv',
+          row.names = FALSE)
+```
+
+# Maps
+interactive map with markers and popup with images (not responsive to changing screen size)  
+
+## map with location ana image, no text
+```{r map1-gps}
+m <- leaflet(dat2) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addMarkers(~ GPSLongitude, ~ GPSLatitude,
+#             popup = paste0("<img src = '/Volumes/My Passport for Mac/Pictures/!!Nikon-Camera/Nikon-Coolpix-GPS/2019-06-20-LongBeach/", dat2$SourceFile, "' style='width:314px;height:239px;'", ">"))
+popup = paste0("<img src = '", dat2$SourceFile, "' style='width:314px;height:239px;'", ">"))
+# be sure to use trailing / for directory/
+
+# output an save the html file of the leaflet map in the root of your working directory
+htmlwidgets::saveWidget(m, "photo-map-pop1.html")
+```
+
+## larger map
+
+```{r map-larger}
+# to make map larger (not responsive to changing screen size)
+# Replace all instances of folder_name with the working directory folder
+m2 <- dat2 %>%
+  leaflet(height=2000, width=2000) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addMarkers(~ GPSLongitude, ~ GPSLatitude,
+             popup = paste0("<img src = '", dat2$SourceFile, "' style='width:314px;height:239px;'", ">"))
+
+saveWidget(m2, "photo-map-pop-2a.html")
+```
+## popup text
+```{r map-popup-text-esri}
+m2b <- leaflet(dat2) %>%
+  # addProviderTiles("Esri.WorldImagery", options = providerTileOptions(minzoom = 1, maxzoom = 10)) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
+             ~ GPSLongitude, ~ GPSLatitude,
+             popup = paste0("<b>Image Name:</b> ", dat2$SourceFile, "<br>", "<b>Image Date:</b> ", dat2$DateTimeOriginal, "<br><br>",
+                            #"<img src = '/Volumes/My Passport for Mac/Pictures/!!Nikon-Camera/Nikon-Coolpix-GPS/2019-06-20-LongBeach/",
+                            "<img src = '",
+                            dat2$SourceFile, "' style='width:314px;height:239px;'", ">"))
+m2b$width <- 1000
+m2b$height <- 1000
+# m2b # map in r window doesn't show images ??
+saveWidget(m2b, "photo-map-pop-2b.html")
+```
+
+```{r map-popup-text-stamen}
+m3 <- leaflet(dat2) %>%
+  # addProviderTiles("Esri.WorldImagery", options = providerTileOptions(minzoom = 1, maxzoom = 10)) %>%
+  addProviderTiles("Stamen.TonerLite", group = "Toner", options = providerTileOptions(minzoom = 1, maxzoom = 10)) %>%
+  addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
+             ~ GPSLongitude, ~ GPSLatitude,
+             popup = paste0("<b>Image Name:</b> ", dat2$SourceFile, "<br>", "<b>Image Date:</b> ", dat2$DateTimeOriginal, "<br><br>",
+                            #"<img src = '/Volumes/My Passport for Mac/Pictures/!!Nikon-Camera/Nikon-Coolpix-GPS/2019-06-20-LongBeach/",
+                            "<img src = '",
+                            dat2$SourceFile, "' style='width:314px;height:239px;'", ">"))
+m3$width <- 1000
+m3$height <- 1000
+#m3
+saveWidget(m3, "photo-map-pop-4a.html")
+```
+
+# Responsive maps
+
+## Responsive map
+```{r responsive-map}
+# create the string for responsiveness that will be injected in the <head> section of the leaflet output html file. Note that the quotes were escaped using the backslash character : `\`.
+responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\'"
+
+# custom icon
+# https://leafletjs.com/examples/custom-icons/
+greenLeafIcon <- makeIcon(
+  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconWidth = 38, iconHeight = 95,
+  iconAnchorX = 22, iconAnchorY = 94,
+  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 50, shadowHeight = 64,
+  shadowAnchorX = 4, shadowAnchorY = 62
+)
+# change LeafIcon size 1/2
+greenLeafIconSm <- makeIcon(
+  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconWidth = 19, iconHeight = 47,
+  iconAnchorX = 11, iconAnchorY = 47,
+  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 25, shadowHeight = 32,
+  shadowAnchorX = 2, shadowAnchorY = 31
+)
+
+# build a leaflet map with a stamen background
+# set view and initial zoom
+# Stamen allows map to display at max zoom
+# custom icon vs default blue
+# Replace all instances of folder_name with the working directory folder
+example.map <- leaflet(dat2) %>%
+  # addProviderTiles("Esri.WorldImagery") %>%
+  addProviderTiles("Stamen.TonerLite", group = "Toner", options = providerTileOptions(minzoom = 1, maxzoom = 10)) %>%
+  addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
+             ~ GPSLongitude, ~ GPSLatitude, icon = greenLeafIconSm,
+             popup = paste0("<b>Image Name:</b> ", dat2$SourceFile, "<br>", "<b>Image Date:</b> ", dat2$DateTimeOriginal, "<br><br>",
+                            "<img src = '",
+                            dat2$SourceFile, "' style='width:314px;height:239px;'", ">")) %>%
+    setView(-123 ,48, 6) %>%
+  # add the javascript for responsivness; added to html file head section
+  htmlwidgets::onRender(paste0("
+    function(el, x) {
+      $('head').append(",responsiveness,");
+    }"))
+
+# show the map
+example.map
+
+# output an save the html file of the leaflet map in the root of your working directory
+htmlwidgets::saveWidget(widget=example.map,
+                        file= "example.html",
+                        selfcontained = TRUE
+)
+
+# Error in saveas(example.map, "photo-map-pop-3c-ex.html") :could not find function "saveas"
+saveWidget(example.map, "photo-map-pop-3c-ex.html")
+getwd()
+```
+
+## Responsive map with exif
+```{r responsive-map-exif}
+# INclude camera EXIF info
+####################################################################################
+####################################################################################
+### Best working code: reponsive js; custom icon; pop-up details from EXIF data
+####################################################################################
+# https://stackoverflow.com/questions/46453598/is-there-a-way-to-make-leaflet-map-popup-responsive-on-r
+# Responsive
+
+# create the string for responsiveness that will be injected in the <head> section of the leaflet output html file. Note that the quotes were escaped using the backslash character : `\`.
+responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\'"
+
+# custom icon
+# https://leafletjs.com/examples/custom-icons/
+greenLeafIcon <- makeIcon(
+  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconWidth = 38, iconHeight = 95,
+  iconAnchorX = 22, iconAnchorY = 94,
+  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 50, shadowHeight = 64,
+  shadowAnchorX = 4, shadowAnchorY = 62
+)
+# change LeafIcon size 1/2
+greenLeafIconSm <- makeIcon(
+  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconWidth = 19, iconHeight = 47,
+  iconAnchorX = 11, iconAnchorY = 47,
+  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 25, shadowHeight = 32,
+  shadowAnchorX = 2, shadowAnchorY = 31
+)
+
+
+# build a leaflet map with a stamen background
+# set view and initial zoom
+# Stamen allows map to display at max zoom
+# custom icon vs default blue
+# Replace all instances of folder_name with the working directory folder
+CameraExif.map <- leaflet(dat3) %>%
+  # addProviderTiles("Esri.WorldImagery") %>%
+  addProviderTiles("Stamen.TonerLite", group = "Toner", options = providerTileOptions(minzoom = 1, maxzoom = 10)) %>%
+  addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
+             ~ GPSLongitude, ~ GPSLatitude, icon = greenLeafIconSm,
+             popup = paste0("<b>Image Name:</b> ", dat3$SourceFile, "<br><br>", "<b>Image Date:</b> ", dat3$DateTimeOriginal, "<br>", "<b>GPS TimeStamp:</b> ", dat3$GPSTimeStamp, "<br><br>", "<b>F Stop:</b> ", dat3$FNumber, "<br>", "<b>ISO:</b> ", dat3$ISO, "<br>", "<b>Focal Length:</b> ", dat3$FocalLength, "<br>", "<b>Exposure Time:</b> ", dat3$ExposureTime, "<br><br>",
+                            "<img src = '",
+                            dat3$SourceFile, "' style='width:314px;height:239px;'", ">")) %>%
+  setView(-123 ,48, 6) %>%
+  # add the javascript for responsivness; added to html file head section
+  htmlwidgets::onRender(paste0("
+    function(el, x) {
+      $('head').append(",responsiveness,");
+    }"))
+
+# show the map
+CameraExif.map
+
+# output an save the html file of the leaflet map in the root of your working directory
+htmlwidgets::saveWidget(widget=CameraExif.map,
+                        file= "CameraExif.html",
+                        selfcontained = TRUE
+)
+
+# Error in saveas(example.map, "photo-map-pop-3c-ex.html") :could not find function "saveas"
+saveWidget(CameraExif.map, "CameraExifMap-a.html")
+getwd()
+
+```
+
+
+
+## Responsive map
+```{r responsive-map}
+# create the string for responsiveness that will be injected in the <head> section of the leaflet output html file. Note that the quotes were escaped using the backslash character : `\`.
+responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\'"
+
+# custom icon
+# https://leafletjs.com/examples/custom-icons/
+greenLeafIcon <- makeIcon(
+  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconWidth = 38, iconHeight = 95,
+  iconAnchorX = 22, iconAnchorY = 94,
+  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 50, shadowHeight = 64,
+  shadowAnchorX = 4, shadowAnchorY = 62
+)
+# change LeafIcon size 1/2
+greenLeafIconSm <- makeIcon(
+  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconWidth = 19, iconHeight = 47,
+  iconAnchorX = 11, iconAnchorY = 47,
+  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 25, shadowHeight = 32,
+  shadowAnchorX = 2, shadowAnchorY = 31
+)
+
+# build a leaflet map with a stamen background
+# set view and initial zoom
+# Stamen allows map to display at max zoom
+# custom icon vs default blue
+# Replace all instances of folder_name with the working directory folder
+example.map <- leaflet(dat3) %>%
+  # addProviderTiles("Esri.WorldImagery") %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
+             ~ GPSLongitude, ~ GPSLatitude, icon = greenLeafIconSm,
+             popup = paste0("<b>Image Name:</b> ", dat3$SourceFile, "<br>", "<b>Image Date:</b> ", dat3$DateTimeOriginal, "<br><br>", "<b>FN Number:</b> ", dat3$FNumber, "<br>",  "<b>ISO:</b> ", dat3$ISO, "<br>", "<b>Exposure Time:</b> ", dat3$ExposureTime, "<br><br>",  "<b>Folder:</b> ", folder, "<br><br>", 
+                            "<img src = '",
+                            dat3$SourceFile, "' style='width:314px;height:239px;'", ">")) %>%
+    setView(-123 ,48, 6) %>%
+  # add the javascript for responsivness; added to html file head section
+  htmlwidgets::onRender(paste0("
+    function(el, x) {
+      $('head').append(",responsiveness,");
+    }"))
+
+# show the map
+example.map
+
+# output an save the html file of the leaflet map in the root of your working directory
+htmlwidgets::saveWidget(widget=example.map,
+                        file= "example.html",
+                        selfcontained = TRUE
+)
+
+# Error in saveas(example.map, "photo-map-pop-3c-ex.html") :could not find function "saveas"
+saveWidget(example.map, "photo-map-pop-4c-ex.html")
+getwd()
+```
+
