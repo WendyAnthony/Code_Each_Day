@@ -22,6 +22,19 @@
 ***
 # Week XII <a name="weekXII"/>
 ***
+## R3D83 2022-03-25 <a name="R3D84"/>
+**Today's Progress**: 
+- create code to create `.csv` and 'leaflet map` from folder of images
+- learned how to rename files in image folder with exif info, and folder name
+
+**Thoughts:** 
+- lots of trial and error
+
+**Links to code work:** 
+- 
+
+[TOC](#TOC)
+***
 ## R3D83 2022-03-24 <a name="R3D83"/>
 **Today's Progress**: 
 - making functions for some of COVID-Canada.Rmd code chunks
