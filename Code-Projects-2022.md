@@ -31,7 +31,8 @@
 - lots of trial and error
 
 **Links to code work:** 
-- 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/rename-folder-files.R
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/photoFolder-exif-map-WORKS-in-photo-folder.Rmd
 
 [TOC](#TOC)
 ***
