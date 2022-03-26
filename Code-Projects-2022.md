@@ -8,6 +8,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XII](#weekXII)**    
+  - [R3D84 2022-03-25](#R3D84)
   - [R3D83 2022-03-24](#R3D83)
   - [R3D80 2022-03-21](#R3D80) 
 - **[Week XI](#weekXI)**    
