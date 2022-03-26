@@ -29,6 +29,7 @@
 
 **Thoughts:** 
 - lots of trial and error
+- r scripts must be located in folder of images for them to work properly
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/rename-folder-files.R
