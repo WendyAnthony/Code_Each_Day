@@ -8,6 +8,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XII](#weekXII)**    
+  - [R3D85 2022-03-26](#R3D85)
   - [R3D84 2022-03-25](#R3D84)
   - [R3D83 2022-03-24](#R3D83)
   - [R3D80 2022-03-21](#R3D80) 
@@ -21,6 +22,24 @@
   
 ***
 # Week XII <a name="weekXII"/>
+***
+## R3D85 2022-03-26 <a name="R3D85"/>
+**Today's Progress**: 
+- refined code for creating maps from images in folder
+- refined code to rename files in image folder with exif info, and folder name
+
+**Thoughts:** 
+- more trial and error
+- r scripts must be located in folder of images for them to work properly
+- copying images from same location into location folder so I can map all images for a location over time
+- I'd like to figure out some `r leaflet` code to map images over time
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/z-1-rename-files-folder.R
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/z-2-Photo-Map-Folder.Rmd
+
+[TOC](#TOC)
+
 ***
 ## R3D83 2022-03-25 <a name="R3D84"/>
 **Today's Progress**: 
@@ -37,6 +56,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/photoFolder-exif-map-WORKS-in-photo-folder.Rmd
 
 [TOC](#TOC)
+
 ***
 ## R3D83 2022-03-24 <a name="R3D83"/>
 **Today's Progress**: 
@@ -54,6 +74,7 @@
 - [COVID-Canada.Rmd](https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/COVID-Canada.Rmd)
 
 [TOC](#TOC)
+
 ***
 ## R3D80 2022-03-21 <a name="R3D80"/>
 **Today's Progress**: 
