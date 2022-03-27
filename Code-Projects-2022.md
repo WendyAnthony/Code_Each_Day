@@ -34,6 +34,7 @@
 - r scripts must be located in folder of images for them to work properly
 - copying images from same location into location folder so I can map all images for a location over time
 - I'd like to figure out some `r leaflet` code to map images over time
+- once images are on map, I'd like to find leaflet code that I can draw boundary around markers and export data (e.g.to see what plants are all in one place - to help with naming, etc)
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/z-1-rename-files-folder.R
