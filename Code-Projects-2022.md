@@ -30,6 +30,7 @@
 
 **Thoughts:** 
 - more trial and error
+- gotta be careful when making little shifts that might not work, but copying code before testing
 - r scripts must be located in folder of images for them to work properly
 - copying images from same location into location folder so I can map all images for a location over time
 - I'd like to figure out some `r leaflet` code to map images over time
