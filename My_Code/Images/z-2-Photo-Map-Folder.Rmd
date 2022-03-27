@@ -231,7 +231,7 @@ CameraExif.map <- leaflet(dat3) %>%
   addProviderTiles("Stamen.TonerLite", group = "Toner", options = providerTileOptions(minzoom = 1, maxzoom = 10)) %>%
   addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
              ~ GPSLongitude, ~ GPSLatitude, icon = greenLeafIconSm,
-             popup = paste0("<b>Image Name:</b> ", dat3$SourceFile, "<br><br>", "<b>Image Date:</b> ", dat3$DateTimeOriginal, "<br>", "<b>GPS TimeStamp:</b> ", dat3$GPSTimeStamp, "<br><br>", "<b>F Stop:</b> ", dat3$FNumber, "<br>", "<b>ISO:</b> ", dat3$ISO, "<br>", "<b>Focal Length:</b> ", dat3$FocalLength, "<br>", "<b>Exposure Time:</b> ", dat3$ExposureTime, "<br><br>",
+             popup = paste0("<b>Image Name:</b> ", dat3$SourceFile, "<br><br>", "<b>Image Date:</b> ", dat3$DateTimeOriginal, "<br><br>", "<b>F Stop:</b> ", dat3$FNumber, "<br>", "<b>ISO:</b> ", dat3$ISO, "<br>", "<b>Focal Length:</b> ", dat3$FocalLength, "<br>", "<b>Exposure Time:</b> ", dat3$ExposureTime, "<br><br>",
                             "<img src = '",
                             dat3$SourceFile, "' style='width:314px;height:239px;'", ">")) %>%
   setView(-123 ,48, 6) %>%
@@ -301,7 +301,7 @@ CameraExif.map <- leaflet(dat3) %>%
   addProviderTiles("Esri.WorldImagery") %>%
   addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
              ~ GPSLongitude, ~ GPSLatitude, icon = greenLeafIconSm,
-             popup = paste0("<b>Image Name:</b> ", dat3$SourceFile, "<br><br>", "<b>Image Date:</b> ", dat3$DateTimeOriginal, "<br>", "<b>GPS TimeStamp:</b> ", dat3$GPSTimeStamp, "<br><br>", "<b>F Stop:</b> ", dat3$FNumber, "<br>", "<b>ISO:</b> ", dat3$ISO, "<br>", "<b>Focal Length:</b> ", dat3$FocalLength, "<br>", "<b>Exposure Time:</b> ", dat3$ExposureTime, "<br><br>",
+             popup = paste0("<b>Image Name:</b> ", dat3$SourceFile, "<br><br>", "<b>Image Date:</b> ", dat3$DateTimeOriginal, "<br><br>", "<b>F Stop:</b> ", dat3$FNumber, "<br>", "<b>ISO:</b> ", dat3$ISO, "<br>", "<b>Focal Length:</b> ", dat3$FocalLength, "<br>", "<b>Exposure Time:</b> ", dat3$ExposureTime, "<br><br>",
                             "<img src = '",
                             dat3$SourceFile, "' style='width:314px;height:239px;'", ">")) %>%
   setView(-123 ,48, 6) %>%
