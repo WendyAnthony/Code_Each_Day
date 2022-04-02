@@ -1,0 +1,262 @@
+---
+title: "Sound Visualization"
+author: "Wendy Anthony"
+date: "02/04/2022"
+output:
+  html_document:
+    highlight: zenburn # dark code theme
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Set up
+
+## Load packages
+```{r load-packages}
+# install.packages("behaviouR")  # package ‘behaviouR’ is not available (for R version 4.0.2)
+# library(behaviouR)
+
+# not sure if these are needed
+#library(ggfortify)
+library(ggplot2)
+
+# install.packages("tuneR")
+library(tuneR) # Warning: package ‘tuneR’ was built under R version 4.0.5
+
+# install.packages("seewave")
+library(seewave) # Warning: package ‘seewave’ was built under R version 4.0.5
+```
+
+
+## Folder directory
+
+```{r folder-dir}
+folder <- getwd()
+```
+
+### Create sub-directory
+if not already existing
+```{r sub-dir}
+dir.create(file.path("recordings"), showWarnings = FALSE)
+dir.create(file.path("data"), showWarnings = FALSE)
+dir.create(file.path("output"), showWarnings = FALSE)
+```
+
+
+### List files from another hard drive volume
+copy relevant files to data folder
+```{r list-files-volume}
+file_list <- Sys.glob('/Volumes/MyPassportForMac/Pictures/!!Nikon-Camera/Nikon-Coolpix-GPS/TestFolder-R-Map-Images/GoldstreamPark/*.wav')
+file_list
+```
+
+```{r list-files-subdir}
+wav_files <- list.files("./recordings", pattern = "*.wav")
+wav_files
+```
+
+---
+
+# Read wav file with `tuneR`
+```{r read-wav-file}
+eagle_wav_2021_06_04 <- readWave("./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav")
+```
+
+## Save wav file object in recordings folder
+```{r save-wav-object-subdir}
+# save(eagle_wav_2021_06_04, file = "./data/eagle_wav_2021_06_04")
+```
+
+## Run wave object
+to see info
+```{r run-wav-object}
+eagle_wav_2021_06_04
+```
+
+### Wave duration 
+using `seewave`
+```{r see-wav-duration}
+duration(eagle_wav_2021_06_04)
+```
+
+# Plots
+
+## Plot waveform
+using `seewave`
+```{r plot-waveform}
+oscillo(eagle_wav_2021_06_04)
+```
+
+
+### Plot waveform zoomed to see shape
+using `seewave`
+```{r plot-waveform-zoom}
+oscillo(eagle_wav_2021_06_04, from = 0, to = 2)
+oscillo(eagle_wav_2021_06_04, from = 0.1, to = 0.2)
+```
+
+## Plot Spectrogram
+can't use behaviouR >> is not available (for R version 4.0.2)  
+behaviouR::Spectrogram(sound.file = "./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav")
+```{r plot-spectrogram}
+spectro_eagle_wav_2021_06_04 <- spectro(eagle_wav_2021_06_04)
+spectro_eagle_wav_2021_06_04_zoom <- spectro(eagle_wav_2021_06_04, flim=c(0,6)) # zoom in frequency
+spectro_eagle_wav_2021_06_04_osc <- spectro(eagle_wav_2021_06_04, osc = TRUE)
+spectro_eagle_wav_2021_06_04_zoom_osc <- spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6)) # zoom in frequency
+# spectro(eagle_wav_2021_06_04)  # Registered S3 method overwritten by 'htmlwidgets'
+```
+
+## Change palette
+Palettes available: reverse.gray.colors.1, reverse.gray.colors.2, reverse.heat.colors, reverse.terrain.colors, reverse.topo.colors, reverse.cm.colors heat.colors, terrain.colors, topo.colors, cm.colors
+```{r change-plots-palette}
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6))
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = reverse.terrain.colors)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors)  # I like this one best
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = reverse.gray.colors.1)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = reverse.gray.colors.2)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = reverse.heat.colors)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = heat.colors)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = reverse.topo.colors)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = topo.colors)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = reverse.cm.colors)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = reverse.cm.colors, colwave="orchid1")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = cm.colors, colwave="orchid1")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = temp.colors) # I like this one
+```
+# Save image
+```{r save-image}
+jpeg(file = "./output/eagle_wav_2021_06_04_spector.jpeg")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colgrid="white", colwave="white", colaxis="white", collab="white") # I like this best
+dev.off
+
+png(file="./output/eagle_wav_2021_06_04_spector.png")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colgrid="white", colwave="white", colaxis="white", collab="white") # I like this best
+dev.off
+
+tiff(file="./output/eagle_wav_2021_06_04_spector.tiff", units="in", width=8, height=8, res=600)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colgrid="white", colwave="white", colaxis="white", collab="white") # I like this best
+dev.off
+```
+
+
+## Change plot colours
+```{r change-plots-colours}
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6))
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors)
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "yellow")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "green")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "palegreen")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "lightgreen")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "springgreen")
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "limegreen") # I like this best
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colgrid="white", colwave="white", colaxis="white", collab="white") # I like this best
+```
+
+# ggplot2
+```{r ggplot-spectro}
+# library(ggplot2)
+
+## first layer
+# v <- ggspectro(eagle_wav_2021_06_04, ovlp = 50)
+v <- ggspectro(eagle_wav_2021_06_04)
+
+## using geom_tile ##
+v + geom_tile(aes(fill = amplitude)) + ylim(0, 6)
+
+# black and white theme background
+v + geom_tile(aes(fill = amplitude)) + 
+  ylim(0, 6) + 
+  scale_fill_gradientn(name="Amplitude\n(dB)\n", limits=c(-30,0),
+  na.value="transparent", colours = spectro.colors(30)) +
+  theme_bw()
+
+v + geom_tile(aes(fill = amplitude)) + 
+  ylim(0, 6) + 
+  scale_fill_gradientn(name="Amplitude\n(dB)\n", limits=c(-30,0),
+  na.value="transparent", colours = spectro.colors(30)) +
+  theme(plot.background = element_rect(fill = 'white', colour = 'red'),
+        panel.background = element_rect(fill = 'black', colour = 'red'))
+```
+
+
+
+
+---
+
+
+
+
+
+---
+
+
+
+
+---  
+---  
+
+# NOT WORKING
+## Play using `tuneR`
+
+## Playlist of sound files
+```{r playlist}
+# playlist("./recordings/")
+```
+
+
+### Set Player
+```{r set-player}
+# player <- setWavPlayer("/Applications/VLC")
+```
+
+
+### Play
+DON"T USE QUICKTIME  >>> locks up R
+, "/Applications/'QuickTime Player.app'/Contents/MacOS/'QuickTime Player'"
+```{r play}
+# play("./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav")
+```
+
+
+
+---  
+---
+
+
+---
+
+
+
+
+--- 
+--- 
+
+
+---
+
+## Load recordings
+not tested / working yet
+```{r load-recordings}
+#recordings <- get(load(url()))
+```
+
+
+
+
+
+
+---
+
+---  
+--- 
+
+# Resources:
+[Analyzing Acoustic Data](https://bookdown.org/djc426/behaviouR-R-package-tutorials/computer-lab-3-analyzing-acoustic-data.html#part-1.-loading-a-sound-file-and-making-a-spectrogram)  
+[seewave::spectro](https://rug.mnhn.fr/seewave/HTML/MAN/spectro.html)  
