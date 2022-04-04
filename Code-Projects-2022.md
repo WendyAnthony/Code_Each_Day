@@ -8,6 +8,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XII](#weekXII)**    
+  - [R3D86 2022-03-27](#R3D86)
   - [R3D85 2022-03-26](#R3D85)
   - [R3D84 2022-03-25](#R3D84)
   - [R3D83 2022-03-24](#R3D83)
@@ -22,6 +23,24 @@
   
 ***
 # Week XII <a name="weekXII"/>
+***
+## R3D86 2022-03-27 <a name="R3D86"/>
+**Today's Progress**: 
+- tried out creating maps from image folder at scale
+  - downloaded 8000+ images from camera to one folder on different computer
+  - the code worked!!!
+
+
+**Thoughts:** 
+- took longer to download images from camera than to run coade
+- getting the photo meta-data into `.csv` form took the longest of process
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Sound/Sound.html
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Sound/Sound.Rmd
+
+[TOC](#TOC)
+
 ***
 ## R3D85 2022-03-26 <a name="R3D85"/>
 **Today's Progress**: 
