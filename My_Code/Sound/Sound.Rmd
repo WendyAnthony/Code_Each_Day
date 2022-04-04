@@ -1,7 +1,7 @@
 ---
 title: "Sound Visualization"
 author: "Wendy Anthony"
-date: "02/04/2022"
+date: "2022/04/02"
 output:
   html_document:
     highlight: zenburn # dark code theme
@@ -20,7 +20,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Load packages
 ```{r load-packages}
 # install.packages("behaviouR")  # package ‘behaviouR’ is not available (for R version 4.0.2)
-# library(behaviouR)
+## need to install using devtools
+# devtools::install_github("https://github.com/DenaJGibbon/behaviouR")
+library(behaviouR)
 
 # not sure if these are needed
 #library(ggfortify)
@@ -32,6 +34,81 @@ library(tuneR) # Warning: package ‘tuneR’ was built under R version 4.0.5
 # install.packages("seewave")
 library(seewave) # Warning: package ‘seewave’ was built under R version 4.0.5
 ```
+behariouR  
+Downloading GitHub repo DenaJGibbon/behaviouR@HEAD
+These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?  
+1: All                                                 
+ 2: CRAN packages only                                  
+ 3: None                                                
+ 4: utf8         (1.2.1        -> 1.2.2       ) [CRAN]  
+ 5: crayon       (1.4.1        -> 1.5.1       ) [CRAN]  
+ 6: colorspace   (2.0-1        -> 2.0-3       ) [CRAN]  
+ 7: cli          (2.5.0        -> 3.2.0       ) [CRAN]  
+ 8: cpp11        (0.2.7        -> 0.4.2       ) [CRAN]  
+ 9: fansi        (0.5.0        -> 1.0.3       ) [CRAN]  
+10: later        (1.2.0        -> 1.3.0       ) [CRAN]  
+11: Rcpp         (1.0.7        -> 1.0.8.3     ) [CRAN]  
+12: openssl      (1.4.3        -> 2.0.0       ) [CRAN]  
+13: mime         (0.10         -> 0.12        ) [CRAN]  
+14: curl         (4.3.1        -> 4.3.2       ) [CRAN]  
+15: yaml         (2.2.1        -> 2.3.5       ) [CRAN]  
+16: withr        (2.4.2        -> 2.5.0       ) [CRAN]  
+17: isoband      (0.2.4        -> 0.2.5       ) [CRAN]  
+18: pillar       (1.6.1        -> 1.7.0       ) [CRAN]  
+19: tidyselect   (1.1.0        -> 1.1.2       ) [CRAN]  
+20: lifecycle    (1.0.0        -> 1.0.1       ) [CRAN]  
+21: glue         (1.4.2        -> 1.6.2       ) [CRAN]  
+22: generics     (0.1.0        -> 0.1.2       ) [CRAN]  
+23: R6           (2.5.0        -> 2.5.1       ) [CRAN]  
+24: data.table   (1.13.4       -> 1.14.2      ) [CRAN]  
+25: crosstalk    (1.1.1        -> 1.2.0       ) [CRAN]  
+26: rlang        (b501cf763... -> 21ccd827f...) [GitHub]
+27: tibble       (3.1.2        -> 3.1.6       ) [CRAN]  
+28: vctrs        (0.3.8        -> 0.4.0       ) [CRAN]  
+29: dplyr        (1.0.6        -> 1.0.8       ) [CRAN]  
+30: tidyr        (1.1.3        -> 1.2.0       ) [CRAN]  
+31: htmlwidgets  (1.5.3        -> 1.5.4       ) [CRAN]  
+32: htmltools    (7e64cd93c... -> 9490b627a...) [GitHub]
+33: digest       (0.6.27       -> 0.6.29      ) [CRAN]  
+34: magrittr     (2.0.1        -> 2.0.3       ) [CRAN]  
+35: jsonlite     (1.7.2        -> 1.8.0       ) [CRAN]  
+36: zoo          (1.8-8        -> 1.8-9       ) [CRAN]  
+37: plyr         (1.8.6        -> 1.8.7       ) [CRAN]  
+38: stringi      (1.6.2        -> 1.7.6       ) [CRAN]  
+39: diffobj      (0.3.2        -> 0.3.5       ) [CRAN]  
+40: rprojroot    (2.0.2        -> 2.0.3       ) [CRAN]  
+41: waldo        (0.2.5        -> 0.4.0       ) [CRAN]  
+42: processx     (3.5.2        -> 3.5.3       ) [CRAN]  
+43: pkgload      (1.2.1        -> 1.2.4       ) [CRAN]  
+44: evaluate     (0.14         -> 0.15        ) [CRAN]  
+45: desc         (1.3.0        -> 1.4.1       ) [CRAN]  
+46: brio         (1.1.0        -> 1.1.3       ) [CRAN]  
+47: testthat     (3.0.2        -> 3.1.3       ) [CRAN]  
+48: xfun         (0.23         -> 0.30        ) [CRAN]  
+49: MatrixModels (0.4-1        -> 0.5-0       ) [CRAN]  
+50: SparseM      (1.78         -> 1.81        ) [CRAN]  
+51: knitr        (1.33         -> 1.38        ) [CRAN]  
+52: sp           (1.4-5        -> 1.4-6       ) [CRAN]  
+53: RcppEigen    (0.3.3.7.0    -> 0.3.3.9.1   ) [CRAN]  
+54: nloptr       (1.2.2.2      -> 2.0.0       ) [CRAN]  
+55: lme4         (1.1-26       -> 1.1-28      ) [CRAN]  
+56: maptools     (1.0-2        -> 1.1-3       ) [CRAN]  
+57: quantreg     (5.75         -> 5.88        ) [CRAN]  
+58: pbkrtest     (0.4-8.6      -> 0.5.1       ) [CRAN]  
+59: carData      (3.0-4        -> 3.0-5       ) [CRAN]  
+60: backports    (1.1.10       -> 1.4.1       ) [CRAN]  
+61: car          (3.0-10       -> 3.0-12      ) [CRAN]  
+62: corrplot     (0.84         -> 0.92        ) [CRAN]  
+63: broom        (0.7.7        -> 0.7.12      ) [CRAN]  
+64: plotly       (4.9.2.2      -> 4.10.0      ) [CRAN]  
+65: mvtnorm      (1.1-1        -> 1.1-3       ) [CRAN]  
+66: cowplot      (1.1.0        -> 1.1.1       ) [CRAN]  
+67: ggrepel      (0.9.0        -> 0.9.1       ) [CRAN]  
+68: bayestestR   (0.8.0        -> 0.11.5      ) [CRAN]  
+69: magick       (2.7.2        -> 2.7.3       ) [CRAN]  
+70: bbmle        (1.0.23.1     -> 1.0.24      ) 
 
 
 ## Folder directory
@@ -50,12 +127,12 @@ dir.create(file.path("output"), showWarnings = FALSE)
 
 
 ### List files from another hard drive volume
-copy relevant files to data folder
+
 ```{r list-files-volume}
 file_list <- Sys.glob('/Volumes/MyPassportForMac/Pictures/!!Nikon-Camera/Nikon-Coolpix-GPS/TestFolder-R-Map-Images/GoldstreamPark/*.wav')
 file_list
 ```
-
+### copy relevant files to data folder
 ```{r list-files-subdir}
 wav_files <- list.files("./recordings", pattern = "*.wav")
 wav_files
@@ -66,11 +143,6 @@ wav_files
 # Read wav file with `tuneR`
 ```{r read-wav-file}
 eagle_wav_2021_06_04 <- readWave("./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav")
-```
-
-## Save wav file object in recordings folder
-```{r save-wav-object-subdir}
-# save(eagle_wav_2021_06_04, file = "./data/eagle_wav_2021_06_04")
 ```
 
 ## Run wave object
@@ -102,8 +174,7 @@ oscillo(eagle_wav_2021_06_04, from = 0.1, to = 0.2)
 ```
 
 ## Plot Spectrogram
-can't use behaviouR >> is not available (for R version 4.0.2)  
-behaviouR::Spectrogram(sound.file = "./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav")
+using `seewave`
 ```{r plot-spectrogram}
 spectro_eagle_wav_2021_06_04 <- spectro(eagle_wav_2021_06_04)
 spectro_eagle_wav_2021_06_04_zoom <- spectro(eagle_wav_2021_06_04, flim=c(0,6)) # zoom in frequency
@@ -157,6 +228,7 @@ spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors,
 spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "springgreen")
 spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colwav = "limegreen") # I like this best
 spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0,6), palette = terrain.colors, colbg = "black", colgrid="white", colwave="white", colaxis="white", collab="white") # I like this best
+spectro(eagle_wav_2021_06_04, osc = TRUE, flim=c(0.5,6), palette = terrain.colors, colbg = "black", colgrid="white", colwave="limegreen", colaxis="white", collab="white") # I like this best
 ```
 
 # ggplot2
@@ -187,10 +259,38 @@ v + geom_tile(aes(fill = amplitude)) +
 
 
 
+---
+
+# behaviouR
+when trying to use install.packages() message >> is not available (for R version 4.0.2)  
+load using `devtools::install_github("https://github.com/DenaJGibbon/behaviouR")`
+behaviouR::Spectrogram(sound.file = "./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav")
+
+```{r behaviouR}
+SpectrogramSingle(sound.file = "./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav")
+SpectrogramSingle(sound.file = "./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav", min.freq = 0, 
+    max.freq = 6000)
+SpectrogramSingle(sound.file = "./recordings/2021-06-04-Eagle-EsquimaltLagoon-DSCN7446.MP4.wav", min.freq = 0, 
+    max.freq = 6000, Colors = "Colors")
+```
+
+## Multiple Plots behaviouR
+```{r multiple-plots-behaviouR}
+par(mfrow = c(2,2))
+
+SpectrogramFunction(input.dir = "recordings", min.freq = 100, max.freq = 10000)
+```
+
 
 ---
 
-
+# Save as .wav
+```{r save-wav}
+savewav(eagle_wav_2021_06_04, filename = "./output/eagle_wav_2021_06_04.wav")
+# unlink("./output/eagle_wav_2021_06_04.wav") # this removes saved file ??
+#savewav(eagle_wav_2021_06_04, filename = "./output/eagle_wav_2021_06_04-rescale.wav", rescale = c(-10000, 10000)) # leaves no sound ???
+#unlink("./output/eagle_wav_2021_06_04-rescale.wav") # this removes saved file ??
+```
 
 
 
@@ -202,7 +302,7 @@ v + geom_tile(aes(fill = amplitude)) +
 ---  
 ---  
 
-# NOT WORKING
+# NOT WORKING - no associated MacOS player
 ## Play using `tuneR`
 
 ## Playlist of sound files
@@ -258,5 +358,11 @@ not tested / working yet
 --- 
 
 # Resources:
-[Analyzing Acoustic Data](https://bookdown.org/djc426/behaviouR-R-package-tutorials/computer-lab-3-analyzing-acoustic-data.html#part-1.-loading-a-sound-file-and-making-a-spectrogram)  
-[seewave::spectro](https://rug.mnhn.fr/seewave/HTML/MAN/spectro.html)  
+* [Analyzing Acoustic Data](https://bookdown.org/djc426/behaviouR-R-package-tutorials/computer-lab-3-analyzing-acoustic-data.html#part-1.-loading-a-sound-file-and-making-a-spectrogram)  
+  
+* [seewave::spectro](https://rug.mnhn.fr/seewave/HTML/MAN/spectro.html)  
+  
+* [behaviouR](https://github.com/DenaJGibbon/behaviouR)  
+  
+* [behaviouR Tutorials](https://bookdown.org/djc426/behaviouR-R-package-tutorials/computer-lab-3-analyzing-acoustic-data.html)
+
