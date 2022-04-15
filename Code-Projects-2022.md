@@ -40,6 +40,8 @@
 
 **Links to code work:** 
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/JSON_Mapping/json_mapping.html
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Leaflet/JSON_Mapping/Leaflet-Map-list-json-open.png
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Leaflet/JSON_Mapping/Leaflet-Map-list-json.png
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/JSON_Mapping
 
 [TOC](#TOC)
