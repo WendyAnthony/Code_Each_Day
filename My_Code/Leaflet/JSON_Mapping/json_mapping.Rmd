@@ -257,6 +257,7 @@ write(exif_json_nona_sortname, "./data/exif_json_nona_sort.json")
 		var markersRef = {};
 
 /* 
+**** use json_mapping.Rmd file to create json data from folder of image files
 
 >> **** if json data is sorted and doesn't contain any NA values in Name field
 >> just copy 
