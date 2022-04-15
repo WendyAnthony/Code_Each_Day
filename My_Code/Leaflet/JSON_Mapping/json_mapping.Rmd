@@ -423,6 +423,25 @@ json data needs to have a hard return between values
 
 ![Leaflet Map - open (screenshot](Leaflet-Map-list-json-open.png)
 
+# Images of leaflet map webpage
+## read png image
+```{r include-graphics-img2}
+# http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/#style-your-image-environment-with-css
+img1_path <- "images/Leaflet-Map-list-json.png"
+img1 <- readPNG(img1_path, native = TRUE, info = TRUE)
+attr(img1, "info") # dimensions: width and height in px
+
+knitr::include_graphics(img1_path)
+```
+
+```{r include-graphics-img2}
+img2_path <- "images/Leaflet-Map-list-json-open.png"
+img2 <- readPNG(img2_path, native = TRUE, info = TRUE)
+attr(img2, "info")
+
+knitr::include_graphics(img2_path)
+```
+
 
 
 
