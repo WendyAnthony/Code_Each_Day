@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r libraries}
 library("jsonlite")
 library("dplyr")
+library("png")
 ```
 
 # Data
@@ -416,16 +417,16 @@ json data needs to have a hard return between values
 </body>
 </html>
 ```
-## html leaflet map screenshots
-![Leaflet Map (screenshot)](Leaflet-Map-list-json.png)
+## html leaflet map screenshots (embedded)
+![Leaflet Map (screenshot)](images/Leaflet-Map-list-json.png)
 
 ---
 
-![Leaflet Map - open (screenshot](Leaflet-Map-list-json-open.png)
+![Leaflet Map - open (screenshot](images/Leaflet-Map-list-json-open.png)
 
 # Images of leaflet map webpage
-## read png image
-```{r include-graphics-img2}
+## read png image with png library
+```{r include-graphics-img1, fig.retina = 2, fig.cap="Leaflet map of Native Plant photos at Mt Douglas 2022-04-14", out.extra='style="background-color: #000000; padding:5px; display: inline-block;"'}
 # http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/#style-your-image-environment-with-css
 img1_path <- "images/Leaflet-Map-list-json.png"
 img1 <- readPNG(img1_path, native = TRUE, info = TRUE)
@@ -434,7 +435,7 @@ attr(img1, "info") # dimensions: width and height in px
 knitr::include_graphics(img1_path)
 ```
 
-```{r include-graphics-img2}
+```{r include-graphics-img2, fig.retina = 2, fig.cap="Leaflet map, with open image, of Native Plant photos at Mt Douglas 2022-04-14", out.extra='style="background-color: #000000; padding:5px; display: inline-block;"'}
 img2_path <- "images/Leaflet-Map-list-json-open.png"
 img2 <- readPNG(img2_path, native = TRUE, info = TRUE)
 attr(img2, "info")
