@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XV](#weekXV)**    
+  - [R3D105 2022-04-15](#R3D105)
 - **[Week XII](#weekXII)**    
   - [R3D86 2022-03-27](#R3D86)
   - [R3D85 2022-03-26](#R3D85)
@@ -21,6 +23,27 @@
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
   
+
+***
+# Week XV <a name="weekXV"/>
+***
+## R3D105 2022-04-15 <a name="R3D105"/>
+**Today's Progress**: 
+- created a leaflet html map using json
+- created json object from .csv in ```R```
+- copied json file text to html file
+
+**Thoughts:** 
+- I haven't done a leaflet html map for awhile
+- I had to take some time to get the json format right
+  - new column: Name had to have a value, as did Desc for code to work
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/JSON_Mapping/json_mapping.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/JSON_Mapping
+
+[TOC](#TOC)
+
 ***
 # Week XII <a name="weekXII"/>
 ***
