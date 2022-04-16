@@ -8,7 +8,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XV](#weekXV)**    
-  - [R3D105 2022-04-15](#R3D105)
+- [R3D105 2022-04-15](#R3D105)
 - **[Week XIV](#weekXIV)**    
 - [R3D97 2022-04-08](#R3D97)
 - [R3D93 2022-04-04](#R3D93)
