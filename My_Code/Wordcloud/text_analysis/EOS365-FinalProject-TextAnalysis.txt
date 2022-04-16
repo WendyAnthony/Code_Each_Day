@@ -1,0 +1,333 @@
+Part I. Introduction and Background
+
+This confidential report to cabinet can be used as a tool to support discussion, and includes background information, analysis, and recommendations for developing strategies to reduce carbon emissions and respond to changing climate. This introduction offers a brief geographic description of BC’s vastly different regions, where people live, which economically important industries contribute to carbon emissions, and political considerations.   
+Reported by the Intergovernmental Panel on Climate Change (IPCC  ), accelerated action is required to lessen the impacts of human-related activities, which cause increased warming of Earth’s surface temperature due to greenhouse gas (GHG) emissions, especially carbon dioxide (CO2). As international cooperation is required to address global issues, Canada signed the Paris Climate Accord,  and created a national action plan to reduce emissions (NDC  ), including provincial obligations outlined by pathways in CleanBC Roadmap 2030.  
+
+I. BC’s Geographic Regions:  Canada’s western-most province has a total area of 944,735 km2, or 95 million hectares, with 93% in Crown land and 75% in 10 mountain ranges. The western border is 25,725 km of rugged Pacific Ocean coastline, stretching east 700 km to Rocky Mountains and Alberta border, and 1300 km from northern boreal forests, south to USA.  
+BC is divided into a variety of sub-areas. As a province of high biodiversity, the 5 phsyiographic macro-climate regions and 14 distinct biogeoclimatic zones, each with similar vegetation, ecosystems, and climate, can be useful categories to help manage forests, land use, and biodiversity.  Numerous geo-political subdivisions include 8 development regions, 190 municipalities, 60 school districts, 27 regional districts plus 2 other regions creating 29 census divisions, and 5 regional health authorities. 
+
+II. BC’s Social Demographics: Canada’s 2021 Census shows that BC’s population has now passed 5 million,  increasing 7.6% from 2016-2021, though slightly less than projected by BC Stats.  BC has an aging populace, with senior ages projected to increase, and working ages to decrease as more people retire. Fewer births than deaths may result in more people depending on fewer future workers, with population growth through inter-provincial migration. 
+People live in both rural and urban areas, including 52 cities, 14 towns, and 43 villages. Between 2016-2021 cities experienced a 17.4% growth, towns 19%, and villages 14.9%, with the most growth in Central Okanagan region, and the least in northern regions. Indigenous people, who comprise 6% of BC’s population also live both on and off 423 Reserves and within 198 First Nation Territories, increasing 38% 2006-2016, mostly within younger age groups. 
+III. BC’s Economic Drivers: 8 development regions each have a specific climate, geography, culture and economic potential, including Vancouver Island and Central Coast, Mainland / Southwest, Thompson-Okanagan in interior, Kootenay in south east, Cariboo in central dry interior plateau, the more remote North Coast, rural Nechako, and the Northeast.   Crown Land is where most forestry, energy, utilities, pipelines, mining, and tourism occur. Forests cover 67% of Crown land (80% in Cariboo region) and only 22% of private land, while agriculture occurs on 33% of private land.   
+Key economic sectors contribute to total provincial Gross Domestic Product (GDP): Construction: 8.2%, Manufacturing: 7.1%, Transportation: 6%, Oil, natural gas, mining: 3.9%, Hydro: 2%, Agriculture: 1.48%, Forestry: 1%, Other Service Industries total: 70%.  The GHG emissions of these sectors (Megatons - Mt of CO2) increased between 2007-2018. Transportation increased from 22.3 to 27.4 Mt, industry (construction, agriculture) from 14.1 to 14.4 Mt, and oil and gas from 12.3 to 13.3 MT, while decreasing in buildings and communities from 14.7 to 12.8 Mt.  Each high emitting industry contributes 1-8% of total GDP. 
+
+IV. BC’s Political Landscape: Geo-political subdivisions have their own local decision-making authority, including municipalities, regional districts, health area authorities, school districts, and development regions.  Much of BC is also unceded Indigenous territory, and with the acceptance of 2019 UNDRIP Rights of Indigenous People, free, prior and informed consent will be an expected protocol going forward. Citizens also continue to exercise their right to protest against government actions, with recent examples against old-growth logging at Fairy Creek, Coastal GasLink pipeline access in Wet’suwet’en territory, and oil and gas subsidies. 
+NDP formed a majority provincial government in 2020, after a minority 2017-2020, and following a Liberal majority 2001-2017. The next provincial election is 2024-10-19. BC is set within the backdrop of a federal Liberal minority government making policies since 2015,  including some provincial responsibilities based on Canada’s commitment to International climate agreements. BC’s 2022 Throne Speech highlighted past accomplishments and future plans of action, focusing on the urgent need to respond to the “climate crisis”  by protecting biodiversity, collaborating with First Nations, training for new skills, investing in resilient infrastructure, reducing emissions, reviewing oil and gas subsidies, and setting targets. The BC Budget followed up on the Throne Speech to include money for financial recovery from the wildfires and flooding of 2021, wildfire management and prevention, and building on CleanBC Roadmap and furthering the CPAS strategies to prepare and adapt to climate change. 
+
+
+
+
+V. Global, Canadian and BC Climate Change Goals and Commitments
+
+1.  IPCC:  The Intergovernmental Panel on Climate Change Assessment 5th Report (IPCC) was written by climate experts to update the understanding of what drives the changing climates, and to find adaptation and mitigation actions to reduce GHG emissions. An urgent recommendation was made to limit Earth’s temperature increase to 1.5°C since pre-industrial time (1750), and to keep CO2 levels below 450 ppm (currently 418  ).  A 2018 Special Report  affirms global CO2 emissions would need to fall 45% below 2010 levels by 2030 and to net-zero by 2050. As GHG emissions continue to rise, the newest 2021 IPCC 6th report states unless “deep reductions” are made to GHG emissions, global warming will likely exceed 1.5°- 2°C.  UN Sustainable Development Goals call for urgent climate action, affecting the balance of other goals such as affordable clean energy, equality, sustainability, innovation, responsible consumption and production, and healthy life.  
+
+2. Paris Climate Accord Agreement:  The IPCC report motivated action through the Paris Agreement, an international climate change treaty to limit rising global temperatures to less than 2 C° above pre-industrial levels (preferably 1.5 C°), through reduced GHG emissions. 196 sovereign states ratified the agreement,  and though not legally binding, agreed to submit every 5 years a detailed action plan for their Nationally Determined Contributions (NDC). 
+Recommendations include being guided by “the best available scientific knowledge“, planning with a “long-term vision“ (UNFCC 2015, pg. 3,16), being aware of effects of a changing climate and of responses taken to reduce risks, protecting ecosystems and biodiversity integrity, considering vulnerable groups, incorporating Indigenous traditional knowledge, building capacity and skills training, ensuring security of food production and jobs, encouraging and developing technological innovation, enacting ambitious efforts to rapidly reduce GHG emissions, encouraging public participation and education, diversifying economies, mobilizing equitable financing, balancing adaptation mitigation and resilience, creating effective policies and programs, being transparent, monitoring, evaluating, and learning from experience.
+
+3. Canada’s Nationally Determined Contributions (NDC):  As per the 2015 Paris Agreement commitment, Canada submitted an enhanced NDC in 2021, outlining an increasingly ambitious action plan since the original 2016 NDC. The goal is to reduce GHG emissions 40-45% below 2005 levels by 2030, and to net-zero by 2050. This plan includes supporting equity, natural habitats, biodiversity, well-being and healthy families, making homes and buildings more affordable by cutting energy waste, respecting Indigenous rights and knowledge, adapting and innovating through technology and job creation, building clean industry for competitive advantage, pricing carbon pollution while ensuring household rebates, and reducing emissions.
+4. BC’s Accomplishments and Commitments since 2015: CleanBC Road Map 2030  was released 2021 after 3 years of strategy development to fulfill provincial obligations to Canada’s Paris Agreement commitments. 8 emissions reduction targeted pathways include: communities, buildings, transportation, low carbon energy, forest bioeconomy, agriculture and fisheries, industry oil and gas, and negative emissions technologies. A Climate Preparedness and Adaptation Strategy (CPAS)  will be cultivated through ensuring benefits extend beyond economics to also include ecological and social purposes, supporting community and ecosystem climate resilience, considering regional equity issues, Indigenous partnerships, skills training and education, and collecting and monitoring data integrity, while helping create a globally competitive, climate-change ready economy and infrastructure, in a changing climate future. 
+CleanBC emission reduction targets for 2030, based on 2007 levels, to be reviewed in 2025, are for transportation to reduce 27-32%, industry 38-43%, oil and gas 33-38%, and buildings and communities 59-64%, while cumulatively reducing 38-43%.  Financial support offered through CleanBC Industry Fund for projects to reduce emissions will be capped to allow for more proposals, and the Innovation Accelerator will encourage clean technology research.  
+Carbon Taxes,  introduced in 2008 as BC’s solution for pricing carbon pollution,  were the first in North America and the only of its kind in Canada.  Starting at $10 per metric ton, rising to $30 in 2012, $40 in 2019, and $45 in 2021, the tax is applied to fossil fuel at purchase based on fuel-type emission. Industry carbon tax revenue is used to help provide clean energy incentives for large industry, and consumer tax rebated is by Canada Revenue through Climate Action Tax Credit, to reduce impacts on lower and middle-income Canadians. 
+Other previously made promises are: subsidizing costs and expanding charging infrastructure for new Zero-emission electric passenger vehicles, encouraging heat pump installations through incentives, promoting equitable skills development training for a low-carbon world workforce, deferring old growth logging, building energy efficient new buildings, retrofitting existing buildings, and electrifying the natural gas sector. 
+As negative effects of climate change and the need to take accelerated action are becoming increasingly obvious, BC continues to be a global leader in direct action towards reducing GHG emissions, and supporting innovative technology. The final sections of this report will include information about BC’s present, past and future climate, and an analysis of potential opportunities, challenges and recommendations to move forward in BC’s quest to competitively adapt to a changing climate.
+
+
+
+Part 2 – 3000 words (30% - 4.5 pg – 1125 words) !!!!!  >> this section “inform the why” for rest
+Part II. BC’s Changing Climate: Analyzing Mitigation and Adaptation Strategies 
+To help understand the urgent need to fulfill our political and provincial obligations to Canadian International climate agreements, and the many factors impacted by changing climate, including variations between regional geography, demographics, and economics, a description of BC’s climate present past and future can help inform a strategy analysis.
+
+Section 1: BC’s Weather and Climate 
+Distinguishing the difference between weather and climate will help to recognize the influences climate change may have on normal provincial weather patterns. Weather is the daily experience, at a specific place, of atmospheric conditions like temperature, barometric pressure, wind speed and direction, clouds, and precipitation, which change hourly, daily and seasonally. Climate is the statistical summary of weather averages, variabilities and extreme conditions of an area over a period of time. Climate change is experienced when these climate averages start to vary, with extremes of intensity and duration becoming more common.
+BC’s Weather: BC has Canada‘s warmest weather, with a coastal maritime climate associated with lots of rainfall, and long periods of frost-free temperatures influenced by the Pacific ocean. The weather is influenced by prevailing winds that flow over the ocean from west to east, with a maritime coastal influence moderating the climate with alternating systems of high-pressure (good weather experienced more in summer) and low-pressure (clouds and precipitation events experienced more in winter). Natural climatic variations are a result of 13 different seasonal circulation and air flow patterns, as well as small and large-scale, multi-year cycle ocean and atmosphere circulation patterns, including El Niño events. 
+Regional climate:  BC’s climate varies between 5 macro-climate regions (coast mountains and islands, north central plateaus and mountains, south interior plateau, the great north plains, Columbia mountains and south Rocky mountains), 14 biogeoclimatic vegetation zones, north-south latitude temperature gradient, wind exposure, and distance from ocean. The elevation of parallel mountain ranges, separated by plateaus, plains and basins, help distribute precipitation and influence the temperature balance between mild marine air masses and cold continental air. The mountains block cold continental winter air coming from the eastern prairies, and keep a more moderate temperature in the southern interior.
+Each season experiences different temperatures and precipitation. Coastal areas have a wetter climate, as do western mountain slopes with snow at higher elevations. South-central interior regions, valley-bottoms and the rain-shadow side of mountain ranges experience the driest climate. Spring in the Interior has low precipitation, though early summer may be wetter. Summer coastal high-pressure systems, with wind from a westerly direction, result in dryer weather, creating a dry and warm interior, with warm valleys, and some afternoons generating  thunderstorm activity. Winter brings coastal wet weather, and cold dry Arctic air to the north. Winter temperature variations are largest, with the northern Interior having the largest range.
+Extreme events are increasing in frequency, intensity, and record-breaking values, with a dramatic impact on human lives as well as the economy. Recent 2021 examples include the November 16 atmospheric river of rain flooding the agricultural area of Sumas Prairie in one of the most BC’s fertile agricultural land, the summer heat waves, and the resulting drought and wild fires. The 2021 fire season had 1610 fires burning 868,203 hectares with a 56 day long Provincial State of Emergency,  while2017 was the worst fire season in BC’s history, burning 1.2 million hectares, with the longest Provincial State of Emergency of 70 days (and the first declared emergency since the fires of 2003).    
+During 2021 a new Canadian record for high temperature of 49.6 °C was recorded on June 29 at Lytton,  while on December 01 record hot temperatures were recorded at 20 locations during the third atmospheric river following the November floods,  and on December 26 record cold temperatures were recorded at 22 locations, including Prince George (-40.7°C) and Victoria Harbour (-8.7°C).   
+(635 / 1125  words)
+
+Should I mention anything about changes moisture, snow, glaciers with increased temperature e.g. Spittlehouse et.al. page 54,
+/
+
+Climate Normals / Averages – over what period of time
+A climate norm is an average of the Current average compared to an average 30 year period, the most recent being 1991-2020
+o	environment Canada climate norms - Temp, precip max min nw, sw s, n
+https:www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/nrs-climate-change/applied-science/2a_va_bc-climate-change-final-aug30.pdf
+
+Trends
+
+Climate Variability:  (pg 67-81)     
+As BC’s weather varies by region, so too will climate variability differ by region
+e.g. SW warm and drier, NE wetter
+- over 5 different regions, N/S latitude
+- any observed changes in it over the last century, how the climate is projected to change over the next century, past, present and future change in the mean climate 
+>> depending on rise in CO2 and planetary warming. >>>> IPCC
+- summarize observed impacts of systemic changes in 20th - early 21st century climate had 
+>> leading to past climates
+
+Past Climates:  (pg 68-73)
+- summarize observed impacts systemic changes 20 / 21 century climate had on jurisdiction
+- observed changes in it over the last century e.g. +/- 100 years >>> 1922 - 2122
+>> LOOK AT CLIMATE CHANGE MAPS
+>> INCORPORATE SOME LECTURE MATERIAL HERE <<
+- Climate change impact on vegetation 
+Actuaries Climate Index Pacific NW  (climate trends and frequency of extreme events)
+
+
+Potential Future Climates:  (pg 74-81) projected climate changes over next century
+>> LOOK AT CLIMATE CHANGE MAPS
+>> INCORPORATE SOME LECTURE MATERIAL HERE << LOOK FOR *** ASTERIX
+https:www2.gov.bc.ca/assets/gov/environment/natural-resource-stewardship/nrs-climate-change/applied-science/2a_va_bc-climate-change-final-aug30.pdf
+-	https:www.pacificclimate.org/data/statistically-downscaled-climate-scenarios
+-	https:data.pacificclimate.org/portal/downscaled_gcms/map/
+o	Increase in extreme events, strength and duration
+	Normal? >> How will it change ??? >> extremes ??? >> expectations ???
+o	Future climates are modeled, and only 10-day weather trends can be forecast (see lecture 19 notes / module 13, @ slide 2 ??  prediction vs projection)
+	https:twitter.com/thomasforbc/status/1501799683496181772?s=21
+	E.g. forest fires: long-term drought drying fuel, rain- amount and duration, snow-pack persistence and melt time
+	Trend to get hotter (increased temperature and extreme events) and wetter, though summers will be drier in south and coast 
+Large-scale circulation patterns:  (pg 54)
+-	El Niño (Southern Oscillation) – check 6-18 months
+-	Pacific Decadal Oscillation – check every 10 ?? years
+-	Pacific North American Pattern – check once in a human lifetime e.g. 100 years??
+-	Arctic Oscillation ????
+-	If a series of warm cycles all coincided at once, the effect of increased temperature, precipitation and extreme events would be amplified
+Effect of (GHG) emissions, especially carbon dioxide (CO2) and methane (e.g. natural gas)
+•	As CO2 increases in the oceans and atmosphere, an imbalance in Earth’s temperature and heat transfer is created, resulting in a rapidly changing climate, which can be reduced by keeping the limit of relative warming to 1.5°C since pre-industrial time, and stabilize the CO2 levels to lower than 450 ppm.  
+o	IPCC AR6 
+o	Ocean is slowly heating up and becoming more acidic, with less ability to moderate increasing temperatures, and affects species habitat 
+Help stabilize global temperature and climate changes
+Vulnerabilities, Adaptive Capacity, Resilience of social and ecological systems
+- vulnerabilities of social and ecological systems
+- adaptive capacity of social and ecological systems
+- resilience of social and ecological systems
+
+
+- GHG emissions are cumulative
+GHG module 2/3 from fossil fuel, 1/3 from change in land-use, esp deforestation – lecture 20, march 28, slide 48
+- Also, GHG emissions are from not only CO2 carbon dioxide, but also Nitrous Oxide (N2O) and Methane (CH4)
+
+/
+BC climate
+
+https:britishcolumbia.com/about-bc/weather-in-bc/
+
+https:pics.uvic.ca/research/climate-health-and-covid-19-british-columbia
+
+
+Climate Change in BC
+https:opentextbc.ca/geography/chapter/9-3-climate-and-environment-bc/
+
+https:climatechangecanada.ca/british-columbia/
+
+** https:www.nrcan.gc.ca/changements-climatiques/impacts-adaptation/introduction-british-columbia/10395
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Section 2: BC’s Opportunities  (20% - 3 pages – 750 words)
+
+As BC plans the necessary strategies to mitigate and adapt to changing climates, opportunities will be presented to help fulfill Canada’s commitments to the Paris Agreement, and incorporate key guiding themes for action, already developed by global climate scientists, Canadian policy makers, the province of BC, and UN sustainable development. 
+The following analysis considers opportunities that can provide environmental and social, as well as economic benefits, through creative and innovative solutions to mitigate and adapt to a changing climate.
+Opportunity 1 - Protecting Nature’s Integrity: ‘Beautiful BC’ depends on the integrity of the natural environment in each region and biogeoclimatic zone. Protecting ecosystem biodiversity and environmental services benefits health and well-being. Reducing emissions and particulate matter would also result in healthier air. Carbon is stored within trees, shrubs, grasslands and wetlands, which also affect water flow retention, and other environmental services of nature, while helping to reduce atmospheric CO2.
+Opportunity 2 - Addressing Equity: Spreading environmental, social and economic benefits across multiple economic sectors, regions and populations could offer more opportunities. By ensuring benefits are inclusive, affordable, accessible, and representative will help to reduce inequality, and offer participation to other often excluded groups. GHG emission reductions could thus be distributed across the province.
+Opportunity 3 - Supporting Indigenous Communities: The new Ministry of Indigenous Relations and Reconciliation will provide opportunities to support consultation and economic development partnerships for building clean energy projects within First Nations communities and territories. Transition to clean energy sources could also help reduce reliance on diesel for remote community generators. The social, environmental and economic benefits can also help build local capacity through skills training and job creation for a growing youth population.
+Opportunity 4 - Building Skills Capacity: The need for a revitalized, skilled workforce will provide opportunities to encourage and develop training for low-carbon employment as new low-emission technologies are developed. Workers and student researchers may become inspired to explore innovative solutions for helping a smooth transition of the current work force towards clean-energy work environments.
+Opportunity 5 - Forestry: Trees remove CO2 from the atmosphere and store as carbon in their woody tissue. Forests also provide ecosystem services such as water storage, nutrient cycling, soil preservation, water and air purification, species and wildlife habitat diversification, timber, fuel and food production, as well as social benefits such as traditional use, recreation, health and spirituality.  The newly created Ministry of Land, Water and Resource Stewardship offers a chance to rethink how forestry is managed in BC.
+Opportunity 6 - Supporting Agriculture and Food Security:  Legislation introduced in 2018 ensures the Agricultural Land Reserve is used for farming and ranching, and not for large homes or construction waste.  The GDP contribution of agriculture in 2018 was 2.1%, creating 63,415 jobs.  Growing local BC food, instead of importing, reduces emissions from transportation, while also preserving food security. As the recently flooded Fraser valley farms are rebuilt, opportunities abound to find ways to manage manure to reduce methane pollution.
+Opportunity 7 - Rebuilding As Mitigation & Adaptation: The necessary rebuilding after destructive extreme weather events like wild-fire and flood can offer opportunities to look at building codes, land-use zoning, and ways to use low-carbon, clean-energy technology to reconstruct in environmentally sustainable ways. Preparing for these changes will help preserve the quality of water, air and natural resources, reduce costs associated with the climate impacts of increasing emissions, and ensure BC’s economy continues to thrive into a low-carbon future.
+Opportunity 8 - Reducing Emissions: An opportunity exists to make some bold changes to contribute to a global reduction of GHG emissions, by looking at and re-assessing large emission sectors. During COVID lockdown, emissions for transportation and industry were greatly reduced [??? CITE ???]    , providing an opportunity to re-evaluate and find a way to continue this reduction, and try something different. Incorporating the principle of polluter pays, could provide incentives to invest in cleaning up oil and gas emissions, and find new competitive markets for low-carbon solutions. 
+Opportunity 9 - Managing Political Communication:  STILL NEEDS TO BE EDITED AND COPIED
+
+[680 words]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Section 3: The Challenges
+- development of good public policy involves balancing the myriad competing interests
+- Every policy measure will have its supporters and detractors.
+- highlight potential challenges to overcome to take advantage of the opportunities in section 2. - provide advice on how these challenges might be mitigated.
+>> e.g. IDed development of a clean energy sector in section 2 as potential opportunity
+>>> discuss how that would affect a displaced oil and gas sector
+>>> How would you mitigate the resulting social and economic effects? How to  communicate these?
+- inspire quest to respond to the challenge.
+
+
+Section 3: BC’s Challenges  (20% - 3 pages – 750 words)
+
+BC is not on track to meet the 2030 goals of Canada’s commitment to the Paris Accord, and urgent action needs to be taken to rise to these challenges.    (or in Recommendations Summary, or intro to Challenges?).      Each opportunity comes with inherent challenges. These can often suggest potential directions for creative mitigation strategies to address the problem with action paths (e.g. accelerated timelines to reduce emissions at source), instead of simply accepting and adapting to the effects of climate change and relying on unproven expensive technology (e.g. researching future carbon storage while continuing to emit).
+Challenge 1 - Protecting Nature’s Integrity: Recent protests have raised legitimate concerns about the need to protect the integrity of natural places. Oceans are becoming more acidic due to increasing atmospheric CO2 emissions, and the increased ocean warming is reducing the ability to mitigate atmospheric temperature changes, while reducing the ability of shellfish to create shells, causing “irreversible damage to oceans”.  Environmental integrity should not give way to increased short-term economic growth.
+Challenge 2 - Addressing Equity: Consider how to support each region and industry, invest in different mitigation strategies, and ensure affordability for individual consumers and small businesses. Seeking advice from the Climate Solutions Advisory Council,  with no member organizations advocating for poverty, disabled, or senior groups, risks missing mitigation strategies important to groups that already have less social and financial equality.
+Challenge 3 - Supporting Indigenous Communities: BC is situated on mostly unceded lands, with few treaties, and many First Nation territories and forms of Indigenous governance, including Indian Reservation Chiefs and Council, as well as Territorial Hereditary Chiefs. Protocols for engagement, and expectations for all BC government policies, departments and personnel, will need to be developed while learning to incorporate Free, Prior and Informed Consent,  to address the accepted Declaration on the Rights of Indigenous Peoples (DRIP).  
+Challenge 4 - Building Skills Capacity: The workforce is changing, with more retirements,  and a general decline of youth populations, except in First Nations. To adapt to a new green-energy future and a low-carbon economy, skills training and quality jobs creation will become increasingly important. Any industry expansion could also result in an increased migration of workers, which could affect the socio-economic balance in a community or region.
+Challenge 5 - Managing Forest Ecoservices: As forests become more stressed from climate change, with increased drought, insect damage and wildfire, the current system of forest management, which contributes only 1% to GDP, has become unsustainable. Ongoing protests offer challenges to find a way to pause old-growth logging without causing too much employment and industry uncertainty, while ensuring the long-term future of healthy BC forests. Learning what trees to plant, and how to incorporate Indigenous traditional knowledge techniques will help preserve forests to ensure the continued absorption of atmospheric CO2.
+Challenge 6 - Supporting Agriculture and Food Security: Ensuring locally grown food sources in northern regions could help reduce transportation emissions and costs. Fertile Fraser Valley agriculture land exists in areas prone to flooding, as became obvious with the November 2021 flooding of Sumas Prairie, and competing pressure from alternate land-use development. Food security needs to be addressed both during and after flood recovery. Challenges remain for how to remove soil toxins from flooded farms, and how to rebuild using clean technology.
+Challenge 7 - Rebuilding As Mitigation & Adaptation: While supporting financial recovery for the results of wildfire and flooding, as per the BC Budget,  mitigation and adaption strategies need to be considered. Economic activity will increase during the recovery period, at the expense of lost homes, farm land and income. Retrofitting old buildings to make them more energy efficient, without building anew, could become a growing industry. These challenges would require “ambitious policies” and “systemic transition of infrastructure”.  
+Challenge 8 - Reducing Emissions: Reduction targets are based on comparisons from previous years.   STILL NEEDS TO BE EDITED AND COPIED
+Challenge 9 - Managing Political Communication:     STILL NEEDS TO BE EDITED AND COPIED
+
+
+[597 words]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Section 4: Summary and Recommendations and Conclusions  
+(10% - 1.5 pg – 375 words >> e.g. 75-summary/conclude + 30x10)
+
+>>> how research in parts 1/2 led to these recommendations
+
+BC is not on track to meet the 2030 goals of Canada’s commitment to the Paris Accord, and urgent action needs to be taken to rise to these challenges.    (or in Recommendations Summary, or intro to Challenges?)
+
+Summary    >>>BRIEF OPEN PARAGRAPH 
+PartI: 
+- Reviewing BC’s varying geographic, demographic, and economic regions, along with the international, federal and provincial strategies and commitments.
+- Indigenous, Geography, Social, Political, Economy >>> pick one from each key sector / region / actor / GHG e.g. CO2, methane
+
+Part II:
+- The identification of  opportunities and benefits have led to each key issue suggested by Canada’s NDC in fulfillment to commitment to Paris Agreement, CleanBC Roadmap 2030, and CPAS, and the effect on the goal of reducing emissions
+
+- Challenges for mitigation and adaptation led to practical, action-oriented solutions and rationales for inclusion in a list of recommendations
+
+- Continue with work already underway, and think about the long term, beyond an election cycle.
+
+- factor in change of population demographics, workforce
+- foster good communication
+- Building on the analysis of opportunities and the associated challenges, a number of recommendations are being posed for consideration in order to build the strategic plans to adapt and mitigate 
+- Avoid growth for its own sake. Make sure it is wise, well thought-out, in-line/aligned with climate change, protecting natural environment …
+
+  [190 words]
+
+
+Recommendation 1 - Protecting Nature’s Integrity: Consider values beyond economic growth for resource extraction or real estate. Plant trees in appropriate locations, and restore wetlands to store carbon, and to foster biodiversity and provide valuable ecological services.
+Recommendation 2 - Addressing Equity: Find a way to balance supportive finance and policy between different industrial sectors, environmental services, and consumer affordability. Assure climate action is just, fair and equitable, with benefits representative of local communities, including vulnerable groups and regions.
+Recommendation 3 - Supporting Indigenous Communities: Build relationships and work together with Indigenous communities to fund and support green energy projects, while incorporating traditional knowledge to help further the process of reconciliation.
+Recommendation 4 - Building Skills Capacity: Encourage, train and fund the transitioning work force, and young workers of the future who will be needed to research, innovate, design, produce and maintain the technology needed to engineer new solutions for clean technology and a carbon-free future.
+Recommendation 5 - Managing Forests: Plant diverse tree species,  including deciduous for fire-break functions. Refit mills for smaller 2nd growth forest timber to keep jobs and trees in BC. Encourage healthy forests to effectively capture carbon and provide ecological services for health, tourism and forestry.
+Recommendation 6 - Supporting Agriculture and Food Security: Incorporate new technological innovations, address building codes, and ensure enforcement compliance to help replace gas-powered equipment with electric. Manage manure and water quality, and reduce transportation costs and emissions to ensure continuation of food security in local agriculture.
+Recommendation 7 - Rebuilding As Mitigation & Adaptation: Don’t focus only on new buildings and technologies, as there will also be an ongoing need for restoring and updating existing safe structures with high emissions, instead of demolishing to rebuild new. Use building codes to reduce the increasing risk of extreme weather events, and build for fire-resiliency.
+Recommendation 8 - Reducing Emissions:    STILL NEEDS TO BE EDITED AND COPIED
+Recommendation 9 - Managing Political Communication:   STILL NEEDS TO BE EDITED AND COPIED
+
+
+  [303 words, before Recommendations 8 & 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Conclusion. 
+  [234 words – 350 includes all recommendations, summary and conclusion!!!]
+-	Though this is not an exhaustive list, there is an urgent need to address CO2 emissions
+-	fulfill prior responsibilities to Canada’s commitments to Paris Accord
+-	summarize key themes / issues
+o	e.g. through the ‘lens’ of equity
+o	sense of urgency
+o	effective communication
+
+- ultimate goal : reduce emissions, fulfill Canadian commitments, 
+
+and continues to lead by initiating accelerated direct actions, using legislation and policy, to reduce emissions, support innovative technology, create jobs, and ensure a competitive place in the global low-carbon market. 
+
+Refer to initial intro >>> make notes / outline
+
+Intro
+"background information, analysis, and recommendations for developing strategies to reduce carbon emissions and respond to changing climate"
+
+"different regions, where people live, which economically important industries contribute to carbon emissions, and the political backdrop factors"
+
+We know BC’s climate is changing and will continue to do so. We have an opportunity to ‘make a difference’, through creative and innovative actions through [recognizing opportunities]
+
+The reason BC is taking these bold actions of climate change mitigation and adaptation is to honour Canada’s commitment to the Paris Agreement, based on the IPCC scientific reports.
+
+A continued, vibrant future can be ensured for British Columbians through education, skills training, and support for people, business, and industry, while protecting important environmental services, stewarding natural resources that help make this province unique. … 
