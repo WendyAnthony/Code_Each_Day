@@ -129,10 +129,13 @@
 **Today's Progress**: 
 - create code to create `.csv` and 'leaflet map` from folder of images
 - learned how to rename files in image folder with exif info, and folder name
+- CV: testing how to make ```.pdf``` files from ```rmarkdown```
+  - kept trying to change the font from Times New Roman >> couldn't (I don't like the serif of TNR) 
 
 **Thoughts:** 
 - lots of trial and error
 - r scripts must be located in folder of images for them to work properly
+- I'd like to play around more with ```rmarkdown``` pdf formating ```knitr``` and ```latex```
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/rename-folder-files.R
