@@ -1,0 +1,372 @@
+---
+title: "Leaflet Mapping: GPX Tracks"
+author: "Wendy Anthony"
+date: "2022/04/04"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Setup
+```{r libraries}
+# install.packages("leaflet")
+library(leaflet)
+library(rgdal)
+library(htmlwidgets)
+```
+
+```{r folder}
+getwd()
+# create data folder
+dir.create(file.path("data"), showWarnings = FALSE)
+dir.create(file.path("output"), showWarnings = FALSE)
+```
+
+# List layers in .gpx file
+https://katossky.github.io/2016/05/how-to-convert-gpx-to-geojson-with-r
+```{r list-layers-rgdal}
+ogrListLayers("./data/2022-04-03-activelog.GPX")
+```
+
+
+# Leaflet Map from .gpx track
+https://rstudio-pubs-static.s3.amazonaws.com/328775_2c54adb6ac734563b88c14bce515b012.html
+```{r gpx-track}
+GPX_file <- "./data/2022-04-03-activelog.GPX"
+GPX_file_all <- "./data/2022-04-03.GPX"
+
+track <- readOGR(GPX_file, layer = "tracks", verbose = FALSE)
+# not sure how to read waypoints from gpx file
+# waypoint <- readOGR(GPX_file_all, layer = "waypoints", verbose = FALSE)
+
+waypoints_2202_04_03 <- read.csv(file = "./data/2022-04-03.csv", skip = 26)
+# need to make lat lon numeric
+str(waypoints_2202_04_03)
+waypoints_2202_04_03$lat <- as.numeric(waypoints_2202_04_03$lat)
+waypoints_2202_04_03$lon <- as.numeric(waypoints_2202_04_03$lon)
+
+# View(waypoints_2202_04_03)
+
+track_2202_04_03_map <- leaflet() %>% 
+  addTiles() %>% 
+  addPolylines(data = track) %>%
+#  addMarkers(data = waypoints_2202_04_03, lng = lon, lat = lat) %>%
+    addProviderTiles("Esri.WorldImagery", group = "ESRI Satellite") %>%
+    addProviderTiles("Esri.WorldTopoMap", group = "ESRI Topographical") %>%
+    addProviderTiles("OpenStreetMap.Mapnik", group = "OSM Road map") %>%
+  addLayersControl(position = 'topright',
+    baseGroups = c("ESRI Satellite", "ESRI Topographical", "OSM Road map"),
+    options = layersControlOptions(collapsed = FALSE))
+
+track_2202_04_03_map
+```
+
+# Leaflet Map with addCircleMarkers
+
+## addCircleMarkers
+I can't seem to get markers to work????  
+https://rstudio.github.io/leaflet/map_widget.html  
+https://rstudio-pubs-static.s3.amazonaws.com/328775_2c54adb6ac734563b88c14bce515b012.html
+```{r gpx-csv-addCircleMarkers}
+GPX_file <- "./data/2022-04-03-activelog.GPX"
+GPX_file_all <- "./data/2022-04-03.GPX"
+
+track <- readOGR(GPX_file, layer = "tracks", verbose = FALSE)
+
+# change kml file to geojson
+# waypoints_2202_04_03_geojson <- geojsonio::file_to_geojson("./data/2202_04_03.kml")
+
+# Markers ????
+# not sure how to read waypoints from gpx file
+# waypoint <- readOGR(GPX_file_all, layer = "waypoints", verbose = FALSE)
+
+# markers from csv file ??
+waypoints_2202_04_03 <- read.csv(file = "./data/2022-04-03.csv", stringsAsFactors = FALSE, skip = 26)
+# need to make lat lon numeric
+ str(waypoints_2202_04_03)
+ waypoints_2202_04_03$lat <- as.numeric(as.character(waypoints_2202_04_03$lat))
+ waypoints_2202_04_03$lon <- as.numeric(as.character(waypoints_2202_04_03$lon))
+
+# View(waypoints_2202_04_03)
+class(waypoints_2202_04_03)  # df
+
+# this gives only the rows of waypoints
+# https://intellipaat.com/community/11943/select-first-4-rows-of-a-data-frame-in-r
+waypoints_2202_04_03_rows <- waypoints_2202_04_03[1:773, ]
+# View(waypoints_2202_04_03_rows)
+str(waypoints_2202_04_03_rows)
+
+
+leafIcons <- icons(
+  iconUrl = "http://leafletjs.com/examples/custom-icons/leaf-green.png",
+  iconWidth = 38, iconHeight = 95,
+  iconAnchorX = 22, iconAnchorY = 94,
+  shadowUrl = "http://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 50, shadowHeight = 64,
+  shadowAnchorX = 4, shadowAnchorY = 62
+)
+
+# create parameters for addCircleMarkers
+color = "red"
+size = 0.5
+
+#track_2202_04_03_map <- 
+  leaflet(waypoints_2202_04_03_rows) %>% 
+    addProviderTiles('OpenTopoMap', options = tileOptions(minZoom = 9, maxZoom = 17), group = 'TopoMap') %>%
+    addProviderTiles("Esri.WorldImagery", group = "ESRI Satellite") %>%
+    addProviderTiles("Esri.WorldTopoMap", group = "ESRI Topographical") %>%
+    addProviderTiles("OpenStreetMap.Mapnik", group = "OSM Road map") %>%  addLayersControl(position = 'topright',
+      baseGroups = c("TopoMap", "ESRI Satellite", "ESRI Topographical", "OSM Road map"),
+      options = layersControlOptions(collapsed = FALSE)) %>%
+    setView(lat = 48.4482, lng = -123.4005, zoom = 5) %>%
+  addPolylines(data = track) %>%
+  # addMarkers(~lon, ~lat, icon = leafIcons)
+  # addCircles(lng = ~lon, lat = ~lat)
+  # addCircleMarkers(color = ~color, radius = ~size) %>%
+  addCircleMarkers(fillOpacity = 0.5, radius = 0.8, color = "red", stroke = TRUE, 
+                   lng = ~lon, lat = ~lat, 
+                   popup = paste0("<strong>WP:</strong> ", waypoints_2202_04_03_rows$name, 
+                                  "<br />", "<strong>Date/Time: </strong>", waypoints_2202_04_03_rows$cmt))
+```
+
+
+## addMarkers(clusterOption())
+I can't seem to get markers to work >> I had to install new version of leaflet
+https://rstudio.github.io/leaflet/map_widget.html  
+https://rstudio-pubs-static.s3.amazonaws.com/328775_2c54adb6ac734563b88c14bce515b012.html
+```{r gpx-csv-addMarkers-clusterOption}
+GPX_file <- "./data/2022-04-03-activelog.GPX"
+GPX_file_all <- "./data/2022-04-03.GPX"
+
+track <- readOGR(GPX_file, layer = "tracks", verbose = FALSE)
+
+# change kml file to geojson
+# waypoints_2202_04_03_geojson <- geojsonio::file_to_geojson("./data/2202_04_03.kml")
+
+# Markers ????
+# not sure how to read waypoints from gpx file
+# waypoint <- readOGR(GPX_file_all, layer = "waypoints", verbose = FALSE)
+
+# markers from csv file ??
+waypoints_2202_04_03 <- read.csv(file = "./data/2022-04-03.csv", stringsAsFactors = FALSE, skip = 26)
+# need to make lat lon numeric
+ str(waypoints_2202_04_03)
+ waypoints_2202_04_03$lat <- as.numeric(as.character(waypoints_2202_04_03$lat))
+ waypoints_2202_04_03$lon <- as.numeric(as.character(waypoints_2202_04_03$lon))
+
+# View(waypoints_2202_04_03)
+class(waypoints_2202_04_03)  # df
+
+# this gives only the rows of waypoints
+# https://intellipaat.com/community/11943/select-first-4-rows-of-a-data-frame-in-r
+waypoints_2202_04_03_rows <- waypoints_2202_04_03[1:773, ]
+# View(waypoints_2202_04_03_rows)
+str(waypoints_2202_04_03_rows)
+
+
+leafIcons <- icons(
+  iconUrl = "http://leafletjs.com/examples/custom-icons/leaf-green.png",
+  iconWidth = 38, iconHeight = 95,
+  iconAnchorX = 22, iconAnchorY = 94,
+  shadowUrl = "http://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 50, shadowHeight = 64,
+  shadowAnchorX = 4, shadowAnchorY = 62
+)
+
+# create parameters for addCircleMarkers
+color = "red"
+size = 0.5
+
+
+#track_2202_04_03_map <- 
+  leaflet(waypoints_2202_04_03_rows) %>% 
+    addProviderTiles('OpenTopoMap', options = tileOptions(minZoom = 9, maxZoom = 17), group = 'TopoMap') %>%
+    addProviderTiles("Esri.WorldImagery", group = "ESRI Satellite") %>%
+    addProviderTiles("Esri.WorldTopoMap", group = "ESRI Topographical") %>%
+    addProviderTiles("OpenStreetMap.Mapnik", group = "OSM Road map") %>%  addLayersControl(position = 'topright',
+      baseGroups = c("TopoMap", "ESRI Satellite", "ESRI Topographical", "OSM Road map"),
+      options = layersControlOptions(collapsed = FALSE)) %>%
+    setView(lat = 48.4482, lng = -123.4005, zoom = 5) %>%
+  addPolylines(data = track) %>%
+   addMarkers(~lon, ~lat, icon = leafIcons) %>%
+  # addCircles(lng = ~lon, lat = ~lat)
+  # addCircleMarkers(color = ~color, radius = ~size) %>%
+  addMarkers(clusterOption = markerClusterOptions(freezeAtZoom = 11), ~ lon, ~ lat, popup = ~name)
+  #   addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE), ~ lon, ~ lat, popup = ~name)
+```
+
+## Add circles
+```{r leaflet-map}
+color = "purple"
+size = 5
+
+leaflet(waypoints_2202_04_03_rows) %>% 
+  addTiles() %>% 
+addCircleMarkers(
+    fillOpacity = 0.5, radius = 0.8, color = color, stroke = TRUE,
+    lng = ~lon, lat = ~lat, popup = ~name)
+```
+# Summary stats
+```{r summary}
+summary(waypoints_2202_04_03_rows)
+```
+
+# Add Markers - or use clusterOption
+```{r leaflet-markers}
+leaflet(data = waypoints_2202_04_03_rows) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+#  addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE), ~ lon, ~ lat)
+  addMarkers()
+```
+
+
+```{r map-popup-text-esri}
+m2 <- leaflet(waypoints_2202_04_03_rows) %>%
+  # addProviderTiles("Esri.WorldImagery", options = providerTileOptions(minzoom = 1, maxzoom = 10)) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addMarkers(clusterOption = markerClusterOptions(spiderfyOnMaxZoom = TRUE),
+             ~ lon, ~ lat)
+m2$width <- 1000
+m2$height <- 1000
+
+m2
+# m2b # map in r window doesn't show images ??
+saveWidget(m2, "photo-map-pop-2-esri.html")
+```
+
+# Add polygon draw tool
+https://bhaskarvk.github.io/leaflet.extras/reference/draw.html
+```{r polygon-draw-tool}
+library(leaflet.extras)
+
+map <- leaflet(waypoints_2202_04_03_rows) %>%
+  setView(lat = 48.42066, lng = -123.55864, zoom = 14) %>%
+  addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
+  addPolylines(data = track) %>%
+  addCircleMarkers(fillOpacity = 0.5, radius = 0.8, color = "red", stroke = TRUE, 
+                   lng = ~lon, lat = ~lat, 
+                   popup = paste0("<strong>WP:</strong> ", waypoints_2202_04_03_rows$name, 
+                                  "<br />", "<strong>Date/Time: </strong>", waypoints_2202_04_03_rows$cmt)) %>%
+  
+  # add a map scalebar
+#  https://hansenjohnson.org/post/interactive-maps-in-r/
+      addScaleBar(position = 'topright') %>%
+      
+      # add measurement tool
+      addMeasure(
+        primaryLengthUnit = "kilometers",
+        secondaryLengthUnit = 'miles', 
+        primaryAreaUnit = "hectares",
+        secondaryAreaUnit="acres", 
+        position = 'topleft') %>%
+  
+  addDrawToolbar(
+    targetGroup = "draw",
+    editOptions = editToolbarOptions(
+      selectedPathOptions = selectedPathOptions()
+    )
+  )  %>%
+  
+  addLayersControl(
+    overlayGroups = c("draw"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  addStyleEditor() %>%
+removeDrawToolbar(clearFeatures = FALSE)
+
+```
+
+---
+
+# Add inset map
+```{r inset-map}
+library(leaflet.extras)
+# install.packages("leaflet.providers") # for inset minimap
+# https://cran.r-project.org/web/packages/leaflet.providers/readme/README.html
+library(leaflet.providers) # for inset minimap
+use_providers()
+
+map <- leaflet(waypoints_2202_04_03_rows) %>%
+  setView(lat = 48.42066, lng = -123.55864, zoom = 14) %>%
+  addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
+  addPolylines(data = track) %>%
+  addCircleMarkers(fillOpacity = 0.5, radius = 0.8, color = "red", stroke = TRUE, 
+                   lng = ~lon, lat = ~lat, 
+                   popup = paste0("<strong>WP:</strong> ", waypoints_2202_04_03_rows$name, 
+                                  "<br />", "<strong>Date/Time: </strong>", waypoints_2202_04_03_rows$cmt)) %>%
+  
+  # add a map scalebar
+#  https://hansenjohnson.org/post/interactive-maps-in-r/
+      addScaleBar(position = 'topright') %>%
+      
+      # add measurement tool
+      addMeasure(
+        primaryLengthUnit = "kilometers",
+        secondaryLengthUnit = 'miles', 
+        primaryAreaUnit = "hectares",
+        secondaryAreaUnit="acres", 
+        position = 'topleft') %>%
+  
+  addDrawToolbar(
+    targetGroup = "draw",
+    editOptions = editToolbarOptions(
+      selectedPathOptions = selectedPathOptions()
+    )
+  )  %>%
+  
+  addLayersControl(
+    overlayGroups = c("draw"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  addStyleEditor() %>%
+# add inset map
+  addMiniMap(
+    tiles = providers$OpenStreetMap,
+    position = 'bottomright', 
+    width = 200, height = 200,
+    toggleDisplay = TRUE)
+
+map
+```
+
+
+---
+
+# Save Map
+```{r save-map}
+# https://hansenjohnson.org/post/interactive-maps-in-r/
+# # # save a stand-alone, interactive map as an html file
+# library(htmlwidgets)
+saveWidget(widget = map, file = 'map.html', selfcontained = T)
+```
+
+
+---
+
+---  
+---  
+
+---
+## PhantomJS not found
+```{r mapshot-screenshot}
+# # # save a snapshot as a png file
+library(mapview)
+mapshot(map, file = "map.png")
+```
+
+mapshot(map, file = "map.png")  
+PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+
+
+
+
+
+
