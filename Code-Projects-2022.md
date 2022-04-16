@@ -9,6 +9,8 @@
 ## Table of Contents  <a name="TOC"/>
 - **[Week XV](#weekXV)**    
   - [R3D105 2022-04-15](#R3D105)
+- **[Week XIV](#weekXIV)**    
+  - [R3D93 2022-04-04](#R3D93)
 - **[Week XII](#weekXII)**    
   - [R3D86 2022-03-27](#R3D86)
   - [R3D85 2022-03-26](#R3D85)
@@ -44,6 +46,23 @@
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/JSON_Mapping/images/Leaflet-Map-list-json.png
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/JSON_Mapping/images/Leaflet-Map-list-json-open.png
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/JSON_Mapping
+
+[TOC](#TOC)
+
+***
+# Week XIV <a name="weekXIV"/>
+***
+## R3D93 2022-04-04 <a name="R3D93"/>
+**Today's Progress**: 
+- created a leaflet for ```r``` map using ```GPX``` track and ```.csv``` waypoint data from Garmin GPS
+- tried different markers
+
+**Thoughts:** 
+- I haven't done a leaflet map in ```r``` for awhile
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/GPX_Track/leaflet-mapping.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/GPX_Track
 
 [TOC](#TOC)
 
