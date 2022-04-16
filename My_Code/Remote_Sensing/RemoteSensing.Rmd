@@ -454,22 +454,24 @@ par(mfrow = c(2, 2)) # rows, columns
 par(ps = 8) # point text size
 par(oma = c(0, 0, 1, 0)) # margins: bottom, left, top (gives title space), right
 par(pty = "m") # "s" square plotting region vs m - maximal
+par(mai = c(0.35, 0.35, 0.35, 0.35))
 # ?par # help for par() function
 
 ###############
 # NDVI plot
 ndvi <- vi(landsat, 5, 4)
-plot(ndvi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Landsat NDVI", sub = "Level of greenness")
+plot(ndvi, col = rev(terrain.colors(10)), main = "Landsat NDVI Greeness Index")
 
 ###############
 # NDWI plot leaf water
 ndwi2 <- vi(landsat, 5, 7)
-plot(ndwi2, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Water Index: Landsat Bands NIR (5) and SWIR (7)", sub = "Monitor change in leaf water content")
+plot(ndwi2, col = rev(terrain.colors(10)), main = "Leaf Water Index: Landsat Bands NIR (5) and SWIR (7)")
 
 ###############
 # NDWI plot water bodies
 ndwi <- vi(landsat, 3, 5)
-plot(ndwi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Water Body Index: Landsat Bands Green (3) and NIR (5)", sub = "Monitor water in water bodies")
+plot(ndwi, col = rev(terrain.colors(10)), main = "Water Body Index: Landsat Bands Green (3) and NIR (5)")
+
 ###############
 # Built environment index
 # bands 4 (red), 2 (blue), 7 (SWIR)
@@ -482,7 +484,45 @@ bi <- function(img, k, i, p) {
 }
 
 bsi <- bi(landsat, 4, 2, 7)
-plot(bsi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Built Index: Landsat Bands red (4), green (2), and SWIR (7)", sub = "Monitor change in built environment (4-2)*7/(4+2)*7")
+plot(bsi, col = rev(terrain.colors(10)), main = "Built Index: Landsat Bands Red, Green and SWIR [(4-2)*7/(4+2)*7]")
+```
+
+# Compare Land Use Change Plots using cropped image
+```{r land-use-change-plot-comparison-crop}
+par(mfrow = c(2, 2)) # rows, columns
+par(ps = 8) # point text size
+par(oma = c(0, 0, 1, 0)) # margins: bottom, left, top (gives title space), right
+par(pty = "m") # "s" square plotting region vs m - maximal
+par(mai = c(0.35, 0.35, 0.35, 0.35))
+# ?par # help for par() function
+
+###############
+# NDVI plot
+ndvi <- vi(landsatcrop, 5, 4)
+plot(ndvi, col = rev(terrain.colors(10)), main = "Landsat NDVI Greeness Index")
+
+###############
+# NDWI plot leaf water
+ndwi2 <- vi(landsatcrop, 5, 7)
+plot(ndwi2, col = rev(terrain.colors(10)), main = "Leaf Water Index: Landsat Bands NIR (5) and SWIR (7)")
+
+###############
+# NDWI plot water bodies
+ndwi <- vi(landsatcrop, 3, 5)
+plot(ndwi, col = rev(terrain.colors(10)), main = "Water Body Index: Landsat Bands Green (3) and NIR (5)")
+###############
+# Built environment index
+# bands 4 (red), 2 (blue), 7 (SWIR)
+bi <- function(img, k, i, p) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  bp <- img[[p]]
+  bi <- (bk - bi) * bp / (bk + bi) * bp
+  return(bi)
+}
+
+bsi <- bi(landsatcrop, 4, 2, 7)
+plot(bsi, col = rev(terrain.colors(10)), main = "Built Index: Landsat Bands Red, Green and SWIR [(4-2)*7/(4+2)*7]")
 ```
 
 ```{r plot-spectra-2}
