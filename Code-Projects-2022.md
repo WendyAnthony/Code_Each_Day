@@ -10,7 +10,8 @@
 - **[Week XV](#weekXV)**    
   - [R3D105 2022-04-15](#R3D105)
 - **[Week XIV](#weekXIV)**    
-  - [R3D93 2022-04-04](#R3D93)
+- [R3D97 2022-04-08](#R3D97)
+- [R3D93 2022-04-04](#R3D93)
 - **[Week XII](#weekXII)**    
   - [R3D86 2022-03-27](#R3D86)
   - [R3D85 2022-03-26](#R3D85)
@@ -51,6 +52,22 @@
 
 ***
 # Week XIV <a name="weekXIV"/>
+***
+## R3D97 2022-04-08 <a name="R3D97"/>
+**Today's Progress**: 
+- text analysis in ```r```
+  - created a wordcloud as I finished my final paper on BC Climate Change Mitigation Strategies
+
+**Thoughts:** 
+- wordcloud helped me to visualize the main themes
+- creating a separate word cloud for a decrease in minimum word frequency showed progression of thought through word use
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/text_analysis/TextAnalysis.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud/text_analysis
+
+[TOC](#TOC)
+
 ***
 ## R3D93 2022-04-04 <a name="R3D93"/>
 **Today's Progress**: 
