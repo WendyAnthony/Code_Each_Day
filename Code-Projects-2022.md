@@ -35,6 +35,7 @@
 
 **Thoughts:** 
 - I haven't done a leaflet html map for awhile
+- I also haven't worked with javascript much since playing around with leaflet in r ...
 - I had to take some time to get the json format right
   - new column: Name had to have a value, as did Desc for code to work
 
