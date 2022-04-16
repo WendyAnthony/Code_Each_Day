@@ -1,0 +1,532 @@
+---
+title: "RemoteSensing"
+author: "Wendy Anthony"
+date: "2022/04/15"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+https://rspatial.org/raster/rs/2-exploration.html
+
+# Data
+
+## Download zipped data: https://biogeo.ucdavis.edu/data/rspatial/rsdata.zip 
+## Unzip data
+```{r data-unzip}
+unzip('data/rsdata.zip', exdir='data')
+```
+
+# Image properties
+"Create RasterLayer objects for single Landsat layers (bands)"
+```{r image-properties}
+library(raster)
+# Blue
+b2 <- raster('data/rs/LC08_044034_20170614_B2.tif')
+# Green
+b3 <- raster('data/rs/LC08_044034_20170614_B3.tif')
+# Red
+b4 <- raster('data/rs/LC08_044034_20170614_B4.tif')
+# Near Infrared (NIR)
+b5 <- raster('data/rs/LC08_044034_20170614_B5.tif')
+```
+
+## check variables
+see the spatial resolution, extent, number of layers, coordinate reference system, etc
+```{r check-variables}
+b2
+b3
+b4
+b5
+```
+
+### check CRS (coordinate reference system)
+
+```{r}
+# coordinate reference system (CRS)
+crs(b2)
+crs(b3)
+crs(b4)
+crs(b5)
+
+# Number of cells, rows, columns
+ncell(b2)
+
+dim(b2)
+
+# spatial resolution
+res(b2)
+
+# Number of bands
+nlayers(b2)
+
+# Do the bands have the same extent, number of rows and columns, projection, resolution, and origin
+compareRaster(b2,b3)
+```
+
+# Create raster stack object of multiple layers from single raster band objects
+```{r create-raster-stack}
+s <- stack(b5, b4, b3)
+s
+plot(s)
+plot(b5)
+```
+
+## Raster stacks can also be created using filenames
+### list filenames
+```{r raster-filenames}
+# create list of raster objects
+filenames <- paste0("data/rs/LC08_044034_20170614_B", 1:11, ".tif")
+filenames
+```
+
+### create a 11 layer raster stack from 11 filenames
+"The layers represent reflection intensity in the following wavelengths: Ultra Blue, Blue, Green, Red, Near Infrared (NIR), Shortwave Infrared (SWIR) 1, Shortwave Infrared (SWIR) 2, Panchromatic, Cirrus, Thermal Infrared (TIRS) 1, Thermal Infrared (TIRS) 2.  
+We won’t use the last four layers and you will see how to remove those in following sections."
+```{r create-raster-stack-filenames}
+landsat <- stack(filenames)
+landsat
+```
+
+---
+# Maps
+## Grey-scale Single band and composite maps
+plot individual layers in a 2x2 grid  
+legend values between 0-1  
+"different surface features reflect the incident solar radiation differently.  
+Each layer represent how much incident solar radiation is reflected for a particular wavelength range.  
+For example, vegetation reflects more energy in NIR than other wavelengths and thus appears brighter.  
+In contrast, water absorbs most of the energy in the NIR wavelength and it appears dark."
+```{r single-band-composite-maps}
+par(mfrow = c(2, 2))
+plot(b2, main = "Blue", col = gray(0:100 / 100))
+plot(b3, main = "Green", col = gray(0:100 / 100))
+plot(b4, main = "Red", col = gray(0:100 / 100))
+plot(b5, main = "NIR", col = gray(0:100 / 100))
+```
+
+## True / natural colour image
+"(vegetation in green, water blue etc), we need bands in the red, green and blue regions.  
+For this Landsat image, band 4 (red), 3 (green), and 2 (blue) can be used."
+```{r true-colour}
+landsatRGB <- stack(b4, b3, b2)
+plotRGB(landsatRGB, axes = TRUE, stretch = "lin", main = "Landsat True Colour Composite")
+```
+
+## Compare True and False Colour Images
+```{r false-colour-image}
+par(mfrow = c(1, 2))
+plotRGB(landsatRGB, axes = TRUE, stretch = "lin", main = "Landsat True Colour Composite")
+
+landsatFCC <- stack(b5, b4, b3)
+plotRGB(landsatFCC, axes = TRUE, stretch = "lin", main = "Landsat False Colour Composite")
+```
+
+---
+
+# Arguements to modify image
+```{r}
+help(plotRGB)
+```
+
+---
+
+# Subset (indexing) and rename bands in landsat object of all layers
+```{r subset-rename-bands}
+# select first 3 bands
+landsat
+
+landsatsub1 <- subset(landsat, 4:2)
+landsatsub1
+# same as
+landsatsub2 <- landsat[[4:2]]
+landsatsub2
+
+# Number of bands in the original and new data
+nlayers(landsat)
+nlayers(landsatsub1)
+nlayers(landsatsub2)
+```
+
+## Remove last 4 bands that won't be used
+```{r remove-last-four-bands}
+landsat <- subset(landsat, 1:7)
+landsat
+```
+
+## Rename Band names
+```{r band-names}
+names(landsat)
+
+names(landsat) <- c('ultra-blue', 'blue', 'green', 'red', 'NIR', 'SWIR1', 'SWIR2')
+names(landsat)
+```
+
+## Spatial subset or crop
+"used to limit analysis to a geographic subset of the image"
+```{r spatial-subset-crop}
+extent(landsat)
+
+e <- extent(624387, 635752, 4200047, 4210939)
+e
+
+# crop landsat by the extent
+landsatcrop <- crop(landsat, e)
+landsatcrop
+```
+
+
+# Compare True and False Colour Images from landsat (all files)
+```{r compare-false-colour-image-landsat}
+par(mfrow = c(1, 2))
+
+landsatsub3 <- subset(landsat, 4:2)
+landsatsub4 <- subset(landsat, 5:3)
+
+plotRGB(landsatsub3, axes = TRUE, stretch = "lin", main = "Landsat True Colour Composite")
+
+plotRGB(landsatsub4, axes = TRUE, stretch = "lin", main = "Landsat False Colour Composite")
+```
+
+# Compare True and False Colour Images from landsatcrop (all files)
+```{r compare-false-colour-image-landsat-crop}
+par(mfrow = c(1, 2))
+par(ps = 8) # point text size
+par(oma = c(0, 0, 1, 0)) # margins: bottom, left, top (gives title space), right
+# ?par # help for par() function
+
+landsatsub5 <- subset(landsatcrop, 4:2)
+landsatsub6 <- subset(landsatcrop, 5:3)
+
+plotRGB(landsatsub5, axes = TRUE, xlab = "UTM E/W", ylab = "UTM N/S", stretch = "lin", main = "Landsat\nTrue Colour Composite")
+# title(sub = "Comparing True and False Colour Landsat Composites") # only works for area of one graph
+plotRGB(landsatsub6, axes = TRUE, xlab = "UTM E/W", ylab = "UTM N/S", stretch = "lin", main = "Landsat\nFalse Colour Composite")
+
+```
+
+---
+
+# Saving results to disk
+## jpg
+```{r save-plot-TCC-jpg}
+jpeg(file="landsatRGB-TCC.jpeg")
+plotRGB(landsatRGB, axes = TRUE, stretch = "lin", main = "Landsat True Colour Composite")
+dev.off()
+
+jpeg(file="landsatRGB-FCC.jpeg")
+landsatFCC <- stack(b5, b4, b3)
+plotRGB(landsatFCC, axes = TRUE, stretch = "lin", main = "Landsat False Colour Composite")
+dev.off()
+```
+
+## tif
+```{r save-plot-TCC-tiff}
+tiff(file="landsatRGB-TCC.tif")
+plotRGB(landsatRGB, axes = TRUE, stretch = "lin", main = "Landsat True Colour Composite")
+dev.off()
+
+tiff(file="landsatRGB-FCC.tif")
+landsatFCC <- stack(b5, b4, b3)
+plotRGB(landsatFCC, axes = TRUE, stretch = "lin", main = "Landsat False Colour Composite")
+dev.off()
+```
+
+```{r save-results-disk}
+rf <- writeRaster(landsatcrop, filename = "cropped-landsat.tif", overwrite=TRUE)
+rf <- writeRaster(landsatsub5, filename = "cropped-landsat5.tif", overwrite=TRUE)
+rf <- writeRaster(s, filename = "cropped-landsat-TCC.tif", overwrite=TRUE)
+
+# S4 method for RasterStackBrick,character
+
+rf <- writeRaster(landsatFCC, filename=file.path("landsatFCC.tif"), format="GTiff", overwrite=TRUE)
+rf <- writeRaster(landsatRGB, filename=file.path("landsatTCC.tif"), format="GTiff", overwrite=TRUE)
+
+class(landsatcrop)
+class(landsat)
+```
+
+
+---
+
+# Relation between bands
+"exploring relationships between raster layers"  
+## Plot of UV/B reflection "in the ultra-blue wavelength against reflection in the blue wavelength."
+"The first plot reveals high correlations between the blue wavelength regions.  
+Because of the high correlation, we can just use one of the blue bands without losing much information."
+```{r relation-between-bands-UV-V}
+pairs(landsatcrop[[1:2]], main = "Ultra-blue versus Blue")
+```
+
+## Plot of R/NIR reflection in the red wavelength against reflection in the NIR wavelength.
+"This distribution of points between NIR and red is unique due to its triangular shape.  
+Vegetation reflects very highly in the NIR range than red and creates the upper corner close to NIR (y) axis.  
+Water absorbs energy from all the bands and occupies the location close to origin.  
+The furthest corner is created due to highly reflecting surface features like bright soil or concrete."
+```{r relation-between-bands-R-NIR}
+pairs(landsatcrop[[4:5]], main = "Red vs NIR")
+```
+
+---
+
+# Land Cover
+
+## Extract pixel values for polygons with land cover info
+```{r extract-pixel-values}
+# load the polygons with land use land cover information
+samp <- readRDS('data/rs/samples.rds')
+
+# generate 300 point samples from the polygons
+ptsamp <- spsample(samp, 300, type='regular')
+
+# add the land cover class to the points
+ptsamp$class <- over(ptsamp, samp)$class
+
+# extract values with points
+df <- extract(landsat, ptsamp)
+
+# To see some of the reflectance values
+head(df)
+```
+
+## Spectral profiles of land cover
+
+```{r spectral-profiles}
+ms <- aggregate(df, list(ptsamp$class), mean)
+
+# instead of the first column, we use row names
+rownames(ms) <- ms[,1]
+ms <- ms[,-1]
+ms
+```
+
+### Plot mean spectra of features
+"The spectral profile shows (dis)similarity in the reflectance of different features on the earth’s surface (or above it).  
+‘Water’ shows relatively low reflection in all wavelengths, and ‘built’, ‘fallow’ and ‘open’ have relatively high reflectance in the longer wavelengts."
+```{r plot-spectra}
+# Create a vector of color for the land cover classes for use in plotting
+mycolor <- c('darkred', 'yellow', 'burlywood', 'cyan', 'blue')
+
+#transform ms from a data.frame to a matrix
+ms <- as.matrix(ms)
+
+# First create an empty plot
+plot(0, ylim=c(0,0.6), xlim = c(1,7), type='n', xlab="Bands", ylab = "Reflectance")
+
+# add the different classes
+for (i in 1:nrow(ms)){
+  lines(ms[i,], type = "l", lwd = 3, lty = 1, col = mycolor[i])
+}
+
+# Title
+title(main="Spectral Profile from Landsat", font.main = 2)
+
+# Legend
+legend("topleft", rownames(ms),
+       cex=0.8, col=mycolor, lty = 1, lwd =3, bty = "n")
+```
+
+---
+
+# Basic Math with ```raster```
+performed on each pixel / grid cell
+
+## Combine bands
+### Data (same as above)
+```{r combine-bands-data}
+raslist <- paste0('data/rs/LC08_044034_20170614_B', 1:11, ".tif")
+landsat <-stack(raslist)
+landsatRGB <- landsat[[c(4, 3, 2)]]
+landsatFCC <- landsat[[c(5, 4, 3)]]
+```
+
+### NDVI function Vegetation Index
+```{r vegetation-indices}
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+```
+
+
+### NDVI (Normalized Difference Vegetation Index)
+to view greenness  
+Landsat bands NIR = 5, red = 4
+#### NDVI one way
+```{r NDVI-1}
+ndvi <- vi(landsat, 5, 4)
+plot(ndvi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Landsat NDVI", sub = "Level of greenness")
+```
+
+#### NDVI another function
+```{r NDVI-2}
+vi2 <- function(x, y){
+  (x - y) / (x + y)
+}
+ndvi2 <- overlay(landsat[[5]], landsat[[4]], fun = vi2)
+plot(ndvi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Landsat NDVI", sub = "Level of greenness")
+```
+
+### Adapt code for other indices
+e.g. Identify water  
+see spectral profile for bands with max / min reflectance  
+
+#### Function for Vegetation index
+```{r vegetation-indices-reused}
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+```
+
+#### Water body index NDWI (Normalized difference water index)
+Landsat bands: green = 3 and NIR = 5
+```{r water-body-index}
+ndwi <- vi(landsat, 3, 5)
+plot(ndwi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Water Body Index: Landsat Bands Green (3) and NIR (5)", sub = "Monitor water in water bodies")
+```
+
+#### Water in leaf index NDWI (Normalized difference water index)
+Landsat bands:  NIR = 5 and SWIR = 7
+```{r water-leaf-index-7}
+ndwi2 <- vi(landsat, 5, 7)
+plot(ndwi2, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Water Index: Landsat Bands NIR (5) and SWIR (7)", sub = "Monitor change in leaf water content")
+```
+
+Landsat bands:  NIR = 5 and SWIR = 6 >> not the band to use
+```{r water-leaf-index-6}
+ndwi2 <- vi(landsat, 5, 6)
+plot(ndwi2, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Water Index: Landsat Bands NIR (5) and SWIR (6)", sub = "Monitor change in leaf water content")
+```
+
+### Adapt code for other indices
+see spectral profile for bands with max / min reflectance  
+e.g. Identify built areas  NDBI (Normalized Difference Built-up Index)
+https://pro.arcgis.com/en/pro-app/2.8/arcpy/spatial-analyst/ndbi.htm
+Landsat bands: 4 = red, 2 = green, 7 = SWIR
+```{r built-index-1}
+# bands 4 (red), 2 (blue), 7 (SWIR)
+bi <- function(img, k, i, p) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  bp <- img[[p]]
+  bi <- (bk - bi) * bp / (bk + bi) * bp
+  return(bi)
+}
+
+ndbi <- bi(landsat, 4, 2, 7)
+plot(ndbi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Built Index: Landsat Bands red (4), green (2), and SWIR (7)", sub = "Monitor change in built environment (4-2)*7/(4+2)*7")
+```
+
+https://pro.arcgis.com/en/pro-app/2.8/arcpy/spatial-analyst/ndbi.htm
+Landsat bands: 6 = SWIR, 5 = NIR
+```{r built-index-2}
+# bands 4 (red), 2 (blue), 7 (SWIR)
+bi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  
+  bi <- (bk - bi) / (bk + bi) 
+  return(bi)
+}
+
+ndbi <- bi(landsat, 6, 5)
+plot(ndbi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Built Index: Landsat Bands SWIR (6) and NIR (5)", sub = "Monitor change in built environment (6-5)/(6+5)")
+```
+```{r built-index2}
+bei <- vi(landsat, 4, 5)
+plot(bei, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Built Index: Landsat Bands NIR (5) and green (3)", sub = "Monitor change in built environment")
+```
+
+# Compare Land Use Change Plots
+```{r land-use-change-plot-comparison}
+par(mfrow = c(2, 2)) # rows, columns
+par(ps = 8) # point text size
+par(oma = c(0, 0, 1, 0)) # margins: bottom, left, top (gives title space), right
+par(pty = "m") # "s" square plotting region vs m - maximal
+# ?par # help for par() function
+
+###############
+# NDVI plot
+ndvi <- vi(landsat, 5, 4)
+plot(ndvi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Landsat NDVI", sub = "Level of greenness")
+
+###############
+# NDWI plot leaf water
+ndwi2 <- vi(landsat, 5, 7)
+plot(ndwi2, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Water Index: Landsat Bands NIR (5) and SWIR (7)", sub = "Monitor change in leaf water content")
+
+###############
+# NDWI plot water bodies
+ndwi <- vi(landsat, 3, 5)
+plot(ndwi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Water Body Index: Landsat Bands Green (3) and NIR (5)", sub = "Monitor water in water bodies")
+###############
+# Built environment index
+# bands 4 (red), 2 (blue), 7 (SWIR)
+bi <- function(img, k, i, p) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  bp <- img[[p]]
+  bi <- (bk - bi) * bp / (bk + bi) * bp
+  return(bi)
+}
+
+bsi <- bi(landsat, 4, 2, 7)
+plot(bsi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Built Index: Landsat Bands red (4), green (2), and SWIR (7)", sub = "Monitor change in built environment (4-2)*7/(4+2)*7")
+```
+
+```{r plot-spectra-2}
+
+###############
+# Plot Spectra
+# Create a vector of color for the land cover classes for use in plotting
+mycolor <- c('darkred', 'yellow', 'burlywood', 'cyan', 'blue')
+
+#transform ms from a data.frame to a matrix
+ms <- as.matrix(ms)
+
+# First create an empty plot
+plot(0, ylim=c(0,0.6), xlim = c(1,7), type='n', xlab="Bands", ylab = "Reflectance")
+
+# add the different classes
+for (i in 1:nrow(ms)){
+  lines(ms[i,], type = "l", lwd = 3, lty = 1, col = mycolor[i])
+}
+
+# Title
+title(main="Spectral Profile from Landsat", font.main = 2)
+
+# Legend
+legend("topleft", rownames(ms),
+       cex=0.8, col=mycolor, lty = 1, lwd =3, bty = "n")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
