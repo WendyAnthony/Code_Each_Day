@@ -8,6 +8,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XV](#weekXV)**    
+  - [R3D106 2022-04-16](#R3D106)
   - [R3D105 2022-04-15](#R3D105)
 - **[Week XIV](#weekXIV)**    
   - [R3D97 2022-04-08](#R3D97)
@@ -30,11 +31,28 @@
 ***
 # Week XV <a name="weekXV"/>
 ***
+## R3D106 2022-04-16 <a name="R3D106"/>
+**Today's Progress**: 
+- continued work on using ```raster``` to learn to do some remote sensing viz
+  - learning to use band math to viz land use spectra
+
+**Thoughts:** 
+- I may need to review some of my remote sensing lab notes
+- I'd like to try some local Landsat data so I understand what I'm seeing a bit better
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/RemoteSensing.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing
+
+[TOC](#TOC)
+
+***
 ## R3D105 2022-04-15 <a name="R3D105"/>
 **Today's Progress**: 
 - created a leaflet html map using json
 - created json object from .csv in ```R```
 - copied json file text to html file
+- start work on using ```raster``` to learn to do some remote sensing viz
 
 **Thoughts:** 
 - I haven't done a leaflet html map for awhile
