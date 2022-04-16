@@ -59,6 +59,7 @@
 
 **Thoughts:** 
 - I haven't done a leaflet map in ```r``` for awhile
+- thought of other tools to add to map: inset map; drawing tools
 
 **Links to code work:** 
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/GPX_Track/leaflet-mapping.html
