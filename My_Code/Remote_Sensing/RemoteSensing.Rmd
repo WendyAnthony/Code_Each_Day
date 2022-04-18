@@ -1,7 +1,7 @@
 ---
 title: "RemoteSensing"
 author: "Wendy Anthony"
-date: "2022/04/15"
+date: "2022/04/15 - 2022/04/18"
 output:
   html_document:
     toc: yes
@@ -20,8 +20,9 @@ https://rspatial.org/raster/rs/2-exploration.html
 
 ## Download zipped data: https://biogeo.ucdavis.edu/data/rspatial/rsdata.zip 
 ## Unzip data
+uncomment if not already zipped
 ```{r data-unzip}
-unzip('data/rsdata.zip', exdir='data')
+# unzip('data/rsdata.zip', exdir='data')
 ```
 
 # Image properties
@@ -881,7 +882,389 @@ hist(ndvi,
 axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
 ```
 
+## Can I use this idea to predict where to find water?
+
+### Create Water Classes
+https://bootstrappers.umassmed.edu/bootstrappers-courses/pastCourses/rCourse_2016-04/Additional_Resources/Rcolorstyle.html
+```{r water-classes-1}
+waterc <- reclassify(ndvi, c(-Inf,0.1,1,  0.1,0.15,2,  0.15,0.25,3,  0.25,0.35,4,  0.35,0.4,5,  0.4,Inf,6))
+plot(waterc, col = cm.colors(10), main = "Water Classification\nNDWI based thresholding", sub = "Thresholds: --Inf,0.1,1,  0.1,0.15,2,  0.15,0.25,3,  0.25,0.35,4,  0.35,0.4,5,  0.4,Inf,6")
+```
+
+
+### Reclassify water again
+```{r water-classes-3}
+waterc2 <- reclassify(ndvi, c(-Inf,-0.55,1,  -0.55,-0.45,2,  -0.45,-0.35,3,  -0.35,-0.25,4,  -0.25,-0.15,5, -0.15,0.,6,  0,0.15,7,  0.15,1.5,8, 1.5,2.5,9, 2.5,3.5,10,  3.5,Inf,11))
+plot(waterc2, col = cm.colors(10), main = "Water Classification\nNDWI based thresholding", sub = "Thresholds: -Inf,-0.55,1,  -0.55,-0.45,2,  -0.45,-0.35,3,  -0.35,-0.25,4,  -0.25,-0.15,5, \n-0.15,0.,6,  0,0.15,7,  0.15,1.5,8, 1.5,2.5,9, 2.5,3.5,10,  3.5,Inf,11")
+```
+
+### Reclassify water yet again to peak
+waterc2 <- reclassify(ndvi, c(-Inf,0.1,1,  0.1,0.35,2,  0.35,Inf,NA))
+col = rev(hsv(0.5, seq(0,.50,length.out = 12), .85))
+```{r water-classes-2}
+waterc2 <- reclassify(ndvi, c(-Inf,-0.05,1,  -0.05,Inf,NA))
+plot(waterc2, col = rev("cyan"), main = "Water Classification\nNDWI based thresholding", sub = "Frequency Thresholds: -Inf,-0.05,1,  -0.05,Inf,NA", legend = FALSE)
+```
+
+
+### NDWI values distribution
+find frequency >0 e.g. 0 to 0.65
+```{r histogram-ndwi-replot}
+hist(ndwi, 
+     main = "NDWI water body value distribution",
+     xlab = "NDWI",
+     ylab = "Frequency",
+     col = "cyan",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-1, 1, 0.05), labels = seq(-1, 1, 0.05))
+```
+##### Compare NDVI Water Threshold with True Colour Composite Image
+```{r comparison-NDVI-water-threshold-TCC}
+par(mfrow = c(2, 2)) # rows, columns
+par(ps = 8) # point text size
+par(oma = c(0, 0, 0, 0)) # margins: bottom, left, top (gives title space), right
+par(pty = "m") # "s" square plotting region vs m - maximal
+# ?par # help for par() function
+
+###############
+plotRGB(landsatRGB, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat True Color Composite")
+###############
+plotRGB(landsatRGB, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat True Color Water NDWI Composite")
+plot(waterc2, col = rev("cyan"), add=TRUE, legend=FALSE)
+###############
+plotRGB(landsatFCC, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat False Color Composite")
+###############
+plotRGB(landsatFCC, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat False Color Water NDWI Composite")
+plot(waterc2, col = rev("cyan"), add=TRUE, legend=FALSE)
+```
+
 ---
+
+# Principal component analysis (PCA)
+reduces data noise by reduction >>  
+the first PC explains most % variance, others in decreasing order
+
+## Create vegetation - soil line plot (same as earlier scatter plot NIR-red bands)
+```{r pca-plot}
+set.seed(1)
+sr <- sampleRandom(landsat, 10000)
+plot(sr[,c(4,5)], main = "NIR-Red plot")
+```
+## Calculate PCA
+```{r pca-calc}
+pca <- prcomp(sr, scale = TRUE)
+pca
+```
+### Histogram of pca variances
+```{r pca-plot-histogram}
+screeplot(pca)
+```
+### Plot of prediction
+"The first principal component highlights the boundaries between land use classes or spatial details, which is the most common information among all wavelengths."
+```{r pca-predict-pci}
+pci <- predict(landsat, pca, index = 1:2)
+plot(pci[[1]])
+```
+## Thresholding the PCA
+"It is difficult to understand what the second principal component is highlighting. Lets try thresholding again:"
+```{r pca-reclassify}
+pc2 <- reclassify(pci[[2]], c(-Inf,0,1, 0,Inf,NA))
+par(mfrow = c(1,2))
+plotRGB(landsatFCC, r = 1, g = 2, b = 3, axes = TRUE, stretch = "lin", main = "Landsat False Color Composite")
+plotRGB(landsatFCC, r = 1, g = 2, b = 3, axes = TRUE, stretch = "lin", main = "Landsat False Color Composite")
+plot(pc2, legend = FALSE, add = TRUE)
+```
+
+
+---
+
+# Unsupervised Classification
+
+## Data
+```{r unsupervised-class}
+landsat5 <- stack('data/rs/centralvalley-2011LT5.tif')
+names(landsat5) <- c('blue', 'green', 'red', 'NIR', 'SWIR1', 'SWIR2')
+```
+
+## Make a 3-band False Color Composite plot of ``landsat5``
+```{r plot-landsat5}
+plot(landsat5)
+landsat5
+```
+## Plot FCC with 3 bands NIR, red, green
+```{r plot-landsat5-FCC}
+#landsat5_FCC <- stack(b5, b4, b3)
+landsat5_FCC <- stack(b5, b4, b3)
+plotRGB(landsat5_FCC, axes = TRUE, stretch = "lin", main = "Landsat False Colour Composite")
+```
+
+## Unsupervised classification K-means
+"In unsupervised classification, we use the reflectance data, but we don’t supply any response data  
+(that is, we do not identify any pixel as belonging to a particular class).  
+The algorithm groups pixels with similar spectral characteristics into groups."  
+### NDVI subset
+```{r ndvi-spatial-subset}
+ndvi_sub <- (landsat5[["NIR"]] - landsat5[["red"]] / (landsat5[["NIR"]] + landsat5[["red"]]))
+```
+
+### K-means clustering of ndvi_sub data >> crop
+```{r k-means-crop}
+# Extent to crop ndvi layer
+e <- extent(-121.807, -121.725, 38.004, 38.072)
+# crop landsat by the extent
+ndvi_sub <- crop(ndvi_sub, e)
+ndvi_sub
+```
+
+### Convert raster layer to vector (array/matrix)
+```{r convert-raster-to-vector}
+# convert the raster to vector/matrix
+nr <- getValues(ndvi_sub)
+str(nr)
+```
+### K-means
+"kmeans returns an object with 9 elements. The length of the cluster element within kmncluster is 76608 which same as length of nr created from the ndvi. The cell values of ```kmncluster$cluster``` range between 1 to 10 corresponding to the input number of cluster we provided in the kmeans function. ```kmncluster$cluster``` indicates the cluster label for corresponding pixel. We need to convert the kmncluster$cluster values back to RasterLayer of the same dimension as the ndvi."
+```{r kmeans-clustering-matrix}
+# It is important to set the seed generator because `kmeans` initiates the centers in random locations
+set.seed(99)
+
+# We want to create 10 clusters, allow 500 iterations, start with 5 random sets using "Lloyd" method
+kmncluster <- kmeans(na.omit(nr), centers = 10, iter.max = 500, nstart = 5, algorithm="Lloyd")
+# kmeans returns an object of class "kmeans"
+str(kmncluster)
+```
+
+### Set cluster values
+```{r set-cluster-values}
+# Use the ndvi object to set the cluster values to a new raster
+knr <- setValues(ndvi_sub, kmncluster$cluster)
+# You can also do it like this
+knr <- raster(ndvi_sub)
+values(knr) <- kmncluster$cluster
+knr
+```
+### Define colour vector for clusters
+"We can see that knr is a RasterLayer but we do not know which cluster (1-10) belongs to what land cover class  
+(and if it does belong to a class that we would recognize).  
+You can find that out by plotting them side-by-side with a reference layers and using unique color for each cluster."  
+  
+"While for other purposes it is usually better to define more classes (and possibly merge classes later), a simple classification like this one could be useful, e.g., merge cluster 4 and 5 to construct a water mask for the year 2011."
+```{r define-color-vector}
+# Define a color vector for 10 clusters (learn more about setting the color later)
+mycolor <- c("#fef65b","#ff0000", "#daa520","#0000ff","#0000ff","#00ff00","#cbbeb5",
+             "#c3ff5b", "#ff7373", "#00ff00", "#808080")
+par(mfrow = c(1,2))
+plot(ndvi_sub, col = rev(terrain.colors(10)), main = 'Landsat-NDVI')
+plot(knr, main = 'Unsupervised classification', col = mycolor )
+```
+
+#### Question:
+Plot 3-band RGB of ``landsat5`` for the subset (extent ``e``) and result of ``kmeans`` clustering side-by-side and make a table of land-use land-cover labels for the clusters. E.g. cluster 4 and 5 are water.
+
+---
+
+# Supervised Classification
+## Data nlcd
+```{r nlcd-data}
+nlcd <- brick('data/rs/nlcd-L1.tif')
+names(nlcd) <- c("nlcd2001", "nlcd2011")
+```
+
+### Create class names and plot colours
+```{r plot-colours-class}
+# The class names and colors for plotting
+nlcdclass <- c("Water", "Developed", "Barren", "Forest", "Shrubland", "Herbaceous", "Planted/Cultivated", "Wetlands")
+classdf <- data.frame(classvalue1 = c(1,2,3,4,5,7,8,9), classnames1 = nlcdclass)
+# Hex codes of colors
+classcolor <- c("#5475A8", "#B50000", "#D2CDC0", "#38814E", "#AF963C", "#D1D182", "#FBF65D", "#C8E6F8")
+```
+
+### Ratify (RAT = "Raster Attribute Table")
+```{r}
+# Now we ratify (RAT = "Raster Attribute Table") the ncld2011 (define RasterLayer as a categorical variable). This is helpful for plotting.
+nlcd2011 <- nlcd[[2]]
+nlcd2011 <- ratify(nlcd2011)
+rat <- levels(nlcd2011)[[1]]
+#
+rat$landcover <- nlcdclass
+levels(nlcd2011) <- rat
+```
+
+## Generate sample sites
+```{r generate-sample-sites}
+# Load the training sites locations
+# Set the random number generator to reproduce the results
+set.seed(99)
+# Sampling stratified
+samp2011 <- sampleStratified(nlcd2011, size = 200, na.rm = TRUE, sp = TRUE)
+samp2011
+
+# Number of samples in each class
+# 2 variables:  cell - # Cells of nlcd2011; nlcd2011 contains class values (1-9)
+table(samp2011$nlcd2011)
+```
+
+### Plot training sites over nlcd2011 RasterLayer 
+visualizes sampling locations distribution
+```{r plot-training-sites-raster}
+library(rasterVis)
+plt <- levelplot(nlcd2011, col.regions = classcolor, main = 'Distribution of Training Sites')
+print(plt + layer(sp.points(samp2011, pch = 3, cex = 0.5, col = 1)))
+```
+## Extract values for sites
+### load data
+```{r data-reload}
+landsat5 <- stack('data/rs/centralvalley-2011LT5.tif')
+names(landsat5) <- c('blue', 'green', 'red', 'NIR', 'SWIR1', 'SWIR2')
+```
+
+### Extract cell values
+```{r extract-site-values}
+# Extract the layer values for the locations
+sampvals <- extract(landsat5, samp2011, df = TRUE)
+# sampvals no longer has the spatial information. To keep the spatial information you use `sp=TRUE` argument in the `extract` function.
+# drop the ID column
+sampvals <- sampvals[, -1]
+# combine the class information with extracted values
+sampdata <- data.frame(classvalue = samp2011@data$nlcd2011, sampvals)
+```
+
+### Train the classifier
+"classvalues are printed at the leaf nodes.  
+Find corresponding land use land cover names from the classdf data.frame."  
+  
+See ?rpart.control to set different parameters for building the model.  
+You can print/plot more about the cart model created in the previous example.  
+E.g. you can use plotcp(cart) to learn about the cost-complexity (cp argument in rpart)
+```{r train-classifier}
+library(rpart)
+# Train the model
+cart <- rpart(as.factor(classvalue)~., data=sampdata, method = 'class', minsplit = 5)
+# print(model.class)
+# Plot the trained classification tree
+plot(cart, uniform=TRUE, main="Classification Tree")
+text(cart, cex = 0.8)
+```
+
+## Classify
+use training model to make predictions from all cells in raster stack
+```{r predict-subset}
+# Now predict the subset data based on the model; prediction for entire area takes longer time
+pr2011 <- predict(landsat5, cart, type='class')
+pr2011
+```
+## Plot results of classification
+```{r plot-classification}
+pr2011 <- ratify(pr2011)
+rat <- levels(pr2011)[[1]]
+rat$legend <- classdf$classnames
+levels(pr2011) <- rat
+levelplot(pr2011, maxpixels = 1e6,
+          col.regions = classcolor,
+          scales=list(draw=FALSE),
+          main = "Decision Tree classification of Landsat 5")
+```
+
+### Question:
+Plot ``nlcd2011`` and ``pr2011`` side-by-side and comment about the accuracy of the prediction (e.g. mixing between cultivated crops, pasture, grassland and shrubs).  
+You may need to select more samples and use additional predictor variables.  
+The choice of classifier also plays an important role.
+
+## Model evaluation with k-fold cross-validation
+"data used to fit the model is split into k groups (typically 5 groups).  
+In turn, one of the groups will be used for model testing, while the rest of the data is used for model training (fitting)."
+
+### Split into k groups
+```{r model-evaluation}
+library(dismo)
+set.seed(99)
+j <- kfold(sampdata, k = 5, by=sampdata$classvalue)
+table(j)
+```
+
+### Train and test model
+"five times, each time computing a confusion matrix that we store in a list."
+```{r model-test-train}
+x <- list()
+for (k in 1:5) {
+    train <- sampdata[j!= k, ]
+    test <- sampdata[j == k, ]
+    cart <- rpart(as.factor(classvalue)~., data=train, method = 'class', minsplit = 5)
+    pclass <- predict(cart, test, type='class')
+    # create a data.frame using the reference and prediction
+    x[[k]] <- cbind(test$classvalue, as.integer(pclass))
+}
+```
+
+### Create confusion matrix
+Now combine the five list elements into a single data.frame, using do.call and compute a confusion matrix.
+```{r combine-list-confusion-matrix}
+y <- do.call(rbind, x)
+y <- data.frame(y)
+colnames(y) <- c('observed', 'predicted')
+conmat <- table(y)
+# change the name of the classes
+colnames(conmat) <- classdf$classnames
+rownames(conmat) <- classdf$classnames
+conmat
+```
+
+#### Questions
+Question 2:Comment on the miss-classification between different classes.  
+Question 3:Can you think of ways to to improve the accuracy.
+
+
+### Compute overall accuracy
+```{r compute-accuracy}
+# number of cases
+n <- sum(conmat)
+n
+
+# number of correctly classified cases per class
+diag <- diag(conmat)
+# Overall Accuracy
+OA <- sum(diag) / n
+OA
+```
+### Compute the “Kappa” statistic
+```{r compute-kappa-stat}
+# observed (true) cases per class
+rowsums <- apply(conmat, 1, sum)
+p <- rowsums / n
+
+# predicted cases per class
+colsums <- apply(conmat, 2, sum)
+
+q <- colsums / n
+expAccuracy <- sum(p*q)
+kappa <- (OA - expAccuracy) / (1 - expAccuracy)
+kappa
+```
+
+### Producer and user accuracy
+```{r producer-user-accuracy}
+# Producer accuracy
+PA <- diag / colsums
+# User accuracy
+UA <- diag / rowsums
+outAcc <- data.frame(producerAccuracy = PA, userAccuracy = UA)
+outAcc
+```
+
+#### Questions
+Question 4:Perform the classification using Random Forest classifiers from the ``randomForest`` package
+  
+Question 5:Plot the results of rpart and Random Forest classifier side-by-side.
+  
+Question 6 (optional):Repeat the steps for the year 2001 using Random Forest. Use the cloud-free composite image data/centralvalley-2001LE7.tif. This is Landsat 7 data . Use as reference data the National Land Cover Database 2001 (NLCD 2001) for the subset of the California Central Valley.*
+  
+Question 7 (optional):We have trained the classifiers using 200 samples for each class. Investigate the effect of sample size on classification. Repeat the steps with different subsets, e.g. a sample size of 150, 100, 50 per class, and compare the results. Use the same holdout samples for model evaluation.
+  
+
+
 
 
 
