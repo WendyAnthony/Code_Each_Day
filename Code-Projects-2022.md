@@ -46,6 +46,7 @@
 **Links to code work:** 
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/RemoteSensing.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing
+- original tutorial: https://rspatial.org/raster/rs/3-basicmath.html
 
 [TOC](#TOC)
 
@@ -62,6 +63,7 @@
 **Links to code work:** 
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/RemoteSensing.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing
+- original tutorial: https://rspatial.org/raster/rs/3-basicmath.html
 
 [TOC](#TOC)
 
@@ -80,6 +82,7 @@
 **Links to code work:** 
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/RemoteSensing.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing
+- original tutorial: https://rspatial.org/raster/rs/index.html
 
 [TOC](#TOC)
 
