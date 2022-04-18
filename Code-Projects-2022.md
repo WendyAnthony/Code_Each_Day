@@ -7,9 +7,10 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week XV](#weekXV)**    
+- **[Week XVI](#weekXVI)**    
   - [R3D108 2022-04-18](#R3D108)
-  - [R3D107 2022-04-17](#R3D107)  - 
+  - [R3D107 2022-04-17](#R3D107)
+- **[Week XV](#weekXV)**    
   - [R3D106 2022-04-16](#R3D106)
   - [R3D105 2022-04-15](#R3D105)
 - **[Week XIV](#weekXIV)**    
@@ -31,7 +32,7 @@
   
 
 ***
-# Week XV <a name="weekXV"/>
+# Week XVI <a name="weekXVI"/>
 ***
 ## R3D108 2022-04-18 <a name="R3D108"/>
 **Today's Progress**: 
@@ -64,6 +65,8 @@
 
 [TOC](#TOC)
 
+***
+# Week XV <a name="weekXV"/>
 ***
 ## R3D106 2022-04-16 <a name="R3D106"/>
 **Today's Progress**: 
