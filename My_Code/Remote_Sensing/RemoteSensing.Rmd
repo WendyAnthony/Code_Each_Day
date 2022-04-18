@@ -326,7 +326,7 @@ pairs(landsatcrop[[4:5]], main = "Red vs NIR")
 
 # Land Cover
 
-## Extract pixel values from land cover info polygons
+  ## Extract pixel values from land cover info polygons
 ```{r extract-pixel-values}
 # load the polygons with land use land cover information
 samp <- readRDS('data/rs/samples.rds')
@@ -457,8 +457,8 @@ plot(ndwi2, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", m
 Landsat bands:  NIR = 5 and SWIR = 6  
 this is not the band to identify water in leaves
 ```{r water-leaf-index-6}
-ndwi2 <- vi(landsat, 5, 6)
-plot(ndwi2, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Leaf Water Index: Landsat Bands NIR (5) and SWIR (6)", sub = "Monitor change in leaf water content")
+ndwi3 <- vi(landsat, 5, 6)
+plot(ndwi3, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Leaf Water Index: Landsat Bands NIR (5) and SWIR (6)", sub = "Monitor change in leaf water content")
 ```
 
 ### Adapt code for other indices
@@ -488,6 +488,7 @@ plot(ndbi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", ma
 
 #### Built Environment Index 2 Bands SWIR and NIR
 Landsat bands: 6 = SWIR, 5 = NIR  
+Note: this 2 band combo is not as good as the previous 3 band combo
 https://pro.arcgis.com/en/pro-app/2.8/arcpy/spatial-analyst/ndbi.htm  
 ```{r built-index-2}
 # bands 4 (red), 2 (blue), 7 (SWIR)
@@ -499,8 +500,8 @@ bi <- function(img, k, i) {
   return(bi)
 }
 
-ndbi <- bi(landsat, 6, 5)
-plot(ndbi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Built Index: Landsat Bands SWIR (6) and NIR (5)", sub = "Monitor change in built environment (6-5)/(6+5)")
+ndbi2 <- bi(landsat, 6, 5)
+plot(ndbi2, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Built Index: Landsat Bands SWIR (6) and NIR (5)", sub = "Monitor change in built environment (6-5)/(6+5)")
 ```
 
 #### Built Environment Index 2 Bands red and NIR
@@ -549,8 +550,8 @@ bi <- function(img, k, i, p) {
   return(bi)
 }
 
-bsi <- bi(landsat, 4, 2, 7)
-plot(bsi, col = rev(terrain.colors(10)), main = "Built Index: Landsat Bands Red, Green and SWIR [(4-2)*7/(4+2)*7]")
+ndbi <- bi(landsat, 4, 2, 7)
+plot(ndbi, col = rev(terrain.colors(10)), main = "Built Index: Landsat Bands Red, Green and SWIR [(4-2)*7/(4+2)*7]")
 ```
 
 ## Compare cropped image Land Use Change Plots
@@ -564,18 +565,18 @@ par(mai = c(0.35, 0.35, 0.35, 0.35))
 
 ###############
 # NDVI plot
-ndvi <- vi(landsatcrop, 5, 4)
-plot(ndvi, col = rev(terrain.colors(10)), main = "Landsat NDVI Greeness Index")
+ndvi_crop <- vi(landsatcrop, 5, 4)
+plot(ndvi_crop, col = rev(terrain.colors(10)), main = "Landsat NDVI Greeness Index")
 
 ###############
 # NDWI plot leaf water
-ndwi2 <- vi(landsatcrop, 5, 7)
-plot(ndwi2, col = rev(terrain.colors(10)), main = "Leaf Water Index: Landsat Bands NIR (5) and SWIR (7)")
+ndwi2_crop <- vi(landsatcrop, 5, 7)
+plot(ndwi2_crop, col = rev(terrain.colors(10)), main = "Leaf Water Index: Landsat Bands NIR (5) and SWIR (7)")
 
 ###############
 # NDWI plot water bodies
-ndwi <- vi(landsatcrop, 3, 5)
-plot(ndwi, col = rev(terrain.colors(10)), main = "Water Body Index: Landsat Bands green (3) and NIR (5)")
+ndwi_crop <- vi(landsatcrop, 3, 5)
+plot(ndwi_crop, col = rev(terrain.colors(10)), main = "Water Body Index: Landsat Bands green (3) and NIR (5)")
 ###############
 # Built environment index
 # bands 4 (red), 2 (blue), 7 (SWIR)
@@ -587,8 +588,8 @@ bi <- function(img, k, i, p) {
   return(bi)
 }
 
-bsi <- bi(landsatcrop, 4, 2, 7)
-plot(bsi, col = rev(terrain.colors(10)), main = "Built Index: Landsat Bands Red, Green and SWIR [(4-2)*7/(4+2)*7]")
+ndbi_crop <- bi(landsatcrop, 4, 2, 7)
+plot(ndbi_crop, col = rev(terrain.colors(10)), main = "Built Index: Landsat Bands Red, Green and SWIR [(4-2)*7/(4+2)*7]")
 ```
 
 ## Spectral Plot
@@ -620,20 +621,267 @@ legend("topleft", rownames(ms),
 
 ---
 
+# Histograms
+## NDVI values distribution
+```{r histogram-ndvi}
+hist(ndvi, 
+     main = "NDVI value distribution",
+     xlab = "NDVI",
+     ylab = "Frequency",
+     col = "darkolivegreen",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+
+## NDVI values distribution cropped
+```{r histogram-ndvi-crop}
+hist(ndvi_crop, 
+     main = "NDVI value distribution - crop",
+     xlab = "NDVI",
+     ylab = "Frequency",
+     col = "darkolivegreen",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+## NDWI values distribution
+```{r histogram-ndwi}
+hist(ndwi, 
+     main = "NDWI water body value distribution",
+     xlab = "NDWI",
+     ylab = "Frequency",
+     col = "cyan",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+
+## NDWI values distribution cropped
+```{r histogram-ndwi-crop}
+hist(ndwi_crop, 
+     main = "NDWI water body value distribution cropped",
+     xlab = "NDWI",
+     ylab = "Frequency",
+     col = "cyan",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+
+## NDWI2 Leaf water values distribution
+```{r histogram-ndwi2}
+hist(ndwi2, 
+     main = "NDWI leaf water value distribution",
+     xlab = "NDWI",
+     ylab = "Frequency",
+     col = "aquamarine",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+## NDWI2 Leaf water values distribution crop
+```{r histogram-ndwi2-crop}
+hist(ndwi2_crop, 
+     main = "NDWI leaf water value distribution cropped",
+     xlab = "NDWI",
+     ylab = "Frequency",
+     col = "aquamarine",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+
+## Built Environment index values distribution
+```{r histogram-ndbi}
+hist(ndbi, 
+     main = "NDWI value distribution",
+     xlab = "NDWI",
+     ylab = "Frequency",
+     col = "azure",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+
+## Built Environment index values distribution cropped
+```{r histogram-ndbi-crop}
+hist(ndbi_crop, 
+     main = "NDWI value distribution cropped",
+     xlab = "NDWI",
+     ylab = "Frequency",
+     col = "azure",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+
+---
+
+# Thresholding
+to estimate spatial extent of surface features
+
+## NDVI Threshold
+values -1 to +1, with higher values more vegetation cover   
+NDVI > 0.4 is definitely vegetation  
+to mask all cells not vegetation
+```{r ndvi-threshold}
+veg <- reclassify(ndvi, cbind(-Inf, 0.4, NA))
+plot(veg, main = "Vegetation")
+```
+
+### compare to before reclassification
+```{r NDVI-1-replot}
+ndvi <- vi(landsat, 5, 4)
+plot(ndvi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Landsat NDVI", sub = "Level of greenness")
+```
 
 
 
+## map the histogram peack between 0.25 and 0.3
+```{r ndvi-peak-threshold}
+land <- reclassify(ndvi, c(-Inf, 0.25, NA, 0.25, 0.3, 1, 0.3, Inf, NA))
+plot(land, main = "What is it?")
+```
 
 
+### NDVI values distribution histogram
+```{r histogram-ndvi-replot}
+hist(ndvi, 
+     main = "NDVI value distribution",
+     xlab = "NDVI",
+     ylab = "Frequency",
+     col = "darkolivegreen",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
 
+## Compare NDVI Threshold plots
+```{r comparison-NDVI-threshold}
+par(mfrow = c(2, 2)) # rows, columns
+par(ps = 8) # point text size
+par(oma = c(0, 0, 1, 0)) # margins: bottom, left, top (gives title space), right
+par(pty = "m") # "s" square plotting region vs m - maximal
+par(mai = c(0.35, 0.35, 0.35, 0.35))
+# ?par # help for par() function
 
+###############
 
+veg <- reclassify(ndvi, cbind(-Inf, 0.4, NA))
+plot(veg, main = "Vegetation")
 
+###############
 
+land <- reclassify(ndvi, c(-Inf, 0.25, NA, 0.25, 0.3, 1, 0.3, Inf, NA))
+plot(land, main = "What is it? Open Land?")
 
+###############
 
+ndvi <- vi(landsat, 5, 4)
+plot(ndvi, col = rev(terrain.colors(10)), xlab = "UTM W/E", ylab = "UTM N/S", main = "Landsat NDVI", sub = "Level of greenness")
 
+###############
+hist(ndvi, 
+     main = "NDVI value distribution",
+     xlab = "NDVI",
+     ylab = "Frequency",
+     col = "darkolivegreen",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
 
+#### Test To See if open land?
+```{r land-landsatTCC}
+plotRGB(landsatRGB, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat True Color Composite")
+plot(land, add=TRUE, legend=FALSE)
+```
+#### Compare NDVI Land Threshold with True Colour Composite Image
+```{r comparison-NDVI-threshold-TCC}
+par(mfrow = c(2, 2)) # rows, columns
+par(ps = 10) # point text size
+par(oma = c(0, 0, 0, 0)) # margins: bottom, left, top (gives title space), right
+par(pty = "m") # "s" square plotting region vs m - maximal
+# ?par # help for par() function
+
+###############
+plotRGB(landsatRGB, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat True Color Composite")
+###############
+plotRGB(landsatRGB, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat True Color Land Composite")
+plot(land, add=TRUE, legend=FALSE)
+###############
+plotRGB(landsatFCC, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat False Color Composite")
+###############
+plotRGB(landsatFCC, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat False Color Land Composite")
+plot(land, add=TRUE, legend=FALSE)
+```
+
+#### Compare NDVI Vegetation Threshold with False Colour Composite Image
+```{r comparison-NDVI-threshold-FCC}
+par(mfrow = c(2, 2)) # rows, columns
+par(ps = 10) # point text size
+par(oma = c(0, 0, 0, 0)) # margins: bottom, left, top (gives title space), right
+par(pty = "m") # "s" square plotting region vs m - maximal
+# ?par # help for par() function
+
+###############
+plotRGB(landsatRGB, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat True Color Composite")
+###############
+plotRGB(landsatRGB, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat True Color Vegetation Composite")
+plot(veg, add=TRUE, legend=FALSE)
+###############
+plotRGB(landsatFCC, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat False Color Composite")
+###############
+plotRGB(landsatFCC, r=1, g=2, b=3, axes=TRUE, stretch="lin", main="Landsat False Color Vegetation Composite")
+plot(veg, add=TRUE, legend=FALSE)
+```
+
+## Create Vegetation Classes
+```{r vege-classes}
+vegc <- reclassify(ndvi, c(-Inf,0.25,1,  0.25,0.3,2,  0.3,0.4,3,  0.4,0.5,4,  0.5,Inf,5))
+plot(vegc, main = "Vegetation Classification\nNDVI based thresholding", sub = "Thresholds: -Inf,0.25,1,  0.25,0.3,2,  0.3,0.4,3,  0.4,0.5,4,  0.5,Inf,5")
+```
+### Compare NDVI Vegetation Threshold with Histogram of Values
+```{r comparison-NDVI-vege-threshold-hist}
+par(mfrow = c(1,2))
+
+vegc <- reclassify(ndvi, c(-Inf,0.25,1,  0.25,0.3,2,  0.3,0.4,3,  0.4,0.5,4,  0.5,Inf,5))
+plot(vegc, main = "Vegetation Classification", sub = "Thresholds: -Inf,0.25,1,  0.25,0.3,2,  0.3,0.4,3,  0.4,0.5,4,  0.5,Inf,5")
+###############
+hist(ndvi, 
+     main = "NDVI value distribution",
+     xlab = "NDVI",
+     ylab = "Frequency",
+     col = "darkolivegreen",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = "n"
+     )
+axis(side = 1, at = seq(-0.5, 1, 0.05), labels = seq(-0.5, 1, 0.05))
+```
+
+---
 
 
 
