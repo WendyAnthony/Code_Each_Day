@@ -47,6 +47,7 @@
 - Leaflet map works in Shiny app, also with ```htmlwidgets::saveWidget```
 
 **Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing/BC_LandCover_shp_files
 
 [TOC](#TOC)
 
@@ -62,6 +63,7 @@
 - Takes lots of time to figure out, search error messages, try something different >>> until it just WORKS!
 
 **Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing/BC_LandCover_shp_files
 
 [TOC](#TOC)
 
@@ -78,6 +80,7 @@
   - need to close Chrome tabs, Zotero, most Finder windows, to use less computer processing power ...
 
 **Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing/BC_LandCover_shp_files
 
 [TOC](#TOC)
 
