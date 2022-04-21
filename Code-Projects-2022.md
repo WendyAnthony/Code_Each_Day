@@ -48,6 +48,8 @@
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing/BC_LandCover_shp_files
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/BC_LandCover_shp_files/LandcoverMapping-app-result-nowater-ss.png
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/BC_LandCover_shp_files/LandcoverMapping-app-result-water-ss.png
 
 [TOC](#TOC)
 
