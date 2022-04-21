@@ -1,0 +1,344 @@
+---
+title: "Landcover-AOI-shapefile"
+author: "Wendy Anthony"
+date: "20/04/2022"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load libraries
+```{r libraries, eval=TRUE}
+library(rgdal)
+library(leaflet)
+library(raster) # to clip shp file to AOI
+```
+
+# QGIS
+These shape files were exported from QGIS to save computation / computer memory trying to do the same in R
+
+# Read shp file of polygon data
+## Coniferous
+```{r read_shp_coniferous}
+coniferous_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "coniferous-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_coniferous}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "coniferous-AOI-vi")
+```
+
+---
+
+## Broadleaf
+```{r read_shp_broadleaf}
+broadleaf_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "broadleaf-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_broadleaf}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "broadleaf-AOI-vi")
+```
+
+---
+
+## Exposed
+```{r read_shp_exposed}
+exposed_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "exposed-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_exposed}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "exposed-AOI-vi")
+```
+
+---
+
+## Herbgrass
+```{r read_shp_herbgrass}
+herbgrass_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "herbgrass-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_herbgrass}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "herbgrass-AOI-vi")
+```
+
+---
+
+## Mixedforest
+```{r read_shp_mixedforest}
+mixedforest_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "mixedforest-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_mixedforest}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "mixedforest-AOI-vi")
+```
+
+---
+
+## Other
+```{r read_shp_other}
+other_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "other-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_other}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "other-AOI-vi")
+```
+
+---
+
+## Shrub
+```{r read_shp_shrub}
+shrub_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "shrub-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_shrub}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "shrub-AOI-vi")
+```
+
+---
+
+## Water
+```{r read_shp_water}
+water_aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "water-AOI-vi",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_water}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-LandCover/",
+              layer = "water-AOI-vi")
+```
+
+---
+
+## Area of Interest (AOI) Vancouver Island
+```{r aoi_vi}
+aoi_vi <- readOGR(dsn = "/Users/wanthony/Downloads/AOI-VanIsle/",
+              layer = "AOI-VanIsle",
+              verbose = FALSE)
+```
+
+### Get info about shape file
+```{r ogrInfo_aoi_vi}
+ogrInfo(dsn = "/Users/wanthony/Downloads/AOI-VanIsle/",
+              layer = "AOI-VanIsle")
+```
+
+
+---
+
+# Unique Values
+```{r unique_values}
+unique(coniferous_aoi_vi$LNDCVRCLSS)
+unique(broadleaf_aoi_vi$LNDCVRCLSS)
+unique(exposed_aoi_vi$LNDCVRCLSS)
+unique(herbgrass_aoi_vi$LNDCVRCLSS)  # [1] "Grassland" "Herb"
+unique(mixedforest_aoi_vi$LNDCVRCLSS)
+unique(other_aoi_vi$LNDCVRCLSS)  
+# [1] "Annual Cropland" "Developed" "Perennial Cropland" "Rock/Rubble" "Snow/Ice" 
+unique(shrub_aoi_vi$LNDCVRCLSS)   #  "Unclassified"  
+unique(water_aoi_vi$LNDCVRCLSS)  # [1] "Water"   "Wetland"
+```
+
+---
+
+
+---   
+---
+
+---
+
+# Clip land cover polygons to AOI polygon with `raster`
+https://stackoverflow.com/questions/52980973/intersect-in-r-miss-one-polygon
+```{r clip_polygons}
+broadleaf_aoi_vi_clip <- crop(broadleaf_aoi_vi, aoi_vi)
+coniferous_aoi_vi_clip <- crop(coniferous_aoi_vi, aoi_vi)
+exposed_aoi_vi_clip <- crop(exposed_aoi_vi, aoi_vi)
+herbgrass_aoi_vi_clip <- crop(herbgrass_aoi_vi, aoi_vi)
+mixedforest_aoi_vi_clip <- crop(mixedforest_aoi_vi, aoi_vi)
+other_aoi_vi_clip <- crop(other_aoi_vi, aoi_vi)
+shrub_aoi_vi_clip <- crop(shrub_aoi_vi, aoi_vi)
+water_aoi_vi_clip <- crop(water_aoi_vi, aoi_vi)
+```
+
+---
+
+# Save Clipped shapefiles
+```{r}
+# dir.create("lc_crop_shp") # already exists
+writeOGR(obj = broadleaf_aoi_vi_clip, dsn="lc_crop_shp", layer="broadleaf_aoi_vi_clip", driver="ESRI Shapefile")
+writeOGR(obj = coniferous_aoi_vi_clip, dsn="lc_crop_shp", layer="coniferous_aoi_vi_clip", driver="ESRI Shapefile")
+writeOGR(obj = exposed_aoi_vi_clip, dsn="lc_crop_shp", layer="exposed_aoi_vi_clip", driver="ESRI Shapefile")
+writeOGR(obj = herbgrass_aoi_vi_clip, dsn="lc_crop_shp", layer="herbgrass_aoi_vi_clip", driver="ESRI Shapefile")
+writeOGR(obj = mixedforest_aoi_vi_clip, dsn="lc_crop_shp", layer="mixedforest_aoi_vi_clip", driver="ESRI Shapefile")
+writeOGR(obj = other_aoi_vi_clip, dsn="lc_crop_shp", layer="other_aoi_vi_clip", driver="ESRI Shapefile")
+writeOGR(obj = shrub_aoi_vi_clip, dsn="lc_crop_shp", layer="shrub_aoi_vi_clip", driver="ESRI Shapefile")
+writeOGR(obj = water_aoi_vi_clip, dsn="lc_crop_shp", layer="water_aoi_vi_clip", driver="ESRI Shapefile")
+```
+
+
+---
+
+# Plot Clips
+```{r map_tiff_plot}
+## Plot Other
+tiff(file = "./output-landcover/other_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(other_aoi_vi)
+dev.off()
+## Plot Other Clip
+tiff(file = "./output-landcover/other_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(other_aoi_vi_clip)
+dev.off()
+
+## Plot Water s
+tiff(file = "./output-landcover/water_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(water_aoi_vi)
+dev.off()
+## Plot Water Clip
+tiff(file = "./output-landcover/water_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(water_aoi_vi_clip)
+dev.off()
+
+## Plot herbgrass
+tiff(file = "./output-landcover/herbgrass_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(herbgrass_aoi_vi)
+dev.off()
+## Plot herbgrass Clip
+tiff(file = "./output-landcover/herbgrass_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(herbgrass_aoi_vi_clip)
+dev.off()
+
+## Plot exposed
+tiff(file = "./output-landcover/exposed_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(exposed_aoi_vi)
+dev.off()
+## Plot exposed Clip
+tiff(file = "./output-landcover/exposed_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(exposed_aoi_vi_clip)
+dev.off()
+
+## Plot broadleaf
+tiff(file = "./output-landcover/broadleaf_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(broadleaf_aoi_vi)
+dev.off()
+## Plot broadleaf Clip
+tiff(file = "./output-landcover/broadleaf_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(broadleaf_aoi_vi_clip)
+dev.off()
+
+## Plot shrub
+tiff(file = "./output-landcover/shrub_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(shrub_aoi_vi)
+dev.off()
+## Plot shrub Clip
+tiff(file = "./output-landcover/shrub_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(shrub_aoi_vi_clip)
+dev.off()
+
+## Plot mixedforest
+tiff(file = "./output-landcover/mixedforest_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(mixedforest_aoi_vi)
+dev.off()
+## Plot mixedforest Clip
+tiff(file = "./output-landcover/mixedforest_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(mixedforest_aoi_vi_clip)
+dev.off()
+
+## Plot coniferous
+tiff(file = "./output-landcover/coniferous_aoi_vi.tiff", units="in", width=8, height=8, res=600)
+plot(coniferous_aoi_vi)
+dev.off()
+## Plot coniferous Clip
+tiff(file = "./output-landcover/coniferous_aoi_vi_clip.tiff", units="in", width=8, height=8, res=600)
+plot(coniferous_aoi_vi_clip)
+dev.off()
+```
+
+
+---  
+---
+
+
+---
+---
+
+# Leaflet map
+## All 8 Landcover Polygon Layers
+subset was still too large, had to clip to Vancouver Island
+
+```{r leaflet-map-polygon-layers, eval=TRUE}
+# color = "chartreuse"
+m_AOI <- leaflet() %>%
+  addProviderTiles("Esri.WorldGrayCanvas", group = "Esri World Gray (default)") %>% 
+  addProviderTiles("Esri.WorldTopoMap", group = "Esri World Topo") %>% 
+  setView( lng = -125.508, lat = 49.4801, zoom = 7) %>%
+  addPolygons(data = mixedforest_aoi_vi_clip, color = "forestgreen",
+              fillColor = "forestgreen", weight = 1,
+              fillOpacity = 0.75, group = "Mixed Forest") %>%
+  addPolygons(data = shrub_aoi_vi_clip, color = "chartreuse2",
+              fillColor = "chartreuse2", weight = 1,
+              fillOpacity = 0.75, group = "Shrub") %>%
+  addPolygons(data = broadleaf_aoi_vi_clip, color = "cyan4",
+              fillColor = "cyan4", weight = 1,
+              fillOpacity = 0.75, group = "Broad Leaf") %>%
+  addPolygons(data = herbgrass_aoi_vi_clip, color = "darkseagreen1",
+              fillColor = "darkseagreen1", weight = 1,
+              fillOpacity = 0.75, group = "Herbs and Grass") %>%
+  addPolygons(data = other_aoi_vi_clip, color = "darkorchid1",
+              fillColor = "darkorchid1", weight = 1,
+              fillOpacity = 0.75, group = "Other") %>%
+  addPolygons(data = exposed_aoi_vi_clip, color = "gold",
+              fillColor = "gold", weight = 1,
+              fillOpacity = 0.25, group = "Exposed") %>%
+  # addPolygons(data = water_aoi_vi_clip, color = "deepskyblue",
+  #             fillColor = "deepskyblue", weight = 1,
+  #             fillOpacity = 0.25, group = "Water") %>%
+  # addPolygons(data = coniferous_aoi_vi_clip, color = "darkgreen",
+  #             fillColor = "darkgreen", weight = 1,
+  #             fillOpacity = 0.25, group = "Coniferous") %>%
+# , "Exposed", "Water", "Coniferous"
+  addLayersControl(
+    baseGroups = c("Esri World Gray (default)", "Esri World Topo"), 
+    overlayGroups = c("Mixed Forest", "Shrub", "Broad Leaf", "Herbs and Grass", "Other"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+m_AOI
+# colors()
+```
+
+
+
