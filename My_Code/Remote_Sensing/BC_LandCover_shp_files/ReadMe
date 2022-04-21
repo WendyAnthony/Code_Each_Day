@@ -6,7 +6,7 @@
 
 * Shiny app to run clips >>> takes awhile to load, but works!!
 
-Data source: Government of BC Data Catalogue
+Data source: Government of BC Data Catalogue https://catalogue.data.gov.bc.ca/
 File Format: ArcView Shape
 Coordinate System: BC Albers (m)
 Products: 1:250,000 GeoBase Land Cover
