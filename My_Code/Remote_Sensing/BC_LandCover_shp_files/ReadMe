@@ -5,3 +5,11 @@
 * R ```raster``` clip worked to reduce data file size for Leaflet to map easier
 
 * Shiny app to run clips >>> takes awhile to load, but works!!
+
+Data source: Government of BC Data Catalogue
+File Format: ArcView Shape
+Coordinate System: BC Albers (m)
+Products: 1:250,000 GeoBase Land Cover
+
+Digital Cartographer: Wendy Anthony 2022-04-20
+Created in RStudio using Packages: Shiny, Leaflet, and RGdal
