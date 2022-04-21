@@ -1,4 +1,7 @@
 * BC Data shp files, Area of Interest (AOI) Vancouver Island
+
 * Using QGIS to export selected features contained in AOI
+
 * R ```raster``` clip worked to reduce data file size for Leaflet to map easier
+
 * Shiny app to run clips >>> takes awhile to load, but works!!
