@@ -8,6 +8,9 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XVI](#weekXVI)**    
+  - [R3D111 2022-04-21](#R3D111)
+  - [R3D110 2022-04-20](#R3D110)
+  - [R3D109 2022-04-19](#R3D109)
   - [R3D108 2022-04-18](#R3D108)
   - [R3D107 2022-04-17](#R3D107)
 - **[Week XV](#weekXV)**    
@@ -33,6 +36,51 @@
 
 ***
 # Week XVI <a name="weekXVI"/>
+***
+## R3D111 2022-04-21 <a name="R3D111"/>
+**Today's Progress**: 
+- Continuing land cover data mapping
+  - classifying land use data
+- styling Shiny app
+
+**Thoughts:** 
+- Leaflet map works in Shiny app, also with ```htmlwidgets::saveWidget```
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
+***
+## R3D110 2022-04-20 <a name="R3D110"/>
+**Today's Progress**: 
+- BC Land Cover data >> still trying to reduce data set size
+  - QGIS couldn't get to clip square AOI region to only Vancouver Island
+  - ```raster``` package clip worked GREAT!!
+  - Leaflet map loaded much quicker with smaller dataset files to work with
+
+**Thoughts:** 
+- Takes lots of time to figure out, search error messages, try something different >>> until it just WORKS!
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
+***
+## R3D109 2022-04-19 <a name="R3D109"/>
+**Today's Progress**: 
+- BC Land Cover data >> still trying to reduce data set size
+- Takes too long to read very large, province wide shp files, and reduce data
+  - Used QGIS to select features contained in AOI, but result is a square extent, including much of mainland coast 
+
+**Thoughts:** 
+- trial and error + patience + lots of time
+- computer needs more RAM ... R really slogs things down
+  - need to close Chrome tabs, Zotero, most Finder windows, to use less computer processing power ...
+
+**Links to code work:** 
+
+[TOC](#TOC)
+
 ***
 ## R3D108 2022-04-18 <a name="R3D108"/>
 **Today's Progress**: 
