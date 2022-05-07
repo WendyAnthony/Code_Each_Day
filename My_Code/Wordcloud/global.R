@@ -1,4 +1,5 @@
 # http://www.baoruidata.com/examples/082-word-cloud/
+## Author: Fereshteh Karimeddini <fereshteh@rstudio.com>
 
 library(shiny)
 library(tm)
@@ -7,9 +8,9 @@ library(memoise)
 
 # The list of texts
 books <<- list(
-              "Walden, and On The Duty Of Civil Disobedience" = "walden",
+              "Thoreau: Walden, and On The Duty Of Civil Disobedience" = "walden",
               "newtext" = "newtext",
-              "Roughing it in the Bush" = "bush"
+              "Moodie: Roughing it in the Bush" = "bush"
               )
 
 # Using "memoise" to automatically cache the results
