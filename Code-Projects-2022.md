@@ -34,9 +34,6 @@
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
-  
-
-https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/WordcloudCreation.html
 
 ***
 # Week XVIII <a name="weekXVIII"/>
