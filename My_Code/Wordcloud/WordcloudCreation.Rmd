@@ -222,8 +222,7 @@ knitr::include_graphics("15.3-save-image-3.png")
 
 ## Add a different text file to the ```global.R``` file
 1. For ease the first time adding new text to analyze, relevant text can just be added and saved to the ```newtext.txt``` file  
-2. To upload a new text file, the file name must be added to the ```global.R``` file  
-following the same format as previous entries:  
+2. To upload a new text file, the file name must be added to the ```global.R``` file (without the ```.txt``` extension), following the same format as previous entries:  
 2.1. the first term shows in drop-down choice box,  
 2.2. the second term is the name of the file which must be included in same folder as all app files  
 2.3. note that text is enclosed with quotation marks, and each line must end with a comma except the last line  
@@ -254,7 +253,7 @@ knitr::include_graphics("16-change-defaults.png")
 
 ---
 
-# Sources:
+# Sources
 * Find the code and zipped files on my Github page: https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
 
 * If difficulties or problems arise from the use of this tutorial, please contact Wendy Anthony <o2b.pickin@gmail.com> for clarification ... also, I would appreciate any feedback on how helpful this tutorial might be, or what might make it better
