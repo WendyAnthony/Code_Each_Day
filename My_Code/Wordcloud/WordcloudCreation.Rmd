@@ -1,0 +1,225 @@
+---
+title: "Tutorial: Creating A WordCloud in RStudio"
+author: "Wendy Anthony"
+date: "2022/05/06"
+output:
+  html_document:
+    highlight: zenburn
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+# Download R  
+* [Download base R](https://mirror.rcg.sfu.ca/mirror/CRAN/)  
+
+# Download RStudio  
+* R Studio is an integrated development environment, built upon the base R    
+* [Download RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+
+---
+ 
+---
+
+# Open RStudio
+
+## Install library packages needed for wordcloud app
+1. In RStudio console window type the following commands one-at-a-time, followed by the <enter> key (the > prompt will appear when process is complete):  
+* install.packages("shiny")  
+* install.packages("tm")  
+* install.packages("wordcloud")  
+* install.packages("memoise")  
+
+```{r install-packages, echo=FALSE, fig.cap="Image Caption: Install packages", out.width = '50%'}
+knitr::include_graphics("1-install-packages.png")
+```
+
+---
+ 
+---
+
+# Use Wordcloud app
+## Open 3 RShiny app files in RStudio:   
+* global.R   
+* ui.R  
+* server.R  
+
+```{r open-files, echo=FALSE, fig.cap="Image Caption: Open files", out.width = '50%'}
+knitr::include_graphics("2-open-file.png")
+```
+ 
+---
+
+```{r opened-files, echo=FALSE, fig.cap="Image Caption: Opened files", out.width = '50%'}
+knitr::include_graphics("3-opened-files.png")
+```
+ 
+---
+ 
+---
+
+## Run the Shiny App
+### click ```Run App``` button 
+* located at top right corner of code window
+
+```{r run-app-botton, echo=FALSE, fig.cap="Image Caption: Click Run App button", out.width = '50%'}
+knitr::include_graphics("4.1-run-app.png")
+```
+
+* Running app shows 'Processing corpus' at bottom of screen   
+```{r run-app, echo=FALSE, fig.cap="Image Caption: Run app", out.width = '50%'}
+knitr::include_graphics("4.2-processing-console.png")
+```
+ 
+---
+
+#### Console running messages
+* text will also be running in RStudio Console window as it is processed  
+including some warnings that all words will not fit on page  
+and will not be plotted (if too many words)
+```{r run-processing, echo=FALSE, fig.cap="Image Caption: Processing messages in console window", out.width = '50%'}
+knitr::include_graphics("4.3-processing-corpus.png")
+```
+ 
+---
+
+### Waiting for the finished wordcloud
+```{r waiting-wordcloud-2, echo=FALSE, fig.cap="Image Caption: Finished Wordcloud", out.width = '50%'}
+knitr::include_graphics("5-walden-wordcloud-waiting.png")
+```
+ 
+---
+
+### Finished wordcloud results
+```{r finished-wordcloud-2, echo=FALSE, fig.cap="Image Caption: Finished Wordcloud", out.width = '50%'}
+knitr::include_graphics("6-walden-wordcloud-2.png")
+```
+ 
+---
+
+#### Waiting for maximum word count (7000) takes some time to run
+```{r waiting-max-word-count, echo=FALSE, fig.cap="Image Caption: Waiting for maximum word count", out.width = '50%'}
+knitr::include_graphics("8-waiting-max-word-count.png")
+```
+ 
+---
+
+### Maximum words 7000
+```{r max-words-7000, echo=FALSE, fig.cap="Image Caption: Maximum words 7000", out.width = '50%'}
+knitr::include_graphics("7-max-words-7000.png")
+```
+ 
+---
+
+### Maximum words 235 makes a smaller word cloud
+```{r max-words-235, echo=FALSE, fig.cap="Image Caption: Maximum words 235", out.width = '50%'}
+knitr::include_graphics("9-max-words-235.png")
+```
+ 
+---
+
+## Choose a different text from drop-down options
+```{r choose-text, echo=FALSE, fig.cap="Image Caption: Choose a different text", out.width = '50%'}
+knitr::include_graphics("10-choose-text.png")
+```
+ 
+---
+
+## Click change text button
+```{r change-text, echo=FALSE, fig.cap="Image Caption: 'Change text button'", out.width = '50%'}
+knitr::include_graphics("11-change-text.png")
+```
+ 
+---
+ 
+---
+
+# Open Shiny app in a browser window
+```{r open-in-browser, echo=FALSE, fig.cap="Image Caption: Open Shiny app in browser", out.width = '50%'}
+knitr::include_graphics("12-open-in-browser.png")
+```
+ 
+---
+
+# Save word cloud image to computer as .png
+* Right-click word cloud image to find save options  
+* (Note: this image is from a MacOS)
+```{r save-image-1, echo=FALSE, fig.cap="Image Caption: Right-click to save image to computer", out.width = '50%'}
+knitr::include_graphics("15.1-save-image-1.png")
+```
+ 
+---
+
+```{r save-image-2, echo=FALSE, fig.cap="Image Caption: Save image to computer", out.width = '50%'}
+knitr::include_graphics("15.2-save-image-2.png")
+```
+ 
+---
+
+```{r save-image-3, echo=FALSE, fig.cap="Image Caption: Rename image file", out.width = '50%'}
+knitr::include_graphics("15.3-save-image-3.png")
+```
+
+---
+ 
+---
+
+# Customize app 
+
+## Change sliders for frequency and maximum words
+* Frequency: is the number of times a word appears in document
+* Max words: the larger this value is, the longer the process takes, more words will be included in word cloud, though will still be limited by plot window size 
+```{r change-sliders, echo=FALSE, fig.cap="Image Caption: Change Sliders", out.width = '50%'}
+knitr::include_graphics("13.1-change-frequency.png")
+```
+
+---
+
+## Add a different text file to the ```global.R``` file
+1. For ease the first time adding new text to analyze, relevant text can just be added and saved to the ```newtext.txt``` file  
+2. To upload a new text file, the file name must be added to the ```global.R``` file  
+following the same format as previous entries:  
+2.1. the first term shows in drop-down choice box,  
+2.2. the second term is the name of the file which must be included in same folder as all app files  
+2.3. note that text is enclosed with quotation marks, and each line must end with a comma except the last line  
+  
+```{r add-new-text, echo=FALSE, fig.cap="Image Caption: Add new text files", out.width = '50%'}
+knitr::include_graphics("13-list-texts.png")
+```
+ 
+---
+
+## Add words to exclude from text analysis to the ```global.R``` file
+* add word list, each separated by commas 
+```{r stop-words, echo=FALSE, fig.cap="Image Caption: List of words to exclude", out.width = '50%'}
+knitr::include_graphics("14-remove-words.png")
+```
+ 
+---
+
+## Change default values for slider input in ```ui.R``` file
+```{r change-default, echo=FALSE, fig.cap="Image Caption: Changing default values", out.width = '50%'}
+knitr::include_graphics("16-change-defaults.png")
+```
+
+ 
+---
+
+---
+
+# Source: 
+* If difficulties or problems arise from the use of this tutorial, please contact Wendy Anthony <o2b.pickin@gmail.com> for clarification ... also, I would appreciate any feedback on how helpful this tutorial might be, or what might make it better
+
+* This app was adapted from the original app http://www.baoruidata.com/examples/082-word-cloud/  
+by Author: Fereshteh Karimeddini <fereshteh@rstudio.com>  
+
+
+* This tutorial document was created using the ```RMarkdown``` library
+
