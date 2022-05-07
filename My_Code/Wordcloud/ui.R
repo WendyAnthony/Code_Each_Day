@@ -2,31 +2,28 @@
 
 fluidPage(
   # Application title
-  titlePanel("Word Cloud"),
-  
+  titlePanel("Word Cloud for Writings"),
+
   sidebarLayout(
     # Sidebar with a slider and selection inputs
     sidebarPanel(
-      selectInput("selection", "Choose a book:",
+      selectInput("selection", "Choose a text:",
                   choices = books),
-      actionButton("update", "Change"),
+      actionButton("update", "Change text"),
       hr(),
       sliderInput("freq",
                   "Minimum Frequency:",
-                  min = 1,  max = 100, value = 35),
+                  min = 1,  max = 100, value = 5),
       sliderInput("max",
                   "Maximum Number of Words:",
-                  min = 1,  max = 500,  value = 200)
-#      ,
-      # https://gallery.shinyapps.io/016-knitr-pdf/
-#      radioButtons('format', 'Document format', c('PDF', 'HTML', 'Word'),
-#                   inline = TRUE),
-#      downloadButton('downloadReport')
+                  min = 1,  max = 7200,  value = 200)
     ),
-    
-    # Show Word Cloud
+
+    # Show Word Cloud - 600px
     mainPanel(
-      plotOutput("plot", height = "600px")
+      p("Please wait while text is analyzed ..."),
+      plotOutput("plot", height = "600px"),
+      p("To Save Image: Right-click image > Save Image as >> imageName.png")
     )
   )
 )
