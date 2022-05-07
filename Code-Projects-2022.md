@@ -53,7 +53,7 @@ https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/Word
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
-- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/WordcloudCreation.html
+- Tutorial: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/WordcloudCreation.html
 - zip file including all app files, 3 sample text files, html tutorial created in ```RMarkdown``` https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Wordcloud/Wordcloud-app.zip
 - Original Code version idea http://www.baoruidata.com/examples/082-word-cloud/ by Fereshteh Karimeddini <fereshteh@rstudio.com>
 - Text Analysis wordcloud used for my final paper: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/text_analysis/TextAnalysis.html
