@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XVIII](#weekXVIII)**    
+  - [R3D126 2022-05-06](#R3D126)
 - **[Week XVI](#weekXVI)**    
   - [R3D111 2022-04-21](#R3D111)
   - [R3D110 2022-04-20](#R3D110)
@@ -33,6 +35,27 @@
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
   
+
+https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/WordcloudCreation.html
+
+***
+# Week XVIII <a name="weekXVIII"/>
+***
+## R3D126 2022-05-06 <a name="R3D126"/>
+**Today's Progress**: 
+- Revisiting Wordcloud Shiny app
+  - Created a tutorial for use
+- I tried to create a one file app from ```ui.R``` and ```server.R``` but didn't have success
+
+**Thoughts:** 
+- Did this to help a mentor learn to use R while creating a word cloud for his writing
+- The base of this code was originally written by Fereshteh Karimeddini <fereshteh@rstudio.com> that I used to figure out how to adapt to my own needs
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/WordcloudCreation.html
+- Original Code version idea http://www.baoruidata.com/examples/082-word-cloud/ by Fereshteh Karimeddini <fereshteh@rstudio.com>
+
+[TOC](#TOC)
 
 ***
 # Week XVI <a name="weekXVI"/>
