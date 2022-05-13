@@ -9,7 +9,7 @@ library(memoise)
 # The list of texts
 books <<- list(
               "Thoreau: Walden, and On The Duty Of Civil Disobedience" = "walden",
-              "newtext" = "newtext",
+              "Replace newtext" = "newtext",
               "Moodie: Roughing it in the Bush" = "bush"
               )
 

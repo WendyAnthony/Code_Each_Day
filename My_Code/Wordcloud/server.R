@@ -31,7 +31,7 @@ function(input, output, session) {
   output$text2 <- renderText({ paste("<b>Save Image:</b>", "Right-click image > Save Image as >>", "<i>imageName.png</i>", "<br><br><br><br>") })
 
   output$text3 <- renderText({ paste("Based on original", "<a href='http://www.baoruidata.com/examples/082-word-cloud/'>Wordcloud app</a>", "from RStudio's Fereshteh Karimeddini", "<br>",
-                                     "<i>App 'tweaks' made by Wendy Anthony</i>") })
+                                       " App 'tweaks' made by Wendy Anthony</i>") })
 
   output$downloadPlot <- downloadHandler(
     filename = function() { paste(input$dataset, '.png', sep='') },

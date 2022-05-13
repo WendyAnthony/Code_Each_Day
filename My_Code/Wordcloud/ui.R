@@ -3,12 +3,12 @@
 
 fluidPage(
   # Application title
-  titlePanel("Word Cloud for Writings"),
+  titlePanel("Interactive Word Cloud for Analyzing Text"),
 
   sidebarLayout(
     # Sidebar with a slider and selection inputs
     sidebarPanel(
-      selectInput("selection", "Choose a text:",
+      selectInput("selection", "Choose a different text:",
                   choices = books),
       actionButton("update", "Change text"),
       hr(),
@@ -23,7 +23,7 @@ fluidPage(
     # Show Word Cloud - 600px
     mainPanel(
       textOutput('text1'),
-      p("Please wait while text is analyzed ..."),
+      h4("Please wait while text is analyzed ..."),
       plotOutput("plot", height = "600px"),
       htmlOutput('text2'),
       htmlOutput('text3')
