@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XIX](#weekXIX)**    
+  - [R3D135 2022-05-15](#R3D135)
 - **[Week XVIII](#weekXVIII)**    
   - [R3D126 2022-05-06](#R3D126)
 - **[Week XVI](#weekXVI)**    
@@ -27,13 +29,30 @@
   - [R3D84 2022-03-25](#R3D84)
   - [R3D83 2022-03-24](#R3D83)
   - [R3D80 2022-03-21](#R3D80) 
-- **[Week XI](#weekXI)**    
+- **[Week VII](#weekVii)**    
   - [R3D72 2022-03-13](#R3D72)  
 - **[Week III](#weekIII)**    
   - [R3D9 2022-01-09](#R3D9)
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
+
+***
+# Week XIX <a name="weekXIX"/>
+***
+## R3D135 2022-05-15 <a name="R3D135"/>
+**Today's Progress**: 
+- I created my first ```R``` Package - called ```templater```!!
+  - I created templates for my ```.Rmd``` file YAML headers
+  - I created 2 functions!! 1. to find the day of the year 135/365 and week of the year 19/52
+
+**Thoughts:** 
+- I'm so proud of myself to try to create a package
+
+**Links to code work:** 
+- haven't uploaded code yet ... not sure how to upload a package to github ... I'll have to learn how ;)
+
+[TOC](#TOC)
 
 ***
 # Week XVIII <a name="weekXVIII"/>
@@ -318,7 +337,7 @@
 
 ***
 ***
-# Week XI <a name="weekXI"/>
+# Week VII <a name="weekVII"/>
 ***
 ## R3D72 2022-03-13 <a name="R3D72"/>
 **Today's Progress**: 
