@@ -1,2 +1,4 @@
 My first Package for ```.Rmd``` YAML templates
-and some Functions for ```year_week_day```
+
+Also wrote some Functions for ```year_week_day```
+to tell day of year/week out of 365/52
