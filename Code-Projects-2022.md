@@ -51,7 +51,7 @@
 
 **Links to code work:** 
 - haven't uploaded code yet ... not sure how to upload a package to github ... I'll have to learn how ;)
-- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions/templater
 
 [TOC](#TOC)
 
