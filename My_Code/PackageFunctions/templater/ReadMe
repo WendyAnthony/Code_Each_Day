@@ -1,4 +1,6 @@
 My first Package for ```.Rmd``` YAML templates
+e.g. html_toc
+e.g. pdf_sans_serif
 
 Also wrote some Functions for ```year_week_day```
 to tell day of year/week out of 365/52
