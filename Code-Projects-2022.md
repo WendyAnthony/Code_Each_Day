@@ -54,8 +54,8 @@
 - has to be in a high level repository, no sub folders
 
 **Links to code work:** 
-1. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/geojson/Mapping-Upriver-Sto%CC%81lo%CC%84-Ethnography-trial-3.geojson
-  - https://gist.github.com/WendyAnthony/5497fd20edee5aece2611b15c115dbd2
+1.a. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/geojson/Mapping-Upriver-Sto%CC%81lo%CC%84-Ethnography-trial-3.geojson
+1.b. https://gist.github.com/WendyAnthony/5497fd20edee5aece2611b15c115dbd2
 2. https://wendyanthony.github.io/Code_Each_Day/
 
 [TOC](#TOC)
