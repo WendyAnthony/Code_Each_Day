@@ -1,0 +1,116 @@
+---
+title: "Text Analysis"
+author: "Wendy Anthony"
+date: "2022/04/06"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load packages
+```{r load-packages}
+library(readr) # read text file
+
+library(dplyr)
+library(tidytext)
+```
+# Import text
+## `readtext`
+```{r import-text}
+# https://cran.r-project.org/web/packages/readtext/vignettes/readtext_vignette.html
+library(readtext)
+text_fp <- readtext(paste0("EOS365-FinalProject-TextAnalysis.txt"))
+str(text_fp)
+class(text_fp)
+```
+## Read file with `readr` into a single string
+```{r readr-readfile}
+# https://stackoverflow.com/questions/9068397/import-text-file-as-single-character-string
+mytext <- readr::read_file("EOS365-FinalProject-TextAnalysis.txt")
+str(mytext)
+class(mytext) # character
+```
+
+## R Base `readLines`
+```{r readLines}
+# https://www.gastonsanchez.com/r4strings/chars.html
+lines <- readLines("EOS365-FinalProject-TextAnalysis.txt")
+length(lines)
+tail(lines)
+head(lines)
+str(lines)
+class(lines) # character
+```
+# wordcloud
+Many words won't be plotted in the small chart area  
+"Warning: Warning in wordcloud(d$word, d$freq, min.freq = min.freq, max.words = max.words, : record could not be fit on page. It will not be plotted."  
+- by changing the min.freq, progressive wordclouds can be created with only the most frequent words, adding less frequent words with each iteration
+
+## Wordcloud - 3 min frequency
+```{r wordcloud, warning=FALSE}
+# http://www.sthda.com/english/wiki/word-cloud-generator-in-r-one-killer-function-to-do-everything-you-need
+source('http://www.sthda.com/upload/rquery_wordcloud.r')
+wc <-rquery.wordcloud("EOS365-FinalProject-TextAnalysis.txt", 
+                      type ="file", lang = "english", 
+                      max.words = 10000, min.freq = 3,
+                      colorPalette = "Set1")
+wc
+```
+
+## Wordcloud - 60 min frequency
+```{r wordcloud_60, warning=FALSE}
+# http://www.sthda.com/english/wiki/word-cloud-generator-in-r-one-killer-function-to-do-everything-you-need
+source('http://www.sthda.com/upload/rquery_wordcloud.r')
+wc <-rquery.wordcloud("EOS365-FinalProject-TextAnalysis.txt", 
+                      type ="file", lang = "english", 
+                      max.words = 10000, min.freq = 60,
+                      colorPalette = "Set1")
+wc
+```
+## Wordcloud - 30 min frequency
+```{r wordcloud_30, warning=FALSE}
+# http://www.sthda.com/english/wiki/word-cloud-generator-in-r-one-killer-function-to-do-everything-you-need
+source('http://www.sthda.com/upload/rquery_wordcloud.r')
+wc <-rquery.wordcloud("EOS365-FinalProject-TextAnalysis.txt", 
+                      type ="file", lang = "english", 
+                      max.words = 10000, min.freq = 30,
+                      colorPalette = "Set1")
+wc
+```
+## Wordcloud - 22 min frequency
+```{r wordcloud_22, warning=FALSE}
+# http://www.sthda.com/english/wiki/word-cloud-generator-in-r-one-killer-function-to-do-everything-you-need
+source('http://www.sthda.com/upload/rquery_wordcloud.r')
+wc <-rquery.wordcloud("EOS365-FinalProject-TextAnalysis.txt", 
+                      type ="file", lang = "english", 
+                      max.words = 10000, min.freq = 22,
+                      colorPalette = "Set1")
+wc
+```
+
+# Frequency Table
+```{r freq-table}
+wc$tdm
+freq_tab <- wc$freqTable
+freq_tab
+# View(freq_tab)
+```
+
+
+
+
+
+
+## Word Frequency
+https://www.tidytextmining.com/tfidf.html
+```{r}
+
+```
+
