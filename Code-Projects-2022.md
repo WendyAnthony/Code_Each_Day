@@ -45,6 +45,7 @@
 ## R3D152 2022-06-01 <a name="R3D152"/>
 **Today's Progress**: 
 1. I was reminded that uploading a geojson file to github will automatically produce a mapbox map in the github window when the file is clicked
+  - https://github.blog/2013-06-13-there-s-a-map-for-that/
 2. I learned to make a webpage for a github repro
   - https://holtzy.github.io/Pimp-my-rmd/#share_it_online
   - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
