@@ -10,7 +10,7 @@
 </head>
 <body>
 	<!-- https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files#embedding-your-map-elsewhere -->
-	<script src="https://embed.github.com/view/geojson/WendyAnthony/Code_Each_Day/master/My_Code/geojson/Mapping-Upriver-Sto%CC%81lo%CC%84-Ethnography-trial-3.geojson"></script>
+	<script src="https://embed.github.com/view/geojson/WendyAnthony/Code_Each_Day/master/My_Code/geojson/Mapping-Upriver-Sto%CC%81lo%CC%84-Ethnography-trial-3.geojson?height=800&width=1000"></script>
     
 <h2>To embed the geojson map in html:</h2>
 <p>
@@ -22,11 +22,9 @@ Change the format from:<br />
 By adding {embed} at beginning, <br />
 {view/geojson} after github.com<br />
 remove {blob/}<br />
-	<br />
-	and insert into script tag <pre><code>
-		<script src=""></script>	
-	</code></pre>
-	
+	and insert within a script tag 
+	<br /><br />
+	The embedded map is 420px x 620px by default - customize output by adding height and width variables as parameters at the end, within the script src quotation marks, e.g. ?height=300&width=500.
 </p>
 </body>
 </html>
