@@ -44,8 +44,8 @@
 ***
 ## R3D152 2022-06-01 <a name="R3D152"/>
 **Today's Progress**: 
-- I was reminded that a geojson file on github will automatically produce a mapbox map in the github window (not an actual webpage)
-- I learned to make a webpage for a github repro
+1. I was reminded that uploading a geojson file to github will automatically produce a mapbox map in the github window when the file is clicked
+2. I learned to make a webpage for a github repro
   - https://holtzy.github.io/Pimp-my-rmd/#share_it_online
   - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
@@ -54,9 +54,9 @@
 - has to be in a high level repository, no sub folders
 
 **Links to code work:** 
-- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/geojson/Mapping-Upriver-Sto%CC%81lo%CC%84-Ethnography-trial-3.geojson
+1. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/geojson/Mapping-Upriver-Sto%CC%81lo%CC%84-Ethnography-trial-3.geojson
   - https://gist.github.com/WendyAnthony/5497fd20edee5aece2611b15c115dbd2
-- https://wendyanthony.github.io/Code_Each_Day/
+2. https://wendyanthony.github.io/Code_Each_Day/
 
 [TOC](#TOC)
 
