@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXII](#weekXXII)**    
+  - [R3D152 2022-06-01](#R3D152)
 - **[Week XIX](#weekXIX)**    
   - [R3D135 2022-05-15](#R3D135)
 - **[Week XVIII](#weekXVIII)**    
@@ -36,6 +38,24 @@
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
+
+***
+# Week XXII <a name="weeXXII"/>
+***
+## R3D152 2022-06-01 <a name="R3D152"/>
+**Today's Progress**: 
+- I learned to make a webpage for a github repro
+  - https://holtzy.github.io/Pimp-my-rmd/#share_it_online
+  - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+**Thoughts:** 
+- I'd like to learn more about using github's functionality
+
+**Links to code work:** 
+- https://wendyanthony.github.io/Code_Each_Day/
+- 
+
+[TOC](#TOC)
 
 ***
 # Week XIX <a name="weekXIX"/>
