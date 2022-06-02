@@ -50,10 +50,10 @@
 
 **Thoughts:** 
 - I'd like to learn more about using github's functionality
+- has to be in a high level repository, no sub folders
 
 **Links to code work:** 
 - https://wendyanthony.github.io/Code_Each_Day/
-- 
 
 [TOC](#TOC)
 
