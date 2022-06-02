@@ -46,6 +46,8 @@
 **Today's Progress**: 
 1. I was reminded that uploading a geojson file to github will automatically produce a mapbox map in the github window when the file is clicked
   - https://github.blog/2013-06-13-there-s-a-map-for-that/
+  - I can also embed the geojson file map in a webpage
+    - https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files#embedding-your-map-elsewhere
 2. I learned to make a webpage for a github repro
   - https://holtzy.github.io/Pimp-my-rmd/#share_it_online
   - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
