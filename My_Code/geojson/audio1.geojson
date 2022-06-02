@@ -1,0 +1,26 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+	{
+		"type": "Feature",
+		"properties": {
+			"name": "<a href='http://www.freesound.org/people/genghis%20attenborough/sounds/212798/'>Deep basement</a>",
+			"html": "<p><audio width='300' height='32' src='http://www.freesound.org/data/previews/212/212798_205108-lq.mp3' controls='controls'><br />Your browser does not support the audio element.<br /></audio></p>"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-100,34]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"name": "<a href='http://www.freesound.org/people/John%20Sipos/sounds/125696/'>Atlantis docks then lands.</a>",
+			"html": "<p><audio width='300' height='32' src='http://www.freesound.org/data/previews/125/125696_593024-lq.mp3' controls='controls'><br />Your browser does not support the audio element.<br /></audio></p>"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-84,40]
+		}
+	}
+	]
+}
