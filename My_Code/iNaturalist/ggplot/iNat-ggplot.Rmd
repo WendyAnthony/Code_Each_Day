@@ -1,0 +1,674 @@
+---
+title: "iNaturalist Observations in GGPlot2"
+author: "Wendy Anthony"
+date: "`r file.info(knitr::current_input())$ctime`"
+output:
+  html_document:
+    highlight: zenburn
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+# output will scroll if higher than 300px
+# only if df has few columns to all show in output box
+.scroll-100 {
+  max-height: 300px; # for vertical scroll
+  max-width: 1500px; # for horizontal scroll
+  overflow-y: auto; # for vertical scroll
+  overflow-x: auto; # for horizontal scroll  
+  background-color: inherit;
+}
+```
+
+# Load Package Libraries
+```{r load-package}
+library(lubridate) # date format
+library(stringr) # separate datetime column
+library(ggplot2)
+library(ggiraph) # for tool tip interactivity
+library(tidyverse)
+```
+
+# Esquisse to setup ggplot 
+  https://github.com/dreamRs/esquisse
+
+# Import data from RDS file
+created from /Users/wanthony/Documents/R/iNaturalist-shiny-leaflet-app/app.R
+```{r, class.output="scroll-100"}
+
+wa_inat <- readRDS("wa_inat_userstats_research_append.RDS")
+```
+
+# Data
+## Column Names
+```{r, class.output="scroll-100"}
+colnames(wa_inat)
+```
+
+# Date formatting with lubridate
+## class of ```observed_on_string```
+```{r, class.output="scroll-100"}
+class(wa_inat$observed_on_string) # character
+```
+
+# Date formatting with lubridate
+## class of ```datetime```
+```{r, class.output="scroll-100"}
+class(wa_inat$datetime) # character
+```
+
+# Date formatting with lubridate
+## str
+```{r, class.output="scroll-100"}
+str(wa_inat)
+```
+
+## create new columns of empty cells
+```{r, class.output="scroll-100"}
+wa_inat["date"] <- ""
+wa_inat["date_time"] <- ""
+wa_inat["time"] <- ""
+```
+
+## As Date ```datetime```
+```{r, class.output="scroll-100"}
+wa_inat$date <- as_date(wa_inat$datetime)
+str(wa_inat)
+```
+
+# separate datetime column using ```stringr```
+## Split date time into 3 separate columns
+```{r, class.output="scroll-100"}
+wa_inat[c('date', 'time', 'UTC')] <- str_split_fixed(wa_inat$datetime, ' ', 3)
+```
+
+### concatenate 2 columns
+```{r, class.output="scroll-100"}
+wa_inat$date_time <- paste(wa_inat$date, wa_inat$time)
+```
+
+# convert to date format ??? 
+```{r, class.output="scroll-100"}
+wa_inat$date_time <- as_datetime(wa_inat$date_time)  # this time is wrong
+```
+
+# Dataframe info
+## Class
+```{r, class.output="scroll-100"}
+class(wa_inat$date) # date
+class(wa_inat$date_time) # POSIXct
+```
+
+## Structure of db
+```{r, class.output="scroll-100"}
+str(wa_inat)
+```
+
+## Column names
+```{r, class.output="scroll-100"}
+colnames(wa_inat)
+```
+
+# Subset by choosing columns to include
+```{r, class.output="scroll-100"}
+wa_inat_sel <- subset(wa_inat, select = c(1,4,5,6,8,9,10,11,15,18,40,41,43,44,45))
+```
+
+# clean up strings
+* place_guess has too many characters, including province, etc  
+* difficult to use as plot axis labels
+https://statisticsglobe.com/extract-substring-before-or-after-pattern-in-r
+
+## Subset pattern to string content before removed text
+# create new column to use to hold strings after pattern removal
+```{r, class.output="scroll-100"}
+wa_inat_sel$place <- sub(", BC, Canada", "", wa_inat_sel$place_guess)
+```
+
+## in new column subset to remove excess place name
+```{r, class.output="scroll-100"}
+wa_inat_sel$place <- sub(", BC", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Oak Bay", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", View Royal", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", James Bay, Victoria", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Capital", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Colwood", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Victoria", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Metchosin", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub("James Bay", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", CA", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Saanich", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Beaver Lake Regional Park", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub("-BC, CA", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", British Columbia, Canada", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Juan de Fuca BC Parks", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(" Juan de Fuca Provincial Park", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(" Juan de Fuca BC Parks", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(",  Strathcona Provincial Park", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Strathcona Provincial Park", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(" Juan de Fuca Trail BC Parks", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(" V9A, Canada", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", West Coast Road", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Strathcona-Westmin Provincial Park", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", North Saanich", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Jordan River Regional Park", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Gowlland Tod Provincial Park, Brentwood Bay", "", wa_inat_sel$place)
+wa_inat_sel$place <- sub(", Sooke", "", wa_inat_sel$place)
+```
+
+# find unique values in columns
+```{r, class.output="scroll-100"}
+unique_place <- unique(wa_inat_sel$place)
+class(unique_place) # character
+unique_place_df <- data.frame(unique_place)
+class(unique_place_df) # data.frame
+```
+
+## sort unique places in alphabetical order
+```{r, class.output="scroll-100"}
+unique_place_df_order <- unique_place_df$unique_place[order(unique_place_df$unique_place)]
+```
+
+## create dataframe from unique placenames
+```{r, class.output="scroll-100"}
+class(unique_place_df_order) # character
+unique_place_df_order_df <- data.frame(unique_place_df_order)
+```
+
+## replace column values in wa_inat_sel$place to ensure only unique values exist for each place
+```{r, class.output="scroll-100"}
+wa_inat_sel["place"][wa_inat_sel["place"] == "Albert Head Lagoon Regional Park"] <- "Albert Head Lagoon"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Beacon Hill Park "] <- "Beacon Hill Park"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Beaver Lake Park Ponds"] <- "Beaver Lake Ponds"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Canada"] <- "University of Victoria"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Cattle Point Park"] <- "Cattle Point"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Cattle Point, Uplands Park"] <- "Cattle Point"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Cervus Creek Strathcona Provincial Park"] <- "Cervus Creek"
+wa_inat_sel["place"][wa_inat_sel["place"] == "China Beach"] <- "China Beach"
+wa_inat_sel["place"][wa_inat_sel["place"] == "China Beach,"] <- "China Beach"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Cole's Bay Regional Park"] <- "Coles Bay Regional Park"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Fort Rodd Hill Park Colwood"] <- "Fort Rodd Hill Park"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Esquimalt Lagoon, Royal Roads"] <- "Royal Roads"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Royal Roads Forest"] <- "Royal Roads"
+wa_inat_sel["place"][wa_inat_sel["place"] == "royal_roads"] <- "Royal Roads"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Goldstream Park"] <- "Goldstream Provincial Park"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Gorge -Tillicum Area"] <- "Gorge Tillicum Area"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Harling PointOak Bay"] <- "Harling Point"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Island View Beach Regional Park"] <- "Island View Beach"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Juan de Fuca Trail BC Parks"] <- "Juan de Fuca Trail"
+wa_inat_sel["place"][wa_inat_sel["place"] == "McKenzie Bight Gowlland Tod Provincial Park"] <- "McKenzie Bight"
+wa_inat_sel["place"][wa_inat_sel["place"] == "McKenzie Bight, Gowlland Tod Provincial Park"] <- "McKenzie Bight"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Mt Tolmie, VIctoria"] <- "Mt Tolmie"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Pacific Rim National Park Reserve, Alberni-Clayoquot"] <- "Pacific Rim National Park"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Pacific Rim First Nations Trail"] <- "Pacific Rim National Park Reserve"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Pacific Rim National Park Reserve"] <- "Pacific Rim National Park"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Partridge Hills Gowlland Tod Provincial Park"] <- "Partridge Hills"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Rithet's Bog Park"] <- "Rithets Bog Park"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Thetis Lake Regional Park"] <- "Thetis Lake"
+wa_inat_sel["place"][wa_inat_sel["place"] == "Thetis Lake Park"] <- "Thetis Lake"
+wa_inat_sel["place"][wa_inat_sel["place"] == "48.464627, -123.315407"] <- "University of Victoria"
+wa_inat_sel["place"][wa_inat_sel["place"] == "48.46549166666667, -123.30282833333332"] <- "University of Victoria"
+wa_inat_sel["place"][wa_inat_sel["place"] == ""] <- "University of Victoria"
+wa_inat_sel["place"][wa_inat_sel["place"] == ""] <- "University of Victoria"
+```
+
+## recheck unique vales
+```{r, class.output="scroll-100"}
+unique_place_after <- unique(wa_inat_sel$place)
+unique_place_after_df <- data.frame(unique_place_after)
+```
+
+## re sort new unique values
+```{r, class.output="scroll-100"}
+unique_place_after_df_order <- unique_place_after_df$unique_place[order(unique_place_after_df$unique_place)]
+```
+
+### create dataframe from new unique place names
+```{r, class.output="scroll-100"}
+class(unique_place_after_df_order) # character
+unique_place_after_df_order_df <- data.frame(unique_place_after_df_order)
+class(unique_place_after_df_order_df) # dataframe
+```
+
+# GGplot2 plots
+## ggplot scientific name and place
+```{r, class.output="scroll-100"}
+ggplot(wa_inat_sel) +
+  aes(x = scientific_name, y = place) +
+  geom_tile(size = 1.2) +
+  scale_x_discrete(guide = guide_axis(n.dodge=3)) +
+  scale_y_discrete(limits=rev) + # reverses order of labels
+  labs(title = "My iNaturalist Research Grade Observations") +
+  # theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 4), axis.text.y = element_text(size = 4))
+```
+
+### save plot image
+```{r, class.output="scroll-100"}
+getwd()
+ggsave("wa_inat_sel_scinam.jpg")
+```
+
+## ggplot Genus and place
+```{r, class.output="scroll-100"}
+ggplot(wa_inat_sel) +
+  aes(x = Genus, y = place) +
+  geom_tile(size = 1.2) +
+  scale_x_discrete(guide = guide_axis(n.dodge=3)) +
+  scale_y_discrete(limits=rev) + # reverses order of labels
+  labs(title = "My iNaturalist Research Grade Observations") +
+  # theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 4),
+        axis.text.y = element_text(size = 4))
+```
+
+### save plot image
+```{r, class.output="scroll-100"}
+ggsave("wa_inat_sel_genus_dodge.jpg")
+```
+
+
+## ggplot Genus and place with flipped coordinates
+```{r, class.output="scroll-100"}
+ggplot(wa_inat_sel) +
+  aes(x = Genus, y = place) +
+#   aes(x = Genus, y = place, fill = Genus) +   # ???????????
+  geom_tile(size = 1.2) +
+#  scale_x_discrete(guide = guide_axis(n.dodge=3)) +
+  scale_x_discrete(limits=rev) + # reverses order of labels
+  labs(title = "My iNaturalist Research Grade Observations") +
+  # theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 4), 
+        axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1, size = 4)) +
+  coord_flip()
+```
+
+
+### save plot image
+```{r, class.output="scroll-100"}
+ggsave("wa_inat_sel_genus.jpg")
+
+```
+
+## ggplot Genus and place with flipped coordinates and fill ????
+```{r, class.output="scroll-100"}
+ggplot(wa_inat_sel) +
+aes(x = Genus, y = place, fill = Genus) +   # ???????????
+  geom_tile(size = 1.2) +
+  scale_x_discrete(guide = guide_axis(n.dodge=3)) +
+  labs(title = "My iNaturalist Research Grade Observations") +
+  # theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 4), 
+        axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1, size = 4)) +
+  coord_flip()
+```
+
+### save plot image
+```{r, class.output="scroll-100"}
+ggsave("wa_inat_sel_genus_fill.jpg")  # ???????
+```
+
+
+# Tool tip interactivity using ```ggiraph```
+* TOOL TIP STILL NOT WORKING in plot ????
+## make tooltip column
+https://www.infoworld.com/article/3626911/easy-interactive-ggplot-graphs-in-r-with-ggiraph.html
+```{r, class.output="scroll-100"}
+wa_inat_sel <- wa_inat_sel %>%
+  mutate(
+    tooltip_text = paste0(toupper(place),  ": ", "\n",
+                          Genus, ", ", "\n", "Date: ", observed_on_string)
+  )
+```
+
+## ggplot with tooltip, not working ???
+
+```{r, class.output="scroll-100"}
+wa_inat_sel_tooltip <- ggplot(wa_inat_sel) +
+  aes(x = Genus, y = place,
+      tooltip = tooltip_text, data_id = Genus) +
+  geom_tile(size = 1.2) +
+  scale_x_discrete(guide = guide_axis(n.dodge=3)) +
+  scale_y_discrete(limits=rev) + # reverses order of labels
+  labs(title = "My iNaturalist Research Grade Observations") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 4), axis.text.y = element_text(size = 4))
+wa_inat_sel_tooltip
+```
+
+### save as svg ggobj with tooltip, though not working ???
+```{r, class.output="scroll-100"}
+wa_inat_sel_genus_tootip.svg <- girafe(ggobj = wa_inat_sel_tooltip, width_svg = 5, height_svg = 4)
+```
+
+### save as html page with ```htmlwidgets``` 
+* ... though tool tip still not showing
+```{r, class.output="scroll-100"}
+htmlwidgets::saveWidget(wa_inat_sel_genus_tootip.svg, "wa_inat_sel_genus_tootip.svg.html",
+                        selfcontained = TRUE)
+```
+
+# Create new column with place names in lower case
+https://www.datasciencemadesimple.com/convert-to-lower-case-in-r-dataframe-column-2-2/
+```{r, class.output="scroll-100"}
+wa_inat_sel$place_lower <-tolower(wa_inat_sel$place)
+```
+
+## replace space with underscore
+* do multiple times for places with more than one blank space
+```{r, class.output="scroll-100"}
+wa_inat_sel$place_lower <- sub(" ", "_", wa_inat_sel$place_lower)
+wa_inat_sel$place_lower <- sub(" ", "_", wa_inat_sel$place_lower)
+wa_inat_sel$place_lower <- sub(" ", "_", wa_inat_sel$place_lower)
+```
+
+
+### recheck unique vales
+```{r, class.output="scroll-100"}
+place_lower <- unique(wa_inat_sel$place_lower)
+place_lower_df <- data.frame(place_lower)
+```
+
+
+### re sort new unique values
+```{r, class.output="scroll-100"}
+place_lower_df_order <- place_lower_df$place_lower[order(place_lower_df$place_lower)]
+class(place_lower_df_order) # character
+place_lower_df_order_df <- data.frame(place_lower_df_order)
+class(place_lower_df_order_df) # dataframe
+```
+
+
+### re sort new unique values
+```{r, class.output="scroll-100"}
+place_lower_df_order <- place_lower_df$place_lower[order(place_lower_df$place_lower)]
+```
+
+### create dataframe from new unique values
+```{r, class.output="scroll-100"}
+class(place_lower_df_order) # character
+place_lower_df_order_df <- data.frame(place_lower_df_order)
+class(place_lower_df_order_df) # dataframe
+```
+
+# Save csv file of unique place names
+* unique place names after renaming
+```{r, class.output="scroll-100"}
+unique_place_after_df_order_df  #56
+place_lower_df_order_df  #56
+
+write.csv(unique_place_after_df_order_df, "unique_place_after_df_order_df.csv")
+write.csv(place_lower_df_order_df, "place_lower_df_order_df.csv")
+```
+
+
+# Subset dataframe into new place-based objects
+```{r, class.output="scroll-100"}
+# indexing based on value of place
+# uplands <- wa_inat_sel[wa_inat_sel$place == 'Uplands Park', ]
+# class(uplands)
+### SAME AS
+# uplands_park_sub <- subset(wa_inat_sel, place=='Uplands Park')
+
+# subset
+albert_head_lagoon_sub <- subset(wa_inat_sel, place=='Albert Head Lagoon')
+beacon_hill_park_sub <- subset(wa_inat_sel, place=='Beacon Hill Park')
+beaver_lake_ponds_sub <- subset(wa_inat_sel, place=='Beaver Lake Ponds')
+botanical_beach_provincial_park_sub <- subset(wa_inat_sel, place=='Botanical Beach Provincial Park')
+burnside_sub <- subset(wa_inat_sel, place=='Burnside')
+buttle_lake_sub <- subset(wa_inat_sel, place=='Buttle Lake')
+cadboro_bay_sub <- subset(wa_inat_sel, place=='Cadboro Bay')
+capital_sub <- subset(wa_inat_sel, place=='Capital')
+cattle_point_sub <- subset(wa_inat_sel, place=='Cattle Point')
+cervus_creek_sub <- subset(wa_inat_sel, place=='Cervus Creek')
+china_beach_sub <- subset(wa_inat_sel, place=='China Beach')
+coburg_peninsula_sub <- subset(wa_inat_sel, place=='Coburg Peninsula')
+coles_bay_regional_park_sub <- subset(wa_inat_sel, place=='Coles Bay Regional Park')
+crest_lake_sub <- subset(wa_inat_sel, place=='Crest Lake')
+cunningham_woods_sub <- subset(wa_inat_sel, place=='Cunningham Woods')
+drum_lake_sub <- subset(wa_inat_sel, place=='Drum Lake')
+elk_river_sub <- subset(wa_inat_sel, place=='Elk River')
+esquimalt_lagoon_sub <- subset(wa_inat_sel, place=='Esquimalt Lagoon')
+fort_rodd_hill_park_sub <- subset(wa_inat_sel, place=='Fort Rodd Hill Park')
+french_beach_provincial_park_sub <- subset(wa_inat_sel, place=='French Beach Provincial Park')
+goldstream_provincial_park_sub <- subset(wa_inat_sel, place=='Goldstream Provincial Park')
+gorge_park_sub <- subset(wa_inat_sel, place=='Gorge Park')
+gorge_tillicum_area_sub <- subset(wa_inat_sel, place=='Gorge Tillicum Area')
+harling_point_sub <- subset(wa_inat_sel, place=='Harling Point')
+island_view_beach_sub <- subset(wa_inat_sel, place=='Island View Beach')
+jordan_river_sub <- subset(wa_inat_sel, place=='Jordan River')
+juan_de_fuca_trail_sub <- subset(wa_inat_sel, place=='Juan de Fuca Trail')
+loss_creek_sub <- subset(wa_inat_sel, place=='Loss Creek')
+mary_lake_nature_sanctuary_sub <- subset(wa_inat_sel, place=='Mary Lake Nature Sanctuary')
+mckenzie_bight_sub <- subset(wa_inat_sel, place=='McKenzie Bight')
+miracle_beach_provincial_park_sub <- subset(wa_inat_sel, place=='Miracle Beach Provincial Park')
+mt_tolmie_sub <- subset(wa_inat_sel, place=='Mt Tolmie')
+myra_falls_sub <- subset(wa_inat_sel, place=='Myra Falls')
+mystic_beach_sub <- subset(wa_inat_sel, place=='Mystic Beach')
+oak_bay_sub <- subset(wa_inat_sel, place=='Oak Bay')
+ocean_boulevard_sub <- subset(wa_inat_sel, place=='Ocean Boulevard')
+otter_point_sub <- subset(wa_inat_sel, place=='Otter Point')
+pacific_rim_national_park_sub <- subset(wa_inat_sel, place=='Pacific Rim National Park')
+partridge_hills_sub <- subset(wa_inat_sel, place=='Partridge Hills')
+patricia_bay_sub <- subset(wa_inat_sel, place=='Patricia Bay')
+pete_wolf_creek_sub <- subset(wa_inat_sel, place=='Pete Wolf Creek')
+rithets_bog_park_sub <- subset(wa_inat_sel, place=='Rithets Bog Park')
+royal_roads_sub <- subset(wa_inat_sel, place=='Royal Roads')
+sandcut_beach_sub <- subset(wa_inat_sel, place=='Sandcut Beach')
+shirley_sub <- subset(wa_inat_sel, place=='Shirley')
+snidcel_sub <- subset(wa_inat_sel, place=='SNIDCEL')
+sooke_river_sub <- subset(wa_inat_sel, place=='')
+strathcona_provincial_park_sub <- subset(wa_inat_sel, place=='Strathcona Provincial Park')
+taylor_beach_sub <- subset(wa_inat_sel, place=='Taylor Beach')
+thetis_lake_sub <- subset(wa_inat_sel, place=='Thetis Lake')
+university_of_victoria_sub <- subset(wa_inat_sel, place=='University of Victoria')
+uplands_park_sub <- subset(wa_inat_sel, place=='Uplands Park')
+victoria_sub <- subset(wa_inat_sel, place=='Victoria')
+wiffin_spit_sub <- subset(wa_inat_sel, place=='Wiffin Spit')
+```
+
+
+## recheck unique vales
+```{r, class.output="scroll-100"}
+unique_place_after <- unique(wa_inat_sel$place)
+unique_place_after_df <- data.frame(unique_place_after)
+```
+
+### re sort new unique values
+```{r, class.output="scroll-100"}
+unique_place_after_df_order <- unique_place_after_df$unique_place[order(unique_place_after_df$unique_place)]
+class(unique_place_after_df_order) # character
+```
+
+
+### create dataframe from new unique place names
+```{r, class.output="scroll-100"}
+unique_place_after_df_order_df <- data.frame(unique_place_after_df_order)
+class(unique_place_after_df_order_df) # dataframe
+```
+
+
+### unique place names after renaming
+```{r, class.output="scroll-100"}
+unique_place_after_df_order_df  #56
+```
+
+# write csv files for each place
+* save in csv/ folder
+```{r, class.output="scroll-100"}
+write.csv(albert_head_lagoon_sub, "csv/albert_head_lagoon_sub.csv")
+write.csv(beacon_hill_park_sub, "csv/beacon_hill_park_sub.csv")
+write.csv(beaver_lake_ponds_sub, "csv/beaver_lake_ponds_sub.csv")
+write.csv(botanical_beach_provincial_park_sub, "csv/botanical_beach_provincial_park_sub.csv")
+write.csv(burnside_sub, "csv/burnside_sub.csv")
+write.csv(buttle_lake_sub, "csv/buttle_lake_sub.csv")
+write.csv(cadboro_bay_sub, "csv/cadboro_bay_sub.csv")
+write.csv(capital_sub, "csv/capital_sub.csv")
+write.csv(cattle_point_sub, "csv/cattle_point_sub.csv")
+write.csv(cervus_creek_sub, "csv/cervus_creek_sub.csv")
+write.csv(china_beach_sub, "csv/china_beach_sub.csv")
+write.csv(coburg_peninsula_sub, "csv/coburg_peninsula_sub.csv")
+write.csv(coles_bay_regional_park_sub, "csv/coles_bay_regional_park_sub.csv")
+write.csv(crest_lake_sub, "csv/crest_lake_sub.csv")
+write.csv(cunningham_woods_sub, "csv/cunningham_woods_sub.csv")
+write.csv(drum_lake_sub, "csv/drum_lake_sub.csv")
+write.csv(elk_river_sub, "csv/elk_river_sub.csv")
+write.csv(esquimalt_lagoon_sub, "csv/esquimalt_lagoon_sub.csv")
+write.csv(fort_rodd_hill_park_sub, "csv/fort_rodd_hill_park_sub.csv")
+write.csv(french_beach_provincial_park_sub, "csv/french_beach_provincial_park_sub.csv")
+write.csv(goldstream_provincial_park_sub, "csv/goldstream_provincial_park_sub.csv")
+write.csv(gorge_park_sub, "csv/gorge_park_sub.csv")
+write.csv(gorge_tillicum_area_sub, "csv/gorge_tillicum_area_sub.csv")
+write.csv(harling_point_sub, "csv/harling_point_sub.csv")
+write.csv(island_view_beach_sub, "csv/island_view_beach_sub.csv")
+write.csv(jordan_river_sub, "csv/jordan_river_sub.csv")
+write.csv(juan_de_fuca_trail_sub, "csv/juan_de_fuca_trail_sub.csv")
+write.csv(loss_creek_sub, "csv/loss_creek_sub.csv")
+write.csv(mary_lake_nature_sanctuary_sub, "csv/mary_lake_nature_sanctuary_sub.csv")
+write.csv(mckenzie_bight_sub, "csv/mckenzie_bight_sub.csv")
+write.csv(miracle_beach_provincial_park_sub, "csv/miracle_beach_provincial_park_sub.csv")
+write.csv(mt_tolmie_sub, "csv/mt_tolmie_sub.csv")
+write.csv(myra_falls_sub, "csv/myra_falls_sub.csv")
+write.csv(mystic_beach_sub, "csv/mystic_beach_sub.csv")
+write.csv(oak_bay_sub, "csv/oak_bay_sub.csv")
+write.csv(ocean_boulevard_sub, "csv/ocean_boulevard_sub.csv")
+write.csv(otter_point_sub, "csv/otter_point_sub.csv")
+write.csv(pacific_rim_national_park_sub, "csv/pacific_rim_national_park_sub.csv")
+write.csv(partridge_hills_sub, "csv/partridge_hills_sub.csv")
+write.csv(patricia_bay_sub, "csv/patricia_bay_sub.csv")
+write.csv(pete_wolf_creek_sub, "csv/pete_wolf_creek_sub.csv")
+write.csv(rithets_bog_park_sub, "csv/rithets_bog_park_sub.csv")
+write.csv(royal_roads_sub, "csv/royal_roads_sub.csv")
+write.csv(sandcut_beach_sub, "csv/sandcut_beach_sub.csv")
+write.csv(shirley_sub, "csv/shirley_sub.csv")
+write.csv(snidcel_sub, "csv/snidcel_sub.csv")
+write.csv(sooke_river_sub, "csv/sooke_river_sub.csv")
+write.csv(strathcona_provincial_park_sub, "csv/strathcona_provincial_park_sub.csv")
+write.csv(taylor_beach_sub, "csv/taylor_beach_sub.csv")
+write.csv(thetis_lake_sub, "csv/thetis_lake_sub.csv")
+write.csv(university_of_victoria_sub, "csv/university_of_victoria_sub.csv")
+write.csv(uplands_park_sub, "csv/uplands_park_sub.csv")
+write.csv(victoria_sub, "csv/victoria_sub.csv")
+write.csv(wiffin_spit_sub, "csv/wiffin_spit_sub.csv")
+```
+
+## Read csv file example
+* created objects with same names used in this script
+```{r, class.output="scroll-100"}
+goldstream_provincial_park_sub <- read.csv("csv/goldstream_provincial_park_sub.csv")
+```
+
+
+### Create ggplot from read csv object
+```{r, class.output="scroll-100"}
+ggplot(goldstream_provincial_park_sub) +
+  aes(x = scientific_name, y = date_time) +
+  geom_tile(size = 1) +
+#  scale_x_discrete(guide = guide_axis(n.dodge=3)) +
+  scale_x_discrete(limits=rev) + # reverses order of labels
+  labs(title = "My Goldtream Park iNaturalist Research Grade Observations") +
+  #theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 4), axis.text.y = element_text(size = 4)) +
+  coord_flip()
+
+getwd()
+ggsave("wa_inat_sel_scinam_goldstream.jpg")
+```
+
+
+# Create a loop for unique places
+* doesn't work ???
+```{r, class.output="scroll-100"}
+###############################################
+################################################
+## DOESN"T WORK
+################################################
+################################################
+
+### For loop through unique place
+## DOESN"T WORK >>> JUST GIVES EMPTY DATAFRAME
+unique_places <- unique_place_after_df_order_df
+
+for(i in 1:nrow(unique_places)) {       # for-loop over rows
+  place_i <- wa_inat_sel[wa_inat_sel$place == 'i', ]
+}
+```
+
+---
+
+# FUNCTION for GGPLOT to Replace Place in script
+* inat_ggplot_place_species()
+```{r, class.output="scroll-100"}
+inat_ggplot_place_species <- function(place, titleplace, filename){
+    ggplot(place) +
+#    aes(x = scientific_name, y = observed_on_string) +  # this one works, but I don't like date format
+    # aes(x = scientific_name, y = date_time) +
+    aes(x = scientific_name, y = date) +
+    geom_tile(size = .1, aes(fill = Genus), colour = "grey50") +
+    #  scale_x_discrete(guide = guide_axis(n.dodge=3)) +
+    scale_x_discrete(limits = rev) + # reverses order of labels
+    labs(subtitle = titleplace, title = "My iNaturalist Research Grade Observations", x = "Scientific Name", y = "Date") + # coord_flip
+    #theme_classic() +
+    # theme for 90° angle to position date right at axis tick
+    # theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 4), axis.text.y = element_text(size = 4)) +
+    # them hjust centres date at axis tick
+    theme(
+      axis.text.x = element_text(vjust = 1, hjust = .5, size = 8),
+      axis.text.y = element_text(size = 5),
+      plot.title = element_text(hjust = 0.5, size = 12),
+      plot.subtitle = element_text(hjust = 0.5, size = 12),
+      legend.position ="bottom",
+      legend.text = element_text(size=6)) +
+    coord_flip()
+
+  aspect_ratio <- 2.5
+  height <- 7
+  ggsave(filename, height = 10 , width = 3 * aspect_ratio)
+}
+```
+
+
+## Function usage
+```{r, class.output="scroll-100"}
+# Useage
+# inat_ggplot_place_species(place_dataframe_name, "Place Name", "name_of_file.jpg")
+```
+
+
+## Function replacements to save jpg images of plot
+```{r, class.output="scroll-100"}
+inat_ggplot_place_species(beacon_hill_park_sub, "Beacon Hill Park", "wa_inat_ggplot_bhp.jpg")
+inat_ggplot_place_species(botanical_beach_provincial_park_sub, "Botanical Beach Provincial Park", "wa_inat_ggplot_botbeach.jpg")
+inat_ggplot_place_species(beaver_lake_ponds_sub, "Beaver Lake Ponds", "wa_inat_ggplot_blp.jpg")
+inat_ggplot_place_species(buttle_lake_sub, "Buttle Lake, Strathcona Park", "wa_inat_ggplot_blsp.jpg")
+inat_ggplot_place_species(cattle_point_sub, "Cattle Point, Uplands Park", "wa_inat_ggplot_cpup.jpg")
+inat_ggplot_place_species(esquimalt_lagoon_sub, "Esquimalt Lagoon", "wa_inat_ggplot_esqlag.jpg")
+inat_ggplot_place_species(goldstream_provincial_park_sub, "Goldstream Provincial Park", "wa_inat_ggplot_gpp.jpg")
+inat_ggplot_place_species(pacific_rim_national_park_sub, "Pacific Rim National Park", "wa_inat_ggplot_pacrim.jpg")
+inat_ggplot_place_species(strathcona_provincial_park_sub, "Strathcona Provincial Park", "wa_inat_ggplot_spp.jpg")
+inat_ggplot_place_species(beacon_hill_park_sub, "Beacon Hill Park", "wa_inat_ggplot_bhp.jpg")
+inat_ggplot_place_species(uplands_park_sub, "Uplands Park", "wa_inat_ggplot_up.jpg")
+inat_ggplot_place_species(university_of_victoria_sub, "University of Victoria", "wa_inat_ggplot_uvic.jpg")
+```
+
+
+# won't plot the whole db, just shows legend of all Genus
+```{r, class.output="scroll-100"}
+inat_ggplot_place_species(wa_inat_sel, "55 Natural Places", "wa_inat_ggplot_inat_sel.jpg")
+```
+
+
+---
+
+# Session info
+```{r session-info}
+# to document specific packages used to run script
+sessionInfo()
+```
