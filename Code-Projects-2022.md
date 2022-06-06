@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXIII](#weekXXIII)**    
+  - [R3D157 2022-06-06](#R3D157)
 - **[Week XXII](#weekXXII)**    
   - [R3D152 2022-06-01](#R3D152)
 - **[Week XIX](#weekXIX)**    
@@ -38,6 +40,30 @@
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
+
+***
+# Week XXIII <a name="weeXXIII"/>
+***
+## R3D157 2022-06-06 <a name="R3D157"/>
+**Today's Progress**: 
+- I figured out how to vizualize my iNaturalist observations using ```esquisse``` https://github.com/dreamRs/esquisse ```esquisse::esquisser()```
+- I chose to plot scientific name against date
+- Had to change date format in ```lubridate```
+- found unique values of place names so only one name will exist for the same place
+- Subset data for each place
+- had to remove extra text pattern from place names to make axis label more readable e.g. BC, etc
+- played with changing the ggplot theme one bit-at-a-time
+- saved images of plots, and csv files for each subset gitplace
+
+**Thoughts:** 
+- I'm thrilled to try out making a ```function``` again, to create many ggplots, by substituting place name for data and plot title, as well as filename for saving
+
+**Links to code work:** 
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/iNaturalist/ggplot/iNat-ggplot.html
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/iNaturalist/ggplot/wa_inat_ggplot_uvic.jpg
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/iNaturalist/ggplot
+
+[TOC](#TOC)
 
 ***
 # Week XXII <a name="weeXXII"/>
