@@ -50,7 +50,7 @@
 - I created a package ```natmapr``` using the functions I created to make ggplots out of iNaturalist observations
 
 **Thoughts:** 
-- I was having problems getting function in package to work, as ```devtools::check``` made me follow proper conventions for my code
+- I was having problems getting function in package to work, as ```devtools::check``` made me follow proper conventions for my code (and that's a GOOD thing!)
 - I uploaded sample data ```.RDS``` file, and then had to use df$col formatting to access the column names properly
 
 **Links to code work:** 
