@@ -47,17 +47,20 @@
 ***
 ## R3D157 2022-06-07 <a name="R3D158"/>
 **Today's Progress**: 
-- I created a package ```natmapr``` using the functions I created to make ggplots out of iNaturalist observations
+1. I created a package ```natmapr``` using the functions I created to make ggplots out of iNaturalist observations
+
 
 **Thoughts:** 
-- I was having problems getting function in package to work, as ```devtools::check``` made me follow proper conventions for my code (and that's a GOOD thing!)
+1. I was having problems getting function in package to work, as ```devtools::check``` made me follow proper conventions for my code (and that's a GOOD thing!)
 - I uploaded sample data ```.RDS``` file, and then had to use df$col formatting to access the column names properly
+2. I need to figure out a way NOT to use ```%>%``` function in package function as there is "no visible global function definition for ‘%>%’". I tried ```magrittr::%>%``` but it didn't work
 
 **Links to code work:** 
-- ```natmapr``` package files: https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions/natmapr
+1. ```natmapr``` package files: https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions/natmapr
 - sample data file: https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/PackageFunctions/natmapr/inst/extdata/esquimalt_lagoon_sub.RDS
 - ggplot image with fill for plant Genus: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot-label.jpg
 - ggplot image bw, with no fill: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot_bw.jpg
+2. 
 
 **Things-To-Do:**
 - Now, I'd like to create some more functions for the ```natmapr``` package to use the code function I figured out yesterday to use leaflet to plot maps of iNaturalist data, with data in marker popups ...
