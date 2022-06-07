@@ -97,6 +97,8 @@ inat_map_obs_leaflet <- function(data, var1, var2, var3, var4, var5) {
 
 ## Create leaflet map using function inat_map_obs_leaflet()
 ```{r, class.output="scroll-100"}
+# Useage
+# inat_map_obs_leaflet(data, var1, var2, var3, var4, var5)
 inat_map_obs_leaflet(
   wa_inat_sel,
   wa_inat_sel$common_name,
