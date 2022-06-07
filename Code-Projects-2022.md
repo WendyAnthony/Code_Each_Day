@@ -46,6 +46,7 @@
 ***
 ## R3D157 2022-06-06 <a name="R3D157"/>
 **Today's Progress**: 
+1. ```iNaturalist``` and ```ggplot2```
 - I figured out how to vizualize my iNaturalist observations using ```esquisse``` https://github.com/dreamRs/esquisse ```esquisse::esquisser()```
 - I chose to plot scientific name against date
 - Had to change date format in ```lubridate```
@@ -54,6 +55,9 @@
 - had to remove extra text pattern from place names to make axis label more readable e.g. BC, etc
 - played with changing the ggplot theme one bit-at-a-time
 - saved images of plots, and csv files for each subset gitplace
+
+2. ```iNaturalist``` and ```leaflet```
+- I figure out how to make a function to create popups!!!
 
 **Thoughts:** 
 - I'm thrilled to try out making a ```function``` again, to create many ggplots, by substituting place name for data and plot title, as well as filename for saving
