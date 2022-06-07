@@ -4,4 +4,4 @@ inat_leaflet_save <- function(m, filename) {
 
 
 
-# inat_leaflet_save("exq_lag.html")
+# inat_leaflet_save("esq_lag.html")
