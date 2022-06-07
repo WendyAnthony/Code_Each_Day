@@ -48,22 +48,26 @@
 ## R3D157 2022-06-07 <a name="R3D158"/>
 **Today's Progress**: 
 1. I created a package ```natmapr``` using the functions I created to make ggplots out of iNaturalist observations
-
+2. I created another function to include with ```natmapr``` package, to create a leaflet map from iNaturalist observations
+- I couldn't seem to save the html file in the same function, so I created another function to save the leaflet map at html file
+- Moving from Things-to-do list, "Now, I'd like to create some more functions for the ```natmapr``` package to use the code function I figured out yesterday to use leaflet to plot maps of iNaturalist data, with data in marker popups"
 
 **Thoughts:** 
 1. I was having problems getting function in package to work, as ```devtools::check``` made me follow proper conventions for my code (and that's a GOOD thing!)
 - I uploaded sample data ```.RDS``` file, and then had to use df$col formatting to access the column names properly
 2. I need to figure out a way NOT to use ```%>%``` function in package function as there is "no visible global function definition for ‘%>%’". I tried ```magrittr::%>%``` but it didn't work
+- had to use old way of using leaflet code using separate lines refering to the updated m object e.g.  m <- leaflet::leaflet(data)  m <- leaflet::addTiles(m).  m <- leaflet::addCircleMarkers(m, fillOpacity = 0.5, radius = 0.8, color = "red", ~long, ~lat)
 
 **Links to code work:** 
 1. ```natmapr``` package files: https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions/natmapr
 - sample data file: https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/PackageFunctions/natmapr/inst/extdata/esquimalt_lagoon_sub.RDS
 - ggplot image with fill for plant Genus: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot-label.jpg
 - ggplot image bw, with no fill: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot_bw.jpg
-2. 
+2. ```natmapr``` package files: https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions/natmapr 
+- Leaflet map as a webpage: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/esq_lag.html
 
 **Things-To-Do:**
-- Now, I'd like to create some more functions for the ```natmapr``` package to use the code function I figured out yesterday to use leaflet to plot maps of iNaturalist data, with data in marker popups ...
+- try to create more functions!! ;)
 
 [TOC](#TOC)
 
