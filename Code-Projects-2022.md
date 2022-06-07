@@ -49,7 +49,7 @@
 **Today's Progress**: 
 1. I created a package ```natmapr``` using the functions I created to make ggplots out of iNaturalist observations
 2. I created another function to include with ```natmapr``` package, to create a leaflet map from iNaturalist observations
-- I couldn't seem to save the html file in the same function, so I created another function to save the leaflet map at html file
+- I couldn't seem to save the html file in the same function, so I created another function to save the leaflet map at html file. In order to use it the leaflet function needs to be ```m <- inat_leaflet()```, so the m object can be used by ```inat_leaflet_save()```
 - Moving from Things-to-do list, "Now, I'd like to create some more functions for the ```natmapr``` package to use the code function I figured out yesterday to use leaflet to plot maps of iNaturalist data, with data in marker popups"
 
 **Thoughts:** 
