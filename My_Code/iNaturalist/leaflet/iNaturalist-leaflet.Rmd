@@ -1,5 +1,5 @@
 ---
-title: "Template for knitting HTML with TOC and scroll"
+title: "FUNCTION to create Leaflet map from iNaturalist Data"
 author: "Wendy Anthony"
 date: "`r file.info(knitr::current_input())$ctime`"
 output:
