@@ -56,16 +56,22 @@
 - played with changing the ggplot theme one bit-at-a-time
 - saved images of plots, and csv files for each subset gitplace
 
+
 2. ```iNaturalist``` and ```leaflet```
-- I figure out how to make a function to create popups!!!
+- Then, I figured out how to make a function to create leaflet map marker popups!!!
 
 **Thoughts:** 
 - I'm thrilled to try out making a ```function``` again, to create many ggplots, by substituting place name for data and plot title, as well as filename for saving
 
 **Links to code work:** 
+1. ```iNaturalist``` and ```ggplot2```
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/iNaturalist/ggplot/iNat-ggplot.html
 - https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/iNaturalist/ggplot/wa_inat_ggplot_uvic.jpg
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/iNaturalist/ggplot
+
+2. ```iNaturalist``` and ```leaflet```
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/iNaturalist/leaflet
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/iNaturalist/leaflet/iNaturalist-leaflet.R
 
 [TOC](#TOC)
 
