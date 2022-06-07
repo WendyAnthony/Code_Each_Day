@@ -8,6 +8,7 @@
 ***
 ## Table of Contents  <a name="TOC"/>
 - **[Week XXIII](#weekXXIII)**    
+  - [R3D158 2022-06-07](#R3D158)
   - [R3D157 2022-06-06](#R3D157)
 - **[Week XXII](#weekXXII)**    
   - [R3D152 2022-06-01](#R3D152)
@@ -44,6 +45,23 @@
 ***
 # Week XXIII <a name="weeXXIII"/>
 ***
+## R3D157 2022-06-07 <a name="R3D157"/>
+**Today's Progress**: 
+- I created a package ```natmapr``` using the functions I created to make ggplots out of iNaturalist observations
+
+**Thoughts:** 
+- I was having problems getting function in package to work, as ```devtools::check``` made me follow proper conventions for my code
+- I uploaded sample data ```.RDS``` file, and then had to use df$col formatting to access the column names properly
+
+**Links to code work:** 
+- ```natmapr``` package files: https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions/natmapr
+- sample data file: https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/PackageFunctions/natmapr/inst/extdata/esquimalt_lagoon_sub.RDS
+- ggplot image with fill for plant Genus: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot-label.jpg
+- ggplot image bw, with no fill: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot_bw.jpg
+
+
+[TOC](#TOC)
+
 ## R3D157 2022-06-06 <a name="R3D157"/>
 **Today's Progress**: 
 1. ```iNaturalist``` and ```ggplot2```
