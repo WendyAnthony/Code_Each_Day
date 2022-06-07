@@ -59,7 +59,7 @@
 - ggplot image with fill for plant Genus: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot-label.jpg
 - ggplot image bw, with no fill: https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/PackageFunctions/natmapr/inat_ggplot_bw.jpg
 
-**Wish-List:**
+**Things-To-Do:**
 - Now, I'd like to create some more functions for the ```natmapr``` package to use the code function I figured out yesterday to use leaflet to plot maps of iNaturalist data, with data in marker popups ...
 
 [TOC](#TOC)
