@@ -1,0 +1,21 @@
+Package: natmapr
+Title: Map Nature Observations with Leaflet and GGPlot2
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Wendy",
+           family = "Anthony",
+           role = c("aut", "cre"),
+           email = "o2b.pickin@gmail.com")
+Description: Create a ggplot and/or leaflet map from iNaturalist or other nature observations.
+Imports:
+    ggplot2,
+    leaflet,
+    magrittr,
+    htmlwidgets,
+    dplyr,
+    exifr
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

@@ -1,10 +1,10 @@
 \name{inat_leaflet_save}
 \alias{inat_leaflet_save}
 \title{
-Save leaflet map object as html webpage
+3. Save leaflet map object as html webpage
 }
 \description{
-Save leaflet map object as html webpage.
+Save leaflet map object as html webpage, including the required .css and .js files. To save the finished map, uses inat_leaflet_save() >> inat_leaflet_save(m, filename) >> e.g. inat_leaflet_save(map3, file = "file.html")
 }
 \usage{
 inat_leaflet_save(m, filename)
@@ -34,10 +34,11 @@ Wendy Anthony <o2b.pickin@gmail.com>
 #        inat_esqlag$place_guess,
 #        inat_esqlag$url, inat_esqlag$image_url)
 
-# inat_leaflet_save(m, "esq_lag.html")
+# inat_leaflet_save(m, "./inst/extdata/esq_lag.html")
 
 ## The function is currently defined as
 function (m, filename)
 {
+  htmlwidgets::saveWidget(m, file = filename)
   }
 }
