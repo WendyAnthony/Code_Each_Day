@@ -53,12 +53,12 @@
 
 **Thoughts:** 
 - I'd like to try this in ```md``` on github ...
+- It Works!!!
 
 **Links to code work:** 
 - https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab
 
-**Things-To-Do:**
-<details><summary>Click here to see Things-To-Do List</summary>
+<details><summary>Click here to see **Things-To-Do:** List</summary>
 - make list
 - add section
 - test to see if it works
