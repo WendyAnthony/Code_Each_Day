@@ -58,7 +58,7 @@
 **Links to code work:** 
 - https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab
 
-<details><summary>Click here to see <b>Things-To-Do:</b> List</summary><blockquote style="border: none">
+<details><summary>Click here to see <b>Things-To-Do:</b> List</summary><blockquote style="font-style: italic; margin-left: 32px; font-family: Georgia, "Times New Roman", serif; border-left: 4px solid #CCC">
 - make list<br />
 - add section<br />
 - test to see if it works<br />
