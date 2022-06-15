@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXIV](#weekXXIV)**    
+  - [R3D166 2022-06-15](#R3D166)
 - **[Week XXIII](#weekXXIII)**    
   - [R3D158 2022-06-07](#R3D158)
   - [R3D157 2022-06-06](#R3D157)
@@ -42,6 +44,28 @@
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
 
+***
+# Week XXIV <a name="weeXXIV"/>
+***
+## R3D166 2022-06-15 <a name="R3D166"/>
+**Today's Progress**: 
+- learn more about making hidden sections in ```RMarkdown```
+
+**Thoughts:** 
+- I'd like to try this in ```md``` on github ...
+
+**Links to code work:** 
+- https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab
+
+**Things-To-Do:**
+<details><summary>Click here to see Things-To-Do List</summary>
+- make list
+- add section
+- test to see if it works
+- ...
+  </details>
+
+[TOC](#TOC)
 ***
 # Week XXIII <a name="weeXXIII"/>
 ***
