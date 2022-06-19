@@ -53,8 +53,11 @@
 
 **Thoughts:** 
 - I'd like to try this in ```md``` on github ...
-**Note:**  
-It Works!!! >>> see Things-To-Do section ...
+**Note:**
+It Works!!! >>> see Things-To-Do section ...  
+**Note**
+This is a note
+
 
 **Links to code work:** 
 - https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab
