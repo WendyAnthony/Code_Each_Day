@@ -63,13 +63,15 @@
 - add section<br />
 - test to see if it works<br />
 - ...
-</blockquote>  </details>
-
+- new sections for ```md```
 > **Note**
 > This is a note
 
 > **Warning**
 > This is a warning
+
+</blockquote>  </details>
+
 
 [TOC](#TOC)
 
