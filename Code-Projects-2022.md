@@ -65,7 +65,14 @@
 - ...
 </blockquote>  </details>
 
+> **Note**
+> This is a note
+
+> **Warning**
+> This is a warning
+
 [TOC](#TOC)
+
 ***
 # Week XXIII <a name="weeXXIII"/>
 ***
