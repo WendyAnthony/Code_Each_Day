@@ -62,7 +62,7 @@
 - make list<br />
 - add section<br />
 - test to see if it works<br />
-- ...
+- ...<br /><br />
 - new sections for ```md```
   
 > **Note**
