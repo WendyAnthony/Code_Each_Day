@@ -1,0 +1,101 @@
+<!-- https://github.com/dwilhelm89/LeafletSlider   -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaflet Time Slider Example</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" type="text/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Include this library for mobile touch support  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- Include SliderControl.js script -->
+    <script src="SliderControl.js"></script>
+
+    <!-- Style map -->
+    <style>
+      body {
+                margin: 0;
+                background-color: antique-white;
+            }
+        #text {
+           text-align:center;
+        }
+        #myMap {
+            /*height: 100%;
+            width: 100%;
+            */
+            width: 100%;
+            height: 1000px;
+            postion: relative;
+            margin: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Add div to contain #myMap -->
+<div id="text"><h1>
+  <p>Pacific Rim Vacation Photo Map July-Aug 2022</h1><b>To Use Time Slider:</b> Click slider square, and use arrow key to advance one-photo-at-a-time</p>
+</div>
+<div id="myMap"></div>
+
+
+
+<script>
+
+    // Create map inside div with #myMap ID; set view
+    var map1 = L.map('myMap').setView([48,-123], 8);
+
+    // Add tileLayer to map
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map1);
+
+// note: time must be non-=capitalized to have time show below time slider
+    function onEachFeature (feature, layer) {
+        var content = "<div style='clear: both'></div><div><h4>" + feature.properties.SourceFile + "</h4><p>" + "<b>Time: </b>" + feature.properties.time + "<br>" + "<b>Exposure Time: </b>" + feature.properties.ExposureTime + "<br>" + "<b>F Number: </b>" + feature.properties.FNumber + "<br>" + "<b>ISO: </b>" + feature.properties.ISO + "<br>" + "<b>Focal Length: </b>" + feature.properties.FocalLength + "<br>" + "<b>Coordinates: </b>" + feature.geometry.coordinates +  "<br><br><img src = '/Volumes/Wendy-C-My Passport for Mac/Images/NikonGPS/2022-07-19-to-08-01-PacRimVacay/" + feature.properties.SourceFile + "' style='width:314px;height:239px;'>" + "</p></div>";
+        layer.bindPopup(content, {closeButton: true});
+    };
+
+// Access to XMLHttpRequest at 'file:///Users/wanthony/Documents/R/leaflet-time/popups.json' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, chrome-untrusted, https.
+// I used link from original website
+    $.getJSON("https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/Time/pacrim_photos_geo.geojson", function(json) {
+        var optionsObject1 = {
+            onEachFeature: onEachFeature
+        };
+        var group1 = L.geoJSON(json, optionsObject1);
+
+    var sliderControl1 = L.control.sliderControl( {
+        layer: group1,
+        follow: true,
+        alwaysShowDate: true,
+        popupContent: 'Hello World', //Custom Popup content if marker has no popup
+        popupOptions: {closeOnClick: true}, //Popup options for markers with no default popup
+        showAllPopups: true, // to show all popups, instead of one, same as popup option "autoClose: false"
+        showPopups: true,
+        // range: true, // keeps previous popups open
+        rezoom: 8
+    });
+
+    // Add the slider to the map
+    map1.addControl(sliderControl1);
+
+    // Initialize the slider
+    sliderControl1.startSlider();
+});
+</script>
+</body>
+
+</html>
