@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXXII](#weekXXXII)**    
+  - [R3D221 2022-08-09](#R3D221)
 - **[Week XXIV](#weekXXIV)**    
   - [R3D166 2022-06-15](#R3D166)
 - **[Week XXIII](#weekXXIII)**    
@@ -43,6 +45,28 @@
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
+
+
+
+***
+# Week XXXII <a name="weeXXXII"/>
+***
+## R3D221 2022-08-09 <a name="R3D221"/>
+**Today's Progress**: 
+- tried different ways to make a time slider with leaflet map in html, while including popup with photos, using js
+- read csv file; make date/time column a date value using ```lubridate```; omit na values; use ```geojsonio::geojson_json()``` to create and save json file  from csv using ```geojsonio::geojson_write()```
+- time column must be NON-capitalized to ensure date is included below time slider
+
+**Thoughts:** 
+- I wanted to see if I could add a time-slider to leaflet map of vacation photos
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/Time
+- https://github.com/geyerbri/LeafletSlider#options
+- https://github.com/dwilhelm89/LeafletSlider
+
+[TOC](#TOC)
+
 
 ***
 # Week XXIV <a name="weeXXIV"/>
