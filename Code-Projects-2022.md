@@ -62,7 +62,7 @@
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/Time
-- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Leaflet/Time/LeafletMap-timeslider-DSCN7998-ss.png
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/Time/LeafletMap-timeslider-DSCN7998-ss.png
 - https://github.com/geyerbri/LeafletSlider#options
 - https://github.com/dwilhelm89/LeafletSlider
 
