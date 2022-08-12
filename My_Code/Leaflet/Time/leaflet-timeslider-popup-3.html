@@ -63,9 +63,9 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map1);
 
-// note: time must be non-=capitalized to have time show below time slider
+// note: time must be non-=capitalized to have time values show below time slider
     function onEachFeature (feature, layer) {
-        var content = "<div style='clear: both'></div><div><h4>" + feature.properties.SourceFile + "</h4><p>" + "<b>Time: </b>" + feature.properties.time + "<br>" + "<b>Exposure Time: </b>" + feature.properties.ExposureTime + "<br>" + "<b>F Number: </b>" + feature.properties.FNumber + "<br>" + "<b>ISO: </b>" + feature.properties.ISO + "<br>" + "<b>Focal Length: </b>" + feature.properties.FocalLength + "<br>" + "<b>Coordinates: </b>" + feature.geometry.coordinates +  "<br><br><img src = '/Volumes/Wendy-C-My Passport for Mac/Images/NikonGPS/2022-07-19-to-08-01-PacRimVacay/" + feature.properties.SourceFile + "' style='width:314px;height:239px;'>" + "</p></div>";
+        var content = "<div style='clear: both'></div><div><h4>" + feature.properties.SourceFile + "</h4><p>" + "<b>Time: </b>" + feature.properties.time + "<br>" + "<b>Exposure Time: </b>" + feature.properties.ExposureTime + "<br>" + "<b>F Number: </b>" + feature.properties.FNumber + "<br>" + "<b>ISO: </b>" + feature.properties.ISO + "<br>" + "<b>Focal Length: </b>" + feature.properties.FocalLength + "<br>" + "<b>Coordinates: </b>" + feature.geometry.coordinates +  "<br><br><img src = '/Volumes/Wendy-C-My Passport for Mac/Pictures/Nikon-Coolpix-GPS/2022-07-19-to-08-01-PacRimVacay/" + feature.properties.SourceFile + "' style='width:314px;height:239px;'>" + "</p></div>";
         layer.bindPopup(content, {closeButton: true});
     };
 
