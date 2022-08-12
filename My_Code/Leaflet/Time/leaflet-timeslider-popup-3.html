@@ -56,7 +56,7 @@
 <script>
 
     // Create map inside div with #myMap ID; set view
-    var map1 = L.map('myMap').setView([48,-123], 8);
+    var map1 = L.map('myMap').setView([48,-123], 11);
 
     // Add tileLayer to map
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -86,7 +86,7 @@
         showAllPopups: true, // to show all popups, instead of one, same as popup option "autoClose: false"
         showPopups: true,
         // range: true, // keeps previous popups open
-        rezoom: 8
+        rezoom: 12
     });
 
     // Add the slider to the map
