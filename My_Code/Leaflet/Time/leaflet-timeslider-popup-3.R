@@ -1,5 +1,10 @@
 
 
+getwd()
+
+# duplicate csv file and rename
+file.copy("ExifCameradata.csv", "ExifCameradata-2022-07-19-to-08-01-PacRimVacay.csv")
+
 # Read csv file and convert time
 pacrim_photos <- read.csv("ExifCameradata-2022-07-19-to-08-01-PacRimVacay.csv")
 str(pacrim_photos)
