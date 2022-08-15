@@ -17,7 +17,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Load Libraries
 ```{r load-Libraries, message=FALSE}
-library(exifr)
+#install.packages("exifr")
+library(exifr) 
 library(dplyr)
 library(leaflet)
 library(htmlwidgets) # for responsive web map
@@ -136,19 +137,19 @@ responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initia
 # custom icon
 # https://leafletjs.com/examples/custom-icons/
 greenLeafIcon <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 38, iconHeight = 95,
   iconAnchorX = 22, iconAnchorY = 94,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 50, shadowHeight = 64,
   shadowAnchorX = 4, shadowAnchorY = 62
 )
 # change LeafIcon size 1/2
 greenLeafIconSm <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 19, iconHeight = 47,
   iconAnchorX = 11, iconAnchorY = 47,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 25, shadowHeight = 32,
   shadowAnchorX = 2, shadowAnchorY = 31
 )
@@ -203,19 +204,19 @@ responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initia
 # custom icon
 # https://leafletjs.com/examples/custom-icons/
 greenLeafIcon <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 38, iconHeight = 95,
   iconAnchorX = 22, iconAnchorY = 94,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 50, shadowHeight = 64,
   shadowAnchorX = 4, shadowAnchorY = 62
 )
 # change LeafIcon size 1/2
 greenLeafIconSm <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 19, iconHeight = 47,
   iconAnchorX = 11, iconAnchorY = 47,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 25, shadowHeight = 32,
   shadowAnchorX = 2, shadowAnchorY = 31
 )
@@ -273,19 +274,19 @@ responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initia
 # custom icon
 # https://leafletjs.com/examples/custom-icons/
 greenLeafIcon <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 38, iconHeight = 95,
   iconAnchorX = 22, iconAnchorY = 94,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 50, shadowHeight = 64,
   shadowAnchorX = 4, shadowAnchorY = 62
 )
 # change LeafIcon size 1/2
 greenLeafIconSm <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 19, iconHeight = 47,
   iconAnchorX = 11, iconAnchorY = 47,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 25, shadowHeight = 32,
   shadowAnchorX = 2, shadowAnchorY = 31
 )
@@ -334,19 +335,19 @@ responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initia
 # custom icon
 # https://leafletjs.com/examples/custom-icons/
 greenLeafIcon <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 38, iconHeight = 95,
   iconAnchorX = 22, iconAnchorY = 94,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 50, shadowHeight = 64,
   shadowAnchorX = 4, shadowAnchorY = 62
 )
 # change LeafIcon size 1/2
 greenLeafIconSm <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 19, iconHeight = 47,
   iconAnchorX = 11, iconAnchorY = 47,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 25, shadowHeight = 32,
   shadowAnchorX = 2, shadowAnchorY = 31
 )
@@ -395,19 +396,19 @@ responsiveness = "\'<meta name=\"viewport\" content=\"width=device-width, initia
 # custom icon
 # https://leafletjs.com/examples/custom-icons/
 greenLeafIcon <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 38, iconHeight = 95,
   iconAnchorX = 22, iconAnchorY = 94,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 50, shadowHeight = 64,
   shadowAnchorX = 4, shadowAnchorY = 62
 )
 # change LeafIcon size 1/2
 greenLeafIconSm <- makeIcon(
-  iconUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-green.png",
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
   iconWidth = 19, iconHeight = 47,
   iconAnchorX = 11, iconAnchorY = 47,
-  shadowUrl = "https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png",
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
   shadowWidth = 25, shadowHeight = 32,
   shadowAnchorX = 2, shadowAnchorY = 31
 )
