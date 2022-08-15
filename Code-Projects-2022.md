@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXXIII](#weekXXXIII)**    
+  - [R3D227 2022-08-15](#R3D227)
 - **[Week XXXII](#weekXXXII)**    
   - [R3D221 2022-08-09](#R3D221)
 - **[Week XXIV](#weekXXIV)**    
@@ -47,6 +49,23 @@
 - **[Wishlist](#wishlist)**  
 
 
+
+***
+# Week XXXIII <a name="weeXXXIII"/>
+***
+## R3D227 2022-08-15 <a name="R3D227"/>
+**Today's Progress**: 
+- added code to duplicate, then change file name of image exif data csv created by ```z-2-Photo-Map-Folder.Rmd``` file created to map all photos in a folder 
+
+**Thoughts:** 
+- Maybe create a ```.Rmd``` file for the leaflet timeslider ```.R```, including the html code, that when knit would also create the html leaflet map widget
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/Time
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Leaflet/Time/leaflet-timeslider-popup-3.R
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/z-2-Photo-Map-Folder.Rmd
+
+[TOC](#TOC)
 
 ***
 # Week XXXII <a name="weeXXXII"/>
