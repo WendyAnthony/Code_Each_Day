@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XXXIIV](#weekXXXIV)**    
+  - [R3D234 2022-08-22](#R3D234)
 - **[Week XXXIII](#weekXXXIII)**    
   - [R3D227 2022-08-15](#R3D227)
 - **[Week XXXII](#weekXXXII)**    
@@ -48,7 +50,22 @@
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
 
+***
+# Week XXXIV <a name="weeXXXIV"/>
+***
+## R3D234 2022-08-22 <a name="R3D234"/>
+**Today's Progress**: 
+- Trying ```bookdown``` to host a tutorial for making ```leaflet``` maps
+- discovered settings page for a repository https://github.com/WendyAnthony/Code_Each_Day/settings
+  - my Code_Each_Day repository contains many mini repositories ...
 
+**Thoughts:** 
+- I've always wanted to write a book!?!
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Bookdown/Leaflet_Maps_in_R
+
+[TOC](#TOC)
 
 ***
 # Week XXXIII <a name="weeXXXIII"/>
