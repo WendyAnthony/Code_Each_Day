@@ -114,7 +114,7 @@ Victoria_pop_age_gender_2021_seniors <-
             "80 to 84", "85 to 89", "90 to 94", "95 to 99", "100+"), ]
 
 BC_pop_2021_seniors <- 
-  Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021$age_group %in%
+  BC_pop_2021[BC_pop_2021$age_group %in%
           c("55 to 59", "60 to 64", "65 to 69", "70 to 74", "75 to 79", 
             "80 to 84", "85 to 89", "90 to 94", "95 to 99", "100+"), ]
 ```
@@ -328,7 +328,7 @@ BC_dodge <- BC_pop_2021 %>%
 BC_dodge
 ```
 
-## ggplot data for seniors
+## ggplot data for seniors - Victoria
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
@@ -353,6 +353,33 @@ Vic_seniors <- Victoria_pop_age_gender_2021_seniors %>%
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
 Vic_seniors
+```
+
+## ggplot data for seniors
+PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
+Sort values of age_group to ensure 100+ appears in correct position  
+factor, str_sort unique
+```{r ggplot-data-seniors-BC, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+BC_seniors <- BC_pop_2021_seniors %>%
+  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+                      # wideth = 1 no space between bars
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "BC Seniors Population \n by Age & Gender",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+BC_seniors
 ```
 
 ## ggplot data for seniors with data labels 
@@ -462,6 +489,7 @@ BC_lab
 Vic_lab + Vic_1
 Vic_dodge + BC_dodge
 Vic_men + Vic_women
+BC_seniors + Vic_seniors
 Vic_seniors + Vic_seniors_lab
 Vic_seniors_lab + Vic_seniors_lab_leg_bot
 Vic_seniors_lab /  Vic_seniors_lab_leg_bot
