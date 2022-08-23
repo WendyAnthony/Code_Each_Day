@@ -29,6 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load-package}
 # install.packages("")
 library(tidyverse)
+library(patchwork) # for muoltiple plots
 ```
 
 # Data
@@ -67,6 +68,12 @@ str(Victoria_pop_age_gender_2021)
 colnames(Victoria_pop_age_gender_2021)
 print(Victoria_pop_age_gender_2021)
 glimpse(Victoria_pop_age_gender_2021)
+
+class(BC_pop_2021)
+str(BC_pop_2021)
+colnames(BC_pop_2021)
+print(BC_pop_2021)
+glimpse(BC_pop_2021)
 ```
 
 # Data cleaning
@@ -157,7 +164,7 @@ factor, str_sort unique
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Victoria_pop_age_gender_2021 %>%
+Vic_1 <- Victoria_pop_age_gender_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + # width = 1 no space between bars
   theme_light() +
@@ -172,6 +179,7 @@ Victoria_pop_age_gender_2021 %>%
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_1 
 ```
 
 ## ggplot data stacked bar British Columbia
@@ -189,14 +197,14 @@ BC <- BC_pop_2021 %>%
     axis.text.x = element_text(angle = 45, hjust = 1)
     ) +
   scale_fill_manual(values = colour_palette) +
-  labs(title = "British Columbia Population \n by Age & Gender",
+  labs(title = "BC Population \n by Age & Gender",
        subtitle = "(2021 Canada Census)",
        x = "Age Group",
        y = "Population",
-       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021") 
-
-BC + scale_y_continuous(limits = c(0, 400000), labels = scales::comma) 
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021") + 
+  scale_y_continuous(limits = c(0, 400000), labels = scales::comma) 
         # to avoid scientific notation
+BC
 ```
 
 ## ggplot data stacked column with labels for BC
@@ -224,13 +232,13 @@ BC_lab <- BC_pop_2021 %>%
     legend.position = "bottom"
     ) +
   scale_fill_manual(values = colour_palette) +
-  labs(title = "British Columbia Population \n by Age & Gender",
+  labs(title = "BC Population \n by Age & Gender",
        subtitle = "(2021 Canada Census)",
        x = "Age Group",
        y = "Population",
-       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
-
-BC_lab + scale_y_continuous(limits = c(0, 400000), labels = scales::comma) 
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021") + 
+  scale_y_continuous(limits = c(0, 400000), labels = scales::comma) 
+BC_lab
 ```
 
 
@@ -247,7 +255,7 @@ Victoria_pop_age_gender_2021 <- Victoria_pop_age_gender_2021 %>%
 
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Victoria_pop_age_gender_2021 %>%
+Vic_lab <- Victoria_pop_age_gender_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_col()  + 
   geom_text(aes(y = label_y, label = pop), vjust = 1.25, size = 3) +
@@ -264,6 +272,7 @@ Victoria_pop_age_gender_2021 %>%
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_lab
 ```
 
 
@@ -275,7 +284,7 @@ factor, str_sort unique
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Victoria_pop_age_gender_2021 %>%
+Vic_dodge <- Victoria_pop_age_gender_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
               # width = 1 no space between bars
@@ -291,6 +300,7 @@ Victoria_pop_age_gender_2021 %>%
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_dodge
 ```
 
 ## ggplot data -  BC
@@ -298,7 +308,7 @@ Victoria_pop_age_gender_2021 %>%
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-BC_pop_2021 %>%
+BC_dodge <- BC_pop_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
               # width = 1 no space between bars
@@ -309,12 +319,13 @@ BC_pop_2021 %>%
     axis.text.x = element_text(angle = 45, hjust = 1)
     ) +
   scale_fill_manual(values = colour_palette) +
-  labs(title = "British Columbia Population \n by Age & Gender",
+  labs(title = "BC Population \n by Age & Gender",
        subtitle = "(2021 Canada Census)",
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021") + 
   scale_y_continuous(limits = c(0, 200000), labels = scales::comma) 
+BC_dodge
 ```
 
 ## ggplot data for seniors
@@ -325,7 +336,7 @@ factor, str_sort unique
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Victoria_pop_age_gender_2021_seniors %>%
+Vic_seniors <- Victoria_pop_age_gender_2021_seniors %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
                       # wideth = 1 no space between bars
@@ -341,6 +352,7 @@ Victoria_pop_age_gender_2021_seniors %>%
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_seniors
 ```
 
 ## ggplot data for seniors with data labels 
@@ -349,7 +361,7 @@ https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Victoria_pop_age_gender_2021_seniors %>%
+Vic_seniors_lab <- Victoria_pop_age_gender_2021_seniors %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
                         # wideth = 1 no space between bars
@@ -367,6 +379,7 @@ Victoria_pop_age_gender_2021_seniors %>%
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_seniors_lab
 ```
 
 ## ggplot data for seniors with data labels, legend at bottom
@@ -375,7 +388,7 @@ https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Victoria_pop_age_gender_2021_seniors %>%
+Vic_seniors_lab_leg_bot <- Victoria_pop_age_gender_2021_seniors %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
                             # wideth = 1 no space between bars
@@ -394,12 +407,13 @@ Victoria_pop_age_gender_2021_seniors %>%
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_seniors_lab_leg_bot
 ```
 
 ## ggplot data for pivot wide Women
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
 ```{r ggplot-data-women, class.output="scroll-100"}
-Victoria_pop_age_gender_2021_wide %>%
+Vic_women <- Victoria_pop_age_gender_2021_wide %>%
   ggplot(aes(x = age_group, y = Women)) +
   geom_bar(stat = "identity", position = position_dodge(), 
            alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
@@ -414,13 +428,14 @@ Victoria_pop_age_gender_2021_wide %>%
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_women
 ```
 
 
 ## ggplot data for pivot wide Men
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
 ```{r ggplot-data-men, class.output="scroll-100"}
-Victoria_pop_age_gender_2021_wide %>%
+Vic_men <- Victoria_pop_age_gender_2021_wide %>%
   ggplot(aes(x = age_group, y = Men)) +
   geom_bar(stat = "identity", position = position_dodge(), 
            alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
@@ -430,11 +445,26 @@ Victoria_pop_age_gender_2021_wide %>%
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     ) +
-  labs(title = "Victoria, BC Men Population by Age",
+  labs(title = "Victoria, BC Men's Population by Age",
        subtitle = "(2021 Canada Census)",
        x = "Age Group",
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+Vic_men
+```
+
+---
+
+# Patchwork
+```{r patchwork, class.output="scroll-100"}
+BC + BC_dodge
+BC_lab
+Vic_lab + Vic_1
+Vic_dodge + BC_dodge
+Vic_men + Vic_women
+Vic_seniors + Vic_seniors_lab
+Vic_seniors_lab /
+  Vic_seniors_lab_leg_bot
 ```
 
 ---
