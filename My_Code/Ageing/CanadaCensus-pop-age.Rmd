@@ -1,0 +1,339 @@
+---
+title: "Canada Census - Population Ageing"
+author: "Wendy Anthony"
+date: "`r file.info(knitr::current_input())$ctime`"
+output:
+  html_document:
+    highlight: zenburn
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 300px; # for vertical scroll
+  max-width: 1500px; # for horizontal scroll
+  overflow-y: auto; # for vertical scroll
+  overflow-x: auto; # for horizontal scroll  
+  background-color: inherit;
+}
+```
+
+# Load Package
+```{r load-package}
+# install.packages("")
+library(tidyverse)
+```
+
+# Data
+
+## Download Data
+https://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/page.cfm?topic=2&lang=E&dguid=2021A00055917034#fogsTitle5  
+Download Options (upper right arrow): csv
+https://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/alternative.cfm?topic=2&lang=E&dguid=2021A00055917034&objectId=5
+
+
+## Read Data
+skip first 2 rows
+```{r read-data-skip-first2, class.output="scroll-100"}
+Victoria_pop_age_gender_2021 <- read.csv("Pop-Age-Gender-Victoria-2021-Census-2021A00055917034_5.csv", 
+                                         skip = 2, header = T)
+```
+skip last 12 rows
+```{r read-data-skip-last12, class.output="scroll-100"}
+Victoria_pop_age_gender_2021 <- head(Victoria_pop_age_gender_2021, -12)
+```
+
+# Analyze data
+```{r analyze-data, class.output="scroll-100"}
+class(Victoria_pop_age_gender_2021)
+str(Victoria_pop_age_gender_2021)
+colnames(Victoria_pop_age_gender_2021)
+print(Victoria_pop_age_gender_2021)
+glimpse(Victoria_pop_age_gender_2021)
+```
+
+# Data cleaning
+## Change values for Women+ Men+
+```{r change-values, class.output="scroll-100"}
+Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021 == "Women+"] <- "Women"
+Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021 == "Men+"] <- "Men"
+```
+
+## Change column name
+```{r change-col-name, class.output="scroll-100"}
+colnames(Victoria_pop_age_gender_2021) <- c("age_group", "gender", "pop")
+```
+
+# Sort values of age_group to ensure 100+ appears in correct position
+```{r sort-values, class.output="scroll-100"}
+Victoria_pop_age_gender_2021$age_group <- factor(Victoria_pop_age_gender_2021$age_group, 
+      levels = str_sort(unique(Victoria_pop_age_gender_2021$age_group), numeric = TRUE))
+str(Victoria_pop_age_gender_2021)
+```
+
+
+
+# Senior Age Groups
+## Select rows by value
+```{r class.output="scroll-100"}
+Victoria_pop_age_gender_2021_seniors <- 
+  Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021$age_group %in%
+          c("55 to 59", "60 to 64", "65 to 69", "70 to 74", "75 to 79", 
+            "80 to 84", "85 to 89", "90 to 94", "95 to 99", "100+"), ]
+```
+
+
+
+# Pivot wider
+```{r pivot-wider, class.output="scroll-100"}
+Victoria_pop_age_gender_2021_wide <- Victoria_pop_age_gender_2021 %>%
+  pivot_wider(names_from = gender, values_from = pop)
+```
+
+# Analyze wider data
+```{r analyze-data-wide, class.output="scroll-100"}
+class(Victoria_pop_age_gender_2021_wide)
+str(Victoria_pop_age_gender_2021_wide)
+colnames(Victoria_pop_age_gender_2021_wide)
+print(Victoria_pop_age_gender_2021_wide)
+glimpse(Victoria_pop_age_gender_2021_wide)
+```
+
+# Sort values of age_group to ensure 100+ appears in correct position
+factor, str_sort unique
+```{r sort-values-wide, class.output="scroll-100"}
+Victoria_pop_age_gender_2021_wide$age_group <- factor(Victoria_pop_age_gender_2021_wide$age_group, 
+  levels = str_sort(unique(Victoria_pop_age_gender_2021_wide$age_group), numeric = TRUE))
+str(Victoria_pop_age_gender_2021_wide)
+```
+
+# Row index number
+```{r row-index-number, class.output="scroll-100"}
+Victoria_pop_age_gender_2021_wide$index <- as.numeric(row.names(Victoria_pop_age_gender_2021_wide))
+Victoria_pop_age_gender_2021_wide[order(Victoria_pop_age_gender_2021_wide$index), ]
+```
+
+# Plot data
+## plot
+```{r plot-data, class.output="scroll-100"}
+plot(Victoria_pop_age_gender_2021)
+```
+
+## ggplot data stacked bar
+PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
+Sort values of age_group to ensure 100+ appears in correct position  
+factor, str_sort unique
+```{r ggplot-data-stacked, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+Victoria_pop_age_gender_2021 %>%
+  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+  geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + # width = 1 no space between bars
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "Victoria, BC Population \n by Age & Gender",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+
+
+## ggplot data stacked column with labels
+need to find the cumulative sum for each stack  
+https://r-graphics.org/recipe-bar-graph-labels#cb84-7
+```{r ggplot-data-stacked-labels, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+
+# get cumulative sum
+Victoria_pop_age_gender_2021 <- Victoria_pop_age_gender_2021 %>%
+  group_by(age_group) %>% 
+  mutate(label_y = cumsum(pop))
+
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+Victoria_pop_age_gender_2021 %>%
+  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+  geom_col()  + 
+  geom_text(aes(y = label_y, label = pop), vjust = 1.25, size = 3) +
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "bottom"
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "Victoria, BC Population \n by Age & Gender",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+
+
+## ggplot data
+PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
+Sort values of age_group to ensure 100+ appears in correct position  
+factor, str_sort unique
+```{r ggplot-data, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+Victoria_pop_age_gender_2021 %>%
+  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+              # width = 1 no space between bars
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "Victoria, BC Population \n by Age & Gender",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+
+## ggplot data for seniors
+PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
+Sort values of age_group to ensure 100+ appears in correct position  
+factor, str_sort unique
+```{r ggplot-data-seniors, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+Victoria_pop_age_gender_2021_seniors %>%
+  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+                      # wideth = 1 no space between bars
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "Victoria, BC Seniors Population \n by Age & Gender",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+
+## ggplot data for seniors with data labels 
+https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-bar-in-r-with-ggplot2
+```{r ggplot-data-seniors-data-label-dodge, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+Victoria_pop_age_gender_2021_seniors %>%
+  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+  geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
+                        # wideth = 1 no space between bars
+  geom_text(aes(label = pop), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
+                                    # vjust negative shows above bar
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "Victoria, BC Seniors Population \n by Age & Gender",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+
+## ggplot data for seniors with data labels, legend at bottom
+https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-bar-in-r-with-ggplot2
+```{r ggplot-data-seniors-data-label, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+Victoria_pop_age_gender_2021_seniors %>%
+  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+  geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
+                            # wideth = 1 no space between bars
+  geom_text(aes(label = pop), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
+                                # vjust negative shows above bar
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "bottom"
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "Victoria, BC Seniors Population \n by Age & Gender",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+## ggplot data for pivot wide Women
+PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
+```{r ggplot-data-women, class.output="scroll-100"}
+Victoria_pop_age_gender_2021_wide %>%
+  ggplot(aes(x = age_group, y = Women)) +
+  geom_bar(stat = "identity", position = position_dodge(), 
+           alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    ) +
+  labs(title = "Victoria, BC Women Population by Age",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+
+
+## ggplot data for pivot wide Men
+PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
+```{r ggplot-data-men, class.output="scroll-100"}
+Victoria_pop_age_gender_2021_wide %>%
+  ggplot(aes(x = age_group, y = Men)) +
+  geom_bar(stat = "identity", position = position_dodge(), 
+           alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    ) +
+  labs(title = "Victoria, BC Men Population by Age",
+       subtitle = "(2021 Canada Census)",
+       x = "Age Group",
+       y = "Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
+```
+
+---
+
+# Session info
+```{r session-info}
+# to document specific packages used to run script
+sessionInfo()
+```

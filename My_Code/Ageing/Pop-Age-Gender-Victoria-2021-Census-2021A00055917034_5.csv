@@ -1,0 +1,61 @@
+"Population by five-year age groups and gender, Victoria, 2021"
+"Victoria(City)"
+Age groups,Gender,Population counts
+"0 to 4","Women+","1400"
+"0 to 4","Men+","1510"
+"5 to 9","Women+","1440"
+"5 to 9","Men+","1395"
+"10 to 14","Women+","1365"
+"10 to 14","Men+","1340"
+"15 to 19","Women+","1340"
+"15 to 19","Men+","1375"
+"20 to 24","Women+","3475"
+"20 to 24","Men+","2565"
+"25 to 29","Women+","4525"
+"25 to 29","Men+","4235"
+"30 to 34","Women+","4490"
+"30 to 34","Men+","4545"
+"35 to 39","Women+","3635"
+"35 to 39","Men+","3820"
+"40 to 44","Women+","2945"
+"40 to 44","Men+","3035"
+"45 to 49","Women+","2570"
+"45 to 49","Men+","2635"
+"50 to 54","Women+","2705"
+"50 to 54","Men+","2640"
+"55 to 59","Women+","2895"
+"55 to 59","Men+","2665"
+"60 to 64","Women+","3205"
+"60 to 64","Men+","2755"
+"65 to 69","Women+","3345"
+"65 to 69","Men+","2675"
+"70 to 74","Women+","3230"
+"70 to 74","Men+","2675"
+"75 to 79","Women+","2015"
+"75 to 79","Men+","1685"
+"80 to 84","Women+","1430"
+"80 to 84","Men+","985"
+"85 to 89","Women+","1065"
+"85 to 89","Men+","605"
+"90 to 94","Women+","890"
+"90 to 94","Men+","350"
+"95 to 99","Women+","275"
+"95 to 99","Men+","80"
+"100+","Women+","40"
+"100+","Men+","10"
+
+Symbols:
+..,not available for a specific reference period
+...,not applicable
+E,use with caution
+F,too unreliable to be published
+r, revised
+x,suppressed to meet the confidentiality requirements of the Statistics Act
+rE,Revised. Use with caution.
+
+"Source: Statistics Canada, 2021 Census of Population."
+
+"How to cite: Statistics Canada. 2022. Focus on Geography Series. 2021 Census."
+"Statistics Canada Catalogue no. 98-404-X2016001. Ottawa. Released February 9th, 2022."
+"http://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/index.cfm?Lang=E"
+
