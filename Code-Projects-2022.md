@@ -58,12 +58,15 @@
 - Trying ```bookdown``` to host a tutorial for making ```leaflet``` maps
 - discovered settings page for a repository https://github.com/WendyAnthony/Code_Each_Day/settings
   - my Code_Each_Day repository contains many mini repositories ...
+- working with Canada Census data for population/gender/age, first try: Victoria; plot in ggplot2
 
 **Thoughts:** 
 - I've always wanted to write a book!?!
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Bookdown/Leaflet_Maps_in_R
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Ageing
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Ageing/CanadaCensus-pop-age.html
 
 [TOC](#TOC)
 
