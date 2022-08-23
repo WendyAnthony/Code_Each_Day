@@ -120,6 +120,17 @@ BC_pop_2021_seniors <-
 ```
 
 
+## create new pop column with commas
+to use for labels
+```{r pop-comma, class.output="scroll-100"}
+# this changes values of y axis,
+ BC_pop_2021$pop_comma <- formatC(BC_pop_2021$pop, format = "d", big.mark = ",")
+ BC_pop_2021_seniors$pop_comma <- formatC(BC_pop_2021_seniors$pop, format = "d", big.mark = ",")
+ Victoria_pop_age_gender_2021$pop_comma <- formatC(Victoria_pop_age_gender_2021$pop, format = "d", big.mark = ",")
+ Victoria_pop_age_gender_2021_seniors$pop_comma <- formatC(Victoria_pop_age_gender_2021_seniors$pop, format = "d", big.mark = ",")
+```
+
+
 
 # Pivot wider
 ```{r pivot-wider, class.output="scroll-100"}
@@ -225,7 +236,7 @@ colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 BC_lab <- BC_pop_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_col()  + 
-  geom_text(aes(y = label_y, label = pop), vjust = 1.25, size = 2) +
+  geom_text(aes(y = label_y, label = pop_comma), vjust = 1.25, size = 2) +
   theme_light() +
   theme(
     plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
@@ -261,7 +272,7 @@ colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 Vic_lab <- Victoria_pop_age_gender_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_col()  + 
-  geom_text(aes(y = label_y, label = pop), vjust = 1.25, size = 3) +
+  geom_text(aes(y = label_y, label = pop_comma), vjust = 1.25, size = 3) +
   theme_light() +
   theme(
     plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
@@ -400,7 +411,7 @@ Vic_seniors_lab <- Victoria_pop_age_gender_2021_seniors %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
                         # wideth = 1 no space between bars
-  geom_text(aes(label = pop), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
+  geom_text(aes(label = pop_comma), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
                                     # vjust negative shows above bar
   theme_light() +
   theme(
@@ -428,7 +439,7 @@ Vic_seniors_lab_leg_bot <-  ggplot(Victoria_pop_age_gender_2021_seniors,
                                    aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
                             # wideth = 1 no space between bars
-  geom_text(aes(label = pop), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
+  geom_text(aes(label = pop_comma), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
                                 # vjust negative shows above bar
   theme_light() +
   theme(
@@ -514,10 +525,6 @@ census_age_gender_ggplot <- function(data, colpat1, colpat2, title, subtitle, ca
   data[data == "Men+"] <- "Men"
   colnames(data) <- c("age_group", "gender", "pop")
 
-  # format pop with commas in thousands
-#  formatC(data$pop, format = "d", big.mark = ",")
-
-
   # sort age values
   data$age_group <- factor(data$age_group, levels = str_sort(unique(data$age_group), numeric = TRUE))
 
@@ -546,11 +553,12 @@ census_age_gender_ggplot <- function(data, colpat1, colpat2, title, subtitle, ca
          caption = caption)
 
    aspect_ratio <- aspect_ratio
-   ggplot2::ggsave(filename, height = 10 , width = 4 * aspect_ratio)
+   ggsave(filename, height = 10 , width = 4 * aspect_ratio)
 }
 ```
 
 ## Plot and save file Using Function census_age_gender_ggplot
+without the pop_comma for thousands (can't figure out how to create in function)
 ```{r plot-function-save-file, class.output="scroll-100"}
 p1 <- census_age_gender_ggplot(data = Victoria_pop_age_gender_2021_seniors,
         colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
