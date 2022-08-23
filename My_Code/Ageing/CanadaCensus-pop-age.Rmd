@@ -545,6 +545,12 @@ Canada_senior_pop_2021 %>% mutate(Province = fct_reorder(Province, index)) %>%
   # https://www.geeksforgeeks.org/reversing-the-order-of-a-ggplot2-legend/
   guides(fill = guide_legend(reverse=TRUE))
 ```
+### Save file
+```{r save-file}
+   aspect_ratio <- 2.5
+   ggsave("Canada_senior_pop_perc_2016_2021.jpg", height = 10 , width = 4 * aspect_ratio)
+```
+
 
 ---
 
