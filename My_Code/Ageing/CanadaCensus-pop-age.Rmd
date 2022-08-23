@@ -50,7 +50,7 @@ skip last 12 rows
 Victoria_pop_age_gender_2021 <- head(Victoria_pop_age_gender_2021, -12)
 ```
 
-# Analyze data
+## Analyze data
 ```{r analyze-data, class.output="scroll-100"}
 class(Victoria_pop_age_gender_2021)
 str(Victoria_pop_age_gender_2021)
@@ -71,7 +71,7 @@ Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021 == "Men+"] <- "Men"
 colnames(Victoria_pop_age_gender_2021) <- c("age_group", "gender", "pop")
 ```
 
-# Sort values of age_group to ensure 100+ appears in correct position
+## Sort values of age_group to ensure 100+ appears in correct position
 ```{r sort-values, class.output="scroll-100"}
 Victoria_pop_age_gender_2021$age_group <- factor(Victoria_pop_age_gender_2021$age_group, 
       levels = str_sort(unique(Victoria_pop_age_gender_2021$age_group), numeric = TRUE))
@@ -289,6 +289,7 @@ Victoria_pop_age_gender_2021_seniors %>%
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
 ```
+
 ## ggplot data for pivot wide Women
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
 ```{r ggplot-data-women, class.output="scroll-100"}
