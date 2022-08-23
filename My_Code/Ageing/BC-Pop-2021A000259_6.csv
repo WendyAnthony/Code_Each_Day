@@ -1,0 +1,61 @@
+"Population by five-year age groups and gender, British Columbia, 2021"
+"British Columbia"
+Age groups,Gender,Population counts
+"0 to 4","Women+","105805"
+"0 to 4","Men+","111015"
+"5 to 9","Women+","118485"
+"5 to 9","Men+","125810"
+"10 to 14","Women+","123365"
+"10 to 14","Men+","132425"
+"15 to 19","Women+","122445"
+"15 to 19","Men+","131245"
+"20 to 24","Women+","143145"
+"20 to 24","Men+","151505"
+"25 to 29","Women+","166585"
+"25 to 29","Men+","170500"
+"30 to 34","Women+","179660"
+"30 to 34","Men+","178925"
+"35 to 39","Women+","178175"
+"35 to 39","Men+","175175"
+"40 to 44","Women+","163260"
+"40 to 44","Men+","156480"
+"45 to 49","Women+","160515"
+"45 to 49","Men+","149520"
+"50 to 54","Women+","170460"
+"50 to 54","Men+","158540"
+"55 to 59","Women+","183825"
+"55 to 59","Men+","172520"
+"60 to 64","Women+","184920"
+"60 to 64","Men+","170210"
+"65 to 69","Women+","166700"
+"65 to 69","Men+","152705"
+"70 to 74","Women+","141995"
+"70 to 74","Men+","130370"
+"75 to 79","Women+","95015"
+"75 to 79","Men+","86060"
+"80 to 84","Women+","65780"
+"80 to 84","Men+","55285"
+"85 to 89","Women+","42005"
+"85 to 89","Men+","32315"
+"90 to 94","Women+","23120"
+"90 to 94","Men+","13720"
+"95 to 99","Women+","6925"
+"95 to 99","Men+","2865"
+"100+","Women+","1185"
+"100+","Men+","330"
+
+Symbols:
+..,not available for a specific reference period
+...,not applicable
+E,use with caution
+F,too unreliable to be published
+r, revised
+x,suppressed to meet the confidentiality requirements of the Statistics Act
+rE,Revised. Use with caution.
+
+"Source: Statistics Canada, 2021 Census of Population."
+
+"How to cite: Statistics Canada. 2022. Focus on Geography Series. 2021 Census."
+"Statistics Canada Catalogue no. 98-404-X2016001. Ottawa. Released February 9th, 2022."
+"http://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/index.cfm?Lang=E"
+

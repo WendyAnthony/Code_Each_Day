@@ -1,0 +1,45 @@
+"Proportion (in percentage) of the population aged 65 and over, Canada, provinces and territories, 2016 and 2021"
+"British Columbia"
+Geography,Years,Proportion of the population (%)
+"Newfoundland and Labrador","2016","19.4"
+"Newfoundland and Labrador","2021","23.6"
+"Prince Edward Island","2016","19.4"
+"Prince Edward Island","2021","21.2"
+"Nova Scotia","2016","19.9"
+"Nova Scotia","2021","22.2"
+"New Brunswick","2016","19.9"
+"New Brunswick","2021","22.8"
+"Quebec","2016","18.3"
+"Quebec","2021","20.6"
+"Ontario","2016","16.7"
+"Ontario","2021","18.5"
+"Manitoba","2016","15.6"
+"Manitoba","2021","17.1"
+"Saskatchewan","2016","15.5"
+"Saskatchewan","2021","17.5"
+"Alberta","2016","12.3"
+"Alberta","2021","14.8"
+"British Columbia","2016","18.3"
+"British Columbia","2021","20.3"
+"Yukon","2016","11.9"
+"Yukon","2021","15"
+"Northwest Territories","2016","7.7"
+"Northwest Territories","2021","10"
+"Nunavut","2016","3.8"
+"Nunavut","2021","4.4"
+
+Symbols:
+..,not available for a specific reference period
+...,not applicable
+E,use with caution
+F,too unreliable to be published
+r, revised
+x,suppressed to meet the confidentiality requirements of the Statistics Act
+rE,Revised. Use with caution.
+
+"Source: Statistics Canada, 2021 Census of Population."
+
+"How to cite: Statistics Canada. 2022. Focus on Geography Series. 2021 Census."
+"Statistics Canada Catalogue no. 98-404-X2016001. Ottawa. Released February 9th, 2022."
+"http://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/index.cfm?Lang=E"
+
