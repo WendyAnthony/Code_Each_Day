@@ -463,8 +463,8 @@ Vic_lab + Vic_1
 Vic_dodge + BC_dodge
 Vic_men + Vic_women
 Vic_seniors + Vic_seniors_lab
-Vic_seniors_lab /
-  Vic_seniors_lab_leg_bot
+Vic_seniors_lab + Vic_seniors_lab_leg_bot
+Vic_seniors_lab /  Vic_seniors_lab_leg_bot
 ```
 
 ---
