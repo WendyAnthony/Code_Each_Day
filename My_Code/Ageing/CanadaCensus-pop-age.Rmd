@@ -74,6 +74,8 @@ str(BC_pop_2021)
 colnames(BC_pop_2021)
 print(BC_pop_2021)
 glimpse(BC_pop_2021)
+
+glimpse(Canada_senior_pop_2021)
 ```
 
 # Data cleaning
@@ -90,6 +92,7 @@ BC_pop_2021[BC_pop_2021 == "Men+"] <- "Men"
 ```{r change-col-name, class.output="scroll-100"}
 colnames(Victoria_pop_age_gender_2021) <- c("age_group", "gender", "pop")
 colnames(BC_pop_2021) <- c("age_group", "gender", "pop")
+colnames(Canada_senior_pop_2021) <- c("Province", "Year", "PercentageOfPop")
 ```
 
 ## Sort values of age_group to ensure 100+ appears in correct position
@@ -136,6 +139,9 @@ to use for labels
 ```{r pivot-wider, class.output="scroll-100"}
 Victoria_pop_age_gender_2021_wide <- Victoria_pop_age_gender_2021 %>%
   pivot_wider(names_from = gender, values_from = pop)
+
+Canada_senior_pop_2021_wide <- Canada_senior_pop_2021 %>%
+  pivot_wider(names_from = Year, values_from = PercentageOfPop)
 ```
 
 # Analyze wider data
@@ -145,6 +151,9 @@ str(Victoria_pop_age_gender_2021_wide)
 colnames(Victoria_pop_age_gender_2021_wide)
 print(Victoria_pop_age_gender_2021_wide)
 glimpse(Victoria_pop_age_gender_2021_wide)
+
+glimpse(Canada_senior_pop_2021_wide)
+str(Canada_senior_pop_2021_wide)
 ```
 
 # Sort values of age_group to ensure 100+ appears in correct position
@@ -499,6 +508,34 @@ Vic_men <- Victoria_pop_age_gender_2021_wide %>%
        y = "Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
 Vic_men
+```
+---
+
+## ggplot data - Canada Seniors as Percent of Population
+
+```{r ggplot-data-Canada, class.output="scroll-100"}
+# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+
+Can_sen_percent <- Canada_senior_pop_2021 %>%
+  ggplot(aes(x = Province, y = PercentageOfPop, fill = Year)) +
+  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+              # width = 1 no space between bars
+  theme_light() +
+  theme(
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
+    ) +
+  scale_fill_manual(values = colour_palette) +
+  labs(title = "Canadian Seniors as Percent of Population",
+       subtitle = "(2016 & 2021 Canada Census)",
+       x = NULL,
+       y = "% of Population",
+       caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021") + 
+  scale_y_continuous(limits = c(0, 25)) 
+Can_sen_percent
 ```
 
 ---
