@@ -168,6 +168,9 @@ str(Victoria_pop_age_gender_2021_wide)
 ```{r row-index-number, class.output="scroll-100"}
 Victoria_pop_age_gender_2021_wide$index <- as.numeric(row.names(Victoria_pop_age_gender_2021_wide))
 Victoria_pop_age_gender_2021_wide[order(Victoria_pop_age_gender_2021_wide$index), ]
+
+Canada_senior_pop_2021$index <- as.numeric(row.names(Canada_senior_pop_2021))
+Canada_senior_pop_2021[order(Canada_senior_pop_2021$index), ]
 ```
 
 # Plot data
@@ -176,7 +179,7 @@ Victoria_pop_age_gender_2021_wide[order(Victoria_pop_age_gender_2021_wide$index)
 plot(Victoria_pop_age_gender_2021)
 ```
 
-## ggplot data stacked bar Victoria, BC
+## Victoria ggplot - stacked bar 
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
@@ -203,7 +206,7 @@ Vic_1 <- Victoria_pop_age_gender_2021 %>%
 Vic_1 
 ```
 
-## ggplot data stacked bar British Columbia
+## BC Pop ggplot - stacked bar 
 ```{r ggplot-data-stacked-BC, class.output="scroll-100"}
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
@@ -229,7 +232,7 @@ BC <- BC_pop_2021 %>%
 BC
 ```
 
-## ggplot data stacked column with labels for BC
+## BC pop ggplot - stacked column with labels
 need to find the cumulative sum for each stack  
 https://r-graphics.org/recipe-bar-graph-labels#cb84-7
 ```{r ggplot-data-stacked-labels-BC, class.output="scroll-100"}
@@ -265,7 +268,7 @@ BC_lab
 ```
 
 
-## ggplot data stacked column with labels
+## Victoria pop ggplot - stacked column with labels
 need to find the cumulative sum for each stack  
 https://r-graphics.org/recipe-bar-graph-labels#cb84-7
 ```{r ggplot-data-stacked-labels, class.output="scroll-100"}
@@ -300,7 +303,7 @@ Vic_lab
 ```
 
 
-## ggplot data - Victoria BC
+## Victoria pop ggplot - side-by-side
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
@@ -328,7 +331,7 @@ Vic_dodge <- Victoria_pop_age_gender_2021 %>%
 Vic_dodge
 ```
 
-## ggplot data -  BC
+## BC Pop ggplot
 ```{r ggplot-data-BC, class.output="scroll-100"}
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
@@ -354,7 +357,7 @@ BC_dodge <- BC_pop_2021 %>%
 BC_dodge
 ```
 
-## ggplot data for seniors - Victoria
+## Victoria seniors ggplot
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
@@ -382,7 +385,7 @@ Vic_seniors <- Victoria_pop_age_gender_2021_seniors %>%
 Vic_seniors
 ```
 
-## ggplot data for seniors
+## BC seniors ggplot 
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>   
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
@@ -410,7 +413,7 @@ BC_seniors <- BC_pop_2021_seniors %>%
 BC_seniors
 ```
 
-## ggplot data for seniors with data labels 
+## Victoria seniors with data labels ggplot 
 https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-bar-in-r-with-ggplot2
 ```{r ggplot-data-seniors-data-label-dodge, class.output="scroll-100"}
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
@@ -438,7 +441,7 @@ Vic_seniors_lab <- Victoria_pop_age_gender_2021_seniors %>%
 Vic_seniors_lab
 ```
 
-## ggplot data for seniors with data labels, legend at bottom
+## Victoria seniors with data labels, legend at bottom ggplot 
 https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-bar-in-r-with-ggplot2
 ```{r ggplot-data-seniors-data-label, class.output="scroll-100"}
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
@@ -467,7 +470,7 @@ Vic_seniors_lab_leg_bot <-  ggplot(Victoria_pop_age_gender_2021_seniors,
 Vic_seniors_lab_leg_bot
 ```
 
-## ggplot data for pivot wide Women
+## Women pivot wide ggplot
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
 ```{r ggplot-data-women, class.output="scroll-100"}
 Vic_women <- Victoria_pop_age_gender_2021_wide %>%
@@ -489,7 +492,7 @@ Vic_women
 ```
 
 
-## ggplot data for pivot wide Men
+## Men pivot wide ggplot
 PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
 ```{r ggplot-data-men, class.output="scroll-100"}
 Vic_men <- Victoria_pop_age_gender_2021_wide %>%
@@ -509,23 +512,26 @@ Vic_men <- Victoria_pop_age_gender_2021_wide %>%
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021")
 Vic_men
 ```
----
 
-## ggplot data - Canada Seniors as Percent of Population
+
+## Canada Seniors as Percent of Population ggplot
 
 ```{r ggplot-data-Canada, class.output="scroll-100"}
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Can_sen_percent <- Canada_senior_pop_2021 %>%
+
+# https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
+Canada_senior_pop_2021 %>% mutate(Province = fct_reorder(Province, index)) %>%
   ggplot(aes(x = Province, y = PercentageOfPop, fill = Year)) +
   geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
               # width = 1 no space between bars
+  geom_text(aes(label = PercentageOfPop), size = 3, position = position_dodge(width = 0.9), vjust = 0.5, hjust = 1.2) + 
   theme_light() +
   theme(
     plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.x = element_text(angle = 360, hjust = 1),
     legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
@@ -534,8 +540,10 @@ Can_sen_percent <- Canada_senior_pop_2021 %>%
        x = NULL,
        y = "% of Population",
        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021") + 
-  scale_y_continuous(limits = c(0, 25)) 
-Can_sen_percent
+  scale_y_continuous(limits = c(0, 25)) + 
+  coord_flip() +
+  # https://www.geeksforgeeks.org/reversing-the-order-of-a-ggplot2-legend/
+  guides(fill = guide_legend(reverse=TRUE))
 ```
 
 ---
