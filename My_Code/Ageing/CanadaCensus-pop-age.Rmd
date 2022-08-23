@@ -169,9 +169,10 @@ Vic_1 <- Victoria_pop_age_gender_2021 %>%
   geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "Victoria, BC Population \n by Age & Gender",
@@ -192,9 +193,10 @@ BC <- BC_pop_2021 %>%
   geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "BC Population \n by Age & Gender",
@@ -226,10 +228,11 @@ BC_lab <- BC_pop_2021 %>%
   geom_text(aes(y = label_y, label = pop), vjust = 1.25, size = 2) +
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
-    legend.position = "bottom"
+    legend.position = "bottom",
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "BC Population \n by Age & Gender",
@@ -261,10 +264,11 @@ Vic_lab <- Victoria_pop_age_gender_2021 %>%
   geom_text(aes(y = label_y, label = pop), vjust = 1.25, size = 3) +
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
-    legend.position = "bottom"
+    legend.position = "bottom",
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "Victoria, BC Population \n by Age & Gender",
@@ -290,9 +294,10 @@ Vic_dodge <- Victoria_pop_age_gender_2021 %>%
               # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "Victoria, BC Population \n by Age & Gender",
@@ -314,9 +319,10 @@ BC_dodge <- BC_pop_2021 %>%
               # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "BC Population \n by Age & Gender",
@@ -342,9 +348,10 @@ Vic_seniors <- Victoria_pop_age_gender_2021_seniors %>%
                       # wideth = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "Victoria, BC Seniors Population \n by Age & Gender",
@@ -369,9 +376,10 @@ BC_seniors <- BC_pop_2021_seniors %>%
                       # wideth = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "BC Seniors Population \n by Age & Gender",
@@ -396,9 +404,10 @@ Vic_seniors_lab <- Victoria_pop_age_gender_2021_seniors %>%
                                     # vjust negative shows above bar
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "Victoria, BC Seniors Population \n by Age & Gender",
@@ -415,18 +424,19 @@ https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-
 # colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
 colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
 
-Vic_seniors_lab_leg_bot <- Victoria_pop_age_gender_2021_seniors %>%
-  ggplot(aes(x = age_group, y = pop, fill = gender)) +
+Vic_seniors_lab_leg_bot <-  ggplot(Victoria_pop_age_gender_2021_seniors,
+                                   aes(x = age_group, y = pop, fill = gender)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
                             # wideth = 1 no space between bars
   geom_text(aes(label = pop), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
                                 # vjust negative shows above bar
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
-    legend.position = "bottom"
+    legend.position = "bottom",
+    legend.title = element_blank()
     ) +
   scale_fill_manual(values = colour_palette) +
   labs(title = "Victoria, BC Seniors Population \n by Age & Gender",
@@ -446,9 +456,9 @@ Vic_women <- Victoria_pop_age_gender_2021_wide %>%
            alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
-    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.x = element_text(angle = 45, hjust = 1)
     ) +
   labs(title = "Victoria, BC Women Population by Age",
        subtitle = "(2021 Canada Census)",
@@ -468,7 +478,7 @@ Vic_men <- Victoria_pop_age_gender_2021_wide %>%
            alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(2), face = "bold", hjust = 0.5),
+    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     ) +
@@ -494,6 +504,89 @@ Vic_seniors + Vic_seniors_lab
 Vic_seniors_lab + Vic_seniors_lab_leg_bot
 Vic_seniors_lab /  Vic_seniors_lab_leg_bot
 ```
+
+# Function census_age_gender_ggplot
+```{r function, class.output="scroll-100"}
+census_age_gender_ggplot <- function(data, colpat1, colpat2, title, subtitle, caption, labelsize, filename, aspect_ratio = 2.5){
+
+  # clean data
+  data[data == "Women+"] <- "Women"
+  data[data == "Men+"] <- "Men"
+  colnames(data) <- c("age_group", "gender", "pop")
+
+  # format pop with commas in thousands
+#  formatC(data$pop, format = "d", big.mark = ",")
+
+
+  # sort age values
+  data$age_group <- factor(data$age_group, levels = str_sort(unique(data$age_group), numeric = TRUE))
+
+  # Colour brewer color-blind safe
+   colour_palette <- c(colpat1, colpat2)
+
+   # ggplot
+   ggplot(data, aes(x = age_group, y = pop, fill = gender)) +
+    geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  +
+    # wideth = 1 no space between bars
+    geom_text(aes(label = pop), size = labelsize, position = position_dodge(width = 0.9), vjust = 0.35, hjust = 1.05, angle = 90) +
+    # vjust negative shows above bar
+    theme_light() +
+    theme(
+      plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom",
+      legend.title = element_blank()
+    ) +
+    scale_fill_manual(values = colour_palette) +
+    labs(title = title,
+         subtitle = subtitle,
+         x = "Age Group",
+         y = "Population",
+         caption = caption)
+
+   aspect_ratio <- aspect_ratio
+   ggplot2::ggsave(filename, height = 10 , width = 4 * aspect_ratio)
+}
+```
+
+## Plot and save file Using Function census_age_gender_ggplot
+```{r plot-function-save-file, class.output="scroll-100"}
+p1 <- census_age_gender_ggplot(data = Victoria_pop_age_gender_2021_seniors,
+        colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
+        title = "Victoria Seniors Population \n by Age & Gender",
+        subtitle = "(2021 Canada Census)",
+        caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
+        labelsize = 3,
+        filename = "Victoria_pop_age_gender_2021_seniors.jpg"
+)
+p1
+
+# this changes values of y axis,
+# BC_pop_2021$pop <- formatC(BC_pop_2021$pop, format = "d", big.mark = ",")
+
+p2 <- census_age_gender_ggplot(data = BC_pop_2021,
+         colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
+         title = "BC Population \n by Age & Gender",
+         subtitle = "(2021 Canada Census)",
+         caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
+         labelsize = 3,
+         filename = "BC_pop_2021.jpg"
+)
+p2
+
+p3 <- census_age_gender_ggplot(data = BC_pop_2021_seniors,
+                               colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
+                               title = "BC Seniors Population \n by Age & Gender",
+                               subtitle = "(2021 Canada Census)",
+                               caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
+                               labelsize = 3,
+                               filename = "BC_pop_2021_seniors.jpg"
+)
+p3
+```
+
+
 
 ---
 
