@@ -47,16 +47,20 @@ https://www12.statcan.gc.ca/census-recensement/2021/as-sa/fogs-spg/page.cfm?topi
 ## Read Data
 skip first 2 rows
 ```{r read-data-skip-first2, class.output="scroll-100"}
-Victoria_pop_age_gender_2021 <- read.csv("Pop-Age-Gender-Victoria-2021-Census-2021A00055917034_5.csv", 
+Victoria_pop_age_gender_2021 <- 
+  read.csv("Pop-Age-Gender-Victoria-2021-Census-2021A00055917034_5.csv", 
                                          skip = 2, header = T)
-BC_pop_2021 <- read.csv("BC-Pop-2021A000259_6.csv", 
+BC_pop_2021 <- 
+  read.csv("BC-Pop-2021A000259_6.csv", 
                                          skip = 2, header = T)
-Canada_senior_pop_2021 <- read.csv("Canada-Senior-pop-percentage-2021A000259_5.csv", 
+Canada_senior_pop_2021 <- 
+  read.csv("Canada-Senior-pop-percentage-2021A000259_5.csv", 
                                          skip = 2, header = T)
 ```
 skip last 12 rows
 ```{r read-data-skip-last12, class.output="scroll-100"}
-Victoria_pop_age_gender_2021 <- head(Victoria_pop_age_gender_2021, -12)
+Victoria_pop_age_gender_2021 <- head(
+  Victoria_pop_age_gender_2021, -12)
 BC_pop_2021 <- head(BC_pop_2021, -12)
 Canada_senior_pop_2021 <- head(Canada_senior_pop_2021, -12)
 ```
@@ -81,8 +85,10 @@ glimpse(Canada_senior_pop_2021)
 # Data cleaning
 ## Change values for Women+ Men+
 ```{r change-values, class.output="scroll-100"}
-Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021 == "Women+"] <- "Women"
-Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021 == "Men+"] <- "Men"
+Victoria_pop_age_gender_2021[
+  Victoria_pop_age_gender_2021 == "Women+"] <- "Women"
+Victoria_pop_age_gender_2021[
+  Victoria_pop_age_gender_2021 == "Men+"] <- "Men"
 
 BC_pop_2021[BC_pop_2021 == "Women+"] <- "Women"
 BC_pop_2021[BC_pop_2021 == "Men+"] <- "Men"
@@ -90,19 +96,26 @@ BC_pop_2021[BC_pop_2021 == "Men+"] <- "Men"
 
 ## Change column name
 ```{r change-col-name, class.output="scroll-100"}
-colnames(Victoria_pop_age_gender_2021) <- c("age_group", "gender", "pop")
-colnames(BC_pop_2021) <- c("age_group", "gender", "pop")
-colnames(Canada_senior_pop_2021) <- c("Province", "Year", "PercentageOfPop")
+colnames(Victoria_pop_age_gender_2021) <- 
+  c("age_group", "gender", "pop")
+colnames(BC_pop_2021) <- 
+  c("age_group", "gender", "pop")
+colnames(Canada_senior_pop_2021) <- 
+  c("Province", "Year", "PercentageOfPop")
 ```
 
 ## Sort values of age_group to ensure 100+ appears in correct position
 ```{r sort-values, class.output="scroll-100"}
-Victoria_pop_age_gender_2021$age_group <- factor(Victoria_pop_age_gender_2021$age_group, 
-      levels = str_sort(unique(Victoria_pop_age_gender_2021$age_group), numeric = TRUE))
+Victoria_pop_age_gender_2021$age_group <- factor(
+  Victoria_pop_age_gender_2021$age_group, 
+      levels = str_sort(unique(
+        Victoria_pop_age_gender_2021$age_group), 
+                        numeric = TRUE))
 str(Victoria_pop_age_gender_2021)
 
 BC_pop_2021$age_group <- factor(BC_pop_2021$age_group, 
-      levels = str_sort(unique(BC_pop_2021$age_group), numeric = TRUE))
+      levels = str_sort(unique(
+        BC_pop_2021$age_group), numeric = TRUE))
 str(BC_pop_2021)
 ```
 
@@ -112,7 +125,8 @@ str(BC_pop_2021)
 ## Select rows by value
 ```{r class.output="scroll-100"}
 Victoria_pop_age_gender_2021_seniors <- 
-  Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021$age_group %in%
+  Victoria_pop_age_gender_2021[Victoria_pop_age_gender_2021$age_group 
+                               %in%
           c("55 to 59", "60 to 64", "65 to 69", "70 to 74", "75 to 79", 
             "80 to 84", "85 to 89", "90 to 94", "95 to 99", "100+"), ]
 
@@ -127,10 +141,18 @@ BC_pop_2021_seniors <-
 to use for labels
 ```{r pop-comma, class.output="scroll-100"}
 # this changes values of y axis,
- BC_pop_2021$pop_comma <- formatC(BC_pop_2021$pop, format = "d", big.mark = ",")
- BC_pop_2021_seniors$pop_comma <- formatC(BC_pop_2021_seniors$pop, format = "d", big.mark = ",")
- Victoria_pop_age_gender_2021$pop_comma <- formatC(Victoria_pop_age_gender_2021$pop, format = "d", big.mark = ",")
- Victoria_pop_age_gender_2021_seniors$pop_comma <- formatC(Victoria_pop_age_gender_2021_seniors$pop, format = "d", big.mark = ",")
+ BC_pop_2021$pop_comma <- formatC(
+   BC_pop_2021$pop, 
+   format = "d", big.mark = ",")
+ BC_pop_2021_seniors$pop_comma <- formatC(
+   BC_pop_2021_seniors$pop, 
+   format = "d", big.mark = ",")
+ Victoria_pop_age_gender_2021$pop_comma <- formatC(
+   Victoria_pop_age_gender_2021$pop, 
+   format = "d", big.mark = ",")
+ Victoria_pop_age_gender_2021_seniors$pop_comma <- formatC(
+   Victoria_pop_age_gender_2021_seniors$pop, 
+   format = "d", big.mark = ",")
 ```
 
 
@@ -159,17 +181,23 @@ str(Canada_senior_pop_2021_wide)
 # Sort values of age_group to ensure 100+ appears in correct position
 factor, str_sort unique
 ```{r sort-values-wide, class.output="scroll-100"}
-Victoria_pop_age_gender_2021_wide$age_group <- factor(Victoria_pop_age_gender_2021_wide$age_group, 
-  levels = str_sort(unique(Victoria_pop_age_gender_2021_wide$age_group), numeric = TRUE))
+Victoria_pop_age_gender_2021_wide$age_group <- factor(
+  Victoria_pop_age_gender_2021_wide$age_group, 
+  levels = str_sort(unique(
+    Victoria_pop_age_gender_2021_wide$age_group), 
+                    numeric = TRUE))
 str(Victoria_pop_age_gender_2021_wide)
 ```
 
 # Row index number
 ```{r row-index-number, class.output="scroll-100"}
-Victoria_pop_age_gender_2021_wide$index <- as.numeric(row.names(Victoria_pop_age_gender_2021_wide))
-Victoria_pop_age_gender_2021_wide[order(Victoria_pop_age_gender_2021_wide$index), ]
+Victoria_pop_age_gender_2021_wide$index <- as.numeric(
+  row.names(Victoria_pop_age_gender_2021_wide))
+Victoria_pop_age_gender_2021_wide[order(
+  Victoria_pop_age_gender_2021_wide$index), ]
 
-Canada_senior_pop_2021$index <- as.numeric(row.names(Canada_senior_pop_2021))
+Canada_senior_pop_2021$index <- as.numeric(
+  row.names(Canada_senior_pop_2021))
 Canada_senior_pop_2021[order(Canada_senior_pop_2021$index), ]
 ```
 
@@ -184,15 +212,18 @@ PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
 ```{r ggplot-data-stacked, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 Vic_1 <- Victoria_pop_age_gender_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + # width = 1 no space between bars
+  geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + 
+  # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_blank()
@@ -208,15 +239,18 @@ Vic_1
 
 ## BC Pop ggplot - stacked bar 
 ```{r ggplot-data-stacked-BC, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 BC <- BC_pop_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + # width = 1 no space between bars
+  geom_bar(stat = "identity", alpha = 0.95, width = 0.85)  + 
+  # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_blank()
@@ -236,22 +270,25 @@ BC
 need to find the cumulative sum for each stack  
 https://r-graphics.org/recipe-bar-graph-labels#cb84-7
 ```{r ggplot-data-stacked-labels-BC, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
 
 # get cumulative sum
 BC_pop_2021 <- BC_pop_2021 %>%
   group_by(age_group) %>% 
   mutate(label_y = cumsum(pop))
 
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 BC_lab <- BC_pop_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_col()  + 
-  geom_text(aes(y = label_y, label = pop_comma), vjust = 1.25, size = 2) +
+  geom_text(aes(y = label_y, label = pop_comma), 
+            vjust = 1.25, size = 2) +
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.position = "bottom",
@@ -272,22 +309,25 @@ BC_lab
 need to find the cumulative sum for each stack  
 https://r-graphics.org/recipe-bar-graph-labels#cb84-7
 ```{r ggplot-data-stacked-labels, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
 
 # get cumulative sum
 Victoria_pop_age_gender_2021 <- Victoria_pop_age_gender_2021 %>%
   group_by(age_group) %>% 
   mutate(label_y = cumsum(pop))
 
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 Vic_lab <- Victoria_pop_age_gender_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
   geom_col()  + 
-  geom_text(aes(y = label_y, label = pop_comma), vjust = 1.25, size = 3) +
+  geom_text(aes(y = label_y, label = pop_comma), 
+            vjust = 1.25, size = 3) +
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.position = "bottom",
@@ -308,16 +348,19 @@ PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
 ```{r ggplot-data, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 Vic_dodge <- Victoria_pop_age_gender_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+  geom_bar(stat = "identity", position = position_dodge(), 
+           alpha = 0.95, width = 0.85)  + 
               # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_blank()
@@ -333,16 +376,19 @@ Vic_dodge
 
 ## BC Pop ggplot
 ```{r ggplot-data-BC, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 BC_dodge <- BC_pop_2021 %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+  geom_bar(stat = "identity", position = position_dodge(), 
+           alpha = 0.95, width = 0.85)  + 
               # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_blank()
@@ -362,16 +408,19 @@ PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
 ```{r ggplot-data-seniors, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 Vic_seniors <- Victoria_pop_age_gender_2021_seniors %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+  geom_bar(stat = "identity", position = position_dodge(), 
+           alpha = 0.95, width = 0.85)  + 
                       # wideth = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_blank()
@@ -390,16 +439,19 @@ PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14 >>
 Sort values of age_group to ensure 100+ appears in correct position  
 factor, str_sort unique
 ```{r ggplot-data-seniors-BC, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 BC_seniors <- BC_pop_2021_seniors %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+  geom_bar(stat = "identity", position = position_dodge(), 
+           alpha = 0.95, width = 0.85)  + 
                       # wideth = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_blank()
@@ -416,18 +468,22 @@ BC_seniors
 ## Victoria seniors with data labels ggplot 
 https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-bar-in-r-with-ggplot2
 ```{r ggplot-data-seniors-data-label-dodge, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 Vic_seniors_lab <- Victoria_pop_age_gender_2021_seniors %>%
   ggplot(aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
+  geom_bar(stat = "identity", position = "dodge", 
+           alpha = 0.95, width = 0.85)  + 
                         # wideth = 1 no space between bars
-  geom_text(aes(label = pop_comma), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
+  geom_text(aes(label = pop_comma), size = 3, 
+            position = position_dodge(width = 0.9), vjust = -0.25) + 
                                     # vjust negative shows above bar
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.title = element_blank()
@@ -444,18 +500,23 @@ Vic_seniors_lab
 ## Victoria seniors with data labels, legend at bottom ggplot 
 https://intellipaat.com/community/16343/how-to-put-labels-over-geombar-for-each-bar-in-r-with-ggplot2
 ```{r ggplot-data-seniors-data-label, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
-Vic_seniors_lab_leg_bot <-  ggplot(Victoria_pop_age_gender_2021_seniors,
-                                   aes(x = age_group, y = pop, fill = gender)) +
-  geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  + 
+Vic_seniors_lab_leg_bot <-  ggplot(
+    Victoria_pop_age_gender_2021_seniors, 
+    aes(x = age_group, y = pop, fill = gender)) +
+  geom_bar(stat = "identity", position = "dodge", 
+           alpha = 0.95, width = 0.85)  + 
                             # wideth = 1 no space between bars
-  geom_text(aes(label = pop_comma), size = 3, position = position_dodge(width = 0.9), vjust = -0.25) + 
+  geom_text(aes(label = pop_comma), size = 3, 
+            position = position_dodge(width = 0.9), vjust = -0.25) + 
                                 # vjust negative shows above bar
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.position = "bottom",
@@ -476,10 +537,12 @@ PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
 Vic_women <- Victoria_pop_age_gender_2021_wide %>%
   ggplot(aes(x = age_group, y = Women)) +
   geom_bar(stat = "identity", position = position_dodge(), 
-           alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
+           alpha = 0.75, width = 0.75, fill = "#d8b365")  + 
+  # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1)
     ) +
@@ -498,10 +561,12 @@ PROBLEM: age grouping not correct e.g. 100+ comes after 10 to 14
 Vic_men <- Victoria_pop_age_gender_2021_wide %>%
   ggplot(aes(x = age_group, y = Men)) +
   geom_bar(stat = "identity", position = position_dodge(), 
-           alpha = 0.75, width = 0.75, fill = "#d8b365")  + # wideth = 1 no space between bars
+           alpha = 0.75, width = 0.75, fill = "#d8b365")  + 
+  # width = 1 no space between bars
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1),
     ) +
@@ -517,19 +582,25 @@ Vic_men
 ## Canada Seniors as Percent of Population ggplot
 
 ```{r ggplot-data-Canada, class.output="scroll-100"}
-# colour_palette <- c("#d8b365", "#5ab4ac") # Colour brewer color-blind safe
-colour_palette <- c("#af8dc3", "#7fbf7b") # Colour brewer color-blind safe
+# colour_palette <- c("#d8b365", "#5ab4ac") 
+# Colour brewer color-blind safe
+colour_palette <- c("#af8dc3", "#7fbf7b") 
 
 
 # https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
-Canada_senior_pop_2021 %>% mutate(Province = fct_reorder(Province, index)) %>%
+Canada_senior_pop_2021 %>% mutate(
+    Province = fct_reorder(Province, index)) %>%
   ggplot(aes(x = Province, y = PercentageOfPop, fill = Year)) +
-  geom_bar(stat = "identity", position = position_dodge(), alpha = 0.95, width = 0.85)  + 
+  geom_bar(stat = "identity", position = position_dodge(), 
+           alpha = 0.95, width = 0.85)  + 
               # width = 1 no space between bars
-  geom_text(aes(label = PercentageOfPop), size = 3, position = position_dodge(width = 0.9), vjust = 0.5, hjust = 1.2) + 
+  geom_text(aes(label = PercentageOfPop), size = 3, 
+            position = position_dodge(width = 0.9), 
+            vjust = 0.5, hjust = 1.2) + 
   theme_light() +
   theme(
-    plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
+    plot.title = element_text(
+      size = rel(1.5), face = "bold", hjust = 0.5),
     plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
     axis.text.x = element_text(angle = 360, hjust = 1),
     legend.title = element_blank()
@@ -548,7 +619,8 @@ Canada_senior_pop_2021 %>% mutate(Province = fct_reorder(Province, index)) %>%
 ### Save file
 ```{r save-file}
    aspect_ratio <- 2.5
-   ggsave("Canada_senior_pop_perc_2016_2021.jpg", height = 10 , width = 4 * aspect_ratio)
+   ggsave("Canada_senior_pop_perc_2016_2021.jpg", 
+          height = 10 , width = 4 * aspect_ratio)
 ```
 
 
@@ -556,42 +628,55 @@ Canada_senior_pop_2021 %>% mutate(Province = fct_reorder(Province, index)) %>%
 
 # Patchwork
 ```{r patchwork, class.output="scroll-100"}
-BC + BC_dodge
-BC_lab
+BC + BC_dodge # compare stacked to side-by-side
+BC + BC_lab
 Vic_lab + Vic_1
 Vic_dodge + BC_dodge
 Vic_men + Vic_women
 BC_seniors + Vic_seniors
 Vic_seniors + Vic_seniors_lab
 Vic_seniors_lab + Vic_seniors_lab_leg_bot
-Vic_seniors_lab /  Vic_seniors_lab_leg_bot
+Vic_seniors_lab / Vic_seniors_lab_leg_bot
+Vic_1 + Vic_dodge # compare stacked to side-by-side
+(BC + BC_dodge) / (Vic_1 + Vic_dodge)
+BC + BC_dodge + Vic_1 + Vic_dodge +
+  plot_layout(widths = c(2, 1))
 ```
 
-# Function census_age_gender_ggplot
-```{r function, class.output="scroll-100"}
-census_age_gender_ggplot <- function(data, colpat1, colpat2, title, subtitle, caption, labelsize, filename, aspect_ratio = 2.5){
-
+# Function census_age_gender_ggplot and save all in one
+```{r function_ggplot_save, class.output="scroll-100"}
+census_age_gender_ggplot_save <- function(data, colpat1, colpat2, 
+                            title, subtitle, caption, labelsize, 
+                            filename, aspect_ratio = 2.5){
+  
   # clean data
   data[data == "Women+"] <- "Women"
   data[data == "Men+"] <- "Men"
   colnames(data) <- c("age_group", "gender", "pop")
 
   # sort age values
-  data$age_group <- factor(data$age_group, levels = str_sort(unique(data$age_group), numeric = TRUE))
+  data$age_group <- factor(
+    data$age_group, levels = str_sort(unique(data$age_group), 
+                                      numeric = TRUE))
 
   # Colour brewer color-blind safe
-   colour_palette <- c(colpat1, colpat2)
+  colour_palette <- c(colpat1, colpat2)
 
-   # ggplot
-   ggplot(data, aes(x = age_group, y = pop, fill = gender)) +
-    geom_bar(stat = "identity", position = "dodge", alpha = 0.95, width = 0.85)  +
+  # ggplot
+  ggplot(data, aes(x = age_group, y = pop, fill = gender)) +
+    geom_bar(stat = "identity", position = "dodge", 
+             alpha = 0.95, width = 0.85)  +
     # wideth = 1 no space between bars
-    geom_text(aes(label = pop), size = labelsize, position = position_dodge(width = 0.9), vjust = 0.35, hjust = 1.05, angle = 90) +
+    geom_text(aes(label = pop), size = labelsize, 
+              position = position_dodge(width = 0.9), 
+              vjust = 0.35, hjust = 1.05, angle = 90) +
     # vjust negative shows above bar
     theme_light() +
     theme(
-      plot.title = element_text(size = rel(1.5), face = "bold", hjust = 0.5),
-      plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+      plot.title = element_text(
+        size = rel(1.5), face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(
+        size = rel(.92), hjust = 0.5),
       axis.text.x = element_text(angle = 45, hjust = 1),
       legend.position = "bottom",
       legend.title = element_blank()
@@ -603,15 +688,16 @@ census_age_gender_ggplot <- function(data, colpat1, colpat2, title, subtitle, ca
          y = "Population",
          caption = caption)
 
-   aspect_ratio <- aspect_ratio
-   ggsave(filename, height = 10 , width = 4 * aspect_ratio)
+  aspect_ratio <- aspect_ratio
+  ggsave(filename, height = 10 , width = 4 * aspect_ratio)
 }
 ```
 
 ## Plot and save file Using Function census_age_gender_ggplot
 without the pop_comma for thousands (can't figure out how to create in function)
 ```{r plot-function-save-file, class.output="scroll-100"}
-p1 <- census_age_gender_ggplot(data = Victoria_pop_age_gender_2021_seniors,
+p1 <- census_age_gender_ggplot_save(
+        data = Victoria_pop_age_gender_2021_seniors,
         colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
         title = "Victoria Seniors Population \n by Age & Gender",
         subtitle = "(2021 Canada Census)",
@@ -624,7 +710,7 @@ p1
 # this changes values of y axis,
 # BC_pop_2021$pop <- formatC(BC_pop_2021$pop, format = "d", big.mark = ",")
 
-p2 <- census_age_gender_ggplot(data = BC_pop_2021,
+p2 <- census_age_gender_ggplot_save(data = BC_pop_2021,
          colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
          title = "BC Population \n by Age & Gender",
          subtitle = "(2021 Canada Census)",
@@ -634,15 +720,118 @@ p2 <- census_age_gender_ggplot(data = BC_pop_2021,
 )
 p2
 
-p3 <- census_age_gender_ggplot(data = BC_pop_2021_seniors,
-                               colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
-                               title = "BC Seniors Population \n by Age & Gender",
-                               subtitle = "(2021 Canada Census)",
-                               caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
-                               labelsize = 3,
-                               filename = "BC_pop_2021_seniors.jpg"
+p3 <- census_age_gender_ggplot_save(data = BC_pop_2021_seniors,
+         colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
+         title = "BC Seniors Population \n by Age & Gender",
+         subtitle = "(2021 Canada Census)",
+         caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
+         labelsize = 3,
+         filename = "BC_pop_2021_seniors.jpg"
 )
 p3
+```
+
+# Function census_age_gender_ggplot 
+- Separate plot creation from filesave
+```{r function_ggplot, class.output="scroll-100"}
+census_age_gender_ggplot <- function(
+  data, colpat1, colpat2, title, subtitle, caption, labelsize){
+  
+  # clean data
+  data[data == "Women+"] <- "Women"
+  data[data == "Men+"] <- "Men"
+  colnames(data) <- c("age_group", "gender", "pop")
+
+  # sort age values
+  data$age_group <- factor(
+    data$age_group, levels = str_sort(unique(data$age_group), 
+                                      numeric = TRUE))
+
+  # Colour brewer color-blind safe
+  colour_palette <- c(colpat1, colpat2)
+
+  # ggplot
+  age_group_plot <- ggplot(
+      data, aes(x = age_group, y = pop, fill = gender)) +
+    geom_bar(stat = "identity", position = "dodge", 
+             alpha = 0.95, width = 0.85)  +
+    # wideth = 1 no space between bars
+    geom_text(aes(label = pop), size = labelsize, 
+              position = position_dodge(width = 0.9), 
+              vjust = 0.35, hjust = 1.05, angle = 90) +
+    # vjust negative shows above bar
+    theme_light() +
+    theme(
+      plot.title = element_text(
+        size = rel(1.5), face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = rel(.92), hjust = 0.5),
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "bottom",
+      legend.title = element_blank()
+    ) +
+    scale_fill_manual(values = colour_palette) +
+    labs(title = title,
+         subtitle = subtitle,
+         x = "Age Group",
+         y = "Population",
+         caption = caption)
+}
+```
+
+## Function to Save ggplot 
+```{r function_save_ggplot, class.output="scroll-100"}
+save_ggplot <- function(filename, aspect_ratio = 2.5){
+  aspect_ratio <- aspect_ratio
+  ggsave(filename, height = 10 , width = 4 * aspect_ratio)
+}
+```
+
+## Plot and save file Using separate save function
+```{r plot-function-save-file-sep, class.output="scroll-100"}
+
+p1_plot <- census_age_gender_ggplot(
+    data = Victoria_pop_age_gender_2021_seniors,
+     colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
+     title = "Victoria Seniors Population \n by Age & Gender",
+     subtitle = "(2021 Canada Census)",
+     caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
+     labelsize = 3
+)
+p1_plot
+
+p1_save <- save_ggplot(
+  filename = "Victoria_pop_age_gender_2021_seniors_1.jpg")
+p1_save
+
+
+# this changes values of y axis,
+# BC_pop_2021$pop <- formatC(BC_pop_2021$pop, format = "d", big.mark = ",")
+
+p2_plot <- census_age_gender_ggplot(
+     data = BC_pop_2021,
+     colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
+     title = "BC Population \n by Age & Gender",
+     subtitle = "(2021 Canada Census)",
+     caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
+     labelsize = 3
+)
+p2_plot
+
+p2_save <- save_ggplot(filename = "BC_pop_2021_1.jpg")
+p2_save
+
+p3_plot <- census_age_gender_ggplot(
+     data = BC_pop_2021_seniors,
+     colpat1 = "#af8dc3", colpat2 = "#7fbf7b",
+     title = "BC Seniors Population \n by Age & Gender",
+     subtitle = "(2021 Canada Census)",
+     caption = "Data: https://www12.statcan.gc.ca/census-recensement/2021",
+     labelsize = 3
+)
+p3_plot
+
+p3_save <- save_ggplot(filename = "BC_pop_2021_seniors_1.jpg")
+p3_save
 ```
 
 
