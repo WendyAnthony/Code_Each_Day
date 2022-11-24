@@ -63,9 +63,9 @@
 - I built on basic code from a random blog post
 
 **Links to code work:** 
-- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Bookdown/Leaflet_Maps_in_R
-- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Ageing
-- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Ageing/CanadaCensus-pop-age.html
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/ShinyApps/ShinySearch
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ShinyApps/ShinySearch/app.R
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/ShinyApps/ShinySearch/app.R
 
 [TOC](#TOC)
 
