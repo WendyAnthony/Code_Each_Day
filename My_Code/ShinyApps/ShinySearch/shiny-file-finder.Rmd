@@ -1,0 +1,178 @@
+---
+title: "Shiny File Finder"
+author: "Wendy Anthony"
+date: "`r file.info(knitr::current_input())$ctime`"
+output:
+  html_document:
+    highlight: zenburn
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 300px; # for vertical scroll
+  max-width: 1500px; # for horizontal scroll
+  overflow-y: auto; # for vertical scroll
+  overflow-x: auto; # for horizontal scroll  
+  background-color: inherit;
+}
+```
+
+# Load Package
+```{r load-package}
+# install.packages("")
+library()
+```
+
+# Import csv
+created from shiny file finder app
+```{r import-csv, class.output="scroll-100"}
+files_info <- read.csv("files-dir-info-link-click-R.csv")
+files_info
+```
+
+## File info
+```{r file-info, class.output="scroll-100"}
+class(files_info) # df
+dplyr::glimpse(files_info)
+```
+
+# Convert mtime to date
+```{r convert-mtime-date, class.output="scroll-100"}
+dplyr::glimpse(files_info)
+files_info$mtime <- as.Date(files_info$mtime)
+files_info$ctime <- as.Date(files_info$ctime)
+dplyr::glimpse(files_info)
+```
+
+# Sort by date
+```{r sort-date, class.output="scroll-100"}
+files_info_order <- files_info[rev(order(as.Date(files_info$mtime, format="%Y/%m/%d"))),]
+```
+
+
+# Character vector list of links
+```{r links-list, class.output="scroll-100"}
+links <- files_info$date_path_sep_clicklink
+```
+
+# Character vector ordered list of links
+```{r links-order-list, class.output="scroll-100"}
+links_order <- files_info_order$date_path_sep_clicklink
+```
+
+
+## Convert character vector to df
+```{r convert-list-df, class.output="scroll-100"}
+links_dv <- data.frame(links)
+links_dv
+
+dplyr::glimpse(links_dv)
+class(links_dv)
+```
+
+
+## Convert character by order vector to df
+```{r convert-list-order-df, class.output="scroll-100"}
+links_dv_order <- data.frame(links_order)
+links_dv_order
+
+dplyr::glimpse(links_dv_order)
+class(links_dv_order)
+```
+
+
+# For Loop
+
+## Print for loop
+```{r print-for-loop, class.output="scroll-100"}
+for (i in links_dv) {
+  print(i)
+}
+```
+
+## Print for ordered loop
+```{r print-for-loop-ordered, class.output="scroll-100"}
+for (i in links_dv_order) {
+  print(i)
+}
+```
+
+## For loop
+```{r for-loop, class.output="scroll-100"}
+for (i in links_dv) {
+  
+  result <- paste(i, " <br> ")
+  
+  print(result, quote=FALSE)
+  
+  result_noq <- noquote(result)
+  
+  write.csv(result_noq, file = "link-results.csv")
+  # open .csv in excel
+  # copy column of links
+  # paste into html body skeleton
+}
+```
+
+## For loop ordered
+```{r for-loop-ordered, class.output="scroll-100"}
+for (i in links_dv_order) {
+  
+  result_order <- paste(i, " <br> ")
+  
+  print(result_order, quote=FALSE)
+  
+  result_noq_order <- noquote(result_order)
+  
+  write.csv(result_noq_order, file = "link-results-order.csv")
+  # open .csv in excel
+  # copy column of links
+  # paste into html body skeleton
+}
+```
+
+```{r , class.output="scroll-100"}
+
+```
+
+
+```{r , class.output="scroll-100"}
+
+```
+
+
+```{r , class.output="scroll-100"}
+
+```
+
+
+```{r , class.output="scroll-100"}
+
+```
+
+
+```{r , class.output="scroll-100"}
+
+```
+
+
+```{r , class.output="scroll-100"}
+
+```
+
+
+---
+
+# Session info
+```{r session-info}
+# to document specific packages used to run script
+sessionInfo()
+```
