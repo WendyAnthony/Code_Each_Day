@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XLVII](#weekXLVII)**    
+  - [R3D328 2022-11-24](#R3D328)
 - **[Week XXXIIV](#weekXXXIV)**    
   - [R3D234 2022-08-22](#R3D234)
 - **[Week XXXIII](#weekXXXIII)**    
@@ -51,7 +53,24 @@
 - **[Wishlist](#wishlist)**  
 
 ***
-# Week XXXIV <a name="weeXXXIV"/>
+# Week XLVII <a name="weekXLVII"/>
+***
+## R3D328 2022-11-24 <a name="R3D328"/>
+**Today's Progress**: 
+- Working on a Shiny App to list local computer files
+
+**Thoughts:** 
+- I built on basic code from a random blog post
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Bookdown/Leaflet_Maps_in_R
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Ageing
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Ageing/CanadaCensus-pop-age.html
+
+[TOC](#TOC)
+
+***
+# Week XXXIV <a name="weekXXXIV"/>
 ***
 ## R3D234 2022-08-22 <a name="R3D234"/>
 **Today's Progress**: 
@@ -71,7 +90,7 @@
 [TOC](#TOC)
 
 ***
-# Week XXXIII <a name="weeXXXIII"/>
+# Week XXXIII <a name="weekXXXIII"/>
 ***
 ## R3D227 2022-08-15 <a name="R3D227"/>
 **Today's Progress**: 
@@ -88,7 +107,7 @@
 [TOC](#TOC)
 
 ***
-# Week XXXII <a name="weeXXXII"/>
+# Week XXXII <a name="weekXXXII"/>
 ***
 ## R3D221 2022-08-09 <a name="R3D221"/>
 **Today's Progress**: 
@@ -109,7 +128,7 @@
 
 
 ***
-# Week XXIV <a name="weeXXIV"/>
+# Week XXIV <a name="weekXXIV"/>
 ***
 ## R3D166 2022-06-15 <a name="R3D166"/>
 **Today's Progress**: 
@@ -141,7 +160,7 @@
 [TOC](#TOC)
 
 ***
-# Week XXIII <a name="weeXXIII"/>
+# Week XXIII <a name="weekXXIII"/>
 ***
 ## R3D157 2022-06-07 <a name="R3D158"/>
 **Today's Progress**: 
@@ -202,7 +221,7 @@
 [TOC](#TOC)
 
 ***
-# Week XXII <a name="weeXXII"/>
+# Week XXII <a name="weekXXII"/>
 ***
 ## R3D152 2022-06-01 <a name="R3D152"/>
 **Today's Progress**: 
