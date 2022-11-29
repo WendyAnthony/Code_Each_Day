@@ -324,10 +324,10 @@ wordcloud2(xmas_tunes_french_df_tidy,
            widgetsize = c(1000,800), ellipticity = .9, gridSize = 10,
            color = colorVec, fontFamily = "Julee")
 
-wc = wordcloud2(xmas_tunes_french_df_tidy)
+wc = wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800))
 wc
 
-wordcloud2(xmas_tunes_french_df_tidy,
+wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
 color = ifelse(xmas_tunes_french_df_tidy[, 2] < 9, 'grey',
                ifelse(xmas_tunes_french_df_tidy[, 2] > 20, 'red', 'green')))
 
