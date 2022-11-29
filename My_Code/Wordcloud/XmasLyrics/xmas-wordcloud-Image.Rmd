@@ -79,10 +79,31 @@ str(xmas_tunes_french_df)
 ```{r dataprep, class.output="scroll-100", results='hide', echo=FALSE, message=FALSE}
 # Get countries for stop words
 all_countries <- stopwords_getlanguages(source = "snowball")
-
 # Get stop words for all languages available
-stops <- map_df(all_countries, function(x) get_stopwords(language = x))
+stops <- purrr::map_df(all_countries, function(x) get_stopwords(language = x))
+class(stops) # [1] "tbl_df"     "tbl"        "data.frame"
+str(stops)
 
+# character vectors
+# class(fr_sw) # [1] "character"
+# same as
+# stopwords::data_stopwords_snowball$fr
+fr_sw <- stopwords::stopwords("fr", source = "snowball")
+lexicon <- rep("lexicon", times = length(fr_sw))
+# create df
+fr_sw_df <- data.frame(fr_sw, lexicon)
+# change column name 
+colnames(fr_sw_df)[1] <- "word"
+fr_sw_df
+
+# rbind add rows from 2 dataframes
+stops <- rbind(stops, fr_sw_df)
+
+
+
+
+
+# class(stops) # "tbl_df"     "tbl"        "data.frame"
 
 # Get words, remove stop words
 xmas_tunes_df_prep <- xmas_tunes_df %>%
