@@ -56,7 +56,7 @@ colnames(xmas_titles_french_df)[1] <- "Titre"
 xmas_titles_french_df
 ```
 
-# English Christmas Carols
+# English Christmas Carols Wordclouds 
 
 ## 46 English Carol Titles of lyrics used
 *(scroll to see whole list)*
@@ -292,7 +292,7 @@ color = ifelse(xmas_tunes_df_tidy_short[, 3] >  20, 'red',
 
 ---
 
-# French Christmas Carols
+# French Christmas Carols Wordclouds
 
 ## 15 FrenchCarol Titles of lyrics used
 *(scroll to see whole list)*
