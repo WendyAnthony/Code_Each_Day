@@ -7,6 +7,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week XLVIII](#weekXLVIII)**    
+  - [R3D333 2022-11-29](#R3D333)
 - **[Week XLVII](#weekXLVII)**    
   - [R3D328 2022-11-24](#R3D328)
 - **[Week XXXIIV](#weekXXXIV)**    
@@ -51,6 +53,22 @@
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
+
+***
+# Week XLVIII <a name="weekXLVIII"/>
+***
+## R3D333 2022-11-29 <a name="R3D333"/>
+**Today's Progress**: 
+- Created wordcloud using ```wordcloud2```
+
+**Thoughts:** 
+- Frustrated that a few functions don't work, searching found it common error
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud/XmasLyrics
+- https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/ShinyApps/ShinySearch/app.R
+
+[TOC](#TOC)
 
 ***
 # Week XLVII <a name="weekXLVII"/>
