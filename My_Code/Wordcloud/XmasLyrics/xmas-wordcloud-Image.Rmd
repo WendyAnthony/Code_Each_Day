@@ -56,21 +56,13 @@ colnames(xmas_titles_french_df)[1] <- "Titre"
 xmas_titles_french_df
 ```
 
-# Carol Titles
+# English Christmas Carols
 
 ## 46 English Carol Titles of lyrics used
 *(scroll to see whole list)*
 ```{r titles, class.output="scroll-100", echo=FALSE}
 xmas_titles_df
 ```
-
-
-## 15 FrenchCarol Titles of lyrics used
-*(scroll to see whole list)*
-```{r french-titles-first, class.output="scroll-100", echo=FALSE}
-xmas_titles_french_df
-```
-
 
 ```{r load-data-xmas-tunes, class.output="scroll-100", results='hide', echo=FALSE}
 xmas_tunes_df <- read.delim("xmas-lyrics.txt")
@@ -139,8 +131,6 @@ xmas_tunes_french_df_tidy <- xmas_tunes_french_df_prep %>%
 head(xmas_tunes_df_tidy)
 xmas_tunes_df_tidy
 ```
-
-# The Wordclouds
 
 ## Interactive English Wordclouds
 *(Hover over the words to see how often words are used in these 46 carols)*
@@ -302,6 +292,7 @@ color = ifelse(xmas_tunes_df_tidy_short[, 3] >  20, 'red',
 
 ---
 
+# French Christmas Carols
 
 ## 15 FrenchCarol Titles of lyrics used
 *(scroll to see whole list)*
