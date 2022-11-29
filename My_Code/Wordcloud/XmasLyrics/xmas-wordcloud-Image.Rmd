@@ -67,7 +67,7 @@ xmas_titles_df
 
 ## 15 FrenchCarol Titles of lyrics used
 *(scroll to see whole list)*
-```{r french-titles, class.output="scroll-100", echo=FALSE}
+```{r french-titles-first, class.output="scroll-100", echo=FALSE}
 xmas_titles_french_df
 ```
 
@@ -301,6 +301,13 @@ color = ifelse(xmas_tunes_df_tidy_short[, 3] >  20, 'red',
 ```
 
 ---
+
+
+## 15 FrenchCarol Titles of lyrics used
+*(scroll to see whole list)*
+```{r french-titles, class.output="scroll-100", echo=FALSE}
+xmas_titles_french_df
+```
 
 ## Interactive French Wordclouds
 *(Hover over the words to see how often words are used in these 15 carols)*
