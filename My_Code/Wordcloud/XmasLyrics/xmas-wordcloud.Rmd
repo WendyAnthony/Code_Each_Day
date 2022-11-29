@@ -1,0 +1,221 @@
+---
+title: "Wordcloud Shapes"
+author: "Wendy Anthony"
+date: "`r file.info(knitr::current_input())$ctime`"
+output:
+  html_document:
+    highlight: zenburn
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 300px; # for vertical scroll
+  max-width: 1500px; # for horizontal scroll
+  overflow-y: auto; # for vertical scroll
+  overflow-x: auto; # for horizontal scroll  
+  background-color: inherit;
+}
+```
+
+https://spencerschien.info/post/data_viz_how_to/dense_word_clouds/
+
+# Load Package
+```{r load-package, message=FALSE}
+# install.packages("")
+library(tidyverse)
+# library(svgparser)
+library(grid)
+library(wordcloud2)
+library(wordcloud)
+library(tidytext)
+library(stopwords)
+library(showtext)
+library(MetBrewer)
+library(glue)
+library(ggtext)
+library(cowplot)
+```
+
+# Data
+
+## Load Xmas Carol Titles of lyrics used
+```{r}
+xmas_titles_df <- read.delim("xmas-lyrics-titles.txt")
+colnames(xmas_titles_df)[1] <- "Title"
+xmas_titles_df
+```
+
+## Load data xmas tunes
+```{r, class.output="scroll-100"}
+xmas_tunes_df <- read.delim("xmas-lyrics.txt")
+xmas_tunes_df
+str(xmas_tunes_df)
+```
+
+### Dataprep xmas tunes
+```{r, class.output="scroll-100"}
+# Get countries for stop words
+all_countries <- stopwords_getlanguages(source = "snowball")
+
+# Get stop words for all languages available
+stops <- map_df(all_countries, function(x) get_stopwords(language = x))
+
+
+# Get words, remove stop words
+xmas_tunes_df_prep <- xmas_tunes_df %>%
+  transmute(line = 1:nrow(xmas_tunes_df),
+            text = Popular.Christmas.Carol.Lyrics) %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stops) %>%
+  # this final step removes a leading apostrophe in words like l'amour
+  mutate(word = str_remove(word, "^\\w'"))
+xmas_tunes_df_prep
+
+# Get frequencies by grouping by word and tallying
+xmas_tunes_df_tidy <- xmas_tunes_df_prep %>%
+  group_by(word) %>%
+  summarise(freq = n()) %>%
+  arrange(desc(freq))
+```
+
+
+## Explore data
+```{r, class.output="scroll-100"}
+head(xmas_tunes_df_tidy)
+xmas_tunes_df_tidy
+```
+
+# Create Wordcloud2
+
+## Widget Size
+```{r, class.output="scroll-100"}
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black")
+
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black", gridSize = 3)
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black", widgetsize = c(800,600))
+
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black", widgetsize = c(1600,800))
+
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black", widgetsize = c(800,1600))
+
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black", widgetsize = c(1000,1600))
+
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black", widgetsize = c(1400,1000))
+
+wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+           backgroundColor = "black", widgetsize = c(1300,1000))
+
+gold_xmas_star_wordcloud <- wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+                                       backgroundColor = "gold", size = 0.45)
+gold_xmas_star_wordcloud
+class(gold_xmas_star_wordcloud)
+```
+
+
+
+
+## Create Wordcloud1
+```{r, class.output="scroll-100"}
+wordcloud::wordcloud(xmas_tunes_df_tidy$word, xmas_tunes_df_tidy$freq)
+```
+
+
+
+## Change colour and size
+```{r, class.output="scroll-100"}
+# The {wordcloud2} package provides an HTML5 interface to word clouds
+
+library(wordcloud2)
+
+# The {MetBrewer} package provides some great palettes
+
+library(MetBrewer)
+
+# Set colors, I wanted pink and blue since I already saw 'love' is tops
+
+colors <- met.brewer("Benedictus")
+c_trim <- c(rep(colors[1], 50), rep(colors[length(colors)], nrow(xmas_tunes_df_tidy) - 50))
+
+# Create wordcloud with settings for this blog post. See below for actual
+# settings I used to create the plot in the featured image.
+wordcloud2(xmas_tunes_df_tidy)
+wordcloud2(xmas_tunes_df_tidy, shape = "star", backgroundColor = "black")
+wordcloud2(xmas_tunes_df_tidy, shape = "star", color = colors, backgroundColor = "white")
+wordcloud2(xmas_tunes_df_tidy, shape = "star", color = c_trim, backgroundColor = "green")
+
+# not liking the color = c_trim without it figure is black, with all is white
+colorVec = rep(c('red', 'skyblue'), length.out=nrow(demoFreq))
+wordcloud2(xmas_tunes_df_tidy, 
+           widgetsize = c(700,700), ellipticity = .9, gridSize = 10,
+           color = colorVec, fontFamily = "Julee")
+```
+
+
+
+
+#### Demo using custom color vector
+```{r, class.output="scroll-100"}
+colorVec = rep(c('red', 'green'), length.out=nrow(demoFreq))
+wordcloud2(xmas_tunes_df_tidy, color = colorVec, fontWeight = "bold")
+```
+
+## Themes 
+```{r}
+wc = wordcloud2(xmas_tunes_df_tidy)
+wc
+wc + WCtheme(1)
+wc + WCtheme(2)
+wc + WCtheme(3)
+wc + WCtheme(2) + WCtheme(3)
+```
+
+### Themes - xmas star
+```{r}
+gold_xmas_star_wordcloud
+gold_xmas_star_wordcloud + WCtheme(1)
+gold_xmas_star_wordcloud + WCtheme(2)
+gold_xmas_star_wordcloud + WCtheme(3)
+gold_xmas_star_wordcloud + WCtheme(2) + WCtheme(3)
+```
+
+
+```{r font-weight}
+## Font weight
+wordcloud2(xmas_tunes_df_tidy, color = colorVec, fontWeight = "bold")
+wordcloud2(xmas_tunes_df_tidy, color = colorVec)
+```
+
+## Frequency Color 
+```{r}
+wordcloud2(xmas_tunes_df_tidy,
+color = ifelse(xmas_tunes_df_tidy[, 2] > 20, 'red', 'green'))
+
+wordcloud2(xmas_tunes_df_tidy,
+color = ifelse(xmas_tunes_df_tidy[, 2] < 9, 'grey',
+               ifelse(xmas_tunes_df_tidy[, 2] > 20, 'red', 'green')))
+```
+
+
+
+---
+
+# Session info
+```{r session-info}
+# to document specific packages used to run script
+sessionInfo()
+```
