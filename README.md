@@ -1,5 +1,5 @@
 # Code_Each_Day
-Attempting to Code something nearly every day ...
+Attempting to Code something nearly every day ... not everything makes it to GitHub ;)
 
 - [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 - [My Log of code done each day of the Challenge - Round 3: 2022](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2022.md)
