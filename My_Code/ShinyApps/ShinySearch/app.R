@@ -43,7 +43,7 @@ shinyApp(
               width = "300px"),
     em("(e.g. Don't include trailing / ... /Users/wanthony/Documents/R')"),
     br(),
-    em("(e.g. '/Volumes/MyPassportForMac/Documents/!My-Personal-Stuff')"),
+    em("(e.g. '/Volumes/MyPassportForMac/Documents')"),
     br(),
     br(),
     textInput("dir_base",
