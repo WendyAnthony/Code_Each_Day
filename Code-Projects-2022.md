@@ -1,6 +1,7 @@
 # Log for #Code_Each_Day - Wendy Anthony
 
 **The log of Round 3 of my #100DaysOfCode challenge. Started on 2022-01-03**  
+ ... not everything makes it to GitHub ;)
 - [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 - [2020 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2020.md)
 - [2021 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2021.md)
