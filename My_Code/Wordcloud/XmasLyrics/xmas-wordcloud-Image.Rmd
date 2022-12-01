@@ -9,10 +9,14 @@ output:
     toc_float: 
       collapsed: false
     number_sections: no
+language:
+  label:
+    fig: "Image "
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+# use output: bookdown::html_document2 to get numbered figure captions
 ```
 
 ```{css, echo=FALSE}
