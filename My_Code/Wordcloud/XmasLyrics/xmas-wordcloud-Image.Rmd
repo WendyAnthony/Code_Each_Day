@@ -153,6 +153,21 @@ head(xmas_tunes_df_tidy)
 xmas_tunes_df_tidy
 ```
 
+
+```{r english_wc, echo=FALSE, results='hide'}
+# black_xmas_star_wordcloud_en
+# gold_xmas_star_wordcloud_en
+# xmas_metbrewer_homer_wordcloud_en
+# xmas_default_wordcloud_en
+# xmas_red_green_round_wordcloud_en
+# xmas_red_green_grey_wordcloud_en
+# xmas_red_green_wordcloud_en
+# xmas_red_green_purple_wordcloud_en
+# xmas_red_green_purple_grey_wordcloud_en
+# xmas_red_green_grey_shrt_wordcloud_en
+# xmas_red_green_purple_grey_shrt_wordcloud_en
+```
+
 ## Interactive English Wordclouds
 *(Hover over the words to see how often words are used in these 46 carols)*
 ```{r widget-size, class.output="scroll-100", echo=FALSE}
@@ -176,13 +191,14 @@ xmas_tunes_df_tidy
 # wordcloud2(xmas_tunes_df_tidy, shape = "star", 
 #            backgroundColor = "black", widgetsize = c(1400,1000))
 
-wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+black_xmas_star_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, shape = "star", 
            backgroundColor = "black", widgetsize = c(1300,1000))
+black_xmas_star_wordcloud_en
 
-gold_xmas_star_wordcloud <- wordcloud2(xmas_tunes_df_tidy, shape = "star", 
+gold_xmas_star_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, shape = "star", 
                                        backgroundColor = "gold", size = 0.75,
                                        widgetsize = c(1000,800))
-gold_xmas_star_wordcloud
+gold_xmas_star_wordcloud_en
 # class(gold_xmas_star_wordcloud)
 ```
 
@@ -203,21 +219,26 @@ library(MetBrewer)
 
 colors <- met.brewer("Homer2")
 c_trim <- c(rep(colors[c(1,2,3,4,5,6)], 50), rep(colors[length(colors)], nrow(xmas_tunes_df_tidy) - 50))
-wordcloud2(xmas_tunes_df_tidy, 
+xmas_metbrewer_homer_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, 
            widgetsize = c(1000,800), ellipticity = .9, gridSize = 10,
            color = c_trim, fontFamily = "Julee")
+xmas_metbrewer_homer_wordcloud_en
+
 # Create wordcloud with settings for this blog post. See below for actual
 # settings I used to create the plot in the featured image.
-wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800))
+xmas_default_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800))
+xmas_default_wordcloud_en
+
 # wordcloud2(xmas_tunes_df_tidy, shape = "star", backgroundColor = "black")
 # wordcloud2(xmas_tunes_df_tidy, shape = "star", color = colors, backgroundColor = "white")
 # wordcloud2(xmas_tunes_df_tidy, shape = "star", color = c_trim, backgroundColor = "green")
 
 # not liking the color = c_trim without it figure is black, with all is white
 colorVec = rep(c('red', 'green'), length.out=nrow(xmas_tunes_df_tidy))
-wordcloud2(xmas_tunes_df_tidy, 
+xmas_red_green_round_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, 
            widgetsize = c(1000,800), ellipticity = .9, gridSize = 10,
            color = colorVec, fontFamily = "Julee")
+xmas_red_green_round_wordcloud_en
 ```
 
 
@@ -232,8 +253,8 @@ wordcloud2(xmas_tunes_df_tidy,
 ```{r themes, echo=FALSE}
 ## Themes 
 
-wc = wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), )
-wc
+# wc = wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), )
+# wc
 # wc + WCtheme(1)
 # wc + WCtheme(2)
 # wc + WCtheme(3)
@@ -264,9 +285,10 @@ wc
 # wordcloud2(xmas_tunes_df_tidy,
 # color = ifelse(xmas_tunes_df_tidy[, 2] > 20, 'red', 'green'))
 
-wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy[, 2] < 9, 'grey',
-               ifelse(xmas_tunes_df_tidy[, 2] > 20, 'red', 'green')))
+xmas_red_green_grey_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), 
+                color = ifelse(xmas_tunes_df_tidy[, 2] < 9, 'grey',
+                ifelse(xmas_tunes_df_tidy[, 2] > 20, 'red', 'green')))
+xmas_red_green_grey_wordcloud_en
 ```
 
 ```{r new-column-na<10-ifelse, echo=FALSE}
@@ -277,38 +299,42 @@ xmas_tunes_df_tidy$freq_high <- xmas_tunes_df_tidy$freq
 xmas_tunes_df_tidy$freq_high = ifelse(xmas_tunes_df_tidy$freq_high < 6, 0, xmas_tunes_df_tidy$freq_high)
 # xmas_tunes_df_tidy
 
-wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy[, 2] > 20, 'red', 'green'))
-
-wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy[, 3] > 20, 'red', 'green'))
 
 
-wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy[, 3] > 19, 'red', 'green'))
+xmas_red_green_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, 
+                            widgetsize = c(1000,800), 
+                            color = ifelse(xmas_tunes_df_tidy[, 3] > 20, 'red', 'green'))
+xmas_red_green_wordcloud_en
 
-wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy[, 3] > 20, 'red',
-               ifelse(xmas_tunes_df_tidy[, 3] > 0, 'green', 'purple')))
+xmas_red_green_purple_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, 
+                            widgetsize = c(1000,800), 
+                            color = ifelse(xmas_tunes_df_tidy[, 3] > 20, 'red',
+                            ifelse(xmas_tunes_df_tidy[, 3] > 0, 'green', 'purple')))
+xmas_red_green_purple_wordcloud_en
 
-
-wordcloud2(xmas_tunes_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy[, 2] >  20, 'red',
-              ifelse(xmas_tunes_df_tidy[, 2] > 8, 'purple',
-                     ifelse(xmas_tunes_df_tidy[, 2] > 3, 'green', 'grey'))))
+xmas_red_green_purple_grey_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy, 
+                            widgetsize = c(1000,800), 
+                            color = ifelse(xmas_tunes_df_tidy[, 2] >  20, 'red',
+                            ifelse(xmas_tunes_df_tidy[, 2] > 8, 'purple',
+                            ifelse(xmas_tunes_df_tidy[, 2] > 3, 'green', 'grey'))))
+xmas_red_green_purple_grey_wordcloud_en
 
 # subset by removing rows with frequency = 0 (i.e. <8)
 xmas_tunes_df_tidy_short <- xmas_tunes_df_tidy[xmas_tunes_df_tidy$freq_high != 0, ]
 # xmas_tunes_df_tidy_short
 
-wordcloud2(xmas_tunes_df_tidy_short, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy_short[, 3] < 13, 'grey',
-               ifelse(xmas_tunes_df_tidy_short[, 3] > 20, 'red', 'green')))
+xmas_red_green_grey_shrt_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy_short, 
+                          widgetsize = c(1000,800), 
+                          color = ifelse(xmas_tunes_df_tidy_short[, 3] < 13, 'grey',
+                          ifelse(xmas_tunes_df_tidy_short[, 3] > 20, 'red', 'green')))
+xmas_red_green_grey_shrt_wordcloud_en
 
-wordcloud2(xmas_tunes_df_tidy_short, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_df_tidy_short[, 3] >  20, 'red',
-              ifelse(xmas_tunes_df_tidy_short[, 3] > 8, 'green',
-                     ifelse(xmas_tunes_df_tidy_short[, 3] > 7, 'purple', 'grey'))))
+xmas_red_green_purple_grey_shrt_wordcloud_en <- wordcloud2(xmas_tunes_df_tidy_short,
+                          widgetsize = c(1000,800), 
+                          color = ifelse(xmas_tunes_df_tidy_short[, 3] >  20, 'red',
+                          ifelse(xmas_tunes_df_tidy_short[, 3] > 8, 'green',
+                          ifelse(xmas_tunes_df_tidy_short[, 3] > 7, 'purple', 'grey'))))
+xmas_red_green_purple_grey_shrt_wordcloud_en
 ```
 
 ---
@@ -324,34 +350,34 @@ xmas_titles_french_df
 ## Interactive French Wordclouds
 *(Hover over the words to see how often words are used in these 15 carols)*
 ```{r french-interactive, echo=FALSE}
-wordcloud2(xmas_tunes_french_df_tidy, shape = "star", 
+black_xmas_star_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, shape = "star", 
            backgroundColor = "black", widgetsize = c(1300,1000))
+black_xmas_star_wordcloud_fr
 
-gold_xmas_star_wordcloud <- wordcloud2(xmas_tunes_french_df_tidy, shape = "star", 
+gold_xmas_star_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, shape = "star", 
                                        backgroundColor = "gold", size = 0.75,
                                        widgetsize = c(1000,800))
-gold_xmas_star_wordcloud
+gold_xmas_star_wordcloud_fr
 
 colors <- met.brewer("Homer2")
 c_trim <- c(rep(colors[c(1,2,3,4,5,6)], 50), rep(colors[length(colors)], nrow(xmas_tunes_french_df_tidy) - 50))
-wordcloud2(xmas_tunes_french_df_tidy, 
+xmas_metbrewer_homer_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, 
            widgetsize = c(1000,800), ellipticity = .9, gridSize = 10,
            color = c_trim, fontFamily = "Julee")
+xmas_metbrewer_homer_wordcloud_fr
 
-wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800))
+xmas_default_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800))
+xmas_default_wordcloud_fr
 
 colorVec = rep(c('red', 'green'), length.out=nrow(xmas_tunes_french_df_tidy))
-wordcloud2(xmas_tunes_french_df_tidy, 
+xmas_red_green_round_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, 
            widgetsize = c(1000,800), ellipticity = .9, gridSize = 10,
            color = colorVec, fontFamily = "Julee")
+xmas_red_green_round_wordcloud_fr
 
-wc = wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800))
-wc
-
-wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy[, 2] < 9, 'grey',
-               ifelse(xmas_tunes_french_df_tidy[, 2] > 20, 'red', 'green')))
-
+xmas_red_green_grey_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800),                          color = ifelse(xmas_tunes_french_df_tidy[, 2] < 9, 'grey',
+                         ifelse(xmas_tunes_french_df_tidy[, 2] > 20, 'red', 'green')))
+xmas_red_green_grey_wordcloud_fr
 
 xmas_tunes_french_df_tidy$freq_high <- xmas_tunes_french_df_tidy$freq
 # xmas_tunes_french_df_tidy
@@ -359,39 +385,65 @@ xmas_tunes_french_df_tidy$freq_high <- xmas_tunes_french_df_tidy$freq
 xmas_tunes_french_df_tidy$freq_high = ifelse(xmas_tunes_french_df_tidy$freq_high < 2, 0, xmas_tunes_french_df_tidy$freq_high)
 # xmas_tunes_french_df_tidy
 
-wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy[, 2] > 20, 'red', 'green'))
+xmas_red_green_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
+                            color = ifelse(xmas_tunes_french_df_tidy[, 3] > 20, 'red', 'green'))
+xmas_red_green_wordcloud_fr
 
-wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy[, 3] > 20, 'red', 'green'))
+xmas_red_green_purple_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, 
+                        widgetsize = c(1000,800), 
+                        color = ifelse(xmas_tunes_french_df_tidy[, 3] > 20, 'red',
+                        ifelse(xmas_tunes_french_df_tidy[, 3] > 0, 'green', 'purple')))
+xmas_red_green_purple_wordcloud_fr
 
-
-wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy[, 3] > 19, 'red', 'green'))
-
-wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy[, 3] > 20, 'red',
-               ifelse(xmas_tunes_french_df_tidy[, 3] > 0, 'green', 'purple')))
-
-
-wordcloud2(xmas_tunes_french_df_tidy, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy[, 2] >  20, 'red',
-              ifelse(xmas_tunes_french_df_tidy[, 2] > 8, 'purple',
-                     ifelse(xmas_tunes_french_df_tidy[, 2] > 3, 'green', 'grey'))))
+xmas_red_green_purple_grey_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy, 
+                        widgetsize = c(1000,800), 
+                        color = ifelse(xmas_tunes_french_df_tidy[, 2] >  20, 'red',
+                        ifelse(xmas_tunes_french_df_tidy[, 2] > 8, 'purple',
+                        ifelse(xmas_tunes_french_df_tidy[, 2] > 3, 'green', 'grey'))))
+xmas_red_green_purple_grey_wordcloud_fr
 
 # subset by removing rows with frequency = 0 (i.e. <8)
 xmas_tunes_french_df_tidy_short <- xmas_tunes_french_df_tidy[xmas_tunes_french_df_tidy$freq_high != 0, ]
 # xmas_tunes_french_df_tidy_short
 
-wordcloud2(xmas_tunes_french_df_tidy_short, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy_short[, 3] < 13, 'grey',
-               ifelse(xmas_tunes_french_df_tidy_short[, 3] > 20, 'red', 'green')))
+xmas_red_green_grey_shrt_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy_short, 
+                        widgetsize = c(1000,800), 
+                        color = ifelse(xmas_tunes_french_df_tidy_short[, 3] < 13, 'grey',
+                        ifelse(xmas_tunes_french_df_tidy_short[, 3] > 20, 'red', 'green')))
+xmas_red_green_grey_shrt_wordcloud_fr
 
-wordcloud2(xmas_tunes_french_df_tidy_short, widgetsize = c(1000,800), 
-color = ifelse(xmas_tunes_french_df_tidy_short[, 3] >  20, 'red',
-              ifelse(xmas_tunes_french_df_tidy_short[, 3] > 5, 'green',
-                     ifelse(xmas_tunes_french_df_tidy_short[, 3] > 2, 'purple', 'grey'))))
+xmas_red_green_purple_grey_shrt_wordcloud_fr <- wordcloud2(xmas_tunes_french_df_tidy_short,
+                        widgetsize = c(1000,800), 
+                        color = ifelse(xmas_tunes_french_df_tidy_short[, 3] >  20, 'red',
+                        ifelse(xmas_tunes_french_df_tidy_short[, 3] > 5, 'green',
+                        ifelse(xmas_tunes_french_df_tidy_short[, 3] > 2, 'purple', 'grey'))))
+xmas_red_green_purple_grey_shrt_wordcloud_fr
 ```
+
+```{r french_wc, echo=FALSE, results='hide'}
+# black_xmas_star_wordcloud_fr
+# gold_xmas_star_wordcloud_fr
+# xmas_metbrewer_homer_wordcloud_fr
+# xmas_default_wordcloud_fr
+# xmas_red_green_round_wordcloud_fr
+# xmas_red_green_grey_wordcloud_fr
+# xmas_red_green_wordcloud_fr
+# xmas_red_green_purple_wordcloud_fr
+# xmas_red_green_purple_grey_wordcloud_fr
+# xmas_red_green_grey_shrt_wordcloud_fr
+# xmas_red_green_purple_grey_shrt_wordcloud_fr
+```
+
+
+---
+
+
+```{r, echo=FALSE}
+# Annimation
+# install.packages("gifski")
+# library(gifski)
+```
+
 
 ---
 
