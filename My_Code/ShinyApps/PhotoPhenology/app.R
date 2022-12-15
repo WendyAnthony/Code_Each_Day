@@ -57,7 +57,7 @@ ui <- fluidPage(
         tabsetPanel(type = "tabs",
                     tabPanel("Table", DT::dataTableOutput("table_subset")),
                     tabPanel("About", tableOutput("text")),
-                    tabPanel("Code",  verbatimTextOutput("code"))
+                    tabPanel("Code",  tableOutput("code"))
                     )
               )
     ),
@@ -174,7 +174,7 @@ server <- function(input, output) {
   })
 
   output$code <-renderUI({
-    string1 <- tags$a(href='', 'Shiny app code', target="_blank")
+    string1 <- tags$a(href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ShinyApps/PhotoPhenology/app.R', 'Shiny app code', target="_blank")
     HTML(paste(string1))
   })
 
