@@ -72,7 +72,7 @@
 - When choosing location that species photo doesn't exist, error message appears instead of map, but continuing to choose locations to find one makes map appear
 
 **Links to code work:** 
-- 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/ShinyApps/PhotoPhenology
 
 [TOC](#TOC)
 
