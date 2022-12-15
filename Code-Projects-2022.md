@@ -8,6 +8,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week L](#weekL)**    
+  - [R3D349 2022-12-15](#R3D349)
 - **[Week XLVIII](#weekXLVIII)**    
   - [R3D333 2022-11-29](#R3D333)
 - **[Week XLVII](#weekXLVII)**    
@@ -54,6 +56,25 @@
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
+
+***
+# Week L <a name="weekL"/>
+***
+## R3D349 2022-12-15 <a name="R3D349"/>
+**Today's Progress**: 
+- Got back to Shiny app for my Phenology photo data
+- Finally got the Ouput table and map to be reactive to selectInput
+
+**Thoughts:** 
+- Took lots of trial and error, persistence, and testing Reactivity as recently learned in Shiny workshops
+- Persistence pays off!
+- Working on data and purposes meaningful to me makes the difficulties of exploring new code easier to bear
+- When choosing location that species photo doesn't exist, error message appears instead of map, but continuing to choose locations to find one makes map appear
+
+**Links to code work:** 
+- 
+
+[TOC](#TOC)
 
 ***
 # Week XLVIII <a name="weekXLVIII"/>
