@@ -8,6 +8,8 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
+- **[Week LI](#weekLI)**    
+  - [R3D357 2022-12-23](#R3D357)
 - **[Week L](#weekL)**    
   - [R3D349 2022-12-15](#R3D349)
 - **[Week XLVIII](#weekXLVIII)**    
@@ -56,6 +58,20 @@
 - **[Week II](#weekII)**    
   - [R3D3 2022-01-03](#R3D3)
 - **[Wishlist](#wishlist)**  
+
+***
+# Week LI <a name="weekLI"/>
+***
+## R3D357 2022-12-23 <a name="R3D357"/>
+**Today's Progress**: 
+- Taught myself how to use Obsidian Knowledge Management System, using my knowledge of Markdown text formatting
+- Downloaded and tested both core and community plugins: Audio Recorder, Canvas, Slides, Tags; Enhancing Mindmap, Obsidian Leaflet, Obsidian Charts, Table of Contents and Zotero Integration.
+
+**Thoughts:** 
+- Learning to integrate Zotero by exporting notes to Obsidian, citations
+- Learning skills to incorporate into an academic research workflow
+
+[TOC](#TOC)
 
 ***
 # Week L <a name="weekL"/>
