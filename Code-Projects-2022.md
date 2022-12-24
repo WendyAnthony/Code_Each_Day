@@ -10,6 +10,7 @@
 ## Table of Contents  <a name="TOC"/></a>
 - **[Week LI](#weekLI)**    
   - [R3D357 2022-12-23](#R3D357)
+  - [R3D358 2022-12-24](#R3D358)
 - **[Week L](#weekL)**    
   - [R3D349 2022-12-15](#R3D349)
 - **[Week XLVIII](#weekXLVIII)**    
@@ -62,6 +63,24 @@
 ***
 # Week LI <a name="weekLI"/></a>
 ***
+## R3D358 2022-12-24 <a name="R3D358"/></a>
+**Today's Progress**: 
+- Revisited calendar heatmap, learned from Dominic Roye, first done Dec 2020, updated for 2022
+- Created functions for repeating code chunks!!
+
+**Thoughts:** 
+- Pleased with myself to create functions to reduce duplication of code chunks!!
+- Had to restart and clear environment a few times to ensure I wasn't using unexpected objects
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/heatmap_weather_calendar_functions.R
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Weather/pr_calendar_2022_44.png
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Weather/tavg_calendar_2022_44.png
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Weather/tmax_calendar_2022_44.png
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Weather/tmin_calendar_2022_44.png
+
+[TOC](#TOC)
+
 ## R3D357 2022-12-23 <a name="R3D357"/></a>
 **Today's Progress**: 
 - Taught myself how to use Obsidian Knowledge Management System, using my knowledge of Markdown text formatting
