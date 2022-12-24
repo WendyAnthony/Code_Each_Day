@@ -71,6 +71,8 @@
 **Thoughts:** 
 - Pleased with myself to create functions to reduce duplication of code chunks!!
 - Had to restart and clear environment a few times to ensure I wasn't using unexpected objects
+- Working over 2 different times today: 1 hour - to create and print small 2023 calendar with ```calendR```, and 3 1/2 hours to recreate heat map calendars, and write functions to serve 4 different use-cases using different palettes ... though writing the functions seems to have taken a long time, I'm still learning how to create functions, and pleased at my persistence
+- when re-writing code / retrying functions, I added new numbers to my final charts, going by 10s for each different code change (thus final images are numbered 44 - 4 runs, 4th try)
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/heatmap_weather_calendar_functions.R
