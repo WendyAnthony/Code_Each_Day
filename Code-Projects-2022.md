@@ -9,8 +9,8 @@
 ***
 ## Table of Contents  <a name="TOC"/></a>
 - **[Week LI](#weekLI)**    
-  - [R3D357 2022-12-23](#R3D357)
-  - [R3D358 2022-12-24](#R3D358)
+  - [R3D357 2022-12-23](#r3d357)
+  - [R3D358 2022-12-24](#r3d358)
 - **[Week L](#weekL)**    
   - [R3D349 2022-12-15](#R3D349)
 - **[Week XLVIII](#weekXLVIII)**    
@@ -63,7 +63,7 @@
 ***
 # Week LI <a name="weekLI"/></a>
 ***
-## R3D358 2022-12-24 <a name="R3D358"/></a>
+## R3D358 2022-12-24 <a name="r3d358"/></a>
 **Today's Progress**: 
 - Revisited calendar heatmap, learned from Dominic Roye, first done Dec 2020, updated for 2022
 - Created functions for repeating code chunks!!
@@ -83,7 +83,7 @@
 
 [TOC](#TOC)
 
-## R3D357 2022-12-23 <a name="R3D357"/></a>
+## R3D357 2022-12-23 <a name="r3d357"/></a>
 **Today's Progress**: 
 - Taught myself how to use Obsidian Knowledge Management System, using my knowledge of Markdown text formatting
 - Downloaded and tested both core and community plugins: Audio Recorder, Canvas, Slides, Tags; Enhancing Mindmap, Obsidian Leaflet, Obsidian Charts, Table of Contents and Zotero Integration.
