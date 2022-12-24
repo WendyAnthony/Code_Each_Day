@@ -67,6 +67,7 @@
 **Today's Progress**: 
 - Revisited calendar heatmap, learned from Dominic Roye, first done Dec 2020, updated for 2022
 - Created functions for repeating code chunks!!
+- Fixed internal links on this page - the name and #xxx need to be lower case letters
 
 **Thoughts:** 
 - Pleased with myself to create functions to reduce duplication of code chunks!!
