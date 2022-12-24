@@ -344,7 +344,7 @@
 [TOC](#toc)
 
 ***
-# Week XVIII <a name="weeksxviii"/></a>
+# Week XVIII <a name="weekxviii"/></a>
 ***
 ## r3d126 2022-05-06 <a name="r3d126"/></a>
 **Today's Progress**: 
@@ -646,6 +646,7 @@
 [TOC](#toc)
 
 ***
+# Week III <a name="weekiii"/></a>
 ***
 ## r3d9 2022-01-09 <a name="r3d9"/></a>
 **Today's Progress**: 
