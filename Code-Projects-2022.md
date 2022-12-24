@@ -61,7 +61,7 @@
 - **[Wishlist](#wishlist)**  
 
 ***
-# Week LI <a name="weekLI"/></a>
+# Week LI <a name="weekli"/></a>
 ***
 ## r3d358 2022-12-24 <a name="r3d358"/></a>
 **Today's Progress**: 
@@ -95,7 +95,7 @@
 [TOC](#toc)
 
 ***
-# Week L <a name="weekL"/></a>
+# Week L <a name="weekl"/></a>
 ***
 ## r3d349 2022-12-15 <a name="r3d349"/></a>
 **Today's Progress**: 
@@ -117,7 +117,7 @@
 [TOC](#toc)
 
 ***
-# Week XLVIII <a name="weekXLVIII"/></a>
+# Week XLVIII <a name="weekxlviii"/></a>
 ***
 ## r3d333 2022-11-29 <a name="r3d333"/></a>
 **Today's Progress**: 
