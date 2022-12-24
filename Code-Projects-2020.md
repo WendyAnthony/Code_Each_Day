@@ -4,59 +4,59 @@
 [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 
 ***
-## Table of Contents  <a name="TOC"/>
-- **[Week LII](#weekLII)**  
-  - [R1D261 2020-12-30](#R1D365)
-  - [R1D261 2020-12-26](#R1D361)
-  - [R1D260 2020-12-25](#R1D360)
-  - [R1D259 2020-12-24](#R1D359)
-  - [R1D258 2020-12-23](#R1D358)  
-  - [R1D257 2020-12-22](#R1D357)
-- **[Week XXXIII](#weekXXXIII)**  
-  - [R1D223 2020-08-10](#R1D223)
-- **[Week XX .... (Week IX of COVID-19 Lockdown)](#weekXX)**  
-  - [R1D134 2020-05-13](#R1D134)
-- **[Week VI](#weekVI)**  
-  - [R1D27 2020-02-04](#R1D27)
-- **[Week V](#weekV)**  
-  - [R1D26 2020-01-31](#R1D26)
-  - [R1D25 2020-01-30](#R1D25)
-  - [R1D24 2020-01-29](#R1D24)  
-  - [R1D23 2020-01-28](#R1D23)
-  - [R1D22 2020-01-26](#R1D22)
-- **[Week IV](#weekIV)**  
-  - [R1D21 2020-01-21](#R1D21)
-  - [R1D20 2020-01-20](#R1D20)  
-  - [R1D19 2020-01-19](#R1D19)  
-- **[Week III](#weekIII)**  
-  - [R1D18 2020-01-18](#R1D18)
-  - [R1D17 2020-01-17](#R1D17)
-  - [R1D16 2020-01-16](#R1D16)
-  - [R1D15 2020-01-15](#R1D15)
-  - [R1D14 2020-01-14](#R1D14)  
-  - [R1D13 2020-01-13](#R1D13)
-  - [R1D12 2020-01-12](#R1D12)
-- **[Week II](#weekII)**  
-  - [R1D11 2020-01-11](#R1D11)
-  - [R1D10 2020-01-10](#R1D10)
-  - [R1D9 2020-01-09](#R1D9)
-  - [R1D8 2020-01-08](#R1D8)
-  - [R1D7 2020-01-07](#R1D7)
-  - [R1D6 2020-01-06](#R1D6)
-  - [R1D5 2020-01-05](#R1D5) 
-- **[Week I](#weekI)**    
-  - [R1D4 2020-01-04](#R1D4)  
-  - [R1D3 2020-01-03](#R1D3)  
-  - [R1D2 2020-01-02](#R1D2)  
-  - [R1D1 2020-01-01](#R1D1)  
+## Table of Contents  <a name="toc"/>
+- **[Week LII](#weeklii)**  
+  - [R1D261 2020-12-30](#r1d365)
+  - [R1D261 2020-12-26](#r1d361)
+  - [R1D260 2020-12-25](#r1d360)
+  - [R1D259 2020-12-24](#r1d359)
+  - [R1D258 2020-12-23](#r1d358)  
+  - [R1D257 2020-12-22](#r1d357)
+- **[Week XXXIII](#weekxxxiii)**  
+  - [R1D223 2020-08-10](#r1d223)
+- **[Week XX .... (Week IX of COVID-19 Lockdown)](#weekxx)**  
+  - [R1D134 2020-05-13](#r1d134)
+- **[Week VI](#weekvi)**  
+  - [R1D27 2020-02-04](#r1d27)
+- **[Week V](#weekv)**  
+  - [R1D26 2020-01-31](#r1d26)
+  - [R1D25 2020-01-30](#r1d25)
+  - [R1D24 2020-01-29](#r1d24)  
+  - [R1D23 2020-01-28](#r1d23)
+  - [R1D22 2020-01-26](#r1d22)
+- **[Week IV](#weekiv)**  
+  - [R1D21 2020-01-21](#r1d21)
+  - [R1D20 2020-01-20](#r1d20)  
+  - [R1D19 2020-01-19](#r1d19)  
+- **[Week III](#weekiii)**  
+  - [R1D18 2020-01-18](#r1d18)
+  - [R1D17 2020-01-17](#r1d17)
+  - [R1D16 2020-01-16](#r1d16)
+  - [R1D15 2020-01-15](#r1d15)
+  - [R1D14 2020-01-14](#r1d14)  
+  - [R1D13 2020-01-13](#r1d13)
+  - [R1D12 2020-01-12](#r1d12)
+- **[Week II](#weekii)**  
+  - [R1D11 2020-01-11](#r1d11)
+  - [R1D10 2020-01-10](#r1d10)
+  - [R1D9 2020-01-09](#r1d9)
+  - [R1D8 2020-01-08](#r1d8)
+  - [R1D7 2020-01-07](#r1d7)
+  - [R1D6 2020-01-06](#r1d6)
+  - [R1D5 2020-01-05](#r1d5) 
+- **[Week I](#weeki)**    
+  - [R1D4 2020-01-04](#r1d4)  
+  - [R1D3 2020-01-03](#r1d3)  
+  - [R1D2 2020-01-02](#r1d2)  
+  - [R1D1 2020-01-01](#r1d1)  
 - **[Week 0](#week0)**  
-  - [R1D0-3 2019-12-30](#R1D0-3)
-  - [R1D0-2 2019-12-29](#R1D0-2)
-  - [R1D0-1 2019-12-28](#R1D0-1)
+  - [R1D0-3 2019-12-30](#r1d0-3)
+  - [R1D0-2 2019-12-29](#r1d0-2)
+  - [R1D0-1 2019-12-28](#r1d0-1)
 - **[Wishlist](#wishlist)**
 
 ***
-# Week LII <a name="LII"/>
+# Week LII <a name="weeklii"/>
 ***
 ## R1D365 2020-12-30 <a name="R1D365"/>
 **Today's Progress**: 
@@ -73,7 +73,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/heatmap_calendar.R
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/heatmap_calendar_2020_Precip.png
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R1D361 2020-12-26 <a name="R1D361"/>
@@ -92,7 +92,7 @@
   - [Leaftime](https://github.com/timelyportfolio/leaftime)
 - `RGEE` https://r-spatial.github.io/rgee/reference/Map.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R1D360 2020-12-25 <a name="R1D360"/>
@@ -109,7 +109,7 @@
 - http://people.geog.uvic.ca/wanthony/website/maps/leaflet/leaflet-kml.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/kml
  
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R1D359 2020-12-24 <a name="R1D359"/>
@@ -125,7 +125,7 @@
 - http://people.geog.uvic.ca/wanthony/website/maps/leaflet/leaflet-kml.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/kml
  
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R1D358 2020-12-23 <a name="R1D358"/>
@@ -139,7 +139,7 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Weather
  
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R1D357 2020-12-22 <a name="R1D357"/>
@@ -154,10 +154,10 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Weather
  
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-# Week XXXIII <a name="XXXIII"/>
+# Week weekXXXIII <a name="weekxxxiii"/>
 ***
 ## R1D223 2020-08-10 <a name="R1D223"/>
 **Today's Progress**: 
@@ -173,10 +173,10 @@
  - https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-# Week XX  ..... (Week IX of COVID-19 Lockdown) <a name="weekXX"/>
+# Week XX  ..... (Week IX of COVID-19 Lockdown) <a name="weekxx"/>
 ***
 ## R1D134 2020-05-13 <a name="R1D134"/>
 **Today's Progress**: 
@@ -188,9 +188,9 @@
 **Links to code work:** 
  - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/tidycovid19.R
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
-# Week VI <a name="weekVI"/>
+# Week VI <a name="weekvi"/>
 ***
 ## R1D27 2020-02-04 <a name="R1D27"/>
 **Today's Progress**:
@@ -205,10 +205,10 @@
 - ```convert -delay 1650 montage-label-title-size30*.gif anim-montage-x1-30-surface-mean-sealevel-Pressure-2020-02-01to04_1650.gif```
 - ```montage -label '%f' SurfaceChart-mean-sealevelPressure-2020-02-01-00-947_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-06-951_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-12-935_100.gif SurfaceChart-mean-sealevelPressure-2020-02-01-18-941_100.gif -tile 2x2 -frame 5 -geometry '+10+10>' -pointsize 50 -title 'Surface Charts 2020-02-01-00 to 2020-02-01-18' montage-label-title-size50-tile2-gap10+10-frame-SurfaceCharts-2020-02-01-00-to-01-18.gif```
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-# Week V <a name="weekV"/>
+# Week V <a name="weekv"/>
 ***
 ## R1D26 2020-01-31 <a name="R1D26"/>
 **Today's Progress**:
@@ -221,7 +221,7 @@
 **Links to code work:** 
 - ```convert -delay 30 goes_wcan*.jpg anim-goes-wcan-2020-01-23to26_30.gif```
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 
@@ -242,7 +242,7 @@
 - https://github.com/cnicault/tidytuesday/blob/master/2020-05-San-Francisco-trees/sf_trees.R
 - https://docs.ropensci.org/GSODR/
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 
@@ -256,7 +256,7 @@
 **Links to code work:** 
 - https://geocompr.github.io/post/2019/ggplot2-inset-maps/
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 
@@ -271,7 +271,7 @@
 **Links to code work:** 
 - http://people.geog.uvic.ca/wanthony/website/meteorology/WMS-T-App.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R1D22 2020-01-26 <a name="R1D22"/>
@@ -285,11 +285,11 @@
 **Links to code work:** 
 - https://github.com/disarm-platform/MapPalettes
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 
-# Week IV <a name="weekIV"/>
+# Week IV <a name="weekiv"/>
 ***
 ## R1D21 2020-01-21 <a name="R1D21"/>
 **Today's Progress**:
@@ -302,7 +302,7 @@
 - http://jkunst.com/highcharter/highmaps.html
   - tweaked the code to get world map to show: changed to ```data = world``` added ```geojson = TRUE```
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R1D20 2020-01-20 <a name="R1D20"/>
@@ -317,7 +317,7 @@
   - (quite a few code errors)
 - http://jkunst.com/highcharter/index.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 **
 ## R1D19 2020-01-19 <a name="R1D19"/>
@@ -333,10 +333,10 @@
 - https://github.com/jbkunst/d3wordcloud
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Highcharter
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
-# Week III <a name="weekIII"/>
+# Week III <a name="weekiii"/>
 ***
 ## R1D18 2020-01-18 <a name="R1D18"/>
 **Today's Progress**:
@@ -345,7 +345,7 @@
 **Thoughts:** 
 - make sure I don't create messy tables with multiple spanning columns
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D17 2020-01-17 <a name="R1D17"/>
@@ -354,7 +354,7 @@
 
 **Thoughts:** 
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D16 2020-01-16 <a name="R1D16"/>
@@ -372,7 +372,7 @@
 5. Play button to view
 6. File > Save for Web > Preset: GI  128 Dithered; Colors: 256 > Preview > Save
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D15 2020-01-15 <a name="R1D15"/>
@@ -386,7 +386,7 @@
 - https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D14 2020-01-14 <a name="R1D14"/>
@@ -396,7 +396,7 @@
 **Thoughts:** 
 - in older version of Powerpoint 2016, this doesn't work as simply as newer versions, so I had to figure out what would work with older version
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D13 2020-01-13 <a name="R1D13"/>
@@ -411,7 +411,7 @@
 - https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D12 2020-01-12 <a name="R1D12"/>
@@ -427,10 +427,10 @@
 **Links to code work:** 
 
   
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
-# Week II <a name="weekII"/>
+# Week II <a name="weekii"/>
 ***
 ## R1D11 2020-01-11 <a name="R1D11"/>
 **Today's Progress**:
@@ -444,7 +444,7 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/vic_UVic_dy_2015_2019_p1.png
   
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D10 2020-01-10 <a name="R1D10"/>
@@ -462,7 +462,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/weather-ug-UVic.R
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/vic_UVic_dy_2015_2019_p1.png
   
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D9 2020-01-09 <a name="R1D9"/>
@@ -484,7 +484,7 @@
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/2019-MeanTemp-VictoriaInnerHarbour.png
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/2019-MaxTemp-VictoriaInnerHarbour.png
   
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D8 2020-01-08 <a name="R1D8"/>
@@ -507,7 +507,7 @@
   - [2018 monthly max temp animated gif loop](http://people.geog.uvic.ca/wanthony/website/etc/animation.gif)
   - [2018 monthly max temp animated gif_once](http://people.geog.uvic.ca/wanthony/website/etc/2018-month-maxtemp-NASA-ORNL-DAYMET_V3.gif)
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 ## R1D7 2020-01-07 <a name="R1D7"/>
 **Today's Progress**: 
@@ -520,7 +520,7 @@
 - [NRC_CDEM](https://code.earthengine.google.com/d189afb0edbfe9906a415169c8477069)
 - [NASA/ORNL/DAYMET_V3](https://code.earthengine.google.com/1ff3a12cac70d5e5d5836dd58dcb7a1c)
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 ## R1D6 2020-01-06 <a name="R1D6"/>
 **Today's Progress**: 
@@ -538,7 +538,7 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 ## R1D5 2020-01-05 <a name="R1D5"/>
 **Today's Progress**: 
@@ -559,9 +559,9 @@
 - to Extract just research grade observations  
   - ```wa_inat_userstats_research <- wa_inat_userstats[which(wa_inat_userstats$quality_grade == "research" ),] ```
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
-# Week I <a name="weekI"/>
+# Week I <a name="weeki"/>
 ***
 ## R1D4 2020-01-04 <a name="R1D4"/>
 **Today's Progress**: 
@@ -575,7 +575,7 @@
 
 **Links to code work:** 
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D3 2020-01-03 <a name="R1D3"/>
@@ -585,7 +585,7 @@
 
 **Links to code work:**  http://people.geog.uvic.ca/wanthony/website/index.html 
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D2 2020-01-02 <a name="R1D2"/>
@@ -600,7 +600,7 @@
 2. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Vic_Census_Shiny/app.R
 3. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Weather/windrose.R
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D1 2020-01-01 <a name="R1D1"/>
@@ -608,7 +608,7 @@
 
 **Thoughts:** Coding takes patience and lots of trial-&-errors, then EUREKA!!
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 # Week 0 <a name="week0"/>
 ***
@@ -620,7 +620,7 @@
 **Thoughts:** 
 - I'd like to do some coding every day, when I first get up
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D0-2 2019-12-29 <a name="R1D0-2"/>
@@ -632,7 +632,7 @@
 - https://www.shinyapps.io/admin/#/dashboard
 
 
-[TOC](#TOC)
+[TOC](#toc)
 ***
 
 ## R1D0-1 2019-12-28 <a name="R1D0-1"/>
@@ -644,7 +644,7 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
 
-[TOC](#TOC)
+[TOC](#toc)
 ***  
 ***
 # Wish-List <a name="wishlist"/>  
@@ -660,5 +660,5 @@
   - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
 - learn to use highcharts with R in ```highcharter```
 
-[TOC](#TOC)
+[TOC](#toc)
 
