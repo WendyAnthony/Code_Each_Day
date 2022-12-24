@@ -5,7 +5,7 @@
 - [2020 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2020.md)
 
 ***
-## Table of Contents  <a name="TOC"/>
+## Table of Contents  <a name="toc"/>
 - **[Week XXV](#weekxxv)**  
   - [R2D173 2021-06-21](#r2d173)
 - **[Week XXIII](#weekxxiii)**  
@@ -54,7 +54,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/photo-exif-map-test-lib.R
 
    
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XXII <a name="weekxxiii"/>
@@ -73,7 +73,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/iNaturalist/ARME/DownloadData
 
    
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D157 2021-06-06 <a name="r2d157"/>
@@ -89,7 +89,7 @@
 - https://wendyanthony.shinyapps.io/iNaturalist-madrone-shiny-leaflet-app/
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/Shiny/app.R
    
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XXII <a name="weekxxii"/>
@@ -107,7 +107,7 @@
 - https://wendyanthony.shinyapps.io/iNaturalist-madrone-shiny-leaflet-app/
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/Shiny/app.R
    
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D154 2021-06-03 <a name="r2d154"/>
@@ -123,7 +123,7 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/ARME/app.R
    
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XIX <a name="weekxix"/>
@@ -139,7 +139,7 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Climate/Visualizing_Climate_Data
    
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D129 2021-05-09 <a name="r2d129"/>
@@ -163,7 +163,7 @@
 - Website to find [Days of the week](https://www.calendar-365.com/day-numbers/2021.html)
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Climate/Warming_Stripes
    
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XII <a name="weekxii"/>
@@ -186,7 +186,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/imgpalr.Rmd
 - 
   
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XI <a name="weekxi"/>
@@ -206,7 +206,7 @@
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/R_Code/R_Stats_Links.Rmd
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud
   
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week IX <a name="weekix"/>
@@ -222,7 +222,7 @@
 - CSS Remove page numbers:
   - @page: first{@bottom-right {content: none;}}
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week V <a name="weekv"/>
@@ -241,7 +241,7 @@
 2. https://wendyanthony.shinyapps.io/iNaturalist-shiny-leaflet-app/  
   2.b. https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/iNaturalist/app.R
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week III <a name="weekiii"/>
@@ -260,7 +260,7 @@
   - [How to get modified date from Google Drive files](https://community.rstudio.com/t/googledrive-resources-how-to-get-modified-date/6247/2)
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Google/googledrive_fileListTime_csv.R
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D15 2021-01-15 <a name="r2d15"/>
@@ -274,7 +274,7 @@
 
 **Links to code work:** 
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D14 2021-01-14 <a name="r2d14"/>
@@ -287,7 +287,7 @@
 
 **Links to code work:** 
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D13 2021-01-13 <a name="r2d13"/>
@@ -299,7 +299,7 @@
 
 **Links to code work:** 
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week II <a name="weekii"/>
@@ -317,7 +317,7 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ggplot2/ggOceanMaps/ggOceanMaps_Canada_bathymetry_viridis.png
   - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ggplot2/ggOceanMaps/ggOceanMaps.R
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D4 2021-01-04 <a name="r2d4"/>
@@ -335,7 +335,7 @@
 - [Veroni Mandala Workshop](https://bitbucket.org/aschinchon/estalmat_0218/src/master/) <i>in Spanish</i>
   - [Colored Mandalas Tutorial](https://fronkonstin.com/2018/03/11/mandalas-colored/)
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ## R2D3 2021-01-03 <a name="r2d3"/>
@@ -350,7 +350,7 @@
 - https://github.com/WendyAnthony/ShinyStuff/tree/master/Wordcloud
   - https://github.com/WendyAnthony/ShinyStuff
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week I <a name="weeki"/>
@@ -367,7 +367,7 @@
   - https://github.com/soundarya24/MyRSpace/blob/main/MyCalendar2021/my2021_calendar_github.R
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ggplot2/ggOceanMaps/ggOceanMaps_Canada_bathymetry_viridis.png
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***  
 ***
@@ -382,4 +382,4 @@
   - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
 - learn to use highcharts with R in ```highcharter```
 
-[TOC](#TOC)
+[TOC](#toc)
