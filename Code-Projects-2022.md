@@ -13,50 +13,50 @@
   - [r3d358 2022-12-24](#r3d358)
 - **[Week L](#weekl)**    
   - [r3d349 2022-12-15](#r3d349)
-- **[Week XLVIII](#weekxlviii)**    
+- **[Week xlviiI](#weekxlviii)**    
   - [r3d333 2022-11-29](#r3d333)
-- **[Week XLVII](#weekXLVII)**    
+- **[Week xlvii](#weekxlvii)**    
   - [r3d328 2022-11-24](#r3d328)
-- **[Week XXXIIV](#weekXXXIV)**    
+- **[Week xxxiiV](#weekxxxxiv)**    
   - [r3d234 2022-08-22](#r3d234)
-- **[Week XXXIII](#weekXXXIII)**    
+- **[Week xxxiii](#weekxxxiii)**    
   - [r3d227 2022-08-15](#r3d227)
-- **[Week XXXII](#weekXXXII)**    
+- **[Week xxxii](#weekxxxii)**    
   - [r3d221 2022-08-09](#r3d221)
-- **[Week XXIV](#weekXXIV)**    
+- **[Week xxiv](#weekxxiv)**    
   - [r3d166 2022-06-15](#r3d166)
-- **[Week XXIII](#weekXXIII)**    
+- **[Week xxiii](#weekxxiii)**    
   - [r3d158 2022-06-07](#r3d158)
   - [r3d157 2022-06-06](#r3d157)
-- **[Week XXII](#weekXXII)**    
+- **[Week XXII](#weekxxii)**    
   - [r3d152 2022-06-01](#r3d152)
-- **[Week XIX](#weekXIX)**    
+- **[Week XIX](#weekxix)**    
   - [r3d135 2022-05-15](#r3d135)
-- **[Week XVIII](#weekXVIII)**    
+- **[Week XVIII](#weekxviii)**    
   - [r3d126 2022-05-06](#r3d126)
-- **[Week XVI](#weekXVI)**    
+- **[Week XVI](#weekxvi)**    
   - [r3d111 2022-04-21](#r3d111)
   - [r3d110 2022-04-20](#r3d110)
   - [r3d109 2022-04-19](#r3d109)
   - [r3d108 2022-04-18](#r3d108)
   - [r3d107 2022-04-17](#r3d107)
-- **[Week XV](#weekXV)**    
+- **[Week XV](#weekxv)**    
   - [r3d106 2022-04-16](#r3d106)
   - [r3d105 2022-04-15](#r3d105)
-- **[Week XIV](#weekXIV)**    
+- **[Week XIV](#weekxiv)**    
   - [r3d97 2022-04-08](#r3d97)
   - [r3d93 2022-04-04](#r3d93)
-- **[Week XII](#weekXII)**    
+- **[Week XII](#weekxii)**    
   - [r3d86 2022-03-27](#r3d86)
   - [r3d85 2022-03-26](#r3d85)
   - [r3d84 2022-03-25](#r3d84)
   - [r3d83 2022-03-24](#r3d83)
   - [r3d80 2022-03-21](#r3d80) 
-- **[Week VII](#weekVii)**    
+- **[Week VII](#weekvii)**    
   - [r3d72 2022-03-13](#r3d72)  
-- **[Week III](#weekIII)**    
+- **[Week III](#weekiii)**    
   - [r3d9 2022-01-09](#r3d9)
-- **[Week II](#weekII)**    
+- **[Week II](#weekii)**    
   - [r3d3 2022-01-03](#r3d3)
 - **[Wishlist](#wishlist)**  
 
@@ -133,7 +133,7 @@
 [TOC](#toc)
 
 ***
-# Week XLVII <a name="weekXLVII"/></a>
+# Week XLVII <a name="weekxlvii"/></a>
 ***
 ## r3d328 2022-11-24 <a name="r3d328"/></a>
 **Today's Progress**: 
@@ -150,7 +150,7 @@
 [TOC](#toc)
 
 ***
-# Week XXXIV <a name="weekXXXIV"/></a>
+# Week XXXIV <a name="weekxxxxiv"/></a>
 ***
 ## r3d234 2022-08-22 <a name="r3d234"/></a>
 **Today's Progress**: 
@@ -170,7 +170,7 @@
 [TOC](#toc)
 
 ***
-# Week XXXIII <a name="weekXXXIII"/></a>
+# Week XXXIII <a name="weekxxxiii"/></a>
 ***
 ## r3d227 2022-08-15 <a name="r3d227"/></a>
 **Today's Progress**: 
@@ -187,7 +187,7 @@
 [TOC](#toc)
 
 ***
-# Week XXXII <a name="weekXXXII"/></a>
+# Week XXXIII <a name="weekxxxii"/></a>
 ***
 ## r3d221 2022-08-09 <a name="r3d221"/></a>
 **Today's Progress**: 
@@ -208,7 +208,7 @@
 
 
 ***
-# Week XXIV <a name="weekXXIV"/></a>
+# Week XXIV <a name="weekxxiv"/></a>
 ***
 ## r3d166 2022-06-15 <a name="r3d166"/></a>
 **Today's Progress**: 
@@ -240,7 +240,7 @@
 [TOC](#toc)
 
 ***
-# Week XXIII <a name="weekXXIII"/></a>
+# Week XXIII <a name="weekxxiii"/></a>
 ***
 ## r3d157 2022-06-07 <a name="r3d158"/></a>
 **Today's Progress**: 
@@ -301,7 +301,7 @@
 [TOC](#toc)
 
 ***
-# Week XXII <a name="weekXXII"/></a>
+# Week XXII <a name="weekxxii"/></a>
 ***
 ## r3d152 2022-06-01 <a name="r3d152"/></a>
 **Today's Progress**: 
@@ -326,7 +326,7 @@
 [TOC](#toc)
 
 ***
-# Week XIX <a name="weekXIX"/></a>
+# Week XIX <a name="weekxix"/></a>
 ***
 ## r3d135 2022-05-15 <a name="r3d135"/></a>
 **Today's Progress**: 
@@ -344,7 +344,7 @@
 [TOC](#toc)
 
 ***
-# Week XVIII <a name="weekXVIII"/></a>
+# Week XVIII <a name="weeksviii"/></a>
 ***
 ## r3d126 2022-05-06 <a name="r3d126"/></a>
 **Today's Progress**: 
@@ -366,7 +366,7 @@
 [TOC](#toc)
 
 ***
-# Week XVI <a name="weekXVI"/></a>
+# Week XVI <a name="weekxvi"/></a>
 ***
 ## r3d111 2022-04-21 <a name="r3d111"/></a>
 **Today's Progress**: 
@@ -452,7 +452,7 @@
 [TOC](#toc)
 
 ***
-# Week XV <a name="weekXV"/></a>
+# Week XV <a name="weekxv"/></a>
 ***
 ## r3d106 2022-04-16 <a name="r3d106"/></a>
 **Today's Progress**: 
@@ -493,7 +493,7 @@
 [TOC](#toc)
 
 ***
-# Week XIV <a name="weekXIV"/></a>
+# Week XIV <a name="weekxiv"/></a>
 ***
 ## r3d97 2022-04-08 <a name="r3d97"/></a>
 **Today's Progress**: 
@@ -527,7 +527,7 @@
 [TOC](#toc)
 
 ***
-# Week XII <a name="weekXII"/></a>
+# Week XII <a name="weekxii"/></a>
 ***
 ## r3d86 2022-03-27 <a name="r3d86"/></a>
 **Today's Progress**: 
@@ -626,7 +626,7 @@
 
 ***
 ***
-# Week VII <a name="weekVII"/></a>
+# Week VII <a name="weekvii"/></a>
 ***
 ## r3d72 2022-03-13 <a name="r3d72"/></a>
 **Today's Progress**: 
@@ -666,7 +666,7 @@
 
 ***
 ***
-# Week II <a name="weekII"/></a>
+# Week II <a name="weekii"/></a>
 ***
 ## r3d3 2022-01-03 <a name="r3d3"/></a>
 **Today's Progress**: 
