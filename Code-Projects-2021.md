@@ -6,43 +6,43 @@
 
 ***
 ## Table of Contents  <a name="TOC"/>
-- **[Week XXV](#weekXXV)**  
-  - [R2D173 2021-06-21](#R2D173)
-- **[Week XXIII](#weekXXII)**  
-  - [R2D158 2021-06-07](#R2D158)
-  - [R2D157 2021-06-06](#R2D157)
-- **[Week XXII](#weekXXII)**  
-  - [R2D156 2021-06-05](#R2D156)
-  - [R2D154 2021-06-03](#R2D154)
-- **[Week XIX](#weekXIX)**  
-  - [R2D130 2021-05-10](#R2D130)
-  - [R2D129 2021-05-09](#R2D129)
-- **[Week XII](#weekXII)**  
-  - [R2D74 2021-03-15](#R2D74)
-- **[Week XI](#weekXI)**  
-  - [R2D70 2021-03-11](#R2D70)
-- **[Week IX](#weekIX)**  
-  - [R2D46 2021-02-25](#R2D46)
-- **[Week V](#weekV)**  
-  - [R2D25 2021-01-25](#R2D25)
-- **[Week III](#weekIII)**  
-  - [R2D16 2021-01-16](#R2D16)
-  - [R2D15 2021-01-15](#R2D15)
-  - [R2D14 2021-01-14](#R2D14)
-  - [R2D13 2021-01-13](#R2D13)
-- **[Week II](#weekII)**  
-  - [R2D9 2021-01-09](#R2D9)
-  - [R2D4 2021-01-04](#R2D4)  
-  - [R2D3 2021-01-03](#R2D3)
-- **[Week I](#weekI)**    
-  - [R2D2 2021-01-02](#R2D2)  
-  - [R2D1 2021-01-01](#R2D1)
+- **[Week XXV](#weekxxv)**  
+  - [R2D173 2021-06-21](#r2d173)
+- **[Week XXIII](#weekxxiii)**  
+  - [R2D158 2021-06-07](#r2d158)
+  - [R2D157 2021-06-06](#r2d157)
+- **[Week XXII](#weekxxii)**  
+  - [R2D156 2021-06-05](#r2d156)
+  - [R2D154 2021-06-03](#r2d154)
+- **[Week XIX](#weekxix)**  
+  - [R2D130 2021-05-10](#r2d130)
+  - [R2D129 2021-05-09](#r2d129)
+- **[Week XII](#weekxii)**  
+  - [R2D74 2021-03-15](#r2d74)
+- **[Week XI](#weekxi)**  
+  - [R2D70 2021-03-11](#r2d70)
+- **[Week IX](#weekix)**  
+  - [R2D46 2021-02-25](#r2d46)
+- **[Week V](#weekv)**  
+  - [R2D25 2021-01-25](#r2d25)
+- **[Week III](#weekiii)**  
+  - [R2D16 2021-01-16](#r2d16)
+  - [R2D15 2021-01-15](#r2d15)
+  - [R2D14 2021-01-14](#r2d14)
+  - [R2D13 2021-01-13](#r2d13)
+- **[Week II](#weekii)**  
+  - [R2D9 2021-01-09](#r2d9)
+  - [R2D4 2021-01-04](#r2d4)  
+  - [R2D3 2021-01-03](#r2d3)
+- **[Week I](#weeki)**    
+  - [R2D2 2021-01-02](#r2d2)  
+  - [R2D1 2021-01-01](#r2d1)
 - **[Wishlist](#wishlist)**  
   
 ***
-# Week XXV <a name="weekXXV"/>
+# Week XXV <a name="weekxxv"/>
 ***
-## R2D173 2021-06-21 <a name="R2D173"/>
+## R2D173 2021-06-21 <a name="r2d173"/>
 **Today's Progress**: 
 - revisit getting exif data from photo and plotting on R leaflet map
 
@@ -57,9 +57,9 @@
 [TOC](#TOC)
 
 ***
-# Week XXII <a name="weekXXIII"/>
+# Week XXII <a name="weekxxiii"/>
 ***
-## R2D158 2021-06-07 <a name="R2D158"/>
+## R2D158 2021-06-07 <a name="r2d158"/>
 **Today's Progress**: 
 - created a single local-loading Shiny app 
 - to include download button, research, north, south, needs-ID, casual
@@ -76,7 +76,7 @@
 [TOC](#TOC)
 
 ***
-## R2D157 2021-06-06 <a name="R2D157"/>
+## R2D157 2021-06-06 <a name="r2d157"/>
 **Today's Progress**: 
 - created a download button for .csv data for iNat shiny app, 
 - but download button won't show up when published ???
@@ -92,9 +92,9 @@
 [TOC](#TOC)
 
 ***
-# Week XXII <a name="weekXXII"/>
+# Week XXII <a name="weekxxii"/>
 ***
-## R2D156 2021-06-05 <a name="R2D156"/>
+## R2D156 2021-06-05 <a name="r2d156"/>
 **Today's Progress**: 
 - finally got the ARME iNaturalist Shiny App to publish
 
@@ -110,7 +110,7 @@
 [TOC](#TOC)
 
 ***
-## R2D154 2021-06-03 <a name="R2D154"/>
+## R2D154 2021-06-03 <a name="r2d154"/>
 **Today's Progress**: 
 - recreate Shiny app for iNaturalist observations of Arbutus menziesii
 
@@ -126,10 +126,10 @@
 [TOC](#TOC)
 
 ***
-# Week XIX <a name="weekXIX"/>
+# Week XIX <a name="weekxix"/>
 ***
 
-## R2D130 2021-05-10 <a name="R2D130"/>
+## R2D130 2021-05-10 <a name="r2d130"/>
 **Today's Progress**: 
 - revisiting my ```Climatology``` Rscript to remember how to make a column of named months from numerical months, and to create a column for seasons
 
@@ -142,7 +142,7 @@
 [TOC](#TOC)
 
 ***
-## R2D129 2021-05-09 <a name="R2D129"/>
+## R2D129 2021-05-09 <a name="r2d129"/>
 **Today's Progress**: 
 - Trying to map Geo-referenced photos using ```R``` and ```Leaflet```
 - access EXIF data from photos ```exifr```
@@ -166,9 +166,9 @@
 [TOC](#TOC)
 
 ***
-# Week XII <a name="weekXII"/>
+# Week XII <a name="weekxii"/>
 ***
-## R2D74 2021-03-15 <a name="R2D74"/>
+## R2D74 2021-03-15 <a name="r2d74"/>
 **Today's Progress**: 
 - wanting to find out the colour palette from an image of Herring spawn, I found R package `imgpalr`, which finds the hex colour values
 - using a 'dummy' plot to test with different colours, instead of copy/paste different hex codes, I used the relative position of hex code in the character string of values e.g. str(imgpal) >> ##  chr [1:9] "#67A49B" "#487977" "#66A398" "#355B5A" "#3F6E61" "#233C3E" ... >> imgpal[3] >> ## [1] "#66A398"
@@ -189,9 +189,9 @@
 [TOC](#TOC)
 
 ***
-# Week XI <a name="weekXI"/>
+# Week XI <a name="weekxi"/>
 ***
-## R2D70 2021-03-11 <a name="R2D70"/>
+## R2D70 2021-03-11 <a name="r2d70"/>
 **Today's Progress**: 
 - updating list of R website resources
 - playing with wordcloud shiny app to visualize readings for final assignment
@@ -209,9 +209,9 @@
 [TOC](#TOC)
 
 ***
-# Week IX <a name="weekIX"/>
+# Week IX <a name="weekix"/>
 ***
-## R2D46 2021-02-25 <a name="R2D46"/>
+## R2D46 2021-02-25 <a name="r2d46"/>
 **Today's Progress**: 
 - learning to use  R programs ```pagedown``` and ```pagedreport``` to create business cards, resume, thesis
 
@@ -225,9 +225,9 @@
 [TOC](#TOC)
 
 ***
-# Week V <a name="weekV"/>
+# Week V <a name="weekv"/>
 ***
-## R2D25 2021-01-25 <a name="R2D25"/>
+## R2D25 2021-01-25 <a name="r2d25"/>
 **Today's Progress**: 
 1. learned you can add a background image to RStudio!! (thanx to Ihaddaden M. EL Fodil, Ph.D @moh_fodil)
 2. updated ```Shiny iNaturalist app``` to allow cluster markers to spiderfy for all zoom levels
@@ -244,9 +244,9 @@
 [TOC](#TOC)
 
 ***
-# Week III <a name="weekIII"/>
+# Week III <a name="weekiii"/>
 ***
-## R2D16 2021-01-16 <a name="R2D16"/>
+## R2D16 2021-01-16 <a name="r2d16"/>
 **Today's Progress**: 
 - test drive of r package ```{googledrive}```
 
@@ -263,7 +263,7 @@
 [TOC](#TOC)
 
 ***
-## R2D15 2021-01-15 <a name="R2D15"/>
+## R2D15 2021-01-15 <a name="r2d15"/>
 **Today's Progress**: 
 - #tidytuesday tweets created a ```.rmd``` file
   - San Fransisco trees
@@ -277,7 +277,7 @@
 [TOC](#TOC)
 
 ***
-## R2D14 2021-01-14 <a name="R2D14"/>
+## R2D14 2021-01-14 <a name="r2d14"/>
 **Today's Progress**: 
 - working through lecture notes chapter 2 for ES482 R Stats course
   - created a ```.rmd``` file
@@ -290,7 +290,7 @@
 [TOC](#TOC)
 
 ***
-## R2D13 2021-01-13 <a name="R2D13"/>
+## R2D13 2021-01-13 <a name="r2d13"/>
 **Today's Progress**: 
 - working through lecture notes chapter 1 for ES482 R Stats course
   - created a ```.rmd``` file
@@ -302,9 +302,9 @@
 [TOC](#TOC)
 
 ***
-# Week II <a name="weekII"/>
+# Week II <a name="weekii"/>
 ***
-## R2D9 2021-01-09 <a name="R2D9"/>
+## R2D9 2021-01-09 <a name="r2d9"/>
 **Today's Progress**: 
 - more ```R Stats``` ... plotting bathymetry and glacier data with ```ggOceanMaps``` and ```ggplot2```
 
@@ -320,7 +320,7 @@
 [TOC](#TOC)
 
 ***
-## R2D4 2021-01-04 <a name="R2D4"/>
+## R2D4 2021-01-04 <a name="r2d4"/>
 **Today's Progress**: 
 - tried to get code working for my ```R Shiny``` app of Victoria Census ...
 - Just for fun tried making Voronoi tesselations in R, and creating mandalas in random palettes and ```ggplot2```
@@ -338,7 +338,7 @@
 [TOC](#TOC)
 
 ***
-## R2D3 2021-01-03 <a name="R2D3"/>
+## R2D3 2021-01-03 <a name="r2d3"/>
 **Today's Progress**: 
 - revisiting ```R Shiny``` apps formatting, including using a ```global.R``` file for the data prep ...
   - refound my ```R Shiny``` Wordcloud app code, I added Trump-only text, needing to up the word count to 7000!
@@ -353,9 +353,9 @@
 [TOC](#TOC)
 
 ***
-# Week I <a name="weekI"/>
+# Week I <a name="weeki"/>
 ***
-## R2D1 2021-01-01 <a name="R2D1"/>
+## R2D1 2021-01-01 <a name="r2d1"/>
 **Today's Progress**: 
 - playing with ```calendR.R``` to create gridded calendars
 
