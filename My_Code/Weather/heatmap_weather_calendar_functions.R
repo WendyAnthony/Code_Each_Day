@@ -1,3 +1,4 @@
+# Original idea and code from Dominic Roye
 # https://dominicroye.github.io/en/2020/a-heatmap-as-calendar/
 # https://xeo81.shinyapps.io/MeteoExtremosGalicia/
 
