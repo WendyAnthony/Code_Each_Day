@@ -150,7 +150,7 @@
 [TOC](#toc)
 
 ***
-# Week XXXIV <a name="weekxxxxiv"/></a>
+# Week XXXIV <a name="weekxxxiv"/></a>
 ***
 ## r3d234 2022-08-22 <a name="r3d234"/></a>
 **Today's Progress**: 
