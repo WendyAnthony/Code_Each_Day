@@ -9,61 +9,61 @@
 ***
 ## Table of Contents  <a name="TOC"/></a>
 - **[Week LI](#weekLI)**    
-  - [R3D357 2022-12-23](#r3d357)
-  - [R3D358 2022-12-24](#r3d358)
+  - [r3d357 2022-12-23](#r3d357)
+  - [r3d358 2022-12-24](#r3d358)
 - **[Week L](#weekL)**    
-  - [R3D349 2022-12-15](#R3D349)
+  - [r3d349 2022-12-15](#r3d349)
 - **[Week XLVIII](#weekXLVIII)**    
-  - [R3D333 2022-11-29](#R3D333)
+  - [r3d333 2022-11-29](#r3d333)
 - **[Week XLVII](#weekXLVII)**    
-  - [R3D328 2022-11-24](#R3D328)
+  - [r3d328 2022-11-24](#r3d328)
 - **[Week XXXIIV](#weekXXXIV)**    
-  - [R3D234 2022-08-22](#R3D234)
+  - [r3d234 2022-08-22](#r3d234)
 - **[Week XXXIII](#weekXXXIII)**    
-  - [R3D227 2022-08-15](#R3D227)
+  - [r3d227 2022-08-15](#r3d227)
 - **[Week XXXII](#weekXXXII)**    
-  - [R3D221 2022-08-09](#R3D221)
+  - [r3d221 2022-08-09](#r3d221)
 - **[Week XXIV](#weekXXIV)**    
-  - [R3D166 2022-06-15](#R3D166)
+  - [r3d166 2022-06-15](#r3d166)
 - **[Week XXIII](#weekXXIII)**    
-  - [R3D158 2022-06-07](#R3D158)
-  - [R3D157 2022-06-06](#R3D157)
+  - [r3d158 2022-06-07](#r3d158)
+  - [r3d157 2022-06-06](#r3d157)
 - **[Week XXII](#weekXXII)**    
-  - [R3D152 2022-06-01](#R3D152)
+  - [r3d152 2022-06-01](#r3d152)
 - **[Week XIX](#weekXIX)**    
-  - [R3D135 2022-05-15](#R3D135)
+  - [r3d135 2022-05-15](#r3d135)
 - **[Week XVIII](#weekXVIII)**    
-  - [R3D126 2022-05-06](#R3D126)
+  - [r3d126 2022-05-06](#r3d126)
 - **[Week XVI](#weekXVI)**    
-  - [R3D111 2022-04-21](#R3D111)
-  - [R3D110 2022-04-20](#R3D110)
-  - [R3D109 2022-04-19](#R3D109)
-  - [R3D108 2022-04-18](#R3D108)
-  - [R3D107 2022-04-17](#R3D107)
+  - [r3d111 2022-04-21](#r3d111)
+  - [r3d110 2022-04-20](#r3d110)
+  - [r3d109 2022-04-19](#r3d109)
+  - [r3d108 2022-04-18](#r3d108)
+  - [r3d107 2022-04-17](#r3d107)
 - **[Week XV](#weekXV)**    
-  - [R3D106 2022-04-16](#R3D106)
-  - [R3D105 2022-04-15](#R3D105)
+  - [r3d106 2022-04-16](#r3d106)
+  - [r3d105 2022-04-15](#r3d105)
 - **[Week XIV](#weekXIV)**    
-  - [R3D97 2022-04-08](#R3D97)
-  - [R3D93 2022-04-04](#R3D93)
+  - [r3d97 2022-04-08](#r3d97)
+  - [r3d93 2022-04-04](#r3d93)
 - **[Week XII](#weekXII)**    
-  - [R3D86 2022-03-27](#R3D86)
-  - [R3D85 2022-03-26](#R3D85)
-  - [R3D84 2022-03-25](#R3D84)
-  - [R3D83 2022-03-24](#R3D83)
-  - [R3D80 2022-03-21](#R3D80) 
+  - [r3d86 2022-03-27](#r3d86)
+  - [r3d85 2022-03-26](#r3d85)
+  - [r3d84 2022-03-25](#r3d84)
+  - [r3d83 2022-03-24](#r3d83)
+  - [r3d80 2022-03-21](#r3d80) 
 - **[Week VII](#weekVii)**    
-  - [R3D72 2022-03-13](#R3D72)  
+  - [r3d72 2022-03-13](#r3d72)  
 - **[Week III](#weekIII)**    
-  - [R3D9 2022-01-09](#R3D9)
+  - [r3d9 2022-01-09](#r3d9)
 - **[Week II](#weekII)**    
-  - [R3D3 2022-01-03](#R3D3)
+  - [r3d3 2022-01-03](#r3d3)
 - **[Wishlist](#wishlist)**  
 
 ***
 # Week LI <a name="weekLI"/></a>
 ***
-## R3D358 2022-12-24 <a name="r3d358"/></a>
+## r3d358 2022-12-24 <a name="r3d358"/></a>
 **Today's Progress**: 
 - Revisited calendar heatmap, learned from Dominic Roye, first done Dec 2020, updated for 2022
 - Created functions for repeating code chunks!!
@@ -81,9 +81,9 @@
 - https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Weather/tmax_calendar_2022_44.png
 - https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/Weather/tmin_calendar_2022_44.png
 
-[TOC](#TOC)
+[TOC](#toc)
 
-## R3D357 2022-12-23 <a name="r3d357"/></a>
+## r3d357 2022-12-23 <a name="r3d357"/></a>
 **Today's Progress**: 
 - Taught myself how to use Obsidian Knowledge Management System, using my knowledge of Markdown text formatting
 - Downloaded and tested both core and community plugins: Audio Recorder, Canvas, Slides, Tags; Enhancing Mindmap, Obsidian Leaflet, Obsidian Charts, Table of Contents and Zotero Integration.
@@ -92,12 +92,12 @@
 - Learning to integrate Zotero by exporting notes to Obsidian, citations
 - Learning skills to incorporate into an academic research workflow
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week L <a name="weekL"/></a>
 ***
-## R3D349 2022-12-15 <a name="R3D349"/></a>
+## r3d349 2022-12-15 <a name="r3d349"/></a>
 **Today's Progress**: 
 - Got back to Shiny app for my Phenology photo data
 - Finally got the Ouput table and map to be reactive to selectInput
@@ -114,12 +114,12 @@
 - https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/ShinyApps/PhotoPhenology/Pheno-Shinyapp-ss2.png
 - https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/ShinyApps/PhotoPhenology/Pheno-Shinyapp-ss3.png
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XLVIII <a name="weekXLVIII"/></a>
 ***
-## R3D333 2022-11-29 <a name="R3D333"/></a>
+## r3d333 2022-11-29 <a name="r3d333"/></a>
 **Today's Progress**: 
 - Created wordcloud using ```wordcloud2```
 
@@ -130,12 +130,12 @@
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud/XmasLyrics
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/XmasLyrics/xmas-wordcloud-Image-2022-12-01.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XLVII <a name="weekXLVII"/></a>
 ***
-## R3D328 2022-11-24 <a name="R3D328"/></a>
+## r3d328 2022-11-24 <a name="r3d328"/></a>
 **Today's Progress**: 
 - Working on a Shiny App to list local computer files
 
@@ -147,12 +147,12 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/ShinyApps/ShinySearch/app.R
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/ShinyApps/ShinySearch/app.R
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XXXIV <a name="weekXXXIV"/></a>
 ***
-## R3D234 2022-08-22 <a name="R3D234"/></a>
+## r3d234 2022-08-22 <a name="r3d234"/></a>
 **Today's Progress**: 
 - Trying ```bookdown``` to host a tutorial for making ```leaflet``` maps
 - discovered settings page for a repository https://github.com/WendyAnthony/Code_Each_Day/settings
@@ -167,12 +167,12 @@
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Ageing
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Ageing/CanadaCensus-pop-age.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XXXIII <a name="weekXXXIII"/></a>
 ***
-## R3D227 2022-08-15 <a name="R3D227"/></a>
+## r3d227 2022-08-15 <a name="r3d227"/></a>
 **Today's Progress**: 
 - added code to duplicate, then change file name of image exif data csv created by ```z-2-Photo-Map-Folder.Rmd``` file created to map all photos in a folder 
 
@@ -184,12 +184,12 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Leaflet/Time/leaflet-timeslider-popup-3.R
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/z-2-Photo-Map-Folder.Rmd
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XXXII <a name="weekXXXII"/></a>
 ***
-## R3D221 2022-08-09 <a name="R3D221"/></a>
+## r3d221 2022-08-09 <a name="r3d221"/></a>
 **Today's Progress**: 
 - tried different ways to make a time slider with leaflet map in html, while including popup with photos, using js
 - read csv file; make date/time column a date value using ```lubridate```; omit na values; use ```geojsonio::geojson_json()``` to create and save json file  from csv using ```geojsonio::geojson_write()```
@@ -204,13 +204,13 @@
 - https://github.com/geyerbri/LeafletSlider#options
 - https://github.com/dwilhelm89/LeafletSlider
 
-[TOC](#TOC)
+[TOC](#toc)
 
 
 ***
 # Week XXIV <a name="weekXXIV"/></a>
 ***
-## R3D166 2022-06-15 <a name="R3D166"/></a>
+## r3d166 2022-06-15 <a name="r3d166"/></a>
 **Today's Progress**: 
 - learn more about making hidden sections in ```RMarkdown```
 
@@ -237,12 +237,12 @@
 </blockquote>  </details>
 
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XXIII <a name="weekXXIII"/></a>
 ***
-## R3D157 2022-06-07 <a name="R3D158"/></a>
+## r3d157 2022-06-07 <a name="r3d158"/></a>
 **Today's Progress**: 
 1. I created a package ```natmapr``` using the functions I created to make ggplots out of iNaturalist observations
 2. I created another function to include with ```natmapr``` package, to create a leaflet map from iNaturalist observations
@@ -266,9 +266,9 @@
 **Things-To-Do:**
 - try to create more functions!! ;)
 
-[TOC](#TOC)
+[TOC](#toc)
 
-## R3D157 2022-06-06 <a name="R3D157"/></a>
+## r3d157 2022-06-06 <a name="r3d157"/></a>
 **Today's Progress**: 
 1. ```iNaturalist``` and ```ggplot2```
 - I figured out how to vizualize my iNaturalist observations using ```esquisse``` https://github.com/dreamRs/esquisse ```esquisse::esquisser()```
@@ -298,12 +298,12 @@
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/iNaturalist/leaflet/iNaturalist-leaflet.html
 - https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/iNaturalist/leaflet/iNaturalist-leaflet.R
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XXII <a name="weekXXII"/></a>
 ***
-## R3D152 2022-06-01 <a name="R3D152"/></a>
+## r3d152 2022-06-01 <a name="r3d152"/></a>
 **Today's Progress**: 
 1. I was reminded that uploading a geojson file to github will automatically produce a mapbox map in the github window when the file is clicked
   - https://github.blog/2013-06-13-there-s-a-map-for-that/
@@ -323,12 +323,12 @@
   - https://gist.github.com/WendyAnthony/5497fd20edee5aece2611b15c115dbd2
 2. https://wendyanthony.github.io/Code_Each_Day/
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XIX <a name="weekXIX"/></a>
 ***
-## R3D135 2022-05-15 <a name="R3D135"/></a>
+## r3d135 2022-05-15 <a name="r3d135"/></a>
 **Today's Progress**: 
 - I created my first ```R``` Package - called ```templater```!!
   - I created templates for my ```.Rmd``` file YAML headers
@@ -341,12 +341,12 @@
 - haven't uploaded code yet ... not sure how to upload a package to github ... I'll have to learn how ;)
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/PackageFunctions/templater
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XVIII <a name="weekXVIII"/></a>
 ***
-## R3D126 2022-05-06 <a name="R3D126"/></a>
+## r3d126 2022-05-06 <a name="r3d126"/></a>
 **Today's Progress**: 
 - Revisiting Wordcloud Shiny app
   - Created a tutorial for use
@@ -363,12 +363,12 @@
 - Original Code version idea http://www.baoruidata.com/examples/082-word-cloud/ by Fereshteh Karimeddini <fereshteh@rstudio.com>
 - Text Analysis wordcloud used for my final paper: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/text_analysis/TextAnalysis.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XVI <a name="weekXVI"/></a>
 ***
-## R3D111 2022-04-21 <a name="R3D111"/></a>
+## r3d111 2022-04-21 <a name="r3d111"/></a>
 **Today's Progress**: 
 - Continuing land cover data mapping
   - classifying land use data
@@ -382,10 +382,10 @@
 - **Screenshot image (with no water):** https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/BC_LandCover_shp_files/LandcoverMapping-app-result-nowater-ss.png
 - **Screenshot image (with water):** https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Remote_Sensing/BC_LandCover_shp_files/LandcoverMapping-app-result-water-ss.png
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D110 2022-04-20 <a name="R3D110"/></a>
+## r3d110 2022-04-20 <a name="r3d110"/></a>
 **Today's Progress**: 
 - BC Land Cover data >> still trying to reduce data set size
   - QGIS couldn't get to clip square AOI region to only Vancouver Island
@@ -398,10 +398,10 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing/BC_LandCover_shp_files
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D109 2022-04-19 <a name="R3D109"/></a>
+## r3d109 2022-04-19 <a name="r3d109"/></a>
 **Today's Progress**: 
 - BC Land Cover data >> still trying to reduce data set size
 - Takes too long to read very large, province wide shp files, and reduce data
@@ -415,10 +415,10 @@
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing/BC_LandCover_shp_files
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D108 2022-04-18 <a name="R3D108"/></a>
+## r3d108 2022-04-18 <a name="r3d108"/></a>
 **Today's Progress**: 
 - continued work on using ```raster``` to learn to do some remote sensing viz
   - classifying land use data
@@ -432,10 +432,10 @@
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing
 - original tutorial: https://rspatial.org/raster/rs/3-basicmath.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D107 2022-04-17 <a name="R3D107"/></a>
+## r3d107 2022-04-17 <a name="r3d107"/></a>
 **Today's Progress**: 
 - continued work on using ```raster``` to learn to do some remote sensing viz
   - learning to use band math to viz land use spectra
@@ -449,12 +449,12 @@
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing
 - original tutorial: https://rspatial.org/raster/rs/3-basicmath.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XV <a name="weekXV"/></a>
 ***
-## R3D106 2022-04-16 <a name="R3D106"/></a>
+## r3d106 2022-04-16 <a name="r3d106"/></a>
 **Today's Progress**: 
 - continued work on using ```raster``` to learn to do some remote sensing viz
   - learning to use band math to viz land use spectra
@@ -468,10 +468,10 @@
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Remote_Sensing
 - original tutorial: https://rspatial.org/raster/rs/index.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D105 2022-04-15 <a name="R3D105"/></a>
+## r3d105 2022-04-15 <a name="r3d105"/></a>
 **Today's Progress**: 
 - created a leaflet html map using json
 - created json object from .csv in ```R```
@@ -490,12 +490,12 @@
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/JSON_Mapping/images/Leaflet-Map-list-json-open.png
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/JSON_Mapping
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XIV <a name="weekXIV"/></a>
 ***
-## R3D97 2022-04-08 <a name="R3D97"/></a>
+## r3d97 2022-04-08 <a name="r3d97"/></a>
 **Today's Progress**: 
 - text analysis in ```r```
   - created a wordcloud as I finished my final paper on BC Climate Change Mitigation Strategies
@@ -508,10 +508,10 @@
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Wordcloud/text_analysis/TextAnalysis.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Wordcloud/text_analysis
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D93 2022-04-04 <a name="R3D93"/></a>
+## r3d93 2022-04-04 <a name="r3d93"/></a>
 **Today's Progress**: 
 - created a leaflet for ```r``` map using ```GPX``` track and ```.csv``` waypoint data from Garmin GPS
 - tried different markers
@@ -524,12 +524,12 @@
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Leaflet/GPX_Track/leaflet-mapping.html
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Leaflet/GPX_Track
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 # Week XII <a name="weekXII"/></a>
 ***
-## R3D86 2022-03-27 <a name="R3D86"/></a>
+## r3d86 2022-03-27 <a name="r3d86"/></a>
 **Today's Progress**: 
 - tried out creating maps from image folder at scale
   - downloaded 8000+ images from camera to one folder on different computer
@@ -544,10 +544,10 @@
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Sound/Sound.html
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Sound/Sound.Rmd
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D85 2022-03-26 <a name="R3D85"/></a>
+## r3d85 2022-03-26 <a name="r3d85"/></a>
 **Today's Progress**: 
 - refined code for creating maps from images in folder
 - refined code to rename files in image folder with exif info, and folder name
@@ -564,10 +564,10 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/z-1-rename-files-folder.R
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/z-2-Photo-Map-Folder.Rmd
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D83 2022-03-25 <a name="R3D84"/></a>
+## r3d83 2022-03-25 <a name="r3d84"/></a>
 **Today's Progress**: 
 - create code to create `.csv` and 'leaflet map` from folder of images
 - learned how to rename files in image folder with exif info, and folder name
@@ -584,10 +584,10 @@
 - Webpage: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Images/photoFolder-exif-map-WORKS-in-photo-folder.html
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Images/photoFolder-exif-map-WORKS-in-photo-folder.Rmd
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D83 2022-03-24 <a name="R3D83"/></a>
+## r3d83 2022-03-24 <a name="r3d83"/></a>
 **Today's Progress**: 
 - making functions for some of COVID-Canada.Rmd code chunks
   - interactive tooltips
@@ -602,10 +602,10 @@
 - Old html version: https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/COVID-19/output/COVID-Canada-2022-03-21.html
 - [COVID-Canada.Rmd](https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/COVID-19/COVID-Canada.Rmd)
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
-## R3D80 2022-03-21 <a name="R3D80"/></a>
+## r3d80 2022-03-21 <a name="r3d80"/></a>
 **Today's Progress**: 
 - interactive ggplot graphs in R with ```ggiraph```
 - Created interactive linked map / chart for Canada COVID vaccination status
@@ -622,13 +622,13 @@
 - used Canada map https://github.com/kjhealy/canmap  
 - inspired by https://www.infoworld.com/article/3626911/easy-interactive-ggplot-graphs-in-r-with-ggiraph.html
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ***
 # Week VII <a name="weekVII"/></a>
 ***
-## R3D72 2022-03-13 <a name="R3D72"/></a>
+## r3d72 2022-03-13 <a name="r3d72"/></a>
 **Today's Progress**: 
 - Revisited Climate Warming Stripes code
 - learned to make presentation slides RMarkdown output: ioslides_presentation 
@@ -643,11 +643,11 @@
 - https://raw.githack.com/WendyAnthony/Code_Each_Day/master/My_Code/Climate/Warming_Stripes/Warming-Stripes-present-Victoria.html#1
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Climate/Warming_Stripes/Warming-Stripes-present-Victoria.Rmd
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ***
-## R3D9 2022-01-09 <a name="R3D9"/></a>
+## r3d9 2022-01-09 <a name="r3d9"/></a>
 **Today's Progress**: 
 - Revisited Climate Warming Stripes code and updated to 2021
   - added code for anomaly temp based on 1971-2000 Climate normals
@@ -662,13 +662,13 @@
 - https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/Climate/Warming_Stripes/VictoriaClimateStripes-1941-2021-lg.png
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/Climate/Warming_Stripes
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***
 ***
 # Week II <a name="weekII"/></a>
 ***
-## R3D3 2022-01-03 <a name="R3D3"/></a>
+## r3d3 2022-01-03 <a name="r3d3"/></a>
 **Today's Progress**: 
 - Created chart of my thyroid RX daily consumption, from csv exported from .xls file using `ggplot2`
 - using point, line, and smooth (central line of mean and shaded error)
@@ -682,7 +682,7 @@
 **Links to code work:** 
 - 
 
-[TOC](#TOC)
+[TOC](#toc)
 
 ***  
 ***
@@ -697,4 +697,4 @@
   - http://people.geog.uvic.ca/wanthony/website/etc/R_Stats_Links.html
 - learn to use highcharts with R in ```highcharter```
 
-[TOC](#TOC)
+[TOC](#toc)
