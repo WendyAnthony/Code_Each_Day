@@ -8,12 +8,12 @@
 
 ***
 ## Table of Contents  <a name="toc"/></a>
-- **[Week LI](#weekLI)**    
+- **[Week LI](#weekli)**    
   - [r3d357 2022-12-23](#r3d357)
   - [r3d358 2022-12-24](#r3d358)
-- **[Week L](#weekL)**    
+- **[Week L](#weekl)**    
   - [r3d349 2022-12-15](#r3d349)
-- **[Week XLVIII](#weekXLVIII)**    
+- **[Week XLVIII](#weekxlviii)**    
   - [r3d333 2022-11-29](#r3d333)
 - **[Week XLVII](#weekXLVII)**    
   - [r3d328 2022-11-24](#r3d328)
