@@ -9,7 +9,7 @@ Code-Projects-2023.md
 - [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 - [2020 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2020.md)
 - [2021 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2021.md)
-- [2021 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2021.md)
+- [2022 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2022.md)
 
 ***
 ## Table of Contents  <a name="toc"/></a>
