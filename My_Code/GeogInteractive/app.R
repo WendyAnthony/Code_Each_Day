@@ -957,7 +957,7 @@ Winter Session.'  id='node45' shape='rect' coords='385,238,535,286'></area>
     strg1 <- paste("A place to test data vizualilzations")
     # strg2 <-
     strg2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html")
-    strg3 <- paste("	body { background-color: #000; }
+    strg3 <- paste("style type='text/css' media='screen'	body { background-color: #000; }
 	body,td { font: 1em Gotham, Helvetica Neue, Helvetica, Arial Narrow, Arial; font-weight: 500; color: #666; padding: 0; margin: 0; }
 	ul { list-style: none none; margin: 0; padding: 0; display: block; }
 
