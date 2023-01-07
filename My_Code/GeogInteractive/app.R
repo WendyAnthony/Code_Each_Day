@@ -35,7 +35,9 @@ is.not.null <- function(x) !is.null(x)
 ui <- fluidPage(
     # Application title
     titlePanel("UVic Geography Course Exploration"),
-    span("Shiny code experiments by Wendy Anthony 2023-01-07"),
+    span("Shiny code experiments by Wendy Anthony"),
+    br(),
+    span("<wanthony@uvic.ca> 2023-01-07"),
     br(),br(),
 
     sidebarLayout(
