@@ -51,7 +51,8 @@ ui <- fluidPage(
         tabsetPanel(type = "tabs",
                     tabPanel("Table", DT::dataTableOutput("table_subset")),
                     tabPanel("About", tableOutput("text")),
-                    tabPanel("Code",  tableOutput("code"))
+                    tabPanel("Code",  tableOutput("code")),
+                    tabPanel("Data Viz", tableOutput("dataviz"))
                     )
               )
     ),
@@ -129,6 +130,11 @@ server <- function(input, output) {
   output$code <-renderUI({
     string1 <- tags$a(href='https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive', 'Shiny app code on GitHub', target="_blank")
     HTML(paste(string1))
+  })
+
+  output$dataviz <- renderUI({
+    strg1 <- paste("A place to test data vizualilzations")
+    HTML(paste(strg1))
   })
 
 ############
