@@ -21,10 +21,6 @@ getwd()
 # Data import and subset
 geog_course_cl <- read.csv("Geog-Course-flowcharts.csv", stringsAsFactors = F)
 
-# Data clean
-# geog_course_cl <- subset(geog_course_cl, select = -c(code, CourseName))
-# geog_course_cl$CourseName <- paste(geog_course_cl$Course, "", geog_course_cl$Name)
-
 str(geog_course_cl)
 colnames(geog_course_cl)
 
@@ -65,8 +61,9 @@ ui <- fluidPage(
                     tabPanel("About", tableOutput("text")),
                     tabPanel("Code",  tableOutput("code")),
                     tabPanel("PDF",  tableOutput("pdf")),
-                    tabPanel("Test2",  tableOutput("test2")),
-                    tabPanel("Data Viz", tableOutput("dataviz"))
+                    tabPanel("Concept Map Dataviz",  tableOutput("conceptmap")),
+                    tabPanel("Test",  tableOutput("test")),
+                    tabPanel("Data Viz FREEZES!?", tableOutput("dataviz"))
                     )
               )
     ),
@@ -102,8 +99,8 @@ server <- function(input, output) {
                 selected = "", choices = var_name(), multiple = T)
   })
 
-
   # https://github.com/jienagu/DT-Editor
+  # this won't save any changes to table made through search filters
   ### This is nothing related to DT Editor but I think it is nice to have a download function in the Shiny so user
   ### can download the table in csv
   output$geodata_csv<- downloadHandler(
@@ -174,10 +171,776 @@ server <- function(input, output) {
     HTML(paste(strings1, strings2))
   })
 
-  output$test2 <- renderUI({
-    stringss1 <- paste("")
+  output$conceptmap <- renderUI({
+    stringss1 <- paste("
+<html><head><title>Geog_earth_systems_2012-13.vue</title><script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js' type='text/javascript'></script><script  type='text/javascript'>
+jQuery.noConflict();
+</script>
+<script src='http://vue.tufts.edu/htmlexport-includes/jquery.maphilight.min.js' type='text/javascript'></script><script src='http://vue.tufts.edu/htmlexport-includes/v3/tooltip.min.js' type='text/javascript'></script><script type='text/javascript'>jQuery(function() {jQuery.fn.maphilight.defaults = {
+         fill: false,
+         fillColor: '000000',
+         fillOpacity: 0.2,
+             stroke: true,
+         strokeColor: '282828',
+         strokeOpacity: 1,
+         strokeWidth: 4,
+         fade: true,
+         alwaysOn: false
+     }
+jQuery('.example2 img').maphilight();
+});
+</script>
+<style type='text/css'>
+#tooltip{
+position:absolute;
+border:1px solid #333;
+background:#f7f5d1;
+padding:2px 5px;
+color:#333;
+display:none;
+}
+</style>
+</head><body>
+<div class='example2'><img class='map' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_earth_systems_2015-16.png' width='1018.0' height='827.0' usemap='#vuemap'><map name='vuemap'> <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=484&schd_in=' target='_blank' class='tooltip' title='Detailed
+examination of
+atmospheric
+structures and
+processes
+underlying weather
+and climate.
+Practical work
+focuses on
+analysis of
+vertical stability
+and utilizing
+computer weather
+model data.'  id='node42' shape='rect' coords='574,193,652,214'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=477&schd_in=' target='_blank' class='tooltip' title='The nature of
+scientific
+research in
+physical geography
+is examined
+through field and
+laboratory
+techniques.
+Includes a week-
+long field camp
+where basic
+approaches,
+methodologies and
+techniques are
+used to prepare a
+series of reports
+based on field
+data and collected
+samples. A field
+trip fee may be
+applied.
+
+Note:
+Credit will be
+granted for only
+one of 477, 471D.'  id='node39' shape='rect' coords='433,191,511,212'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=476&schd_in=' target='_blank' class='tooltip' title='Focusing on
+various
+geomorphologic
+themes, students
+will complete a
+major research
+project based on
+field work to
+supplement
+lectures, seminars
+and field/lab
+projects.
+
+Note:
+Credit will be
+granted for only
+one of 476, 471C.'  id='node36' shape='rect' coords='111,196,189,217'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=373&schd_in=' target='_blank' class='tooltip' title='A study of the
+application of
+physical
+principles to
+practical problems
+in climatology and
+the reciprocal
+interaction
+between climate
+and human
+activities. Topics
+include: urban
+effects on
+climate; air
+pollution; human
+bioclimatology;
+agricultural
+climatology; and
+methods of
+microclimatic
+modification.'  id='node29' shape='rect' coords='580,369,658,389'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=370&schd_in=' target='_blank' class='tooltip' title='An overview of
+hydrological
+processes,
+measurement
+techniques and
+data analysis. The
+movement of water
+in the hydrologic
+cycle via
+precipitation,
+interception,
+evapotranspiration,
+surface runoff,
+infiltration, soil
+moisture,
+groundwater flow
+and streamflow
+generation are
+examined. Applied
+aspects and local
+examples will be
+discussed.
+Involves
+laboratory
+assignments and a
+field trip.
+
+Note:
+1.5 units of 100-
+level MATH
+recommended.'  id='node26' shape='rect' coords='435,355,513,375'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=376&schd_in=' target='_blank' class='tooltip' title='An investigation
+of the physical
+processes that
+create and
+maintain
+landforms. Focus
+on measurement and
+analysis of
+morphodynamic
+processes in
+fluvial, aeolian,
+coastal, glacial,
+hillslope, and/or
+periglacial
+landscapes (e.g.,
+sediment
+transport,
+erosion, wind/wave
+energy, river
+discharge, glacial
+dynamics,
+weathering rates).
+Involves a field
+trip and/or a
+group project.'  id='node23' shape='rect' coords='187,360,262,380'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=376&sched_in=' target='_blank' class='tooltip' title='An investigation
+of the physical
+processes that
+create and
+maintain
+landforms. Focus
+on measurement and
+analysis of
+morphodynamic
+processes in
+fluvial, aeolian,
+coastal, glacial,
+hillslope, and/or
+periglacial
+landscapes (e.g.,
+sediment
+transport,
+erosion, wind/wave
+energy, river
+discharge, glacial
+dynamics,
+weathering rates).
+Involves a field
+trip and/or a
+group project.'  id='node22' shape='rect' coords='187,384,265,405'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=272&schd_in=' target='_blank' class='tooltip' title='An investigation
+of the fundmental
+processes
+controlling
+climate and
+hydrology.
+Explores various
+factors and
+interactions that
+determine the
+spatial and
+temporal
+variations of
+individual climate
+elements. Special
+attention is given
+to the mutual
+interaction of
+climate with the
+Earth's surface
+and the role that
+ground surface
+type or cover
+plays in
+moderating local
+climate and
+hydrology.'  id='node17' shape='rect' coords='510,534,585,554'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=274&schd_in=' target='_blank' class='tooltip' title='Examines the
+relationships
+among organisms -
+principally plants
+and animals - and
+their environment,
+emphasizing their
+distributions
+across a range of
+spatial and
+temporal scales.
+Examines basic
+ecological and
+evolutionary
+concepts affecting
+biogeographic
+processes of
+dispersal,
+speciation and
+extinction; how
+patterns of
+biodiversity
+change over space
+and time from
+early earth
+history to the
+contemporary
+environment; the
+nature of changing
+biotic
+distributions with
+increasing human
+impacts and global
+change.'  id='node14' shape='rect' coords='828,510,906,531'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=276&schd_in=' target='_blank' class='tooltip' title='Introduction to
+Earth surface
+process and
+landforms
+including
+riverine, desert,
+coastal, glacial,
+hillslope and
+permafrost
+environments.
+Focus on regional
+and Canadian
+landscapes.
+Involves a field
+trip.'  id='node11' shape='rect' coords='186,512,264,533'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=101A&schd_in=' target='_blank' class='tooltip' title='Introduction to
+the functioning of
+the biosphere, the
+ways in which
+humans alter
+natural processes,
+environmental
+consequences of
+these alterations
+and the
+implications for
+sustainability.
+Topics include:
+energy flows,
+biogeochemical
+cycles, ecosystem
+structure and
+dynamics,
+pollution, global
+change, water
+resources,
+biodiversity,
+endangered
+species, protected
+areas, agriculture
+and food,
+forestry, marine
+resources, poverty
+and development
+and different
+worldviews.
+Potential for a
+sustainable
+society is
+discussed.'  id='node8' shape='rect' coords='803,679,884,700'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=101A&schd_in=' target='_blank' class='tooltip' title='Introduction to
+the functioning of
+the biosphere, the
+ways in which
+humans alter
+natural processes,
+environmental
+consequences of
+these alterations
+and the
+implications for
+sustainability.
+Topics include:
+energy flows,
+biogeochemical
+cycles, ecosystem
+structure and
+dynamics,
+pollution, global
+change, water
+resources,
+biodiversity,
+endangered
+species, protected
+areas, agriculture
+and food,
+forestry, marine
+resources, poverty
+and development
+and different
+worldviews.
+Potential for a
+sustainable
+society is
+discussed.'  id='node7' shape='rect' coords='803,704,887,725'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=103&schd_in=' target='_blank' class='tooltip' title='Introduces
+Physical Geography
+using an earth-
+systems approach.
+Topics include
+atmospheric,
+ecologic, and
+geomorphic systems
+drviving the
+creation of
+weather and
+climate,
+landforms, biomes
+and ecosystems.
+The
+interrelationship
+between these
+systems as awell
+as the role of
+human agency will
+be discussed.'  id='node3' shape='rect' coords='490,679,571,699'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=103&schd_in=' target='_blank' class='tooltip' title='Introduces
+Physical Geography
+using an earth-
+systems approach.
+Topics include
+atmospheric,
+ecologic, and
+geomorphic systems
+drviving the
+creation of
+weather and
+climate,
+landforms, biomes
+and ecosystems.
+The
+interrelationship
+between these
+systems as awell
+as the role of
+human agency will
+be discussed.'  id='node2' shape='rect' coords='490,703,574,724'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=103&schd_in=' target='_blank'  id='node0' shape='rect' coords='490,679,571,699'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=103&schd_in=' target='_blank'  id='node1' shape='rect' coords='490,703,574,724'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/358.html' target='_blank' class='tooltip' title='Introduces
+Physical Geography
+using an earth-
+systems approach.
+Topics include
+atmospheric,
+ecologic, and
+geomorphic systems
+drviving the
+creation of
+weather and
+climate,
+landforms, biomes
+and ecosystems.
+The
+interrelationship
+between these
+systems as awell
+as the role of
+human agency will
+be discussed.'  id='node4' shape='rect' coords='456,629,621,730'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=101A&schd_in=' target='_blank'  id='node5' shape='rect' coords='803,679,884,700'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=101A&schd_in=' target='_blank'  id='node6' shape='rect' coords='803,704,887,725'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/101A.html' target='_blank' class='tooltip' title='Introduction to
+the functioning of
+the biosphere, the
+ways in which
+humans alter
+natural processes,
+environmental
+consequences of
+these alterations
+and the
+implications for
+sustainability.
+Topics include:
+energy flows,
+biogeochemical
+cycles, ecosystem
+structure and
+dynamics,
+pollution, global
+change, water
+resources,
+biodiversity,
+endangered
+species, protected
+areas, agriculture
+and food,
+forestry, marine
+resources, poverty
+and development
+and different
+worldviews.
+Potential for a
+sustainable
+society is
+discussed.'  id='node9' shape='rect' coords='769,629,934,731'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=276&schd_in=' target='_blank'  id='node10' shape='rect' coords='186,512,264,533'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/276.html' target='_blank' class='tooltip' title='Introduction to
+Earth surface
+process and
+landforms
+including
+riverine, desert,
+coastal, glacial,
+hillslope and
+permafrost
+environments.
+Focus on regional
+and Canadian
+landscapes.
+Involves a field
+trip.'  id='node12' shape='rect' coords='152,462,282,539'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=274&schd_in=' target='_blank'  id='node13' shape='rect' coords='828,510,906,531'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/274.html' target='_blank' class='tooltip' title='Examines the
+relationships
+among organisms -
+principally plants
+and animals - and
+their environment,
+emphasizing their
+distributions
+across a range of
+spatial and
+temporal scales.
+Examines basic
+ecological and
+evolutionary
+concepts affecting
+biogeographic
+processes of
+dispersal,
+speciation and
+extinction; how
+patterns of
+biodiversity
+change over space
+and time from
+early earth
+history to the
+contemporary
+environment; the
+nature of changing
+biotic
+distributions with
+increasing human
+impacts and global
+change.'  id='node15' shape='rect' coords='794,460,911,537'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=272&schd_in=' target='_blank'  id='node16' shape='rect' coords='510,534,585,554'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/272.html' target='_blank' class='tooltip' title='An investigation
+of the fundmental
+processes
+controlling
+climate and
+hydrology.
+Explores various
+factors and
+interactions that
+determine the
+spatial and
+temporal
+variations of
+individual climate
+elements. Special
+attention is given
+to the mutual
+interaction of
+climate with the
+Earth's surface
+and the role that
+ground surface
+type or cover
+plays in
+moderating local
+climate and
+hydrology.'  id='node18' shape='rect' coords='476,470,605,563'></area>
+ <area  class='tooltip' title='Note: Biology 12
+or BIOL 150B
+recommended.
+
+Prerequisites:
+101A or 103.'  id='node19' shape='rect' coords='790,561,915,606'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=376&schd_in=' target='_blank'  id='node20' shape='rect' coords='187,360,262,380'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=376&sched_in=' target='_blank'  id='node21' shape='rect' coords='187,384,265,405'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/376.html' target='_blank' class='tooltip' title='An investigation
+of the physical
+processes that
+create and
+maintain
+landforms. Focus
+on measurement and
+analysis of
+morphodynamic
+processes in
+fluvial, aeolian,
+coastal, glacial,
+hillslope, and/or
+periglacial
+landscapes (e.g.,
+sediment
+transport,
+erosion, wind/wave
+energy, river
+discharge, glacial
+dynamics,
+weathering rates).
+Involves a field
+trip and/or a
+group project.'  id='node24' shape='rect' coords='153,310,283,411'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=370&schd_in=' target='_blank'  id='node25' shape='rect' coords='435,355,513,375'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/370.html' target='_blank' class='tooltip' title='An overview of
+hydrological
+processes,
+measurement
+techniques and
+data analysis. The
+movement of water
+in the hydrologic
+cycle via
+precipitation,
+interception,
+evapotranspiration,
+surface runoff,
+infiltration, soil
+moisture,
+groundwater flow
+and streamflow
+generation are
+examined. Applied
+aspects and local
+examples will be
+discussed.
+Involves
+laboratory
+assignments and a
+field trip.
+
+Note:
+1.5 units of 100-
+level MATH
+recommended.'  id='node27' shape='rect' coords='401,319,518,381'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=373&schd_in=' target='_blank'  id='node28' shape='rect' coords='580,369,658,389'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/373.html' target='_blank' class='tooltip' title='A study of the
+application of
+physical
+principles to
+practical problems
+in climatology and
+the reciprocal
+interaction
+between climate
+and human
+activities. Topics
+include: urban
+effects on
+climate; air
+pollution; human
+bioclimatology;
+agricultural
+climatology; and
+methods of
+microclimatic
+modification.'  id='node30' shape='rect' coords='546,319,663,395'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/358.html' target='_blank' class='tooltip' title='Landscape ecology
+emphasizes the
+interaction
+between spatial
+pattern and
+ecological
+processes. Focuses
+on the role of
+spatial
+heterogeneity
+across a range of
+scales. Focus is
+on the role of
+spatial
+heterogeneity in
+affecting the
+distribution and
+abundance of
+organisms, mass
+and energy
+transfers, and
+alterations of
+this structure by
+natural or
+anthropogenic
+forces.
+Implications for
+resource
+management and
+conservation are
+discussed.
+
+Note:
+274 recommended.'  id='node31' shape='rect' coords='700,317,800,367'></area>
+ <area  class='tooltip' title='Note: 274
+recommended.
+
+Prerequisites: One
+of 272, 274, 276.'  id='node32' shape='rect' coords='638,413,811,462'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/424.html' target='_blank' class='tooltip' title='An advanced, field-
+based exploration
+of coastal
+geomorphic
+processes and
+landforms.
+Involves a week-
+long field trip to
+local coastal
+sites where
+students apply
+geomorphic
+concepts and
+methods towards a
+series of
+independent
+research
+assignments and/or
+group projects.
+Areas of
+investigation will
+span nearshore to
+backshore
+environments and
+wave, tidal,
+fluvial/estuarine,
+and aeolian
+processes. A field
+trip fee may be
+applied.
+'  id='node33' shape='rect' coords='223,132,350,196'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/474.html' target='_blank' class='tooltip' title='A field-research
+course in
+biogeography based
+on a combination
+of reading,
+discussion, and
+data analysis.
+Involves a week-
+long field trip; a
+field trip fee may
+be applied.'  id='node34' shape='rect' coords='789,132,919,185'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=476&schd_in=' target='_blank'  id='node35' shape='rect' coords='111,196,189,217'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/476.html' target='_blank' class='tooltip' title='Focusing on
+various
+geomorphologic
+themes, students
+will complete a
+major research
+project based on
+field work to
+supplement
+lectures, seminars
+and field/lab
+projects.
+
+Note:
+Credit will be
+granted for only
+one of 476, 471C.'  id='node37' shape='rect' coords='77,132,204,223'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=477&schd_in=' target='_blank'  id='node38' shape='rect' coords='433,191,511,212'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/477.html' target='_blank' class='tooltip' title='The nature of
+scientific
+research in
+physical geography
+is examined
+through field and
+laboratory
+techniques.
+Includes a week-
+long field camp
+where basic
+approaches,
+methodologies and
+techniques are
+used to prepare a
+series of reports
+based on field
+data and collected
+samples. A field
+trip fee may be
+applied.
+
+Note:
+Credit will be
+granted for only
+one of 477, 471D.'  id='node40' shape='rect' coords='399,127,516,218'></area>
+ <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=484&schd_in=' target='_blank'  id='node41' shape='rect' coords='574,193,652,214'></area>
+ <area href='http://web.uvic.ca/calendar2015-09/CDs/GEOG/484.html' target='_blank' class='tooltip' title='Detailed
+examination of
+atmospheric
+structures and
+processes
+underlying weather
+and climate.
+Practical work
+focuses on
+analysis of
+vertical stability
+and utilizing
+computer weather
+model data.'  id='node43' shape='rect' coords='540,129,678,220'></area>
+ <area  class='tooltip' title='Prerequisites:
+376 and one of
+370, 372, 373,
+374; permission of
+the department by
+15 March of
+previous Winter
+Session.'  id='node44' shape='rect' coords='212,229,358,276'></area>
+ <area  class='tooltip' title='Prerequisites: One
+of 274, 358, 370,
+373, 376;
+permission of the
+department by 15
+March of previous
+Winter Session.'  id='node45' shape='rect' coords='385,238,535,286'></area>
+ <area   id='node46' shape='rect' coords='15,16,1001,810'></area>
+
+</map></div></body></html>")
     HTML(paste(stringss1))
   })
+
+  output$test <- renderUI({
+    strings1 <- paste("")
+    HTML(paste(strings1))
+  })
+
 
   output$dataviz <- renderUI({
     # strg1 <- paste("A place to test data vizualilzations")
