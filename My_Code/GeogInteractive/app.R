@@ -13,6 +13,7 @@ library(shinyjs) # for refresh button
 # https://stackoverflow.com/questions/30852356/add-a-page-refresh-button-by-using-r-shiny
 library(dplyr) # to use %>% pipes
 library(DT) # to create data table
+library(stringr)
 getwd()
 
 ##################################################
@@ -20,6 +21,9 @@ getwd()
 
 # Data import and subset
 geog_course_cl <- read.csv("Geog-Course-flowcharts.csv", stringsAsFactors = F)
+
+# sort order of Course column - alphanumeric character type
+geog_course_cl$Course <- stringr::str_sort(geog_course_cl$Course, numeric = FALSE)
 
 str(geog_course_cl)
 colnames(geog_course_cl)
