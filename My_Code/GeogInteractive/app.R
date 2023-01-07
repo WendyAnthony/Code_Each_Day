@@ -181,7 +181,9 @@ server <- function(input, output) {
   })
 
   output$conceptmap <- renderUI({
-    stringss1 <- paste("
+    stringss1 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeomaticStudies-Concentrations-wendy-Jun9-2012-2.html")
+    stringss2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Concentrations%20in%20Coastal%20Studies%2004-wendy-Jun8-2012.html")
+    stringss3 <- paste("
 <html><head><title>Geog_earth_systems_2012-13.vue</title><script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js' type='text/javascript'></script><script  type='text/javascript'>
 jQuery.noConflict();
 </script>
@@ -942,7 +944,7 @@ Winter Session.'  id='node45' shape='rect' coords='385,238,535,286'></area>
  <area   id='node46' shape='rect' coords='15,16,1001,810'></area>
 
 </map></div></body></html>")
-    HTML(paste(stringss1))
+    HTML(paste(stringss1, stringss2, stringss3, "<br /><br />"))
   })
 
   output$test <- renderUI({
