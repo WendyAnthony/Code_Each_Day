@@ -3,6 +3,8 @@
 **The log of Round 2 of my #100DaysOfCode challenge. Started on 2021-01-01**  
 - [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 - [2020 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2020.md)
+- [2022 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2022.md)
+
 
 ***
 ## Table of Contents  <a name="toc"/>
