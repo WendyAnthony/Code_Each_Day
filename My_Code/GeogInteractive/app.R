@@ -71,7 +71,7 @@ ui <- fluidPage(
                     tabPanel("PDF",  tableOutput("pdf")),
                     tabPanel("Concept Map Dataviz",  tableOutput("conceptmap")),
                     tabPanel("Test",  tableOutput("test")),
-                    tabPanel("Data Viz FREEZES!?", tableOutput("dataviz"))
+                    tabPanel("Data Viz Paths", tableOutput("dataviz"))
                     )
               )
     ),
