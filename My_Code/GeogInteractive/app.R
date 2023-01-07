@@ -19,11 +19,11 @@ getwd()
 ##################################################
 
 # Data import and subset
-geog_course <- read.csv("Geog-Course-flowcharts.csv", stringsAsFactors = F)
+geog_course_cl <- read.csv("Geog-Course-flowcharts.csv", stringsAsFactors = F)
 
 # Data clean
-geog_course_cl <- subset(geog_course, select = -code)
-geog_course_cl$CourseName <- paste(geog_course_cl$Course, "", geog_course_cl$Name)
+# geog_course_cl <- subset(geog_course_cl, select = -c(code, CourseName))
+# geog_course_cl$CourseName <- paste(geog_course_cl$Course, "", geog_course_cl$Name)
 
 str(geog_course_cl)
 colnames(geog_course_cl)
