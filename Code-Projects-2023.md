@@ -24,13 +24,16 @@ Code-Projects-2023.md
 **Today's Progress**: 
 - Repurposed `Shiny app` I created in 2021-08, making reactive 2022-12 to create searchable data table for sample of Geography Course info
 		- uploaded app.R and .csv data file to github
+- Deployed app on Shiny server after adding html concept map dataviz, download csv (doesn't save filtered datatable)
 
 **Thoughts:** 
 - Glad to have a sandbox from which to experiment with adding different interactive visualizations
+- Pleasantly surprised to get so much function done
 
 **Links to code work:** 
 - https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive
 - https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/app.R
+- https://wendyanthony.shinyapps.io/GeogInteract-app/
 
 [TOC](#toc)
 
