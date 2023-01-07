@@ -35,13 +35,15 @@ is.not.null <- function(x) !is.null(x)
 ui <- fluidPage(
     # Application title
     titlePanel("UVic Geography Course Exploration"),
-    p("Shiny code experiments by Wendy Anthony 2023-01-07"),
+    span("Shiny code experiments by Wendy Anthony 2023-01-07"),
     br(),br(),
 
     sidebarLayout(
       sidebarPanel(
         width = 3,
         uiOutput("course"),
+        span("OR"),
+        br(),br(),
         # uiOutput("CourseName"),
         uiOutput("name"),
         #https://github.com/jienagu/DT-Editor
@@ -93,6 +95,7 @@ server <- function(input, output) {
     selectInput(inputId = "Course", "Select Course Number(s)",
                 selected = "", choices = var_course(), multiple = T)
   })
+
 #   https://shiny.rstudio.com/reference/shiny/latest/selectinput
   output$name <- renderUI({
     selectInput(inputId = "Name", "Select Course Name(s)",
