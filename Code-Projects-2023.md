@@ -22,13 +22,16 @@ Code-Projects-2023.md
 ***
 ## r4d7 2023-01-07 <a name="r4d7"/></a>
 **Today's Progress**: 
-- 
+- Repurposed `Shiny app` I created in 2021-08, making reactive 2022-12 to create searchable data table for sample of Geography Course info
+		- uploaded app.R and .csv data file to github
 
 **Thoughts:** 
-- 
+- Glad to have a sandbox from which to experiment with adding different interactive visualizations
 
 **Links to code work:** 
-- 
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive
+- https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/app.R
+
 [TOC](#toc)
 
 ***  
