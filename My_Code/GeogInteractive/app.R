@@ -68,16 +68,27 @@ ui <- fluidPage(
                     tabPanel("PDF",  tableOutput("pdf")),
                     tabPanel("Concept Maps",  tableOutput("conceptmap")),
                     tabPanel("Paths Viz", tableOutput("dataviz")),
-                    tabPanel("Tests",  tableOutput("test1")),
-                    tabPanel("About", tableOutput("about")),
                     # https://gist.github.com/pssguy/6126822
-                    tabPanel("Nesting",
+                    # tabPanel("Nesting",
+                    #          tabsetPanel(
+                    #            tabPanel("Nest1", tableOutput("nest1")),
+                    #            tabPanel("Nest2", tableOutput("nest2")),
+                    #            tabPanel("Nest3", tableOutput("nest3"))
+                    # )), # tabPanel "nesting" end
+                    tabPanel("About",
                              tabsetPanel(
-                               tabPanel("Nest1", tableOutput("nest1")),
-                               tabPanel("Nest2", tableOutput("nest2")),
-                               tabPanel("Nest3", tableOutput("nest3"))
-                    )), # tabPanel "nesting" end
-                    tabPanel("MoreTests",  tableOutput("test2")),
+                               tabPanel("About", tableOutput("about")),
+                               tabPanel("Tips", tableOutput("tips")),
+                               tabPanel("Code", tableOutput("code")),
+                               tabPanel("History", tableOutput("history"))
+                             )), # tabPanel "nesting" end
+                    tabPanel("Tests",
+                             tabsetPanel(
+                               tabPanel("Test1", tableOutput("test1")),
+                               tabPanel("Test2", tableOutput("test2")),
+                               tabPanel("Test3", tableOutput("test3")),
+                               tabPanel("Test4", tableOutput("test4"))
+                              )),
               ) # tabsetPanel end
       )  # mainPanel end
     ) # sidebarLayout end
@@ -505,56 +516,68 @@ $('#disco').toggle(
     # HTML(paste(strg3, sep = "<br /><br />"))
   })
 
+  # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
+
+  output$about <- renderUI({
+    stringsabout1 <- tags$h2("About this app")
+    stringsabout2 <- paste("* I started trying to code this app 2021-08-18 for phenology photo mapping, but couldn't get the selection to respond in the table and map. 2022-12-15 Learned how to get reactive code to work.")
+    stringsbreak <- br()
+    stringsabout3 <- paste("* 2023-01-07: Try out for Geog Interactive Project")
+    #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
+    HTML(paste(stringsabout1, stringsabout2, stringsbreak, stringsbreak, stringsabout3))
+  })
+
+  output$tips <- renderUI({
+    stringstips <- tags$h2("Search Tips")
+    stringstips1 <- paste("#1: Try search box above table to filter observations e.g. '103'")
+    strgbrk <- br()
+    stringstips2 <- paste("#2: Start typing into top filter box; can select multiple choices")
+    stringstips3 <- paste("#3: Only use one of 2 filter boxes, not both")
+    HTML(paste(stringstips, stringstips1, strgbrk, strgbrk, stringstips2, strgbrk, strgbrk, stringstips3))
+  })
+
+  output$code <- renderUI({
+    stringscode <- tags$h2("Coding")
+    stringscode1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", "Shiny app code on GitHub")
+    strgbrk <- br()
+    HTML(paste(stringscode, stringscode1))
+  })
+
+  output$history <- renderUI({
+    stringshistory <- tags$h2("History of Changes")
+    stringshistory4 <- tags$b("2023-01-08")
+    stringshistory4a <- paste("* Adding nested links")
+    stringsbreak <- br()
+    stringshistory3 <- tags$b("2023-01-07")
+    stringshistory3a <- paste("* Created Shiny app as ground for sandbox experiments: Table, iframe embedding of interactive maps")
+    stringshistory2 <- tags$b("2023-01-06")
+    stringshistory2a <- paste("* Disected code from Interactive gaming website https://hanns.io/pi/")
+    stringshistory1 <- tags$b("2023-01-05")
+    stringshistory1a <- paste("* David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning")
+    stringshistory1b <- paste("* Sent link to Interactive Concept Map")
+    HTML(paste(stringshistory, stringshistory4, stringsbreak, stringshistory4a, stringsbreak, stringsbreak,
+               stringshistory3, stringsbreak, stringshistory3a, stringsbreak, stringsbreak,
+               stringshistory2, stringsbreak, stringshistory2a, stringsbreak, stringsbreak,
+               stringshistory1, stringsbreak, stringshistory1a, stringsbreak, stringshistory1b, stringsbreak, stringsbreak))
+  })
+
   output$test1 <- renderUI({
     strings1 <- paste("Testing ... Testing ... 1,2,3")
     HTML(paste(strings1))
   })
 
-  # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
-  output$about <- renderUI({
-    str1 <- paste("* I started trying to code this app 2021-08-18 for phenology photo mapping, but couldn't get the selection to respond in the table and map. 2022-12-15 Learned how to get reactive code to work. 2023-01-07: Try out for Geog Interactive Project")
-    str1a <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", "Shiny app code on GitHub")
-    str2 <-   tags$a(href='https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r', 'Code Base for Making Selected Inputs Reactive on Stack Overflow', target="_blank")
-    #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
-
-    str3 <- paste("* Tip: Try search box to filter observations e.g. '103'")
-    str4 <- paste("* Tip: Start typing into top 2 search bar; can select multiple choices")
-    HTML(paste(str1, str1a, str2, str3, str4, sep = "<br /><br />"))
-  })
-
-  # output$nest1 <- renderUI({
-  #   strings1 <- paste("Nesting 1")
-  #   HTML(paste(strings1))
-  # })
-
-  # output$nest2 <- renderUI({
-  #   stringsto1 <- paste("Nesting 2")
-  #   HTML(paste(stringsto1))
-  # })
-  #
-
-  output$nest <- renderUI({
-    strings1 <- paste("Nesting Trials")
-    HTML(paste(strings1))
-  })
-
-  output$nest1 <- renderUI({
-    strings1 <- paste("Nesting Trials 1")
-    HTML(paste(strings1))
-  })
-
-  output$nest2 <- renderUI({
+  output$test2 <- renderUI({
     strings1 <- paste("Nesting Trials 2")
     HTML(paste(strings1))
   })
 
-  output$nest3 <- renderUI({
+  output$test3 <- renderUI({
     strings1 <- paste("Nesting Trials 3")
     HTML(paste(strings1))
   })
 
-  output$test2 <- renderUI({
-    strings1 <- paste("More Tests")
+  output$test4 <- renderUI({
+    strings1 <- paste("Nesting Trials 4")
     HTML(paste(strings1))
   })
 
