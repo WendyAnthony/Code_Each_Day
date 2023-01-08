@@ -38,7 +38,7 @@ is.not.null <- function(x) !is.null(x)
 # Define UI for application
 ui <- fluidPage(
       # Application title
-  titlePanel(title = span(img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/edge-signature.jpg", height = 75), "UVic Geography Course Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
+  titlePanel(title = span(img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/edge-signature.jpg", height = 75), "UVic Geography Course Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 60))),
   tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
   br(),
   setBackgroundColor("bonewhite"),
@@ -72,8 +72,14 @@ ui <- fluidPage(
         tabsetPanel(type = "tabs",
                     tabPanel("Table", DT::dataTableOutput("table_subset")),
                     tabPanel("PDF",  tableOutput("pdf")),
-                    tabPanel("Concept Maps",  tableOutput("conceptmap")),
-                    tabPanel("Paths Viz", tableOutput("dataviz")),
+                    # tabPanel("Concept Maps",  tableOutput("conceptmap")),
+                    # tabPanel("Paths Viz", tableOutput("dataviz")),
+                    tabPanel("Data Viz",
+                             tabsetPanel(
+                               tabPanel("Concept Maps", tableOutput("conceptmap")),
+                               tabPanel("Paths Viz", tableOutput("dataviz")),
+                               tabPanel("TestViz", tableOutput("testviz")),
+                             )),
                     # https://gist.github.com/pssguy/6126822
                     # tabPanel("Nesting",
                     #          tabsetPanel(
@@ -186,6 +192,12 @@ server <- function(input, output) {
     strings1 <- paste("<br><br>Test embedding pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>worksheet</a><br><br>")
     strings2 <- tags$iframe(style="height:850px; width:100%", src="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf")
     HTML(paste(strings1, strings2))
+  })
+
+  output$testviz <- renderUI({
+    s1 <- tags$h2("Testing data vizualizations")
+    s2 <- paste("Test viz goes here")
+    HTML(paste(s1, s2))
   })
 
   output$conceptmap <- renderUI({
