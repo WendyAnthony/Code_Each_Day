@@ -80,6 +80,7 @@ ui <- fluidPage(
                                tabPanel("About", tableOutput("about")),
                                tabPanel("Tips", tableOutput("tips")),
                                tabPanel("Code", tableOutput("code")),
+                               tabPanel("Links", tableOutput("links")),
                                tabPanel("History", tableOutput("history"))
                              )), # tabPanel "nesting" end
                     tabPanel("Tests",
@@ -541,6 +542,15 @@ $('#disco').toggle(
     stringscode1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", "Shiny app code on GitHub")
     strgbrk <- br()
     HTML(paste(stringscode, stringscode1))
+  })
+
+  output$links <- renderUI({
+    st <- tags$h2("Links to Geog Course Info")
+    st1 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385", "Undergrad Calendar")
+    st2 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs", "Undergrad calendar Admission Requirements")
+    strgbrk <- br()
+    st3 <- tags$a(href="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf", "Geog Major Planning Worksheet" )
+    HTML(paste(st, st1, strgbrk, strgbrk, st2, strgbrk, strgbrk, st3))
   })
 
   output$history <- renderUI({
