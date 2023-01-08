@@ -9,6 +9,7 @@
 
 library(shiny)
 library(shinyjs) # for refresh button
+library(shinyWidgets) # set background color
 # https://stackoverflow.com/questions/30852356/add-a-page-refresh-button-by-using-r-shiny
 library(dplyr) # to use %>% pipes
 library(DT) # to create data table
@@ -36,13 +37,18 @@ is.not.null <- function(x) !is.null(x)
 
 # Define UI for application
 ui <- fluidPage(
-    # Application title
-    titlePanel("UVic Geography Course Exploration"),
+      # Application title
+  titlePanel(title = span(img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/edge-signature.jpg", height = 75), "UVic Geography Course Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
+  tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
+  br(),
+  setBackgroundColor("bonewhite"),
+  # UVic social science faculty color
+    # titlePanel("UVic Geography Course Exploration"),
     span("Shiny code experiments by Wendy Anthony"),
     br(),
     span("<wanthony@uvic.ca> 2023-01-07"),
+#    tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/edge-signature.jpg", height = 50),
     br(),br(),
-
     sidebarLayout(
       sidebarPanel(
         width = 3,
