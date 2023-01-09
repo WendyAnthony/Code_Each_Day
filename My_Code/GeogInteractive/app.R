@@ -49,7 +49,7 @@ ui <- fluidPage(
     sidebarLayout(
       sidebarPanel(
         width = 3,
-        tags$b("Filter courses in table by selecting items from drop-down list:"),
+        tags$b("Filter courses in table by selecting item(s) from drop-down list:"),
         br(),br(),
         uiOutput("course"),
         # span("OR"),
@@ -131,7 +131,7 @@ server <- function(input, output) {
   })
 
   output$course <- renderUI({
-    selectInput(inputId = "Course", "Select Course Number(s)",
+    selectInput(inputId = "Course", "Select Course(s)",
                 selected = "", choices = var_course(), multiple = T)
   })
 
