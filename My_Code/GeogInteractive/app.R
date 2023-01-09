@@ -37,26 +37,25 @@ is.not.null <- function(x) !is.null(x)
 
 # Define UI for application
 ui <- fluidPage(
+  # h1(strong("TITLE"), align="center", style = "font-family: 'Times', serif;
+  #   font-weight: 500; font-size: 500; text-shadow: 3px 3px 3px #aaa; line-height: 1;
+  #    color: #404040;"),
       # Application title
-  titlePanel(title = span(img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/edge-signature.jpg", height = 75), "UVic Geography Course Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 60))),
+  titlePanel(title = span("UVic Geography Course Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
   tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
   br(),
   setBackgroundColor("bonewhite"),
-  # UVic social science faculty color
-    # titlePanel("UVic Geography Course Exploration"),
-    span("Shiny code experiments by Wendy Anthony"),
-    br(),
-    span("<wanthony@uvic.ca> 2023-01-07"),
-#    tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/edge-signature.jpg", height = 50),
     br(),br(),
     sidebarLayout(
       sidebarPanel(
         width = 3,
-        uiOutput("course"),
-        span("OR"),
+        tags$b("Filter courses in table by selecting items from drop-down list:"),
         br(),br(),
-        # uiOutput("CourseName"),
-        uiOutput("name"),
+        uiOutput("course"),
+        # span("OR"),
+        # br(),br(),
+        # # uiOutput("CourseName"),
+        # uiOutput("name"),
         #https://github.com/jienagu/DT-Editor
         tags$head(tags$style(HTML('
                             .modal-lg {
@@ -64,8 +63,8 @@ ui <- fluidPage(
                             }
                             '))),
         ### tags$head() is to customize the download button
-        tags$head(tags$style(".butt{background-color:#230682;} .butt{color: #e6ebef;}")),
-        downloadButton("geodata_csv", "Download unfiltered table as CSV", class="butt")
+        tags$head(tags$style(".butt{background-color:#69A81D;} .butt{color: #e6ebef;}")),
+        downloadButton("geodata_csv", "Download CSV", class="butt")
       ),
       mainPanel(
         # leafletOutput("Map"),
@@ -104,7 +103,11 @@ ui <- fluidPage(
                               )),
               ) # tabsetPanel end
       )  # mainPanel end
-    ) # sidebarLayout end
+    ), # sidebarLayout end
+  hr(),
+  h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-07", align="center", style = "font-family: sans-serif;
+    font-weight: 1px; font-size: 10px; text-shadow: 0px 0px 1px #aaa; line-height: 1;
+     color: #404040;"),
 ) # fluid page end
 
 ########################################
@@ -116,7 +119,7 @@ server <- function(input, output) {
   output$table <- DT::renderDataTable({
     if(is.null(geodata)){return()}
     DT::datatable(geodata,
-                  list(searchHighlight = TRUE,
+                  options = list(searchHighlight = TRUE,
                        # pageLength = 2000,
                        # lengthMenu = c(10, 25, 50, 100, 500, 1000, 2000),
                        # dom = 'lfBpiSrtQ', # dom = 'tB' doesn't show search or paging  lfipBSrtQ
@@ -132,11 +135,11 @@ server <- function(input, output) {
                 selected = "", choices = var_course(), multiple = T)
   })
 
-#   https://shiny.rstudio.com/reference/shiny/latest/selectinput
-  output$name <- renderUI({
-    selectInput(inputId = "Name", "Select Course Name(s)",
-                selected = "", choices = var_name(), multiple = T)
-  })
+# #   https://shiny.rstudio.com/reference/shiny/latest/selectinput
+#   output$name <- renderUI({
+#     selectInput(inputId = "Name", "Select Course Name(s)",
+#                 selected = "", choices = var_name(), multiple = T)
+#   })
 
   # https://github.com/jienagu/DT-Editor
   # this won't save any changes to table made through search filters
@@ -575,6 +578,7 @@ $('#disco').toggle(
     stringshistory <- tags$h2("History of Changes")
     stringshistory4 <- tags$b("2023-01-08")
     stringshistory4a <- paste("* Adding nested links")
+    stringshistory4b <- paste("* Adding images to title header")
     stringsbreak <- br()
     stringshistory3 <- tags$b("2023-01-07")
     stringshistory3a <- paste("* Created Shiny app as ground for sandbox experiments: Table, iframe embedding of interactive maps")
@@ -583,7 +587,8 @@ $('#disco').toggle(
     stringshistory1 <- tags$b("2023-01-05")
     stringshistory1a <- paste("* David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning")
     stringshistory1b <- paste("* Sent link to Interactive Concept Map")
-    HTML(paste(stringshistory, stringshistory4, stringsbreak, stringshistory4a, stringsbreak, stringsbreak,
+    HTML(paste(
+      stringshistory, stringshistory4, stringsbreak, stringshistory4a, stringsbreak, stringshistory4b, stringsbreak, stringsbreak,
                stringshistory3, stringsbreak, stringshistory3a, stringsbreak, stringsbreak,
                stringshistory2, stringsbreak, stringshistory2a, stringsbreak, stringsbreak,
                stringshistory1, stringsbreak, stringshistory1a, stringsbreak, stringshistory1b, stringsbreak, stringsbreak))
