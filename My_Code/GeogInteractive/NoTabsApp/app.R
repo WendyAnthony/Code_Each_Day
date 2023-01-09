@@ -19,7 +19,7 @@ tbl <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsA
 # Define UI ----
 ui <- fluidPage(
     setBackgroundColor("bonewhite"),
-      titlePanel(title = span("UVic Geography Course Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
+      titlePanel(title = span("UVic Geography Courses Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
       tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
 
           span("* To Filter Courses: choose (multiple) Courses from first search box under Course column name"),
