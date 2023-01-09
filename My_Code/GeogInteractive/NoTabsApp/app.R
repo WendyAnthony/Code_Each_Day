@@ -30,11 +30,7 @@ ui <- fluidPage(
     # datatable
     DT::dataTableOutput("dt"),  # datatable
 
-    # helpText(" Select the download format"),
-    radioButtons("type", "Select Format type:",
-    choices = c("CSV", "Text (Space Separated)", "Doc")),
     # Download button needs to be after datatable to be able to save filtered data
-    # helpText(" Click on the download button to download the filtered Dataset"),
     ### tags$head() is to customize the download button
     tags$head(tags$style(".butt{background-color:#69A81D;} .butt{color: #e6ebef;}")),
     downloadButton("download_filtered", "Download Filtered Data", class="butt"),
@@ -55,12 +51,6 @@ server <- function(input, output) {
     #!!  datatable output
     output$dt <- DT::renderDataTable({
     datatable(tbl, filter = "top", options =  list(pageLength = 10))
-    })
-
-    #file extension for download
-    fileext <- reactive({
-    switch(input$type,
-    "CSV" = "csv", "Text" = "txt", "Doc" = "doc")
     })
 
     # Download button
