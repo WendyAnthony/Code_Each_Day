@@ -24,7 +24,7 @@ ui <- fluidPage(
 
           span("* To Filter Courses: choose (multiple) Courses from first search box under Course column name"),
           br(),
-          span("* Download filtered courses with button at bottom of table"),
+          span("* Download filtered courses as .csv with button at bottom of table"),
           hr(),
 
     # datatable
@@ -33,7 +33,7 @@ ui <- fluidPage(
     # Download button needs to be after datatable to be able to save filtered data
     ### tags$head() is to customize the download button
     tags$head(tags$style(".butt{background-color:#69A81D;} .butt{color: #e6ebef;}")),
-    downloadButton("download_filtered", "Download Filtered Data", class="butt"),
+    downloadButton("download_filtered", "Download Filtered Data as CSV", class="butt"),
     br(),
     hr(),
     h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-07",
