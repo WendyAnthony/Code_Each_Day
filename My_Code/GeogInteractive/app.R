@@ -1,200 +1,101 @@
-##################################################
-# 2023-01-07 Re-working my code
-# for UVic Geog Interactive Course search
-# 2021-08-18 from Wendy's Native Plants Phenological Data
-# 2022-12-15 Got reactive code to work for select
-# based on code from
-# https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r
-##################################################
+# https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny
+# @ 2023-01-09 last of day
+## -------------------
+## WORKS >>> LETS RUN WITH THIS ONE
+## CHOOSE LESS COLUMNS TO MAKE SEARCH BOXES SMALLER ??
+## -------------------
 
+# ---------------------
+# load libraries
 library(shiny)
-library(shinyjs) # for refresh button
 library(shinyWidgets) # set background color
-# https://stackoverflow.com/questions/30852356/add-a-page-refresh-button-by-using-r-shiny
-library(dplyr) # to use %>% pipes
-library(DT) # to create data table
-library(stringr)
-getwd()
+library(DT) # datatable
 
-##################################################
-##################################################
+# ---------------------
+# Choose file to read
+tbl <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
 
-# Data import and subset
-geog_course_cl <- read.csv("Geog-Course-flowcharts.csv", stringsAsFactors = F)
-
-# sort order of Course column - alphanumeric character type
-geog_course_cl$Course <- stringr::str_sort(geog_course_cl$Course, numeric = FALSE)
-
-str(geog_course_cl)
-colnames(geog_course_cl)
-
-# code from </R/Shiny/ShinyDatabase/FilterTest/DatasetFilter/app-copy.R>
-is.not.null <- function(x) !is.null(x)
-
-##################################################
-# app
-##################################################
-
-# Define UI for application
+# ---------------------
+# Define UI ----
 ui <- fluidPage(
-  # h1(strong("TITLE"), align="center", style = "font-family: 'Times', serif;
-  #   font-weight: 500; font-size: 500; text-shadow: 3px 3px 3px #aaa; line-height: 1;
-  #    color: #404040;"),
-      # Application title
-  titlePanel(title = span("UVic Geography Course Exploration", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
-  tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
-  br(),
   setBackgroundColor("bonewhite"),
-    br(),br(),
-    sidebarLayout(
-      sidebarPanel(
-        width = 3,
-        tags$b("Filter courses in table by selecting item(s) from drop-down list:"),
-        br(),br(),
-        uiOutput("course"),
-        # span("OR"),
-        # br(),br(),
-        # # uiOutput("CourseName"),
-        # uiOutput("name"),
-        #https://github.com/jienagu/DT-Editor
-        tags$head(tags$style(HTML('
-                            .modal-lg {
-                            width: 1200px;
-                            }
-                            '))),
-        ### tags$head() is to customize the download button
-        tags$head(tags$style(".butt{background-color:#69A81D;} .butt{color: #e6ebef;}")),
-        downloadButton("geodata_csv", "Download CSV", class="butt")
-      ),
-      mainPanel(
-        # leafletOutput("Map"),
-        tabsetPanel(type = "tabs",
-                    tabPanel("Table", DT::dataTableOutput("table_subset")),
-                    tabPanel("PDF",  tableOutput("pdf")),
-                    # tabPanel("Concept Maps",  tableOutput("conceptmap")),
-                    # tabPanel("Paths Viz", tableOutput("dataviz")),
-                    tabPanel("Data Viz",
-                             tabsetPanel(
-                               tabPanel("Concept Maps", tableOutput("conceptmap")),
-                               tabPanel("Paths Viz", tableOutput("dataviz")),
-                               tabPanel("TestViz", tableOutput("testviz")),
-                             )),
-                    # https://gist.github.com/pssguy/6126822
-                    # tabPanel("Nesting",
-                    #          tabsetPanel(
-                    #            tabPanel("Nest1", tableOutput("nest1")),
-                    #            tabPanel("Nest2", tableOutput("nest2")),
-                    #            tabPanel("Nest3", tableOutput("nest3"))
-                    # )), # tabPanel "nesting" end
-                    tabPanel("About",
-                             tabsetPanel(
-                               tabPanel("About", tableOutput("about")),
-                               tabPanel("Tips", tableOutput("tips")),
-                               tabPanel("Code", tableOutput("code")),
-                               tabPanel("Links", tableOutput("links")),
-                               tabPanel("History", tableOutput("history"))
-                             )), # tabPanel "nesting" end
-                    tabPanel("Tests",
-                             tabsetPanel(
-                               tabPanel("Test1", tableOutput("test1")),
-                               tabPanel("Test2", tableOutput("test2")),
-                               tabPanel("Test3", tableOutput("test3")),
-                               tabPanel("Test4", tableOutput("test4"))
-                              )),
-              ) # tabsetPanel end
-      )  # mainPanel end
-    ), # sidebarLayout end
-  hr(),
-  h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-07", align="center", style = "font-family: sans-serif;
-    font-weight: 1px; font-size: 10px; text-shadow: 0px 0px 1px #aaa; line-height: 1;
-     color: #404040;"),
-) # fluid page end
+  titlePanel(title = span("Exploring UVic Geography Courses", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
+  tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
 
-########################################
-# Define server logic
+  mainPanel(
+    # leafletOutput("Map"),
+    tabsetPanel(type = "tabs",
+                tabPanel("Data Table",
+                      HTML("<strong>To Filter Courses:</strong> Choose (multiple) Courses from first drop-down search box under Course Heading<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Search</strong> each column separately, <strong>or</strong> use Search Box to search the whole table
+                   <br/><strong>To Download CSV: </strong> Save Filtered Course table (with current date) using Button below table<br/><br/>"
+                      ),
+                      DT::dataTableOutput("dt"),
+                      ### tags$head() is to customize the download button
+                      tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #e6ebef;} .button{margin: auto;}
+                             .button-center{text-align: center;}")),
+                      # Download button needs to be after datatable to be able to save filtered data
+                      div(class = "button-center", downloadButton("download_filtered", "Download CSV", class="button")),
+                      hr(),
+                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-09",
+                         align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                      h6("Code adapted from https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny",
+                         align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+
+                    ),
+                tabPanel("PDF",  tableOutput("pdf")),
+                tabPanel("Data Viz",
+                         tabsetPanel(
+                           tabPanel("Concept Maps", tableOutput("conceptmap")),
+                           tabPanel("Paths Viz", tableOutput("dataviz")),
+                           tabPanel("TestViz", tableOutput("testviz")),
+                         )),
+                # tabPanel("Tests",
+                #          tabsetPanel(
+                #            tabPanel("Test1", tableOutput("test1")),
+                #            tabPanel("Test2", tableOutput("test2")),
+                #            tabPanel("Test3", tableOutput("test3")),
+                #            tabPanel("Test4", tableOutput("test4"))
+                #          )),
+                tabPanel("About",
+                         tabsetPanel(
+                           tabPanel("About", tableOutput("about")),
+                           tabPanel("Tips", tableOutput("tips")),
+                           tabPanel("Code", tableOutput("code")),
+                           tabPanel("Links", tableOutput("links")),
+                           tabPanel("History", tableOutput("history"))
+                         )), # tabPanel "nesting" end
+    ) # tabsetPanel end
+  ), # mainPanel end
+) # fluidPage ends
+
+# ---------------------
 server <- function(input, output) {
 
-  geodata <- geog_course_cl
-  # ---------------------
-  output$table <- DT::renderDataTable({
-    if(is.null(geodata)){return()}
-    DT::datatable(geodata,
-                  options = list(searchHighlight = TRUE,
-                       # pageLength = 2000,
-                       # lengthMenu = c(10, 25, 50, 100, 500, 1000, 2000),
-                       # dom = 'lfBpiSrtQ', # dom = 'tB' doesn't show search or paging  lfipBSrtQ
-                       # paging = TRUE,
-                       scrollX=TRUE,
-                       searching = TRUE,
-                       ordering = TRUE
-                       ))
+  #!!  datatable output
+  output$dt <- DT::renderDataTable({
+    datatable(tbl, filter = "top", options =  list(pageLength = 10))
   })
 
-  output$course <- renderUI({
-    selectInput(inputId = "Course", "Select Course(s)",
-                selected = "", choices = var_course(), multiple = T)
-  })
-
-# #   https://shiny.rstudio.com/reference/shiny/latest/selectinput
-#   output$name <- renderUI({
-#     selectInput(inputId = "Name", "Select Course Name(s)",
-#                 selected = "", choices = var_name(), multiple = T)
-#   })
-
-  # https://github.com/jienagu/DT-Editor
-  # this won't save any changes to table made through search filters
-  ### This is nothing related to DT Editor but I think it is nice to have a download function in the Shiny so user
-  ### can download the table in csv
-  output$geodata_csv<- downloadHandler(
+  # Download button
+  output$download_filtered <- downloadHandler(
     filename = function() {
-      paste("Geography Course Data", Sys.Date(), ".csv", sep="")
+      paste("GeographyCourses-FilteredData-", Sys.Date(), ".csv", sep="")
     },
     content = function(file) {
-      write.csv(data.frame(geodata), file, row.names = F)
-    })
+      write.csv(tbl[input[["dt_rows_all"]], ],
+                file= file,
+                row.names=F)
+    }
+  ) # end of downloadHandler
 
-  # ---------------------
-  # Reactive Filtered data
-  # must refere toreactive object data_filtered() using the ()
-  # <<< makes leaflet map reactive
-  # https://stackoverflow.com/questions/40623749/what-is-object-of-type-closure-is-not-subsettable-error-in-shiny
-  data_filtered <- reactive({
-    filter(geog_course_cl, Course %in% course(), Name %in% name())
-    #     filter(pheno_subset_sub, Species %in% species(), CommonName %in% commonName(), LocName %in% locName())
-  })
-
-  course <- reactive({
-    if (is.null(input$Course)) unique(geog_course_cl$Course) else input$Course
-  })
-
-  name <- reactive({
-    if (is.null(input$Name)) unique(geog_course_cl$Name) else input$Name
-  })
-
-  # ---------------------
-  # Get available categories
-  var_course <- reactive({
-    file1 <- geodata
-    if(is.null(geodata)){return()}
-    as.list(unique(file1$Course))
-  })
-
-  var_name <- reactive({
-    file1 <- geodata
-    if(is.null(geodata)){return()}
-    as.list(unique(file1$Name))
-  })
-
-  # ---------------------
-  # Reactive Output table
-  output$table_subset <- DT::renderDataTable({
-    DT::datatable(data_filtered(), options = list(scrollX = T))
-  })
-
+  # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
   output$pdf <- renderUI({
-    strings1 <- paste("<br><br>Test embedding pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>worksheet</a><br><br>")
-    strings2 <- tags$iframe(style="height:850px; width:100%", src="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf")
-    HTML(paste(strings1, strings2))
+    sp1 <- paste("<br><br>Test embedding pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>worksheet</a><br><br>")
+    sp2 <- tags$iframe(style="height:850px; width:100%", src="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf")
+    HTML(paste(sp1, sp2))
   })
 
   output$testviz <- renderUI({
@@ -287,10 +188,8 @@ server <- function(input, output) {
 	.arrows li { margin: 5px 0px; color: #898787; }
 	.items li span { white-space: nowrap; cursor: pointer; background-color: rgba(0,0,0,0.75); border-radius: 3px; padding: 1px 4px; }
 
-
 	#canvas { z-index: 1; display: block; position: absolute; left: 0; top: 0; background-color: transparent; }
 	#pi { z-index: 2; border-collapse: collapse; position: relative; left: 0; top: 0; }
-
 </style>
 </head>
 <body>
@@ -326,7 +225,6 @@ server <- function(input, output) {
 <li class='base'>Geog 104</li>
 <li class='base'>Geog 130</li>
 <li class='base'>First Year Elective Courses</li>
-
 </ul>
 </td>
 <td>
@@ -347,7 +245,6 @@ server <- function(input, output) {
 <li class='geog-104'>Our Digital Earth</li>
 <li class='geog-130'>Climate Change</li>
 <li class='first-year-elective-courses'>Second Year Standing</li>
-
 </ul>
 </td>
 <td class='items'></td>
@@ -358,7 +255,6 @@ server <- function(input, output) {
 <li class='urban space-place-and-society environment-society-and-sustainability second-year-standing'>Geog 226 Quatitative Methods</li>
 <li class='geomatics space-place-and-society environment-society-and-sustainability second-year-standing'>Geog 222 Introduction to Maps and GIS</li>
 <li class='geomatics space-place-and-society environment-society-and-sustainability second-year-standing'>Geog 228 Introduction to Remote Sensing</li>
-
 </ul>
 </td>
 <td class='items'></td>
@@ -367,7 +263,6 @@ server <- function(input, output) {
 <li class='geomatics second-year-standing geog-222-introduction-to-maps-and-gis'>Geog 322 Digital Remote Sensing</li>
 </ul>
 </td>
-
 <td class='items' style=''></td>
 <td colspan='3' class='items'  style='text-align: left;'>
 <ul id='year4'>
@@ -376,10 +271,8 @@ server <- function(input, output) {
 </ul>
 </td>
 </tr>
-
 </table>
 <canvas id='canvas'></canvas>
-
 </body>
 <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js'></script>
 <script>
@@ -534,89 +427,92 @@ $('#disco').toggle(
     }
     </script>
       ")
-     HTML(paste(strg1, strg2, strg3, sep = "<br /><br />"))
+    HTML(paste(strg1, strg2, strg3, sep = "<br /><br />"))
     # HTML(paste(strg3, sep = "<br /><br />"))
   })
-
-  # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
+#
+#   output$test1 <- renderUI({
+#     strings1 <- paste("Testing ... Testing ... 1,2,3")
+#     HTML(paste(strings1))
+#   })
+#
+#   output$test2 <- renderUI({
+#     strings1 <- paste("Nesting Trials 2")
+#     HTML(paste(strings1))
+#   })
+#
+#   output$test3 <- renderUI({
+#     strings1 <- paste("Nesting Trials 3")
+#     HTML(paste(strings1))
+#   })
+#
+#   output$test4 <- renderUI({
+#     strings1 <- paste("Nesting Trials 4")
+#     HTML(paste(strings1))
+#   })
 
   output$about <- renderUI({
-    stringsabout1 <- tags$h2("About this app")
-    stringsabout2 <- paste("* I started trying to code this app 2021-08-18 for phenology photo mapping, but couldn't get the selection to respond in the table and map. 2022-12-15 Learned how to get reactive code to work.")
-    stringsbreak <- br()
-    stringsabout3 <- paste("* 2023-01-07: Try out for Geog Interactive Project")
+    sa1 <- tags$h2("About this app")
+    sa2 <- paste("* This experimental Shiny code sandbox was created to develop an online, interactive interface to Geography Course Planning")
+    sb <- br()
+    sa3 <- paste("* 2023-01-07: First try a Shiny app for experimentation for the UVic Geog Interactive Project")
     #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
-    HTML(paste(stringsabout1, stringsabout2, stringsbreak, stringsbreak, stringsabout3))
+    HTML(paste(sa1, sa2, sb, sb, sa3))
   })
 
   output$tips <- renderUI({
-    stringstips <- tags$h2("Search Tips")
-    stringstips1 <- paste("#1: Try search box above table to filter observations e.g. '103'")
-    strgbrk <- br()
-    stringstips2 <- paste("#2: Start typing into top filter box; can select multiple choices")
-    stringstips3 <- paste("#3: Only use one of 2 filter boxes, not both")
-    HTML(paste(stringstips, stringstips1, strgbrk, strgbrk, stringstips2, strgbrk, strgbrk, stringstips3))
+    st <- tags$h2("Search Tips")
+    st1 <- paste("#1: Try search box above table to filter observations e.g. '103'")
+    sb <- br()
+    st2 <- paste("#2: Start typing into top filter box; can select multiple choices")
+    st3 <- paste("#3: Only use one of 2 filter boxes, not both")
+    HTML(paste(st, st1, sb, sb, st2, sb, sb, st3))
   })
 
   output$code <- renderUI({
-    stringscode <- tags$h2("Coding")
-    stringscode1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", "Shiny app code on GitHub")
-    strgbrk <- br()
-    HTML(paste(stringscode, stringscode1))
+    sc <- tags$h2("Coding")
+    sc1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", "Shiny app code on GitHub")
+    sb <- br()
+    HTML(paste(sc, sc1))
   })
 
   output$links <- renderUI({
     st <- tags$h2("Links to Geog Course Info")
     st1 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385", "Undergrad Calendar")
     st2 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs", "Undergrad calendar Admission Requirements")
-    strgbrk <- br()
+    sb <- br()
     st3 <- tags$a(href="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf", "Geog Major Planning Worksheet" )
-    HTML(paste(st, st1, strgbrk, strgbrk, st2, strgbrk, strgbrk, st3))
+    HTML(paste(st, st1, sb, sb, st2, sb, sb, st3))
   })
 
   output$history <- renderUI({
-    stringshistory <- tags$h2("History of Changes")
-    stringshistory4 <- tags$b("2023-01-08")
-    stringshistory4a <- paste("* Adding nested links")
-    stringshistory4b <- paste("* Adding images to title header")
-    stringsbreak <- br()
-    stringshistory3 <- tags$b("2023-01-07")
-    stringshistory3a <- paste("* Created Shiny app as ground for sandbox experiments: Table, iframe embedding of interactive maps")
-    stringshistory2 <- tags$b("2023-01-06")
-    stringshistory2a <- paste("* Disected code from Interactive gaming website https://hanns.io/pi/")
-    stringshistory1 <- tags$b("2023-01-05")
-    stringshistory1a <- paste("* David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning")
-    stringshistory1b <- paste("* Sent link to Interactive Concept Map")
+    sh6 <- tags$b("2023-01-10")
+    sh6a <- paste("* Add tabs to single page app & publish")
+    sb <- br()
+    sh5 <- tags$b("2023-01-09")
+    sh5a <- paste("* Created filtered table with downloadable csv button")
+    sh5b <- paste("* Published single page app with filtered table")
+    sb <- br()
+    sh <- tags$h2("History of Changes")
+    sh4 <- tags$b("2023-01-08")
+    sh4a <- paste("* Adding nested links")
+    sh4b <- paste("* Adding images to title header")
+    sb <- br()
+    sh3 <- tags$b("2023-01-07")
+    sh3a <- paste("* Created Shiny app as testing ground for sandbox experiments: Table, iframe embedding of interactive maps")
+    sh2 <- tags$b("2023-01-06")
+    sh2a <- paste("* Disected code from Interactive gaming website https://hanns.io/pi/")
+    sh1 <- tags$b("2023-01-05")
+    sh1a <- paste("* David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning")
+    sh1b <- paste("* Sent link to Interactive Concept Map")
     HTML(paste(
-      stringshistory, stringshistory4, stringsbreak, stringshistory4a, stringsbreak, stringshistory4b, stringsbreak, stringsbreak,
-               stringshistory3, stringsbreak, stringshistory3a, stringsbreak, stringsbreak,
-               stringshistory2, stringsbreak, stringshistory2a, stringsbreak, stringsbreak,
-               stringshistory1, stringsbreak, stringshistory1a, stringsbreak, stringshistory1b, stringsbreak, stringsbreak))
+      sh, sh6, sb, sh6a, sb, sb, sh5, sb, sh5a, sb, sh5b, sb, sb, sh4, sb, sh4a, sb, sh4b, sb, sb,
+      sh3, sb, sh3a, sb, sb,
+      sh2, sb, sh2a, sb, sb,
+      sh1, sb, sh1a, sb, sh1b, sb, sb))
   })
 
-  output$test1 <- renderUI({
-    strings1 <- paste("Testing ... Testing ... 1,2,3")
-    HTML(paste(strings1))
-  })
+  # ---------------------
+} # end of server function
 
-  output$test2 <- renderUI({
-    strings1 <- paste("Nesting Trials 2")
-    HTML(paste(strings1))
-  })
-
-  output$test3 <- renderUI({
-    strings1 <- paste("Nesting Trials 3")
-    HTML(paste(strings1))
-  })
-
-  output$test4 <- renderUI({
-    strings1 <- paste("Nesting Trials 4")
-    HTML(paste(strings1))
-  })
-
-############
-# last curly bracket needed to complete server function
-}
-
-# Run application
-shinyApp(ui = ui, server = server)
+shinyApp(ui, server)
