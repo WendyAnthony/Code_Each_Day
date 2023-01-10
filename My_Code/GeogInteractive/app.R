@@ -37,20 +37,40 @@ ui <- fluidPage(
                       # Download button needs to be after datatable to be able to save filtered data
                       div(class = "button-center", downloadButton("download_filtered", "Download CSV", class="button")),
                       hr(),
-                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-09",
+                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
                          align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
     text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                      h6("Code adapted from https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny",
-                         align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-
                     ),
-                tabPanel("PDF",  tableOutput("pdf")),
+                tabPanel("PDF",  tableOutput("pdf"),
+                         hr(),
+                         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                         br(),
+                ),
                 tabPanel("Data Viz",
                          tabsetPanel(
-                           tabPanel("Concept Maps", tableOutput("conceptmap")),
-                           tabPanel("Paths Viz", tableOutput("dataviz")),
-                           tabPanel("TestViz", tableOutput("testviz")),
+                           tabPanel("Concept Maps", tableOutput("conceptmap"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           ),
+                           tabPanel("Paths Viz", tableOutput("dataviz"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           ),
+                           tabPanel("TestViz", tableOutput("testviz"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           ),
                          )),
                 # tabPanel("Tests",
                 #          tabsetPanel(
@@ -61,11 +81,41 @@ ui <- fluidPage(
                 #          )),
                 tabPanel("About",
                          tabsetPanel(
-                           tabPanel("About", tableOutput("about")),
-                           tabPanel("Tips", tableOutput("tips")),
-                           tabPanel("Code", tableOutput("code")),
-                           tabPanel("Links", tableOutput("links")),
-                           tabPanel("History", tableOutput("history"))
+                           tabPanel("About", tableOutput("about"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           ),
+                           tabPanel("Tips", tableOutput("tips"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           ),
+                           tabPanel("Code", tableOutput("code"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           ),
+                           tabPanel("Links", tableOutput("links"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           ),
+                           tabPanel("History", tableOutput("history"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                    br(),
+                           )
                          )), # tabPanel "nesting" end
     ) # tabsetPanel end
   ), # mainPanel end
@@ -473,7 +523,8 @@ $('#disco').toggle(
     sc <- tags$h2("Coding")
     sc1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", "Shiny app code on GitHub")
     sb <- br()
-    HTML(paste(sc, sc1))
+    sc2 <- HTML("Filtered table code adapted from <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny'>Stackoverflow</a>")
+    HTML(paste(sc, sc1, sb, sb, sc2))
   })
 
   output$links <- renderUI({
