@@ -49,7 +49,7 @@ ui <- fluidPage(
                 h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
                    align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-              ),
+              ), # end of Data Table tabPanel
 
 ## -----------------------------------------
           # PDF tabPanel
@@ -59,7 +59,18 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                    br(),
-          ),
+          ), # end of PDF tabPanel
+
+# ## -----------------------------------------
+# # Template tabPanel
+# tabPanel("Template",  tableOutput("template"),
+#          # Put content here
+#          hr(),
+#          h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+#             align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+# text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+#          br(),
+# ), # end of Template tabPanel
 
 ## -----------------------------------------
           # Nested Data Viz tabPanel
@@ -74,7 +85,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
-                     ),
+                     ), # end of Concept Maps  Nested tabPanel
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Paths Viz
@@ -84,7 +95,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
-                     ),
+                     ), # end of Paths Viz Nested tabPanel
 
 ## -----------------------------------------
 # Nested tabPanel Data Viz: Test Viz
@@ -96,6 +107,16 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 #                               br(),
 
                    )), # end of Nested Data Viz tabPanel
+
+## -----------------------------------------
+            # Nested tabPanel About: Links
+            tabPanel("Links", tableOutput("links"),
+                     hr(),
+                     h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                        align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+            text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                     br(),
+            ), # end of Nested tabPanel About: Links
 
 ## -----------------------------------------
           # Test tabPanel
@@ -121,7 +142,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
-                     ),
+                     ), # end of Nested tabPanel About
 
 ## -----------------------------------------
                     # Nested tabPanel About: Tips
@@ -131,7 +152,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
-                     ),
+                     ), # end of Nested tabPanel About: Tips
 
 ## -----------------------------------------
                     # Nested tabPanel About: Code
@@ -141,17 +162,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
-                     ),
-
-## -----------------------------------------
-                    # Nested tabPanel About: Links
-                     tabPanel("Links", tableOutput("links"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ),
+                     ), # end of Nested tabPanel About: Code
 
 ## -----------------------------------------
                     # Nested tabPanel About: History
@@ -161,7 +172,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
-                     )
+                     ) # end of Nested tabPanel About: History
                    )), #  # end of Nested About tabPanel
     ) # tabsetPanel end
   ), # mainPanel end
@@ -194,10 +205,19 @@ server <- function(input, output) {
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
   # Output: PDF
   output$pdf <- renderUI({
-    sp1 <- paste("<br><br>Test embedding pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>worksheet</a><br><br>")
+    sp1 <- paste("<br><br>Test embedding pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>worksheet</a><br><br>")
     sp2 <- tags$iframe(style="height:850px; width:100%", src="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf")
     HTML(paste(sp1, sp2))
   }) # end of Output: PDF
+
+# ## -----------------------------------------
+#   # Output: Template
+#   output$template <- renderUI({
+#     sp1 <- paste("")
+#     sb <- br()
+#     sp2 <- tags$iframe(style="height:850px; width:100%", src="")
+#     HTML(paste(sp1, sb, sp2))
+#   }) # end of Output: Template
 
 ## -----------------------------------------
   # Output: Test Viz
@@ -284,6 +304,18 @@ server <- function(input, output) {
   }) # End Output: Dataviz
 
 ## -----------------------------------------
+  # Output: Links
+  output$links <- renderUI({
+    st <- tags$h2("Links to Geog Course Info")
+    st1a <- em("(These links open in a new window, as back button won't return to same page)")
+    st1 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385", target="_blank", "Undergrad Calendar")
+    st2 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs", target="_blank", "Undergrad calendar Admission Requirements")
+    sb <- br()
+    st3 <- tags$a(href="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf", target="_blank", "Geog Major Planning Worksheet" )
+    HTML(paste(st, st1a, sb, sb, st1, sb, sb, st2, sb, sb, st3))
+  }) # end Output: About: Links
+
+## -----------------------------------------
   # Output: Tests:
 #
 #   output$test1 <- renderUI({
@@ -332,9 +364,9 @@ server <- function(input, output) {
   # Output: About: Coding
   output$code <- renderUI({
     sc <- tags$h2("Coding")
-    sc1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", "Shiny app code on GitHub")
+    sc1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code/GeogInteractive", target="_blank", "Shiny app code on GitHub")
     sb <- br()
-    sc2 <- HTML("Filtered table code adapted from <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny'>Stackoverflow</a>")
+    sc2 <- HTML("Filtered table code adapted from <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Stackoverflow</a>")
     HTML(paste(sc, sc1, sb, sb, sc2))
   }) # end Output: About: Coding
 
@@ -342,11 +374,12 @@ server <- function(input, output) {
   # Output: About: Links
   output$links <- renderUI({
     st <- tags$h2("Links to Geog Course Info")
-    st1 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385", "Undergrad Calendar")
-    st2 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs", "Undergrad calendar Admission Requirements")
+    st1a <- em("(These links open in a new window, as back button won't return to same page)")
+    st1 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385", target="_blank", "Undergrad Calendar")
+    st2 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs", target="_blank", "Undergrad calendar Admission Requirements")
     sb <- br()
-    st3 <- tags$a(href="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf", "Geog Major Planning Worksheet" )
-    HTML(paste(st, st1, sb, sb, st2, sb, sb, st3))
+    st3 <- tags$a(href="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf", target="_blank", "Geog Major Planning Worksheet" )
+    HTML(paste(st, st1a, sb, sb, st1, sb, sb, st2, sb, sb, st3))
   }) # end Output: About: Links
 
 ## -----------------------------------------
