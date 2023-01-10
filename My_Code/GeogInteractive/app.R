@@ -205,7 +205,7 @@ server <- function(input, output) {
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
   # Output: PDF
   output$pdf <- renderUI({
-    sp1 <- paste("<br><br>Test embedding pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>worksheet</a><br><br>")
+    sp1 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>worksheet</a><br><br>")
     sp2 <- tags$iframe(style="height:850px; width:100%", src="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf")
     HTML(paste(sp1, sp2))
   }) # end of Output: PDF
