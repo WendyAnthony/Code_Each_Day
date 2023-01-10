@@ -2,7 +2,9 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-#
+##
+# ## Wendy Anthony wanthony@uvic.ca
+##
 # code idea for filtered datatable save to csv
 # https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny
 ## -------------------------------------------------------------------
