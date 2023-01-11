@@ -31,9 +31,10 @@ ui <- fluidPage(
 ## -----------------------------------------
           # Data Table tabPanel
           tabPanel("Data Table",
-                HTML("<strong>To Filter Courses:</strong> Choose (multiple) Courses from first drop-down search box under Course Heading<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Search</strong> each column separately, <strong>or</strong> use Search Box to search the whole table
-             <br/><strong>To Download CSV: </strong> Save Filtered Course table (with current date) using Button below table<br/><br/>"
+                HTML("<strong>Tips to Filter Courses:</strong> Choose (multiple) Courses from first drop-down search box under Course heading<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Search</strong> each column separately, <strong>or</strong> use Search Box to search the whole table<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sort Order</strong> each column using arrows next to column name
+             <br/><strong>Download CSV: </strong> Save Filtered-Search (and Sort-Order) table (with current date) using Button below table<br/><br/>"
                 ),
                 DT::dataTableOutput("dt"),
                 ### tags$head() is to customize the download button
@@ -192,8 +193,15 @@ server <- function(input, output) {
 
 ## -----------------------------------------
   #  datatable output
+  # https://stackoverflow.com/questions/31486738/how-do-i-suppress-row-names-when-using-dtrenderdatatable-in-r-shiny
   output$dt <- DT::renderDataTable({
-    datatable(geog_dt, filter = "top", options =  list(pageLength = 10))
+
+    datatable(geog_dt, filter = "top", options =  list(pageLength = 10),
+              rownames = FALSE) %>% # suppress row tables, insert after option ()
+      # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
+      formatStyle(1:9, 'vertical-align'='top') %>%
+      formatStyle(1:9, 'text-align' = 'left')
+
   }) # end of Output: Data Table
 
 ## -----------------------------------------
@@ -382,6 +390,7 @@ server <- function(input, output) {
     sl1a <- strong("UVic Course Catalogue")
     sl2 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385", target="_blank", "Undergrad Calendar")
     sl3 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs", target="_blank", "Undergrad calendar Admission Requirements")
+    sl3a <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses", target="_blank", "List of Geography Courses Linked to Calendar")
     sb <- br()
     sb <- br()
     sl4 <- strong("Course Planning Worksheet and Flowcharts")
@@ -391,7 +400,7 @@ server <- function(input, output) {
     sl8 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf", target="_blank", "Human Geography Flowchart")
     sl9 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf", target="_blank", "Physical Geography Flowchart")
 
-    HTML(paste(sl, sl1, sb, sb, sl1a, sb, sl2, sb, sl3, sb, sb, sl4, sb, sl5, sb, sl6, sb, sl7, sb, sl8, sb, sl9))
+    HTML(paste(sl, sl1, sb, sb, sl1a, sb, sl2, sb, sl3, sb, sl3a, sb, sb, sl4, sb, sl5, sb, sl6, sb, sl7, sb, sl8, sb, sl9))
   }) # end Output: About: Links
 
 ## -----------------------------------------
