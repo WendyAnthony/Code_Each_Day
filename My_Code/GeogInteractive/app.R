@@ -11,6 +11,7 @@
 library(shiny)
 library(shinyWidgets) # set background color
 library(DT) # datatable
+# library(tidyverse) # trying to mutate link in DT
 
 ## -----------------------------------------
 # Read Data
@@ -201,6 +202,10 @@ server <- function(input, output) {
       # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
       formatStyle(1:9, 'vertical-align'='top') %>%
       formatStyle(1:9, 'text-align' = 'left')
+    # %>%
+    # # no applicable method for 'mutate' applied to an object of class "c('datatables', 'htmlwidget')"
+    #   mutate(site = paste0("<a href='", CatLink,"' target='_blank'>", CatLink,"</a>"))
+
 
   }) # end of Output: Data Table
 
@@ -462,6 +467,8 @@ server <- function(input, output) {
     sh <- tags$h2("History of Changes")
     sh7 <- tags$b("2023-01-11")
     sh7a <- paste("* Add links to course planning flow charts")
+    sh7b <- paste("* Updated more course data, including Study Focus")
+    sh7c <- paste("* Table cells now have no row number, and align to top")
     sb <- br()
     sh6 <- tags$b("2023-01-10")
     sh6a <- paste("* Add tabs to single page app & publish")
@@ -482,7 +489,7 @@ server <- function(input, output) {
     sh1a <- paste("* David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning")
     sh1b <- paste("* Sent link to Interactive Concept Map")
     HTML(paste(
-      sh, sh7, sb, sh7a, sb, sb, sh6, sb, sh6a, sb, sb, sh5, sb, sh5a, sb, sh5b, sb, sb, sh4, sb, sh4a, sb, sh4b, sb, sb,
+      sh, sh7, sb, sh7a, sb, sh7b, sb, sh7c, sb, sb, sh6, sb, sh6a, sb, sb, sh5, sb, sh5a, sb, sh5b, sb, sb, sh4, sb, sh4a, sb, sh4b, sb, sb,
       sh3, sb, sh3a, sb, sb,
       sh2, sb, sh2a, sb, sb,
       sh1, sb, sh1a, sb, sh1b, sb, sb))
