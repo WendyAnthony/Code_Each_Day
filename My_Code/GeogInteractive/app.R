@@ -264,6 +264,7 @@ server <- function(input, output) {
   # Output: Data Viz: Flowcharts
   output$flowcharts <- renderUI({
     sf <- tags$h2("Program Planning pdfs")
+    sf1 <- HTML("<em>Note: These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
     sf2 <- paste("<br><br>Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>")
     sb <- br()
     sf2.1 <- paste("Click Course-box links to go to UVic Catalogue item")
@@ -286,18 +287,21 @@ server <- function(input, output) {
     sf5a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf")
 
 
-    HTML(paste(sf, sf2, sb, sf2.1, sb, sb, sf2a, sf3, sb, sf3.1, sb, sb, sf3a, sf4, sb, sf4.1, sb, sb, sf4a, sf5, sb, sf5.1, sb, sb, sf5a))
+    HTML(paste(sf, sf1, sf2, sb, sf2.1, sb, sb, sf2a, sf3, sb, sf3.1, sb, sb, sf3a, sf4, sb, sf4.1, sb, sb, sf4a, sf5, sb, sf5.1, sb, sb, sf5a))
   }) # end of Output: Data Viz: Flowcharts
 
 ## -----------------------------------------
   # Output: Concept Maps:
   output$conceptmap <- renderUI({
-    stringss1 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeomaticStudies-Concentrations-wendy-Jun9-2012-2.html")
-    stringss2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Concentrations%20in%20Coastal%20Studies%2004-wendy-Jun8-2012.html")
-    stringss3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_urban_development_2015-16.html")
-    stringss4 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_enviro_sust_2015-16.html")
-    stringss5 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_earth_systems_2015-16.html")
-#     stringss6 <- paste("
+    sc <- tags$h2("Concept Maps")
+    sc1 <- HTML("<em>Note: These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
+    sb <- br()
+    sc2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeomaticStudies-Concentrations-wendy-Jun9-2012-2.html")
+    sc3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Concentrations%20in%20Coastal%20Studies%2004-wendy-Jun8-2012.html")
+    sc4 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_urban_development_2015-16.html")
+    sc5 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_enviro_sust_2015-16.html")
+    sc6 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_earth_systems_2015-16.html")
+#     sc6 <- paste("
 # <html><head><title>Geog_earth_systems_2012-13.vue</title><script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js' type='text/javascript'></script>
 # <script type='text/javascript'> jQuery.noConflict(); </script>
 # <script src='http://vue.tufts.edu/htmlexport-includes/jquery.maphilight.min.js' type='text/javascript'></script>
@@ -352,16 +356,18 @@ server <- function(input, output) {
 # <area class='tooltip' title='Prerequisites: 376 and one of 370, 372, 373, 374; permission of the department by 15 March of previous Winter Session.' id='node44' shape='rect' coords='212,229,358,276'></area>
 # <area class='tooltip' title='Prerequisites: One of 274, 358, 370, 373, 376; permission of the department by 15 March of previous Winter Session.' id='node45' shape='rect' coords='385,238,535,286'></area>
 # <area id='node46' shape='rect' coords='15,16,1001,810'></area> </map></div></body></html>")
-    HTML(paste(stringss1, stringss2, stringss3, stringss4, stringss5, "<br /><br />"))
+    HTML(paste(sc, sc1, sb, sb, sc2, sb, sc3, sb, sc4, sb, sc5, sb, sc6))
   }) # end of OUtput: Concept Maps
 
 ## -----------------------------------------
   # Output: Dataviz
   output$dataviz <- renderUI({
-    strg1 <- paste("A place to test data vizualilzations")
-    # strg2 <-
-    strg2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html")
-    HTML(paste(strg1, strg2, sep = "<br /><br />"))
+    sdv1 <- tags$h2("Data Vizualization of Study Focus Pathways")
+    sdv1a <- HTML("<em>Note: This link opens in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
+    sdv2 <- tags$a(href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html", target="_blank", "Interactive Study Focus Pathways")
+    sb <- br()
+    sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html")
+    HTML(paste(sdv1, sdv1a, sb, sb, sdv2, sb, sb, sdv3))
     # HTML(paste(strg3, sep = "<br /><br />"))
   }) # End Output: Dataviz
 
