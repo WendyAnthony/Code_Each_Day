@@ -202,6 +202,7 @@ server <- function(input, output) {
       # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
       formatStyle(1:9, 'vertical-align'='top') %>%
       formatStyle(1:9, 'text-align' = 'left')
+    # trying to add click-able hyper links to table .>> no luck so far ...
     # %>%
     # # no applicable method for 'mutate' applied to an object of class "c('datatables', 'htmlwidget')"
     #   mutate(site = paste0("<a href='", CatLink,"' target='_blank'>", CatLink,"</a>"))
