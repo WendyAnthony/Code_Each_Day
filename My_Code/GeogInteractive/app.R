@@ -74,6 +74,18 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                    tabsetPanel(
 
 ## -----------------------------------------
+                     # Nested tabPanel Data Viz: Course Planning Flowchart
+                     tabPanel("Course Planning Flowcharts", tableOutput("flowcharts"),
+                              hr(),
+                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                              br(),
+                     ), # end of Concept Maps  Nested tabPanel
+
+
+
+## -----------------------------------------
                      # Nested tabPanel Data Viz: Concept Maps
                      tabPanel("Concept Maps", tableOutput("conceptmap"),
                               hr(),
@@ -246,6 +258,36 @@ server <- function(input, output) {
   #   s2 <- paste("Test viz goes here")
   #   HTML(paste(s1, s2))
   # }) # end of Output: Test Viz
+
+## -----------------------------------------
+  # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
+  # Output: Data Viz: Flowcharts
+  output$flowcharts <- renderUI({
+    sf <- tags$h2("Program Planning pdfs")
+    sf2 <- paste("<br><br>Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>")
+    sb <- br()
+    sf2.1 <- paste("Click Course-box links to go to UVic Catalogue item")
+    sb <- br()
+    sf2a <- tags$iframe(style="height:790px; width:100%", src=" https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf")
+    sf3 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Worksheet</a>")
+    sb <- br()
+    sf3.1 <- paste("Click Course-box links to go to UVic Catalogue item")
+    sb <- br()
+    sf3a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf")
+    sf4 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Worksheet</a>")
+    sb <- br()
+    sf4.1 <- paste("Click Course-box links to go to UVic Catalogue item")
+    sb <- br()
+    sf4a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf")
+    sf5 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Worksheet</a>")
+    sb <- br()
+    sf5.1 <- paste("Click Course-box links to go to UVic Catalogue item")
+    sb <- br()
+    sf5a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf")
+
+
+    HTML(paste(sf, sf2, sb, sf2.1, sb, sb, sf2a, sf3, sb, sf3.1, sb, sb, sf3a, sf4, sb, sf4.1, sb, sb, sf4a, sf5, sb, sf5.1, sb, sb, sf5a))
+  }) # end of Output: Data Viz: Flowcharts
 
 ## -----------------------------------------
   # Output: Concept Maps:
