@@ -364,7 +364,7 @@ server <- function(input, output) {
   # Output: Dataviz
   output$dataviz <- renderUI({
     sdv1 <- tags$h2("Data Vizualization of Study Focus Pathways")
-    sdv1a <- HTML("<em><strong>Note:</strong> This link opens in a new window, as back button won't return to same page. Close new window to return to app</em><br /><br /><strong>To Use:</strong> Click any course to see other linked courses")
+    sdv1a <- HTML("<em><strong>Note:</strong> This link opens in a new window, as back button won't return to same page. Close new window to return to app</em><br /><br /><strong>To Use:</strong> Hover over or click any course to see other linked courses")
     sdv2 <- paste("<br><br>Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html' target='_blank'>Interactive Study Focus Pathways</a>")
     sb <- br()
     sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html")
