@@ -214,12 +214,13 @@ server <- function(input, output) {
   # Output: PDF
   output$pdf <- renderUI({
     sp <- tags$h2("Program Planning pdfs")
+    spa <- HTML("<em><strong>Note: </strong>These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
     sp1 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Program Planning Worksheet</a>")
     sb <- br()
     sp1a <- tags$iframe(style="height:850px; width:100%", src="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf")
     sp2 <- paste("<br><br>Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>")
     sb <- br()
-    sp2.1 <- paste("Click Course-box links to go to UVic Catalogue item")
+    sp2.1 <- HTML("<strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item")
     sb <- br()
     sp2a <- tags$iframe(style="height:790px; width:100%", src=" https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf")
     sp3 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Worksheet</a>")
@@ -239,7 +240,7 @@ server <- function(input, output) {
     sp5a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf")
 
 
-    HTML(paste(sp, sp1, sb, sb, sp1a, sp2, sb, sp2.1, sb, sb, sp2a, sp3, sb, sp3.1, sb, sb, sp3a, sp4, sb, sp4.1, sb, sb, sp4a, sp5, sb, sp5.1, sb, sb, sp5a))
+    HTML(paste(sp, spa, sp1, sb, sb, sp1a, sp2, sb, sp2.1, sb, sb, sp2a, sp3, sb, sp3.1, sb, sb, sp3a, sp4, sb, sp4.1, sb, sb, sp4a, sp5, sb, sp5.1, sb, sb, sp5a))
   }) # end of Output: PDF
 
 # ## -----------------------------------------
@@ -264,7 +265,7 @@ server <- function(input, output) {
   # Output: Data Viz: Flowcharts
   output$flowcharts <- renderUI({
     sf <- tags$h2("Program Planning pdfs")
-    sf1 <- HTML("<em>Note: These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
+    sf1 <- HTML("<em><strong>Note: </strong>These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
     sf2 <- paste("<br><br>Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>")
     sb <- br()
     sf2.1 <- paste("Click Course-box links to go to UVic Catalogue item")
@@ -294,7 +295,7 @@ server <- function(input, output) {
   # Output: Concept Maps:
   output$conceptmap <- renderUI({
     sc <- tags$h2("Concept Maps")
-    sc1 <- HTML("<em>Note: These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
+    sc1 <- HTML("<em><strong>Note:</strong> These links open in a new window, as back button won't return to same page<br />Close new window to return to app<br /><br />(These concept maps are from 2012 and 2016, with outdated information)</em><br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration")
     sb <- br()
     sc2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeomaticStudies-Concentrations-wendy-Jun9-2012-2.html")
     sc3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Concentrations%20in%20Coastal%20Studies%2004-wendy-Jun8-2012.html")
@@ -363,11 +364,11 @@ server <- function(input, output) {
   # Output: Dataviz
   output$dataviz <- renderUI({
     sdv1 <- tags$h2("Data Vizualization of Study Focus Pathways")
-    sdv1a <- HTML("<em>Note: This link opens in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
-    sdv2 <- tags$a(href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html", target="_blank", "Interactive Study Focus Pathways")
+    sdv1a <- HTML("<em><strong>Note:</strong> This link opens in a new window, as back button won't return to same page. Close new window to return to app</em><br /><br /><strong>To Use:</strong> Click any course to see other linked courses")
+    sdv2 <- paste("<br><br>Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html' target='_blank'>Interactive Study Focus Pathways</a>")
     sb <- br()
     sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html")
-    HTML(paste(sdv1, sdv1a, sb, sb, sdv2, sb, sb, sdv3))
+    HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3))
     # HTML(paste(strg3, sep = "<br /><br />"))
   }) # End Output: Dataviz
 
