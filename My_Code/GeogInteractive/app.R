@@ -91,9 +91,11 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                     # Nested tabPanel Data Viz: mermaid Flow Charts
                     tabPanel("Flow Charts", tableOutput("mermaid"),
                              strong("Flow Chart Experiments with Mermaid"),
+                             DiagrammeROutput('diagram1', width = "50%"),
+                             hr(),
                              DiagrammeROutput('diagram2', width = "50%"),
                              hr(),
-                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                     text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                              br(),
@@ -325,11 +327,42 @@ server <- function(input, output) {
 
 ## -----------------------------------------
   #   # Output: mermaid    diagramme
+  output$diagram1 <- renderDiagrammeR({
+    mermaid("graph LR;
+A[Geography Major BA]
+B[Focus: Environment]
+E1[GEOG 101A]
+E2[GEOG 101B]
+E3[GEOG 103]
+E4[GEOG 130]
+E5[GEOG 226]
+E6[GEOG 230]
+E7[GEOG 252]
+E8[GEOG 304]
+E9[GEOG 353]
+E10[GEOG 438]
+E11[GEOG 453]
+
+
+B-->A;
+E1-->E5;
+E3-->E5;
+E4-->E6;
+E7-->E8;
+E7-->E9;
+E9-->E11;
+
+
+
+")
+  })
+
+## -----------------------------------------
+  #   # Output: mermaid    diagramme
   output$diagram2 <- renderDiagrammeR({
     mermaid("graph LR;
 A[Geography Major BA]
 B[Focus: Geomatics]
-C[GEOG 101B]
 D[Focus: Human]
 E[Focus: Environment]
 F[Focus: Physical]
@@ -338,10 +371,7 @@ A-->B;
 A-->D;
 A-->E;
 A-->F;
-B-->C;
-D-->C;
-E-->C;
-F-->C;
+
 ")
   })
 
