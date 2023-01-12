@@ -332,8 +332,8 @@ server <- function(input, output) {
   #   # Output: Gantt
   output$gantt <- renderUI({
     sp1 <- paste("<h2>Gantt Chart for Planning Timelines</h2>
-                 <span><strong>To Use: </strong>Fill text in text box to update Gantt Chart</span>
-                 <br />")
+                 <span><strong>To Use: </strong>Fill text in text box to update Gantt Chart; <br />This data is not saved locally, but is deleted when exiting page; <br />Page must be edited in original Shiny.R file</span>
+                 <br /><br />")
     HTML(paste(sp1))
   }) # end of Output: Gantt
 
