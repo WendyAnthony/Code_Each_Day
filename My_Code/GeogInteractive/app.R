@@ -597,9 +597,9 @@ A-->F;
            subtitle = "Geog Interactive Course Explorations",
            caption = "UVic Geography Wendy Anthony 2023",
            x = "Date", y = "Total Hours") +
-      theme(legend.title = element_blank(),
-            plot.title = element_text(hjust = 0.5, lineheight = 1.2)) +
-      theme_classic()
+      theme_classic() +
+      theme(legend.title = element_blank()) # this needs to go after theme_classic
+
 
       }) # end Output: timelogplot
 
