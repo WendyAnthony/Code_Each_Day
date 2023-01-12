@@ -87,6 +87,17 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
                      ), # end of Concept Maps  Nested tabPanel
 
+                    ## -----------------------------------------
+                    # Nested tabPanel Data Viz: mermaid Flow Charts
+                    tabPanel("Flow Charts", tableOutput("mermaid"),
+                             strong("Flow Chart Experiments with Mermaid"),
+                             DiagrammeROutput('diagram2', width = "50%"),
+                             hr(),
+                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                             br(),
+                    ), # end of mermaid Flow Charts  Nested tabPanel
 
 
 ## -----------------------------------------
@@ -311,6 +322,29 @@ server <- function(input, output) {
                  <br />")
     HTML(paste(sp1))
   }) # end of Output: Gantt
+
+## -----------------------------------------
+  #   # Output: mermaid    diagramme
+  output$diagram2 <- renderDiagrammeR({
+    mermaid("graph LR;
+A[Geography Major BA]
+B[Focus: Geomatics]
+C[GEOG 101B]
+D[Focus: Human]
+E[Focus: Environment]
+F[Focus: Physical]
+
+A-->B;
+A-->D;
+A-->E;
+A-->F;
+B-->C;
+D-->C;
+E-->C;
+F-->C;
+")
+  })
+
 
 ## -----------------------------------------
     #   # Output: Gantt2    diagramme
