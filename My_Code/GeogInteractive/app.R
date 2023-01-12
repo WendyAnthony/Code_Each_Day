@@ -385,7 +385,7 @@ server <- function(input, output) {
     sdv2 <- paste("<br><br>Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit-1.html' target='_blank'>Interactive Study Focus Pathways</a>")
     sb <- br()
     sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit-1.html")
-    sdv4 <- paste("style type='text/css' media='screen'	body { background-color: #000; }
+    sdv4 <- paste("<html><head><title>UVic Geog Curriculum Mapping</title>style type='text/css' media='screen'	body { background-color: #000; }
 	body,td { font: 1em Gotham, Helvetica Neue, Helvetica, Arial Narrow, Arial; font-weight: 500; color: #666; padding: 0; margin: 0; }
 	ul { list-style: none none; margin: 0; padding: 0; display: block; }
 
@@ -646,7 +646,7 @@ $('#disco').toggle(
         year4: ['Geog 422 Advanced Topics in Digital Remote Sensing', 'Geog 420 Field Studies in Coastal Geomatics']
       }
     }
-    </script>
+    </script></html>
       ")
      # HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3))
      HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3, sb, sb, sdv4))
