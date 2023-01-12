@@ -629,6 +629,10 @@ A-->F;
   # Output: About: History
   output$history <- renderUI({
     sh <- tags$h2("History of Changes")
+    sh8 <- tags$b("2023-01-12")
+    sh8a <- paste("* Finished Course data copy/paste from catalogue")
+    sh8b <- paste("* Data Flow Diagrams and Gantt Charts")
+    sh8c <- paste("* Time Log Data Mining >> create GGPlot2 Chart")
     sh7 <- tags$b("2023-01-11")
     sh7a <- paste("* Add links to course planning flow charts")
     sh7b <- paste("* Updated more course data, including Study Focus")
@@ -653,7 +657,8 @@ A-->F;
     sh1a <- paste("* David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning")
     sh1b <- paste("* Sent link to Interactive Concept Map")
     HTML(paste(
-      sh, sh7, sb, sh7a, sb, sh7b, sb, sh7c, sb, sb, sh6, sb, sh6a, sb, sb, sh5, sb, sh5a, sb, sh5b, sb, sb, sh4, sb, sh4a, sb, sh4b, sb, sb,
+      sh, sh8, sb, sh8a, sb, sh8b, sb, sh8c, sb, sb,
+      sh7, sb, sh7a, sb, sh7b, sb, sh7c, sb, sb, sh6, sb, sh6a, sb, sb, sh5, sb, sh5a, sb, sh5b, sb, sb, sh4, sb, sh4a, sb, sh4b, sb, sb,
       sh3, sb, sh3a, sb, sb,
       sh2, sb, sh2a, sb, sb,
       sh1, sb, sh1a, sb, sh1b, sb, sb))
