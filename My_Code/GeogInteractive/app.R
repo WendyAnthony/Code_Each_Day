@@ -309,7 +309,7 @@ server <- function(input, output) {
   # Output: Concept Maps:
   output$conceptmap <- renderUI({
     sc <- tags$h2("Concept Maps")
-    sc1 <- HTML("<em><strong>Note:</strong> These links open in a new window, as back button won't return to same page<br />Close new window to return to app<br /><br />(These concept maps are from 2012 and 2016, with outdated information)</em><br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration")
+    sc1 <- HTML("<em><strong>Note:</strong> This concept map is from 2016 (with outdated information), with a different visualization technique.</em><br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration. Links open in a new window (because back button won't return to same page) - Close new window to return to app")
     sb <- br()
     # sc2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeomaticStudies-Concentrations-wendy-Jun9-2012-2.html")
     # sc3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Concentrations%20in%20Coastal%20Studies%2004-wendy-Jun8-2012.html")
