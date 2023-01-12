@@ -17,7 +17,7 @@ library(ggplot2)
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
-tl <- read.csv("TimeLog2023-01-12-12-52-04.csv")
+tl <- read.csv("TimeLog-2023-01-12-12-52-04.csv")
 ## -----------------------------------------
 # Define UI -----------
 ui <- fluidPage(
@@ -588,7 +588,7 @@ A-->F;
   output$timelogplot <- renderPlot({
 
     # this is aborting the soession when I click on this tab
-    tl <- read.csv("TimeLog2023-01-12-12-52-04.csv")
+    tl <- read.csv("TimeLog-2023-01-12-12-52-04.csv")
 
     ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
       geom_bar(aes(color = TaskType, fill = TaskType),
