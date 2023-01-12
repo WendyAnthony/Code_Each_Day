@@ -12,11 +12,12 @@ library(shiny)
 library(shinyWidgets) # set background color
 library(DT) # datatable
 library(DiagrammeR) # Gantt Chart
+library(ggplot2)
 
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
-
+tl <- read.csv("TimeLog2023-01-12-12-52-04.csv")
 ## -----------------------------------------
 # Define UI -----------
 ui <- fluidPage(
@@ -189,49 +190,60 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
                      ), # end of Nested tabPanel About: Code
 
+                    ## -----------------------------------------
+                    # Nested tabPanel About: Tips
+                    tabPanel("TimeLog Plot",
+                             h3("Time Log for Interactive Geography Classes Code Work"),
+                             plotOutput("timelogplot"),
+                             hr(),
+                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
+                                align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                             br(),
+                    ), # end of Nested tabPanel About: Tips
 
-## -----------------------------------------
-# Gantt tabPanel
-tabPanel("Gantt Chart",  tableOutput("gantt"),
-         textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
-                            gantt
-              dateFormat  YYYY-MM-DD
-              title Designing Interactive Geography Course Planning Gantt Diagram
+                    ## -----------------------------------------
+                    # Gantt tabPanel
+                    tabPanel("Gantt Chart",  tableOutput("gantt"),
+                             textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
+                                                gantt
+                                  dateFormat  YYYY-MM-DD
+                                  title Designing Interactive Geography Course Planning Gantt Diagram
 
-              section Interactive Project
-              Offered Position       :done,     first_7, 2023-01-05, 2023-01-06
-              Accepted Position       :done,     first_8, 2023-01-05, 2023-01-06
-              Started Project      :active,         first_9, 2023-01-06, 90d
+                                  section Interactive Project
+                                  Offered Position       :done,     first_7, 2023-01-05, 2023-01-06
+                                  Accepted Position       :done,     first_8, 2023-01-05, 2023-01-06
+                                  Started Project      :active,         first_9, 2023-01-06, 90d
 
-              section Shiny App
-              Created Shiny App             :done,          first_1,    2023-01-06, 2023-01-08
-              Refining Shiny App            :active,        first_5,    2023-01-06, 10d
-              Created Interactive Downloadable Data Table  :done,  first_6, 2023-01-08, 2023-01-09
+                                  section Shiny App
+                                  Created Shiny App             :done,          first_1,    2023-01-06, 2023-01-08
+                                  Refining Shiny App            :active,        first_5,    2023-01-06, 10d
+                                  Created Interactive Downloadable Data Table  :done,  first_6, 2023-01-08, 2023-01-09
 
-              section Data Collection
-              Collecting Course Data        :active,        first_2,    2023-01-09, 10d
-              Finish Collecting Data       :                first_3,    after first_2, 5d
-              Do this after that            :               first_4,    after first_3, 5d
+                                  section Data Collection
+                                  Collecting Course Data        :active,        first_2,    2023-01-09, 10d
+                                  Finish Collecting Data       :                first_3,    after first_2, 5d
+                                  Do this after that            :               first_4,    after first_3, 5d
 
-              section Interactive Data Table
-              Completed, critical task      :crit, done,    import_1,   2023-01-06,24h
-              Also done, also critical      :crit, done,    import_2,   after import_1, 2d
-              Doing this important task now :crit, active,  import_3,   after import_2, 3d
-              Next critical task            :crit,          import_4,   after import_3, 5d
+                                  section Interactive Data Table
+                                  Completed, critical task      :crit, done,    import_1,   2023-01-06,24h
+                                  Also done, also critical      :crit, done,    import_2,   after import_1, 2d
+                                  Doing this important task now :crit, active,  import_3,   after import_2, 3d
+                                  Next critical task            :crit,          import_4,   after import_3, 5d
 
-              section Interactive Data Viz
-              First extras                  :active,        extras_1,   after import_4, 3d
-              Second helping                :               extras_2,   after extras_1, 20h
-              More of the extras            :               extras_3,   after extras_1, 48h
+                                  section Interactive Data Viz
+                                  First extras                  :active,        extras_1,   after import_4, 3d
+                                  Second helping                :               extras_2,   after extras_1, 20h
+                                  More of the extras            :               extras_3,   after extras_1, 48h
 
-              "),
-         DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
-         hr(),
-         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-         br(),
-), # end of Gantt tabPanel
+                                  "),
+                             DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
+                             hr(),
+                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                                align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                             br(),
+                    ), # end of Gantt tabPanel
 
 ## -----------------------------------------
                     # Nested tabPanel About: History
@@ -570,6 +582,26 @@ A-->F;
     #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
     HTML(paste(sa1, sa2))
   }) # end Output: About:
+
+## -----------------------------------------
+  # Output: timelogplot
+  output$timelogplot <- renderPlot({
+
+    # this is aborting the soession when I click on this tab
+    tl <- read.csv("TimeLog2023-01-12-12-52-04.csv")
+
+    ggplot(tl, aes(x = Date, y = TotalTimeMin)) +
+      geom_bar(aes(color = TaskType, fill = TaskType),
+               stat = "identity", position = "dodge") +
+      labs(title = "Task Time Log",
+           subtitle = "Geog Interactive Course Explorations",
+           caption = "UVic Geography Wendy Anthony 2023",
+           x = "Date", y = "Total Minutes") +
+      theme(legend.title = element_blank(),
+            plot.title = element_text(hjust = 0.5, lineheight = 1.2)) +
+      theme_classic()
+
+      }) # end Output: timelogplot
 
 ## -----------------------------------------
   # Output: About: Tips
