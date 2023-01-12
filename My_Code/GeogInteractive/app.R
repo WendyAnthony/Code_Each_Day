@@ -590,18 +590,19 @@ A-->F;
     # this is aborting the soession when I click on this tab
     tl <- read.csv("TimeLog2023-01-12-12-52-04.csv")
 
-    ggplot(tl, aes(x = Date, y = TotalTimeMin)) +
+    ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
       geom_bar(aes(color = TaskType, fill = TaskType),
-               stat = "identity", position = "dodge") +
+               stat = "identity", position = position_stack()) +
       labs(title = "Task Time Log",
            subtitle = "Geog Interactive Course Explorations",
            caption = "UVic Geography Wendy Anthony 2023",
-           x = "Date", y = "Total Minutes") +
+           x = "Date", y = "Total Hours") +
       theme(legend.title = element_blank(),
             plot.title = element_text(hjust = 0.5, lineheight = 1.2)) +
       theme_classic()
 
       }) # end Output: timelogplot
+
 
 ## -----------------------------------------
   # Output: About: Tips
