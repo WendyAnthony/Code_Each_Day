@@ -590,16 +590,20 @@ HTML(paste(sc6))
     output$questions <- renderUI({
       HTML("<h3>Questions</h3>
           <ul>
+          <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
           <li>What's involved with setting up a Geog Shiny Server (ask Rick about this)?</li>
-          <li>**Rick Sykes:** Can a Shiny Server be installed?</li>
+          <ul>
+            <li>**Rick Sykes:** Can a Shiny Server be installed?</li>
+          </ul>
           <li>What format to use for Course Name?  >> change database
 	- GEOG103, Geog103, or Geog 103 >> I chose **GEOG 103</li>
           <li>Make a list of questions to ask David, John, or the student body that David mentioned</li>
           <li>Ask some students what kind of format they like to search geography courses for when planning for example the geography student SOGS, have some examples online and choose make a POLL,test drive</li>
-          <li>**Students**: What info would students like to find?</li>
+          <ul>
+            <li>**Students**: What info would students like to find?</li>
+          </ul>
           </ul>
 <!--
-          <li></li>
           <li></li>
           <li></li>
           <li></li>
