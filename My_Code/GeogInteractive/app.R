@@ -683,6 +683,8 @@ HTML(paste(sc6))
     output$todo <- renderUI({
       HTML("<h3>To Do</h3>
           <ul>
+          <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
+            <ul><li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li></ul>
           <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
           <li>Start to fill-in/update missing course info for Geography Course data table</li>
           <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
@@ -700,7 +702,6 @@ HTML(paste(sc6))
           <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
           <li>Multi year calendar planner</li>
           <li>Note which courses student has taken</li>
-          <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
           <li>Convert to PHP, update training on UVic website</li>
           <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
           <li>update vIz chart with more courses, figure out how to add relationships to table?</li>
@@ -718,10 +719,14 @@ HTML(paste(sc6))
           <li></li>
           <li></li>
           <li></li>
-          <li></li>
+          <li><a href=''></a></li>
+          <li><a href=''></a></li>
+
+
 -->
           <h3>Done ✅</h3>
           <ul>
+          <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
           <li>add signature footer to bottom of page</li>
           <li>Embed links to geography interactive pdf concept maps</li>
           <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
@@ -821,6 +826,7 @@ HTML(paste(sc6))
         <hr>
     <h4>2023-01-13</h4>
       <ul>
+        <li>Experimented with js tables in HTML - able to get it searching so far! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Test Web Table</a></li>
         <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
         <li>Converted Shiny output$ code from paste('') to HTML('')</li>
       </ul>
