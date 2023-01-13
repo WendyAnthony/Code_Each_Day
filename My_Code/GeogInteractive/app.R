@@ -2,6 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
+## Updated 2023-01-13 06:24
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -22,6 +23,15 @@ tl <- read.csv("TimeLog-2023-01-12-12-52-04.csv")
 # Define UI -----------
 ui <- fluidPage(
   setBackgroundColor("bonewhite"),
+  # https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel
+  # .tabbable > .nav > li > a[data-value='t1'] {background-color: red;   color:white}
+  # .tabbable > .nav > li > a[data-value='t2'] {background-color: blue;  color:white}
+  # .tabbable > .nav > li > a[data-value='t3'] {background-color: green; color:white}
+
+  tags$style(HTML("
+    .tabbable > .nav > li > a                  {background-color: #c3dca4;  color:black}
+    .tabbable > .nav > li[class=active]    > a {background-color: #77be21; color:black}
+  ")),
   titlePanel(title = span("Exploring UVic Geography Courses", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
   tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
 
@@ -51,18 +61,6 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
               ), # end of Data Table tabPanel
 
 # ## -----------------------------------------
-#           # PDF tabPanel
-#           tabPanel("Planning PDFs",  tableOutput("pdf"),
-#                    hr(),
-#                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-#                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-# text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#                    br(),
-#           ), # end of PDF tabPanel
-
-
-
-# ## -----------------------------------------
 # # Template tabPanel
 # tabPanel("Template",  tableOutput("template"),
 #          # Put content here
@@ -74,12 +72,12 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 # ), # end of Template tabPanel
 
 ## -----------------------------------------
-          # Nested Data Viz tabPanel
+          # Nested Course Planning Data Viz tabPanel
           tabPanel("Course Planning Data Viz",
                    tabsetPanel(
 
 ## -----------------------------------------
-                     # PDF tabPanel
+                     # Nested PDF tabPanel
                      tabPanel("Planning PDFs",  tableOutput("pdf"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
@@ -98,7 +96,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
                      ), # end of Concept Maps  Nested tabPanel
 
-                    ## -----------------------------------------
+## -----------------------------------------
                     # Nested tabPanel Data Viz: mermaid Flow Charts
                     tabPanel("Flow Charts", tableOutput("mermaid"),
                              strong("Flow Chart Experiments with Mermaid"),
@@ -111,7 +109,6 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                     text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                              br(),
                     ), # end of mermaid Flow Charts  Nested tabPanel
-
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Concept Maps
@@ -127,7 +124,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      # Nested tabPanel Data Viz: Paths Viz
                      tabPanel("Paths Viz", tableOutput("dataviz"),
                               hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-13",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
@@ -143,26 +140,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                              br(),
                     ), # end of Nested tabPanel About: Links
 
-## -----------------------------------------
-# Nested tabPanel Data Viz: Test Viz
-#                      tabPanel("TestViz", tableOutput("testviz"),
-#                               hr(),
-#                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-#                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-# text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#                               br(),
-
-                   )), # end of Nested Data Viz tabPanel
-
-# ## -----------------------------------------
-#             # Nested tabPanel About: Links
-#             tabPanel("Links", tableOutput("links"),
-#                      hr(),
-#                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-#                         align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-#             text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#                      br(),
-#             ), # end of Nested tabPanel About: Links
+                   )), # end of Nested Course Planning Data Viz tabPanel
 
 ## -----------------------------------------
           # Test tabPanel
@@ -210,65 +188,12 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
                      ), # end of Nested tabPanel About: Code
 
-# ## -----------------------------------------
-#                     # Nested tabPanel About: Timelog
-#                     tabPanel("TimeLog Plot",
-#                              h3("Time Log for Interactive Geography Classes Code Work"),
-#                              plotOutput("timelogplot"),
-#                              hr(),
-#                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
-#                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-#                     text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#                              br(),
-#                     ), # end of Nested tabPanel About: Timelog
-
-# ## -----------------------------------------
-#                     # Gantt tabPanel
-#                     tabPanel("Gantt Chart",  tableOutput("gantt"),
-#                              textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
-#                                                 gantt
-#                                   dateFormat  YYYY-MM-DD
-#                                   title Designing Interactive Geography Course Planning Gantt Diagram
-#
-#                                   section Interactive Project
-#                                   Offered Position       :done,     first_7, 2023-01-05, 2023-01-06
-#                                   Accepted Position       :done,     first_8, 2023-01-05, 2023-01-06
-#                                   Started Project      :active,         first_9, 2023-01-06, 90d
-#
-#                                   section Shiny App
-#                                   Created Shiny App             :done,          first_1,    2023-01-06, 2023-01-08
-#                                   Refining Shiny App            :active,        first_5,    2023-01-06, 10d
-#                                   Created Interactive Downloadable Data Table  :done,  first_6, 2023-01-08, 2023-01-09
-#
-#                                   section Data Collection
-#                                   Collecting Course Data        :active,        first_2,    2023-01-09, 10d
-#                                   Finish Collecting Data       :                first_3,    after first_2, 5d
-#                                   Do this after that            :               first_4,    after first_3, 5d
-#
-#                                   section Interactive Data Table
-#                                   Completed, critical task      :crit, done,    import_1,   2023-01-06,24h
-#                                   Also done, also critical      :crit, done,    import_2,   after import_1, 2d
-#                                   Doing this important task now :crit, active,  import_3,   after import_2, 3d
-#                                   Next critical task            :crit,          import_4,   after import_3, 5d
-#
-#                                   section Interactive Data Viz
-#                                   First extras                  :active,        extras_1,   after import_4, 3d
-#                                   Second helping                :               extras_2,   after extras_1, 20h
-#                                   More of the extras            :               extras_3,   after extras_1, 48h
-#
-#                                   "),
-#                              DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
-#                              hr(),
-#                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-#                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-#                     text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#                              br(),
-#                     ), # end of Gantt tabPanel --------------------
-
 ## -----------------------------------------
                     # Work tabPanel --------------------
                     tabPanel("Project Work",
                     # ---------------------
+
+# -----------------------------------------
                     # Nested tabPanelWork: --------------------
                              tabsetPanel(
                                tabPanel("Questions", tableOutput("questions")),
@@ -276,7 +201,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                tabPanel("To Do", tableOutput("todo")),
                                tabPanel("Need", tableOutput("need")),
 
-                               ## -----------------------------------------
+# -----------------------------------------
                                # Nested tabPanel About: Timelog
                                tabPanel("TimeLog Plot",
                                         h3("Time Log for Interactive Geography Classes Code Work"),
@@ -288,7 +213,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                         br(),
                                ), # end of Nested tabPanel About: Timelog
 
-                               ## -----------------------------------------
+## -----------------------------------------
                                # Gantt tabPanel
                                tabPanel("Gantt Chart",  tableOutput("gantt"),
                                         textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
@@ -364,9 +289,7 @@ server <- function(input, output) {
     # %>%
     # # no applicable method for 'mutate' applied to an object of class "c('datatables', 'htmlwidget')"
     #   mutate(site = paste0("<a href='", CatLink,"' target='_blank'>", CatLink,"</a>"))
-
-
-  }) # end of Output: Data Table
+  }) # end of Output: dt renderDataTable
 
 ## -----------------------------------------
   # Download button
@@ -410,8 +333,6 @@ server <- function(input, output) {
     sp5.1 <- paste("Click Course-box links to go to UVic Catalogue item")
     sb <- br()
     sp5a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf")
-
-
     HTML(paste(sp, spa, sp1, sb, sb, sp1a, sp2, sb, sp2.1, sb, sb, sp2a, sp3, sb, sp3.1, sb, sb, sp3a, sp4, sb, sp4.1, sb, sb, sp4a, sp5, sb, sp5.1, sb, sb, sp5a))
   }) # end of Output: PDF
 
@@ -442,7 +363,6 @@ E9[GEOG 353]
 E10[GEOG 438]
 E11[GEOG 453]
 
-
 B-->A;
 E1-->E5;
 E3-->E5;
@@ -450,9 +370,6 @@ E4-->E6;
 E7-->E8;
 E7-->E9;
 E9-->E11;
-
-
-
 ")
   })
 
@@ -470,10 +387,8 @@ A-->B;
 A-->D;
 A-->E;
 A-->F;
-
 ")
   })
-
 
 ## -----------------------------------------
     #   # Output: Gantt2    diagramme
@@ -492,14 +407,6 @@ A-->F;
 #     sp2 <- tags$iframe(style="height:850px; width:100%", src="")
 #     HTML(paste(sp1, sb, sp2))
 #   }) # end of Output: Template
-
-## -----------------------------------------
-  # Output: Test Viz
-  # output$testviz <- renderUI({
-  #   s1 <- tags$h2("Testing data vizualizations")
-  #   s2 <- paste("Test viz goes here")
-  #   HTML(paste(s1, s2))
-  # }) # end of Output: Test Viz
 
 ## -----------------------------------------
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
@@ -527,8 +434,6 @@ A-->F;
     sf5.1 <- paste("Click Course-box links to go to UVic Catalogue item")
     sb <- br()
     sf5a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf")
-
-
     HTML(paste(sf, sf1, sf2, sb, sf2.1, sb, sb, sf2a, sf3, sb, sf3.1, sb, sb, sf3a, sf4, sb, sf4.1, sb, sb, sf4a, sf5, sb, sf5.1, sb, sb, sf5a))
   }) # end of Output: Data Viz: Flowcharts
 
@@ -538,11 +443,6 @@ A-->F;
     sc <- tags$h2("Concept Maps")
     sc1 <- HTML("<em><strong>Note:</strong> This concept map is from 2016 (with outdated information), with a different visualization technique.</em><br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration. Links open in a new window (because back button won't return to same page) - Close new window to return to app")
     sb <- br()
-    # sc2 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeomaticStudies-Concentrations-wendy-Jun9-2012-2.html")
-    # sc3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Concentrations%20in%20Coastal%20Studies%2004-wendy-Jun8-2012.html")
-    # sc4 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_urban_development_2015-16.html")
-    # sc5 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_enviro_sust_2015-16.html")
-    # sc6 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_earth_systems_2015-16.html")
     sc6 <- paste("
 <html><head><title>Geog_earth_systems_2012-13.vue</title><script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js' type='text/javascript'></script>
 <script type='text/javascript'> jQuery.noConflict(); </script>
@@ -598,8 +498,7 @@ A-->F;
 <area class='tooltip' title='Prerequisites: 376 and one of 370, 372, 373, 374; permission of the department by 15 March of previous Winter Session.' id='node44' shape='rect' coords='212,229,358,276'></area>
 <area class='tooltip' title='Prerequisites: One of 274, 358, 370, 373, 376; permission of the department by 15 March of previous Winter Session.' id='node45' shape='rect' coords='385,238,535,286'></area>
 <area id='node46' shape='rect' coords='15,16,1001,810'></area> </map></div></body></html>")
-    # HTML(paste(sc, sc1, sb, sb, sc2, sb, sc3, sb, sc4, sb, sc5, sb, sc6))
-    HTML(paste(sc, sc1, sb, sb, sc6))
+HTML(paste(sc, sc1, sb, sb, sc6))
   }) # end of OUtput: Concept Maps
 
 ## -----------------------------------------
@@ -612,9 +511,7 @@ A-->F;
     sdv2 <- paste("<br><br>Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit-1.html' target='_blank'>Interactive Study Focus Pathways</a>")
     sb <- br()
     sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit2.html")
-     # HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3))
      HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3))
-    # HTML(paste(sdv1, sdv1a, sb, sdv2))
   }) # End Output: Dataviz
 
 ## -----------------------------------------
@@ -634,7 +531,6 @@ A-->F;
     sl7 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf", target="_blank", "Geomatics Flowchart")
     sl8 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf", target="_blank", "Human Geography Flowchart")
     sl9 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf", target="_blank", "Physical Geography Flowchart")
-
     HTML(paste(sl, sl1, sb, sb, sl1a, sb, sl2, sb, sl3, sb, sl3a, sb, sb, sl4, sb, sl5, sb, sl6, sb, sl7, sb, sl8, sb, sl9))
   }) # end Output: About: Links
 
@@ -661,9 +557,8 @@ A-->F;
 #     HTML(paste(strings1))
 #   }) # end Output: Tests
 
-  ## -----------------------------------------
-  # Output:Work:
-
+## -----------------------------------------
+  # Output: Questions
     output$questions <- renderUI({
       strings1 <- paste("<h3>Questions</h3>
           <ul>
@@ -675,7 +570,6 @@ A-->F;
           <li>Ask some students what kind of format they like to search geography courses for when planning for example the geography student SOGS, have some examples online and choose make a POLL,test drive</li>
           <li>**Students**: What info would students like to find?</li>
           </ul>
-
 <!--
           <li></li>
           <li></li>
@@ -684,11 +578,12 @@ A-->F;
           <li></li>
           <li></li>
 -->
-
                         ")
       HTML(paste(strings1))
     }) # end Output:Work
 
+## -----------------------------------------
+    # Output: Wishlist
     output$wishlist <- renderUI({
       strings1 <- paste("<h3>Wishlist</h3>
           <ul>
@@ -714,7 +609,6 @@ A-->F;
           <li></li>
           <li></li>
 -->
-
           <h3>Functions Wishlist</h3>
           <ul>
           <li>Interactive</li>
@@ -731,8 +625,8 @@ A-->F;
 <!--
 <a href=''></a> <a href=''></a>
 <a href=''></a> <a href=''></a> <a href=''></a>
-<a href=''></a> <a href=''></a> <a href=''></a> -->
-
+<a href=''></a> <a href=''></a> <a href=''></a>
+-->
 <!--
           <li></li>
           <li></li>
@@ -741,7 +635,6 @@ A-->F;
           <li></li>
           <li></li>
 -->
-
           <h3>Ideas</h3>
           <ul>
           <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
@@ -751,11 +644,12 @@ A-->F;
           <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
           <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
           </ul>
-
 ")
       HTML(paste(strings1))
     }) # end Output:Work
 
+## -----------------------------------------
+    # Output: To Do
     output$todo <- renderUI({
       strings1 <- paste("<h3>To Do</h3>
           <ul>
@@ -812,6 +706,8 @@ A-->F;
       HTML(paste(strings1))
     }) # end Output:Work
 
+## -----------------------------------------
+    # Output: Need
     output$need <- renderUI({
       strings1 <- paste("<h3>Need</h3>
           <ul>
@@ -850,10 +746,9 @@ A-->F;
       # theme_classic() +
       theme_bw() +
       theme(legend.title = element_blank()) # this needs to go after theme_classic
-
+  # end ggplot -------------
 
       }) # end Output: timelogplot
-
 
 ## -----------------------------------------
   # Output: About: Tips
