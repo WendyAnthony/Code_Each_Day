@@ -40,7 +40,7 @@ ui <- fluidPage(
                 ),
                 DT::dataTableOutput("dt"),
                 ### tags$head() is to customize the download button
-                tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #e6ebef;} .button{margin: auto;}
+                tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
                        .button-center{text-align: center;}")),
                 # Download button needs to be after datatable to be able to save filtered data
                 div(class = "button-center", downloadButton("download_filtered", "Download CSV", class="button")),
@@ -50,15 +50,15 @@ ui <- fluidPage(
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
               ), # end of Data Table tabPanel
 
-## -----------------------------------------
-          # PDF tabPanel
-          tabPanel("Planning PDFs",  tableOutput("pdf"),
-                   hr(),
-                   h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-                      align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                   br(),
-          ), # end of PDF tabPanel
+# ## -----------------------------------------
+#           # PDF tabPanel
+#           tabPanel("Planning PDFs",  tableOutput("pdf"),
+#                    hr(),
+#                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+#                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+# text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+#                    br(),
+#           ), # end of PDF tabPanel
 
 
 
@@ -75,8 +75,18 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
           # Nested Data Viz tabPanel
-          tabPanel("Data Viz",
+          tabPanel("Course Planning Data Viz",
                    tabsetPanel(
+
+## -----------------------------------------
+                     # PDF tabPanel
+                     tabPanel("Planning PDFs",  tableOutput("pdf"),
+                              hr(),
+                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                              br(),
+                     ), # end of PDF tabPanel
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Course Planning Flowchart
@@ -124,6 +134,16 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      ), # end of Paths Viz Nested tabPanel
 
 ## -----------------------------------------
+                    # Nested tabPanel About: Links
+                    tabPanel("Links", tableOutput("links"),
+                             hr(),
+                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                                text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                             br(),
+                    ), # end of Nested tabPanel About: Links
+
+## -----------------------------------------
 # Nested tabPanel Data Viz: Test Viz
 #                      tabPanel("TestViz", tableOutput("testviz"),
 #                               hr(),
@@ -134,15 +154,15 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
                    )), # end of Nested Data Viz tabPanel
 
-## -----------------------------------------
-            # Nested tabPanel About: Links
-            tabPanel("Links", tableOutput("links"),
-                     hr(),
-                     h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-                        align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-            text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                     br(),
-            ), # end of Nested tabPanel About: Links
+# ## -----------------------------------------
+#             # Nested tabPanel About: Links
+#             tabPanel("Links", tableOutput("links"),
+#                      hr(),
+#                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+#                         align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+#             text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+#                      br(),
+#             ), # end of Nested tabPanel About: Links
 
 ## -----------------------------------------
           # Test tabPanel
@@ -158,7 +178,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
           # About tabPanel
-          tabPanel("About",
+          tabPanel("About This App",
                    tabsetPanel(
 ## -----------------------------------------
                      # Nested tabPanel About: About
@@ -591,7 +611,7 @@ A-->F;
     sb <- br()
     sdv2 <- paste("<br><br>Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit-1.html' target='_blank'>Interactive Study Focus Pathways</a>")
     sb <- br()
-    sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit-1.html")
+    sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit2.html")
      # HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3))
      HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3))
     # HTML(paste(sdv1, sdv1a, sb, sdv2))
