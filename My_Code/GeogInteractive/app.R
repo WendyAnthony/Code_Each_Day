@@ -88,7 +88,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Course Planning Flowchart
-                     tabPanel("Course Planning Flowcharts", tableOutput("flowcharts"),
+                     tabPanel("Catalogue-linked Flowcharts", tableOutput("flowcharts"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -98,7 +98,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                     # Nested tabPanel Data Viz: mermaid Flow Charts
-                    tabPanel("Flow Charts", tableOutput("mermaid"),
+                    tabPanel("Flow Chart Diagrams", tableOutput("mermaid"),
                              strong("Flow Chart Experiments with Mermaid"),
                              DiagrammeROutput('diagram1', width = "50%"),
                              hr(),
@@ -122,7 +122,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Paths Viz
-                     tabPanel("Paths Viz", tableOutput("dataviz"),
+                     tabPanel("Interactive Paths Viz", tableOutput("dataviz"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-13",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -308,41 +308,24 @@ server <- function(input, output) {
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
   # Output: PDF
   output$pdf <- renderUI({
-    sp <- tags$h2("Program Planning pdfs")
-    spa <- HTML("<em><strong>Note: </strong>These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
-    sp1 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Program Planning Worksheet</a>")
-    sb <- br()
-    sp1a <- tags$iframe(style="height:850px; width:100%", src="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf")
-    sp2 <- paste("<br><br>Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>")
-    sb <- br()
-    sp2.1 <- HTML("<strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sp2a <- tags$iframe(style="height:790px; width:100%", src=" https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf")
-    sp3 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Worksheet</a>")
-    sb <- br()
-    sp3.1 <- paste("Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sp3a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf")
-    sp4 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Worksheet</a>")
-    sb <- br()
-    sp4.1 <- paste("Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sp4a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf")
-    sp5 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Worksheet</a>")
-    sb <- br()
-    sp5.1 <- paste("Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sp5a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf")
-    HTML(paste(sp, spa, sp1, sb, sb, sp1a, sp2, sb, sp2.1, sb, sb, sp2a, sp3, sb, sp3.1, sb, sb, sp3a, sp4, sb, sp4.1, sb, sb, sp4a, sp5, sb, sp5.1, sb, sb, sp5a))
+    HTML("
+         <h2>Program Planning pdfs</h2>
+         <div>
+            Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Program Planning Worksheet</a>
+            <br />
+            <iframe style='height:790px; width:100%' src='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'></iframe>
+            <br /><br />
+
+         </div>
+         ")
   }) # end of Output: PDF
 
 ## -----------------------------------------
   #   # Output: Gantt
   output$gantt <- renderUI({
-    sp1 <- paste("<h2>Gantt Chart for Planning Timelines</h2>
+    HTML("<h2>Gantt Chart for Planning Timelines</h2>
                  <span><strong>To Use: </strong>Fill text in text box to update Gantt Chart; <br />This data is not saved locally, but is deleted when exiting page; <br />Page must be edited in original Shiny.R file</span>
                  <br /><br />")
-    HTML(paste(sp1))
   }) # end of Output: Gantt
 
 ## -----------------------------------------
@@ -412,37 +395,55 @@ A-->F;
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
   # Output: Data Viz: Flowcharts
   output$flowcharts <- renderUI({
-    sf <- tags$h2("Program Planning pdfs")
-    sf1 <- HTML("<em><strong>Note: </strong>These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
-    sf2 <- paste("<br><br>Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>")
-    sb <- br()
-    sf2.1 <- paste("Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sf2a <- tags$iframe(style="height:790px; width:100%", src=" https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf")
-    sf3 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Worksheet</a>")
-    sb <- br()
-    sf3.1 <- paste("Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sf3a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf")
-    sf4 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Worksheet</a>")
-    sb <- br()
-    sf4.1 <- paste("Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sf4a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf")
-    sf5 <- paste("<br><br>Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Worksheet</a>")
-    sb <- br()
-    sf5.1 <- paste("Click Course-box links to go to UVic Catalogue item")
-    sb <- br()
-    sf5a <- tags$iframe(style="height:790px; width:100%", src="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf")
-    HTML(paste(sf, sf1, sf2, sb, sf2.1, sb, sb, sf2a, sf3, sb, sf3.1, sb, sb, sf3a, sf4, sb, sf4.1, sb, sb, sf4a, sf5, sb, sf5.1, sb, sb, sf5a))
+    HTML("
+        <h2>Flowchart Program Planning pdfs</h2>
+          <div>
+            <em><strong>Note: </strong>These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>
+              <br /><br />
+            <strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item
+          </div>
+            <hr>
+        <h3>Environment And Sustainability</h3>
+          <div>
+            Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>
+              <br />
+            Click Course-box links to go to UVic Catalogue item
+              <br /><br />
+            <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'></iframe>
+          </div>
+            <hr>
+        <h3>Geomatics</h3>
+          <div>
+            Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Worksheet</a>
+              <br />
+            Click Course-box links to go to UVic Catalogue item
+              <br /><br />
+            <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'></iframe>
+          </div>
+            <hr>
+          <h3>Human Geography</h3>
+          <div>
+            Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Worksheet</a>
+              <br />
+            Click Course-box links to go to UVic Catalogue item
+              <br /><br />
+            <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'></iframe>
+          </div>
+            <hr>
+        <h3>Physical Geography</h3>
+          <div>
+            Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Worksheet</a>
+              <br />
+            Click Course-box links to go to UVic Catalogue item
+              <br /><br />
+            <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'></iframe>
+          </div>
+         ")
   }) # end of Output: Data Viz: Flowcharts
 
 ## -----------------------------------------
   # Output: Concept Maps:
   output$conceptmap <- renderUI({
-    sc <- tags$h2("Concept Maps")
-    sc1 <- HTML("<em><strong>Note:</strong> This concept map is from 2016 (with outdated information), with a different visualization technique.</em><br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration. Links open in a new window (because back button won't return to same page) - Close new window to return to app")
-    sb <- br()
     sc6 <- paste("
 <html><head><title>Geog_earth_systems_2012-13.vue</title><script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js' type='text/javascript'></script>
 <script type='text/javascript'> jQuery.noConflict(); </script>
@@ -450,7 +451,11 @@ A-->F;
 <script src='http://vue.tufts.edu/htmlexport-includes/v3/tooltip.min.js' type='text/javascript'></script>
 <script type='text/javascript'>jQuery(function() {jQuery.fn.maphilight.defaults = { fill: false, fillColor: '000000', fillOpacity: 0.2, stroke: true, strokeColor: '282828', strokeOpacity: 1, strokeWidth: 4, fade: true, alwaysOn: false } jQuery('.example2 img').maphilight(); }); </script>
 <style type='text/css'> #tooltip{ position:absolute; border:1px solid #333; background:#f7f5d1; padding:2px 5px; color:#333; display:none; } </style> </head>
-<body> <div class='example2'><img class='map' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_earth_systems_2015-16.png' width='1018.0' height='827.0' usemap='#vuemap'><map name='vuemap'>
+<body>
+<h2>Concept Maps</h2>
+<div><em><strong>Note:</strong> This concept map is from 2016 (with outdated information), with a different visualization technique.</em><br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration. Links open in a new window (because back button won't return to same page) - Close new window to return to app</div>
+<br />
+<div class='example2'><img class='map' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_earth_systems_2015-16.png' width='1018.0' height='827.0' usemap='#vuemap'><map name='vuemap'>
 <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=484&schd_in=' target='_blank' class='tooltip' title='Detailed examination of atmospheric structures and processes underlying weather and climate. Practical work focuses on analysis of vertical stability and utilizing computer weather model data.' id='node42' shape='rect' coords='574,193,652,214'></area>
 <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201509&subj_in=GEOG&crse_in=477&schd_in=' target='_blank' class='tooltip' title='The nature of scientific research in physical geography is examined through field and laboratory techniques. Includes a week- long field camp where basic approaches, methodologies and techniques are used to prepare a series of reports based on field data and collected samples. A field trip fee may be applied. Note: Credit will be granted for only one of 477, 471D.' id='node39' shape='rect' coords='433,191,511,212'></area>
 <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=476&schd_in=' target='_blank' class='tooltip' title='Focusing on various geomorphologic themes, students will complete a major research project based on field work to supplement lectures, seminars and field/lab projects. Note: Credit will be granted for only one of 476, 471C.' id='node36' shape='rect' coords='111,196,189,217'></area>
@@ -498,40 +503,62 @@ A-->F;
 <area class='tooltip' title='Prerequisites: 376 and one of 370, 372, 373, 374; permission of the department by 15 March of previous Winter Session.' id='node44' shape='rect' coords='212,229,358,276'></area>
 <area class='tooltip' title='Prerequisites: One of 274, 358, 370, 373, 376; permission of the department by 15 March of previous Winter Session.' id='node45' shape='rect' coords='385,238,535,286'></area>
 <area id='node46' shape='rect' coords='15,16,1001,810'></area> </map></div></body></html>")
-HTML(paste(sc, sc1, sb, sb, sc6))
+HTML(paste(sc6))
   }) # end of OUtput: Concept Maps
 
 ## -----------------------------------------
   # Output: Dataviz
   output$dataviz <- renderUI({
-    sdv1 <- tags$h2("Data Vizualization of Study Focus Pathways")
-    sdv1a <- HTML("<em><strong>Note:</strong> This link opens in a new window, as back button won't return to same page. Close new window to return to app</em><br /><br />
-                  <strong>To Use:</strong> Hover over or click any course to see other linked courses")
-    sb <- br()
-    sdv2 <- paste("<br><br>Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit-1.html' target='_blank'>Interactive Study Focus Pathways</a>")
-    sb <- br()
-    sdv3 <- tags$iframe(style="height:850px; width:100%", src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit2.html")
-     HTML(paste(sdv1, sdv1a, sdv2, sb, sb, sdv3))
+    HTML("
+         <h2>Data Vizualization of Study Focus Pathways</h2>
+         <div>
+            <em><strong>Note:</strong> This link opens in a new window, as back button won't return to same page. Close new window to return to app</em>
+              <br /><br />
+            <strong>To Use:</strong> Hover over or click any course to see other linked courses
+         </div>
+         <div>
+            Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit2.html' target='_blank'>Interactive Study Focus Pathways</a>
+              <br /><br />
+            <iframe style='height:790px; width:100%' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit2.html'></iframe>
+         </div>
+         ")
   }) # End Output: Dataviz
 
 ## -----------------------------------------
   # Output: Links
   output$links <- renderUI({
-    sl <- tags$h2("Links to Geog Course Info")
-    sl1 <- HTML("<em>Note: These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>")
-    sl1a <- strong("UVic Course Catalogue")
-    sl2 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385", target="_blank", "Undergrad Calendar")
-    sl3 <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs", target="_blank", "Undergrad calendar Admission Requirements")
-    sl3a <- tags$a(href="https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses", target="_blank", "List of Geography Courses Linked to Calendar")
-    sb <- br()
-    sb <- br()
-    sl4 <- strong("Course Planning Worksheet and Flowcharts")
-    sl5 <- tags$a(href="https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf", target="_blank", "Geography Major Planning Worksheet")
-    sl6 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf", target="_blank", "Environment and Sustainability Flowchart")
-    sl7 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf", target="_blank", "Geomatics Flowchart")
-    sl8 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf", target="_blank", "Human Geography Flowchart")
-    sl9 <- tags$a(href="https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf", target="_blank", "Physical Geography Flowchart")
-    HTML(paste(sl, sl1, sb, sb, sl1a, sb, sl2, sb, sl3, sb, sl3a, sb, sb, sl4, sb, sl5, sb, sl6, sb, sl7, sb, sl8, sb, sl9))
+    HTML("
+         <h2>Links to Geog Course Info</h2>
+         <div>
+              <em>Note: These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>
+                <hr>
+            <h3>UVic Course Catalogue</h3>
+              <ul>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385' target='_blank'>Undergrad Calendar</a></li>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs' target='_blank'>Undergrad calendar Admission Requirements</a></li>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses' target='_blank'>List of Geography Courses Linked to Calendar</a></li>
+              </ul>
+                <hr>
+            <h3>Course Planning Worksheet and Flowcharts</h3>
+              <ul>
+                <li><a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Geography Major Planning Worksheet</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Flowchart</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Flowchart</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Flowchart</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Flowchart</a></li>
+              </ul>
+         </div>
+         ")
+    # TemplateLinks template
+    # <hr>
+    #   <h3></h3>
+    #   <ul>
+    #       <li><a href='' target='_blank'></a></li>
+    #       <li><a href='' target='_blank'></a></li>
+    #       <li><a href='' target='_blank'></a></li>
+    #       <li><a href='' target='_blank'></a></li>
+    #       <li><a href='' target='_blank'></a></li>
+    #   </ul>
   }) # end Output: About: Links
 
 ## -----------------------------------------
@@ -560,7 +587,7 @@ HTML(paste(sc, sc1, sb, sb, sc6))
 ## -----------------------------------------
   # Output: Questions
     output$questions <- renderUI({
-      strings1 <- paste("<h3>Questions</h3>
+      HTML("<h3>Questions</h3>
           <ul>
           <li>What's involved with setting up a Geog Shiny Server (ask Rick about this)?</li>
           <li>**Rick Sykes:** Can a Shiny Server be installed?</li>
@@ -579,13 +606,12 @@ HTML(paste(sc, sc1, sb, sb, sc6))
           <li></li>
 -->
                         ")
-      HTML(paste(strings1))
-    }) # end Output:Work
+    }) # end Output: Questions
 
 ## -----------------------------------------
     # Output: Wishlist
     output$wishlist <- renderUI({
-      strings1 <- paste("<h3>Wishlist</h3>
+      HTML("<h3>Wishlist</h3>
           <ul>
           <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
           <li>Video tutorials</li>
@@ -645,13 +671,12 @@ HTML(paste(sc, sc1, sb, sb, sc6))
           <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
           </ul>
 ")
-      HTML(paste(strings1))
     }) # end Output:Work
 
 ## -----------------------------------------
     # Output: To Do
     output$todo <- renderUI({
-      strings1 <- paste("<h3>To Do</h3>
+      HTML("<h3>To Do</h3>
           <ul>
           <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
           <li>Start to fill-in/update missing course info for Geography Course data table</li>
@@ -703,30 +728,29 @@ HTML(paste(sc, sc1, sb, sb, sc6))
           <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
           </ul>
                         ")
-      HTML(paste(strings1))
     }) # end Output:Work
 
 ## -----------------------------------------
     # Output: Need
     output$need <- renderUI({
-      strings1 <- paste("<h3>Need</h3>
+      HTML("<h3>Need</h3>
           <ul>
           <li>**Data** list of popular electives, semester, class size</li>
           <li>Courses, prerequisites (check to see I have them all)</li>
-          <li></li>
-          <li></li>
           </ul>
                         ")
-      HTML(paste(strings1))
     }) # end Output:Work
 
 ## -----------------------------------------
   # Output: About: About
   output$about <- renderUI({
-    sa1 <- tags$h2("About this app")
-    sa2 <- paste("This experimental Shiny code sandbox was created to develop an online, interactive interface to Geography Course Planning")
+    HTML("
+         <h2>About this app</h2>
+          <div class='divwidth'>
+            <p>This experimental Shiny code sandbox was created to develop an online, interactive interface to facilitate Geography Course Student Planning.</p>
+          </div>
+         ")
     #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
-    HTML(paste(sa1, sa2))
   }) # end Output: About:
 
 ## -----------------------------------------
@@ -753,62 +777,88 @@ HTML(paste(sc, sc1, sb, sb, sc6))
 ## -----------------------------------------
   # Output: About: Tips
   output$tips <- renderUI({
-    st <- tags$h2("Search Tips")
-    st1 <- paste("#1: Try search box above table to filter observations e.g. '103'")
-    sb <- br()
-    st2 <- paste("#2: Start typing into top filter box; can select multiple choices")
-    st3 <- paste("#3: Only use one of 2 filter boxes, not both")
-    HTML(paste(st, st1, sb, sb, st2, sb, sb, st3))
+    HTML("
+         <h2>Search Tips</h2>
+              <ol>
+                <li>Try search box above table to filter observations e.g. '103'</li>
+                <li>Start typing into top filter box; can select multiple choices</li>
+                <li>Only use one of 2 filter boxes, not both</li>
+              </ol>
+         ")
   }) # end Output: About: Tips
 
 ## -----------------------------------------
   # Output: About: Coding
   output$code <- renderUI({
-    sc <- tags$h2("Coding")
-    scc <- paste("")
-    sc1 <- tags$a(href="https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R", target="_blank", "Shiny app code on GitHub")
-    sb <- br()
-    sc2 <- HTML("Filtered table code adapted from <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Stackoverflow</a>")
-    HTML(paste(sc, scc, sc1, sb, sb, sc2))
+    HTML("
+         <h2>Coding</h2>
+          <div>
+            <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
+              <br /><br />
+            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
+          </div>
+         ")
   }) # end Output: About: Coding
+
+    #
+    # <ul>
+    #   <li></li>
+    #   <li></li>
+    #   <li></li>
+    # </ul>
 
 ## -----------------------------------------
   # Output: About: History
   output$history <- renderUI({
-    sh <- tags$h2("History of Changes")
-    sh8 <- tags$b("2023-01-12")
-    sh8a <- paste("* Finished Course data copy/paste from catalogue")
-    sh8b <- paste("* Data Flow Diagrams and Gantt Charts")
-    sh8c <- paste("* Time Log Data Mining >> create GGPlot2 Chart")
-    sh7 <- tags$b("2023-01-11")
-    sh7a <- paste("* Add links to course planning flow charts")
-    sh7b <- paste("* Updated more course data, including Study Focus")
-    sh7c <- paste("* Table cells now have no row number, and align to top")
-    sb <- br()
-    sh6 <- tags$b("2023-01-10")
-    sh6a <- paste("* Add tabs to single page app & publish")
-    sb <- br()
-    sh5 <- tags$b("2023-01-09")
-    sh5a <- paste("* Created filtered table with downloadable csv button")
-    sh5b <- paste("* Published single page app with filtered table")
-    sb <- br()
-    sh4 <- tags$b("2023-01-08")
-    sh4a <- paste("* Adding nested links")
-    sh4b <- paste("* Adding images to title header")
-    sb <- br()
-    sh3 <- tags$b("2023-01-07")
-    sh3a <- paste("* Created Shiny app as testing ground for sandbox experiments: Table, iframe embedding of interactive maps")
-    sh2 <- tags$b("2023-01-06")
-    sh2a <- paste("* Disected code from Interactive gaming website https://hanns.io/pi/")
-    sh1 <- tags$b("2023-01-05")
-    sh1a <- paste("* David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning")
-    sh1b <- paste("* Sent link to Interactive Concept Map")
-    HTML(paste(
-      sh, sh8, sb, sh8a, sb, sh8b, sb, sh8c, sb, sb,
-      sh7, sb, sh7a, sb, sh7b, sb, sh7c, sb, sb, sh6, sb, sh6a, sb, sb, sh5, sb, sh5a, sb, sh5b, sb, sb, sh4, sb, sh4a, sb, sh4b, sb, sb,
-      sh3, sb, sh3a, sb, sb,
-      sh2, sb, sh2a, sb, sb,
-      sh1, sb, sh1a, sb, sh1b, sb, sb))
+    # shh <-
+    HTML("
+    <h3>History of Changes</h3>
+        <hr>
+    <h4>2023-01-13</h4>
+      <ul>
+        <li>Converted Shiny output$ code to paste('HTML')</li>
+      </ul>
+    <h4>2023-01-12</h4>
+      <ul>
+        <li>Finished Course data copy/paste from catalogue</li>
+        <li>Data Flow Diagrams and Gantt Charts</li>
+        <li>Time Log Data Mining >> create GGPlot2 Chart</li>
+      </ul>
+    <h4>2023-01-11</h4>
+      <ul>
+        <li>Add links to course planning flow charts</li>
+        <li>Updated more course data, including Study Focus</li>
+        <li>Table cells now have no row number, and align to top</li>
+      </ul>
+    <h4>2023-01-10</h4>
+      <ul>
+        <li>Add tabs to single page app & publish</li>
+      </ul>
+    <h4>2023-01-09</h4>
+      <ul>
+        <li>Created filtered table with downloadable csv button</li>
+        <li>Published single page app with filtered table</li>
+      </ul>
+    <h4>2023-01-08</h4>
+      <ul>
+        <li>Adding nested links</li>
+        <li>Adding images to title header</li>
+      </ul>
+    <h4>2023-01-07</h4>
+      <ul>
+        <li>Created Shiny app as testing ground for sandbox experiments</li>
+        <li>e.g. Table, iframe embedding of interactive maps</li>
+      </ul>
+    <h4>2023-01-06</h4>
+      <ul>
+        <li>Disected code from Interactive gaming website https://hanns.io/pi/</li>
+      </ul>
+    <h4>2023-01-05</h4>
+      <ul>
+        <li>David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning</li>
+        <li>Sent David link to Interactive Concept Map</li>
+      </ul>
+                 ")
   }) # end Output: About: History
 
 ## -----------------------------------------
