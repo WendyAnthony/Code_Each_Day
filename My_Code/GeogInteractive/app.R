@@ -30,7 +30,7 @@ ui <- fluidPage(
 
   tags$style(HTML("
     .tabbable > .nav > li > a                  {background-color: #c3dca4;  color:black}
-    .tabbable > .nav > li[class=active]    > a {background-color: #77be21; color:black}
+    .tabbable > .nav > li[class=active]    > a {background-color: #77be21; color:white}
   ")),
   titlePanel(title = span("Exploring UVic Geography Courses", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
   tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
