@@ -170,7 +170,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                     # Nested tabPanel About: Tips
-                     tabPanel("Tips", tableOutput("tips"),
+                     tabPanel("Data Table Search Tips", tableOutput("tips"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -187,6 +187,16 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
                      ), # end of Nested tabPanel About: Code
+
+## -----------------------------------------
+# Nested tabPanel About: History --------------------
+tabPanel("History of Changes", tableOutput("history"),
+         hr(),
+         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+         br(),
+), # end of Nested tabPanel About: History --------------------
 
 ## -----------------------------------------
                     # Work tabPanel --------------------
@@ -257,15 +267,6 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                ), # end of Gantt tabPanel --------------------
                              )), # end of NestedWork tabPanel --------------------
 
-## -----------------------------------------
-                    # Nested tabPanel About: History --------------------
-                     tabPanel("History", tableOutput("history"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ) # end of Nested tabPanel About: History --------------------
                    )), #  # end of Nested About tabPanel --------------------
     ) # tabsetPanel end
   ), # mainPanel end
@@ -816,7 +817,8 @@ HTML(paste(sc6))
         <hr>
     <h4>2023-01-13</h4>
       <ul>
-        <li>Converted Shiny output$ code to paste('HTML')</li>
+        <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
+        <li>Converted Shiny output$ code from paste('') to HTML('')</li>
       </ul>
     <h4>2023-01-12</h4>
       <ul>
