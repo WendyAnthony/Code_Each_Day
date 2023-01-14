@@ -841,9 +841,12 @@ HTML(paste(sc6))
     HTML("
     <h3>History of Changes</h3>
         <hr>
-    <h4>2023-01-13</h4>
+    <h4>2023-01-14</h4>
       <ul>
         <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
+      </ul>
+    <h4>2023-01-13</h4>
+      <ul>
         <li>Experimented with js tables in HTML - able to get it searching so far! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Test Web Table</a></li>
         <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
         <li>Converted Shiny output$ code from paste('') to HTML('')</li>
