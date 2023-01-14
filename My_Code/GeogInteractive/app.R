@@ -603,6 +603,7 @@ HTML(paste(sc6))
     output$questions <- renderUI({
       HTML("<h3>Questions</h3>
           <ul>
+          <li>What form of reporting is required from me, and how often?</li>
           <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
           <li>What's involved with setting up a Geog Shiny Server (ask Rick about this)?</li>
           <ul>
@@ -842,6 +843,7 @@ HTML(paste(sc6))
         <hr>
     <h4>2023-01-13</h4>
       <ul>
+        <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
         <li>Experimented with js tables in HTML - able to get it searching so far! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Test Web Table</a></li>
         <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
         <li>Converted Shiny output$ code from paste('') to HTML('')</li>
