@@ -31,9 +31,23 @@ ui <- fluidPage(
   tags$style(HTML("
     .tabbable > .nav > li > a                  {background-color: #c3dca4;  color:black}
     .tabbable > .nav > li[class=active]    > a {background-color: #77be21; color:white}
+/* https://stackoverflow.com/questions/72147869/change-selected-cell-background-color-in-a-shiny-dt-table-based-on-rules */
+/* Removes background colour of stripes */
+table.dataTable.stripe tbody tr.odd, table.dataTable.stripe tbody tr.even {
+  background-color: #cccccc;
+}
+table.dataTable tr.odd td.selected:not(.no-highlight) {
+  background-color: #ffffff !important;
+}
+table.dataTable tr.even td.selected:not(.no-highlight) {
+  background-color: #69A81D !important;
+}
+table.dataTable tbody tr td.selected.no-highlight {
+  background-color: #cccccc !important;
+}
   ")),
   titlePanel(title = span("Exploring UVic Geography Courses", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
-  tags$img(src = "https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg", height = 50, width = "100%"),
+  tags$img(src = "https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png", height = 50, width = "100%"),
 
   ## -----------------------------------------
   # Main Panel ---------
@@ -538,6 +552,7 @@ HTML(paste(sc6))
                 <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385' target='_blank'>Undergrad Calendar</a></li>
                 <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs' target='_blank'>Undergrad calendar Admission Requirements</a></li>
                 <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses' target='_blank'>List of Geography Courses Linked to Calendar</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php' target='_blank'>Study Focus Areas</a></li>
               </ul>
                 <hr>
             <h3>Course Planning Worksheet and Flowcharts</h3>
@@ -686,6 +701,7 @@ HTML(paste(sc6))
           <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
             <ul><li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li></ul>
           <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
+          <li>Change color of Datatable select (from blue)</li>
           <li>Start to fill-in/update missing course info for Geography Course data table</li>
           <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
           <li>Filter new data table >> choose only columns necessary for filtered search > save to csv
@@ -745,7 +761,8 @@ HTML(paste(sc6))
     output$need <- renderUI({
       HTML("<h3>Need</h3>
           <ul>
-          <li>**Data** list of popular electives, semester, class size</li>
+          <li>**Data** list of popular electives, class size</li>
+          <li>**Data** list of Summer course</li>
           <li>Courses, prerequisites (check to see I have them all)</li>
           </ul>
                         ")
@@ -790,6 +807,7 @@ HTML(paste(sc6))
     HTML("
          <h2>Search Tips</h2>
               <ol>
+                <li>Use search box to search partial spelling e.g. 'clim' brings up climate and climatology</li>
                 <li>Try search box above table to filter observations e.g. '103'</li>
                 <li>Start typing into top filter box; can select multiple choices</li>
                 <li>Only use one of 2 filter boxes, not both</li>
