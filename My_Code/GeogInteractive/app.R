@@ -31,9 +31,10 @@ ui <- fluidPage(
   tags$style(HTML("
     .tabbable > .nav > li > a                  {background-color: #c3dca4;  color:black}
     .tabbable > .nav > li[class=active]    > a {background-color: #77be21; color:white}
+
 /* https://stackoverflow.com/questions/72147869/change-selected-cell-background-color-in-a-shiny-dt-table-based-on-rules */
 /* Removes background colour of stripes */
-table.dataTable.stripe tbody tr.odd, table.dataTable.stripe tbody tr.even {
+/* table.dataTable.stripe tbody tr.odd, table.dataTable.stripe tbody tr.even {
   background-color: #cccccc;
 }
 table.dataTable tr.odd td.selected:not(.no-highlight) {
@@ -44,7 +45,7 @@ table.dataTable tr.even td.selected:not(.no-highlight) {
 }
 table.dataTable tbody tr td.selected.no-highlight {
   background-color: #cccccc !important;
-}
+}*/
   ")),
   titlePanel(title = span("Exploring UVic Geography Courses", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
   tags$img(src = "https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png", height = 50, width = "100%"),
@@ -527,14 +528,11 @@ HTML(paste(sc6))
     HTML("
          <h2>Data Vizualization of Study Focus Pathways</h2>
          <div>
-            <em><strong>Note:</strong> This link opens in a new window, as back button won't return to same page. Close new window to return to app</em>
+            <strong>To Use:</strong> Hover over or click any course to see other linked courses<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scroll sideways to see all 4 Years<br /><br />
+            Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html' target='_blank'>Interactive Study Focus Pathways</a>
               <br /><br />
-            <strong>To Use:</strong> Hover over or click any course to see other linked courses
-         </div>
-         <div>
-            Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit2.html' target='_blank'>Interactive Study Focus Pathways</a>
-              <br /><br />
-            <iframe style='height:790px; width:100%' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit2.html'></iframe>
+            <iframe style='height:790px; width:100%' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'></iframe>
          </div>
          ")
   }) # End Output: Dataviz
