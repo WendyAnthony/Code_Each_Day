@@ -230,7 +230,9 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                # Nested tabPanel About: Timelog
                                tabPanel("TimeLog Plot",
                                         h3("Time Log for Interactive Geography Classes Code Work"),
-                                        plotOutput("timelogplot"),
+                                        plotOutput("timelogplotstack"),
+                                        hr(),
+                                        plotOutput("timelogplotside"),
                                         hr(),
                                         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
                                            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -781,7 +783,7 @@ HTML(paste(sc6))
 
 ## -----------------------------------------
   # Output: timelogplot
-  output$timelogplot <- renderPlot({
+  output$timelogplotstack <- renderPlot({
 
     # this is aborting the soession when I click on this tab
     tl <- read.csv("TimeLog-Current.csv")
@@ -799,6 +801,27 @@ HTML(paste(sc6))
   # end ggplot -------------
 
       }) # end Output: timelogplot
+
+  ## -----------------------------------------
+  # Output: timelogplot
+  output$timelogplotside <- renderPlot({
+
+    # this is aborting the soession when I click on this tab
+    tl <- read.csv("TimeLog-Current.csv")
+
+    ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
+      geom_bar(aes(color = TaskType, fill = TaskType),
+               stat = "identity", position = "dodge") +
+      labs(title = "Task Time Log",
+           subtitle = "Geog Interactive Course Explorations",
+           caption = "UVic Geography Wendy Anthony 2023",
+           x = "Date", y = "Total Hours") +
+      # theme_classic() +
+      theme_bw() +
+      theme(legend.title = element_blank()) # this needs to go after theme_classic
+    # end ggplot -------------
+
+  }) # end Output: timelogplot
 
 ## -----------------------------------------
   # Output: About: Tips
