@@ -301,9 +301,9 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                                  # ---------------------
                                                  # Nested tabPanel Tests:
                                                  tabsetPanel(
-                                                   tabPanel("Wishlists", tableOutput("wishlists")),
-                                                   tabPanel("To Do", tableOutput("todo")),
                                                    tabPanel("Questions", tableOutput("questions")),
+                                                   tabPanel("To Do", tableOutput("todo")),
+                                                   tabPanel("Wishlists", tableOutput("wishlists")),
                                                  )), # end of Nested Tests tabPanel
 
                                             # )), # end of Nested Tests tabPanel
