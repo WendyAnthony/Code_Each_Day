@@ -204,14 +204,14 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      ), # end of Nested tabPanel About: Code
 
 ## -----------------------------------------
-# Nested tabPanel About: History --------------------
-tabPanel("History of Changes", tableOutput("history"),
-         hr(),
-         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-         br(),
-), # end of Nested tabPanel About: History --------------------
+                      # Nested tabPanel About: History --------------------
+                      tabPanel("History of Changes", tableOutput("history"),
+                               hr(),
+                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                      text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                               br(),
+                      ), # end of Nested tabPanel About: History --------------------
 
 ## -----------------------------------------
                     # Work tabPanel --------------------
@@ -291,6 +291,8 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 ) # fluidPage ends
 
 ## -----------------------------------------
+## ############# Server Begins ############
+## -----------------------------------------
 # Define Server
 server <- function(input, output) {
 
@@ -338,77 +340,6 @@ server <- function(input, output) {
          </div>
          ")
   }) # end of Output: PDF
-
-## -----------------------------------------
-  #   # Output: Gantt
-  output$gantt <- renderUI({
-    HTML("<h2>Gantt Chart for Planning Timelines</h2>
-                 <span><strong>To Use: </strong>Fill text in text box to update Gantt Chart; <br />This data is not saved locally, but is deleted when exiting page; <br />Page must be edited in original Shiny.R file</span>
-                 <br /><br />")
-  }) # end of Output: Gantt
-
-## -----------------------------------------
-  #   # Output: mermaid    diagramme
-  output$diagram1 <- renderDiagrammeR({
-    mermaid("graph LR;
-A[Geography Major BA]
-B[Focus: Environment]
-E1[GEOG 101A]
-E2[GEOG 101B]
-E3[GEOG 103]
-E4[GEOG 130]
-E5[GEOG 226]
-E6[GEOG 230]
-E7[GEOG 252]
-E8[GEOG 304]
-E9[GEOG 353]
-E10[GEOG 438]
-E11[GEOG 453]
-
-B-->A;
-E1-->E5;
-E3-->E5;
-E4-->E6;
-E7-->E8;
-E7-->E9;
-E9-->E11;
-")
-  })
-
-## -----------------------------------------
-  #   # Output: mermaid    diagramme
-  output$diagram2 <- renderDiagrammeR({
-    mermaid("graph LR;
-A[Geography Major BA]
-B[Focus: Geomatics]
-D[Focus: Human]
-E[Focus: Environment]
-F[Focus: Physical]
-
-A-->B;
-A-->D;
-A-->E;
-A-->F;
-")
-  })
-
-## -----------------------------------------
-    #   # Output: Gantt2    diagramme
-    output$diagram <-
-      DiagrammeR::renderDiagrammeR({
-        DiagrammeR::mermaid(
-          base::paste0(input$inText)
-        )
-      }) # end of Output: Gantt2    diagramme
-
-# ## -----------------------------------------
-#   # Output: Template
-#   output$template <- renderUI({
-#     sp1 <- paste("")
-#     sb <- br()
-#     sp2 <- tags$iframe(style="height:850px; width:100%", src="")
-#     HTML(paste(sp1, sb, sp2))
-#   }) # end of Output: Template
 
 ## -----------------------------------------
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
@@ -459,6 +390,69 @@ A-->F;
           </div>
          ")
   }) # end of Output: Data Viz: Flowcharts
+
+  ## -----------------------------------------
+  #   # Output: mermaid    diagramme
+  output$diagram1 <- renderDiagrammeR({
+    mermaid("graph LR;
+A[Geography Major BA]
+B[Focus: Environment]
+E1[GEOG 101A]
+E2[GEOG 101B]
+E3[GEOG 103]
+E4[GEOG 130]
+E5[GEOG 226]
+E6[GEOG 230]
+E7[GEOG 252]
+E8[GEOG 304]
+E9[GEOG 353]
+E10[GEOG 438]
+E11[GEOG 453]
+
+B-->A;
+E1-->E5;
+E3-->E5;
+E4-->E6;
+E7-->E8;
+E7-->E9;
+E9-->E11;
+")
+  })
+
+  ## -----------------------------------------
+  #   # Output: mermaid    diagramme
+  output$diagram2 <- renderDiagrammeR({
+    mermaid("graph LR;
+A[Geography Major BA]
+B[Focus: Geomatics]
+D[Focus: Human]
+E[Focus: Environment]
+F[Focus: Physical]
+
+A-->B;
+A-->D;
+A-->E;
+A-->F;
+")
+  })
+
+  ## -----------------------------------------
+  #   # Output: Gantt2    diagramme
+  output$diagram <-
+    DiagrammeR::renderDiagrammeR({
+      DiagrammeR::mermaid(
+        base::paste0(input$inText)
+      )
+    }) # end of Output: Gantt2    diagramme
+
+  # ## -----------------------------------------
+  #   # Output: Template
+  #   output$template <- renderUI({
+  #     sp1 <- paste("")
+  #     sb <- br()
+  #     sp2 <- tags$iframe(style="height:850px; width:100%", src="")
+  #     HTML(paste(sp1, sb, sp2))
+  #   }) # end of Output: Template
 
 ## -----------------------------------------
   # Output: Concept Maps:
@@ -600,6 +594,103 @@ HTML(paste(sc6))
 #     strings1 <- paste("Nesting Trials 4")
 #     HTML(paste(strings1))
 #   }) # end Output: Tests
+
+## -----------------------------------------
+## ################ About Begins ###########
+## -----------------------------------------
+
+## -----------------------------------------
+  # Output: About: About
+  output$about <- renderUI({
+    HTML("
+         <h2>About this app</h2>
+          <div class='divwidth'>
+            <p>This experimental Shiny code sandbox was created to develop an online, interactive interface to facilitate Geography Course Student Planning.</p>
+          </div>
+         ")
+    #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
+  }) # end Output: About:
+
+  ## -----------------------------------------
+  # Output: About: Coding
+  output$code <- renderUI({
+    HTML("
+         <h2>Coding</h2>
+          <div>
+            <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
+              <br /><br />
+            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
+          </div>
+         ")
+  }) # end Output: About: Coding
+
+  #
+  # <ul>
+  #   <li></li>
+  #   <li></li>
+  #   <li></li>
+  # </ul>
+
+## -----------------------------------------
+  # Output: About: History
+  output$history <- renderUI({
+    # shh <-
+    HTML("
+    <h3>History of Changes</h3>
+        <hr>
+    <h4>2023-01-14</h4>
+      <ul>
+        <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
+      </ul>
+    <h4>2023-01-13</h4>
+      <ul>
+        <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
+        <li>Experimented with js tables in HTML - able to get it searching so far! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Test Web Table</a></li>
+        <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
+        <li>Converted Shiny output$ code from paste('') to HTML('')</li>
+      </ul>
+    <h4>2023-01-12</h4>
+      <ul>
+        <li>Finished Course data copy/paste from catalogue</li>
+        <li>Data Flow Diagrams and Gantt Charts</li>
+        <li>Time Log Data Mining >> create GGPlot2 Chart</li>
+      </ul>
+    <h4>2023-01-11</h4>
+      <ul>
+        <li>Add links to course planning flow charts</li>
+        <li>Updated more course data, including Study Focus</li>
+        <li>Table cells now have no row number, and align to top</li>
+      </ul>
+    <h4>2023-01-10</h4>
+      <ul>
+        <li>Add tabs to single page app & publish</li>
+      </ul>
+    <h4>2023-01-09</h4>
+      <ul>
+        <li>Created filtered table with downloadable csv button</li>
+        <li>Published single page app with filtered table</li>
+      </ul>
+    <h4>2023-01-08</h4>
+      <ul>
+        <li>Adding nested links</li>
+        <li>Adding images to title header</li>
+      </ul>
+    <h4>2023-01-07</h4>
+      <ul>
+        <li>Created Shiny app as testing ground for sandbox experiments</li>
+        <li>e.g. Table, iframe embedding of interactive maps</li>
+      </ul>
+    <h4>2023-01-06</h4>
+      <ul>
+        <li>Disected code from Interactive gaming website https://hanns.io/pi/</li>
+      </ul>
+    <h4>2023-01-05</h4>
+      <ul>
+        <li>David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning</li>
+        <li>Sent David link to Interactive Concept Map</li>
+      </ul>
+                 ")
+  }) # end Output: About: History
 
 ## -----------------------------------------
   # Output: Questions
@@ -771,18 +862,6 @@ HTML(paste(sc6))
     }) # end Output:Work
 
 ## -----------------------------------------
-  # Output: About: About
-  output$about <- renderUI({
-    HTML("
-         <h2>About this app</h2>
-          <div class='divwidth'>
-            <p>This experimental Shiny code sandbox was created to develop an online, interactive interface to facilitate Geography Course Student Planning.</p>
-          </div>
-         ")
-    #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
-  }) # end Output: About:
-
-## -----------------------------------------
   # Output: timelogplot
   output$timelogplotstack <- renderPlotly({
 
@@ -824,86 +903,14 @@ HTML(paste(sc6))
 
   }) # end Output: timelogplot
 
-## -----------------------------------------
-  # Output: About: Coding
-  output$code <- renderUI({
-    HTML("
-         <h2>Coding</h2>
-          <div>
-            <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
-              <br /><br />
-            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
-          </div>
-         ")
-  }) # end Output: About: Coding
-
-    #
-    # <ul>
-    #   <li></li>
-    #   <li></li>
-    #   <li></li>
-    # </ul>
 
 ## -----------------------------------------
-  # Output: About: History
-  output$history <- renderUI({
-    # shh <-
-    HTML("
-    <h3>History of Changes</h3>
-        <hr>
-    <h4>2023-01-14</h4>
-      <ul>
-        <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
-      </ul>
-    <h4>2023-01-13</h4>
-      <ul>
-        <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
-        <li>Experimented with js tables in HTML - able to get it searching so far! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Test Web Table</a></li>
-        <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
-        <li>Converted Shiny output$ code from paste('') to HTML('')</li>
-      </ul>
-    <h4>2023-01-12</h4>
-      <ul>
-        <li>Finished Course data copy/paste from catalogue</li>
-        <li>Data Flow Diagrams and Gantt Charts</li>
-        <li>Time Log Data Mining >> create GGPlot2 Chart</li>
-      </ul>
-    <h4>2023-01-11</h4>
-      <ul>
-        <li>Add links to course planning flow charts</li>
-        <li>Updated more course data, including Study Focus</li>
-        <li>Table cells now have no row number, and align to top</li>
-      </ul>
-    <h4>2023-01-10</h4>
-      <ul>
-        <li>Add tabs to single page app & publish</li>
-      </ul>
-    <h4>2023-01-09</h4>
-      <ul>
-        <li>Created filtered table with downloadable csv button</li>
-        <li>Published single page app with filtered table</li>
-      </ul>
-    <h4>2023-01-08</h4>
-      <ul>
-        <li>Adding nested links</li>
-        <li>Adding images to title header</li>
-      </ul>
-    <h4>2023-01-07</h4>
-      <ul>
-        <li>Created Shiny app as testing ground for sandbox experiments</li>
-        <li>e.g. Table, iframe embedding of interactive maps</li>
-      </ul>
-    <h4>2023-01-06</h4>
-      <ul>
-        <li>Disected code from Interactive gaming website https://hanns.io/pi/</li>
-      </ul>
-    <h4>2023-01-05</h4>
-      <ul>
-        <li>David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning</li>
-        <li>Sent David link to Interactive Concept Map</li>
-      </ul>
-                 ")
-  }) # end Output: About: History
+  #   # Output: Gantt
+  output$gantt <- renderUI({
+    HTML("<h2>Gantt Chart for Planning Timelines</h2>
+                 <span><strong>To Use: </strong>Fill text in text box to update Gantt Chart; <br />This data is not saved locally, but is deleted when exiting page; <br />Page must be edited in original Shiny.R file</span>
+                 <br /><br />")
+  }) # end of Output: Gantt
 
 ## -----------------------------------------
 } # end of server function
