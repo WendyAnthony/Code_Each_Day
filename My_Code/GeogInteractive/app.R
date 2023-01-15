@@ -970,7 +970,7 @@ HTML(paste(sc6))
     tl <- read.csv("TimeLog-Current.csv")
 
     ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
-      geom_bar(aes(color = TaskType, fill = TaskType),
+      geom_bar(aes(fill = TaskType),
                stat = "identity", position = position_stack()) +
       labs(title = "Task Time Log",
            subtitle = "Geog Interactive Course Explorations",
@@ -991,7 +991,7 @@ HTML(paste(sc6))
     tl <- read.csv("TimeLog-Current.csv")
 
     ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
-      geom_bar(aes(color = TaskType, fill = TaskType),
+      geom_bar(aes(fill = TaskType),
                stat = "identity", position = "dodge") +
       labs(title = "Task Time Log",
            subtitle = "Geog Interactive Course Explorations",
