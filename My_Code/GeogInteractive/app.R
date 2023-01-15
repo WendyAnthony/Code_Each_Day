@@ -18,7 +18,7 @@ library(ggplot2)
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
-tl <- read.csv("TimeLog-2023-01-12-12-52-04.csv")
+tl <- read.csv("TimeLog-Current.csv")
 ## -----------------------------------------
 # Define UI -----------
 ui <- fluidPage(
@@ -784,7 +784,7 @@ HTML(paste(sc6))
   output$timelogplot <- renderPlot({
 
     # this is aborting the soession when I click on this tab
-    tl <- read.csv("TimeLog-2023-01-12-12-52-04.csv")
+    tl <- read.csv("TimeLog-Current.csv")
 
     ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
       geom_bar(aes(color = TaskType, fill = TaskType),
@@ -847,6 +847,7 @@ HTML(paste(sc6))
       </ul>
     <h4>2023-01-13</h4>
       <ul>
+        <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
         <li>Experimented with js tables in HTML - able to get it searching so far! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Test Web Table</a></li>
         <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
         <li>Converted Shiny output$ code from paste('') to HTML('')</li>
