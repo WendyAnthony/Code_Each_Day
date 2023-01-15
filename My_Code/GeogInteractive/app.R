@@ -20,6 +20,7 @@ library(plotly)
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
+geog_dt_time <- read.csv("TimeLog-Current.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
 tl <- read.csv("TimeLog-Current.csv")
 ## -----------------------------------------
 # Define UI -----------
@@ -246,6 +247,13 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                                      hr(),
                                                      plotlyOutput("timelogplotside"),
                                                      hr(),
+                                                     DT::dataTableOutput("dttime"),
+                                                     ### tags$head() is to customize the download button
+                                                     tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
+                       .button-center{text-align: center;}")),
+                                                     # Download button needs to be after datatable to be able to save filtered data
+                                                     div(class = "button-center", downloadButton("download_filtered_time", "Download CSV", class="button")),
+
                                                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
                                                         align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                   text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
@@ -327,6 +335,37 @@ server <- function(input, output) {
 ## -----------------------------------------
   #  datatable output
   # https://stackoverflow.com/questions/31486738/how-do-i-suppress-row-names-when-using-dtrenderdatatable-in-r-shiny
+  output$dttime <- DT::renderDataTable({
+
+    datatable(geog_dt_time, filter = "top", options =  list(pageLength = 10),
+              rownames = FALSE) %>% # suppress row tables, insert after option ()
+      # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
+      formatStyle(1:9, 'vertical-align'='top') %>%
+      formatStyle(1:9, 'text-align' = 'left')
+    # trying to add click-able hyper links to table .>> no luck so far ...
+    # %>%
+    # # no applicable method for 'mutate' applied to an object of class "c('datatables', 'htmlwidget')"
+    #   mutate(site = paste0("<a href='", CatLink,"' target='_blank'>", CatLink,"</a>"))
+  }) # end of Output: dt renderDataTable
+
+## -----------------------------------------
+  # Download button
+  output$download_filtered_time <- downloadHandler(
+    filename = function() {
+      paste("WendyAnthony-TimeLog-", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(geog_dt_time[input[["dttime_rows_all"]], ],
+                file= file,
+                row.names=F)
+    }
+  ) # end of Output: downloadHandler
+
+
+
+  ## -----------------------------------------
+  #  datatable output
+  # https://stackoverflow.com/questions/31486738/how-do-i-suppress-row-names-when-using-dtrenderdatatable-in-r-shiny
   output$dt <- DT::renderDataTable({
 
     datatable(geog_dt, filter = "top", options =  list(pageLength = 10),
@@ -340,7 +379,7 @@ server <- function(input, output) {
     #   mutate(site = paste0("<a href='", CatLink,"' target='_blank'>", CatLink,"</a>"))
   }) # end of Output: dt renderDataTable
 
-## -----------------------------------------
+  ## -----------------------------------------
   # Download button
   output$download_filtered <- downloadHandler(
     filename = function() {
@@ -352,6 +391,7 @@ server <- function(input, output) {
                 row.names=F)
     }
   ) # end of Output: downloadHandler
+
 
 ## -----------------------------------------
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
