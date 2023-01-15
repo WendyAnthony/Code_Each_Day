@@ -59,7 +59,7 @@ table.dataTable tbody tr td.selected.no-highlight {
 
 ## -----------------------------------------
           # Data Table tabPanel
-          tabPanel("Data Table",
+          tabPanel("Datatable",
                 HTML("     <h3>Geography Courses Data Table</h3>
               <ul>
                 <li><strong>Search Box:</strong> Searches whole table to filter observations from all columns e.g. Type '103'</li>
@@ -99,12 +99,12 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
           # Nested Course Planning Data Viz tabPanel
-          tabPanel("Course Planning Data Viz",
+          tabPanel("Data Viz",
                    tabsetPanel(
 
 ## -----------------------------------------
                      # Nested PDF tabPanel
-                     tabPanel("Planning PDFs",  tableOutput("pdf"),
+                     tabPanel("Planning",  tableOutput("pdf"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -114,7 +114,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Course Planning Flowchart
-                     tabPanel("Catalogue-linked Flowcharts", tableOutput("flowcharts"),
+                     tabPanel("Flowcharts", tableOutput("flowcharts"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -124,7 +124,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                     # Nested tabPanel Data Viz: mermaid Flow Charts
-                    tabPanel("Flow Chart Diagrams", tableOutput("mermaid"),
+                    tabPanel("Diagrams", tableOutput("mermaid"),
                              strong("Flow Chart Experiments with Mermaid"),
                              DiagrammeROutput('diagram1', width = "50%"),
                              hr(),
@@ -138,7 +138,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Concept Maps
-                     tabPanel("Concept Maps", tableOutput("conceptmap"),
+                     tabPanel("Concept Map", tableOutput("conceptmap"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -148,7 +148,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Paths Viz
-                     tabPanel("Interactive Paths Viz", tableOutput("dataviz"),
+                     tabPanel("Focus Paths", tableOutput("dataviz"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-13",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -182,7 +182,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
           # About tabPanel
-          tabPanel("About This App",
+          tabPanel("About",
                    tabsetPanel(
 ## -----------------------------------------
                      # Nested tabPanel About: About
@@ -206,7 +206,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                       # Nested tabPanel About: History --------------------
-                      tabPanel("History of Changes", tableOutput("history"),
+                      tabPanel("History", tableOutput("history"),
                                hr(),
                                h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
                                   align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -216,7 +216,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                     # Work tabPanel --------------------
-                    tabPanel("Project Work",
+                    tabPanel("WorkLog",
                     # ---------------------
 
 ## -----------------------------------------
@@ -239,7 +239,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                                             # Nested tabPanel About: Timelog
-                                            tabPanel("TimeLog Plot",
+                                            tabPanel("TimeLog",
                                                      h3("Time Log for Interactive Geography Classes Code Work"),
                                                      em("The data on this page takes a few moments to load"),
                                                      br(),br(),
@@ -271,7 +271,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
                                               ## -----------------------------------------
                                               # Gantt tabPanel
-                                              tabPanel("Gantt Chart",  tableOutput("gantt"),
+                                              tabPanel("Gantt",  tableOutput("gantt"),
                                                        textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
                                                 gantt
                                   dateFormat  YYYY-MM-DD
