@@ -250,6 +250,9 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                                      h4("Time Log Chart (tasks: side-by-side)"),
                                                      plotlyOutput("timelogplotside"),
                                                      hr(),
+                                                     h4("Sum of Total Hours @ 2023-01-14"),
+                                                     tableOutput("totalhours"),
+                                                     hr(),
                                                      h4("Time Log Data Table"),
                                                      DT::dataTableOutput("dttime"),
                                                      ### tags$head() is to customize the download button
@@ -1000,6 +1003,14 @@ HTML(paste(sc6))
     # end ggplot -------------
 
   }) # end Output: timelogplot
+
+## -----------------------------------------
+    #   # Output: TotalHours
+    output$totalhours <- renderUI({
+      tl_hours <- read.csv("TimeLog-Current.csv")
+      TotalHours <- sum(tl_hours[, 'TotalTimeHr'])
+      TotalHours
+    }) # end of Output: Gantt
 
 
 ## -----------------------------------------
