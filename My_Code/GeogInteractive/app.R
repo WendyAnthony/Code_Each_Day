@@ -21,7 +21,6 @@ library(plotly)
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
 geog_dt_time <- read.csv("TimeLog-Current.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
-tl <- read.csv("TimeLog-Current.csv")
 ## -----------------------------------------
 # Define UI -----------
 ui <- fluidPage(
@@ -1007,8 +1006,7 @@ HTML(paste(sc6))
 ## -----------------------------------------
     #   # Output: TotalHours
     output$totalhours <- renderUI({
-      tl_hours <- read.csv("TimeLog-Current.csv")
-      TotalHours <- sum(tl_hours[, 'TotalTimeHr'])
+      TotalHours <- sum(geog_dt_time[, 'TotalTimeHr'])
       TotalHours
     }) # end of Output: Gantt
 
