@@ -241,11 +241,14 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                             # Nested tabPanel About: Timelog
                                             tabPanel("TimeLog Plot",
                                                      h3("Time Log for Interactive Geography Classes Code Work"),
-                                                     span("Hover over the graphs to discover the time details"),
+                                                     em("The data on this page takes a few moments to load"),
                                                      br(),br(),
                                                      h4("Sum of Total Hours (to date of plots and datatable)"),
                                                      tableOutput("totalhours"),
                                                      hr(),
+                                                     h3("Time Log Plots"),
+                                                     em("Hover over the plots to discover the task time details"),
+                                                     br(),br(),
                                                      h4("Time Log Plot (tasks: stacked)"),
                                                      plotlyOutput("timelogplotstack"),
                                                      hr(),
@@ -343,11 +346,11 @@ server <- function(input, output) {
   # https://stackoverflow.com/questions/31486738/how-do-i-suppress-row-names-when-using-dtrenderdatatable-in-r-shiny
   output$dttime <- DT::renderDataTable({
 
-    datatable(geog_dt_time, filter = "top", options =  list(pageLength = 10),
+    datatable(geog_dt_time, filter = "top", options =  list(pageLength = 50),
               rownames = FALSE) %>% # suppress row tables, insert after option ()
       # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
-      formatStyle(1:9, 'vertical-align'='top') %>%
-      formatStyle(1:9, 'text-align' = 'left')
+      formatStyle(1:12, 'vertical-align'='top') %>%
+      formatStyle(1:12, 'text-align' = 'left')
     # trying to add click-able hyper links to table .>> no luck so far ...
     # %>%
     # # no applicable method for 'mutate' applied to an object of class "c('datatables', 'htmlwidget')"
@@ -1009,7 +1012,6 @@ HTML(paste(sc6))
       TotalHours <- sum(geog_dt_time[, 'TotalTimeHr'])
       TotalHours
     }) # end of Output: Gantt
-
 
 ## -----------------------------------------
   #   # Output: Gantt
