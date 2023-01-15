@@ -60,13 +60,13 @@ table.dataTable tbody tr td.selected.no-highlight {
 ## -----------------------------------------
           # Data Table tabPanel
           tabPanel("Datatable",
-                HTML("     <h3>Geography Courses Data Table</h3>
+                HTML("<h3>Geography Courses Data Table</h3>
               <ul>
-                <li><strong>Search Box:</strong> Searches whole table to filter observations from all columns e.g. Type '103'</li>
+                <li><strong>Search Box:</strong> Filters observations from all columns e.g. Type '103'</li>
                   <ul>
                   <li><strong>Tip:</strong> Search partial spelling e.g. 'clim' brings up 'climate' and 'climatology'</li>
                   </ul>
-                <li><strong>Filter:</strong> Start typing in box under Course heading; select choice(s); use filter boxes separately</li>
+                <li><strong>Filter Boxes:</strong> Type in box under Course heading; select choice(s); can use multiple filter boxes</li>
                 <li><strong>Sort Order:</strong> each column using arrows next to column name</li>
                 <li><strong>Download CSV: </strong> Save Filtered-Search and Sort-Order, with current date, using Button below table</li>
               </ul>
@@ -188,27 +188,17 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      # Nested tabPanel About: About
                      tabPanel("About", tableOutput("about"),
                               hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-15",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
                      ), # end of Nested tabPanel About
 
 ## -----------------------------------------
-                    # Nested tabPanel About: Code
-                     tabPanel("Code", tableOutput("code"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ), # end of Nested tabPanel About: Code
-
-## -----------------------------------------
                       # Nested tabPanel About: History --------------------
                       tabPanel("History", tableOutput("history"),
                                hr(),
-                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-15",
                                   align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                       text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                br(),
@@ -341,43 +331,12 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 # Define Server
 server <- function(input, output) {
 
-## -----------------------------------------
-  #  datatable output
-  # https://stackoverflow.com/questions/31486738/how-do-i-suppress-row-names-when-using-dtrenderdatatable-in-r-shiny
-  output$dttime <- DT::renderDataTable({
-
-    datatable(geog_dt_time, filter = "top", options =  list(pageLength = 50),
-              rownames = FALSE) %>% # suppress row tables, insert after option ()
-      # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
-      formatStyle(1:12, 'vertical-align'='top') %>%
-      formatStyle(1:12, 'text-align' = 'left')
-    # trying to add click-able hyper links to table .>> no luck so far ...
-    # %>%
-    # # no applicable method for 'mutate' applied to an object of class "c('datatables', 'htmlwidget')"
-    #   mutate(site = paste0("<a href='", CatLink,"' target='_blank'>", CatLink,"</a>"))
-  }) # end of Output: dt renderDataTable
-
-## -----------------------------------------
-  # Download button
-  output$download_filtered_time <- downloadHandler(
-    filename = function() {
-      paste("WendyAnthony-TimeLog-", Sys.Date(), ".csv", sep="")
-    },
-    content = function(file) {
-      write.csv(geog_dt_time[input[["dttime_rows_all"]], ],
-                file= file,
-                row.names=F)
-    }
-  ) # end of Output: downloadHandler
-
-
-
   ## -----------------------------------------
   #  datatable output
   # https://stackoverflow.com/questions/31486738/how-do-i-suppress-row-names-when-using-dtrenderdatatable-in-r-shiny
   output$dt <- DT::renderDataTable({
 
-    datatable(geog_dt, filter = "top", options =  list(pageLength = 10),
+    datatable(geog_dt, filter = "top", options =  list(pageLength = 25),
               rownames = FALSE) %>% # suppress row tables, insert after option ()
       # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
       formatStyle(1:9, 'vertical-align'='top') %>%
@@ -399,7 +358,36 @@ server <- function(input, output) {
                 file= file,
                 row.names=F)
     }
-  ) # end of Output: downloadHandler
+  ) # end of Output: Datatable downloadHandler
+
+  ## -----------------------------------------
+  #  datatable output
+  # https://stackoverflow.com/questions/31486738/how-do-i-suppress-row-names-when-using-dtrenderdatatable-in-r-shiny
+  output$dttime <- DT::renderDataTable({
+
+    datatable(geog_dt_time, filter = "top", options =  list(pageLength = 50),
+              rownames = FALSE) %>% # suppress row tables, insert after option ()
+      # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
+      formatStyle(1:12, 'vertical-align'='top') %>%
+      formatStyle(1:12, 'text-align' = 'left')
+    # trying to add click-able hyper links to table .>> no luck so far ...
+    # %>%
+    # # no applicable method for 'mutate' applied to an object of class "c('datatables', 'htmlwidget')"
+    #   mutate(site = paste0("<a href='", CatLink,"' target='_blank'>", CatLink,"</a>"))
+  }) # end of Output: dt renderDataTable
+
+  ## -----------------------------------------
+  # Download button
+  output$download_filtered_time <- downloadHandler(
+    filename = function() {
+      paste("WendyAnthony-TimeLog-", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(geog_dt_time[input[["dttime_rows_all"]], ],
+                file= file,
+                row.names=F)
+    }
+  ) # end of Output:  Timelong downloadHandler
 
 
 ## -----------------------------------------
@@ -710,22 +698,15 @@ HTML(paste(sc6))
           <div class='divwidth'>
             <p>This experimental Shiny code sandbox was created to develop an online, interactive interface to facilitate Geography Course Student Planning.</p>
           </div>
-         ")
-    #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
-  }) # end Output: About:
-
-  ## -----------------------------------------
-  # Output: About: Coding
-  output$code <- renderUI({
-    HTML("
-         <h2>Coding</h2>
+        <h2>The Code</h2>
           <div>
             <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
               <br /><br />
             Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
           </div>
          ")
-  }) # end Output: About: Coding
+    #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
+  }) # end Output: About:
 
   #
   # <ul>
