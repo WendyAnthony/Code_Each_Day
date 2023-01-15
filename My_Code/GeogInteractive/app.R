@@ -3,6 +3,7 @@
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
 ## Updated 2023-01-13 06:24
+## Updated 2023-01-15 08:40
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -58,11 +59,20 @@ table.dataTable tbody tr td.selected.no-highlight {
 ## -----------------------------------------
           # Data Table tabPanel
           tabPanel("Data Table",
-                HTML("<strong>Tips to Filter Courses:</strong> Choose multiple Courses from first drop-down search box under Course heading<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Search</strong> each column separately, <strong>or</strong> use Search Box to search the whole table<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sort Order</strong> each column using arrows next to column name
-             <br/><strong>Download CSV: </strong> Save Filtered-Search and Sort-Order, with current date, using Button below table<br/><br/>"
+                HTML("     <h3>Geography Courses Data Table</h3>
+              <ul>
+                <li><strong>Search Box:</strong> Searches whole table to filter observations from all columns e.g. Type '103'</li>
+                  <ul>
+                  <li><strong>Tip:</strong> Search partial spelling e.g. 'clim' brings up 'climate' and 'climatology'</li>
+                  </ul>
+                <li><strong>Filter:</strong> Start typing in box under Course heading; select choice(s); use filter boxes separately</li>
+                <li><strong>Sort Order:</strong> each column using arrows next to column name</li>
+                <li><strong>Download CSV: </strong> Save Filtered-Search and Sort-Order, with current date, using Button below table</li>
+              </ul>
+              <hr>"
                 ),
+
+
                 DT::dataTableOutput("dt"),
                 ### tags$head() is to customize the download button
                 tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
@@ -182,16 +192,6 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
                      ), # end of Nested tabPanel About
-
-## -----------------------------------------
-                    # Nested tabPanel About: Tips
-                     tabPanel("Data Table Search Tips", tableOutput("tips"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ), # end of Nested tabPanel About: Tips
 
 ## -----------------------------------------
                     # Nested tabPanel About: Code
@@ -823,20 +823,6 @@ HTML(paste(sc6))
     # end ggplot -------------
 
   }) # end Output: timelogplot
-
-## -----------------------------------------
-  # Output: About: Tips
-  output$tips <- renderUI({
-    HTML("
-         <h2>Search Tips</h2>
-              <ol>
-                <li>Use search box to search partial spelling e.g. 'clim' brings up climate and climatology</li>
-                <li>Try search box above table to filter observations e.g. '103'</li>
-                <li>Start typing into top filter box; can select multiple choices</li>
-                <li>Only use one of 2 filter boxes, not both</li>
-              </ol>
-         ")
-  }) # end Output: About: Tips
 
 ## -----------------------------------------
   # Output: About: Coding
