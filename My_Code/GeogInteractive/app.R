@@ -15,6 +15,7 @@ library(shinyWidgets) # set background color
 library(DT) # datatable
 library(DiagrammeR) # Gantt Chart
 library(ggplot2)
+library(plotly)
 
 ## -----------------------------------------
 # Read Data
@@ -236,35 +237,20 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                              tabsetPanel(
                                # tabPanel("Questions", tableOutput("questions")),
 
-                                   ## -----------------------------------------
-                                   # Test tabPanel
-                                   tabPanel("Lists",
-                                            # ---------------------
-                                            # Nested tabPanel Tests:
-                                            tabsetPanel(
-                                              tabPanel("Wishlists", tableOutput("wishlists")),
-                                              tabPanel("To Do", tableOutput("todo")),
-                                              tabPanel("Questions", tableOutput("questions")),
-                                            )), # end of Nested Tests tabPanel
-
-                                   # tabPanel("TimePlots",
-                                   #          # ---------------------
-                                   #          # Nested tabPanel Tests:
-                                   #          tabsetPanel(
-                                   #            # Nested tabPanel About: Timelog
-                                              tabPanel("TimeLog Plot",
-                                                       h3("Time Log for Interactive Geography Classes Code Work"),
-                                                       span("Hover over the graphs to discover the time details"),
-                                                       plotlyOutput("timelogplotstack"),
-                                                       hr(),
-                                                       plotlyOutput("timelogplotside"),
-                                                       hr(),
-                                                       h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
-                                                          align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-                    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                                                       br(),
-                                              ), # end of Nested tabPanel About: Timelog
-
+## -----------------------------------------
+                                            # Nested tabPanel About: Timelog
+                                            tabPanel("TimeLog Plot",
+                                                     h3("Time Log for Interactive Geography Classes Code Work"),
+                                                     span("Hover over the graphs to discover the time details"),
+                                                     plotlyOutput("timelogplotstack"),
+                                                     hr(),
+                                                     plotlyOutput("timelogplotside"),
+                                                     hr(),
+                                                     h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
+                                                        align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                  text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                                     br(),
+                                            ), # end of Nested tabPanel About: Timelog
 
                                               ## -----------------------------------------
                                               # Gantt tabPanel
@@ -308,6 +294,18 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                  br(),
                         ), # end of Gantt tabPanel --------------------
+
+                                        ## -----------------------------------------
+                                        # Nested Lists tabPanel
+                                        tabPanel("Lists",
+                                                 # ---------------------
+                                                 # Nested tabPanel Tests:
+                                                 tabsetPanel(
+                                                   tabPanel("Wishlists", tableOutput("wishlists")),
+                                                   tabPanel("To Do", tableOutput("todo")),
+                                                   tabPanel("Questions", tableOutput("questions")),
+                                                 )), # end of Nested Tests tabPanel
+
                                             # )), # end of Nested Tests tabPanel
 
 
