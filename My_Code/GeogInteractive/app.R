@@ -230,9 +230,10 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                # Nested tabPanel About: Timelog
                                tabPanel("TimeLog Plot",
                                         h3("Time Log for Interactive Geography Classes Code Work"),
-                                        plotOutput("timelogplotstack"),
+                                        span("Hover over the graphs to discover the time details"),
+                                        plotlyOutput("timelogplotstack"),
                                         hr(),
-                                        plotOutput("timelogplotside"),
+                                        plotlyOutput("timelogplotside"),
                                         hr(),
                                         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
                                            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -783,7 +784,7 @@ HTML(paste(sc6))
 
 ## -----------------------------------------
   # Output: timelogplot
-  output$timelogplotstack <- renderPlot({
+  output$timelogplotstack <- renderPlotly({
 
     # this is aborting the soession when I click on this tab
     tl <- read.csv("TimeLog-Current.csv")
@@ -804,7 +805,7 @@ HTML(paste(sc6))
 
   ## -----------------------------------------
   # Output: timelogplot
-  output$timelogplotside <- renderPlot({
+  output$timelogplotside <- renderPlotly({
 
     # this is aborting the soession when I click on this tab
     tl <- read.csv("TimeLog-Current.csv")
