@@ -218,33 +218,58 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                     tabPanel("Project Work",
                     # ---------------------
 
+## -----------------------------------------
+# Test tabPanel
+# tabPanel("Tests",
+# ---------------------
+# # Nested tabPanel Tests:
+#          tabsetPanel(
+#            tabPanel("Test1", tableOutput("test1")),
+#            tabPanel("Test2", tableOutput("test2")),
+#            tabPanel("Test3", tableOutput("test3")),
+#            tabPanel("Test4", tableOutput("test4"))
+#          )), # end of Nested Tests tabPanel
+
+
 # -----------------------------------------
                     # Nested tabPanelWork: --------------------
                              tabsetPanel(
-                               tabPanel("Questions", tableOutput("questions")),
-                               tabPanel("Wishlist", tableOutput("wishlist")),
-                               tabPanel("To Do", tableOutput("todo")),
-                               tabPanel("Need", tableOutput("need")),
+                               # tabPanel("Questions", tableOutput("questions")),
 
-# -----------------------------------------
-                               # Nested tabPanel About: Timelog
-                               tabPanel("TimeLog Plot",
-                                        h3("Time Log for Interactive Geography Classes Code Work"),
-                                        span("Hover over the graphs to discover the time details"),
-                                        plotlyOutput("timelogplotstack"),
-                                        hr(),
-                                        plotlyOutput("timelogplotside"),
-                                        hr(),
-                                        h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
-                                           align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                                   ## -----------------------------------------
+                                   # Test tabPanel
+                                   tabPanel("Lists",
+                                            # ---------------------
+                                            # Nested tabPanel Tests:
+                                            tabsetPanel(
+                                              tabPanel("Wishlists", tableOutput("wishlists")),
+                                              tabPanel("To Do", tableOutput("todo")),
+                                              tabPanel("Questions", tableOutput("questions")),
+                                            )), # end of Nested Tests tabPanel
+
+                                   # tabPanel("TimePlots",
+                                   #          # ---------------------
+                                   #          # Nested tabPanel Tests:
+                                   #          tabsetPanel(
+                                   #            # Nested tabPanel About: Timelog
+                                              tabPanel("TimeLog Plot",
+                                                       h3("Time Log for Interactive Geography Classes Code Work"),
+                                                       span("Hover over the graphs to discover the time details"),
+                                                       plotlyOutput("timelogplotstack"),
+                                                       hr(),
+                                                       plotlyOutput("timelogplotside"),
+                                                       hr(),
+                                                       h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
+                                                          align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                     text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                                        br(),
-                               ), # end of Nested tabPanel About: Timelog
+                                                       br(),
+                                              ), # end of Nested tabPanel About: Timelog
 
-## -----------------------------------------
-                               # Gantt tabPanel
-                               tabPanel("Gantt Chart",  tableOutput("gantt"),
-                                        textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
+
+                                              ## -----------------------------------------
+                                              # Gantt tabPanel
+                                              tabPanel("Gantt Chart",  tableOutput("gantt"),
+                                                       textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
                                                 gantt
                                   dateFormat  YYYY-MM-DD
                                   title Designing Interactive Geography Course Planning Gantt Diagram
@@ -276,13 +301,18 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                   More of the extras            :               extras_3,   after extras_1, 48h
 
                                   "),
-                                        DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
-                                        hr(),
-                                        h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-                                           align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-                    text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                                        br(),
-                               ), # end of Gantt tabPanel --------------------
+                                 DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
+                                 hr(),
+                                 h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                                    align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                                 br(),
+                        ), # end of Gantt tabPanel --------------------
+                                            # )), # end of Nested Tests tabPanel
+
+
+# -----------------------------------------
+
                              )), # end of NestedWork tabPanel --------------------
 
                    )), #  # end of Nested About tabPanel --------------------
@@ -572,6 +602,32 @@ HTML(paste(sc6))
     #   </ul>
   }) # end Output: About: Links
 
+
+  ## -----------------------------------------
+  # Output: Tests:
+  #
+    output$test1 <- renderUI({
+      strings1 <- paste("Testing ... Testing ... 1,2,3")
+      HTML(paste(strings1))
+    }) # end Output: Tests
+
+    output$test2 <- renderUI({
+      strings1 <- paste("Nesting Trials 2")
+      HTML(paste(strings1))
+    }) # end Output: Tests
+
+    output$test3 <- renderUI({
+      strings1 <- paste("Nesting Trials 3")
+      HTML(paste(strings1))
+    }) # end Output: Tests
+
+    output$test4 <- renderUI({
+      strings1 <- paste("Nesting Trials 4")
+      HTML(paste(strings1))
+    }) # end Output: Tests
+
+
+
 ## -----------------------------------------
   # Output: Tests:
 #
@@ -723,8 +779,16 @@ HTML(paste(sc6))
 
 ## -----------------------------------------
     # Output: Wishlist
-    output$wishlist <- renderUI({
-      HTML("<h3>Wishlist</h3>
+    output$wishlists <- renderUI({
+      HTML("
+      <h3>Need</h3>
+          <ul>
+          <li>**Data** list of popular electives, class size</li>
+          <li>**Data** list of Summer course</li>
+          <li>Courses, prerequisites (check to see I have them all)</li>
+          </ul>
+
+      <h3>Wishlist</h3>
           <ul>
           <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
           <li>Video tutorials</li>
@@ -845,18 +909,6 @@ HTML(paste(sc6))
           <li>Get download button to work with filtered data see new web link</li>
           <li>List of Geography Courses</li>
           <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
-          </ul>
-                        ")
-    }) # end Output:Work
-
-## -----------------------------------------
-    # Output: Need
-    output$need <- renderUI({
-      HTML("<h3>Need</h3>
-          <ul>
-          <li>**Data** list of popular electives, class size</li>
-          <li>**Data** list of Summer course</li>
-          <li>Courses, prerequisites (check to see I have them all)</li>
           </ul>
                         ")
     }) # end Output:Work
