@@ -692,6 +692,10 @@ HTML(paste(sc6))
     HTML("
     <h3>History of Changes</h3>
         <hr>
+    <h4>2023-01-15</h4>
+      <ul>
+        <li>Changed Tab Names and Work Tabs Nesting</li>
+      </ul>
     <h4>2023-01-14</h4>
       <ul>
         <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
