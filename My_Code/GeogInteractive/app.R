@@ -3,7 +3,7 @@
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
 ## Updated 2023-01-13 06:24
-## Updated 2023-01-15 08:40
+## Updated 2023-01-15 08:40 > 13:56
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -20,7 +20,20 @@ library(plotly)
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
+
+#Data Clean geog_dt_time
 geog_dt_time <- read.csv("TimeLog-Current.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
+str(geog_dt_time)
+# can't sort Start time because it is a Factor datatype
+geog_dt_time$Start <- as.Date(geog_dt_time$Start, format = "%Y-%m-%d")
+geog_dt_time$Start
+geog_dt_time$End <- as.Date(geog_dt_time$End, format = "%Y-%m-%d")
+geog_dt_time$End
+geog_dt_time$Date <- as.Date(geog_dt_time$Date, format = "%Y-%m-%d")
+geog_dt_time$Date
+geog_dt_time$Day <- as.numeric(geog_dt_time$Day)
+str(geog_dt_time)
+
 ## -----------------------------------------
 # Define UI -----------
 ui <- fluidPage(
@@ -338,6 +351,11 @@ server <- function(input, output) {
 
     datatable(geog_dt, filter = "top", options =  list(pageLength = 25),
               rownames = FALSE) %>% # suppress row tables, insert after option ()
+
+      #datatable(geog_dt, filter = "top", options =  list(pageLength = 25),
+      #          rownames = FALSE) %>% # suppress row tables, insert after option ()
+      # trying to change sort order >>> didn't work , list(order(2, 'desc'))
+
       # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
       formatStyle(1:9, 'vertical-align'='top') %>%
       formatStyle(1:9, 'text-align' = 'left')
@@ -724,6 +742,10 @@ HTML(paste(sc6))
         <hr>
     <h4>2023-01-15</h4>
       <ul>
+        <li>Created my First Draft Project Report <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>Draft Project Report</a></li>
+        <li>Changed Datatable Search Tips</li>
+        <li>Add Code tab contents to About tab</li>
+        <li>Using Chrome Developer Tools, copied Datatable in HTML format to use in Shiny Clone website</li>
         <li>Changed Tab Names and Work Tabs Nesting</li>
       </ul>
     <h4>2023-01-14</h4>
