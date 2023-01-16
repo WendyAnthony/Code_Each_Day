@@ -40,10 +40,10 @@ geog_dt_time <- geog_dt_time %>% tidyr::separate(EndCopy, c("EndDate", "EndTime"
  colnames(geog_dt_time)
 # Reorder Columns by Position
 
-geog_dt_time = subset(geog_dt_time, select = -c(6,7, 13, 15))
+geog_dt_time = subset(geog_dt_time, select = -c(6 ,7, 14, 16))
 colnames(geog_dt_time)
 
-geog_dt_time <- geog_dt_time[, c(1, 2, 11, 3, 12, 5, 9, 10, 4, 6, 7, 8)]
+geog_dt_time <- geog_dt_time[, c(1, 2, 12, 3, 13, 5, 8, 9, 10, 11, 4, 6, 7)]
 colnames(geog_dt_time)
 
 
@@ -59,7 +59,7 @@ str(geog_dt_time)
 geog_dt_time$Date <- as.Date(geog_dt_time$Date, format = "%Y-%m-%d")
 geog_dt_time$Date
 str(geog_dt_time)
-
+colnames(geog_dt_time)
 
 ## -----------------------------------------
 # Define UI -----------
@@ -296,6 +296,10 @@ tabPanel("Gantt",  tableOutput("gantt"),
                                   Created Shiny App             :done,          first_1,    2023-01-06, 2023-01-08
                                   Refining Shiny App            :active,        first_5,    2023-01-06, 10d
                                   Created Interactive Downloadable Data Table  :done,  first_6, 2023-01-08, 2023-01-09
+
+                                  section Shiny Clone
+                                  Created Shiny Clone           :active,
+                                  Create Interactive Data Table :done,
 
                                   section Data Collection
                                   Collecting Course Data        :active,        first_2,    2023-01-09, 10d
@@ -1251,10 +1255,10 @@ HTML(paste(sc6))
   # Output: timelogplot
   output$timelogplotstack <- renderPlotly({
 
-    # this is aborting the soession when I click on this tab
+    # this is aborting the session when I click on this tab
     tl <- read.csv("TimeLog-Current.csv")
 
-    ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
+    ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
       geom_bar(aes(fill = TaskType),
                stat = "identity", position = position_stack()) +
       labs(title = "Task Time Log",
@@ -1276,7 +1280,7 @@ HTML(paste(sc6))
     # this is aborting the soession when I click on this tab
     tl <- read.csv("TimeLog-Current.csv")
 
-    ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
+    ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
       geom_bar(aes(fill = TaskType),
                stat = "identity", position = "dodge") +
       labs(title = "Task Time Log",
@@ -1296,7 +1300,8 @@ HTML(paste(sc6))
   # Output: timelogplot
   output$timelogplotgroup <- renderPlotly({
 
-    tl <- read.csv("TimeLog-Current.csv")
+    tl <- geog_dt_time
+#    tl <- read.csv("TimeLog-Current.csv")
 
     # colnames(tl)
 
