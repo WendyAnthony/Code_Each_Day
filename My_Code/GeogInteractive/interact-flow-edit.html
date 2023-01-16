@@ -21,6 +21,8 @@ light green gray #f0f6e8
 	 <!-- https://examples.bootstrap-table.com/#extensions/export.html#view-source -->
 	<link href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css" rel="stylesheet">
 
+	 	 <!--  -->
+	 	 <!--  -->
 
 <style type="text/css" media="screen">
 	body { background-color: #152105; } /*change from black #000 */
@@ -56,7 +58,7 @@ light green gray #f0f6e8
 </style>
 </head>
 <body>
-
+<div class="card">
 <table id="pi" border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr class="header">
 <td valign="top" style="text-align: right;">UVic Geography <br>Focused Studies</td>
@@ -89,7 +91,7 @@ light green gray #f0f6e8
 <li class="geomatics">Opt 2 Pre-requisite</li>
 <li class="environment physical">Opt 3 Pre-requisite</li>
 <li class="environment geomatics human geog-major-ba physical">Pre-requisite 3</li>
-<li class="geog-major-ba environment geomatics human physical">Elective Courses 1</li>
+<li class="geog-major-ba environment geomatics human physical">Elective Course1</li>
 
 </ul>
 </td>
@@ -115,7 +117,7 @@ light green gray #f0f6e8
 <li class="opt-2-pre-requisite">Geog 104 Our Digital Earth</li>
 <li class="opt-3-pre-requisite">Geog 130 Climate Change</li>
 <li class="pre-requisite-3">100 level MATH</li>
-<li class="elective-courses-1">Second Year Standing</li>
+<li class="elective-course1">Second Year Standing</li>
 </ul>
 </td>
 
@@ -125,17 +127,17 @@ light green gray #f0f6e8
 <li class="geog-101a-environment-society-and-sustainability geog-103-introduction-to-physical-geography">Geog 209 Introduction to Environmental Management</li>
 <li class="human geog-101b-space-place-and-society second-year-standing">Geog 211 Political And Economic Geography</li>
 <li class="human geog-101b-space-place-and-society">Geog 218 Social and Cultural Geography</li>
-<li class="elective-courses-1 100-level-math">Geog 220 Weather And Climate</li>
+<li class="elective-course1 100-level-math">Geog 220 Weather And Climate</li>
 <li class="geomatics space-place-and-society environment-society-and-sustainability second-year-standing">Geog 222 Introduction to Maps and GIS</li>
 <li class="human geog-101b-space-place-and-society environment-society-and-sustainability second-year-standing">Geog 226 Introduction To Quantitative Methods In Geography</li>
 <li class="second-year-standing">Geog 227 Introduction To Qualitative Methods In Geography</li>
 <li class="geomatics geog-101b-space-place-and-society environment-society-and-sustainability second-year-standing">Geog 228 Introduction to Remote Sensing</li>
-<li class="elective-courses-1 100-level-math">Geog 230 Scientific Computing And Environmental Data Analysis</li>
+<li class="elective-course1 100-level-math">Geog 230 Scientific Computing And Environmental Data Analysis</li>
 <li class="second-year-standing">Geog 252 Introduction To Coastal Geography</li>
 <li class="geog-103-introduction-to-physical-geography">Geog 272 Introduction To Climatology And Hydrology</li>
 <li class="geog-101a-environment-society-and-sustainability geog-103-introduction-to-physical-geography">Geog 274 Introduction to Biogeography</li>
 <li class="geog-103-introduction-to-physical-geography">Geog 276 Introduction To Geomorphology</li>
-<li class="elective-courses-1">Electives Courses 2</li>
+<li class="elective-course1">Electives Course2</li>
 </ul>
 </td>
 
@@ -167,8 +169,8 @@ space-place-and-society
 second-year-standing
 third-year-standing
 
-elective-courses-1
-elective-courses-2
+elective-course1
+elective-course2
 
 100-level-math
 
@@ -322,6 +324,8 @@ Eos 120  The Dynamic Earth	eos-120--the-dynamic-earth
 </p>
 		<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png" width="100%" height="50px">
 </div>
+
+
 	
 <!-- focusPlane -->
 </body>
@@ -478,14 +482,18 @@ function line(a,b,c1,c2) {
 
 
 pi = {
-	focus: ['::', 'Geog Major BA', 'Environment','Geomatics','Human', 'Physical'],
-	basics: ['Opt 1 Pre-requisite', 'Pre-requisite 1', 'Pre-requisite 2', 'Opt 2 Pre-requisite', 'Opt 3 Pre-requisite', '7 Elective Courses'],
+	focus: ['::', 'Geog Major BA','Environment','Geomatics','Human','Physical'],
+	basics: ['Opt 1 Pre-requisite','Pre-requisite 1','Pre-requisite 2','Opt 2 Pre-requisite','Opt 3 Pre-requisite','Pre-requisite 3','Elective Course1'],
 	years: {
 		year1: ['Geog 101A Environment Society and Sustainability','Geog 101B Space, Place and Society','Geog 103 Introduction to Physical Geography', 'Geog 104 Our Digital Earth','Geog 130 Climate Change','100 level MATH','Second Year Standing'],
-		year2: ['Geog 209 Introduction to Environmental Management','Geog 211 Political And Economic Geography','Geog 218 Social and Cultural Geography','Geog 220 Weather And Climate','Geog 222 Introduction to Maps and GIS','Geog 226 Introduction To Quantitative Methods In Geography','Geog 227 Introduction To Qualitative Methods In Geography','Geog 228 Introduction to Remote Sensing','Geog 230 Scientific Computing And Environmental Data Analysis','Geog 252 Introduction To Coastal Geography','Geog 272 Introduction To Climatology And Hydrology','Geog 274 Introduction to Biogeography','Geog 276 Introduction To Geomorphology'],
+		year2: ['Geog 209 Introduction to Environmental Management','Geog 211 Political And Economic Geography','Geog 218 Social and Cultural Geography','Geog 220 Weather And Climate','Geog 222 Introduction to Maps and GIS','Geog 226 Introduction To Quantitative Methods In Geography','Geog 227 Introduction To Qualitative Methods In Geography','Geog 228 Introduction to Remote Sensing','Geog 230 Scientific Computing And Environmental Data Analysis','Geog 252 Introduction To Coastal Geography','Geog 272 Introduction To Climatology And Hydrology','Geog 274 Introduction to Biogeography','Geog 276 Introduction To Geomorphology','Elective Course2'],
 		year3: ['Geog 301 Environmental Impact Assessment','Geog 303 Conservation And Ecology Of Whales','Geog 304 Coastal Conservation','Geog 313 Field Studies In Mountain Meteorology','Geog 316 Field Studies in Human Geography','Geog 317 Field Studies in Sustainable Communities', 'Geog 322 Digital Remote Sensing','Geog 339 Disaster Management And Community Resilience','Geog 353 Coastal And Marine Resource Management','Geog 358 Landscape Ecology','Geog 370 Hydrology','Geog 371 Water Resources Management','Geog 373 Applied Climatology','Geog 376 Process Geomorphology'],
 		year4: ['Geog 420 Field Studies in Coastal Geomatics','Geog 422 Advanced Topics in Digital Remote Sensing','Geog 450 Environment And Sustainability In Practice','Geog 474 Field Studies In Biogeography']
 	} 
 }
 </script>
+
+</script>
+
+</div>
 </html>
