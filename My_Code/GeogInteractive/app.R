@@ -235,6 +235,8 @@ tabPanel("TimeLog",
          hr(),
          h4("Time Log Plot (tasks: side-by-side)"),
          plotlyOutput("timelogplotside"),
+         h4("Time Log Plot (tasks: Hours Grouped by Date)"),
+         plotlyOutput("timelogplotgroup"),
          hr(),
          h4("Time Log Datatable"),
          DT::dataTableOutput("dttime"),
@@ -1234,7 +1236,8 @@ HTML(paste(sc6))
            x = "Date", y = "Total Hours") +
       # theme_classic() +
       theme_bw() +
-      theme(legend.title = element_blank()) # this needs to go after theme_classic
+      theme(legend.title = element_blank(),
+            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
   # end ggplot -------------
 
       }) # end Output: timelogplot
@@ -1255,7 +1258,42 @@ HTML(paste(sc6))
            x = "Date", y = "Total Hours") +
       # theme_classic() +
       theme_bw() +
-      theme(legend.title = element_blank()) # this needs to go after theme_classic
+      theme(legend.title = element_blank(),
+            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
+    # end ggplot -------------
+
+  }) # end Output: timelogplot
+
+
+  ## -----------------------------------------
+  # Output: timelogplot
+  output$timelogplotgroup <- renderPlotly({
+
+    tl <- read.csv("TimeLog-Current.csv")
+
+    # colnames(tl)
+
+    # group_by() sum()
+    # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+    tl_group <- tl %>%
+      select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>%
+      group_by(Date) %>%
+      summarise(TotalTimeHr = sum(TotalTimeHr))
+
+    tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
+      geom_bar(aes(fill = TotalTimeHr),
+               #geom_bar(aes(color = TaskType, fill = TaskType),
+               stat = "identity", position = "dodge",
+               width = 0.75,
+               fill = "#69A81D") +
+      labs(title = "Task Time Log for Geog Interactive Course Explorations",
+           subtitle = "Group by Total Hours per Day",
+           caption = "UVic Geography Wendy Anthony 2023",
+           x = "Day", y = "Total Hours") +
+      theme_bw() +
+      theme(legend.title = element_blank(),
+            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+
     # end ggplot -------------
 
   }) # end Output: timelogplot

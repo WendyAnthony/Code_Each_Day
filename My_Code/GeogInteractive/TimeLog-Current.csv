@@ -66,3 +66,19 @@ Code: Interactive Flow add classes; add logo at bottom,2023-01-14 2:32,2023-01-1
 Code: Update Interactive Flow Dataviz,2023-01-14 5:46,2023-01-14 8:46,3h 8s,Code,8h 3m 24s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,180,3
 Code: Shiny Clone Webpage with tabs,2023-01-14 9:52,2023-01-14 12:58,3h 5m 22s,Code,8h 3m 24s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,186,3.1
 Admin: Time Log,2023-01-14 5:00,2023-01-14 5:33,33m 6s,Admin,8h 36m 30s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,33,0.55
+Code: Interactive GGPlot Charts,2023-01-14 7:00,2023-01-14 8:30,1h 30m 0s,Code,10h 6m 30s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,90,1.5
+Code: Look at what needs to be changed: interact-flow; shiny clone,2023-01-15 7:00,2023-01-15 7:15,14m 52s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,15,0.25
+Code: Look at what needs to be changed: interact-flow,2023-01-15 7:15,2023-01-15 7:17,1m 40s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,2,0.033
+Code: interact-flow,2023-01-15 7:23,2023-01-15 9:40,2h 17m 17s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,137,2.283
+Code: Add TimeLog table,2023-01-15 9:50,2023-01-15 10:13,22m 55s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,23,0.383
+Code: Add time log total hours,2023-01-15 10:13,2023-01-15 11:17,1h 3m 48s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,64,1.067
+Code: Tab names shorten,2023-01-15 11:27,2023-01-15 11:36,8m 49s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,9,0.15
+Code: Shiny Table,2023-01-15 11:50,2023-01-15 12:10,20m 30s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,20,0.333
+Code: Shiny App to Shiny Clone,2023-01-15 1:03,2023-01-15 1:30,27m 9s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,27,0.45
+Code: Try to change timelog datatable sortorder,2023-01-15 1:44,2023-01-15 2:00,15m 44s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,16,0.267
+Admin: Create .RMD Report,2023-01-15 2:00,2023-01-15 3:30,1h 30m 38s,Admin,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,90,1.5
+Code: Clone internal links,2023-01-15 3:30,2023-01-15 4:01,30m 56s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,31,0.517
+Code: Reduce Tabs Shiny App,2023-01-15 4:01,2023-01-15 4:32,30m 52s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,31,0.517
+Code: Add button to save pdf,2023-01-15 5:49,2023-01-15 6:05,15m 30s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,16,0.267
+Code: Add button to save pdf,2023-01-15 6:06,2023-01-15 7:23,1h 17m 23s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,77,1.283
+Code: Check for matching tag errors,2023-01-15 7:24,2023-01-15 9:24,1h 59m 25s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,120,2
