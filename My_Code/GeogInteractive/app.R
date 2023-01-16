@@ -16,23 +16,50 @@ library(DT) # datatable
 library(DiagrammeR) # Gantt Chart
 library(ggplot2)
 library(plotly)
+library(lubridate)
+library(tidyr)
 
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
 
+
 #Data Clean geog_dt_time
 geog_dt_time <- read.csv("TimeLog-Current.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
 str(geog_dt_time)
+class(geog_dt_time$Start)
+
+# duplicate Start and End columns
+geog_dt_time$StartCopy <- geog_dt_time$Start
+geog_dt_time$EndCopy <- geog_dt_time$End
+
+# separate Start column into 2
+geog_dt_time <- geog_dt_time %>% tidyr::separate(StartCopy, c("StartDate", "StartTime"), sep = " ")
+geog_dt_time <- geog_dt_time %>% tidyr::separate(EndCopy, c("EndDate", "EndTime"), sep = " ")
+
+ colnames(geog_dt_time)
+# Reorder Columns by Position
+
+geog_dt_time = subset(geog_dt_time, select = -c(6,7, 13, 15))
+colnames(geog_dt_time)
+
+geog_dt_time <- geog_dt_time[, c(1, 2, 11, 3, 12, 5, 9, 10, 4, 6, 7, 8)]
+colnames(geog_dt_time)
+
+
+
+str(geog_dt_time)
 # can't sort Start time because it is a Factor datatype
-geog_dt_time$Start <- as.Date(geog_dt_time$Start, format = "%Y-%m-%d")
-geog_dt_time$Start
-geog_dt_time$End <- as.Date(geog_dt_time$End, format = "%Y-%m-%d")
-geog_dt_time$End
+geog_dt_time$StartDate <- as.Date(geog_dt_time$Start, format = "%Y-%m-%d")
+geog_dt_time$StartDate
+geog_dt_time$EndDate <- as.Date(geog_dt_time$End, format = "%Y-%m-%d")
+geog_dt_time$EndDate
+str(geog_dt_time)
+
 geog_dt_time$Date <- as.Date(geog_dt_time$Date, format = "%Y-%m-%d")
 geog_dt_time$Date
-geog_dt_time$Day <- as.numeric(geog_dt_time$Day)
 str(geog_dt_time)
+
 
 ## -----------------------------------------
 # Define UI -----------
