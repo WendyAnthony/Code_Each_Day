@@ -2,7 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-16 08:40 > 19:26
+## Updated 2023-01-17 08:40 > 06:53
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -141,7 +141,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
           # Nested Course Planning Data Viz tabPanel
-          tabPanel("Data Viz",
+          tabPanel("Course Planning Tools",
                    tabsetPanel(
 
 ## -----------------------------------------
@@ -960,126 +960,174 @@ HTML(paste(sc6))
   }) # end Output: About: History
 
 
+  #   <li></li>
+  #   <li></li>
+  #   <li></li>
+  #   <li></li>
+  #
+  # <ul>
+  #   <li></li>
+  #   <li></li>
+  #   <li></li>
+  #   <li></li>
+  # </ul>
+  # <li><strong></strong></li>
+  #   <strong></strong>
+  #
   ## -----------------------------------------
   # Output: Questions
   output$lists <- renderUI({
     HTML("
   <h3 id='questions'>Questions</h3>
           <ul>
-          <li>What form of reporting is required from me, and how often?</li>
-          <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
-          <li>What's involved with setting up a Geog Shiny Server (ask Rick about this)?</li>
-          <ul>
-            <li>**Rick Sykes:** Can a Shiny Server be installed?</li>
-          </ul>
-          <li>What format to use for Course Name?  >> change database
-	- GEOG103, Geog103, or Geog 103 >> I chose **GEOG 103</li>
-          <li>Make a list of questions to ask David, John, or the student body that David mentioned</li>
-          <li>Ask some students what kind of format they like to search geography courses for when planning for example the geography student SOGS, have some examples online and choose make a POLL,test drive</li>
-          <ul>
-            <li>**Students**: What info would students like to find?</li>
-          </ul>
-          </ul>
+              <li><strong>Reporting: </strong></li>
+                    <ul>
+                      <li>What form of reporting is required from me?</li>
+                      <li>How often?</li>
+                      <li>What do you want to know?</li>
+                      <li>Process, results, deadlines, targets</li>
+                    </ul>
+              <li><strong>Formatting: </strong></li>
+                    <ul>
+                      <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
+                      <li>Course Name format to use</li>
+                      <ul>
+                          <li>e.g. GEOG103, Geog103, or Geog 103</li>
+                          <li>Different in Course Catalog, Geog Website, etc</li>
+                          <li> >> I chose **GEOG 103</li>
+                          <li> >> change database to choice if different</li>
+                      </ul>
+                    </ul>
+              <li><strong>Shiny Server: </strong></li>
+                      <ul>
+                          <li>What's involved with setting-up/installing a Geog Shiny Server?</li>
+                          <li>Ask Rick Sykes: Can a Shiny Server be installed?</li>
+                      </ul>
+              <li><strong>Students: </strong></li>
+                    <ul>
+                      <li>Ask some students what kind of format they like to search geography courses for when planning</li>
+                      <li>What info would students like to find?</li>
+                      <li>Easy/Difficult to use/understand?</li>
+                      <li>e.g. Ask geography student society SOGS</li>
+                           <ul>
+                              <li>test drive</li>
+                              <li>Be given a task, something to search for</li>
+                              <li>have some examples online and choose make a POLL</li>
+                              <li>Wehat do students search for</li>
+                            </ul>
+                    </ul>
+        </ul>
 <hr>
       <h3 id='need'>Need</h3>
-          <ul>
-          <li>**Data** list of popular electives, class size</li>
-          <li>**Data** list of Summer course</li>
-          <li>Courses, prerequisites (check to see I have them all)</li>
-          </ul>
+              <ul>
+                  <li><strong>Data</strong></li>
+                          <ul>
+                              <li>list of popular electives, class size</li>
+                              <li>list of Summer courses</li>
+                              <li>Courses, prerequisites (check to see I have them all)</li>
+                          </ul>
+              </ul>
+
 <hr>
       <h3 id='wishlist'>Wishlist</h3>
           <ul>
-          <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
-          <li>Video tutorials</li>
-          <li>Description for use</li>
-          <li>Screenshots</li>
-          <li>Presentation of current state/progress, use .rmd, create slides </li>
-          <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
-          <li>Document workflow, create tab, nest in history </li>
-          <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
-          <li>add save image / pdf ???</li>
-          <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
-          <li>Need a `clear search button` for datatable</li>
-          <li>Save image of concept maps</li>
-          <li>Highlight path between courses/pre-requisites/concentrations</li>
-          </ul>
+              <li><strong>Demonstations for Use</strong></li>
+                  <ul>
+                    <li>Video tutorials</li>
+                    <li>Description for use</li>
+                    <li>Mobile device and desktop</li>
+                  </ul>
+              <li><strong>Documentation</strong></li>
+                  <ul>
+                    <li>Presentation of current state/progress, use .rmd, create slides </li>
+                    <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
+                    <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
+                    <li>Document workflow, create tab, nest in history </li>
+                    <li>Screenshots</li>
+                  </ul>
+              <li><strong>Functions Wishlist</strong></li>
+                  <ul>
+                    <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
+                    <li>Need a `clear search button` for datatable</li>
+                    <li>Save image of concept maps</li>
+                    <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
+                    <li>Take image of results</li>
+                    <li>Ability to print results</li>
+                    <li>Mobile device and desktop</li>
+                    <li><strong>Interactivity</strong></li>
+                            <ul>
+                              <li>R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
+                              <li>Highlight path between courses/pre-requisites/concentrations</li><li></li>
+                              <li>Highlight the pathways between courses when clicked, or hovering</li>
+                              <li>Choose a path‘s which would be highlighted</li>
+                              <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
+                              <li>Click for more information, link to course catalog</li>
+                              <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
+                            </ul>
+                    <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
+                    <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
+                    <li>Multi year calendar planner</li>
+                    <li>Note which courses student has taken</li>
+                    <li>Change color of Datatable select (from blue)</li>
+                    <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
+                    <li>Filter new data table >> choose only columns necessary for filtered search > save to csv
+                    <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
+                    <li>Convert to PHP, update training on UVic website</li>
+                  </ul>
+          </ul> <!-- end of Wishlists  -->
 <hr>
+
 <!--
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
--->
-          <h3 id='functions'>Functions Wishlist</h3>
-          <ul>
-          <li>Interactive</li>
-          <li>Click for more information, link to course catalog</li>
-          <li>Highlight the pathways between courses when clicked, or hovering</li>
-          <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
-          <li>Choose a path‘s which would be highlighted</li>
-          <li>Mobile device and desktop</li>
-          <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
-          <li>Ability to print results</li>
-          <li>Take image of results</li>
-          <li> R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
-          </ul>
-<hr>
-<!--
-<a href=''></a> <a href=''></a>
+    <li><strong></strong></li>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+<li><strong></strong></li>
+  <strong></strong>
+
+ a href=''></a> <a href=''></a>
 <a href=''></a> <a href=''></a> <a href=''></a>
 <a href=''></a> <a href=''></a> <a href=''></a>
+<a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a>
 -->
-<!--
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
--->
+
           <h3 id='ideas'>Ideas</h3>
           <ul>
-          <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
-          <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
-          <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
-          <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
-          <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
-          <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
+              <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
+              <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
+              <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
+              <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
+              <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
+              <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
+              <li>Use Course Planning Flowchart pdfs:
+          			<a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
+          			<a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
+    			    </li>
+
           </ul>
 <hr>
           <h3 id='todo'>To Do</h3>
           <ul>
-          <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
-            <ul><li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li></ul>
-          <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
-          <li>Change color of Datatable select (from blue)</li>
-          <li>Start to fill-in/update missing course info for Geography Course data table</li>
-          <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
-          <li>Filter new data table >> choose only columns necessary for filtered search > save to csv
-          <li>Use Course Planning Flowchart pdfs:
-			<a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
-			<a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
-			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
-			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
-			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
-			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
-			</li>
-<!--			 <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> -->
-          <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
-          <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
-          <li>Multi year calendar planner</li>
-          <li>Note which courses student has taken</li>
-          <li>Convert to PHP, update training on UVic website</li>
-          <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
-          <li>update vIz chart with more courses, figure out how to add relationships to table?</li>
-          <li>Add program requirements page / tab</li>
-          <li>Add resources tab, links </li>
-          <li>Use paper notebook for design ideas, flowcharts </li>
-          <li>Make tabs figure bigger</li>
-          <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
+              <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
+                  <ul>
+                      <li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong>
+                  </ul>
+              <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
+              <li>Start to fill-in/update missing course info for Geography Course data table</li>
+              <li>update vIz chart with more courses, figure out how to add relationships to table?</li>
+              <li>Add program requirements page / tab</li>
+              <li>Add resources tab, links </li>
+              <li>Use paper notebook for design ideas, flowcharts </li>
+              <li>Make tabs figure bigger</li>
+              <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
           </ul>
 <hr>
 
@@ -1096,16 +1144,15 @@ HTML(paste(sc6))
 -->
           <h3 id='done'>Done ✅</h3>
           <ul>
-          <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
-          <li>add signature footer to bottom of page</li>
-          <li>Embed links to geography interactive pdf concept maps</li>
-          <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
-          <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
-          <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
-          <li></li>
-          <li>Get download button to work with filtered data see new web link</li>
-          <li>List of Geography Courses</li>
-          <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
+              <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
+              <li>add signature footer to bottom of page</li>
+              <li>Embed links to geography interactive pdf concept maps</li>
+              <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
+              <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
+              <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
+              <li>Get download button to work with filtered data see new web link</li>
+              <li>List of Geography Courses</li>
+              <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
           </ul>
 <hr>
 
