@@ -2,8 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-13 06:24
-## Updated 2023-01-15 08:40 > 13:56
+## Updated 2023-01-16 08:40 > 19:26
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -253,7 +252,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 tabPanel("TimeLog",
          HTML("
              <h3>Time Log for Interactive Geography Classes Code Work</h3>
-                <em>Please be patient, as the data on this page takes a few moments to load as it processes data results</em>
+                <em>Please be patient - this page takes a few moments to load as it processes time log data results</em>
               <hr>
               <h3>Sum of Total Hours To Date</h3>
               "),
