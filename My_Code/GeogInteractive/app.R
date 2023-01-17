@@ -1113,7 +1113,8 @@ HTML(paste(sc6))
 <p>Scroll down the iframe<br />
 <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>GeogInteract Report</a></p>
 		        <br />
-          <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' width='100%' height='800px'></iframe>
+          <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-new.html' width='100%' height='800px'></iframe>
+          <!-- <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' width='100%' height='800px'></iframe> -->
 <hr>
 
                         ")
