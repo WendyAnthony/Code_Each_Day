@@ -43,7 +43,7 @@ geog_dt_time <- geog_dt_time %>% tidyr::separate(EndCopy, c("EndDate", "EndTime"
 geog_dt_time = subset(geog_dt_time, select = -c(6 ,7, 14, 16))
 colnames(geog_dt_time)
 
-geog_dt_time <- geog_dt_time[, c(1, 2, 12, 3, 13, 5, 8, 9, 10, 11, 4, 6, 7)]
+geog_dt_time <- geog_dt_time[, c(1, 2, 3, 5, 8, 9, 10, 11, 4, 6, 12, 13, 7)]
 colnames(geog_dt_time)
 
 
@@ -107,8 +107,11 @@ table.dataTable tbody tr td.selected.no-highlight {
                   <li><strong>Tip:</strong> Search partial spelling e.g. 'clim' brings up 'climate' and 'climatology'</li>
                   </ul>
                 <li><strong>Filter Boxes:</strong> Type in box under Course heading; select choice(s); can use multiple filter boxes</li>
-                <li><strong>Sort Order:</strong> each column using arrows next to column name</li>
-                <li><strong>Download CSV: </strong> Save Filtered-Search and Sort-Order, with current date, using Button below table</li>
+                  <ul>
+                    <li>To filter by Semester choose both 'Fall' and 'Fall and Spring', or 'Spring' and 'Fall and Spring'</li>
+                  </ul>
+                <li><strong>Sort Order:</strong> Use arrows next to column name</li>
+                <li><strong>Download CSV: </strong> Save Filtered Results, with current date, using Button below table</li>
               </ul>
               <hr>"
                 ),
@@ -121,7 +124,7 @@ table.dataTable tbody tr td.selected.no-highlight {
                 # Download button needs to be after datatable to be able to save filtered data
                 div(class = "button-center", downloadButton("download_filtered", "Download CSV", class="button")),
                 hr(),
-                h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
                    align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
               ), # end of Data Table tabPanel
@@ -165,7 +168,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 ## -----------------------------------------
                     # Nested tabPanel Data Viz: mermaid Flow Charts
                     tabPanel("Diagrams", tableOutput("mermaid"),
-                             strong("Flow Chart Experiments with Mermaid"),
+                             h3("Flow Chart Experiments with Mermaid"),
                              DiagrammeROutput('diagram1', width = "50%"),
                              hr(),
                              DiagrammeROutput('diagram2', width = "50%"),
@@ -180,7 +183,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      # Nested tabPanel Data Viz: Concept Maps
                      tabPanel("Concept Map", tableOutput("conceptmap"),
                               hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
@@ -228,7 +231,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      # Nested tabPanel About: About
                      tabPanel("About", tableOutput("about"),
                               hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-15",
+                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
@@ -248,21 +251,35 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 ## -----------------------------------------
 # Nested tabPanel About: Timelog
 tabPanel("TimeLog",
-         h3("Time Log for Interactive Geography Classes Code Work"),
-         em("The data on this page takes a few moments to load"),
-         br(),br(),
-         h4("Sum of Total Hours (to date of plots and datatable)"),
+         HTML("
+             <h3>Time Log for Interactive Geography Classes Code Work</h3>
+                <em>Please be patient, as the data on this page takes a few moments to load as it processes data results</em>
+              <hr>
+              <h3>Sum of Total Hours To Date</h3>
+              "),
          tableOutput("totalhours"),
-         hr(),
-         h3("Time Log Plots"),
-         em("Hover over the plots to discover the task time details"),
-         br(),br(),
-         h4("Time Log Plot (tasks: stacked)"),
+         HTML("
+               <hr>
+               <h3>Time Log Plots</h3>
+                    <ul>
+                        <li>Hover over interactive plots to discover the task time details</li>
+                        <li>To return to original state after graph interactions, click arrowX Autoscale, or Home Reset axis icons above chart</li>
+                    </ul>
+               <hr>
+              "),
+         # hr(),
+         # # <h3></h3>
+         # # h3("Time Log Plots"),
+         # # em("Hover over interactive plots to discover the task time details"),
+         # # br(),
+         # # em("To return to original state after graph interactions, click arrowX Autoscale, or Home Reset axis icons above chart"),
+         # br(),br(),
+         # h4("Time Log Plot: Task Type by Date"),
          plotlyOutput("timelogplotstack"),
          hr(),
-         h4("Time Log Plot (tasks: side-by-side)"),
-         plotlyOutput("timelogplotside"),
-         h4("Time Log Plot (tasks: Hours Grouped by Date)"),
+         # h4("Time Log Plot (tasks: side-by-side)"),
+         # plotlyOutput("timelogplotside"),
+         # h4("Time Log Plot (Grouped by Date)"),
          plotlyOutput("timelogplotgroup"),
          hr(),
          h4("Time Log Datatable"),
@@ -273,7 +290,7 @@ tabPanel("TimeLog",
          # Download button needs to be after datatable to be able to save filtered data
          div(class = "button-center", downloadButton("download_filtered_time", "Download CSV", class="button")),
 
-         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
+         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
             align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                   text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
          br(),
@@ -539,7 +556,7 @@ server <- function(input, output) {
          <h2>Program Planning pdfs</h2>
          <div>
             Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Program Planning Worksheet</a>
-            <br />
+            <br /><br />
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'></iframe>
             <br /><br />
 
@@ -552,9 +569,9 @@ server <- function(input, output) {
   # Output: Data Viz: Flowcharts
   output$flowcharts <- renderUI({
     HTML("
-        <h2>Flowchart Program Planning pdfs</h2>
+        <h2>Program Planning Flowcharts</h2>
           <div>
-            <em><strong>Note: </strong>These links open in a new window, as back button won't return to same page<br />Close new window to return to app</em>
+            <em><strong>Note: </strong>The links in these PDF files open in a new window, as back button won't return to same page<br />Close new window to return to app</em>
               <br /><br />
             <strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item
           </div>
@@ -672,7 +689,11 @@ A-->F;
 <style type='text/css'> #tooltip{ position:absolute; border:1px solid #333; background:#f7f5d1; padding:2px 5px; color:#333; display:none; } </style> </head>
 <body>
 <h2>Concept Maps</h2>
-<div><em><strong>Note:</strong> This concept map is from 2016 (with outdated information), with a different visualization technique.</em><br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration. Links open in a new window (because back button won't return to same page) - Close new window to return to app</div>
+<div><em><strong>Note:</strong> This concept map is from 2016 (with outdated information), using a different visualization technique.</em>
+<br /><br /><strong>To Use: </strong>Click Course-box links to go to UVic Catalogue and registration.
+<br />* Links open in new window - Close new window to return to app
+<br />* Hover over Course-box to view Course Description
+</div>
 <br />
 <div class='example2'><img class='map' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Geog_earth_systems_2015-16.png' width='1018.0' height='827.0' usemap='#vuemap'><map name='vuemap'>
 <area href='https://www.uvic.ca/BAN2P/bwckctlg.p_disp_listcrse?term_in=201601&subj_in=GEOG&crse_in=484&schd_in=' target='_blank' class='tooltip' title='Detailed examination of atmospheric structures and processes underlying weather and climate. Practical work focuses on analysis of vertical stability and utilizing computer weather model data.' id='node42' shape='rect' coords='574,193,652,214'></area>
@@ -835,15 +856,24 @@ HTML(paste(sc6))
   # Output: About: About
   output$about <- renderUI({
     HTML("
-         <h2>About this app</h2>
+        <h2>About this app</h2>
           <div class='divwidth'>
-            <p>This experimental Shiny code sandbox was created to develop an online, interactive interface to facilitate Geography Course Student Planning.</p>
-          </div>
-        <h2>The Code</h2>
-          <div>
+        <h3>Purpose</h3>
+            <p>This experimental Shiny code sandbox was created to develop an online, interactive interface for Student Geography Course Planning at UVic.</p>
+
+        <h3>The Web Clone</h3>
+            <p><a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html' target='_blank'>The Web Clone</a>
+            <ul>
+              <li>To create a non-Shiny web interface, all contained within one HTML webpage, The Web Clone is being developed in tandem with this Shiny App.</li>
+              <li>The Data Table is currently searchable</li>
+              <li>Work continues on filtering each Data Table column, and using nested tabs</li>
+              <li>Ultimate success will be achieved when filtered results can be saved as CSV! ... keep tuned ...</li>
+            </ul>
+            </p>
+
+        <h3>The Code</h3>
             <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
-              <br /><br />
-            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
+            <!-- Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a> -->
           </div>
          ")
     #paste("Code from https://stackoverflow.com/questions/64242287/selectinput-filter-based-on-a-selection-from-another-selectinput-in-r")
@@ -863,6 +893,11 @@ HTML(paste(sc6))
     HTML("
     <h3>History of Changes</h3>
         <hr>
+    <h4>2023-01-16</h4>
+      <ul>
+        <li>Formatting Changes</li>
+        <li>Fine Tune Tips For Use as I test-drive the App's functionality</li>
+      </ul>
     <h4>2023-01-15</h4>
       <ul>
         <li>Created my First Draft Project Report <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>Draft Project Report</a></li>
@@ -1252,7 +1287,7 @@ HTML(paste(sc6))
     #}) # end Output:Work
 
 ## -----------------------------------------
-  # Output: timelogplot
+  # Output: timelogplot stack
   output$timelogplotstack <- renderPlotly({
 
     # this is aborting the session when I click on this tab
@@ -1261,7 +1296,7 @@ HTML(paste(sc6))
     ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
       geom_bar(aes(fill = TaskType),
                stat = "identity", position = position_stack()) +
-      labs(title = "Task Time Log",
+      labs(title = "Daily Task and SubTask Time Log",
            subtitle = "Geog Interactive Course Explorations",
            caption = "UVic Geography Wendy Anthony 2023",
            x = "Date", y = "Total Hours") +
@@ -1270,30 +1305,28 @@ HTML(paste(sc6))
       theme(legend.title = element_blank(),
             axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
   # end ggplot -------------
-
-      }) # end Output: timelogplot
-
-  ## -----------------------------------------
-  # Output: timelogplot
-  output$timelogplotside <- renderPlotly({
-
-    # this is aborting the soession when I click on this tab
-    tl <- read.csv("TimeLog-Current.csv")
-
-    ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
-      geom_bar(aes(fill = TaskType),
-               stat = "identity", position = "dodge") +
-      labs(title = "Task Time Log",
-           subtitle = "Geog Interactive Course Explorations",
-           caption = "UVic Geography Wendy Anthony 2023",
-           x = "Date", y = "Total Hours") +
-      # theme_classic() +
-      theme_bw() +
-      theme(legend.title = element_blank(),
-            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
-    # end ggplot -------------
-
-  }) # end Output: timelogplot
+      }) # end Output: timelogplot stack
+#
+#   ## -----------------------------------------
+#   # Output: timelogplot
+#   output$timelogplotside <- renderPlotly({
+#
+#     # this is aborting the soession when I click on this tab
+#     tl <- read.csv("TimeLog-Current.csv")
+#
+#     ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
+#       geom_bar(aes(fill = TaskType),
+#                stat = "identity", position = "dodge") +
+#       labs(title = "Task Time Log",
+#            subtitle = "Geog Interactive Course Explorations",
+#            caption = "UVic Geography Wendy Anthony 2023",
+#            x = "Date", y = "Total Hours") +
+#       # theme_classic() +
+#       theme_bw() +
+#       theme(legend.title = element_blank(),
+#             axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
+#     # end ggplot -------------
+#   }) # end Output: timelogplotside
 
 
   ## -----------------------------------------
@@ -1301,11 +1334,6 @@ HTML(paste(sc6))
   output$timelogplotgroup <- renderPlotly({
 
     tl <- geog_dt_time
-#    tl <- read.csv("TimeLog-Current.csv")
-
-    # colnames(tl)
-
-    # group_by() sum()
     # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
     tl_group <- tl %>%
       select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>%
@@ -1318,16 +1346,14 @@ HTML(paste(sc6))
                stat = "identity", position = "dodge",
                width = 0.75,
                fill = "#69A81D") +
-      labs(title = "Task Time Log for Geog Interactive Course Explorations",
+      labs(title = "Daily Time Log for Geog Interactive Course Explorations",
            subtitle = "Group by Total Hours per Day",
            caption = "UVic Geography Wendy Anthony 2023",
            x = "Day", y = "Total Hours") +
       theme_bw() +
       theme(legend.title = element_blank(),
             axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
-
     # end ggplot -------------
-
   }) # end Output: timelogplot
 
 ## -----------------------------------------
