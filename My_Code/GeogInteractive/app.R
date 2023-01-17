@@ -1366,7 +1366,7 @@ HTML(paste(sc6))
 ## -----------------------------------------
   #   # Output: Gantt
   output$gantt <- renderUI({
-    HTML("<h2>Gantt Chart for Planning Timelines</h2>
+    HTML("<h2>Interactive Gantt Chart for Planning Timelines</h2>
                  <span><strong>To Use: </strong>Fill text in text box to update Gantt Chart; <br />This data is not saved locally, but is deleted when exiting page; <br />Page must be edited in original Shiny.R file</span>
                  <br /><br />")
   }) # end of Output: Gantt
