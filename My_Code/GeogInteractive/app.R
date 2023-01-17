@@ -2,7 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-17 08:40 > 06:53
+## Updated 2023-01-17 07:13 >
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -70,8 +70,10 @@ ui <- fluidPage(
   # .tabbable > .nav > li > a[data-value='t3'] {background-color: green; color:white}
 
   tags$style(HTML("
-    .tabbable > .nav > li > a                  {background-color: #c3dca4;  color:black}
-    .tabbable > .nav > li[class=active]    > a {background-color: #77be21; color:white}
+    .tabbable > .nav > li > a                  {background-color: #c3dca4;  color:black }
+    .tabbable > .nav > li[class=active] > a    {background-color: #77be21; color:white }
+    #Links li a                                {font-size: .85em; color: #69A81D; }
+	  a                                          {font-size: .99em;color: #69A81D; }
 
 /* https://stackoverflow.com/questions/72147869/change-selected-cell-background-color-in-a-shiny-dt-table-based-on-rules */
 /* Removes background colour of stripes */
@@ -123,7 +125,7 @@ table.dataTable tbody tr td.selected.no-highlight {
                 # Download button needs to be after datatable to be able to save filtered data
                 div(class = "button-center", downloadButton("download_filtered", "Download CSV", class="button")),
                 hr(),
-                h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
+                h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-17",
                    align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
               ), # end of Data Table tabPanel
@@ -167,7 +169,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 ## -----------------------------------------
                     # Nested tabPanel Data Viz: mermaid Flow Charts
                     tabPanel("Diagrams", tableOutput("mermaid"),
-                             h3("Flow Chart Experiments with Mermaid"),
+                             h3("Flow Chart Diagram Experiments with Mermaid"),
                              DiagrammeROutput('diagram1', width = "50%"),
                              hr(),
                              DiagrammeROutput('diagram2', width = "50%"),
