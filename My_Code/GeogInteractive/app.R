@@ -2,7 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-17 07:13 > 07:17 > 07:58
+## Updated 2023-01-17 07:13 > 07:17 > 08:05
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -558,6 +558,8 @@ server <- function(input, output) {
          <div>
             Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Program Planning Worksheet</a>
             <br /><br />
+            <strong>Note: </strong>Click Courses as link to access Current Course Calendar
+            <br /><br />
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'></iframe>
             <br /><br />
 
@@ -869,7 +871,7 @@ HTML(paste(sc6))
               <li>The Data Table is currently searchable</li>
               <li>Work continues on filtering each Data Table column, and using nested tabs</li>
               <li>Ultimate success will be achieved when filtered results can be saved as CSV! ... keep tuned ...</li>
-              <li><a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>Web Clone Code</a></li>
+              <li><a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>Web Clone Code on GitHub</a></li>
             </ul>
             </p>
         <h3>Accessability Tips</h3>
