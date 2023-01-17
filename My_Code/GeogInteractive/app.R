@@ -558,7 +558,7 @@ server <- function(input, output) {
          <div>
             Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Program Planning Worksheet</a>
             <br /><br />
-            <strong>Note: </strong>Click Courses as link to access Current Course Calendar
+            <strong>Note: </strong>Right-click Courses as link to access Current Course Calendar (this opens new web page, close to return to this app as back button won't work!)
             <br /><br />
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'></iframe>
             <br /><br />
