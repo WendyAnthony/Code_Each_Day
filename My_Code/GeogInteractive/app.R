@@ -280,7 +280,7 @@ tabPanel("TimeLog",
          # h4("Time Log Plot (tasks: side-by-side)"),
          # plotlyOutput("timelogplotside"),
          # h4("Time Log Plot (Grouped by Date)"),
-         plotlyOutput("timelogplotgroup"),
+         plotOutput("timelogplotgroup"),
          hr(),
          h4("Time Log Datatable"),
          DT::dataTableOutput("dttime"),
@@ -1331,7 +1331,7 @@ HTML(paste(sc6))
 
   ## -----------------------------------------
   # Output: timelogplot
-  output$timelogplotgroup <- renderPlotly({
+  output$timelogplotgroup <- renderPlot({
 
     tl <- geog_dt_time
     # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
@@ -1349,10 +1349,11 @@ HTML(paste(sc6))
       labs(title = "Daily Time Log for Geog Interactive Course Explorations",
            subtitle = "Group by Total Hours per Day",
            caption = "UVic Geography Wendy Anthony 2023",
-           x = "Day", y = "Total Hours") +
+           x = "Date", y = "Total Hours") +
       theme_bw() +
       theme(legend.title = element_blank(),
-            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+            axis.text.x = element_text(angle = 0,vjust = .45, hjust = 0.75))
+    tp_group_bar
     # end ggplot -------------
   }) # end Output: timelogplot
 
