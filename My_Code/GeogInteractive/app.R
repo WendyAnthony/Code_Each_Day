@@ -2,7 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-17 07:13 >
+## Updated 2023-01-17 07:13 > 07:17 > 07:58
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -869,8 +869,25 @@ HTML(paste(sc6))
               <li>The Data Table is currently searchable</li>
               <li>Work continues on filtering each Data Table column, and using nested tabs</li>
               <li>Ultimate success will be achieved when filtered results can be saved as CSV! ... keep tuned ...</li>
+              <li><a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>Web Clone Code</a></li>
             </ul>
             </p>
+        <h3>Accessability Tips</h3>
+            <p>
+            <ul>
+                <li><strong>Accessible Keystrokes</strong></li>
+                <ul>
+                    <li>After opening webpage >> <strong>Tab</strong> >> Highlights 1st Tab >> <strong>Right-Arrow</strong> >> Highlights 2nd Tab >> <strong>Right-Arrow</strong> keeps scrolling through top level tabs</li>
+                    <li><strong>Tab again</strong> >> moves through 2nd level tabs >> <strong>Enter</strong> opens Tab >> </li>
+                    <li>After reaching end of 2nd level tabs, <strong>Tab again</strong> moves through tab body highlighting links >> <strong>Enter</strong> opens link >> after tabbing through all links >> highlights <strong>About</strong> tab again >> </li>
+                    <li>From top level tab <strong>About</strong> >> <strong>Tab once</strong> >> highights tab body >> </li>
+                    <li><strong>Left-Arrow</strong>  key moves backwards through 1st level tabs </li>
+                </ul>
+            </ul>
+            </p>
+
+
+          </div>
 
         <h3>The Code</h3>
             <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
@@ -894,6 +911,12 @@ HTML(paste(sc6))
     HTML("
     <h3>History of Changes</h3>
         <hr>
+    <h4>2023-01-17</h4>
+      <ul>
+        <li>Added `Accessability Tips` to `About` Tab</li>
+        <li>Formatting Changes</li>
+        <li>Changed tabname from `Data Viz` to `Course Planning Tools`</li>
+      </ul>
     <h4>2023-01-16</h4>
       <ul>
         <li>Formatting Changes</li>
