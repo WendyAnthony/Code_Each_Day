@@ -2,7 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-18 00:55
+## Updated 2023-01-18 02:12
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -211,7 +211,20 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                              br(),
                     ), # end of Nested tabPanel About: Links
 
+## -----------------------------------------
+                  # Nested tabPanel About: map
+                  tabPanel("Map",
+                           h3("Map showing UVic Location"),
+                           leafletOutput("map"),
+                           hr(),
+                           h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
+                              align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                                                                      text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                           br(),
+                  ), # end of Nested tabPanel About: map
+
                    )), # end of Nested Course Planning Data Viz tabPanel
+
 
 ## -----------------------------------------
           # Test tabPanel
@@ -806,6 +819,39 @@ HTML(paste(sc6))
     #   </ul>
   }) # end Output: About: Links
 
+  output$map <- renderLeaflet({
+    # leaflet map with popup of many characters & image link
+    map <- leaflet(height="3800px", width = "100%") %>%
+      setView(lng = -123.37,  # 49.54782, -125.5188  48.72342, -123.36548
+              lat = 48.55,
+              zoom = 10) %>%
+      addTiles(group = "OSM (default)",
+               options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+      addProviderTiles(providers$Stamen.Toner, group = "Toner",
+                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+      addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
+                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+      addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
+                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+      addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
+                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+      addMarkers(lng = -123.31189,  # 48.46564, -123.31389
+                 lat = 48.46164) %>%
+    #
+    #
+    #   #      addProviderTiles("Esri.WorldImagery") %>%
+    #   #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
+    #   addMarkers(lat = wa_inat_userstats_research_append$latitude,
+    #              lng = wa_inat_userstats_research_append$longitude,
+    #              clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
+    #              #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
+    #              popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  wa_inat_userstats_research_append$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", wa_inat_userstats_research_append$common_name, "<br>", "<b>", "Place:", "</b>", wa_inat_userstats_research_append$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", wa_inat_userstats_research_append$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", wa_inat_userstats_research_append$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", wa_inat_userstats_research_append$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", wa_inat_userstats_research_append$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", wa_inat_userstats_research_append$user_login )) %>%
+      addLayersControl(
+        baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
+        options = layersControlOptions(collapsed = TRUE)
+      )
+  })
+
 #
 #   ## -----------------------------------------
 #   # Output: Tests:
@@ -917,6 +963,10 @@ HTML(paste(sc6))
     HTML("
     <h3>History of Changes</h3>
         <hr>
+    <h4>2023-01-18</h4>
+      <ul>
+        <li>Added Leaflet Map with UVic location</li>
+      </ul>
     <h4>2023-01-17</h4>
       <ul>
         <li>Added `Accessability Tips` to `About` Tab</li>
