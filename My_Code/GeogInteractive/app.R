@@ -2,7 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-17 07:13 > 07:17 > 08:05
+## Updated 2023-01-18 00:55
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -24,41 +24,42 @@ geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stri
 
 
 #Data Clean geog_dt_time
-geog_dt_time <- read.csv("TimeLog-Current.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
-str(geog_dt_time)
-class(geog_dt_time$Start)
+geog_dt_time_all <- read.csv("TimeLog-Current.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
+str(geog_dt_time_all)
+class(geog_dt_time_all$Start)
 
 # duplicate Start and End columns
-geog_dt_time$StartCopy <- geog_dt_time$Start
-geog_dt_time$EndCopy <- geog_dt_time$End
+geog_dt_time_all$StartCopy <- geog_dt_time_all$Start
+geog_dt_time_all$EndCopy <- geog_dt_time_all$End
 
 # separate Start column into 2
-geog_dt_time <- geog_dt_time %>% tidyr::separate(StartCopy, c("StartDate", "StartTime"), sep = " ")
-geog_dt_time <- geog_dt_time %>% tidyr::separate(EndCopy, c("EndDate", "EndTime"), sep = " ")
+geog_dt_time_all <- geog_dt_time_all %>% tidyr::separate(StartCopy, c("StartDate", "StartTime"), sep = " ")
+geog_dt_time_all <- geog_dt_time_all %>% tidyr::separate(EndCopy, c("EndDate", "EndTime"), sep = " ")
 
- colnames(geog_dt_time)
+ colnames(geog_dt_time_all)
 # Reorder Columns by Position
 
-geog_dt_time = subset(geog_dt_time, select = -c(6 ,7, 14, 16))
-colnames(geog_dt_time)
+geog_dt_time_all = subset(geog_dt_time_all, select = -c(6 ,7, 14, 16))
+colnames(geog_dt_time_all)
 
-geog_dt_time <- geog_dt_time[, c(1, 2, 3, 5, 8, 9, 10, 11, 4, 6, 12, 13, 7)]
-colnames(geog_dt_time)
+geog_dt_time_all <- geog_dt_time_all[, c(1, 2, 3, 5, 8, 9, 10, 11, 4, 6, 12, 13, 7)]
+colnames(geog_dt_time_all)
 
+# keeping this doesn't honour the subset to remove these very columns!!
+# str(geog_dt_time_all)
+# # can't sort Start time because it is a Factor datatype
+# geog_dt_time_all$StartDate <- as.Date(geog_dt_time_all$Start, format = "%Y-%m-%d")
+# geog_dt_time_all$StartDate
+# geog_dt_time_all$EndDate <- as.Date(geog_dt_time_all$End, format = "%Y-%m-%d")
+# geog_dt_time_all$EndDate
+# str(geog_dt_time_all)
+#
+# geog_dt_time_all$Date <- as.Date(geog_dt_time_all$Date, format = "%Y-%m-%d")
+# geog_dt_time_all$Date
+# str(geog_dt_time_all)
+# colnames(geog_dt_time_all)
 
-
-str(geog_dt_time)
-# can't sort Start time because it is a Factor datatype
-geog_dt_time$StartDate <- as.Date(geog_dt_time$Start, format = "%Y-%m-%d")
-geog_dt_time$StartDate
-geog_dt_time$EndDate <- as.Date(geog_dt_time$End, format = "%Y-%m-%d")
-geog_dt_time$EndDate
-str(geog_dt_time)
-
-geog_dt_time$Date <- as.Date(geog_dt_time$Date, format = "%Y-%m-%d")
-geog_dt_time$Date
-str(geog_dt_time)
-colnames(geog_dt_time)
+geog_dt_time <- geog_dt_time_all
 
 ## -----------------------------------------
 # Define UI -----------
@@ -254,11 +255,14 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 tabPanel("TimeLog",
          HTML("
              <h3>Time Log for Interactive Geography Classes Code Work</h3>
-                <em>Please be patient - this page takes a few moments to load as it processes time log data results</em>
+                <em>Please be patient ...
+                <br /> ... this page takes a few moments to load as it processes time log data results</em>
               <hr>
               <h3>Sum of Total Hours To Date</h3>
               "),
          tableOutput("totalhours"),
+         # tableOutput("totalhourscode"),
+         # tableOutput("totalhoursadmin"),
          HTML("
                <hr>
                <h3>Time Log Plots</h3>
@@ -1380,28 +1384,6 @@ HTML(paste(sc6))
             axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
   # end ggplot -------------
       }) # end Output: timelogplot stack
-#
-#   ## -----------------------------------------
-#   # Output: timelogplot
-#   output$timelogplotside <- renderPlotly({
-#
-#     # this is aborting the soession when I click on this tab
-#     tl <- read.csv("TimeLog-Current.csv")
-#
-#     ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
-#       geom_bar(aes(fill = TaskType),
-#                stat = "identity", position = "dodge") +
-#       labs(title = "Task Time Log",
-#            subtitle = "Geog Interactive Course Explorations",
-#            caption = "UVic Geography Wendy Anthony 2023",
-#            x = "Date", y = "Total Hours") +
-#       # theme_classic() +
-#       theme_bw() +
-#       theme(legend.title = element_blank(),
-#             axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
-#     # end ggplot -------------
-#   }) # end Output: timelogplotside
-
 
   ## -----------------------------------------
   # Output: timelogplot
@@ -1435,8 +1417,16 @@ HTML(paste(sc6))
     #   # Output: TotalHours
     output$totalhours <- renderUI({
       TotalHours <- sum(geog_dt_time[, 'TotalTimeHr'])
-      TotalHours
-    }) # end of Output: Gantt
+        paste("Total Hours To Date of Plots = ", TotalHours, " hours")
+    }) # end of Output: TotalHours
+
+    ## -----------------------------------------
+    #   # Output: TotalHours
+    # Error: no applicable method for 'summarise' applied to an object of class "factor"
+    output$totalhourscode <- renderUI({
+      TotalHoursCode <- summarise(geog_dt_time[, 'TaskType'])
+      paste("Total Coding Hours To Date of Plots = ", TotalHoursCode, " hours")
+    }) # end of Output: TotalHours code
 
 ## -----------------------------------------
   #   # Output: Gantt
