@@ -203,16 +203,6 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      ), # end of Paths Viz Nested tabPanel
 
 ## -----------------------------------------
-                    # Nested tabPanel About: Links
-                    tabPanel("Links", tableOutput("links"),
-                             hr(),
-                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-                                align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-                                text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                             br(),
-                    ), # end of Nested tabPanel About: Links
-
-## -----------------------------------------
                   # Nested tabPanel About: map
                   tabPanel("Map",
                            h3("Map showing UVic Location"),
@@ -263,6 +253,16 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                br(),
                       ), # end of Nested tabPanel About: History --------------------
 
+
+## -----------------------------------------
+# Nested tabPanel About: Links
+tabPanel("Links", tableOutput("links"),
+         hr(),
+         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                                text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+         br(),
+), # end of Nested tabPanel About: Links
 
 ## -----------------------------------------
 # Nested tabPanel About: Timelog
@@ -775,9 +775,9 @@ HTML(paste(sc6))
          <div>
             <strong>To Use:</strong> Hover over or click any course to see other linked courses<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scroll sideways to see all 4 Years<br /><br />
-            Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html' target='_blank'>Interactive Study Focus Pathways</a>
+            Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html' target='_blank'>Interactive Study Focus Pathways</a>
               <br /><br />
-            <iframe style='height:790px; width:100%' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'></iframe>
+            <iframe style='height:790px; width:100%' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html'></iframe>
          </div>
          ")
   }) # End Output: Dataviz
@@ -919,9 +919,9 @@ HTML(paste(sc6))
             <p><a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html' target='_blank'>The Web Clone</a>
             <ul>
               <li>To create a non-Shiny web interface, all contained within one HTML webpage, The Web Clone is being developed in tandem with this Shiny App.</li>
-              <li>The Data Table is currently searchable</li>
-              <li>Work continues on filtering each Data Table column, and using nested tabs</li>
-              <li>Ultimate success will be achieved when filtered results can be saved as CSV! ... keep tuned ...</li>
+              <li>The Data Table is currently searchable, and each column can also be filtered</li>
+              <li>Work continues on using nested tabs</li>
+              <li>Ultimate success will be achieved when filtered results can be saved as CSV! >>> We Have SUCCESS!!</li>
               <li><a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>Web Clone Code on GitHub</a></li>
             </ul>
             </p>
@@ -966,6 +966,7 @@ HTML(paste(sc6))
         <hr>
     <h4>2023-01-18</h4>
       <ul>
+        <li>Finished adding all Geography Courses to Interactive Pathways DataViz !!!</li>
         <li>Added Leaflet Map with UVic location</li>
       </ul>
     <h4>2023-01-17</h4>
@@ -1198,14 +1199,8 @@ HTML(paste(sc6))
 <hr>
           <h3 id='todo'>To Do</h3>
           <ul>
-              <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
-                  <ul>
-                      <li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong>
-                  </ul>
-              <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
-              <li>Start to fill-in/update missing course info for Geography Course data table</li>
-              <li>update vIz chart with more courses, figure out how to add relationships to table?</li>
-              <li>Add program requirements page / tab</li>
+              <li>Check to see if any missing course info for Geography Course data table</li>
+              <li>Figure out how to add relationships to different visualization technique</li>
               <li>Add resources tab, links </li>
               <li>Use paper notebook for design ideas, flowcharts </li>
               <li>Make tabs figure bigger</li>
@@ -1217,8 +1212,8 @@ HTML(paste(sc6))
           <li></li>
           <li></li>
           <li></li>
-          <li></li>
-          <li></li>
+
+
           <li><a href=''></a></li>
           <li><a href=''></a></li>
 
@@ -1226,6 +1221,9 @@ HTML(paste(sc6))
 -->
           <h3 id='done'>Done ✅</h3>
           <ul>
+              <li>Got searchable table working >>> other than nested tabs, and ensuring I've copied all content over, the Clone is now truly a Clone!!</li>
+              <li>Adding all Geography Courses to Interactive Pathways DataViz !!! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html'>Curriculum Maps</a></li>
+              <li>Added Leaflet Map with UVic location</li>
               <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
               <li>add signature footer to bottom of page</li>
               <li>Embed links to geography interactive pdf concept maps</li>

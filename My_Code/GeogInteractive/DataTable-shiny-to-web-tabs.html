@@ -1,42 +1,28 @@
 <!DOCTYPE html>
-
+<html>
 <head>
-<title>Tabs to Explore Geog Courses Interactively</title>
-<!-- 
-Creation / Update History
-	Wendy Anthony 
-Created 2023-01-14
-
-Updated 2023-01-15 @ 09:46
- -->
+	<title>Geography Courses Data Table Bootstrap Table</title>
+	<!-- 
+	Started 2023-01-18
+	code from https://codepen.io/d_iqro/pen/djoYod 
+	-->
 	<link rel="icon" href="https://people.geog.uvic.ca/wanthony/website/favicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="description" content="Explore UVic Geography Courses Interactively">
-    <meta name="keywords" content="Explore UVic Geography Courses Interactively Template">
-    <meta name="author" content="Wendy Anthony">
-    <!-- https://blog.miguelgrinberg.com/post/beautiful-interactive-tables-for-your-flask-templates-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
 
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css">
+	<link rel="stylesheet" type="text/css" href="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
 
-<!-- https://examples.bootstrap-table.com/#extensions/export.html#view-source -->
-	<link href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css" rel="stylesheet">
-
-
-	 	 <!-- download screenshot to png code from https://codepen.io/koseare/pen/NWpMjeP -->
-<!--    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>	 	 -->
-
-
-
-<!-- Style sheet developed 2023-01-13/14
-UVic color >> #69A81D
-#87b94a - may be too light for tabs?
- -->
-<style type="text/css" media="all">@import ".css";</style>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js"></script>
+	<script type="text/javascript" src="https://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js"></script>
 
 <style type="text/css">
-	body {
+		body {
 		background-color: "#BD7589";
 		font-family: sans-serif;
 		display: block;
@@ -183,21 +169,14 @@ UVic color >> #69A81D
 	} 
 */
 
-
 </style>
-	
+
 </head>
-
 <body>
-<!--	<div class="card"> -->
-
-	<h2 name="tableofContents">Exploring UVic Geography Courses <img src="https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg" height = 50></h2>
+<h2 name="tableofContents">Exploring UVic Geography Courses - Shiny App Web Clone <img src="https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg" height = 50></h2>
 	<img src="https://www.uvic.ca/brand/assets/images/graphics/misc/Dynamic-edge.jpg" height = 50 width = "100%">
 <br />
-<div>
-	<h3>Welcome to this Shiny App Web Clone</h3>
-	<div></div><br />
-</div>
+
 
 <!-- ########## Tabs begin here ################## -->
 <div class="tab">
@@ -210,58 +189,1097 @@ UVic color >> #69A81D
   <button class="tablinks" onclick="openCity(event, 'About')">About</button>
 </div>
 
-<div id="CourseDataTable" class="tabcontent">
-	<h2>Geography Courses Data Table</h2>
-		<strong>Tips to Search Courses:</strong> Use Search Box to search the whole table
-		<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* start with partial word for best results
-		<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* e.g. 'clim' brings up both climate and climatology<br /><br />
-<!-- 					<div class="button_png"><a id="download" href="#">Screenshot to PNG</a></div><br /><br /> -->
-			
-					<!-- https://www.geeksforgeeks.org/how-to-perform-a-real-time-search-and-filter-on-a-html-table/ -->
-				  <b>Search table:</b> 
-          				<input id="gfg" type="text" placeholder="Search here">
-<table><thead><tr><th>Course</th><th>Name</th><th>Description</th><th>Prerequisites</th><th>Lab</th><th>Hours</th><th>Focus</th><th>Semester</th><th>ClassSize</th></tr></thead><tbody id="geogeek"><tr class="odd"><td>GEOG 100</td><td>Geography for Today</td><td>Each topic stretches the geographical imagination by offering a new lens through which to view the relationship between people and the richly diverse and varied environments they inhabit. From the intimate personal places of one individual's human experience to the worldwide reach of global-scale physical environmental changes that impact everyone, the complex challenges and opportunities of today's world are illuminated with the help of an integrated spatial perspective. Topic may change from year to year.</td><td>May be taken more than once for credit in different topics.</td><td></td><td>3-0-0</td><td>Elective</td><td>Fall</td><td>100</td></tr><tr class="even"><td>GEOG 101A</td><td>Environment, Society &amp; Sustainability</td><td>Introduction to the functioning of the biosphere, the ways in which humans alter natural processes, environmental consequences of these alterations and the implications for sustainability. Topics include: energy flows, biogeochemical cycles, ecosystem structure and dynamics, pollution, global change, water resources, biodiversity, endangered species, protected areas, agriculture and food, forestry, marine resources, poverty and development and different worldviews. Potential for a sustainable society is discussed.</td><td>Credit granted for only one of GEOG 101A, ES 101</td><td>Lab</td><td>3-2-0</td><td>Human Physical Environment</td><td>Fall Spring</td><td>110</td></tr><tr class="odd"><td>GEOG 101B</td><td>Space, Place and Society</td><td>Perspectives on the scope and purpose of human geography, emphasizing approaches, concepts and scales of geographical analysis. Topics include: social geography of cities; interpretation of regional; cultural and economic landscapes; urbanization and industrialization of regions; and economic development and social change in the world system.</td><td></td><td>Lab</td><td>3-2-0</td><td>Human</td><td>Fall Spring</td><td>132</td></tr><tr class="even"><td>GEOG 103</td><td>Introduction to Physical Geography</td><td>Introduces the science of Physical Geography using an earth-systems approach. Course themes include global climates and climate change, hydrology and water resources, geomorphology and natural hazards, and biogeography; with focus on how geographic sciences are applied to address real world issues.</td><td></td><td>Lab</td><td>3-2-0</td><td>Physical Environment</td><td>Fall Spring</td><td>198</td></tr><tr class="odd"><td>GEOG 104</td><td>Our Digital Earth</td><td>Introduces students to how geospatial technologies influence our daily lives and shape the world around us. Students learn how to collect and utilize location-based data, develop web maps and mobile mapping apps, create technologies to respond to environmental disasters and humanitarian crises, and think spatially in order to improve our understanding of our planet.</td><td>Credit granted for only one of GEOG 104, GEOG 100</td><td></td><td>3-0-0</td><td>Geomatics</td><td>Fall Spring</td><td>60</td></tr><tr class="even"><td>GEOG 130</td><td>Climate Change</td><td>An introduction to the fundamental physical principles governing the climate of the Earth system, and its response to anthropogenic factors. Topics include components of the climate system, radiative energy balance, forcings and feedbacks, the carbon cycle, climate of the past, impacts of climate change, global climate model projections, and approaches to mitigation and adaptation.</td><td>Cross-listed with EOS130</td><td>Lab</td><td>3-2-0</td><td>Physical Environment</td><td>Fall Spring</td><td>186</td></tr><tr class="odd"><td>GEOG 209</td><td>Introduction to Environmental Management</td><td>Introduces and critically interrogates approaches to the management or governance of environments and natural resources. Themes may include: parks and protected areas, fisheries, forestry, water and energy management; environmental impact assessment; comprehensive land-use and marine spatial planning; and urban sustainability, all in the context of profound political and environmental change, colonialism, and Indigenous resurgence.</td><td>GEOG 101A, GEOG 103</td><td>Lab</td><td>3-2-0</td><td>Environment</td><td>Fall</td><td>110</td></tr><tr class="even"><td>GEOG 211</td><td>Political and Economic Geography</td><td>Examines the major thematic concerns that have traditionally shaped the sub-disciplines of political and economic geography, while also engaging with emerging issues that are likely to become focal points in shaping future debates. Explores the co-constitutive relationship between politics, economics and space.</td><td>GEOG101B; minimum second-year standing; Credit granted for only one of GEOG 211, GEOG 201A, GEOG 201B</td><td>Lab</td><td>3-2-0</td><td>??</td><td>Fall</td><td>86</td></tr><tr class="odd selected"><td>GEOG 218</td><td>Social and Cultural Geography</td><td>Introduction to social and cultural geography with a focus on the interpretation of cultural landscapes, place-making, and the spatial expression of social and cultural identities. Lab assignments involve fieldwork and critical reflection on the relation between culture, society and landscape.</td><td>GEOG 101B</td><td>Lab</td><td>3-2-0</td><td>??</td><td>Spring</td><td>88</td></tr><tr class="even"><td>GEOG 220</td><td>Weather and Climate</td><td>An introduction to the physical processes that determine Earth's weather and climate. Topics include atmospheric composition, flows of energy through the atmosphere, small-scale and large-scale winds, cloud and precipitation processes, climate change.</td><td>Complete all of the following: 1.5 units of: 100 level PHYS; 1.5 units of: 100 level MATH; or permission of the department; Cross-listed with EOS 220; Credit  granted for only one of GEOG 220, EOS 220</td><td></td><td>3-0-2</td><td>Physical</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 222</td><td>Introduction to Maps and GIS</td><td>Introduces techniques and fundamentals of spatial data and analysis. Topics include: scale, map interpretation, GPS and Geographic Information Systems.</td><td>Minimum second-year standing</td><td>Lab</td><td>2-2-0</td><td>Geomatics</td><td>Fall Spring</td><td>110</td></tr><tr class="even"><td>GEOG 226</td><td>Introduction to Quantitative Methods in Geography</td><td>Application of statistical techniques to geographic problems. Topics include hypothesis formulation, sampling strategies, parametric and nonparametric statistical tests, statistical models. All laboratory exercises are computer based.</td><td>Complete 1 of the following: Complete 3 units from GEOG  100 - 299; Complete 3 units from EOS  100 - 299; Credit granted for only one of GEOG 226, GEOG 321</td><td>Lab</td><td>2-3-0</td><td>Environment Physical</td><td>Fall Spring</td><td>80</td></tr><tr class="odd"><td>GEOG 227</td><td>Introduction to Qualitative Methods in Geography</td><td>Introduces the main qualitative methodological approaches applied in human geography. A range of paradigms (ethnography, action research, the scientific method, Marxism and feminism), research design, data collection tools (survey and questionnaire design, focus groups, interviews, diagraming, participant observation, photo voice, participatory video), data analysis (narrative analysis, coding, data interpretation, thematic and interpretive analyses) and examine Indigenous Methodologies and apply to current issues in the discipline.</td><td>Minimum second-year standing; Credit granted for only one of GEOG 227, GEOG 327; formerly GEOG 327</td><td>Lab</td><td>2-2-0</td><td>??</td><td>Fall</td><td>44</td></tr><tr class="even"><td>GEOG 228</td><td>Introduction to Remote Sensing</td><td>Introduces the use of remotely sensed images to address information issues related to both physical and human geography. Students are exposed to a range of image types and resolutions, as well as methods and tools used for their analysis.</td><td>Minimum second-year standing</td><td>Lab</td><td>2-2-0</td><td>Geomatics</td><td>Fall</td><td>88</td></tr><tr class="odd"><td>GEOG 230</td><td>Scientific Computing and Environmental Data Analysis</td><td>An introduction to using computer programming to analyze climate data. Topics include fundamentals of programming, data visualization, analysis of spatial data, descriptive statistics, linear regression.</td><td>Complete all of the following: Complete 1.5 units of: 100 level MATH; Complete 1 of: EOS110, EOS130, GEOG130. or permission of the department; Cross-listed with EOS 230; Credit granted for only one of GEOG 230, EOS 230; </td><td>Tutorial</td><td>3-0-2</td><td>Physical</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 252</td><td>Introduction to Coastal Geography</td><td>Explores a wide variety of coastal topics from biophysical, ecological, and social-economic perspectives. Topics focus on coastal landscapes and communities that may include fundamentals of coastal oceanography, climate, biodiversity, water quality, fisheries, indigenous people, tourism and implications for management.</td><td>Minimum second-year standing; Credit granted for only one of GEOG 252, GEOG 352; Formerly GEOG 352</td><td></td><td>3-0-0</td><td>??</td><td>Fall</td><td>70</td></tr><tr class="odd"><td>GEOG 272</td><td>Introduction to Climatology and Hydrology</td><td>An investigation of the fundamental processes controlling climate and hydrology. Explores various factors and interactions that determine the spatial and temporal variations of individual climate elements. Special attention is given to the mutual interaction of climate with the Earth's surface and the role that ground surface type or cover plays in moderating local climate and hydrology.</td><td>Complete 1 of: GEOG 103, GEOG 119, EOS 110</td><td>Lab</td><td>3-2-0</td><td>Physical</td><td>Fall</td><td>88</td></tr><tr class="even"><td>GEOG 274</td><td>Introduction to Biogeography</td><td>Examines the relationships among organisms - principally plants and animals - and their environment, emphasizing their distributions across a range of spatial and temporal scales. Examines basic ecological and evolutionary concepts affecting biogeographic processes of dispersal, speciation and extinction; how patterns of biodiversity change over space and time from early earth history to the contemporary environment; the nature of changing biotic distributions with increasing human impacts and global change.</td><td>GEOG 101A, GEOG 103; BIOL 12, or BIOL 150B recommended</td><td>Lab</td><td>3-2-0</td><td>Environment Physical</td><td>Spring</td><td>88</td></tr><tr class="odd"><td>GEOG 276</td><td>Introduction to Geomorphology</td><td>Introduction to Earth surface process and landforms including riverine, desert, coastal, glacial, hillslope and permafrost environments. Focus on regional and Canadianlandscapes. Involves a field trip.</td><td>Complete 1 of: GEOG 103, GEOG 120, EOS 120</td><td>Lab</td><td>3-2-0</td><td>Physical</td><td>Fall Spring</td><td>92</td></tr><tr class="even"><td>GEOG 301</td><td>Environmental Impact Assessment</td><td>Introduction to Earth surface process and landforms including riverine, desert, coastal, glacial, hillslope and permafrost environments. Focus on regional and Canadian landscapes. Involves a field trip.</td><td>GEOG 209; Cross-listed with ES461; Credit granted for only one of GEOG 301, GEOG 391 (if taken in the same topic), ES 400A (if taken prior to September 1989), ES 410, ES 461</td><td></td><td>3-0-0</td><td>Environment</td><td>Fall Spring</td><td>45</td></tr><tr class="odd"><td>GEOG 303</td><td>Conservation and Ecology of Whales</td><td>Examines the fundamental biology, evolution and ecology of the modern whale species. Discusses the history and the spectrum of the human relationships with whales. Current topics in the marine mammal sphere are critically examined.</td><td>Complete 1 of: GEOG 274, BIOL 150A, BIOL 184, BIOL 190B; Credit granted for only one of GEOG 303, GEOG 391 (if taken in the same topic).</td><td></td><td>3-0-0</td><td>Environment</td><td>Fall</td><td>90</td></tr><tr class="even"><td>GEOG 304</td><td>Coastal Conservation</td><td>Examines the natural science and social science dimensions of conservation on the remote and largely undeveloped central and north coast of British Columbia. Students explore current issues with relevant theory, thus uniting contemporary affairs with scholarship. Major themes are energy development and exploitation of biological resources (like fish and wildlife), but specific themes might change among years. Students learn from western scientific approaches, First Nations perspectives, and their interaction.</td><td>Complete 1 of: GEOG 252, GEOG 352; Credit granted for only one of GEOG 304, GEOG 391(if taken in the same topic). </td><td></td><td>3-0-0</td><td>Environment</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 306</td><td>Geography of Canada</td><td>Explores the physical, historical, cultural, and political geography of Canada. Topics may include: human / environment relationships; settlement and development patterns; colonialism and Indigenous resurgence; national identity and conflict; and current issues in the Canadian context.</td><td>Minimum second-year standing</td><td></td><td>3-0-0</td><td>Elective</td><td>Fall Spring</td><td>65</td></tr><tr class="even"><td>GEOG 309</td><td>Geography of British Columbia</td><td>An examination of the physical, economic, and cultural landscapes that distinguish the cities and rural regions of Canada's West Coast province.</td><td>Minimum second-year standing, Credit will be granted for only one of GEOG 309, GEOG 219; Formerly GEOG 219</td><td></td><td>3-0-0</td><td>Elective</td><td>Fall</td><td>60</td></tr><tr class="odd"><td>GEOG 310</td><td>Global Migration</td><td>Contemporary issues relating to the patterns, processes, and politics of global migration. Theories, concepts and themes associated with cross-border migratory flows are explored as they relate to the increase in global migration and mobility of people of different nationalities and cultural backgrounds around the world. Topics include border control and security, demographic patterns of movement relating to refugees and internally-displaced persons, human smuggling and trafficking.</td><td>Minimum second-year standing; Credit granted for only one of GEOG 310, GEOG 391 (if taken in the same topic)</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>50</td></tr><tr class="even"><td>GEOG 313</td><td>Field Studies in Mountain Meteorology</td><td>An immersive opportunity to understand the physical processes of meteorological phenomena in mountain environments. Measuring and monitoring of snowpack, extreme weather and climate and their associated hazards in mountain ranges are prominent course themes. A field trip fee may be applied.</td><td>GEOG 272</td><td></td><td>3-0-0</td><td>Physical</td><td>Spring</td><td>16</td></tr><tr class="odd"><td>GEOG 314</td><td>Global Environment Change and Human Response</td><td>Based on four components: global environmental change; sustainable development; biodiversity; and population impoverishment and environmental degradation. Lectures and discussion emphasize the causes of global change, the present and expected impacts on natural and social systems, and response strategies that have been proposed or enacted.</td><td>Minimum second-year standing; Credit granted for only one of GEOG 314, GEOG 214 (if taken prior to December 2006).</td><td></td><td>3-0-0</td><td>Environment</td><td>Fall</td><td>75</td></tr><tr class="even"><td>GEOG 315</td><td>Geocaching</td><td>Introduces the activity of geocaching, the fundamentals of GPS navigation and data collection. Emphasis is placed on geocaching, the history and workings of GPS and associated navigation systems, map datums and coordinate systems and basics of GPS data management. Hands-on operating and working with GPS units in the field, through a variety of geocaching activities and assignments. Examples of the use of GPS in geographical research is demonstrated through lectures and readings.</td><td>Minimum third-year standing; Credit granted for only one of GEOG 315, GEOG 391 (if taken in the same topic).</td><td></td><td>3-0-0</td><td>Elective</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 316</td><td>Field Studies in Human Geography</td><td>Explores concepts and concerns of human geography including personal, cultural and political considerations of space, place and society through practical, experiential learning. A field trip fee may be applied.</td><td>Complete all of: GEOG 101A, GEOG 101B; Complete 1 of: GEOG 209, GEOG 211, GEOG 218; Credit granted for only one of GEOG 316, GEOG 391 (if taken in the same topic); May be taken more than once for credit in different topics with permission of the department</td><td></td><td>3-0-0</td><td>Human</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 317</td><td>Field Studies in Sustainable Communities</td><td>The challenges and opportunities for promoting resilient, inclusive, equitable and sustainable communities are explored through practical and experiential learning. A field trip fee may be applied.</td><td>Complete all of: GEOG 101A, GEOG 101B; Complete 1 of: GEOG 209, GEOG 211, GEOG 218, or permission of the department; Credit granted for only one of GEOG 317, GEOG 391 (if taken in the same topic); </td><td></td><td>3-0-0</td><td>Human</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 319</td><td>Remote Sensing of the Environment using Passive Sensors</td><td>Focuses on physical principles underlying passive remote sensing and electromagnetic propagation in free space and matter; attenuation, absorption and scattering mechanisms; interaction of energy with the atmosphere and Earth materials such as vegetation, soil, rock, water and urban structures.</td><td>Complete all of: GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: Complete all of: GEOG 226, 1.5 units minimum 200 level STAT or equivalent, </td><td>Lab</td><td>2-2-0</td><td>Geomatics</td><td>Fall</td><td>44</td></tr><tr class="even"><td>GEOG 322</td><td>Remote Sensing of the Environment using Active Sensors</td><td>Processing and analysis of remote sensing data collected using active sensors - those that transmit their own energy. Data from active microwave sensors, including RADAR and Light Detection and Ranging (LiDAR) sensors, are discussed and analyzed with respect to their applicability as standalone and complementary data sources to remote sensing data acquired using passive systems. Laboratory assignments use image analysis software in a variety of applications.</td><td>Complete all of: GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: Complete all of: GEOG 226, 1.5 units minimum 200 level STAT or equivalent, </td><td>Lab</td><td>2-2-0</td><td>Geomatics</td><td>Spring</td><td>44</td></tr><tr class="odd"><td>GEOG 323</td><td>Cartography</td><td>Introduces topographic and thematic cartography. Emphasis on cartographic data manipulation, generalization and symbolization; map design, visualization and communication. Laboratory assignments provide practical experience in designing and drafting maps.</td><td>Complete all of: GEOG 222; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent</td><td>Lab</td><td>2-2-0</td><td>Geomatics</td><td>Fall Spring</td><td>44</td></tr><tr class="even"><td>GEOG 324</td><td>Directions in Geography</td><td>An intellectual history of geographical thought, concentrating on trends, ideologies and controversies since 1960. Idiographic, nomothetic, quantitative, behavioural, applied radical, humanistic and recent social theory and GIS approaches are critically discussed in seminars.</td><td>4.5 units of 100- or 200-level GEOG courses.</td><td></td><td>3-0-0</td><td>Elective</td><td>Fall</td><td>30</td></tr><tr class="odd"><td>GEOG 325</td><td>Field Surveying</td><td>An introduction to fundamental concepts of surveying and field work. This is an instrument-based course covering differential leveling, traversing, tachometry, GPS and their applications to field work.</td><td>GEOG 222; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent; 1.5 units of GEOG 100-level recommended prior to GEOG 325</td><td>Lab</td><td>2-3-0</td><td>Environment</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 328</td><td>GIS Analysis</td><td>Focuses on analysis for digital mapping and modeling, developing and using geographic data to answer spatial research questions, conducting basic spatial interpolations and carrying-out multi-criteria modelling.</td><td>GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent</td><td>Lab</td><td>2-2-0</td><td>Geomatics</td><td>Fall Spring</td><td>66</td></tr><tr class="odd"><td>GEOG 329</td><td>GIS Applications and Tools</td><td>The basics of GIS tool development including applications, desktop GIS customization, map mashups, model building in a GIS environment, Internet GIS, building web pages that include GIS maps and tasks.</td><td>Complete all of: GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent</td><td>Lab</td><td>2-2-0</td><td>Geomatics</td><td>Spring</td><td>66</td></tr><tr class="even"><td>GEOG 332</td><td>Urban Development in the Global South</td><td>Examines fundamental characteristics of cities in the Global South with a focus on issues of urban development as well as social, cultural, economic, and environmental challenges in the region. Addresses the driving forces of urban growth and investigates the consequences of this transformation in terms of economic and human development as well as environmental sustainability. Discussion and analysis of contentious urban issues and case studies from the Global South.</td><td>GEOG 211, GEOG 218</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>40</td></tr><tr class="odd"><td>GEOG 339</td><td>Disaster Management and Community Resilience</td><td>Explores hazard events and the factors and conditions that lead to disasters. Covers such events as earthquakes, hurricanes, tsunamis, floods, droughts and examines their human and natural dimensions.Emphasis on understanding vulnerability and risk assessment, sustainable hazards mitigation and disaster management approaches to enhancing community resilience.</td><td>GEOG 103, GEOG 211, GEOG 218; Credit will be granted for only one of GEOG 339, GEOG 391 (if taken in the same topic), GEOG 472; Formerly part of GEOG 472</td><td></td><td>3-0-0</td><td>Human</td><td>Spring</td><td>24</td></tr><tr class="even"><td>GEOG 340</td><td>Cities and Planning</td><td>Overview of key thematic areas related to cities and planning in the North American context. Includes a critical examination of the history of urban planning and contemporary issues in urban geography to foster a deeper appreciation of the spatial politics of the urban experience.</td><td>Complete 1 of: GEOG 211, GEOG 218; Credit will be granted for only one of GEOG 340, GEOG 340B, GEOG 349</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>65</td></tr><tr class="odd"><td>GEOG 346</td><td>Health, Environment and Community</td><td>Examines the dynamics and linkages between health and the environment at the micro scale of individuals to the macro scale of communities and nations. Definitions of health, wellness and well-being, as well as healthy communities; focusing on the range of factors, conditions and determinants that make people and place healthy or unhealthy.</td><td>Complete 1 of: GEOG 209, GEOG 211, GEOG 218; Recommendations: GEOG 226 or 1.5 units 200 level STAT</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>60</td></tr><tr class="even"><td>GEOG 347B</td><td>Geographies of Development</td><td>A critical examination of development theories, trends and issues. Topics included are the definition and measurement of poverty and inequality, an overview of global population growth and structure, the impact of globalization on third-world economies, the effectiveness of foreign aid, and food security constraints.</td><td>GEOG 211; Credit will be granted for only one of GEOG 347B, GEOG 347</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>24</td></tr><tr class="odd"><td>GEOG 353</td><td>Coastal and Marine Resource Management</td><td>An integration of the scientific, cultural, and policy dimensions of resource management in coastal and marine systems. Concepts will be illustrated with examples from wildlife and fisheries management. Although global context is set, a special focus will be on British Columbia's coast.</td><td>Complete 1 of: GEOG 209, GEOG 252, GEOG 352; permission of the instructor; Credit will be granted for only one of GEOG 353, GEOG 452</td><td></td><td>3-0-0</td><td>Environment</td><td>Spring</td><td>55</td></tr><tr class="even"><td>GEOG 357</td><td>Parks and Protected Areas</td><td>An investigation of the principles and concepts underlying the designation, planning and management of protected areas such as national and provincial park systems. Topics include: the history and philosophy of protected areas; international classifications and examples; role of native peoples; carrying capacity; visitor management; interpretation; ecosystem integrity; ecosystem management; and a variety of case studies. Students should be prepared to undertake one or more weekend field trips; a fee for each field trip may be applied.</td><td>GEOG 209; Credit will be granted for only one of GEOG 357, GEOG 455, GEOG 459A, GEOG 459B.</td><td></td><td>3-0-0</td><td>Environment</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 358</td><td>Landscape Ecology</td><td>Landscape ecology emphasizes the interaction between spatial pattern and ecological processes. Focus is on the role of spatial heterogeneity in affecting the distribution and abundance of organisms, mass and energy transfers, and alterations of this structure by natural or anthropogenic forces. Implications for wildlife management and conservation are discussed.</td><td>One of GEOG 101A, GEOG 103; Complete 1 of the following GEOG 226, 1.5 units minimum 200 level STAT or equivalent; Complete 1 of: BIOL 215, ES 240, ES 348; 1.5 units 100 level MATH; minimum third-year standing; GEOG 274 recommended prior to GEOG 358</td><td></td><td>3-0-0</td><td>Environment Physical</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 370</td><td>Hydrology</td><td>An overview of hydrological processes, measurement techniques and data analysis. The movement of water in the hydrologic cycle via precipitation, interception, evapotranspiration, surface runoff, infiltration, soil moisture, groundwater flow and streamflow generation are examined. Applied aspects and local examples are discussed. Involves laboratory assignments and a field trip.</td><td>Complete all of: GEOG 272; Completed or concurrently enrolled in: EOS 340; 1.5 units of 100-level MATH; minimum third-year standing; Note: EOS 340 can be taken as a prerequisite or a corequisite.</td><td>Lab</td><td>3-2-0</td><td>Physical</td><td>Spring</td><td>44</td></tr><tr class="odd"><td>GEOG 371</td><td>Water Resources Management</td><td>A study of water resources management in different parts of the world, examining the influence of various physical, economic, social, political and technological factors. Examines the alternative ways in which such problems as water scarcity, floods and declining water quality are handled. Examines in detail a number of major water development schemes. Students are expected to undertake a modest research project and report upon it.</td><td>GEOG 209, GEOG 272</td><td></td><td>3-0-0</td><td>Environment Physical</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 373</td><td>Applied Climatology</td><td>A study of the application of physical principles to practical problems in climatology and the reciprocal interaction between climate and human activities. Topics include: urban effects on climate; air pollution; human bioclimatology; agricultural climatology; and methods of microclimatic modification.</td><td>GEOG 272; 1.5 units 100 level MATH; minimum third-year standing</td><td>Lab</td><td>3-2-0</td><td>Physical</td><td>Spring</td><td>48</td></tr><tr class="odd"><td>GEOG 376</td><td>Process Geomorphology</td><td>An investigation of the physical processes that create and maintain landforms. Focus on measurement and analysis of morphodynamic processes in fluvial, aeolian, coastal, glacial, hillslope, and/or periglacial landscapes (e.g., sediment transport, erosion, wind/wave energy, river discharge, glacial dynamics, weathering rates). Involves a field trip and/or a group project.</td><td>Complete 1 of the following: GEOG 276, Complete all of: EOS 120, EOS 201; Complete 1.5 units from MATH  100 - 199; minimum third-level standing</td><td>Lab</td><td>3-2-0</td><td>Physical</td><td>Fall</td><td>72</td></tr><tr class="even"><td>GEOG 380</td><td>Community Mapping</td><td>Examines the theory and practice of community based mapping and how it can facilitate dialogue and collaborative partnering, thus leading to knowledge co-creation, planning, citizen empowerment and engagement, building consensus, more informed policy making and ultimately social justice. This course is designed to be action-oriented and experiential, and has a very high local field component.</td><td>Minimum third-year standing; Credit will be granted for only one of GEOG 380, GEOG 391 (if taken in the same topic)</td><td></td><td>3-0-0</td><td>Human</td><td>Fall Spring</td><td>25</td></tr><tr class="odd"><td>GEOG 386</td><td>Contemporary Geopolitics</td><td>An overview of global geopolitics and the transformation of the world political map. Examination of key concepts and approaches to contemporary geopolitics through a series of regional case studies.</td><td>Minimum second-year standing; Credit will be granted for only one of GEOG 386, GEOG 348</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>50</td></tr><tr class="even"><td>GEOG 388</td><td>Topics in Regional Studies</td><td>Geography of a selected region of the world from a systematic perspective. Topics may include: the physical and human landscape; settlement; economic, political and social geography; spatial variation in modernization and economic growth.</td><td>Not open to students with credit in GEOG 466 without permission of the department; Credit will be granted for only one of GEOG 388, GEOG 288; Credit will be granted for only one of GEOG 388, GEOG 382; Credit will be granted for only one of GEOG 388, GEOG 383; May be taken more than once for credit in different topics with permission of the department.</td><td></td><td>3-0-0</td><td>Elective</td><td>Fall</td><td>30</td></tr><tr class="odd"><td>GEOG 391</td><td>Topics in Geography: Indigenous Geographies</td><td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td><td>Minimum second-year standing; dditional prerequisites set by department depending upon topic; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>30</td></tr><tr class="even"><td>GEOG 391</td><td>Topics in Geography: Community Engaged Research and Practice</td><td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td><td>Minimum second-year standing; dditional prerequisites set by department depending upon topic; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Human</td><td>Spring</td><td>24</td></tr><tr class="odd"><td>GEOG 391</td><td>Topics in Geography: Geography of Surfing</td><td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td><td>Minimum second-year standing; dditional prerequisites set by department depending upon topic; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Human</td><td>Spring</td><td>24</td></tr><tr class="even"><td>GEOG 404</td><td>Space and Power</td><td>nvestigates how political processes shape human geography, and conversely, how assumptions about geography underscore global politics. Examines the key themes, concepts, and theories that define the study of politics from a geographical perspective. Students gain a critical understanding of and appreciation for the historical and contemporary challenges of sovereignty, territoriality, governmentality, identity, citizenship, difference, violence, genocide, colonialism, and war.</td><td>Complete 1 of: GEOG 332, GEOG 344, GEOG 347B, GEOG 386; Credit will be granted for only one of GEOG 404, GEOG 491 (if taken in the same topic)</td><td></td><td>3-0-0</td><td>Human</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 405</td><td>Dynamics of the Cryosphere</td><td>Explores the dynamics of the four main elements of the Earth's cryosphere - glaciers, snow cover, floating ice and permafrost - in physical, climatological, hydrological and Earth system contexts. A field trip fee may be applied.</td><td>Complete 1 of: GEOG 370, GEOG 373, EOS 340; Credit will be granted for only one of GEOG 405, GEOG 491 (if taken in the same topic)</td><td></td><td>3-0-0</td><td>Physical</td><td>Fall</td><td>25</td></tr><tr class="even"><td>GEOG 406</td><td>Sustainable Cities</td><td>Explores the opportunities and challenges of creating ecologically-minded, resilient, healthy, and socially just cities with a practical, community-engaged focus.</td><td>Complete 2 of: GEOG 209, GEOG 332, GEOG 340, GEOG 346</td><td></td><td>3-0-0</td><td>Human</td><td>Spring</td><td>30</td></tr><tr class="odd"><td>GEOG 407</td><td>Activism and Community-Based Planning</td><td>Investigates participatory approaches to community planning in urban settings. Challenges modernist traditions in planning theory by examining key themes, concepts, and theories that define the study of planning from an activist perspective. Provides students with an opportunity to become actively engaged in their community.</td><td>Complete 1 of: GEOG 332, GEOG 340, GEOG 343</td><td></td><td>3-0-0</td><td>Human</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 409</td><td>Personal Space</td><td>Collective exploration of how geographical interests in gender, sexuality and identity intersect with a student's own personal and unique spaces of reflection, action and interaction. Themes may include: Feminist, Lesbian, Gay, Bisexual, Trans, Non-binary, Queer, Two-Spirit and Masculinist discourses as they relate to geographies of social justice; the reciprocal role of space in the creation, loss, and (re)claiming of identities; the body as a site of struggle; and intersectionality with a wide variety of lived experiences.</td><td>Minimum fourth-year standing; Credit will be granted for only one of GEOG 409, GEOG 391 (if taken in the same topic), GEOG 491 (if taken in the same topic)</td><td></td><td>3-0-0</td><td>Human</td><td>Spring</td><td>25</td></tr><tr class="odd"><td>GEOG 411</td><td>Community-based Participatory Research</td><td>Theory and practice of Community-based Participatory Research (CBPR) with a special focus on addressing community-identified research needs linked to the United Nations Sustainable Development Goals (UN SDG). Familiarizes students with the UN SDGs and explores CBPR as an important mechanism for bridging diverse and co-created knowledges into local action through community partnerships.</td><td>GEOG 227, Or permission of the instructor; Minimum third-year standing; Credit will be granted for only one of GEOG 411, GEOG 491 (if taken in the same topic).</td><td></td><td>3-0-0</td><td>??</td><td>Fall</td><td>25</td></tr><tr class="even"><td>GEOG 418</td><td>Advanced Spatial Analysis and Geo-statistics</td><td>Explores advanced topics in the numerical analysis of points, lines, areas, and surfaces in discrete and continuous space, drawing on methodologies from geo-statistics, spatial analysis, regional sciences and landscape ecology. Includes coverage of spatial systems modelling and simulation, spatio-temporal analysis, exploratory spatial analysis and spatial data mining.</td><td>Complete 1 of: GEOG 328, GEOG 329; GEOG 328 and GEOG 329 recommended prior to GEOG 418; May be offered as a joint undergraduate and graduate class</td><td>Lab</td><td>2-3-0</td><td>Geomatics</td><td>Fall</td><td>35</td></tr><tr class="odd"><td>GEOG 420</td><td>Field Studies in Coastal Geomatics</td><td>An integrated approach for using geomatics (remote sensing, GIS, spatial analysis) for data acquisition, processing and analysis to improve our understanding of marine and coastal areas. Topics focus on applications of geomatics for environmental and social lab work and seminar discussions. Students should be prepared to undertake one or more weekend field trips; a fee for each field trip may be applied.</td><td>GEOG 319; Complete 1 of: GEOG 328, GEOG 329; GEOG 252 and one of GEOG 370, GEOG 373, GEOG 376 recommended prior to GEOG 420.</td><td>Lab</td><td>2-3-0</td><td>Geomatics</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 422</td><td>Advanced Topics in Remote Sensing</td><td>Aspects of remote sensing including processing and classification of digital satellite and airborne data and digital elevation modelling. Emphasis on the processes of interpreting remotely sensed data, the enhancement of digital data for visual analysis and the integration of remotely sensed data with other spatial data.</td><td>Complete 1 of: GEOG 319, GEOG 322; GEOG 319 and GEOG 322 recommended prior to GEOG 422.</td><td>Lab</td><td>2-3-0</td><td>Geomatics</td><td>Spring</td><td>22</td></tr><tr class="odd"><td>GEOG 424</td><td>Field Studies in Coastal Geomorphology</td><td>An advanced, field-based exploration of coastal geomorphic processes and landforms. Involves a week-long field trip to local coastal sites where students apply geomorphic concepts and methods towards a series of independent research assignments and/or group projects. Areas of investigation span nearshore to backshore environments and wave, tidal, fluvial/estuarine and aeolian processes. A field trip fee may be applied.</td><td>GEOG 376; GEOG 252 recommended prior to GEOG 424; permission of the department; Permission of the department must be acquired by 15 March of previous Winter Session.</td><td></td><td>3-0-0</td><td>Physical</td><td>Spring</td><td>24</td></tr><tr class="even"><td>GEOG 428</td><td>Advanced Topics in Geographic Information Sciences</td><td>Contemporary research topics in the geographic information sciences. Topic varies annually, but are selected from one of the following: spatial decision support; visualization; business demographics; environmental modeling; or spatial analysis.</td><td>Complete 1 of: GEOG 328, GEOG 329; GEOG 328 and GEOG 329 recommended prior to GEOG 428; Credit will be granted for only one of GEOG 428, GEOG 423</td><td>Lab</td><td>2-3-0</td><td>Geomatics</td><td>Spring</td><td>40</td></tr><tr class="odd"><td>GEOG 438</td><td>Aquaculture in British Columbia</td><td>Introduction to the aquaculture industry within British Columbia, reviewing the history, culture species, production methods (hatchery through seafood processing), technological innovations, economics, marketing, environmental impacts/management, social issues (including First Nations), and the regulatory framework for this agri-food industry. Includes a field trip to aquaculture sites. Students should be prepared to undertake one or more weekend field trips, or a week-long field trip; a fee for each field trip may be applied.</td><td>Complete 1 of: GOEG 304, GEOG 353</td><td></td><td>3-0-0</td><td>Environment</td><td>Spring</td><td>25</td></tr><tr class="even"><td>GEOG 450</td><td>Environment and Sustainability in Practice</td><td>Examines the decision making theory and real world processes associated with resource management at the policy and field levels. Case studies used to illustrate decision making behaviour, from conflict to co-operation. May include simulation sessions, field trips and field methods review.</td><td>Complete 2 of: GEOG 310, GEOG 303, GEOG 304, GEOG 314, GEOG 339, GEOG 353, GEOG 357, GEOG 358, GEOG 371; Credit will be granted for only one of GEOG 450, GEOG 450A</td><td></td><td>3-0-0</td><td>Environment</td><td>Spring</td><td>30</td></tr><tr class="odd"><td>GEOG 453</td><td>Field Studies in Coastal and Marine Management</td><td>Integrated coastal management is applied through community-based research. Based on a week-long field camp, discussions, projects and presentations, students gain first-hand experience in both biophysical and socio-economic perspectives of coastal areas. A field trip fee may be applied.</td><td>GEOG 353</td><td></td><td>3-0-0</td><td>Environment</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 456</td><td>Wildlife Conservation</td><td>An examination of the history of the conservation movement and wildlife management, human dimensions and the value of wildlife, and consequences of over-harvesting, habitat fragmentation, and invasive species for present-day wildlife conservation and, ways forward.</td><td>Complete 1 of: BIOL 370, ES 320, GEOG 274, GEOG 304, GEOG 358; Credit will be granted for only one of GEOG 456, GEOG 356; Formerly GEOG 356</td><td></td><td>3-0-0</td><td>Environment</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 457</td><td>Marine Protected Areas</td><td>An in-depth look at the challenges facing designation and management of marine protected areas in Canada and internationally. Includes topics such as network design, governance, zoning, conflicts, ecotourism and fisheries. Students should be prepared to undertake one or more field trips; a fee for each field trip may be applied.</td><td>GEOG 357; GEOG 252 and GEOG 304 recommended prior to GEOG 457; Credit will be granted for only one of GEOG 457, GEOG 455, GEOG 459A, GEOG 459B</td><td></td><td>3-0-0</td><td>Environment</td><td></td><td></td></tr><tr class="even"><td>GEOG 474</td><td>Field Studies in Biogeography</td><td>A field-research course in biogeography based on a combination of reading, discussion, and data analysis. Involves a week-long field trip; a field trip fee may be applied.</td><td>GEOG 274; permission of the department; ermission of the department must be acquired by 15 March of previous Winter Session; GEOG 252 and GEOG 303 recommended prior to GEOG 474; Credit will be granted for only one of GEOG 474, GEOG 471A; </td><td></td><td>3-0-0</td><td>Environment Physical</td><td>??</td><td></td></tr><tr class="odd"><td>GEOG 476</td><td>Advanced Topics in Geomorphology</td><td>Focusing on various geomorphologic themes, students complete a major research project based on field work to supplement lectures, seminars and field/lab projects.</td><td>GEOG 376; Credit granted for only one of GEOG 476, GEOG 471C</td><td></td><td>3-0-0</td><td>Physical</td><td>Fall</td><td>25</td></tr><tr class="even"><td>GEOG 477</td><td>Field Studies in Physical Geography</td><td>The nature of scientific research in physical geography is examined through field and laboratory techniques. Includes a week-long field camp where basic approaches, methodologies and techniques are used to prepare a series of reports based on field data and collected samples. A field trip fee may be applied.</td><td>Complete 1 of: GEOG 358, GEOG 370, GEOG 373, GEOG 376; permission of the department; Permission of the department must be acquired by 15 March of previous Winter Session; Credit will be granted for only one of GEOG 477, GEOG 471D</td><td></td><td>3-0-0</td><td>Physical</td><td>Fall</td><td>12</td></tr><tr class="odd"><td>GEOG 484</td><td>Advanced Topics in Weather and Climate</td><td>Detailed examination of atmospheric structures and processes underlying weather and climate. Practical work focuses on analysis of vertical stability and utilizing computer weather model data.</td><td>GEOG 373</td><td></td><td>3-0-0</td><td>Physical</td><td>Spring</td><td>16</td></tr><tr class="even"><td>GEOG 487</td><td>Advanced Landscape Ecology</td><td>Explores current theory, concepts, methods and applications of landscape ecology for both natural and managed landscapes. Topics may include relationship of landscape ecology to ecological theory, models of metapopulations, landscape structure and animal movement and predator-prey interactions. Applications including forestry, parks and protected areas and wildlife management. Some years the course is taught as a field course.</td><td>GEOG 358</td><td></td><td>3-0-0</td><td>Environment Physical</td><td>Spring</td><td>24</td></tr><tr class="odd"><td>GEOG 490</td><td>Directed Studies in Geography</td><td>In special cases, with the consent of the department and the individual instructor concerned, a student may be permitted to pursue a course of directed studies.</td><td>Complete all of the following: Minimum fourth-year standing, permission of the department; May be taken more than once for credit to a maximum of 3 units; Courses of 1.5 or 3 units may be arranged, but no student is permitted to take more than 3 units of directed studies.</td><td></td><td></td><td>Directed Studies</td><td>??</td><td></td></tr><tr class="even"><td>GEOG 491</td><td>Advanced Topics in Geography: Anti-Racism and Geography</td><td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td><td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Human</td><td></td><td></td></tr><tr class="odd"><td>GEOG 491</td><td>Advanced Topics in Geography: Community-Based Participatory Research</td><td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td><td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Human</td><td></td><td></td></tr><tr class="even"><td>GEOG 491</td><td>Advanced Topics in Geography: Urban Mobility</td><td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td><td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Human</td><td>Fall</td><td>24</td></tr><tr class="odd"><td>GEOG 491</td><td>Advanced Topics in Geography: Reconstructing Quaternary Environmental Change</td><td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td><td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Environment</td><td>Spring</td><td>20</td></tr><tr class="even"><td>GEOG 491</td><td>Advanced Topics in Geography: Indigenous Environmental Activism</td><td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td><td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Human</td><td>Spring</td><td>24</td></tr><tr class="odd"><td>GEOG 491</td><td>Advanced Topics in Geography: Geographies of Waste</td><td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td><td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td><td></td><td>3-0-0</td><td>Environment</td><td>Fall</td><td>30</td></tr><tr class="even"><td>GEOG 499A</td><td>Honours Thesis</td><td>Students prepare the first part of an honours thesis under the direction of a faculty member from the department.</td><td>Minimum fourth-year standing; declared Honours in Geography; Credit will be granted for only one of GEOG 499A, GEOG 499, GEOG 499B; GEOG 499A and B are "tied" courses and must be taken in consecutive terms except with permission of the department. Credit and final grade for GEOG 499B will be assigned only upon completion of both courses; if 499B is not completed, a grade equivalent to N will be assigned to 499A</td><td></td><td>3-0-0</td><td>Honours</td><td>Fall Spring</td><td>20</td></tr><tr class="odd"><td>GEOG 499B</td><td>Honours Thesis</td><td>Students prepare the first part of an honours thesis under the direction of a faculty member from the department.</td><td>Minimum fourth-year standing; declared Honours in Geography; Credit will be granted for only one of GEOG 499A, GEOG 499, GEOG 499B; GEOG 499A and B are "tied" courses and must be taken in consecutive terms except with permission of the department. Credit and final grade for GEOG 499B will be assigned only upon completion of both courses; if 499B is not completed, a grade equivalent to N will be assigned to 499A</td><td></td><td>3-0-0</td><td>Honours</td><td>Fall Spring</td><td>20</td></tr><tr class="even"><td>EOS 120 </td><td>The Dynamic Earth</td><td></td><td></td><td></td><td></td><td>Elective</td><td></td><td></td></tr></tbody></table>
 
-<hr>
-</div> <!-- ########## DataTable Tab ends ################## -->
+<div id="CourseDataTable" class="container tabcontent">
+<h1>Geography Courses Data Table</h1>
 
-<!-- https://examples.bootstrap-table.com/#extensions/export.html#view-source -->
-<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/tableExport.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF/jspdf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.21.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
-<!-- https://examples.bootstrap-table.com/#extensions/export.html#view-source -->
-<script>
-  var $table = $('#table')
+              <ul>
+                <li><strong>Search Box:</strong> Filters observations from all columns e.g. Type '103'</li>
+                  <ul>
+                  <li><strong>Tip:</strong> Search partial spelling e.g. 'clim' brings up 'climate' and 'climatology'</li>
+                  </ul>
+                <li><strong>Filter Boxes:</strong> Type in box under Course heading; can use multiple filter boxes</li>
+                <li><strong>Sort Order:</strong> Use arrows next to column name</li>
+                <li><strong>Download: </strong> Save Filtered Results as CSV, XML, TXT, SQL, or Excel using Button to left of Search Box</li>
+              </ul>
+              <hr>
 
-  $(function() {
-    $('#toolbar').find('select').change(function () {
-      $table.bootstrapTable('destroy').bootstrapTable({
-        exportDataType: $(this).val(),
-        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
-        columns: [
-          {
-            field: 'state',
-            checkbox: true,
-            visible: $(this).val() === 'selected'
-          },
-          {
-            field: 'id',
-            title: 'ID'
-          }, {
-            field: 'name',
-            title: 'Item Name'
-          }, {
-            field: 'price',
-            title: 'Item Price'
-          }
-        ]
-      })
-    }).trigger('change')
-  })
-</script>
+<table id="table1" 
+			 data-toggle="table"
+			 data-search="true"
+			 data-filter-control="true" 
+			 data-show-export="true"
+			 data-click-to-select="true"
+			 data-toolbar="#toolbar"
+       class="table-responsive">
+	<thead>
+		<tr>
+			<th data-field="state" data-checkbox="true"></th>
+			<th data-field="course" data-filter-control="input" data-sortable="true">Course</th>
+			<th data-field="name" data-filter-control="input" data-sortable="true">Name</th>
+			<th data-field="desc" data-filter-control="input" data-sortable="true">Description</th>
+			<th data-field="prereq" data-filter-control="input" data-sortable="true">Prerequisites</th>
+			<th data-field="lab" data-filter-control="input" data-sortable="true">Lab</th>
+			<th data-field="hours" data-filter-control="input" data-sortable="true">Hours</th>
+			<th data-field="focus" data-filter-control="input" data-sortable="true">Focus</th>
+			<th data-field="semester" data-filter-control="input" data-sortable="true">Semester</th>
+			<th data-field="size" data-filter-control="input" data-sortable="true">ClassSize</th>
+		</tr>
+	</thead>
+	<tbody>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 100</td>
+			<td>Geography for Today</td>
+			<td>Each topic stretches the geographical imagination by offering a new lens through which to view the relationship between people and the richly diverse and varied environments they inhabit. From the intimate personal places of one individual's human experience to the worldwide reach of global-scale physical environmental changes that impact everyone, the complex challenges and opportunities of today's world are illuminated with the help of an integrated spatial perspective. Topic may change from year to year.</td>
+			<td>May be taken more than once for credit in different topics.</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Elective</td>
+			<td>Fall</td>
+			<td>100</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="1" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 101A</td>
+			<td>Environment, Society &amp; Sustainability</td>
+			<td>Introduction to the functioning of the biosphere, the ways in which humans alter natural processes, environmental consequences of these alterations and the implications for sustainability. Topics include: energy flows, biogeochemical cycles, ecosystem structure and dynamics, pollution, global change, water resources, biodiversity, endangered species, protected areas, agriculture and food, forestry, marine resources, poverty and development and different worldviews. Potential for a sustainable society is discussed.</td>
+			<td>Credit granted for only one of GEOG 101A, ES 101</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Human Physical Environment</td>
+			<td>Fall Spring</td>
+			<td>110</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="2" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 101B</td>
+			<td>Space, Place and Society</td>
+			<td>Perspectives on the scope and purpose of human geography, emphasizing approaches, concepts and scales of geographical analysis. Topics include: social geography of cities; interpretation of regional; cultural and economic landscapes; urbanization and industrialization of regions; and economic development and social change in the world system.</td>
+			<td></td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Human</td>
+			<td>Fall Spring</td>
+			<td>132</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="3" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 103</td>
+			<td>Introduction to Physical Geography</td>
+			<td>Introduces the science of Physical Geography using an earth-systems approach. Course themes include global climates and climate change, hydrology and water resources, geomorphology and natural hazards, and biogeography; with focus on how geographic sciences are applied to address real world issues.</td>
+			<td></td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Physical Environment</td>
+			<td>Fall Spring</td>
+			<td>198</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="4" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 104</td>
+			<td>Our Digital Earth</td>
+			<td>Introduces students to how geospatial technologies influence our daily lives and shape the world around us. Students learn how to collect and utilize location-based data, develop web maps and mobile mapping apps, create technologies to respond to environmental disasters and humanitarian crises, and think spatially in order to improve our understanding of our planet.</td>
+			<td>Credit granted for only one of GEOG 104, GEOG 100</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Geomatics</td>
+			<td>Fall Spring</td>
+			<td>60</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="5" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 130</td>
+			<td>Climate Change</td>
+			<td>An introduction to the fundamental physical principles governing the climate of the Earth system, and its response to anthropogenic factors. Topics include components of the climate system, radiative energy balance, forcings and feedbacks, the carbon cycle, climate of the past, impacts of climate change, global climate model projections, and approaches to mitigation and adaptation.</td>
+			<td>Cross-listed with EOS130</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Physical Environment</td>
+			<td>Fall Spring</td>
+			<td>186</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="6" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 209</td>
+			<td>Introduction to Environmental Management</td>
+			<td>Introduces and critically interrogates approaches to the management or governance of environments and natural resources. Themes may include: parks and protected areas, fisheries, forestry, water and energy management; environmental impact assessment; comprehensive land-use and marine spatial planning; and urban sustainability, all in the context of profound political and environmental change, colonialism, and Indigenous resurgence.</td>
+			<td>GEOG 101A, GEOG 103</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Environment</td>
+			<td>Fall</td>
+			<td>110</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="7" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 211</td>
+			<td>Political and Economic Geography</td>
+			<td>Examines the major thematic concerns that have traditionally shaped the sub-disciplines of political and economic geography, while also engaging with emerging issues that are likely to become focal points in shaping future debates. Explores the co-constitutive relationship between politics, economics and space.</td>
+			<td>GEOG101B; minimum second-year standing; Credit granted for only one of GEOG 211, GEOG 201A, GEOG 201B</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>??</td>
+			<td>Fall</td>
+			<td>86</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="8" name="btSelectItem" type="checkbox"></td>	
+<td>GEOG 218</td>
+			<td>Social and Cultural Geography</td>
+			<td>Introduction to social and cultural geography with a focus on the interpretation of cultural landscapes, place-making, and the spatial expression of social and cultural identities. Lab assignments involve fieldwork and critical reflection on the relation between culture, society and landscape.</td>
+			<td>GEOG 101B</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>??</td>
+			<td>Spring</td>
+			<td>88</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="9" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 220</td>
+			<td>Weather and Climate</td>
+			<td>An introduction to the physical processes that determine Earth's weather and climate. Topics include atmospheric composition, flows of energy through the atmosphere, small-scale and large-scale winds, cloud and precipitation processes, climate change.</td>
+			<td>Complete all of the following: 1.5 units of: 100 level PHYS; 1.5 units of: 100 level MATH; or permission of the department; Cross-listed with EOS 220; Credit  granted for only one of GEOG 220, EOS 220</td>
+			<td></td>
+			<td>3-0-2</td>
+			<td>Physical</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="10" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 222</td>
+			<td>Introduction to Maps and GIS</td>
+			<td>Introduces techniques and fundamentals of spatial data and analysis. Topics include: scale, map interpretation, GPS and Geographic Information Systems.</td>
+			<td>Minimum second-year standing</td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>Geomatics</td>
+			<td>Fall Spring</td>
+			<td>110</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="11" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 226</td>
+			<td>Introduction to Quantitative Methods in Geography</td>
+			<td>Application of statistical techniques to geographic problems. Topics include hypothesis formulation, sampling strategies, parametric and nonparametric statistical tests, statistical models. All laboratory exercises are computer based.</td>
+			<td>Complete 1 of the following: Complete 3 units from GEOG  100 - 299; Complete 3 units from EOS  100 - 299; Credit granted for only one of GEOG 226, GEOG 321</td>
+			<td>Lab</td>
+			<td>2-3-0</td>
+			<td>Environment Physical</td>
+			<td>Fall Spring</td>
+			<td>80</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="12" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 227</td>
+			<td>Introduction to Qualitative Methods in Geography</td>
+			<td>Introduces the main qualitative methodological approaches applied in human geography. A range of paradigms (ethnography, action research, the scientific method, Marxism and feminism), research design, data collection tools (survey and questionnaire design, focus groups, interviews, diagraming, participant observation, photo voice, participatory video), data analysis (narrative analysis, coding, data interpretation, thematic and interpretive analyses) and examine Indigenous Methodologies and apply to current issues in the discipline.</td>
+			<td>Minimum second-year standing; Credit granted for only one of GEOG 227, GEOG 327; formerly GEOG 327</td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>??</td>
+			<td>Fall</td>
+			<td>44</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="13" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 228</td>
+			<td>Introduction to Remote Sensing</td>
+			<td>Introduces the use of remotely sensed images to address information issues related to both physical and human geography. Students are exposed to a range of image types and resolutions, as well as methods and tools used for their analysis.</td>
+			<td>Minimum second-year standing</td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>Geomatics</td>
+			<td>Fall</td>
+			<td>88</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="14" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 230</td>
+			<td>Scientific Computing and Environmental Data Analysis</td>
+			<td>An introduction to using computer programming to analyze climate data. Topics include fundamentals of programming, data visualization, analysis of spatial data, descriptive statistics, linear regression.</td>
+			<td>Complete all of the following: Complete 1.5 units of: 100 level MATH; Complete 1 of: EOS110, EOS130, GEOG130. or permission of the department; Cross-listed with EOS 230; Credit granted for only one of GEOG 230, EOS 230; </td>
+			<td>Tutorial</td>
+			<td>3-0-2</td>
+			<td>Physical</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="15" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 252</td>
+			<td>Introduction to Coastal Geography</td>
+			<td>Explores a wide variety of coastal topics from biophysical, ecological, and social-economic perspectives. Topics focus on coastal landscapes and communities that may include fundamentals of coastal oceanography, climate, biodiversity, water quality, fisheries, indigenous people, tourism and implications for management.</td>
+			<td>Minimum second-year standing; Credit granted for only one of GEOG 252, GEOG 352; Formerly GEOG 352</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>??</td>
+			<td>Fall</td>
+			<td>70</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="16" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 272</td>
+			<td>Introduction to Climatology and Hydrology</td>
+			<td>An investigation of the fundamental processes controlling climate and hydrology. Explores various factors and interactions that determine the spatial and temporal variations of individual climate elements. Special attention is given to the mutual interaction of climate with the Earth's surface and the role that ground surface type or cover plays in moderating local climate and hydrology.</td>
+			<td>Complete 1 of: GEOG 103, GEOG 119, EOS 110</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Physical</td>
+			<td>Fall</td>
+			<td>88</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="17" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 274</td>
+			<td>Introduction to Biogeography</td>
+			<td>Examines the relationships among organisms - principally plants and animals - and their environment, emphasizing their distributions across a range of spatial and temporal scales. Examines basic ecological and evolutionary concepts affecting biogeographic processes of dispersal, speciation and extinction; how patterns of biodiversity change over space and time from early earth history to the contemporary environment; the nature of changing biotic distributions with increasing human impacts and global change.</td>
+			<td>GEOG 101A, GEOG 103; BIOL 12, or BIOL 150B recommended</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Environment Physical</td>
+			<td>Spring</td>
+			<td>88</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="18" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 276</td>
+			<td>Introduction to Geomorphology</td>
+			<td>Introduction to Earth surface process and landforms including riverine, desert, coastal, glacial, hillslope and permafrost environments. Focus on regional and Canadianlandscapes. Involves a field trip.</td>
+			<td>Complete 1 of: GEOG 103, GEOG 120, EOS 120</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Physical</td>
+			<td>Fall Spring</td>
+			<td>92</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="19" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 301</td>
+			<td>Environmental Impact Assessment</td>
+			<td>Introduction to Earth surface process and landforms including riverine, desert, coastal, glacial, hillslope and permafrost environments. Focus on regional and Canadian landscapes. Involves a field trip.</td>
+			<td>GEOG 209; Cross-listed with ES461; Credit granted for only one of GEOG 301, GEOG 391 (if taken in the same topic), ES 400A (if taken prior to September 1989), ES 410, ES 461</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Fall Spring</td>
+			<td>45</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="20" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 303</td>
+			<td>Conservation and Ecology of Whales</td>
+			<td>Examines the fundamental biology, evolution and ecology of the modern whale species. Discusses the history and the spectrum of the human relationships with whales. Current topics in the marine mammal sphere are critically examined.</td>
+			<td>Complete 1 of: GEOG 274, BIOL 150A, BIOL 184, BIOL 190B; Credit granted for only one of GEOG 303, GEOG 391 (if taken in the same topic).</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Fall</td>
+			<td>90</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="21" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 304</td>
+			<td>Coastal Conservation</td>
+			<td>Examines the natural science and social science dimensions of conservation on the remote and largely undeveloped central and north coast of British Columbia. Students explore current issues with relevant theory, thus uniting contemporary affairs with scholarship. Major themes are energy development and exploitation of biological resources (like fish and wildlife), but specific themes might change among years. Students learn from western scientific approaches, First Nations perspectives, and their interaction.</td>
+			<td>Complete 1 of: GEOG 252, GEOG 352; Credit granted for only one of GEOG 304, GEOG 391(if taken in the same topic). </td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="22" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 306</td>
+			<td>Geography of Canada</td>
+			<td>Explores the physical, historical, cultural, and political geography of Canada. Topics may include: human / environment relationships; settlement and development patterns; colonialism and Indigenous resurgence; national identity and conflict; and current issues in the Canadian context.</td>
+			<td>Minimum second-year standing</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Elective</td>
+			<td>Fall Spring</td>
+			<td>65</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="23" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 309</td>
+			<td>Geography of British Columbia</td>
+			<td>An examination of the physical, economic, and cultural landscapes that distinguish the cities and rural regions of Canada's West Coast province.</td>
+			<td>Minimum second-year standing, Credit will be granted for only one of GEOG 309, GEOG 219; Formerly GEOG 219</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Elective</td>
+			<td>Fall</td>
+			<td>60</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="24" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 310</td>
+			<td>Global Migration</td>
+			<td>Contemporary issues relating to the patterns, processes, and politics of global migration. Theories, concepts and themes associated with cross-border migratory flows are explored as they relate to the increase in global migration and mobility of people of different nationalities and cultural backgrounds around the world. Topics include border control and security, demographic patterns of movement relating to refugees and internally-displaced persons, human smuggling and trafficking.</td>
+			<td>Minimum second-year standing; Credit granted for only one of GEOG 310, GEOG 391 (if taken in the same topic)</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>50</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="25" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 313</td>
+			<td>Field Studies in Mountain Meteorology</td>
+			<td>An immersive opportunity to understand the physical processes of meteorological phenomena in mountain environments. Measuring and monitoring of snowpack, extreme weather and climate and their associated hazards in mountain ranges are prominent course themes. A field trip fee may be applied.</td>
+			<td>GEOG 272</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Physical</td>
+			<td>Spring</td>
+			<td>16</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="26" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 314</td>
+			<td>Global Environment Change and Human Response</td>
+			<td>Based on four components: global environmental change; sustainable development; biodiversity; and population impoverishment and environmental degradation. Lectures and discussion emphasize the causes of global change, the present and expected impacts on natural and social systems, and response strategies that have been proposed or enacted.</td>
+			<td>Minimum second-year standing; Credit granted for only one of GEOG 314, GEOG 214 (if taken prior to December 2006).</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Fall</td>
+			<td>75</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="27" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 315</td>
+			<td>Geocaching</td>
+			<td>Introduces the activity of geocaching, the fundamentals of GPS navigation and data collection. Emphasis is placed on geocaching, the history and workings of GPS and associated navigation systems, map datums and coordinate systems and basics of GPS data management. Hands-on operating and working with GPS units in the field, through a variety of geocaching activities and assignments. Examples of the use of GPS in geographical research is demonstrated through lectures and readings.</td>
+			<td>Minimum third-year standing; Credit granted for only one of GEOG 315, GEOG 391 (if taken in the same topic).</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Elective</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="28" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 316</td>
+			<td>Field Studies in Human Geography</td>
+			<td>Explores concepts and concerns of human geography including personal, cultural and political considerations of space, place and society through practical, experiential learning. A field trip fee may be applied.</td>
+			<td>Complete all of: GEOG 101A, GEOG 101B; Complete 1 of: GEOG 209, GEOG 211, GEOG 218; Credit granted for only one of GEOG 316, GEOG 391 (if taken in the same topic); May be taken more than once for credit in different topics with permission of the department</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="29" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 317</td>
+			<td>Field Studies in Sustainable Communities</td>
+			<td>The challenges and opportunities for promoting resilient, inclusive, equitable and sustainable communities are explored through practical and experiential learning. A field trip fee may be applied.</td>
+			<td>Complete all of: GEOG 101A, GEOG 101B; Complete 1 of: GEOG 209, GEOG 211, GEOG 218, or permission of the department; Credit granted for only one of GEOG 317, GEOG 391 (if taken in the same topic); </td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="30" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 319</td>
+			<td>Remote Sensing of the Environment using Passive Sensors</td>
+			<td>Focuses on physical principles underlying passive remote sensing and electromagnetic propagation in free space and matter; attenuation, absorption and scattering mechanisms; interaction of energy with the atmosphere and Earth materials such as vegetation, soil, rock, water and urban structures.</td>
+			<td>Complete all of: GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: Complete all of: GEOG 226, 1.5 units minimum 200 level STAT or equivalent, </td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>Geomatics</td>
+			<td>Fall</td>
+			<td>44</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="31" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 322</td>
+			<td>Remote Sensing of the Environment using Active Sensors</td>
+			<td>Processing and analysis of remote sensing data collected using active sensors - those that transmit their own energy. Data from active microwave sensors, including RADAR and Light Detection and Ranging (LiDAR) sensors, are discussed and analyzed with respect to their applicability as standalone and complementary data sources to remote sensing data acquired using passive systems. Laboratory assignments use image analysis software in a variety of applications.</td>
+			<td>Complete all of: GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: Complete all of: GEOG 226, 1.5 units minimum 200 level STAT or equivalent, </td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>Geomatics</td>
+			<td>Spring</td>
+			<td>44</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="32" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 323</td>
+			<td>Cartography</td>
+			<td>Introduces topographic and thematic cartography. Emphasis on cartographic data manipulation, generalization and symbolization; map design, visualization and communication. Laboratory assignments provide practical experience in designing and drafting maps.</td>
+			<td>Complete all of: GEOG 222; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent</td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>Geomatics</td>
+			<td>Fall Spring</td>
+			<td>44</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="33" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 324</td>
+			<td>Directions in Geography</td>
+			<td>An intellectual history of geographical thought, concentrating on trends, ideologies and controversies since 1960. Idiographic, nomothetic, quantitative, behavioural, applied radical, humanistic and recent social theory and GIS approaches are critically discussed in seminars.</td>
+			<td>4.5 units of 100- or 200-level GEOG courses.</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Elective</td>
+			<td>Fall</td>
+			<td>30</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="34" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 325</td>
+			<td>Field Surveying</td>
+			<td>An introduction to fundamental concepts of surveying and field work. This is an instrument-based course covering differential leveling, traversing, tachometry, GPS and their applications to field work.</td>
+			<td>GEOG 222; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent; 1.5 units of GEOG 100-level recommended prior to GEOG 325</td>
+			<td>Lab</td>
+			<td>2-3-0</td>
+			<td>Environment</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="35" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 328</td>
+			<td>GIS Analysis</td>
+			<td>Focuses on analysis for digital mapping and modeling, developing and using geographic data to answer spatial research questions, conducting basic spatial interpolations and carrying-out multi-criteria modelling.</td>
+			<td>GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent</td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>Geomatics</td>
+			<td>Fall Spring</td>
+			<td>66</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="36" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 329</td>
+			<td>GIS Applications and Tools</td>
+			<td>The basics of GIS tool development including applications, desktop GIS customization, map mashups, model building in a GIS environment, Internet GIS, building web pages that include GIS maps and tasks.</td>
+			<td>Complete all of: GEOG 222, GEOG 228; minimum third-year standing; Complete 1 of the following: GEOG 226, 1.5 units minimum 200 level STAT or equivalent</td>
+			<td>Lab</td>
+			<td>2-2-0</td>
+			<td>Geomatics</td>
+			<td>Spring</td>
+			<td>66</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="37" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 332</td>
+			<td>Urban Development in the Global South</td>
+			<td>Examines fundamental characteristics of cities in the Global South with a focus on issues of urban development as well as social, cultural, economic, and environmental challenges in the region. Addresses the driving forces of urban growth and investigates the consequences of this transformation in terms of economic and human development as well as environmental sustainability. Discussion and analysis of contentious urban issues and case studies from the Global South.</td>
+			<td>GEOG 211, GEOG 218</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>40</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="38" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 339</td>
+			<td>Disaster Management and Community Resilience</td>
+			<td>Explores hazard events and the factors and conditions that lead to disasters. Covers such events as earthquakes, hurricanes, tsunamis, floods, droughts and examines their human and natural dimensions.Emphasis on understanding vulnerability and risk assessment, sustainable hazards mitigation and disaster management approaches to enhancing community resilience.</td>
+			<td>GEOG 103, GEOG 211, GEOG 218; Credit will be granted for only one of GEOG 339, GEOG 391 (if taken in the same topic), GEOG 472; Formerly part of GEOG 472</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Spring</td>
+			<td>24</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="39" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 340</td>
+			<td>Cities and Planning</td>
+			<td>Overview of key thematic areas related to cities and planning in the North American context. Includes a critical examination of the history of urban planning and contemporary issues in urban geography to foster a deeper appreciation of the spatial politics of the urban experience.</td>
+			<td>Complete 1 of: GEOG 211, GEOG 218; Credit will be granted for only one of GEOG 340, GEOG 340B, GEOG 349</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>65</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="40" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 346</td>
+			<td>Health, Environment and Community</td>
+			<td>Examines the dynamics and linkages between health and the environment at the micro scale of individuals to the macro scale of communities and nations. Definitions of health, wellness and well-being, as well as healthy communities; focusing on the range of factors, conditions and determinants that make people and place healthy or unhealthy.</td>
+			<td>Complete 1 of: GEOG 209, GEOG 211, GEOG 218; Recommendations: GEOG 226 or 1.5 units 200 level STAT</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>60</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="41" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 347B</td>
+			<td>Geographies of Development</td>
+			<td>A critical examination of development theories, trends and issues. Topics included are the definition and measurement of poverty and inequality, an overview of global population growth and structure, the impact of globalization on third-world economies, the effectiveness of foreign aid, and food security constraints.</td>
+			<td>GEOG 211; Credit will be granted for only one of GEOG 347B, GEOG 347</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>24</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="42" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 353</td>
+			<td>Coastal and Marine Resource Management</td>
+			<td>An integration of the scientific, cultural, and policy dimensions of resource management in coastal and marine systems. Concepts will be illustrated with examples from wildlife and fisheries management. Although global context is set, a special focus will be on British Columbia's coast.</td>
+			<td>Complete 1 of: GEOG 209, GEOG 252, GEOG 352; permission of the instructor; Credit will be granted for only one of GEOG 353, GEOG 452</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Spring</td>
+			<td>55</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="43" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 357</td>
+			<td>Parks and Protected Areas</td>
+			<td>An investigation of the principles and concepts underlying the designation, planning and management of protected areas such as national and provincial park systems. Topics include: the history and philosophy of protected areas; international classifications and examples; role of native peoples; carrying capacity; visitor management; interpretation; ecosystem integrity; ecosystem management; and a variety of case studies. Students should be prepared to undertake one or more weekend field trips; a fee for each field trip may be applied.</td>
+			<td>GEOG 209; Credit will be granted for only one of GEOG 357, GEOG 455, GEOG 459A, GEOG 459B.</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="44" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 358</td>
+			<td>Landscape Ecology</td>
+			<td>Landscape ecology emphasizes the interaction between spatial pattern and ecological processes. Focus is on the role of spatial heterogeneity in affecting the distribution and abundance of organisms, mass and energy transfers, and alterations of this structure by natural or anthropogenic forces. Implications for wildlife management and conservation are discussed.</td>
+			<td>One of GEOG 101A, GEOG 103; Complete 1 of the following GEOG 226, 1.5 units minimum 200 level STAT or equivalent; Complete 1 of: BIOL 215, ES 240, ES 348; 1.5 units 100 level MATH; minimum third-year standing; GEOG 274 recommended prior to GEOG 358</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment Physical</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="45" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 370</td>
+			<td>Hydrology</td>
+			<td>An overview of hydrological processes, measurement techniques and data analysis. The movement of water in the hydrologic cycle via precipitation, interception, evapotranspiration, surface runoff, infiltration, soil moisture, groundwater flow and streamflow generation are examined. Applied aspects and local examples are discussed. Involves laboratory assignments and a field trip.</td>
+			<td>Complete all of: GEOG 272; Completed or concurrently enrolled in: EOS 340; 1.5 units of 100-level MATH; minimum third-year standing; Note: EOS 340 can be taken as a prerequisite or a corequisite.</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Physical</td>
+			<td>Spring</td>
+			<td>44</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="46" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 371</td>
+			<td>Water Resources Management</td>
+			<td>A study of water resources management in different parts of the world, examining the influence of various physical, economic, social, political and technological factors. Examines the alternative ways in which such problems as water scarcity, floods and declining water quality are handled. Examines in detail a number of major water development schemes. Students are expected to undertake a modest research project and report upon it.</td>
+			<td>GEOG 209, GEOG 272</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment Physical</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="47" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 373</td>
+			<td>Applied Climatology</td>
+			<td>A study of the application of physical principles to practical problems in climatology and the reciprocal interaction between climate and human activities. Topics include: urban effects on climate; air pollution; human bioclimatology; agricultural climatology; and methods of microclimatic modification.</td>
+			<td>GEOG 272; 1.5 units 100 level MATH; minimum third-year standing</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Physical</td>
+			<td>Spring</td>
+			<td>48</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="48" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 376</td>
+			<td>Process Geomorphology</td>
+			<td>An investigation of the physical processes that create and maintain landforms. Focus on measurement and analysis of morphodynamic processes in fluvial, aeolian, coastal, glacial, hillslope, and/or periglacial landscapes (e.g., sediment transport, erosion, wind/wave energy, river discharge, glacial dynamics, weathering rates). Involves a field trip and/or a group project.</td>
+			<td>Complete 1 of the following: GEOG 276, Complete all of: EOS 120, EOS 201; Complete 1.5 units from MATH  100 - 199; minimum third-level standing</td>
+			<td>Lab</td>
+			<td>3-2-0</td>
+			<td>Physical</td>
+			<td>Fall</td>
+			<td>72</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="49" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 380</td>
+			<td>Community Mapping</td>
+			<td>Examines the theory and practice of community based mapping and how it can facilitate dialogue and collaborative partnering, thus leading to knowledge co-creation, planning, citizen empowerment and engagement, building consensus, more informed policy making and ultimately social justice. This course is designed to be action-oriented and experiential, and has a very high local field component.</td>
+			<td>Minimum third-year standing; Credit will be granted for only one of GEOG 380, GEOG 391 (if taken in the same topic)</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall Spring</td>
+			<td>25</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="50" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 386</td>
+			<td>Contemporary Geopolitics</td>
+			<td>An overview of global geopolitics and the transformation of the world political map. Examination of key concepts and approaches to contemporary geopolitics through a series of regional case studies.</td>
+			<td>Minimum second-year standing; Credit will be granted for only one of GEOG 386, GEOG 348</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>50</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="51" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 388</td>
+			<td>Topics in Regional Studies</td>
+			<td>Geography of a selected region of the world from a systematic perspective. Topics may include: the physical and human landscape; settlement; economic, political and social geography; spatial variation in modernization and economic growth.</td>
+			<td>Not open to students with credit in GEOG 466 without permission of the department; Credit will be granted for only one of GEOG 388, GEOG 288; Credit will be granted for only one of GEOG 388, GEOG 382; Credit will be granted for only one of GEOG 388, GEOG 383; May be taken more than once for credit in different topics with permission of the department.</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Elective</td>
+			<td>Fall</td>
+			<td>30</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="52" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 391</td>
+			<td>Topics in Geography: Indigenous Geographies</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td>
+			<td>Minimum second-year standing; dditional prerequisites set by department depending upon topic; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>30</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="53" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 391</td>
+			<td>Topics in Geography: Community Engaged Research and Practice</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td>
+			<td>Minimum second-year standing; dditional prerequisites set by department depending upon topic; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Spring</td>
+			<td>24</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="54" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 391</td>
+			<td>Topics in Geography: Geography of Surfing</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td>
+			<td>Minimum second-year standing; dditional prerequisites set by department depending upon topic; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Spring</td>
+			<td>24</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="55" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 404</td>
+			<td>Space and Power</td>
+			<td>nvestigates how political processes shape human geography, and conversely, how assumptions about geography underscore global politics. Examines the key themes, concepts, and theories that define the study of politics from a geographical perspective. Students gain a critical understanding of and appreciation for the historical and contemporary challenges of sovereignty, territoriality, governmentality, identity, citizenship, difference, violence, genocide, colonialism, and war.</td>
+			<td>Complete 1 of: GEOG 332, GEOG 344, GEOG 347B, GEOG 386; Credit will be granted for only one of GEOG 404, GEOG 491 (if taken in the same topic)</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="56" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 405</td>
+			<td>Dynamics of the Cryosphere</td>
+			<td>Explores the dynamics of the four main elements of the Earth's cryosphere - glaciers, snow cover, floating ice and permafrost - in physical, climatological, hydrological and Earth system contexts. A field trip fee may be applied.</td>
+			<td>Complete 1 of: GEOG 370, GEOG 373, EOS 340; Credit will be granted for only one of GEOG 405, GEOG 491 (if taken in the same topic)</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Physical</td>
+			<td>Fall</td>
+			<td>25</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="57" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 406</td>
+			<td>Sustainable Cities</td>
+			<td>Explores the opportunities and challenges of creating ecologically-minded, resilient, healthy, and socially just cities with a practical, community-engaged focus.</td>
+			<td>Complete 2 of: GEOG 209, GEOG 332, GEOG 340, GEOG 346</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Spring</td>
+			<td>30</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="58" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 407</td>
+			<td>Activism and Community-Based Planning</td>
+			<td>Investigates participatory approaches to community planning in urban settings. Challenges modernist traditions in planning theory by examining key themes, concepts, and theories that define the study of planning from an activist perspective. Provides students with an opportunity to become actively engaged in their community.</td>
+			<td>Complete 1 of: GEOG 332, GEOG 340, GEOG 343</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="59" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 409</td>
+			<td>Personal Space</td>
+			<td>Collective exploration of how geographical interests in gender, sexuality and identity intersect with a student's own personal and unique spaces of reflection, action and interaction. Themes may include: Feminist, Lesbian, Gay, Bisexual, Trans, Non-binary, Queer, Two-Spirit and Masculinist discourses as they relate to geographies of social justice; the reciprocal role of space in the creation, loss, and (re)claiming of identities; the body as a site of struggle; and intersectionality with a wide variety of lived experiences.</td>
+			<td>Minimum fourth-year standing; Credit will be granted for only one of GEOG 409, GEOG 391 (if taken in the same topic), GEOG 491 (if taken in the same topic)</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Spring</td>
+			<td>25</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="60" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 411</td>
+			<td>Community-based Participatory Research</td>
+			<td>Theory and practice of Community-based Participatory Research (CBPR) with a special focus on addressing community-identified research needs linked to the United Nations Sustainable Development Goals (UN SDG). Familiarizes students with the UN SDGs and explores CBPR as an important mechanism for bridging diverse and co-created knowledges into local action through community partnerships.</td>
+			<td>GEOG 227, Or permission of the instructor; Minimum third-year standing; Credit will be granted for only one of GEOG 411, GEOG 491 (if taken in the same topic).</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>??</td>
+			<td>Fall</td>
+			<td>25</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="61" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 418</td>
+			<td>Advanced Spatial Analysis and Geo-statistics</td>
+			<td>Explores advanced topics in the numerical analysis of points, lines, areas, and surfaces in discrete and continuous space, drawing on methodologies from geo-statistics, spatial analysis, regional sciences and landscape ecology. Includes coverage of spatial systems modelling and simulation, spatio-temporal analysis, exploratory spatial analysis and spatial data mining.</td>
+			<td>Complete 1 of: GEOG 328, GEOG 329; GEOG 328 and GEOG 329 recommended prior to GEOG 418; May be offered as a joint undergraduate and graduate class</td>
+			<td>Lab</td>
+			<td>2-3-0</td>
+			<td>Geomatics</td>
+			<td>Fall</td>
+			<td>35</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="62" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 420</td>
+			<td>Field Studies in Coastal Geomatics</td>
+			<td>An integrated approach for using geomatics (remote sensing, GIS, spatial analysis) for data acquisition, processing and analysis to improve our understanding of marine and coastal areas. Topics focus on applications of geomatics for environmental and social lab work and seminar discussions. Students should be prepared to undertake one or more weekend field trips; a fee for each field trip may be applied.</td>
+			<td>GEOG 319; Complete 1 of: GEOG 328, GEOG 329; GEOG 252 and one of GEOG 370, GEOG 373, GEOG 376 recommended prior to GEOG 420.</td>
+			<td>Lab</td>
+			<td>2-3-0</td>
+			<td>Geomatics</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="63" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 422</td>
+			<td>Advanced Topics in Remote Sensing</td>
+			<td>Aspects of remote sensing including processing and classification of digital satellite and airborne data and digital elevation modelling. Emphasis on the processes of interpreting remotely sensed data, the enhancement of digital data for visual analysis and the integration of remotely sensed data with other spatial data.</td>
+			<td>Complete 1 of: GEOG 319, GEOG 322; GEOG 319 and GEOG 322 recommended prior to GEOG 422.</td>
+			<td>Lab</td>
+			<td>2-3-0</td>
+			<td>Geomatics</td>
+			<td>Spring</td>
+			<td>22</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="64" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 424</td>
+			<td>Field Studies in Coastal Geomorphology</td>
+			<td>An advanced, field-based exploration of coastal geomorphic processes and landforms. Involves a week-long field trip to local coastal sites where students apply geomorphic concepts and methods towards a series of independent research assignments and/or group projects. Areas of investigation span nearshore to backshore environments and wave, tidal, fluvial/estuarine and aeolian processes. A field trip fee may be applied.</td>
+			<td>GEOG 376; GEOG 252 recommended prior to GEOG 424; permission of the department; Permission of the department must be acquired by 15 March of previous Winter Session.</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Physical</td>
+			<td>Spring</td>
+			<td>24</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="65" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 428</td>
+			<td>Advanced Topics in Geographic Information Sciences</td>
+			<td>Contemporary research topics in the geographic information sciences. Topic varies annually, but are selected from one of the following: spatial decision support; visualization; business demographics; environmental modeling; or spatial analysis.</td>
+			<td>Complete 1 of: GEOG 328, GEOG 329; GEOG 328 and GEOG 329 recommended prior to GEOG 428; Credit will be granted for only one of GEOG 428, GEOG 423</td>
+			<td>Lab</td>
+			<td>2-3-0</td>
+			<td>Geomatics</td>
+			<td>Spring</td>
+			<td>40</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="66" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 438</td>
+			<td>Aquaculture in British Columbia</td>
+			<td>Introduction to the aquaculture industry within British Columbia, reviewing the history, culture species, production methods (hatchery through seafood processing), technological innovations, economics, marketing, environmental impacts/management, social issues (including First Nations), and the regulatory framework for this agri-food industry. Includes a field trip to aquaculture sites. Students should be prepared to undertake one or more weekend field trips, or a week-long field trip; a fee for each field trip may be applied.</td>
+			<td>Complete 1 of: GOEG 304, GEOG 353</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Spring</td>
+			<td>25</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="67" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 450</td>
+			<td>Environment and Sustainability in Practice</td>
+			<td>Examines the decision making theory and real world processes associated with resource management at the policy and field levels. Case studies used to illustrate decision making behaviour, from conflict to co-operation. May include simulation sessions, field trips and field methods review.</td>
+			<td>Complete 2 of: GEOG 310, GEOG 303, GEOG 304, GEOG 314, GEOG 339, GEOG 353, GEOG 357, GEOG 358, GEOG 371; Credit will be granted for only one of GEOG 450, GEOG 450A</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Spring</td>
+			<td>30</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="68" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 453</td>
+			<td>Field Studies in Coastal and Marine Management</td>
+			<td>Integrated coastal management is applied through community-based research. Based on a week-long field camp, discussions, projects and presentations, students gain first-hand experience in both biophysical and socio-economic perspectives of coastal areas. A field trip fee may be applied.</td>
+			<td>GEOG 353</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="69" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 456</td>
+			<td>Wildlife Conservation</td>
+			<td>An examination of the history of the conservation movement and wildlife management, human dimensions and the value of wildlife, and consequences of over-harvesting, habitat fragmentation, and invasive species for present-day wildlife conservation and, ways forward.</td>
+			<td>Complete 1 of: BIOL 370, ES 320, GEOG 274, GEOG 304, GEOG 358; Credit will be granted for only one of GEOG 456, GEOG 356; Formerly GEOG 356</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="70" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 457</td>
+			<td>Marine Protected Areas</td>
+			<td>An in-depth look at the challenges facing designation and management of marine protected areas in Canada and internationally. Includes topics such as network design, governance, zoning, conflicts, ecotourism and fisheries. Students should be prepared to undertake one or more field trips; a fee for each field trip may be applied.</td>
+			<td>GEOG 357; GEOG 252 and GEOG 304 recommended prior to GEOG 457; Credit will be granted for only one of GEOG 457, GEOG 455, GEOG 459A, GEOG 459B</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td></td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="71" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 474</td>
+			<td>Field Studies in Biogeography</td>
+			<td>A field-research course in biogeography based on a combination of reading, discussion, and data analysis. Involves a week-long field trip; a field trip fee may be applied.</td>
+			<td>GEOG 274; permission of the department; ermission of the department must be acquired by 15 March of previous Winter Session; GEOG 252 and GEOG 303 recommended prior to GEOG 474; Credit will be granted for only one of GEOG 474, GEOG 471A; </td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment Physical</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="72" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 476</td>
+			<td>Advanced Topics in Geomorphology</td>
+			<td>Focusing on various geomorphologic themes, students complete a major research project based on field work to supplement lectures, seminars and field/lab projects.</td>
+			<td>GEOG 376; Credit granted for only one of GEOG 476, GEOG 471C</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Physical</td>
+			<td>Fall</td>
+			<td>25</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="73" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 477</td>
+			<td>Field Studies in Physical Geography</td>
+			<td>The nature of scientific research in physical geography is examined through field and laboratory techniques. Includes a week-long field camp where basic approaches, methodologies and techniques are used to prepare a series of reports based on field data and collected samples. A field trip fee may be applied.</td>
+			<td>Complete 1 of: GEOG 358, GEOG 370, GEOG 373, GEOG 376; permission of the department; Permission of the department must be acquired by 15 March of previous Winter Session; Credit will be granted for only one of GEOG 477, GEOG 471D</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Physical</td>
+			<td>Fall</td>
+			<td>12</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="74" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 484</td>
+			<td>Advanced Topics in Weather and Climate</td>
+			<td>Detailed examination of atmospheric structures and processes underlying weather and climate. Practical work focuses on analysis of vertical stability and utilizing computer weather model data.</td>
+			<td>GEOG 373</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Physical</td>
+			<td>Spring</td>
+			<td>16</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="75" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 487</td>
+			<td>Advanced Landscape Ecology</td>
+			<td>Explores current theory, concepts, methods and applications of landscape ecology for both natural and managed landscapes. Topics may include relationship of landscape ecology to ecological theory, models of metapopulations, landscape structure and animal movement and predator-prey interactions. Applications including forestry, parks and protected areas and wildlife management. Some years the course is taught as a field course.</td>
+			<td>GEOG 358</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment Physical</td>
+			<td>Spring</td>
+			<td>24</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="76" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 490</td>
+			<td>Directed Studies in Geography</td>
+			<td>In special cases, with the consent of the department and the individual instructor concerned, a student may be permitted to pursue a course of directed studies.</td>
+			<td>Complete all of the following: Minimum fourth-year standing, permission of the department; May be taken more than once for credit to a maximum of 3 units; Courses of 1.5 or 3 units may be arranged, but no student is permitted to take more than 3 units of directed studies.</td>
+			<td></td>
+			<td></td>
+			<td>Directed Studies</td>
+			<td>??</td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="77" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 491</td>
+			<td>Advanced Topics in Geography: Anti-Racism and Geography</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
+			<td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td></td>
+			<td></td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="78" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 491</td>
+			<td>Advanced Topics in Geography: Community-Based Participatory Research</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
+			<td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td></td>
+			<td></td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="79" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 491</td>
+			<td>Advanced Topics in Geography: Urban Mobility</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
+			<td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Fall</td>
+			<td>24</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="80" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 491</td>
+			<td>Advanced Topics in Geography: Reconstructing Quaternary Environmental Change</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
+			<td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Spring</td>
+			<td>20</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="81" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 491</td>
+			<td>Advanced Topics in Geography: Indigenous Environmental Activism</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
+			<td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Human</td>
+			<td>Spring</td>
+			<td>24</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="82" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 491</td>
+			<td>Advanced Topics in Geography: Geographies of Waste</td>
+			<td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
+			<td>Minimum third-year standing; additional prerequisites set by department depending upon topic.; May be taken more than once for credit in different topics</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Environment</td>
+			<td>Fall</td>
+			<td>30</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="83" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 499A</td>
+			<td>Honours Thesis</td>
+			<td>Students prepare the first part of an honours thesis under the direction of a faculty member from the department.</td>
+			<td>Minimum fourth-year standing; declared Honours in Geography; Credit will be granted for only one of GEOG 499A, GEOG 499, GEOG 499B; GEOG 499A and B are "tied" courses and must be taken in consecutive terms except with permission of the department. Credit and final grade for GEOG 499B will be assigned only upon completion of both courses; if 499B is not completed, a grade equivalent to N will be assigned to 499A</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Honours</td>
+			<td>Fall Spring</td>
+			<td>20</td>
+</tr>
+<tr class="odd">
+<td class="bs-checkbox "><input data-index="84" name="btSelectItem" type="checkbox"></td>
+<td>GEOG 499B</td>
+			<td>Honours Thesis</td>
+			<td>Students prepare the first part of an honours thesis under the direction of a faculty member from the department.</td>
+			<td>Minimum fourth-year standing; declared Honours in Geography; Credit will be granted for only one of GEOG 499A, GEOG 499, GEOG 499B; GEOG 499A and B are "tied" courses and must be taken in consecutive terms except with permission of the department. Credit and final grade for GEOG 499B will be assigned only upon completion of both courses; if 499B is not completed, a grade equivalent to N will be assigned to 499A</td>
+			<td></td>
+			<td>3-0-0</td>
+			<td>Honours</td>
+			<td>Fall Spring</td>
+			<td>20</td>
+</tr>
+<tr class="even">
+<td class="bs-checkbox "><input data-index="85" name="btSelectItem" type="checkbox"></td>
+<td>EOS 120 </td>
+			<td>The Dynamic Earth</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>Elective</td>
+			<td></td>
+			<td></td>
+</tr>
+	</tbody>
+	</table>
+</div>
 
+	<script type="text/javascript">
+//exporte les données sélectionnées
+var $table = $('#table1');
+    $(function () {
+        $('#toolbar').find('select').change(function () {
+            $table.bootstrapTable('refreshOptions', {
+                exportDataType: $(this).val()
+            });
+        });
+    })
+
+		var trBoldBlue = $("table");
+
+	$(trBoldBlue).on("click", "tr", function (){
+			$(this).toggleClass("bold-blue");
+	});
+	</script>
 
 
 
@@ -430,223 +1448,201 @@ UVic color >> #69A81D
 </div> <!-- ########## Tab ends ################## -->
 
 
-<div id="Change History" class="tabcontent">
-  <h2>History of App Changes</h2>
-    <h3>2023-01-15</h3>
-      <ul>
-      	<li>Discovered how to copy Datatable code from Shiny App using Developer Tools >>> now the exact same DataTable exists in both places!!! (Though the search continues to work, unfortunately I still haven't figured out how to save search)</li>
-        <li>Changed Tab Names and Work Tabs Nesting</li>
-      </ul>
-   
-    <h3>2023-01-14</h3>
-      <ul>
-        <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
-        <li>Need to learn how to import csv file into html table (e.g. not cvs-to-table.js >> problems with commas as this version did)</li>
-      </ul>        
-    <h3>2023-01-13</h3>
-      <ul>
-        <li>Experimented with js tables in HTML - able to get it searching so far (but no luck saving yet)!</li>
-        <li>Tabs now have different background-color, based on UVic Style colour for Geography</li>
-        <li>Converted Shiny output$ code from paste() to HTML()</li>
-      </ul>
-    <h3>2023-01-12</h3>
-      <ul>
-        <li>Finished Course data copy/paste from catalogue</li>
-        <li>Data Flow Diagrams and Gantt Charts</li>
-        <li>Time Log Data Mining >> create GGPlot2 Chart</li>
-      </ul>
-    <h3>2023-01-11</h3>
-      <ul>
-        <li>Add links to course planning flow charts</li>
-        <li>Updated more course data, including Study Focus</li>
-        <li>Table cells now have no row number, and align to top</li>
-      </ul>
-    <h3>2023-01-10</h3>
-      <ul>
-        <li>Add tabs to single page app & publish</li>
-      </ul>
-    <h3>2023-01-09</h3>
-      <ul>
-        <li>Created filtered table with downloadable csv button</li>
-        <li>Published single page app with filtered table</li>
-      </ul>
-    <h3>2023-01-08</h3>
-      <ul>
-        <li>Adding nested links</li>
-        <li>Adding images to title header</li>
-      </ul>
-    <h3>2023-01-07</h3>
-      <ul>
-        <li>Created Shiny app as testing ground for sandbox experiments</li>
-        <li>e.g. Table, iframe embedding of interactive maps</li>
-      </ul>
-    <h3>2023-01-06</h3>
-      <ul>
-        <li>Disected code from Interactive gaming website https://hanns.io/pi/</li>
-      </ul>
-    <h3>2023-01-05</h3>
-      <ul>
-        <li>David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning</li>
-        <li>Sent David link to Interactive Concept Map</li>
-      </ul>
-
-</div> <!-- ########## Tab ends ################## -->
-
-
-
 <div id="Project Work" class="tabcontent">
   <h2 id="menu_work">Project Work Stuff</h2>
   <a href="#questions">Questions</a> | <a href="#need">Need</a> | <a href="#wishlist">Wishlist</a> | <a href="#functions">Functions</a> | <a href="#ideas">Ideas</a> | <a href="#todo">To Do</a> | <a href="#done">Done</a> | <a href="#report">Report</a>      
 
-  <h3 id="questions">Questions</h3>
+   <h3 id='questions'>Questions</h3>
           <ul>
-	          <li>What form of reporting is required from me, and how often?</li>
-	          <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
-	          <li>What's involved with setting up a Geog Shiny Server (ask Rick about this)?</li>
-	          <ul>
-	            <li>**Rick Sykes:** Can a Shiny Server be installed?</li>
-	          </ul>
-          <li>What format to use for Course Name?  >> change database
-	- GEOG103, Geog103, or Geog 103 >> I chose **GEOG 103</li>
-          <li>Make a list of questions to ask David, John, or the student body that David mentioned</li>
-          <li>Ask some students what kind of format they like to search geography courses for when planning for example the geography student SOGS, have some examples online and choose make a POLL,test drive</li>
-	          <ul>
-	            <li>**Students**: What info would students like to find?</li>
-	          </ul>
-          </ul>
-		        <br />
-				<a href="#menu_work">Menu</a>
-				<br />	
-<hr>				
-      <h3 id="need">Need</h3>
+              <li><strong>Reporting: </strong></li>
+                    <ul>
+                      <li>What form of reporting is required from me?</li>
+                      <li>How often?</li>
+                      <li>What do you want to know?</li>
+                      <li>Process, results, deadlines, targets</li>
+                    </ul>
+              <li><strong>Formatting: </strong></li>
+                    <ul>
+                      <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
+                      <li>Course Name format to use</li>
+                      <ul>
+                          <li>e.g. GEOG103, Geog103, or Geog 103</li>
+                          <li>Different in Course Catalog, Geog Website, etc</li>
+                          <li> >> I chose **GEOG 103</li>
+                          <li> >> change database to choice if different</li>
+                      </ul>
+                    </ul>
+              <li><strong>Shiny Server: </strong></li>
+                      <ul>
+                          <li>What's involved with setting-up/installing a Geog Shiny Server?</li>
+                          <li>Ask Rick Sykes: Can a Shiny Server be installed?</li>
+                      </ul>
+              <li><strong>Students: </strong></li>
+                    <ul>
+                      <li>Ask some students what kind of format they like to search geography courses for when planning</li>
+                      <li>What info would students like to find?</li>
+                      <li>Easy/Difficult to use/understand?</li>
+                      <li>e.g. Ask geography student society SOGS</li>
+                           <ul>
+                              <li>test drive</li>
+                              <li>Be given a task, something to search for</li>
+                              <li>have some examples online and choose make a POLL</li>
+                              <li>Wehat do students search for</li>
+                            </ul>
+                    </ul>
+        </ul>
+<hr>
+      <h3 id='need'>Need</h3>
+              <ul>
+                  <li><strong>Data</strong></li>
+                          <ul>
+                              <li>list of popular electives, class size</li>
+                              <li>list of Summer courses</li>
+                              <li>Courses, prerequisites (check to see I have them all)</li>
+                          </ul>
+              </ul>
+
+<hr>
+      <h3 id='wishlist'>Wishlist</h3>
           <ul>
-	          <li>**Data** list of popular electives, class size</li>
-	          <li>**Data** list of Summer course</li>
-	          <li>Courses, prerequisites (check to see I have them all)</li>
-          </ul>
-		        <br />
-				<a href="#menu_work">Menu</a>
-				<br />	
-<hr>				
-      <h3 id="wishlist">Wishlist</h3>
-          <ul>
-	          <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
-	          <li>Video tutorials</li>
-	          <li>Description for use</li>
-	          <li>Screenshots</li>
-	          <li>Presentation of current state/progress, use .rmd, create slides </li>
-	          <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
-	          <li>Document workflow, create tab, nest in history </li>
-	          <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
-	          <li>add save image / pdf ???</li>
-	          <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
-	          <li>Need a `clear search button` for datatable</li>
-	          <li>Save image of concept maps</li>
-	          <li>Highlight path between courses/pre-requisites/concentrations</li>
-          </ul>
-		        <br />
-				<a href="#menu_work">Menu</a>
-				<br />	
-<hr>				          
-          <h3 id="functions">Functions Wishlist</h3>
-          <ul>
-	          <li>Interactive</li>
-	          <li>Click for more information, link to course catalog</li>
-	          <li>Highlight the pathways between courses when clicked, or hovering</li>
-	          <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
-	          <li>Choose a path‘s which would be highlighted</li>
-	          <li>Mobile device and desktop</li>
-	          <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
-	          <li>Ability to print results</li>
-	          <li>Take image of results</li>
-	          <li> R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
-          </ul>
-		        <br />
-				<a href="#menu_work">Menu</a>
-				<br />	 
-<hr>				         
-          <h3 id="ideas">Ideas</h3>
-          <ul>
-	          <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
-	          <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
-	          <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
-	          <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
-	          <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
-	          <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
-          </ul>
-		        <br />
-				<a href="#menu_work">Menu</a>
-				<br />	
-<hr>				
-          <h3 id="todo">To Do</h3>
-          <ul>
-	          <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
-	            <ul>
-	            	<li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
-	            </ul>
-	          <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
-	          <li>Change color of Datatable select (from blue)</li>
-	          <li>Start to fill-in/update missing course info for Geography Course data table</li>
-	          <li>Figure out how to use hyperlinks in datatable <a href='https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
-	          <li>Filter new data table >> choose only columns necessary for filtered search > save to csv</li>
-	          <li>Use Course Planning Flowchart pdfs:
-				<a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
-				<a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
-				<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
-				<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
-				<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
-				<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
-			  </li>
-	          <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
-	          <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
-	          <li>Multi year calendar planner</li>
-	          <li>Note which courses student has taken</li>
-	          <li>Convert to PHP, update training on UVic website</li>
-	          <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
-	          <li>update vIz chart with more courses, figure out how to add relationships to table?</li>
-	          <li>Add program requirements page / tab</li>
-	          <li>Add resources tab, links </li>
-	          <li>Use paper notebook for design ideas, flowcharts </li>
-	          <li>Make tabs figure bigger</li>
-	          <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
-          </ul>
-          		<br />
-				<a href="#menu_work">Menu</a>
-				<br />	
+              <li><strong>Demonstations for Use</strong></li>
+                  <ul>
+                    <li>Video tutorials</li>
+                    <li>Description for use</li>
+                    <li>Mobile device and desktop</li>
+                  </ul>
+              <li><strong>Documentation</strong></li>
+                  <ul>
+                    <li>Presentation of current state/progress, use .rmd, create slides </li>
+                    <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
+                    <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
+                    <li>Document workflow, create tab, nest in history </li>
+                    <li>Screenshots</li>
+                  </ul>
+              <li><strong>Functions Wishlist</strong></li>
+                  <ul>
+                    <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
+                    <li>Need a `clear search button` for datatable</li>
+                    <li>Save image of concept maps</li>
+                    <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
+                    <li>Take image of results</li>
+                    <li>Ability to print results</li>
+                    <li>Mobile device and desktop</li>
+                    <li><strong>Interactivity</strong></li>
+                            <ul>
+                              <li>R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
+                              <li>Highlight path between courses/pre-requisites/concentrations</li><li></li>
+                              <li>Highlight the pathways between courses when clicked, or hovering</li>
+                              <li>Choose a path‘s which would be highlighted</li>
+                              <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
+                              <li>Click for more information, link to course catalog</li>
+                              <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
+                            </ul>
+                    <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
+                    <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
+                    <li>Multi year calendar planner</li>
+                    <li>Note which courses student has taken</li>
+                    <li>Change color of Datatable select (from blue)</li>
+                    <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
+                    <li>Filter new data table >> choose only columns necessary for filtered search > save to csv
+                    <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
+                    <li>Convert to PHP, update training on UVic website</li>
+                  </ul>
+          </ul> <!-- end of Wishlists  -->
 <hr>
 
-          <h3 id="done">Done ✅</h3>
+<!--
+    <li><strong></strong></li>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+<li><strong></strong></li>
+  <strong></strong>
+
+ a href=''></a> <a href=''></a>
+<a href=''></a> <a href=''></a> <a href=''></a>
+<a href=''></a> <a href=''></a> <a href=''></a>
+<a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a>
+-->
+
+          <h3 id='ideas'>Ideas</h3>
           <ul>
-	          <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
-	          <li>add signature footer to bottom of page</li>
-	          <li>Embed links to geography interactive pdf concept maps</li>
-	          <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
-	          <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
-	          <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
-	          <li>Get download button to work with filtered data see new web link</li>
-	          <li>List of Geography Courses</li>
-	          <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
-          </ul>      
-		        <br />
-				<a href="#menu_work">Menu</a>
-				<br />	              
+              <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
+              <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
+              <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
+              <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
+              <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
+              <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
+              <li>Use Course Planning Flowchart pdfs:
+          			<a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
+          			<a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
+          			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
+    			    </li>
+
+          </ul>
+<hr>
+          <h3 id='todo'>To Do</h3>
+          <ul>
+              <li>Can I create HTML webpage from shiny app source code?</li>
+                  <ul>
+                      <li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html#history'>Searchable Web Table</a></strong>
+                  </ul>
+              <li>Check to see if any missing course info for Geography Course data table</li>
+              <li>Figure out how to add relationships to different visualization technique</li>
+              <li>Add resources tab, links </li>
+              <li>Use paper notebook for design ideas, flowcharts </li>
+              <li>Make tabs figure bigger</li>
+              <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
+          </ul>
 <hr>
 
-	<h3 id="report">Project Report</h3>
-		<p>Scroll down the iframe<br />
-			<a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html" target="_blank">GeogInteract Report</a></p>
-			        <br />
-					<a href="#menu_work">Menu</a>
-					<br />	              
-	          <iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html" width="100%" height="800px"></iframe>
+<!--
+          <li></li>
+          <li></li>
+          <li></li>
 
+
+          <li><a href=''></a></li>
+          <li><a href=''></a></li>
+
+
+-->
+          <h3 id='done'>Done ✅</h3>
+          <ul>
+              <li>dding all Geography Courses to Interactive Pathways DataViz !!! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html'>Curriculum Maps</a></li>
+              <li>Added Leaflet Map with UVic location</li>
+              <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
+              <li>add signature footer to bottom of page</li>
+              <li>Embed links to geography interactive pdf concept maps</li>
+              <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
+              <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
+              <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
+              <li>Get download button to work with filtered data see new web link</li>
+              <li>List of Geography Courses</li>
+              <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
+          </ul>
+<hr>
+
+<h3 id='report'>Project Report</h3>
+<p>Scroll down the iframe<br />
+<a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>GeogInteract Report</a></p>
+		        <br />
+          <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-new.html' width='100%' height='800px'></iframe>
+          <!-- <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' width='100%' height='800px'></iframe> -->
 <hr>
 </div> <!-- ########## Tab ends ################## -->
 
 
 <div id="About" class="tabcontent">
   <h2 id="menu_about">About This App</h2>
-  <a href="#goals">Goals</a> | <a href="#workflow">Workflow</a> | <a href="#code">The Code</a> | <a href="#history">Change History</a><br /><br />
+  <a href="#goals">Goals</a> | <a href="#workflow">Workflow</a> | <a href="#access">Accessability</a> | <a href="#code">The Code</a> | <a href="#history">Change History</a><br /><br />
   <div>
   	An experimental <a href='https://wendyanthony.shinyapps.io/GeogInteract-app/' target="_blank">Shiny Code Sandbox</a> was created to develop an online, interactive interface to facilitate Geography Course Student Planning. 
   	<br /> This Shiny Clone Website is meant to mimic the Shiny App on the web, without relying on a Shiny Server.
@@ -675,7 +1671,26 @@ UVic color >> #69A81D
 		        <br />
 				<a href="#menu_about">Menu</a>
 				<br />	 
-<hr>				         
+<hr>				     
+
+        <h3 id="access">Accessability Tips</h3>
+            <p>
+            <ul>
+                <li><strong>Accessible Keystrokes</strong></li>
+                <ul>
+                    <li>After opening webpage >> <strong>Tab</strong> >> Highlights 1st Tab >> <strong>Right-Arrow</strong> >> Highlights 2nd Tab >> <strong>Right-Arrow</strong> keeps scrolling through top level tabs</li>
+                    <li><strong>Tab again</strong> >> moves through 2nd level tabs >> <strong>Enter</strong> opens Tab >> </li>
+                    <li>After reaching end of 2nd level tabs, <strong>Tab again</strong> moves through tab body highlighting links >> <strong>Enter</strong> opens link >> after tabbing through all links >> highlights <strong>About</strong> tab again >> </li>
+                    <li>From top level tab <strong>About</strong> >> <strong>Tab once</strong> >> highights tab body >> </li>
+                    <li><strong>Left-Arrow</strong>  key moves backwards through 1st level tabs </li>
+                </ul>
+            </ul>
+            </p>
+		        <br />
+				<a href="#menu_about">Menu</a>
+				<br />	 
+<hr>				     
+
         <h3 id="code">The Code</h3>
           <div>
             <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
@@ -687,14 +1702,31 @@ UVic color >> #69A81D
 				<br />	 
 <hr>				         
   <h2 id="history">History of App Changes</h2>
+    <h3>2023-01-18</h3>
+      <ul>
+      	<li>Found a way to make searchable-filterable-saveable table!!!!!</li>
+        <li>Finished adding all Geography Courses to Interactive Pathways DataViz !!!</li>
+        <li>Added Leaflet Map with UVic location</li>
+      </ul>
+    <h3>2023-01-17</h3>
+      <ul>
+        <li>Added `Accessability Tips` to `About` Tab</li>
+        <li>Formatting Changes</li>
+        <li>Changed tabname from `Data Viz` to `Course Planning Tools`</li>
+      </ul>
+    <h3>2023-01-16</h3>
+      <ul>
+        <li>Formatting Changes</li>
+        <li>Fine Tune Tips For Use as I test-drive the App's functionality</li>
+      </ul>
     <h3>2023-01-15</h3>
       <ul>
-      	<li>Changed tabs: History now in About</li>
-      	<li>Added internal links and menus to About and Project</li>
-      	<li>Discovered how to copy Datatable code from Shiny App using Developer Tools >>> now the exact same DataTable exists in both places!!! (Though the search continues to work, unfortunately I still haven't figured out how to save search)</li>
+        <li>Created my First Draft Project Report <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>Draft Project Report</a></li>
+        <li>Changed Datatable Search Tips</li>
+        <li>Add Code tab contents to About tab</li>
+        <li>Using Chrome Developer Tools, copied Datatable in HTML format to use in Shiny Clone website</li>
         <li>Changed Tab Names and Work Tabs Nesting</li>
-      </ul>
-   
+      </ul>  
     <h3>2023-01-14</h3>
       <ul>
         <li>Created <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html'>Shiny App Web Clone</a></li>
@@ -786,22 +1818,6 @@ function openCity(evt, cityName) {
 
 
 
-	<!--  https://blog.miguelgrinberg.com/post/beautiful-interactive-tables-for-your-flask-templates -->
-	<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
-	<script>
-	            $(document).ready(function() {
-	                $("#gfg").on("keyup", function() {
-	                    var value = $(this).val().toLowerCase();
-	                    $("#geogeek tr").filter(function() {
-	                        $(this).toggle($(this).text()
-	                        .toLowerCase().indexOf(value) > -1)
-	                    });
-	                });
-	            });
-	</script>
-
 
 <!-- ########## Default Tab Script Starts ################## -->
 <script>
@@ -809,25 +1825,5 @@ function openCity(evt, cityName) {
 document.getElementById("defaultOpen").click();
 </script>
 
-
-<!--	
-<script type="text/javascript">
-	// Screen shot script
-	// https://codepen.io/koseare/pen/NWpMjeP
-  function download(canvas, filename) {
-  const data = canvas.toDataURL("image/png;base64");
-  const donwloadLink = document.querySelector("#download");
-  donwloadLink.download = filename;
-  donwloadLink.href = data;
-}
-
-html2canvas(document.querySelector(".card")).then((canvas) => {
-  // document.body.appendChild(canvas);
-  download(canvas, "asd");
-});
-</script>
--->
-
-<!-- </div>. div class="card" -->
 </body>
 </html>
