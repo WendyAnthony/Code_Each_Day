@@ -2,7 +2,7 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-18 02:12
+## Updated 2023-01-18 02:59
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
@@ -17,6 +17,7 @@ library(ggplot2)
 library(plotly)
 library(lubridate)
 library(tidyr)
+library(leaflet)
 
 ## -----------------------------------------
 # Read Data
@@ -183,7 +184,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Concept Maps
-                     tabPanel("Concept Map", tableOutput("conceptmap"),
+                     tabPanel("ConceptMap", tableOutput("conceptmap"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
@@ -193,7 +194,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 
 ## -----------------------------------------
                      # Nested tabPanel Data Viz: Paths Viz
-                     tabPanel("Focus Paths", tableOutput("dataviz"),
+                     tabPanel("Pathways", tableOutput("dataviz"),
                               hr(),
                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-13",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
