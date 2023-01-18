@@ -237,7 +237,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                      # Nested tabPanel About: About
                      tabPanel("About", tableOutput("about"),
                               hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
+                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                               br(),
@@ -247,7 +247,7 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                       # Nested tabPanel About: History --------------------
                       tabPanel("History", tableOutput("history"),
                                hr(),
-                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-15",
+                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
                                   align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                       text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                                br(),
@@ -966,6 +966,7 @@ HTML(paste(sc6))
         <hr>
     <h4>2023-01-18</h4>
       <ul>
+      	<li>Found a way to make searchable-filterable-saveable table!!!!!</li>
         <li>Finished adding all Geography Courses to Interactive Pathways DataViz !!!</li>
         <li>Added Leaflet Map with UVic location</li>
       </ul>
