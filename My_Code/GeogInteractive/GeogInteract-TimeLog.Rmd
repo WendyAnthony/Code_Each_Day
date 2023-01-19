@@ -1,0 +1,564 @@
+---
+title: "Interactive Geography Course Planning Tool"
+author: "Wendy Anthony"
+date: "`r file.info(knitr::current_input())$ctime`"
+output:
+  html_document:
+    highlight: zenburn
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    number_sections: yes
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 300px; # for vertical scroll
+  max-width: 1500px; # for horizontal scroll
+  overflow-y: auto; # for vertical scroll
+  overflow-x: auto; # for horizontal scroll  
+  background-color: inherit;
+}
+```
+
+# Load Package
+```{r load-package, echo=FALSE, results='hide', message=FALSE}
+# install.packages("")
+library(ggplot2)
+library(dplyr)
+```
+
+
+# Save CSV from Obsidian Time Tracker tool
+* copy to text file as `TimeLog-2023-01-18.csv` >> close file
+* Open file in Excel
+* Copy header to top row `Task	Start	End	TotalTaskTime	TaskType	SummaryTotal	SummaryDay	Day	Date	MainTask	TotalTimeMin	TotalTimeHr SubTask`
+* If adding to existing time log csv, from this temp file delete the records already in the timelog file, and only work on the current ones to clean data to be added
+* I've coded the Time Tracker to keep all separately timed events together, with cumulative total, for each day- This creates a data issue, as this Segment Title summary stat doesn't fit with the other data, yet is a key summary and Daily Topic stat
+* This needs to be cut/pasted into separate columns	- at the same row as the first subtask 
+* copy down to fill column for each subtask of that day
+* this column could later be split into separate columns Day #, Date and Main Task
+* after these have been copied down, the empty rows can be deleted
+* Fill in data type for each time period
+
+
+# Read Timelog Time Tracker TimeLog csv file
+Ctrl+sht+H >> choose directory >> GeogInteract
+```{r read-timelog, class.output="scroll-100"}
+# copy filename into read.csv
+#          file.choose()
+
+# Ctrl+sht+H >> choose directory >> GeogInteract
+TimeLog <- read.csv("TimeLogs/TimeLog-negatime2023-01-19 07:10:45.csv")
+# TimeLog
+```
+
+## Split Summary Column into multiples
+```{r split-summary-col, class.output="scroll-100"}
+library(stringr)
+TimeLog[c("Day", "Date", "MainTask")] <- stringr::str_split_fixed(TimeLog$SummaryDay, ': ', 3)
+```
+
+## Calculate Time Difference Between start and end
+- TimeTracker doesn't use 24 hour clock so when times span noon or midnight, the results are ploblematic
+```{r time-diff, class.output="scroll-100"}
+colnames(TimeLog)
+
+TimeLog
+TimeLog$Start
+TimeLog$End
+# Change Values of single cells to make them 24 hour
+?difftime
+TimeLog$TotalTimeMin <- difftime(TimeLog$End, TimeLog$Start, units = "mins")
+TimeLog$TotalTimeMin
+
+###########################################################
+###########################################################
+###########################################################
+# when the difference is negative, change time to be 24 hours
+# iris$Sepal.Length[3]=999
+# TimeLog$End[3]="2023-01-12 13:20"
+# TimeLog$End[20]="2023-01-08 13:15"
+# TimeLog$End[33]="2023-01-09 13:40"
+# TimeLog$End[39]="2023-01-11 15:05"
+
+# TimeLog$End
+# 
+# TimeLog$TotalTimeMin <- difftime(TimeLog$End, TimeLog$Start, units = "mins")
+```
+
+### Convert minutes to hours
+https://stackoverflow.com/questions/49903171/r-divide-all-rows-of-a-dataframe-column-by-a-number
+```{r convert-min-hours, class.output="scroll-100"}
+# https://stackoverflow.com/questions/49903171/r-divide-all-rows-of-a-dataframe-column-by-a-number
+colnames(TimeLog)
+
+TimeLog$TotalTimeHr <- as.numeric(as.character(TimeLog$TotalTimeMin)) / 60
+
+TimeLog$TotalTimeHr
+
+# limit decimal places
+TimeLog$TotalTimeHr <- format(round(TimeLog$TotalTimeHr, 3), nsmall = 3)
+TimeLog$TotalTimeHr
+```
+
+# Error Checking 24 hour
+* If there are negative values, the `Start` and `End` need to be adjusted for 24 hour clock issues using `Obsidian Time Tracker`
+* e.g. [1], [3], [21]
+* I ended up changing 12:59 to 1:00 and PM to AM and it worked just fine
+* write csv file with time info >>>
+* Open in excel
+* Add contents of this file to end of `TimeLog-Current.csv`
+
+
+### Save as new .csv file with split columns
+use this newly saved file to copy new timelog to current file `TimeLog-Current.csv` in app folder
+```{r save-csv, class.output="scroll-100"}
+write.csv(TimeLog, paste("TimeLogs/TimeLog-", Sys.time(), ".csv", sep=""), row.names=FALSE)
+```
+```{r}
+summary(TimeLog)
+```
+
+
+# Read tl Time Tracker TimeLog csv file
+```{r read-time-tracker-timelog, class.output="scroll-100"}
+tl <- read.csv("TimeLogs/TimeLog-Current.csv")
+tl
+
+tl$TotalTimeMin <- difftime(tl$End, tl$Start, units = "mins")
+tl$TotalTimeMin
+tl$Start
+tl$End
+
+```
+
+
+
+## Stacked Bar Visualize Time Log in GGplot
+```{r ggplot-stack-bar, class.output="scroll-100"}
+library(ggplot2)
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+colnames(tl)
+
+tp_stack <- ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
+  geom_bar(aes(fill = TaskType),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = position_stack()) +
+  labs(title = "Task Time Log for Geog Interactive Course Explorations", 
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Date", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() + 
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5))
+  
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+tp_stack
+
+ggsave(paste0("images/TimePlot-stack-", format(Sys.time(), "%Y%m%d_%H%M%S"),
+              ".png"), tp_stack)
+ggsave(paste0("images/TimePlot-stack-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_stack)
+ggsave("images/TimePlot-stack-2023-01-14.png", tp_stack)
+```
+
+## Side-by-side Bar Visualize Time Log in GGplot
+```{r ggplot-side-by-bar, class.output="scroll-100"}
+library(ggplot2)
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+colnames(tl)
+
+tp_side <- ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
+  geom_bar(aes(fill = TaskType),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = "dodge") +
+  labs(title = "Task Time Log for Geog Interactive Course Explorations", 
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Date", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+tp_side
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+ggsave(paste0("images/TimePlot-side-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_side)
+
+ggsave("images/TimePlot-side-2023-01-14.png", tp_side)
+```
+
+
+
+## Plotly
+### Task Type Side-by-side Bar Visualize Time Log in GGplot
+```{r ggplot-plotly-tasks, class.output="scroll-100"}
+library(ggplot2)
+# install.packages("plotly")
+library(plotly)
+
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+colnames(tl)
+
+tp_side <- ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
+  geom_bar(aes(fill = TaskType),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = "dodge") +
+  labs(title = "Task Time Log for Geog Interactive Course Explorations", 
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Date", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+ggplotly(tp_side)
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+ggsave(paste0("images/TimePlot-side-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_side)
+
+ggsave("images/TimePlot-side-2023-01-14.png", tp_side)
+```
+
+
+### Sub Task Side-by-side Bar Visualize Time Log in GGplot
+```{r ggplot-plotly-subtasks , class.output="scroll-100"}
+library(ggplot2)
+# install.packages("plotly")
+library(plotly)
+
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+colnames(tl)
+
+tp_side_subtask <- ggplot(tl, aes(x = Date, y = TotalTimeHr, label = TaskType)) +
+  geom_bar(aes(fill = SubTask),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = "dodge") +
+  labs(title = "Sub Task Time Log for Geog Interactive Course Explorations", 
+       subtitle = "UVic Geography Wendy Anthony 2023",
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Date", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+ggplotly(tp_side_subtask)
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+ggsave(paste0("images/TimePlot-side-subtask-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_side_subtask)
+
+ggsave("images/TimePlot-side-subtask-2023-01-16.png", tp_side_subtask)
+```
+
+
+
+
+## Group chart
+```{r ggplot-group-total-time, class.output="scroll-100"}
+library(ggplot2)
+library(dplyr)
+
+    tl <- read.csv("Timelogs/TimeLog-Current.csv")
+
+    # colnames(tl)
+
+    # group_by() sum()
+    # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+    tl_group <- tl %>%
+      dplyr::select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>%
+      dplyr::group_by(Date) %>%
+      dplyr::summarise(TotalTimeHr = sum(TotalTimeHr))
+
+    tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
+      geom_bar(aes(fill = TotalTimeHr),
+               #geom_bar(aes(color = TaskType, fill = TaskType),
+               stat = "identity", position = "dodge",
+               width = 0.75,
+               fill = "#69A81D") +
+      labs(title = "Task Time Log for Geog Interactive Course Explorations",
+           subtitle = "Group by Total Hours per Day",
+           caption = "UVic Geography Wendy Anthony 2023",
+           x = "Date", y = "Total Hours") +
+      theme_bw() +
+      theme(legend.title = element_blank(),
+            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+    
+    tp_group_bar
+```
+
+
+## Summarise Total Hours group_by Bar Visualize Time Log in GGplot
+```{r ggplot-summarise-total-hours-bar, class.output="scroll-100"}
+library(ggplot2)
+library(dplyr) # group_by summarise
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+# colnames(tl)
+
+# group_by() sum()
+# https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+tl_group <- tl %>% 
+  select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>% 
+  group_by(Date) %>%  
+  summarise(TotalTimeHr = sum(TotalTimeHr)) 
+
+tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
+  geom_bar(aes(fill = TotalTimeHr),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = "dodge",
+           width = 0.35,
+           fill = "#69A81D") +
+  labs(title = "Task Time Log for Geog Interactive Course Explorations",
+       subtitle = "Group by Total Hours per Day",
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Day", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+tp_group_bar
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+ggsave(paste0("images/TimePlot-group-bar-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_group_bar)
+
+ggsave("images/TimePlot-group-bar-2023-01-14.png", tp_group_bar)
+```
+
+## Summarise Total Hours group_by Line Visualize Time Log in GGplot
+```{r ggplot-summarize-total-hours-line, class.output="scroll-100"}
+library(ggplot2)
+library(dplyr) # group_by summarise
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+colnames(tl)
+
+# group_by() sum()
+# https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+tl_group <- tl %>% 
+  select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>% 
+  group_by(Date) %>%  
+  summarise(TotalTimeHr = sum(TotalTimeHr)) 
+
+tp_group_line <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr, group=1)) +
+  geom_line(linetype = "dashed") +
+  geom_point() +
+  labs(title = "Task Time Log for Geog Interactive Course Explorations",
+       subtitle = "Group by Total Hours per Day",
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Day", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+tp_group_line
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+ggsave(paste0("images/TimePlot-group-line", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_group_line)
+
+ggsave("images/TimePlot-group-line-2023-01-14.png", tp_group_line)
+
+# Sum of Hours
+```
+
+
+
+
+## Summarise Total Hours group_by Line Visualize Time Log in GGplot
+```{r ggplot-summarize-total-hours-line-2, class.output="scroll-100"}
+library(ggplot2)
+library(dplyr) # group_by summarise
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+colnames(tl)
+
+# group_by() sum()
+# https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+tl_group <- tl %>% 
+  select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>% 
+  group_by(Date) %>%  
+  summarise(TotalTimeHr = sum(TotalTimeHr)) 
+
+tp_group_line <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr, group=1)) +
+  geom_line(linetype = "dashed") +
+  geom_point() +
+  labs(title = "Task Time Log for Geog Interactive Course Explorations",
+       subtitle = "Group by Total Hours per Day",
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Day", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+tp_group_line
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+ggsave(paste0("images/TimePlot-group-line", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_group_line)
+
+ggsave("images/TimePlot-group-line-2023-01-14.png", tp_group_line)
+
+# Sum of Hours
+```
+
+## Current Total Hours
+
+```{r current-total-hours, class.output="scroll-100"}
+TimeLog_current <- read.csv("TimeLogs/TimeLog-Current.csv")
+# TimeLog_current
+
+# colnames(TimeLog_current)
+
+# TimeLog_current$TotalTimeHr
+
+TotalHours <- sum(TimeLog_current[, 'TotalTimeHr'])
+TotalHours
+```
+
+
+# Mermaid Diagrams
+```{r mermaid-flow-chart-ex, class.output="scroll-100"}
+library(DiagrammeR)
+ mermaid("graph LR;
+A[Geography Major BA]
+B[Focus: Environment]
+E1[GEOG 101A]
+E2[GEOG 101B]
+E3[GEOG 103]
+E4[GEOG 130]
+E5[GEOG 226]
+E6[GEOG 230]
+E7[GEOG 252]
+E8[GEOG 304]
+E9[GEOG 353]
+E10[GEOG 438]
+E11[GEOG 453]
+
+B-->A;
+E1-->E5;
+E3-->E5;
+E4-->E6;
+E7-->E8;
+E7-->E9;
+E9-->E11;
+")
+```
+
+
+
+```{r, class.output="scroll-100"}
+
+```
+
+
+
+```{r, class.output="scroll-100"}
+
+```
+
+
+
+```{r, class.output="scroll-100"}
+
+```
+
+
+
+```{r, class.output="scroll-100"}
+
+```
+
+
+
+```{r, class.output="scroll-100"}
+
+```
+
+
+
+```{r, class.output="scroll-100"}
+
+```
+
+
+---
+  
+---
+  
+  # Session info
+```{r session-info}
+# to document specific packages used to run script
+sessionInfo()
+```

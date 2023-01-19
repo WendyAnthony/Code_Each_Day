@@ -26,34 +26,31 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r load-package, echo=FALSE}
-# Load Package
-# install.packages("")
-library()
+```{r load-package, echo=FALSE, results='hide', message=FALSE}
+library(ggplot2)
+library(dplyr) # group_by summarise
 ```
 
-# Interactive Apps Coding Experiments 
+---
+
+# Progress of Coding Experiments 
 
 ## Shiny App
 https://wendyanthony.shinyapps.io/GeogInteract-app/
 
-![Shiny App Currently](Screenshots/Screenshot 2023-01-15 at 3.29.32 PM.png)
+![Shiny App Current Version](Screenshots/Screenshot 2023-01-15 at 3.29.32 PM.png)
 
+---
 
-## Shiny App Clone
+## Shiny App Web Clone
 https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html
 
-![Shiny App Clone Currently](Screenshots/Screenshot 2023-01-15 at 3.34.32 PM.png)
-
-```{r, class.output="scroll-100"}
-
-```
+![Shiny App Clone Current Version](Screenshots/Screenshot 2023-01-15 at 3.34.32 PM.png)
 
 ## Interactive Flow
 https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html
-```{r, class.output="scroll-100"}
 
-```
+![Interactive Flow of Course Studies Progression](Screenshots/Screenshot 2023-01-16 at 7.34.20 PM.png)
 
 ---
 
@@ -63,7 +60,7 @@ https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-
 
 ### Stacked Bar Visualize Time Log in GGplot
 ```{r, class.output="scroll-100", echo=FALSE}
-library(ggplot2)
+# library(ggplot2)
 
 tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 
@@ -97,47 +94,10 @@ tp_stack
 # ggsave("images/TimePlot-stack-2023-01-14.png", tp_stack)
 ```
 
-### Side-by-side Bar Visualize Time Log in GGplot
+## Summarise Total Hours By Date
 ```{r, class.output="scroll-100", echo=FALSE}
-library(ggplot2)
-
-tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
-
-# colnames(tl)
-
-tp_side <- ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
-  geom_bar(aes(fill = TaskType),
-           #geom_bar(aes(color = TaskType, fill = TaskType),           
-           stat = "identity", position = "dodge") +
-  labs(title = "Task Time Log for Geog Interactive Course Explorations", 
-       caption = "UVic Geography Wendy Anthony 2023",
-       x = "Date", y = "Total Hours") +
-  #scale_fill_brewer("Pastel2") + # 
-  # scale_fill_brewer() + # blues
-  # scale_colour_brewer(palette = "Dark2") +
-  # scale_colour_brewer(palette = "Accent") +
-  theme_bw() +
-  theme(legend.title = element_blank(),
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=0.5))
-#theme_classic()
-# stacked position = position_stack()
-# side by side position = "dodge"
-
-tp_side
-
-
-# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
-# ggsave(paste0("images/TimePlot-side-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
-#              ".png"), tp_side)
-
-#ggsave("images/TimePlot-side-2023-01-14.png", tp_side)
-```
-
-
-## Summarise Total Hours group_by Bar Visualize Time Log in GGplot
-```{r, class.output="scroll-100", echo=FALSE}
-library(ggplot2)
-library(dplyr) # group_by summarise
+# library(ggplot2)
+# library(dplyr) # group_by summarise
 
 tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 
@@ -156,10 +116,10 @@ tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
            stat = "identity", position = "dodge",
            width = 0.35,
            fill = "#69A81D") +
-  labs(title = "Task Time Log for Geog Interactive Course Explorations",
+  labs(title = "Time Log by Day for Geog Interactive Course Explorations",
        subtitle = "Group by Total Hours per Day",
        caption = "UVic Geography Wendy Anthony 2023",
-       x = "Day", y = "Total Hours") +
+       x = "Date", y = "Total Hours") +
   #scale_fill_brewer("Pastel2") + # 
   # scale_fill_brewer() + # blues
   # scale_colour_brewer(palette = "Dark2") +
@@ -172,6 +132,54 @@ tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
 # side by side position = "dodge"
 
 tp_group_bar
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+# ggsave(paste0("images/TimePlot-group-bar-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+#               ".png"), tp_side)
+# 
+# ggsave("images/TimePlot-group-bar-2023-01-14.png", tp_side)
+```
+
+
+## Summarise SubTask By Hours
+```{r, class.output="scroll-100", echo=FALSE}
+# library(ggplot2)
+# library(dplyr) # group_by summarise
+
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+# colnames(tl)
+
+# group_by() sum()
+# https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+tl_group_sub <- tl %>% 
+  select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType, SubTask) %>% 
+  group_by(SubTask) %>%  
+  summarise(TotalTimeHr = sum(TotalTimeHr)) 
+
+tp_group_bar_sub <- ggplot(tl_group_sub, aes(x = SubTask, y = TotalTimeHr)) +
+  geom_bar(aes(fill = SubTask),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = "dodge",
+           width = 0.35,
+           fill = "#69A81D") +
+  labs(title = "Time Log by Day for Geog Interactive Course Explorations",
+       subtitle = "Group by Sub Task Type",
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Sub Task", y = "Total Hours") +
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+tp_group_bar_sub
 
 
 # https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
@@ -196,6 +204,10 @@ TotalHours
 
 ---
 
+
+
+
+---
 
 # Images of Progress
 
@@ -227,21 +239,31 @@ TotalHours
 ## Shiny App Clone
 
 
-![Original Shiny Clone Attempt1](Screenshots/Screenshot 2023-01-14 at 1.47.06 PM.png)
+![Original Shiny Clone Teble Attempt1](Screenshots/Screenshot 2023-01-14 at 1.47.06 PM.png)
+
+![Shiny App Clone  Teble Attempt2](Screenshots/Screenshot 2023-01-15 at 3.34.32 PM.png)
+
+![Shiny App Clone Current Version](Screenshots/Screenshot 2023-01-19 at 7.50.09 AM.png)
+![Shiny App Clone Leaflet Map](Screenshots/Screenshot 2023-01-19 at 6.17.57 AM.png)
 
 
-![Original Shiny Clone Attempt2](Screenshots/Screenshot 2023-01-15 at 5.44.08 AM.png)
 
 
-![Original Shiny Clone Attempt3](Screenshots/Screenshot 2023-01-15 at 5.44.03 AM.png)
 
 
-![Original Shiny Attempt4](Screenshots/Screenshot 2023-01-15 at 5.43.58 AM.png)
+---
+
+
+
 
 
 ---
 
 ```{r, echo=FALSE}
+# Shiny Web Clone
+# ![Original Shiny Clone Attempt2](Screenshots/Screenshot 2023-01-15 at 5.44.08 AM.png)
+# ![Original Shiny Clone Attempt3](Screenshots/Screenshot 2023-01-15 at 5.44.03 AM.png)
+# ![Original Shiny Attempt4](Screenshots/Screenshot 2023-01-15 at 5.43.58 AM.png)
 
 ```
 
