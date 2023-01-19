@@ -18,7 +18,6 @@ library(plotly)
 library(lubridate)
 library(tidyr)
 library(leaflet)
-
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
@@ -822,7 +821,7 @@ HTML(paste(sc6))
 
   output$map <- renderLeaflet({
     # leaflet map with popup of many characters & image link
-    map <- leaflet(height="3800px", width = "100%") %>%
+    map <- leaflet(height="8000px", width = "100%") %>%
       setView(lng = -123.37,  # 49.54782, -125.5188  48.72342, -123.36548
               lat = 48.55,
               zoom = 10) %>%
