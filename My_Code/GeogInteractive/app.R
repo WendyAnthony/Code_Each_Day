@@ -18,6 +18,7 @@ library(plotly)
 library(lubridate)
 library(tidyr)
 library(leaflet)
+library(dplyr)
 ## -----------------------------------------
 # Read Data
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
@@ -205,9 +206,9 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                   # Nested tabPanel About: map
                   tabPanel("Map",
                            h3("Map showing UVic Location"),
-                           leafletOutput("map"),
+                           tableOutput("map"),
                            hr(),
-                           h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
+                           h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-20",
                               align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                                                                       text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
                            br(),
@@ -299,6 +300,8 @@ tabPanel("TimeLog",
          # plotlyOutput("timelogplotside"),
          # h4("Time Log Plot (Grouped by Date)"),
          plotOutput("timelogplotgroup"),
+         hr(),
+         plotOutput("timelogplotsubtask"),
          hr(),
          h4("Time Log Datatable"),
          DT::dataTableOutput("dttime"),
@@ -819,37 +822,44 @@ HTML(paste(sc6))
     #   </ul>
   }) # end Output: About: Links
 
-  output$map <- renderLeaflet({
-    # leaflet map with popup of many characters & image link
-    map <- leaflet(height="8000px", width = "100%") %>%
-      setView(lng = -123.37,  # 49.54782, -125.5188  48.72342, -123.36548
-              lat = 48.55,
-              zoom = 10) %>%
-      addTiles(group = "OSM (default)",
-               options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-      addProviderTiles(providers$Stamen.Toner, group = "Toner",
-                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-      addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
-                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-      addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
-                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-      addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
-                       options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
-      addMarkers(lng = -123.31189,  # 48.46564, -123.31389
-                 lat = 48.46164) %>%
+  output$map <- renderUI({
+    HTML("
+<br>
+View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html'>Leaflet Map</a> as full web page
+<br><br>
+<iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-copy-6.html' style='height:790px; width:100%'></iframe>
+         ")
+    # # leaflet map with popup of many characters & image link
+    # map <- leaflet(height="8000px", width = "100%") %>%
+    #   setView(lng = -123.37,  # 49.54782, -125.5188  48.72342, -123.36548
+    #           lat = 48.55,
+    #           zoom = 10) %>%
+    #   addTiles(group = "OSM (default)",
+    #            options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+    #   addProviderTiles(providers$Stamen.Toner, group = "Toner",
+    #                    options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+    #   addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite",
+    #                    options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+    #   addProviderTiles(providers$Esri.NatGeoWorldMap, group = "Nat Geo",
+    #                    options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+    #   addProviderTiles(providers$Esri.WorldImagery, group = "ESRI World",
+    #                    options = providerTileOptions(minZoom = 3, maxZoom = 25)) %>%
+    #   addMarkers(lng = -123.31189,  # 48.46564, -123.31389
+    #              lat = 48.46164) %>%
+    # #
+    # #
+    # #   #      addProviderTiles("Esri.WorldImagery") %>%
+    # #   #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
+    # #   addMarkers(lat = wa_inat_userstats_research_append$latitude,
+    # #              lng = wa_inat_userstats_research_append$longitude,
+    # #              clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
+    # #              #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
+    # #              popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  wa_inat_userstats_research_append$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", wa_inat_userstats_research_append$common_name, "<br>", "<b>", "Place:", "</b>", wa_inat_userstats_research_append$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", wa_inat_userstats_research_append$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", wa_inat_userstats_research_append$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", wa_inat_userstats_research_append$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", wa_inat_userstats_research_append$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", wa_inat_userstats_research_append$user_login )) %>%
+    #   addLayersControl(
+    #     baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
+    #     options = layersControlOptions(collapsed = TRUE)
+    #   )
     #
-    #
-    #   #      addProviderTiles("Esri.WorldImagery") %>%
-    #   #     addProviderTiles(maptypes[1]) %>% # chose other basemap by number
-    #   addMarkers(lat = wa_inat_userstats_research_append$latitude,
-    #              lng = wa_inat_userstats_research_append$longitude,
-    #              clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = T),
-    #              #    clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
-    #              popup = paste("<b>", "Scientific Name:", "</b>",  "<i>",  wa_inat_userstats_research_append$scientific_name, "</i>", "<br>", "<b>", "Common Name:", "</b>", wa_inat_userstats_research_append$common_name, "<br>", "<b>", "Place:", "</b>", wa_inat_userstats_research_append$place_guess, "<br>", "<b>", "iNaturalist Link:", "</b>", "<a href='", wa_inat_userstats_research_append$url, "<b>",  "'>Observation</a>", "<br>", "<img src='", wa_inat_userstats_research_append$image_url, "'width='200px' />", "<br>", "<b>", "Taxon:", "</b>", wa_inat_userstats_research_append$iconic_taxon_name, "<br>", "<b>", "Observation Date:", "</b>", wa_inat_userstats_research_append$observed_on_string, "<br>", "<b>", "Citizen Scientist / Photographer:", "</b>", wa_inat_userstats_research_append$user_login )) %>%
-      addLayersControl(
-        baseGroups = c("OSM (default)", "Toner", "Toner Lite", "Nat Geo", "ESRI World"),
-        options = layersControlOptions(collapsed = TRUE)
-      )
   })
 
 #
@@ -1461,6 +1471,49 @@ HTML(paste(sc6))
     tp_group_bar
     # end ggplot -------------
   }) # end Output: timelogplot
+
+
+
+  ## -----------------------------------------
+  # Output: subtasklogplot stack
+  output$timelogplotsubtask <- renderPlotly({
+
+    #library(dplyr) # group_by summarise
+    ## Summarise SubTask By Hours
+    tl_sub <- geog_dt_time
+
+    # colnames(tl)
+
+    tl_group_sub <- tl_sub %>%
+      select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType, SubTask) %>%
+      group_by(SubTask) %>%
+      summarise(TotalTimeHr = sum(TotalTimeHr))
+
+
+    tp_group_bar_sub <- ggplot(tl_group_sub, aes(x = SubTask, y = TotalTimeHr)) +
+      geom_bar(aes(fill = SubTask),
+               #geom_bar(aes(color = TaskType, fill = TaskType),
+               stat = "identity", position = "dodge",
+               width = 0.35,
+               fill = "#69A81D") +
+      labs(title = "Time Log for Geog Interactive Course Explorations",
+           subtitle = "Group by Sub Task Type",
+           caption = "UVic Geography Wendy Anthony 2023",
+           x = "Sub Task", y = "Total Hours") +
+      #scale_fill_brewer("Pastel2") + #
+      # scale_fill_brewer() + # blues
+      # scale_colour_brewer(palette = "Dark2") +
+      # scale_colour_brewer(palette = "Accent") +
+      theme_bw() +
+      theme(legend.title = element_blank(),
+            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+    #theme_classic()
+    # stacked position = position_stack()
+    # side by side position = "dodge"
+
+    tp_group_bar_sub
+    # end ggplot -------------
+  }) # end Output: timelogplot stack
 
 ## -----------------------------------------
     #   # Output: TotalHours
