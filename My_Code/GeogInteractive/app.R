@@ -1150,7 +1150,7 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                     <li><strong>Interactivity</strong></li>
                             <ul>
                               <li>R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
-                              <li>Highlight path between courses/pre-requisites/concentrations</li><li></li>
+                              <li>Highlight path between courses/pre-requisites/concentrations</li>
                               <li>Highlight the pathways between courses when clicked, or hovering</li>
                               <li>Choose a path‘s which would be highlighted</li>
                               <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
