@@ -1433,6 +1433,7 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
     ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
       geom_bar(aes(fill = TaskType),
                stat = "identity", position = position_stack()) +
+      ylim(0, 15) +
       labs(title = "Daily Task and SubTask Time Log",
            subtitle = "Geog Interactive Course Explorations",
            caption = "UVic Geography Wendy Anthony 2023",
@@ -1461,6 +1462,7 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                stat = "identity", position = "dodge",
                width = 0.75,
                fill = "#69A81D") +
+      ylim(0, 15) +
       labs(title = "Daily Time Log for Geog Interactive Course Explorations",
            subtitle = "Group by Total Hours per Day",
            caption = "UVic Geography Wendy Anthony 2023",
@@ -1476,19 +1478,18 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 
   ## -----------------------------------------
   # Output: subtasklogplot stack
-  output$timelogplotsubtask <- renderPlotly({
+  output$timelogplotsubtask <- renderPlot({
 
-    #library(dplyr) # group_by summarise
-    ## Summarise SubTask By Hours
-    tl_sub <- geog_dt_time
+    tl <- geog_dt_time
 
     # colnames(tl)
 
-    tl_group_sub <- tl_sub %>%
+    # group_by() sum()
+    # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+    tl_group_sub <- tl %>%
       select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType, SubTask) %>%
       group_by(SubTask) %>%
       summarise(TotalTimeHr = sum(TotalTimeHr))
-
 
     tp_group_bar_sub <- ggplot(tl_group_sub, aes(x = SubTask, y = TotalTimeHr)) +
       geom_bar(aes(fill = SubTask),
@@ -1496,8 +1497,8 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                stat = "identity", position = "dodge",
                width = 0.35,
                fill = "#69A81D") +
-      labs(title = "Time Log for Geog Interactive Course Explorations",
-           subtitle = "Group by Sub Task Type",
+      ylim(0, 15) +
+      labs(title = "Time Log by SubTask Type for Geog Interactive Course Explorations",
            caption = "UVic Geography Wendy Anthony 2023",
            x = "Sub Task", y = "Total Hours") +
       #scale_fill_brewer("Pastel2") + #
