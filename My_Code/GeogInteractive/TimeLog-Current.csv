@@ -4,7 +4,7 @@ Disect Interactive Code,2023-01-06 9:00,2023-01-06 11:06,2h 6m 36s,Data viz,7h 1
 Email Job Acceptance etc,2023-01-06 12:40,2023-01-06 13:20,40m 0s,Admin,7h 11m 36s,Day 1: 2023-01-06: Dissect Interactive Dataviz,Day 1,2023-01-06,Dissect Interactive Dataviz,40,0.667,Communication: Email
 CSS Experiments; Wishlists,2023-01-06 2:00,2023-01-06 3:00,1h 0s,Experiment,7h 11m 36s,Day 1: 2023-01-06: Dissect Interactive Dataviz,Day 1,2023-01-06,Dissect Interactive Dataviz,60,1,Style: CSS
 Shiny template; data wrangle,2023-01-07 6:00,2023-01-07 7:45,1h 45m 0s,Data,7h 35m 0s,Day 2: 2023-01-07: Start Shiny app,Day 2,2023-01-07,Start Shiny app,105,1.75,Webpage: ShinyApp
-Add .js html,2023-01-07 7:45,2023-01-07 8:30,45m 0s,Code,7h 35m 0s,Day 2: 2023-01-07: Start Shiny app,Day 2,2023-01-07,Start Shiny app,45,0.75,JS Tables
+Add .js html,2023-01-07 7:45,2023-01-07 8:30,45m 0s,Code,7h 35m 0s,Day 2: 2023-01-07: Start Shiny app,Day 2,2023-01-07,Start Shiny app,45,0.75,Data Tables: Interactive 
 Add save .csv button,2023-01-07 9:45,2023-01-07 10:15,30m 0s,Code,7h 35m 0s,Day 2: 2023-01-07: Start Shiny app,Day 2,2023-01-07,Start Shiny app,30,0.5,Save Button
 App to Shiny Server,2023-01-07 10:30,2023-01-07 12:55,2h 25m 0s,Code,7h 35m 0s,Day 2: 2023-01-07: Start Shiny app,Day 2,2023-01-07,Start Shiny app,145,2.417,Webpage: ShinyApp
 Add Concept Maps,2023-01-07 1:25,2023-01-07 1:45,20m 18s,Code,7h 35m 0s,Day 2: 2023-01-07: Start Shiny app,Day 2,2023-01-07,Start Shiny app,20,0.333,Data Viz: Concept Maps
@@ -19,7 +19,7 @@ Nesting About tab,2023-01-08 9:21,2023-01-08 10:38,1h 17m 14s,Code,10h 27m 35s,D
 Styling background; add images,2023-01-08 10:46,2023-01-08 11:47,1h 20s,Code,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,61,1.017,Style: CSS
 Double-Nesting Troubles,2023-01-08 11:49,2023-01-08 12:59,1h 10m 35s,Code,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,70,1.167,Webpage: ShinyApp
 Remove one Filter box,2023-01-08 12:59,2023-01-08 13:15,15m 35s,Code,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,16,0.267,Research
-Try Removing DataTable Row Names - no success,2023-01-08 1:30,2023-01-08 1:41,11m 34s,Code,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,11,0.183,Data Table
+Try Removing DataTable Row Names - no success,2023-01-08 1:30,2023-01-08 1:41,11m 34s,Code,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,11,0.183,Data Tables: Interactive 
 ToDo lists; search for filtered csv button,2023-01-09 6:15,2023-01-09 7:03,48m 0s,Research,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,48,0.8,Save Button
 Restyle logo; button; signature,2023-01-08 7:50,2023-01-08 8:33,42m 40s,Code,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,43,0.717,Style: CSS
 Trying to make csv button reactive-no luck,2023-01-08 8:37,2023-01-08 9:45,1h 8m 2s,Code,10h 27m 35s,Day 3: 2023-01-08: Refining App,Day 3,2023-01-08,Refining App,68,1.133,Save Button
@@ -31,56 +31,56 @@ Disected pdf with links ,2023-01-09 8:10,2023-01-09 8:39,29m 52s,Research,10h 41
 Figure out creating interactive pdf Adobe acrobat,2023-01-09 8:41,2023-01-09 9:15,34m 3s,Experiment,10h 41m 44s,Day 4: 2023-01-09: Interactive pdfs,Day 4,2023-01-09,Interactive pdfs,34,0.567,Data Viz: Linked PDFs
 concept map pdf from VUE; interactive links with Adobe,2023-01-09 9:39,2023-01-09 10:38,59m 8s,Experiment,10h 41m 44s,Day 4: 2023-01-09: Interactive pdfs,Day 4,2023-01-09,Interactive pdfs,59,0.983,Data Viz: Concept Maps
 Got Filtered Table with CSV download WORKING!,2023-01-09 10:54,2023-01-09 12:33,1h 39m 3s,Code,10h 41m 44s,Day 4: 2023-01-09: Interactive pdfs,Day 4,2023-01-09,Interactive pdfs,99,1.65,Save Button
-Restyled and Uploaded Filtered Table with csv download,2023-01-09 12:33,2023-01-09 13:40,47m 22s,Code,10h 41m 44s,Day 4: 2023-01-09: Interactive pdfs,Day 4,2023-01-09,Interactive pdfs,67,1.117,Data Table
-Research js interactive table; Shiny tabs; update Shiny style,2023-01-09 2:20,2023-01-09 5:20,3h 0s,Experiment,10h 41m 44s,Day 4: 2023-01-09: Interactive pdfs,Day 4,2023-01-09,Interactive pdfs,180,3,Data Table
+Restyled and Uploaded Filtered Table with csv download,2023-01-09 12:33,2023-01-09 13:40,47m 22s,Code,10h 41m 44s,Day 4: 2023-01-09: Interactive pdfs,Day 4,2023-01-09,Interactive pdfs,67,1.117,Data Tables: Interactive 
+Research js interactive table; Shiny tabs; update Shiny style,2023-01-09 2:20,2023-01-09 5:20,3h 0s,Experiment,10h 41m 44s,Day 4: 2023-01-09: Interactive pdfs,Day 4,2023-01-09,Interactive pdfs,180,3,Data Tables: Interactive 
 Add tabs and Republish app,2023-01-10 5:37,2023-01-10 6:50,1h 12m 50s,Code,3h 38m 2s,Day 5: 2023-01-10: Interactive pdfs,Day 5,2023-01-10,Interactive pdfs,73,1.217,Webpage: ShinyApp
 Tweak app content; to do list,2023-01-10 7:30,2023-01-10 8:16,46m 50s,Code,3h 38m 2s,Day 5: 2023-01-10: Interactive pdfs,Day 5,2023-01-10,Interactive pdfs,46,0.767,Style: CSS
-Code Cleaning,2023-01-10 8:30,2023-01-10 9:25,54m 17s,Code,3h 38m 2s,Day 5: 2023-01-10: Interactive pdfs,Day 5,2023-01-10,Interactive pdfs,55,0.917,Code Cleaning
-Open links in sep window; publishing errors,2023-01-10 9:40,2023-01-10 10:24,44m 5s,Code,3h 38m 2s,Day 5: 2023-01-10: Interactive pdfs,Day 5,2023-01-10,Interactive pdfs,44,0.733,Code Cleaning
-Study Focus pdfs,2023-01-11 12:44,2023-01-11 15:05,2h 20m 22s,Data,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,141,2.35,Linked PDFs
+Code Cleaning,2023-01-10 8:30,2023-01-10 9:25,54m 17s,Code,3h 38m 2s,Day 5: 2023-01-10: Interactive pdfs,Day 5,2023-01-10,Interactive pdfs,55,0.917,Webpage: Code Cleaning
+Open links in sep window; publishing errors,2023-01-10 9:40,2023-01-10 10:24,44m 5s,Code,3h 38m 2s,Day 5: 2023-01-10: Interactive pdfs,Day 5,2023-01-10,Interactive pdfs,44,0.733,Webpage: Code Cleaning
+Study Focus pdfs,2023-01-11 12:44,2023-01-11 15:05,2h 20m 22s,Data,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,141,2.35,Data Viz: Linked PDFs
 Course Data Collection Begins ,2023-01-11 4:38,2023-01-11 6:55,2h 16m 52s,Data,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,137,2.283,Data Collection
 Course Data Collection Continues ...,2023-01-11 8:00,2023-01-11 10:18,2h 17m 47s,Data,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,138,2.3,Data Collection
-Try hyperlink in table > no luck,2023-01-11 10:29,2023-01-11 11:15,45m 52s,Experiment,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,46,0.767,Data Table
+Try hyperlink in table > no luck,2023-01-11 10:29,2023-01-11 11:15,45m 52s,Experiment,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,46,0.767,Data Tables: Interactive 
 Start course data collection again,2023-01-11 11:17,2023-01-11 11:51,34m 0s,Data,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,34,0.567,Data Collection
 More ourse data collection ,2023-01-11 12:11,2023-01-11 12:20,8m 53s,Data,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,9,0.15,Data Collection
 Planning / Designing Form Input; Flow Diagrams; some Data problems: had to redo stuff ...,2023-01-11 1:30,2023-01-11 3:30,2h 0s,Research,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,120,2,Data Collection
 Work on Flow Dataviz,2023-01-11 4:30,2023-01-11 4:53,22m 52s,Experiment,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,23,0.383,Data Viz: Interactive Flow
-Clean-up some code,2023-01-11 6:47,2023-01-11 8:00,1h 12m 46s,Code,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,73,1.217,Code Cleaning
+Clean-up some code,2023-01-11 6:47,2023-01-11 8:00,1h 12m 46s,Code,11h 59m 24s,Day 6: 2023-01-11: Study Focus Docs,Day 6,2023-01-11,Study Focus Docs,73,1.217,Webpage: Code Cleaning
 Mermaid Diagrams Flow Charts,2023-01-12 3:55,2023-01-12 6:58,3h 3m 9s,Code,5h 37m 15s,Day 7: 2023-01-012: Mermaid Diagrams,Day 7,2023-01-12,Mermaid Diagrams,183,3.05,Data Viz: Mermaid Flowcharts
 Data Collection copy/paste,2023-01-12 7:08,2023-01-12 7:47,39m 26s,Data,5h 37m 15s,Day 7: 2023-01-012: Mermaid Diagrams,Day 7,2023-01-12,Mermaid Diagrams,39,0.65,Data Collection
 Finish Data Collection; figure out copy/paste error,2023-01-12 7:50,2023-01-12 8:56,1h 6m 13s,Data,5h 37m 15s,Day 7: 2023-01-012: Mermaid Diagrams,Day 7,2023-01-12,Mermaid Diagrams,66,1.1,Data Collection
-Check webpage after Publishing,2023-01-12 9:10,2023-01-12 9:20,9m 35s,Code,5h 37m 15s,Day 7: 2023-01-012: Mermaid Diagrams,Day 7,2023-01-12,Mermaid Diagrams,10,0.167,Code Cleaning
+Check webpage after Publishing,2023-01-12 9:10,2023-01-12 9:20,9m 35s,Code,5h 37m 15s,Day 7: 2023-01-012: Mermaid Diagrams,Day 7,2023-01-12,Mermaid Diagrams,10,0.167,Webpage: Code Cleaning
 Set up Time Log data for use; Document Workflow,2023-01-12 10:28,2023-01-12 13:49,3h 20m 54s,Admin,9h 57m 38s,Day 7: 2023-01-12: Mermaid Diagrams,Day 7,2023-01-12,Mermaid Diagrams,201,3.35,Workflow: Documentation
 Shiny: Create Working Tabs,2023-01-12 2:56,2023-01-12 4:34,1h 38m 21s,Code,9h 57m 38s,Day 7: 2023-01-12: Mermaid Diagrams,Day 7,2023-01-12,Mermaid Diagrams,98,1.633,Webpage: ShinyApp
 Code: Create web-clone interface template; re-write Shiny output$tab str <- paste(),2023-01-13 4:41,2023-01-13 5:00,18m 57s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,19,0.317,Webpage: Web Page
 Code: start creating web template,2023-01-13 5:12,2023-01-13 8:22,3h 10m 25s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,190,3.167,Webpage: Web Page
-Code: Start timer again after Republish,2023-01-13 8:23,2023-01-13 8:32,8m 55s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,9,0.15,Code Cleaning
+Code: Start timer again after Republish,2023-01-13 8:23,2023-01-13 8:32,8m 55s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,9,0.15,Webpage: Code Cleaning
 Code: Change colour of active Tab,2023-01-13 8:32,2023-01-13 8:40,8m 19s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,8,0.133,Webpage: ShinyApp
 Code: HTML Template,2023-01-13 8:48,2023-01-13 9:05,17m 13s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,17,0.283,Webpage: Web Page
-Research: JS Tables,2023-01-13 9:05,2023-01-13 10:23,1h 17m 18s,Research,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,78,1.3,JS Tables
-Code: Creating table in HTML,2023-01-13 11:01,2023-01-13  14:18:01 AM,3h 16m 8s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,197,3.283,JS Tables
-Code: HTML Tables again,2023-01-13 2:39,2023-01-13 3:55,1h 16m 33s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,76,1.267,JS Tables
+Research: JS Tables,2023-01-13 9:05,2023-01-13 10:23,1h 17m 18s,Research,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,78,1.3,Data Tables: Interactive 
+Code: Creating table in HTML,2023-01-13 11:01,2023-01-13  14:18:01 AM,3h 16m 8s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,197,3.283,Data Tables: Interactive 
+Code: HTML Tables again,2023-01-13 2:39,2023-01-13 3:55,1h 16m 33s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,76,1.267,Data Tables: Interactive 
 Coding: Data Viz Flow Adding CourseNames ConcatenateR,2023-01-13 6:09,2023-01-13 7:55,1h 46m 0s,Code,11h 39m 55s,Day 8: 2023-01-13: HTML Code; Change Tab Nesting and Colour,Day 8,2023-01-13,HTML Code; Change Tab Nesting and Colour,106,1.767,Data Viz: Interactive Flow
 Code: Interactive Flow add classes; add logo at bottom,2023-01-14 2:32,2023-01-14 4:30,1h 57m 54s,Code,8h 3m 24s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,118,1.967,Data Viz: Interactive Flow
 Code: Update Interactive Flow Dataviz,2023-01-14 5:46,2023-01-14 8:46,3h 8s,Code,8h 3m 24s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,180,3,Data Viz: Interactive Flow
 Code: Shiny Clone Webpage with tabs,2023-01-14 9:52,2023-01-14 12:58,3h 5m 22s,Code,8h 3m 24s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,186,3.1,Webpage: Web Page
 Admin: Time Log,2023-01-14 5:00,2023-01-14 5:33,33m 6s,Admin,8h 36m 30s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,33,0.55,Admin: Time Log
-Code: Interactive GGPlot Charts,2023-01-14 7:00,2023-01-14 8:30,1h 30m 0s,Code,10h 6m 30s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,90,1.5,Document Workflow
+Code: Interactive GGPlot Charts,2023-01-14 7:00,2023-01-14 8:30,1h 30m 0s,Code,10h 6m 30s,Day 9: 2023-01-14: Code:Interactive Flow,Day 9,2023-01-14,Code:Interactive Flow,90,1.5,Workflow: Documentation
 Code: Look at what needs to be changed: interact-flow; shiny clone,2023-01-15 7:00,2023-01-15 7:15,14m 52s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,15,0.25,Webpage: Web Page
 Code: Look at what needs to be changed: interact-flow,2023-01-15 7:15,2023-01-15 7:17,1m 40s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,2,0.033,Data Viz: Interactive Flow
 Code: interact-flow,2023-01-15 7:23,2023-01-15 9:40,2h 17m 17s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,137,2.283,Data Viz: Interactive Flow
 Code: Add TimeLog table,2023-01-15 9:50,2023-01-15 10:13,22m 55s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,23,0.383,Webpage: ShinyApp
 Code: Add time log total hours,2023-01-15 10:13,2023-01-15 11:17,1h 3m 48s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,64,1.067,Admin: Time Log
 Code: Tab names shorten,2023-01-15 11:27,2023-01-15 11:36,8m 49s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,9,0.15,Webpage: Web Page
-Code: Shiny Table,2023-01-15 11:50,2023-01-15 12:10,20m 30s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,20,0.333,Data Table
+Code: Shiny Table,2023-01-15 11:50,2023-01-15 12:10,20m 30s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,20,0.333,Data Tables: Interactive 
 Code: Shiny App to Shiny Clone,2023-01-15 1:03,2023-01-15 1:30,27m 9s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,27,0.45,Webpage: Web Page
-Code: Try to change timelog datatable sortorder,2023-01-15 1:44,2023-01-15 2:00,15m 44s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,16,0.267,Data Table
+Code: Try to change timelog datatable sortorder,2023-01-15 1:44,2023-01-15 2:00,15m 44s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,16,0.267,Data Tables: Interactive 
 Admin: Create .RMD Report,2023-01-15 2:00,2023-01-15 3:30,1h 30m 38s,Admin,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,90,1.5,Communication: Report
 Code: Clone internal links,2023-01-15 3:30,2023-01-15 4:01,30m 56s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,31,0.517,Webpage: Web Page
 Code: Reduce Tabs Shiny App,2023-01-15 4:01,2023-01-15 4:32,30m 52s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,31,0.517,Webpage: ShinyApp
 Code: Add button to save pdf,2023-01-15 5:49,2023-01-15 6:05,15m 30s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,16,0.267,Save Button
 Code: Add button to save pdf,2023-01-15 6:06,2023-01-15 7:23,1h 17m 23s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,77,1.283,Save Button
-Code: Check for matching tag errors,2023-01-15 7:24,2023-01-15 9:24,1h 59m 25s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,120,2,Code Cleaning
+Code: Check for matching tag errors,2023-01-15 7:24,2023-01-15 9:24,1h 59m 25s,Code,11h 17m 28s,Day 10: 2023-01-15: Code: interact-flow; shiny clone,Day 10,2023-01-15,Code: interact-flow; shiny clone,120,2,Webpage: Code Cleaning
 Admin: Time Log export,2023-01-16 0:01,2023-01-16 1:16,1h 15m 6s,Admin,7h 48m 53s,Day 11: 2023-01-16: Code: interact-flow; shiny clone,Day 11,2023-01-16,Code: interact-flow; shiny clone,75,1.25,Admin: Time Log
 Admin: Time Log,2023-01-16 1:16,2023-01-16 2:57,1h 41m 9s,Admin,7h 48m 53s,Day 11: 2023-01-16: Code: interact-flow; shiny clone,Day 11,2023-01-16,Code: interact-flow; shiny clone,101,1.683,Admin: Time Log
 Admin; ggplot timelog; Time Log Sub Tasks,2023-01-16 1:00,2023-01-16 2:00,1h 26s,Code,7h 48m 53s,Day 11: 2023-01-16: Code: interact-flow; shiny clone,Day 11,2023-01-16,Code: interact-flow; shiny clone,60,1,Data Viz: Interactive Flow
@@ -100,11 +100,11 @@ Code: Update Interactive Flow webpage,2023-01-18 4:08,2023-01-18 7:17,3h 9m 7s,C
 Research: Mermaid.js flowcharts in webpage,2023-01-18 8:17,2023-01-18 8:47,29m 45s,Research,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,30,0.5,Data Viz: Mermaid Flowcharts
 Code: Interactive Paths Workflow,2023-01-18 9:03,2023-01-18 10:13,1h 9m 47s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,70,1.167,Data Viz: Interactive Pathways
 Code: Web Clone update to ShinyApp,2023-01-18 10:33,2023-01-18 11:11,38m 2s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,38,0.633,Webpage: Web Page
-Research: JS Interactive Tables,2023-01-18 11:26,2023-01-18 11:59,33m 1s,Research,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,33,0.55,Interactive Tables
-Code: js Interactive Table,2023-01-18 0:02,2023-01-18 1:06,1h 3m 29s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,64,1.067,Interactive Tables
-Code: js Interactive Table,2023-01-18 1:14,2023-01-18 2:42,1h 28m 23s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,88,1.467,Interactive Tables
+Research: JS Interactive Tables,2023-01-18 11:26,2023-01-18 11:59,33m 1s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,33,0.55,Data Tables: Interactive 
+Code: js Interactive Table,2023-01-18 1:02,2023-01-18 2:06,1h 3m 29s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,64,1.067,Data Tables: Interactive 
 Admin: Update Timelog,2023-01-18 2:49,2023-01-18 3:28,38m 23s,Admin,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,39,0.65,Workflow: Documentation
-Code: Table Select Save; Time Log,2023-01-18 4:46,2023-01-18 7:13,2h 26m 42s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,147,2.45,Interactive Tables
+Code: js Interactive Table,2023-01-18 0:02,2023-01-18 1:06,1h 3m 29s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,64,1.067,Data Tables: Interactive 
+Code: js Interactive Table,2023-01-18 1:14,2023-01-18 2:42,1h 28m 23s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,88,1.467,Data Tables: Interactive 
 Code: Mermaid Flowchart Pdf Links,2023-01-18 8:35,2023-01-18 8:51,16m 15s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,16,0.267,Data Viz: Mermaid Flowcharts
 Code: Leaflet Web Map,2023-01-18 9:35,2023-01-18 10:06,-20s,Code,12h 49m 7s,Day 13: 2023-01-18: Coding,Day 13,2023-01-18,Coding,31,0.517,Map: Leaflet
 Code: Leaflet Map,2023-01-19 4:34,2023-01-19 5:40,1h 5m 37s,Code,1h 5m 37s,Day 14: 2023-01-19 Code: Leaflet Map; Time Log; Report,Day 14,2023-01-19,Leaflet Map; Time Log; Report,66,1.1,Map: Leaflet
@@ -112,8 +112,8 @@ Code: Add tips for Leaflet Map use; Tab for GeogBA planning pdf,2023-01-19 6:02,
 Admin: Meeting Email; Time Log; Report,2023-01-19 6:12,2023-01-19 6:32,20m 25s,Admin,1h 5m 37s,Day 14: 2023-01-19 Code: Leaflet Map; Time Log; Report,Day 14,2023-01-19,Leaflet Map; Time Log; Report,20,0.333,Communication: Email
 Research:Tabs nested iPad,2023-01-20 12:52,2023-01-20 13:00,8m 12s,Research,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,8,0.133,Research
 Admin: Lists: Format Shiny to ShinyClone ipad,2023-01-20 3:35,2023-01-20 3:50,14m 47s,Admin,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,15,0.25,Lists: ToDos; Questions
-Code cleaning task lit -ipad,2023-01-20 4:49,2023-01-20 4:57,7m 59s,Code,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,8,0.133,Code Cleaning
+Code cleaning task lit -ipad,2023-01-20 4:49,2023-01-20 4:57,7m 59s,Code,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,8,0.133,Webpage: Code Cleaning
 Time Tasks and log from iPad List work,2023-01-20 5:30,2023-01-20 5:30,4s,Admin,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,0,0,Admin: Time Log
 Lists from ipad,2023-01-20 5:34,2023-01-20 5:38,4m 2s,Admin,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,4,0.067,Lists: ToDos; Questions
-Code: Code cleaning WebClone rewrite after Map breakage,2023-01-20 5:41,2023-01-20 8:48,3h 7m 9s,Code,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,187,3.117,Code Cleaning
-Code cleaning WebClone rewrite after Map breakage,2023-01-20 8:55,2023-01-20 11:49,2h 54m 16s,Code,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,174,2.9,Code Cleaning
+Code: Code cleaning WebClone rewrite after Map breakage,2023-01-20 5:41,2023-01-20 8:48,3h 7m 9s,Code,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,187,3.117,Webpage: Code Cleaning
+Code cleaning WebClone rewrite after Map breakage,2023-01-20 8:55,2023-01-20 11:49,2h 54m 16s,Code,6h 36m 29s,Day 15: 2023-01-20 Code: Code Cleaning; To Do Lists,Day 15,2023-01-20,Code Cleaning; To Do Lists,174,2.9,Webpage: Code Cleaning

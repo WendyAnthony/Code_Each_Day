@@ -1250,7 +1250,7 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <p>Scroll down the iframe<br />
 <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>GeogInteract Report</a></p>
 		        <br />
-          <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-new.html' width='100%' height='800px'></iframe>
+          <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy10.html' width='100%' height='800px'></iframe>
           <!-- <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' width='100%' height='800px'></iframe> -->
 <hr>
 
@@ -1480,7 +1480,7 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
   # Output: subtasklogplot stack
   output$timelogplotsubtask <- renderPlot({
 
-    tl <- geog_dt_time
+    tl <- read.csv("TimeLog-Current.csv")
 
     # colnames(tl)
 
@@ -1491,23 +1491,29 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
       group_by(SubTask) %>%
       summarise(TotalTimeHr = sum(TotalTimeHr))
 
-    tp_group_bar_sub <- ggplot(tl_group_sub, aes(x = SubTask, y = TotalTimeHr)) +
+    # dplyr reorder() to reverse the order of the SubTask
+    tp_group_bar_sub <- ggplot(tl_group_sub,
+                               aes(x = reorder(SubTask, desc(SubTask)),
+                                   y = TotalTimeHr)) +
       geom_bar(aes(fill = SubTask),
                #geom_bar(aes(color = TaskType, fill = TaskType),
                stat = "identity", position = "dodge",
                width = 0.35,
                fill = "#69A81D") +
-      ylim(0, 15) +
-      labs(title = "Time Log by SubTask Type for Geog Interactive Course Explorations",
+      ylim(0, 17.5) +
+      labs(title = "Time Log by SubTask Type - Jan 6-20, 2023",
+           subtitle = "UVic Geog Interactive Course Explorations Web Tool",
            caption = "UVic Geography Wendy Anthony 2023",
            x = "Sub Task", y = "Total Hours") +
+      coord_flip() +
+
       #scale_fill_brewer("Pastel2") + #
       # scale_fill_brewer() + # blues
       # scale_colour_brewer(palette = "Dark2") +
       # scale_colour_brewer(palette = "Accent") +
       theme_bw() +
       theme(legend.title = element_blank(),
-            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+            axis.text.x = element_text(angle = 0,vjust = .45, hjust = 0.75))
     #theme_classic()
     # stacked position = position_stack()
     # side by side position = "dodge"

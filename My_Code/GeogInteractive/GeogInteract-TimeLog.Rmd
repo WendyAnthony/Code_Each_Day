@@ -51,9 +51,9 @@ Ctrl+sht+H >> choose directory >> GeogInteract
 ```{r read-timelog, class.output="scroll-100"}
 # copy filename into read.csv
 #          file.choose()
-
+getwd()
 # Ctrl+sht+H >> choose directory >> GeogInteract
-TimeLog <- read.csv("TimeLogs/TimeLog-negatime2023-01-19 07:10:45.csv")
+TimeLog <- read.csv("TimeLogs/TimeLog-2023-01-20 13-19-09.csv")
 # TimeLog
 ```
 
@@ -120,6 +120,7 @@ use this newly saved file to copy new timelog to current file `TimeLog-Current.c
 ```{r save-csv, class.output="scroll-100"}
 write.csv(TimeLog, paste("TimeLogs/TimeLog-", Sys.time(), ".csv", sep=""), row.names=FALSE)
 ```
+
 ```{r}
 summary(TimeLog)
 ```
@@ -127,7 +128,7 @@ summary(TimeLog)
 
 # Read tl Time Tracker TimeLog csv file
 ```{r read-time-tracker-timelog, class.output="scroll-100"}
-tl <- read.csv("TimeLogs/TimeLog-Current.csv")
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 tl
 
 tl$TotalTimeMin <- difftime(tl$End, tl$Start, units = "mins")
@@ -151,6 +152,7 @@ tp_stack <- ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
   geom_bar(aes(fill = TaskType),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = position_stack()) +
+  ylim(0, 15) +
   labs(title = "Task Time Log for Geog Interactive Course Explorations", 
        caption = "UVic Geography Wendy Anthony 2023",
        x = "Date", y = "Total Hours") +
@@ -187,6 +189,7 @@ tp_side <- ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
   geom_bar(aes(fill = TaskType),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = "dodge") +
+  ylim(0, 15) +
   labs(title = "Task Time Log for Geog Interactive Course Explorations", 
        caption = "UVic Geography Wendy Anthony 2023",
        x = "Date", y = "Total Hours") +
@@ -229,6 +232,7 @@ tp_side <- ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
   geom_bar(aes(fill = TaskType),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = "dodge") +
+  ylim(0, 15) +
   labs(title = "Task Time Log for Geog Interactive Course Explorations", 
        caption = "UVic Geography Wendy Anthony 2023",
        x = "Date", y = "Total Hours") +
@@ -269,6 +273,7 @@ tp_side_subtask <- ggplot(tl, aes(x = Date, y = TotalTimeHr, label = TaskType)) 
   geom_bar(aes(fill = SubTask),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = "dodge") +
+  ylim(0, 15) +
   labs(title = "Sub Task Time Log for Geog Interactive Course Explorations", 
        subtitle = "UVic Geography Wendy Anthony 2023",
        caption = "UVic Geography Wendy Anthony 2023",
@@ -302,7 +307,7 @@ ggsave("images/TimePlot-side-subtask-2023-01-16.png", tp_side_subtask)
 library(ggplot2)
 library(dplyr)
 
-    tl <- read.csv("Timelogs/TimeLog-Current.csv")
+    tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 
     # colnames(tl)
 
@@ -319,6 +324,7 @@ library(dplyr)
                stat = "identity", position = "dodge",
                width = 0.75,
                fill = "#69A81D") +
+      ylim(0, 15) +
       labs(title = "Task Time Log for Geog Interactive Course Explorations",
            subtitle = "Group by Total Hours per Day",
            caption = "UVic Geography Wendy Anthony 2023",
@@ -353,6 +359,7 @@ tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
            stat = "identity", position = "dodge",
            width = 0.35,
            fill = "#69A81D") +
+  ylim(0, 15) +
   labs(title = "Task Time Log for Geog Interactive Course Explorations",
        subtitle = "Group by Total Hours per Day",
        caption = "UVic Geography Wendy Anthony 2023",
@@ -397,6 +404,7 @@ tl_group <- tl %>%
 tp_group_line <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr, group=1)) +
   geom_line(linetype = "dashed") +
   geom_point() +
+  ylim(0, 15) +
   labs(title = "Task Time Log for Geog Interactive Course Explorations",
        subtitle = "Group by Total Hours per Day",
        caption = "UVic Geography Wendy Anthony 2023",
@@ -416,10 +424,10 @@ tp_group_line
 
 
 # https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
-ggsave(paste0("images/TimePlot-group-line", format(Sys.time(), "%Y-%m-%d_%H-%M"),
-              ".png"), tp_group_line)
-
-ggsave("images/TimePlot-group-line-2023-01-14.png", tp_group_line)
+# ggsave(paste0("images/TimePlot-group-line", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+#               ".png"), tp_group_line)
+# 
+# ggsave("images/TimePlot-group-line-2023-01-14.png", tp_group_line)
 
 # Sum of Hours
 ```
@@ -446,6 +454,7 @@ tl_group <- tl %>%
 tp_group_line <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr, group=1)) +
   geom_line(linetype = "dashed") +
   geom_point() +
+  ylim(0, 15) +
   labs(title = "Task Time Log for Geog Interactive Course Explorations",
        subtitle = "Group by Total Hours per Day",
        caption = "UVic Geography Wendy Anthony 2023",
@@ -473,10 +482,65 @@ ggsave("images/TimePlot-group-line-2023-01-14.png", tp_group_line)
 # Sum of Hours
 ```
 
+
+## Summarise SubTask By Hours
+```{r, class.output="scroll-100"}
+# library(ggplot2)
+# library(dplyr) # group_by summarise
+## Summarise SubTask By Hours
+tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+
+# colnames(tl)
+
+# group_by() sum()
+# https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+tl_group_sub <- tl %>% 
+  select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType, SubTask) %>% 
+  group_by(SubTask) %>%  
+  summarise(TotalTimeHr = sum(TotalTimeHr)) 
+
+# dplyr reorder() to reverse the order of the SubTask
+tp_group_bar_sub <- ggplot(tl_group_sub, 
+                           aes(x = reorder(SubTask, desc(SubTask)), 
+                               y = TotalTimeHr)) +
+  geom_bar(aes(fill = SubTask),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = "dodge",
+           width = 0.35,
+           fill = "#69A81D") +
+  ylim(0, 17.5) +
+  labs(title = "Time Log by SubTask Type - Jan 6-20, 2023",
+       subtitle = "UVic Geog Interactive Course Explorations Web Tool",
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Sub Task", y = "Total Hours") +
+  coord_flip() +
+
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 0,vjust = .45, hjust = 0.75))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+tp_group_bar_sub
+
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+
+ ggsave(paste0("images/TimePlot-group-bar-subtask", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+              ".png"), tp_group_bar_sub)
+# 
+# ggsave("images/TimePlot-group-bar_subtask-2023-01-20.png", tp_group_bar_sub)
+```
+
 ## Current Total Hours
 
 ```{r current-total-hours, class.output="scroll-100"}
-TimeLog_current <- read.csv("TimeLogs/TimeLog-Current.csv")
+TimeLog_current <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 # TimeLog_current
 
 # colnames(TimeLog_current)

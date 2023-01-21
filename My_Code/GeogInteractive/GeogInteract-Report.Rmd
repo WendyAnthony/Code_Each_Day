@@ -70,6 +70,7 @@ tp_stack <- ggplot(tl, aes(x = Date, y = TotalTimeHr)) +
   geom_bar(aes(fill = TaskType),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = position_stack()) +
+  ylim(0, 15) +
   labs(title = "Task Time Log for Geog Interactive Course Explorations", 
        caption = "UVic Geography Wendy Anthony 2023",
        x = "Date", y = "Total Hours") +
@@ -110,12 +111,13 @@ tl_group <- tl %>%
   group_by(Date) %>%  
   summarise(TotalTimeHr = sum(TotalTimeHr)) 
 
-tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
+tp_group_hour <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
   geom_bar(aes(fill = TotalTimeHr),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = "dodge",
            width = 0.35,
            fill = "#69A81D") +
+  ylim(0, 15) +
   labs(title = "Time Log by Day for Geog Interactive Course Explorations",
        subtitle = "Group by Total Hours per Day",
        caption = "UVic Geography Wendy Anthony 2023",
@@ -131,14 +133,13 @@ tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
 # stacked position = position_stack()
 # side by side position = "dodge"
 
-tp_group_bar
+tp_group_hour
 
 
 # https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+
 # ggsave(paste0("images/TimePlot-group-bar-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
-#               ".png"), tp_side)
-# 
-# ggsave("images/TimePlot-group-bar-2023-01-14.png", tp_side)
+#               ".png"), tp_group_hour)
 ```
 
 
@@ -146,7 +147,7 @@ tp_group_bar
 ```{r, class.output="scroll-100", echo=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
-
+## Summarise SubTask By Hours
 tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 
 # colnames(tl)
@@ -158,24 +159,30 @@ tl_group_sub <- tl %>%
   group_by(SubTask) %>%  
   summarise(TotalTimeHr = sum(TotalTimeHr)) 
 
-tp_group_bar_sub <- ggplot(tl_group_sub, aes(x = SubTask, y = TotalTimeHr)) +
+# dplyr reorder() to reverse the order of the SubTask
+tp_group_bar_sub <- ggplot(tl_group_sub, 
+                           aes(x = reorder(SubTask, desc(SubTask)), 
+                               y = TotalTimeHr)) +
   geom_bar(aes(fill = SubTask),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = "dodge",
            width = 0.35,
            fill = "#69A81D") +
-  labs(title = "Time Log by Day for Geog Interactive Course Explorations",
-       subtitle = "Group by Sub Task Type",
+  ylim(0, 17.5) +
+  labs(title = "Time Log by SubTask Type - Jan 6-20, 2023",
+       subtitle = "UVic Geog Interactive Course Explorations Web Tool",
        caption = "UVic Geography Wendy Anthony 2023",
        x = "Sub Task", y = "Total Hours") +
+  coord_flip() +
+
   #scale_fill_brewer("Pastel2") + # 
   # scale_fill_brewer() + # blues
   # scale_colour_brewer(palette = "Dark2") +
   # scale_colour_brewer(palette = "Accent") +
   theme_bw() +
   theme(legend.title = element_blank(),
-        axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
-#theme_classic()
+        axis.text.x = element_text(angle = 0,vjust = .45, hjust = 0.75))
+#theme_classic()  theme_bw()
 # stacked position = position_stack()
 # side by side position = "dodge"
 
@@ -183,15 +190,16 @@ tp_group_bar_sub
 
 
 # https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
-# ggsave(paste0("images/TimePlot-group-bar-", format(Sys.time(), "%Y-%m-%d_%H-%M"),
-#               ".png"), tp_side)
+
+ # ggsave(paste0("images/TimePlot-group-bar-subtask", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+ #              ".png"), tp_group_bar_sub)
 # 
-# ggsave("images/TimePlot-group-bar-2023-01-14.png", tp_side)
+# ggsave("images/TimePlot-group-bar_subtask-2023-01-20.png", tp_group_bar_sub)
 ```
 
 ## Sum of Total Hours
 ```{r, echo=FALSE}
-TimeLog_current <- read.csv("TimeLogs/TimeLog-Current.csv")
+TimeLog_current <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 # TimeLog_current
 
 # colnames(TimeLog_current)
