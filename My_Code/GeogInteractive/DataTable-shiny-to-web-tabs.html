@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js"></script>
@@ -171,17 +170,6 @@
 		background-color: #69A81D;
 	}
 */	
-
-/*	#download {
-		margin: auto;
-		text-align: center;
-		padding: 10px;
-		background-color:#69A81D;
-		color: #000;
-		width: 150px;
-	} 
-*/
-
 </style>
 
 </head>
@@ -189,7 +177,6 @@
 <h2>Exploring UVic Geography Courses Interactively on the Web <img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Martlet-SocialSciences-transparent.png" alt="UVic Martlet icon" height = 50></h2>
 	<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png" alt="UVic Dynamic Edge Stripe" height = 50 width = "100%">
 <br>
-
 
 <!-- ########## Tabs begin here ################## -->
 <div class="tab">
@@ -219,15 +206,6 @@
                 <li><strong>Download: </strong> Save filtered results as CSV, XML, TXT, SQL, or Excel using Button to left of Search Box</li>
               </ul>
               <hr>
-<!-- 
-<div id="toolbar">
-        <select class="form-control">
-                <option value="">Export Basic</option>
-                <option value="all">Export All</option>
-                <option value="selected">Export Selected</option>
-        </select>
-</div>
--->
 
 <table id="table1" 
   data-show-toggle="true"
@@ -1358,10 +1336,7 @@ var $table = $('#table1');
             $(this).toggleClass("bold-blue");
     });
     </script>
-
-
 </div> <!-- ########## Data Tab ends ################## -->
-
 
 
 <!-- ############ Planning tab Begins ############# --> 
@@ -1380,7 +1355,6 @@ var $table = $('#table1');
 
 
 <!-- ############ Interactive Pathways tab Begins ############# --> 
-
 <div id="pathways" class="tabcontent">
 	 <h2>Vizualizing Study Focus Pathways</h2>
         <strong>To Use:</strong> Hover over or click any course to see other linked courses
@@ -1391,7 +1365,6 @@ var $table = $('#table1');
         <br><br>
         <iframe style='height:790px; width:100%' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html'></iframe>
 </div> <!-- ########## Interactive Pathways Tab ends ################## -->
-
 
 
 <!-- ############################ Flowcharts Tab Section Starts #################################### -->
@@ -1410,7 +1383,6 @@ var $table = $('#table1');
             <hr>
 <!-- =================== Tips Ends ==================== -->
 
-
 <!-- =================== Environment And Sustainability Begins ==================== -->
         <h3 id="env">Environment And Sustainability</h3>
           <div>
@@ -1424,8 +1396,7 @@ var $table = $('#table1');
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'></iframe>
           </div>
             <hr>
-<!-- =================== v Ends ==================== -->
-
+<!-- =================== Environment And Sustainability Ends ==================== -->
 
 <!-- =================== Geomatics Begins ==================== -->
         <h3 id="geomatics">Geomatics</h3>
@@ -1442,7 +1413,6 @@ var $table = $('#table1');
             <hr>
 <!-- =================== Geomatics Ends ==================== -->     
 
-
 <!-- =================== Human Geography Begins ==================== -->
         <h3 id="human">Human Geography</h3>
           <div>
@@ -1457,7 +1427,6 @@ var $table = $('#table1');
           </div>
             <hr>
 <!-- =================== Human Geography Ends ==================== -->
-
 
 <!-- =================== Physical Geography Begins ==================== -->
         <h3 id="physical">Physical Geography</h3>
@@ -1501,8 +1470,7 @@ var $table = $('#table1');
 </div> <!-- ########## Links Tab ends ################## -->
 
 
-
-
+<!-- ########## Project Tab begins ################## -->
 <div id="project" class="tabcontent">
             
   <h2 id="menu_work">Project Work Stuff</h2>
@@ -1558,7 +1526,6 @@ var $table = $('#table1');
 <a href="#menu_work">Menu</a>
 <br>
 <!-- =================== Questions Ends ==================== -->
-
 
 <hr>
 <!-- =================== Need Begins ==================== -->
@@ -1644,7 +1611,6 @@ var $table = $('#table1');
 <!-- =================== Wishlist Ends ==================== -->          
 <hr>
 
-
 <!-- =================== Functions Begins ==================== -->
           <h3 id='functions'>Functions to Add</h3>
           <ul>
@@ -1688,7 +1654,6 @@ var $table = $('#table1');
                     <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
                     <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
               </li>
-
           </ul>
 <br>
 <a href="#menu_work">Menu</a>
@@ -1771,7 +1736,6 @@ var $table = $('#table1');
 </div> <!-- ########## Tab ends ################## -->
 
 
-
 <!-- ########## Leaflet Tab begins ################## -->
 <div id="map" class="tabcontent">
 <br>	
@@ -1782,6 +1746,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 </div> <!-- ########## Leaflet Tab ends ################## -->
 
 
+<!-- ########## About Tab begins ################## -->
 <div id="about" class="tabcontent">
        <h2 id="menu_about">About This App</h2>
   					<a href="#goals">Goals</a> | <a href="#workflow">Workflow</a> | <a href="#access">Accessability</a> | <a href="#code">The Code</a> | <a href="#history">Change History</a><br><br>
@@ -1865,6 +1830,10 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 
 <!-- =================== History Begins ==================== -->
           <h2 id="history">History of App Changes</h2>
+            <h3>2023-01-21</h3>
+              <ul>
+              	<li>Created interactive chart for Vizualizing Course Class Size</li>
+              </ul>
             <h3>2023-01-20</h3>
               <ul>
               	<li>Added pagination to DataTable</li>
@@ -1955,12 +1924,11 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                         <a href="#menu_about">Menu</a>
                         <br>  
 <!-- =================== History Ends ==================== -->
-
 </div> <!-- ########## About Tab ends ################## -->
 
-
-
 <!-- ########## Tab Section ends ################## -->
+
+
 
 <!-- ########## Footer Starts ################## -->
 <footer>	
@@ -1989,8 +1957,7 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 </script>
-
-
+<!-- ########## Tab Script Ends ################## -->
 
 
 <!-- ########## Default Tab Script Starts ################## -->
