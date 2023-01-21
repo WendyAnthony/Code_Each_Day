@@ -8,7 +8,7 @@ output:
     toc: yes
     toc_depth: 4
     toc_float: yes
-    number_sections: no
+    number_sections: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -80,7 +80,7 @@ https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-
 
 ---
 
-# Visualize Geography Courses
+# Charts to Visualize Geog Courses
 
 
 ```{r summary-classSize1, class.output="scroll-100", echo=FALSE, warning=FALSE, message=FALSE}
@@ -218,12 +218,10 @@ ggplotly(gc_group_bar_sub)
 
 ---
 
-# Time Log: How I've Spent My Time
+## Time Log: How I've Spent My Time
 * **Note**: These charts are interactive - click/hover to see details
 
-## Charts
-
-### Visualizing Time Log in GGplot
+### Visualizing Time Log Tasks
 ```{r, class.output="scroll-100", echo=FALSE}
 # library(ggplot2)
 
@@ -260,7 +258,7 @@ ggplotly(tp_stack)
 # ggsave("images/TimePlot-stack-2023-01-14.png", tp_stack)
 ```
 
-## Summary of Total Hours By Date
+### Summary of Total Hours By Date
 ```{r, class.output="scroll-100", echo=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -308,7 +306,7 @@ ggplotly(tp_group_hour)
 ```
 
 
-## Summarise SubTask By Hours
+### Summarise SubTask By Hours
 ```{r, class.output="scroll-100", echo=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -362,7 +360,7 @@ ggplotly(tp_group_bar_sub)
 # ggsave("images/TimePlot-group-bar_subtask-2023-01-20.png", tp_group_bar_sub)
 ```
 
-## Sum of Total Hours
+### Sum of Total Hours
 ```{r, echo=FALSE}
 TimeLog_current <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 # TimeLog_current
