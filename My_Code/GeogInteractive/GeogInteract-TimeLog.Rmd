@@ -29,6 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load-package, echo=FALSE, results='hide', message=FALSE}
 # install.packages("")
 library(ggplot2)
+library(plotly) # interactive ggplots
 library(dplyr)
 ```
 
@@ -483,7 +484,7 @@ ggsave("images/TimePlot-group-line-2023-01-14.png", tp_group_line)
 ```
 
 
-## Summarise SubTask By Hours
+## Plotly Summarise SubTask By Hours
 ```{r, class.output="scroll-100"}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -503,6 +504,15 @@ tl_group_sub <- tl %>%
 tp_group_bar_sub <- ggplot(tl_group_sub, 
                            aes(x = reorder(SubTask, desc(SubTask)), 
                                y = TotalTimeHr)) +
+  # https://stackoverflow.com/questions/36325154/how-to-choose-variable-to-display-in-tooltip-when-using-ggplotly
+  # tp_group_bar_sub <- ggplot(tl_group_sub, 
+  #                          aes(x = reorder(SubTask, desc(SubTask)), 
+  #                              y = TotalTimeHr,
+  #                              label = SubTask)) +
+    # tp_group_bar_sub <- ggplot(tl_group_sub, 
+  #                          aes(x = reorder(SubTask, desc(SubTask)), 
+  #                              y = TotalTimeHr,
+  #                              text = SubTask)) +
   geom_bar(aes(fill = SubTask),
            #geom_bar(aes(color = TaskType, fill = TaskType),           
            stat = "identity", position = "dodge",
@@ -527,6 +537,8 @@ tp_group_bar_sub <- ggplot(tl_group_sub,
 # side by side position = "dodge"
 
 tp_group_bar_sub
+
+ggplotly(tp_group_bar_sub)
 
 
 # https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
