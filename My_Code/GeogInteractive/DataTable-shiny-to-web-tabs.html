@@ -172,8 +172,10 @@
 */	
 
 /* Search bar to left */
+/*     float: left!important; */
+/*     float: right!important;  original position top right*/
 .pull-right {
-    float: left!important;
+    float: center!important;
 }
 </style>
 
@@ -189,7 +191,7 @@
   <button class="tablinks" onclick="openCity(event, 'planning')">Planning</button>
   <button class="tablinks" onclick="openCity(event, 'pathways')">Pathways</button>
   <button class="tablinks" onclick="openCity(event, 'flowcharts')">Flowcharts</button>
-  <button class="tablinks" onclick="openCity(event, 'links')">Links</button>  
+  <button class="tablinks" onclick="openCity(event, 'dataviz')">Data Viz</button>  
   <button class="tablinks" onclick="openCity(event, 'project')">Project</button>  
   <button class="tablinks" onclick="openCity(event, 'map')">Map</button>
   <button class="tablinks" onclick="openCity(event, 'about')">About</button>
@@ -225,8 +227,10 @@
        class="table-responsive">
     <thead>
         <tr>
-            <th data-field="state" data-checkbox="false"></th>
-            <!-- <th data-field="state" data-checkbox="true"></th> -->          
+            
+            <!--
+            	<th data-field="state" data-checkbox="false"></th> 
+            	<th data-field="state" data-checkbox="true"></th> -->          
             <th data-field="course" data-filter-control="input" data-sortable="true">Course</th>
             <th data-field="name" data-filter-control="input" data-sortable="true">Name</th>
             <th data-field="desc" data-filter-control="input" data-sortable="true">Description</th>
@@ -240,7 +244,6 @@
     </thead>
     <tbody>
 <tr class="odd">
-<td></td>
 <td>GEOG 100</td>
             <td>Geography for Today</td>
             <td>Each topic stretches the geographical imagination by offering a new lens through which to view the relationship between people and the richly diverse and varied environments they inhabit. From the intimate personal places of one individual's human experience to the worldwide reach of global-scale physical environmental changes that impact everyone, the complex challenges and opportunities of today's world are illuminated with the help of an integrated spatial perspective. Topic may change from year to year.</td>
@@ -252,7 +255,6 @@
             <td>100</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 101A</td>
             <td>Environment, Society &amp; Sustainability</td>
             <td>Introduction to the functioning of the biosphere, the ways in which humans alter natural processes, environmental consequences of these alterations and the implications for sustainability. Topics include: energy flows, biogeochemical cycles, ecosystem structure and dynamics, pollution, global change, water resources, biodiversity, endangered species, protected areas, agriculture and food, forestry, marine resources, poverty and development and different worldviews. Potential for a sustainable society is discussed.</td>
@@ -264,7 +266,6 @@
             <td>110</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 101B</td>
             <td>Space, Place and Society</td>
             <td>Perspectives on the scope and purpose of human geography, emphasizing approaches, concepts and scales of geographical analysis. Topics include: social geography of cities; interpretation of regional; cultural and economic landscapes; urbanization and industrialization of regions; and economic development and social change in the world system.</td>
@@ -276,7 +277,6 @@
             <td>132</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 103</td>
             <td>Introduction to Physical Geography</td>
             <td>Introduces the science of Physical Geography using an earth-systems approach. Course themes include global climates and climate change, hydrology and water resources, geomorphology and natural hazards, and biogeography; with focus on how geographic sciences are applied to address real world issues.</td>
@@ -288,7 +288,6 @@
             <td>198</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 104</td>
             <td>Our Digital Earth</td>
             <td>Introduces students to how geospatial technologies influence our daily lives and shape the world around us. Students learn how to collect and utilize location-based data, develop web maps and mobile mapping apps, create technologies to respond to environmental disasters and humanitarian crises, and think spatially in order to improve our understanding of our planet.</td>
@@ -300,7 +299,6 @@
             <td>60</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 130</td>
             <td>Climate Change</td>
             <td>An introduction to the fundamental physical principles governing the climate of the Earth system, and its response to anthropogenic factors. Topics include components of the climate system, radiative energy balance, forcings and feedbacks, the carbon cycle, climate of the past, impacts of climate change, global climate model projections, and approaches to mitigation and adaptation.</td>
@@ -312,7 +310,6 @@
             <td>186</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 209</td>
             <td>Introduction to Environmental Management</td>
             <td>Introduces and critically interrogates approaches to the management or governance of environments and natural resources. Themes may include: parks and protected areas, fisheries, forestry, water and energy management; environmental impact assessment; comprehensive land-use and marine spatial planning; and urban sustainability, all in the context of profound political and environmental change, colonialism, and Indigenous resurgence.</td>
@@ -324,7 +321,6 @@
             <td>110</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 211</td>
             <td>Political and Economic Geography</td>
             <td>Examines the major thematic concerns that have traditionally shaped the sub-disciplines of political and economic geography, while also engaging with emerging issues that are likely to become focal points in shaping future debates. Explores the co-constitutive relationship between politics, economics and space.</td>
@@ -336,7 +332,6 @@
             <td>86</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 218</td>
             <td>Social and Cultural Geography</td>
             <td>Introduction to social and cultural geography with a focus on the interpretation of cultural landscapes, place-making, and the spatial expression of social and cultural identities. Lab assignments involve fieldwork and critical reflection on the relation between culture, society and landscape.</td>
@@ -348,7 +343,6 @@
             <td>88</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 220</td>
             <td>Weather and Climate</td>
             <td>An introduction to the physical processes that determine Earth's weather and climate. Topics include atmospheric composition, flows of energy through the atmosphere, small-scale and large-scale winds, cloud and precipitation processes, climate change.</td>
@@ -360,7 +354,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 222</td>
             <td>Introduction to Maps and GIS</td>
             <td>Introduces techniques and fundamentals of spatial data and analysis. Topics include: scale, map interpretation, GPS and Geographic Information Systems.</td>
@@ -372,7 +365,6 @@
             <td>110</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 226</td>
             <td>Introduction to Quantitative Methods in Geography</td>
             <td>Application of statistical techniques to geographic problems. Topics include hypothesis formulation, sampling strategies, parametric and nonparametric statistical tests, statistical models. All laboratory exercises are computer based.</td>
@@ -384,7 +376,6 @@
             <td>80</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 227</td>
             <td>Introduction to Qualitative Methods in Geography</td>
             <td>Introduces the main qualitative methodological approaches applied in human geography. A range of paradigms (ethnography, action research, the scientific method, Marxism and feminism), research design, data collection tools (survey and questionnaire design, focus groups, interviews, diagraming, participant observation, photo voice, participatory video), data analysis (narrative analysis, coding, data interpretation, thematic and interpretive analyses) and examine Indigenous Methodologies and apply to current issues in the discipline.</td>
@@ -396,7 +387,6 @@
             <td>44</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 228</td>
             <td>Introduction to Remote Sensing</td>
             <td>Introduces the use of remotely sensed images to address information issues related to both physical and human geography. Students are exposed to a range of image types and resolutions, as well as methods and tools used for their analysis.</td>
@@ -408,7 +398,6 @@
             <td>88</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 230</td>
             <td>Scientific Computing and Environmental Data Analysis</td>
             <td>An introduction to using computer programming to analyze climate data. Topics include fundamentals of programming, data visualization, analysis of spatial data, descriptive statistics, linear regression.</td>
@@ -420,7 +409,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 252</td>
             <td>Introduction to Coastal Geography</td>
             <td>Explores a wide variety of coastal topics from biophysical, ecological, and social-economic perspectives. Topics focus on coastal landscapes and communities that may include fundamentals of coastal oceanography, climate, biodiversity, water quality, fisheries, indigenous people, tourism and implications for management.</td>
@@ -432,7 +420,6 @@
             <td>70</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 272</td>
             <td>Introduction to Climatology and Hydrology</td>
             <td>An investigation of the fundamental processes controlling climate and hydrology. Explores various factors and interactions that determine the spatial and temporal variations of individual climate elements. Special attention is given to the mutual interaction of climate with the Earth's surface and the role that ground surface type or cover plays in moderating local climate and hydrology.</td>
@@ -444,7 +431,6 @@
             <td>88</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 274</td>
             <td>Introduction to Biogeography</td>
             <td>Examines the relationships among organisms - principally plants and animals - and their environment, emphasizing their distributions across a range of spatial and temporal scales. Examines basic ecological and evolutionary concepts affecting biogeographic processes of dispersal, speciation and extinction; how patterns of biodiversity change over space and time from early earth history to the contemporary environment; the nature of changing biotic distributions with increasing human impacts and global change.</td>
@@ -456,7 +442,6 @@
             <td>88</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 276</td>
             <td>Introduction to Geomorphology</td>
             <td>Introduction to Earth surface process and landforms including riverine, desert, coastal, glacial, hillslope and permafrost environments. Focus on regional and Canadianlandscapes. Involves a field trip.</td>
@@ -468,7 +453,6 @@
             <td>92</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 301</td>
             <td>Environmental Impact Assessment</td>
             <td>Introduction to Earth surface process and landforms including riverine, desert, coastal, glacial, hillslope and permafrost environments. Focus on regional and Canadian landscapes. Involves a field trip.</td>
@@ -480,7 +464,6 @@
             <td>45</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 303</td>
             <td>Conservation and Ecology of Whales</td>
             <td>Examines the fundamental biology, evolution and ecology of the modern whale species. Discusses the history and the spectrum of the human relationships with whales. Current topics in the marine mammal sphere are critically examined.</td>
@@ -492,7 +475,6 @@
             <td>90</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 304</td>
             <td>Coastal Conservation</td>
             <td>Examines the natural science and social science dimensions of conservation on the remote and largely undeveloped central and north coast of British Columbia. Students explore current issues with relevant theory, thus uniting contemporary affairs with scholarship. Major themes are energy development and exploitation of biological resources (like fish and wildlife), but specific themes might change among years. Students learn from western scientific approaches, First Nations perspectives, and their interaction.</td>
@@ -504,7 +486,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 306</td>
             <td>Geography of Canada</td>
             <td>Explores the physical, historical, cultural, and political geography of Canada. Topics may include: human / environment relationships; settlement and development patterns; colonialism and Indigenous resurgence; national identity and conflict; and current issues in the Canadian context.</td>
@@ -516,7 +497,6 @@
             <td>65</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 309</td>
             <td>Geography of British Columbia</td>
             <td>An examination of the physical, economic, and cultural landscapes that distinguish the cities and rural regions of Canada's West Coast province.</td>
@@ -528,7 +508,6 @@
             <td>60</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 310</td>
             <td>Global Migration</td>
             <td>Contemporary issues relating to the patterns, processes, and politics of global migration. Theories, concepts and themes associated with cross-border migratory flows are explored as they relate to the increase in global migration and mobility of people of different nationalities and cultural backgrounds around the world. Topics include border control and security, demographic patterns of movement relating to refugees and internally-displaced persons, human smuggling and trafficking.</td>
@@ -540,7 +519,6 @@
             <td>50</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 313</td>
             <td>Field Studies in Mountain Meteorology</td>
             <td>An immersive opportunity to understand the physical processes of meteorological phenomena in mountain environments. Measuring and monitoring of snowpack, extreme weather and climate and their associated hazards in mountain ranges are prominent course themes. A field trip fee may be applied.</td>
@@ -552,7 +530,6 @@
             <td>16</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 314</td>
             <td>Global Environment Change and Human Response</td>
             <td>Based on four components: global environmental change; sustainable development; biodiversity; and population impoverishment and environmental degradation. Lectures and discussion emphasize the causes of global change, the present and expected impacts on natural and social systems, and response strategies that have been proposed or enacted.</td>
@@ -564,7 +541,6 @@
             <td>75</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 315</td>
             <td>Geocaching</td>
             <td>Introduces the activity of geocaching, the fundamentals of GPS navigation and data collection. Emphasis is placed on geocaching, the history and workings of GPS and associated navigation systems, map datums and coordinate systems and basics of GPS data management. Hands-on operating and working with GPS units in the field, through a variety of geocaching activities and assignments. Examples of the use of GPS in geographical research is demonstrated through lectures and readings.</td>
@@ -576,7 +552,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 316</td>
             <td>Field Studies in Human Geography</td>
             <td>Explores concepts and concerns of human geography including personal, cultural and political considerations of space, place and society through practical, experiential learning. A field trip fee may be applied.</td>
@@ -588,7 +563,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 317</td>
             <td>Field Studies in Sustainable Communities</td>
             <td>The challenges and opportunities for promoting resilient, inclusive, equitable and sustainable communities are explored through practical and experiential learning. A field trip fee may be applied.</td>
@@ -600,7 +574,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 319</td>
             <td>Remote Sensing of the Environment using Passive Sensors</td>
             <td>Focuses on physical principles underlying passive remote sensing and electromagnetic propagation in free space and matter; attenuation, absorption and scattering mechanisms; interaction of energy with the atmosphere and Earth materials such as vegetation, soil, rock, water and urban structures.</td>
@@ -612,7 +585,6 @@
             <td>44</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 322</td>
             <td>Remote Sensing of the Environment using Active Sensors</td>
             <td>Processing and analysis of remote sensing data collected using active sensors - those that transmit their own energy. Data from active microwave sensors, including RADAR and Light Detection and Ranging (LiDAR) sensors, are discussed and analyzed with respect to their applicability as standalone and complementary data sources to remote sensing data acquired using passive systems. Laboratory assignments use image analysis software in a variety of applications.</td>
@@ -624,7 +596,6 @@
             <td>44</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 323</td>
             <td>Cartography</td>
             <td>Introduces topographic and thematic cartography. Emphasis on cartographic data manipulation, generalization and symbolization; map design, visualization and communication. Laboratory assignments provide practical experience in designing and drafting maps.</td>
@@ -636,7 +607,6 @@
             <td>44</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 324</td>
             <td>Directions in Geography</td>
             <td>An intellectual history of geographical thought, concentrating on trends, ideologies and controversies since 1960. Idiographic, nomothetic, quantitative, behavioural, applied radical, humanistic and recent social theory and GIS approaches are critically discussed in seminars.</td>
@@ -648,7 +618,6 @@
             <td>30</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 325</td>
             <td>Field Surveying</td>
             <td>An introduction to fundamental concepts of surveying and field work. This is an instrument-based course covering differential leveling, traversing, tachometry, GPS and their applications to field work.</td>
@@ -660,7 +629,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 328</td>
             <td>GIS Analysis</td>
             <td>Focuses on analysis for digital mapping and modeling, developing and using geographic data to answer spatial research questions, conducting basic spatial interpolations and carrying-out multi-criteria modelling.</td>
@@ -672,7 +640,6 @@
             <td>66</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 329</td>
             <td>GIS Applications and Tools</td>
             <td>The basics of GIS tool development including applications, desktop GIS customization, map mashups, model building in a GIS environment, Internet GIS, building web pages that include GIS maps and tasks.</td>
@@ -684,7 +651,6 @@
             <td>66</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 332</td>
             <td>Urban Development in the Global South</td>
             <td>Examines fundamental characteristics of cities in the Global South with a focus on issues of urban development as well as social, cultural, economic, and environmental challenges in the region. Addresses the driving forces of urban growth and investigates the consequences of this transformation in terms of economic and human development as well as environmental sustainability. Discussion and analysis of contentious urban issues and case studies from the Global South.</td>
@@ -696,7 +662,6 @@
             <td>40</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 339</td>
             <td>Disaster Management and Community Resilience</td>
             <td>Explores hazard events and the factors and conditions that lead to disasters. Covers such events as earthquakes, hurricanes, tsunamis, floods, droughts and examines their human and natural dimensions.Emphasis on understanding vulnerability and risk assessment, sustainable hazards mitigation and disaster management approaches to enhancing community resilience.</td>
@@ -708,7 +673,6 @@
             <td>24</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 340</td>
             <td>Cities and Planning</td>
             <td>Overview of key thematic areas related to cities and planning in the North American context. Includes a critical examination of the history of urban planning and contemporary issues in urban geography to foster a deeper appreciation of the spatial politics of the urban experience.</td>
@@ -720,7 +684,6 @@
             <td>65</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 346</td>
             <td>Health, Environment and Community</td>
             <td>Examines the dynamics and linkages between health and the environment at the micro scale of individuals to the macro scale of communities and nations. Definitions of health, wellness and well-being, as well as healthy communities; focusing on the range of factors, conditions and determinants that make people and place healthy or unhealthy.</td>
@@ -732,7 +695,6 @@
             <td>60</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 347B</td>
             <td>Geographies of Development</td>
             <td>A critical examination of development theories, trends and issues. Topics included are the definition and measurement of poverty and inequality, an overview of global population growth and structure, the impact of globalization on third-world economies, the effectiveness of foreign aid, and food security constraints.</td>
@@ -744,7 +706,6 @@
             <td>24</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 353</td>
             <td>Coastal and Marine Resource Management</td>
             <td>An integration of the scientific, cultural, and policy dimensions of resource management in coastal and marine systems. Concepts will be illustrated with examples from wildlife and fisheries management. Although global context is set, a special focus will be on British Columbia's coast.</td>
@@ -756,7 +717,6 @@
             <td>55</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 357</td>
             <td>Parks and Protected Areas</td>
             <td>An investigation of the principles and concepts underlying the designation, planning and management of protected areas such as national and provincial park systems. Topics include: the history and philosophy of protected areas; international classifications and examples; role of native peoples; carrying capacity; visitor management; interpretation; ecosystem integrity; ecosystem management; and a variety of case studies. Students should be prepared to undertake one or more weekend field trips; a fee for each field trip may be applied.</td>
@@ -768,7 +728,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 358</td>
             <td>Landscape Ecology</td>
             <td>Landscape ecology emphasizes the interaction between spatial pattern and ecological processes. Focus is on the role of spatial heterogeneity in affecting the distribution and abundance of organisms, mass and energy transfers, and alterations of this structure by natural or anthropogenic forces. Implications for wildlife management and conservation are discussed.</td>
@@ -780,7 +739,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 370</td>
             <td>Hydrology</td>
             <td>An overview of hydrological processes, measurement techniques and data analysis. The movement of water in the hydrologic cycle via precipitation, interception, evapotranspiration, surface runoff, infiltration, soil moisture, groundwater flow and streamflow generation are examined. Applied aspects and local examples are discussed. Involves laboratory assignments and a field trip.</td>
@@ -792,7 +750,6 @@
             <td>44</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 371</td>
             <td>Water Resources Management</td>
             <td>A study of water resources management in different parts of the world, examining the influence of various physical, economic, social, political and technological factors. Examines the alternative ways in which such problems as water scarcity, floods and declining water quality are handled. Examines in detail a number of major water development schemes. Students are expected to undertake a modest research project and report upon it.</td>
@@ -804,7 +761,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 373</td>
             <td>Applied Climatology</td>
             <td>A study of the application of physical principles to practical problems in climatology and the reciprocal interaction between climate and human activities. Topics include: urban effects on climate; air pollution; human bioclimatology; agricultural climatology; and methods of microclimatic modification.</td>
@@ -816,7 +772,6 @@
             <td>48</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 376</td>
             <td>Process Geomorphology</td>
             <td>An investigation of the physical processes that create and maintain landforms. Focus on measurement and analysis of morphodynamic processes in fluvial, aeolian, coastal, glacial, hillslope, and/or periglacial landscapes (e.g., sediment transport, erosion, wind/wave energy, river discharge, glacial dynamics, weathering rates). Involves a field trip and/or a group project.</td>
@@ -828,7 +783,6 @@
             <td>72</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 380</td>
             <td>Community Mapping</td>
             <td>Examines the theory and practice of community based mapping and how it can facilitate dialogue and collaborative partnering, thus leading to knowledge co-creation, planning, citizen empowerment and engagement, building consensus, more informed policy making and ultimately social justice. This course is designed to be action-oriented and experiential, and has a very high local field component.</td>
@@ -840,7 +794,6 @@
             <td>25</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 386</td>
             <td>Contemporary Geopolitics</td>
             <td>An overview of global geopolitics and the transformation of the world political map. Examination of key concepts and approaches to contemporary geopolitics through a series of regional case studies.</td>
@@ -852,7 +805,6 @@
             <td>50</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 388</td>
             <td>Topics in Regional Studies</td>
             <td>Geography of a selected region of the world from a systematic perspective. Topics may include: the physical and human landscape; settlement; economic, political and social geography; spatial variation in modernization and economic growth.</td>
@@ -864,7 +816,6 @@
             <td>30</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 391</td>
             <td>Topics in Geography: Indigenous Geographies</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td>
@@ -876,7 +827,6 @@
             <td>30</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 391</td>
             <td>Topics in Geography: Community Engaged Research and Practice</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td>
@@ -888,7 +838,6 @@
             <td>24</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 391</td>
             <td>Topics in Geography: Geography of Surfing</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) are provided in advance of registration.</td>
@@ -900,7 +849,6 @@
             <td>24</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 404</td>
             <td>Space and Power</td>
             <td>nvestigates how political processes shape human geography, and conversely, how assumptions about geography underscore global politics. Examines the key themes, concepts, and theories that define the study of politics from a geographical perspective. Students gain a critical understanding of and appreciation for the historical and contemporary challenges of sovereignty, territoriality, governmentality, identity, citizenship, difference, violence, genocide, colonialism, and war.</td>
@@ -912,7 +860,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 405</td>
             <td>Dynamics of the Cryosphere</td>
             <td>Explores the dynamics of the four main elements of the Earth's cryosphere - glaciers, snow cover, floating ice and permafrost - in physical, climatological, hydrological and Earth system contexts. A field trip fee may be applied.</td>
@@ -924,7 +871,6 @@
             <td>25</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 406</td>
             <td>Sustainable Cities</td>
             <td>Explores the opportunities and challenges of creating ecologically-minded, resilient, healthy, and socially just cities with a practical, community-engaged focus.</td>
@@ -936,7 +882,6 @@
             <td>30</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 407</td>
             <td>Activism and Community-Based Planning</td>
             <td>Investigates participatory approaches to community planning in urban settings. Challenges modernist traditions in planning theory by examining key themes, concepts, and theories that define the study of planning from an activist perspective. Provides students with an opportunity to become actively engaged in their community.</td>
@@ -948,7 +893,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 409</td>
             <td>Personal Space</td>
             <td>Collective exploration of how geographical interests in gender, sexuality and identity intersect with a student's own personal and unique spaces of reflection, action and interaction. Themes may include: Feminist, Lesbian, Gay, Bisexual, Trans, Non-binary, Queer, Two-Spirit and Masculinist discourses as they relate to geographies of social justice; the reciprocal role of space in the creation, loss, and (re)claiming of identities; the body as a site of struggle; and intersectionality with a wide variety of lived experiences.</td>
@@ -960,7 +904,6 @@
             <td>25</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 411</td>
             <td>Community-based Participatory Research</td>
             <td>Theory and practice of Community-based Participatory Research (CBPR) with a special focus on addressing community-identified research needs linked to the United Nations Sustainable Development Goals (UN SDG). Familiarizes students with the UN SDGs and explores CBPR as an important mechanism for bridging diverse and co-created knowledges into local action through community partnerships.</td>
@@ -972,7 +915,6 @@
             <td>25</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 418</td>
             <td>Advanced Spatial Analysis and Geo-statistics</td>
             <td>Explores advanced topics in the numerical analysis of points, lines, areas, and surfaces in discrete and continuous space, drawing on methodologies from geo-statistics, spatial analysis, regional sciences and landscape ecology. Includes coverage of spatial systems modelling and simulation, spatio-temporal analysis, exploratory spatial analysis and spatial data mining.</td>
@@ -984,7 +926,6 @@
             <td>35</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 420</td>
             <td>Field Studies in Coastal Geomatics</td>
             <td>An integrated approach for using geomatics (remote sensing, GIS, spatial analysis) for data acquisition, processing and analysis to improve our understanding of marine and coastal areas. Topics focus on applications of geomatics for environmental and social lab work and seminar discussions. Students should be prepared to undertake one or more weekend field trips; a fee for each field trip may be applied.</td>
@@ -996,7 +937,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 422</td>
             <td>Advanced Topics in Remote Sensing</td>
             <td>Aspects of remote sensing including processing and classification of digital satellite and airborne data and digital elevation modelling. Emphasis on the processes of interpreting remotely sensed data, the enhancement of digital data for visual analysis and the integration of remotely sensed data with other spatial data.</td>
@@ -1008,7 +948,6 @@
             <td>22</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 424</td>
             <td>Field Studies in Coastal Geomorphology</td>
             <td>An advanced, field-based exploration of coastal geomorphic processes and landforms. Involves a week-long field trip to local coastal sites where students apply geomorphic concepts and methods towards a series of independent research assignments and/or group projects. Areas of investigation span nearshore to backshore environments and wave, tidal, fluvial/estuarine and aeolian processes. A field trip fee may be applied.</td>
@@ -1020,7 +959,6 @@
             <td>24</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 428</td>
             <td>Advanced Topics in Geographic Information Sciences</td>
             <td>Contemporary research topics in the geographic information sciences. Topic varies annually, but are selected from one of the following: spatial decision support; visualization; business demographics; environmental modeling; or spatial analysis.</td>
@@ -1032,7 +970,6 @@
             <td>40</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 438</td>
             <td>Aquaculture in British Columbia</td>
             <td>Introduction to the aquaculture industry within British Columbia, reviewing the history, culture species, production methods (hatchery through seafood processing), technological innovations, economics, marketing, environmental impacts/management, social issues (including First Nations), and the regulatory framework for this agri-food industry. Includes a field trip to aquaculture sites. Students should be prepared to undertake one or more weekend field trips, or a week-long field trip; a fee for each field trip may be applied.</td>
@@ -1044,7 +981,6 @@
             <td>25</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 450</td>
             <td>Environment and Sustainability in Practice</td>
             <td>Examines the decision making theory and real world processes associated with resource management at the policy and field levels. Case studies used to illustrate decision making behaviour, from conflict to co-operation. May include simulation sessions, field trips and field methods review.</td>
@@ -1056,7 +992,6 @@
             <td>30</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 453</td>
             <td>Field Studies in Coastal and Marine Management</td>
             <td>Integrated coastal management is applied through community-based research. Based on a week-long field camp, discussions, projects and presentations, students gain first-hand experience in both biophysical and socio-economic perspectives of coastal areas. A field trip fee may be applied.</td>
@@ -1068,7 +1003,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 456</td>
             <td>Wildlife Conservation</td>
             <td>An examination of the history of the conservation movement and wildlife management, human dimensions and the value of wildlife, and consequences of over-harvesting, habitat fragmentation, and invasive species for present-day wildlife conservation and, ways forward.</td>
@@ -1080,7 +1014,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 457</td>
             <td>Marine Protected Areas</td>
             <td>An in-depth look at the challenges facing designation and management of marine protected areas in Canada and internationally. Includes topics such as network design, governance, zoning, conflicts, ecotourism and fisheries. Students should be prepared to undertake one or more field trips; a fee for each field trip may be applied.</td>
@@ -1092,7 +1025,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 474</td>
             <td>Field Studies in Biogeography</td>
             <td>A field-research course in biogeography based on a combination of reading, discussion, and data analysis. Involves a week-long field trip; a field trip fee may be applied.</td>
@@ -1104,7 +1036,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 476</td>
             <td>Advanced Topics in Geomorphology</td>
             <td>Focusing on various geomorphologic themes, students complete a major research project based on field work to supplement lectures, seminars and field/lab projects.</td>
@@ -1116,7 +1047,6 @@
             <td>25</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 477</td>
             <td>Field Studies in Physical Geography</td>
             <td>The nature of scientific research in physical geography is examined through field and laboratory techniques. Includes a week-long field camp where basic approaches, methodologies and techniques are used to prepare a series of reports based on field data and collected samples. A field trip fee may be applied.</td>
@@ -1128,7 +1058,6 @@
             <td>12</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 484</td>
             <td>Advanced Topics in Weather and Climate</td>
             <td>Detailed examination of atmospheric structures and processes underlying weather and climate. Practical work focuses on analysis of vertical stability and utilizing computer weather model data.</td>
@@ -1140,7 +1069,6 @@
             <td>16</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 487</td>
             <td>Advanced Landscape Ecology</td>
             <td>Explores current theory, concepts, methods and applications of landscape ecology for both natural and managed landscapes. Topics may include relationship of landscape ecology to ecological theory, models of metapopulations, landscape structure and animal movement and predator-prey interactions. Applications including forestry, parks and protected areas and wildlife management. Some years the course is taught as a field course.</td>
@@ -1152,7 +1080,6 @@
             <td>24</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 490</td>
             <td>Directed Studies in Geography</td>
             <td>In special cases, with the consent of the department and the individual instructor concerned, a student may be permitted to pursue a course of directed studies.</td>
@@ -1164,7 +1091,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 491</td>
             <td>Advanced Topics in Geography: Anti-Racism and Geography</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
@@ -1176,7 +1102,6 @@
             <td></td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 491</td>
             <td>Advanced Topics in Geography: Community-Based Participatory Research</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
@@ -1188,7 +1113,6 @@
             <td></td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 491</td>
             <td>Advanced Topics in Geography: Urban Mobility</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
@@ -1200,7 +1124,6 @@
             <td>24</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 491</td>
             <td>Advanced Topics in Geography: Reconstructing Quaternary Environmental Change</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
@@ -1212,7 +1135,6 @@
             <td>20</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 491</td>
             <td>Advanced Topics in Geography: Indigenous Environmental Activism</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
@@ -1224,7 +1146,6 @@
             <td>24</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 491</td>
             <td>Advanced Topics in Geography: Geographies of Waste</td>
             <td>Examination of a specific topic or area in Geography. Topic(s) vary depending on faculty interests and availability. The seminar format of this course requires students to participate orally in class and to submit a term paper.</td>
@@ -1236,7 +1157,6 @@
             <td>30</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>GEOG 499A</td>
             <td>Honours Thesis</td>
             <td>Students prepare the first part of an honours thesis under the direction of a faculty member from the department.</td>
@@ -1248,7 +1168,6 @@
             <td>20</td>
 </tr>
 <tr class="odd">
-<td></td>
 <td>GEOG 499B</td>
             <td>Honours Thesis</td>
             <td>Students prepare the first part of an honours thesis under the direction of a faculty member from the department.</td>
@@ -1260,7 +1179,6 @@
             <td>20</td>
 </tr>
 <tr class="even">
-<td></td>
 <td>EOS 120 </td>
             <td>The Dynamic Earth</td>
             <td></td>
@@ -1449,30 +1367,19 @@ var $table = $('#table1');
 </div> <!-- ############################ Flowcharts Tab Section Ends #################################### -->
 
 
-<!-- ############ Links tab Begins ############# --> 
-<div id="links" class="tabcontent">
+<!-- ############ dataviz tab Begins ############# --> 
+<div id="dataviz" class="tabcontent">
           
- 	<h2>UVic Geography Program Planning Links</h2>
-              <em>Note: These links open in a new window
-                <br>Close new window to return here</em>
+	<h2>Data Viz</h2>
+    	<p>Experimental visualizations to view UVic Geography courses in different ways ...</p>          
 
-            <h3>UVic Course Catalogue</h3>
-              <ul>
-                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385' target='_blank'>Undergrad Calendar</a></li>
-                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs' target='_blank'>Undergrad calendar Admission Requirements</a></li>
-                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses' target='_blank'>List of Geography Courses Linked to Calendar</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php' target='_blank'>Study Focus Areas</a></li>
-              </ul>
+	<h3>Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h3>
+        Embedded image from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png' target='_blank'>Animated Word Cloud</a>
+        <br><br>
+        <iframe style='height:800px; width:1200px' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png'></iframe>
 
-            <h3>Course Planning Worksheet and Flowcharts</h3>
-              <ul>
-                <li><a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Geography Major Planning Worksheet</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Flowchart</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Flowchart</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Flowchart</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Flowchart</a></li>
-              </ul>
-</div> <!-- ########## Links Tab ends ################## -->
+
+</div> <!-- ########## dataviz Tab ends ################## -->
 
 
 <!-- ########## Project Tab begins ################## -->
@@ -1729,7 +1636,7 @@ var $table = $('#table1');
 </p>
 <br>
 <!--  have to keep renaming this lnk from Report to Report-new needs to be a different file name to register change!?!? -->
-    <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy14.html' style='height:790px; width:100%'></iframe>
+    <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy1.html' style='height:790px; width:100%'></iframe>
 <br>
 <a href="#menu_work">Menu</a>
 <br>
@@ -1746,7 +1653,7 @@ var $table = $('#table1');
 <br>	
 View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html">Leaflet Map</a> as full web page
 <br><br>            
-<iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-nofoot.html" style='height:790px; width:100%'></iframe>
+<iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-nofoot4.html" style='height:790px; width:100%'></iframe>
 
 </div> <!-- ########## Leaflet Tab ends ################## -->
 
@@ -1754,7 +1661,8 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- ########## About Tab begins ################## -->
 <div id="about" class="tabcontent">
        <h2 id="menu_about">About This App for Interactive UVic Geography Courses Project</h2>
-  					<a href="#goals">Goals</a> | <a href="#workflow">Workflow</a> | <a href="#access">Accessability</a> | <a href="#code">The Code</a> | <a href="#history">Change History</a><br><br>
+  					<a href="#goals">Goals</a> | <a href="#workflow">Workflow</a> | <a href="#access">Accessability</a> | <a href="#code">The Code</a> | <a href="#links">Links</a> | <a href="#history">Change History</a>
+  					<br><br>
 				<!-- End of Menu -->
 
 <!-- =================== Intro Begins ==================== -->
@@ -1832,11 +1740,38 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- =================== Code Ends ==================== -->	
         <hr>                
 
+<!-- =================== Links Begins ==================== -->	
+ 	<h3 id="links">UVic Geography Program Planning Links</h3>
+              <em>Note: These links open in a new window
+                <br>Close new window to return here</em>
 
+            <h3>UVic Course Catalogue</h3>
+              <ul>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385' target='_blank'>Undergrad Calendar</a></li>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs' target='_blank'>Undergrad calendar Admission Requirements</a></li>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses' target='_blank'>List of Geography Courses Linked to Calendar</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php' target='_blank'>Study Focus Areas</a></li>
+              </ul>
+
+            <h3>Course Planning Worksheet and Flowcharts</h3>
+              <ul>
+                <li><a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Geography Major Planning Worksheet</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Flowchart</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Flowchart</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Flowchart</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Flowchart</a></li>
+              </ul>
+                <br>
+                <a href="#menu_about">Menu</a>
+                <br>                 
+<!-- =================== Links Ends ==================== -->	              
+<hr>   
 <!-- =================== History Begins ==================== -->
           <h2 id="history">History of App Changes</h2>
             <h3>2023-01-21</h3>
               <ul>
+              	<li>Created wordcloud images of Course Descriptions, each one showing a different word frequency, joined together to make an animated png file, embedded in an iframe</li>
+              	<li>Created new tab for Data Viz (moved Links to About Tab)</li>
               	<li>Created interactive chart for Vizualizing Course Class Size</li>
               	<li>Reworded each page title to reflect UVic Geog content</li>
               	<li>Changed position of Data Table Search bar to top left</li>

@@ -80,8 +80,16 @@ https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-
 
 ---
 
-# Charts to Visualize Geog Courses
+# Animated Word Cloud of Course Descriptions
 
+https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png
+
+![Animated Word Cloud of Geog Course Descriptions](Dataviz/Geog-Course-Desc-Wordcloud-images23-delay60-ezgif.com.png)
+
+---
+
+# Charts to Visualize Geog Courses
+* **Note**: These charts are interactive - click/hover to see details
 
 ```{r summary-classSize1, class.output="scroll-100", echo=FALSE, warning=FALSE, message=FALSE}
 # ## Summarise Class Size By Course
