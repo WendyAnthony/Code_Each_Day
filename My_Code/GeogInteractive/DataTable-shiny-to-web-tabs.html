@@ -192,7 +192,6 @@
   <button class="tablinks" onclick="openCity(event, 'pathways')">Pathways</button>
   <button class="tablinks" onclick="openCity(event, 'flowcharts')">Flowcharts</button>
   <button class="tablinks" onclick="openCity(event, 'dataviz')">Data Viz</button>  
-  <button class="tablinks" onclick="openCity(event, 'project')">Project</button>  
   <button class="tablinks" onclick="openCity(event, 'map')">Map</button>
   <button class="tablinks" onclick="openCity(event, 'about')">About</button>
 </div>
@@ -1267,9 +1266,18 @@ var $table = $('#table1');
 <div id="planning" class="tabcontent">
 	<h2>Program Planning for a UVic Geography BA</h2>
      <div>
-        Embedded pdf file from <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Program Planning Worksheet</a>
-        <br><br>
-        <strong>Note: </strong>Right-click Courses as link to access Current Course Calendar (this opens new webpage >> close new webpage to return to this app as back button won't work!)
+     	<h3>Helpful Links</h3>
+     	        <ul>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385' target='_blank'>Undergrad Calendar</a></li>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs' target='_blank'>Undergrad calendar Admission Requirements</a></li>
+                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses' target='_blank'>List of Geography Courses Linked to Calendar</a></li>
+                <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php' target='_blank'>Study Focus Areas</a></li>
+              </ul>
+
+        Embedded pdf - <strong>View as Full-size Webpage</strong> <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'><strong>Program Planning Worksheet</strong></a>
+        <br>
+        <strong>Note: </strong>Click Course name to access Current Course Calendar (iPad needs to use full webpage view for link access)
+        <!-- (opens new webpage >> close new webpage to return) -->
         <br><br>
         <iframe style='height:790px; width:100%' src='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'></iframe>
         <br><br>
@@ -1280,11 +1288,9 @@ var $table = $('#table1');
 <!-- ############ Interactive Pathways tab Begins ############# --> 
 <div id="pathways" class="tabcontent">
 	 <h2>Vizualizing UVic Geography Study Focus Pathways</h2>
-        <strong>To Use:</strong> Hover over or click any course to see other linked courses
+        Embedded from <strong>Full-size Webpage View</strong> <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html' target='_blank'><strong>Interactive Study Focus Pathways</strong></a>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scroll sideways to see all 4 Years
-        <br><br>
-        Embedded webpage from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html' target='_blank'>Interactive Study Focus Pathways</a>
+        <strong>To Use:</strong> Hover over or click any course to see other linked courses; Scroll sideways to see all 4 Years
         <br><br>
         <iframe style='height:790px; width:100%' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html'></iframe>
 </div> <!-- ########## Interactive Pathways Tab ends ################## -->
@@ -1295,25 +1301,17 @@ var $table = $('#table1');
             
   <h2 id="menu_flowchart">Program Planning Flowchart Linked to UVic Course Catalogue</h2>
 
-<a href="#env">Environment And Sustainability</a> | <a href="#geomatics">Geomatics</a> | <a href="#human">Human Geography</a> | <a href="#physical">Physical Geography</a> | 
-
-<!-- =================== Tips Begins ==================== -->
-        <div>
-            <em><strong>Note: </strong>These links open in a new window - close new window to return to app</em>
-              <br><br>
-            <strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item
-        </div>
-            <hr>
-<!-- =================== Tips Ends ==================== -->
+<strong><a href="#env">Environment And Sustainability</a> | <a href="#geomatics">Geomatics</a> | <a href="#human">Human Geography</a> | <a href="#physical">Physical Geography</a></strong>
+<hr>
 
 <!-- =================== Environment And Sustainability Begins ==================== -->
         <h3 id="env">Environment And Sustainability</h3>
           <div>
-            Embedded pdf file from <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Worksheet</a>
+            Embedded pdf file from <strong>Full-size Webpage View</strong> <a href=' https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'><strong>Environment and Sustainability Worksheet</strong></a>
               <br>
-            Click Course-box links to go to UVic Catalogue item
+            <strong>To Use: </strong>Click Course-box link to go to UVic Catalogue item (opens new window)
 <br>
-<a href="#menu_flowchart">Back to Menu</a>
+<strong><a href="#menu_flowchart">Back to Menu</a></strong>
 <br>                                        
 <br>
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'></iframe>
@@ -1324,11 +1322,11 @@ var $table = $('#table1');
 <!-- =================== Geomatics Begins ==================== -->
         <h3 id="geomatics">Geomatics</h3>
           <div>
-            Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Worksheet</a>
+            Embedded pdf file from <strong>Full-size Webpage View</strong> <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'><strong>Geomatics Worksheet</strong></a>
               <br>
-            Click Course-box links to go to UVic Catalogue item
+            <strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item (opens new window)
               <br>
-                <a href="#menu_flowchart">Back to Menu</a>
+                <strong><a href="#menu_flowchart">Back to Menu</a></strong>
               <br>                                        
               <br>
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'></iframe>
@@ -1339,11 +1337,11 @@ var $table = $('#table1');
 <!-- =================== Human Geography Begins ==================== -->
         <h3 id="human">Human Geography</h3>
           <div>
-            Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Worksheet</a>
+            Embedded pdf file from <strong>Full-size Webpage View</strong> <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'><strong>Human Geography Worksheet</strong></a>
               <br>
-            Click Course-box links to go to UVic Catalogue item
+            <strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item (opens new window)
               <br>
-                <a href="#menu_flowchart">Back to Menu</a>
+                <strong><a href="#menu_flowchart">Back to Menu</a></strong>
                 <br>                                        
               <br>                     <br>
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'></iframe>
@@ -1354,11 +1352,11 @@ var $table = $('#table1');
 <!-- =================== Physical Geography Begins ==================== -->
         <h3 id="physical">Physical Geography</h3>
           <div>
-            Embedded pdf file from <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Worksheet</a>
+            Embedded pdf file from <strong>Full-size Webpage View</strong> <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'><strong>Physical Geography Worksheet</strong></a>
               <br>
-            Click Course-box links to go to UVic Catalogue item
+            <strong>To Use: </strong>Click Course-box links to go to UVic Catalogue item (opens new window)
               <br>
-                <a href="#menu_flowchart">Back to Menu</a>
+                <strong><a href="#menu_flowchart">Back to Menu</a></strong>
                 <br>                                        
               <br>
             <iframe style='height:790px; width:100%' src='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'></iframe>
@@ -1371,26 +1369,27 @@ var $table = $('#table1');
 <div id="dataviz" class="tabcontent">
           
 	<h2 id="menu_dataviz">Data Vizualizations to view UVic Geography courses</h2>
-	<a href="#wordcloud">Wordcloud</a> | <a href="#mermaid">Mermaid Flow Chart</a> 
+	<strong><a href="#wordcloud">Wordcloud</a> | <a href="#mermaid">Mermaid Flow Chart</a> </strong>
 
 <!-- =================== Wordcloud Begins ==================== -->
 	<h3 id="wordcloud">Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h3>
-        To repeat the animation, refresh the website, and return to this Data Viz tab
+        To repeat animation, refresh webpage, and return to Data Viz tab
         <br>
-        Embedded image from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png' target='_blank'>Animated Word Cloud</a>
+        Embedded image from <strong>Full-size Webpage View</strong> <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png' target='_blank'><strong>Animated Word Cloud</strong></a>
         <br><br>
         <iframe style='height:800px; width:1000px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png'></iframe>
 <br>
-<a href="#menu_dataviz">Menu</a>
+<strong><a href="#menu_dataviz">Back to Menu</a></strong>
 <br>        
 <!-- =================== Wordcloud Ends ==================== -->
 
 <hr>
 <!-- =================== Mermaid Begins ==================== -->
 <h3 id="mermaid">Mermaid Flowchart Diagrams</h3>
-PDF with clickable links to UVic Course Catalogue (links open in new window)
+<strong>Full-size Webpage View</strong> <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf"><strong>PDF</strong></a> with clickable links to UVic Course Catalogue (links open new window)
+
 <br>
-Mermaid <a href="#cb149">R Code</a>
+<strong>Mermaid <a href="#cb149">R Code</a></strong>
 <br>
 <iframe style='height:905px; width:1000px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf'></iframe>
 <br><br>
@@ -1416,19 +1415,18 @@ Mermaid <a href="#cb149">R Code</a>
 <span id="cb149-15"><a href="#cb149-15" aria-hidden="true" tabindex="-1"></a><span class="st">E11[GEOG 453]</span></span>
 <span id="cb149-16"><a href="#cb149-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb149-17"><a href="#cb149-17" aria-hidden="true" tabindex="-1"></a><span class="st">B--&gt;A;</span></span>
-<span id="cb149-18"><a href="#cb149-18" aria-hidden="true" tabindex="-1"></a><span class="st">click B &#39;http://www.github.com&#39;</span></span>
-<span id="cb149-19"><a href="#cb149-19" aria-hidden="true" tabindex="-1"></a><span class="st">E1--&gt;E5;</span></span>
-<span id="cb149-20"><a href="#cb149-20" aria-hidden="true" tabindex="-1"></a><span class="st">E3--&gt;E5;</span></span>
-<span id="cb149-21"><a href="#cb149-21" aria-hidden="true" tabindex="-1"></a><span class="st">E4--&gt;E6;</span></span>
-<span id="cb149-22"><a href="#cb149-22" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E8;</span></span>
-<span id="cb149-23"><a href="#cb149-23" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E9;</span></span>
-<span id="cb149-24"><a href="#cb149-24" aria-hidden="true" tabindex="-1"></a><span class="st">E9--&gt;E11;</span></span>
-<span id="cb149-25"><a href="#cb149-25" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
-<script type="application/json" data-for="htmlwidget-1f92b313986364dc040e">{"x":{"diagram":"graph LR;\nA[Geography Major BA]\nB[Focus: Environment]\nE1[GEOG 101A]\nE2[GEOG 101B]\nE3[GEOG 103]\nE4[GEOG 130]\nE5[GEOG 226]\nE6[GEOG 230]\nE7[GEOG 252]\nE8[GEOG 304]\nE9[GEOG 353]\nE10[GEOG 438]\nE11[GEOG 453]\n\nB-->A;\nclick B 'http://www.github.com'\nE1-->E5;\nE3-->E5;\nE4-->E6;\nE7-->E8;\nE7-->E9;\nE9-->E11;\n"},"evals":[],"jsHooks":[]}</script>
+<span id="cb149-18"><a href="#cb149-19" aria-hidden="true" tabindex="-1"></a><span class="st">E1--&gt;E5;</span></span>
+<span id="cb149-19"><a href="#cb149-20" aria-hidden="true" tabindex="-1"></a><span class="st">E3--&gt;E5;</span></span>
+<span id="cb149-20"><a href="#cb149-21" aria-hidden="true" tabindex="-1"></a><span class="st">E4--&gt;E6;</span></span>
+<span id="cb149-21"><a href="#cb149-22" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E8;</span></span>
+<span id="cb149-22"><a href="#cb149-23" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E9;</span></span>
+<span id="cb149-23"><a href="#cb149-24" aria-hidden="true" tabindex="-1"></a><span class="st">E9--&gt;E11;</span></span>
+<span id="cb149-24"><a href="#cb149-25" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<script type="application/json" data-for="htmlwidget-1f92b313986364dc040e">{"x":{"diagram":"graph LR;\nA[Geography Major BA]\nB[Focus: Environment]\nE1[GEOG 101A]\nE2[GEOG 101B]\nE3[GEOG 103]\nE4[GEOG 130]\nE5[GEOG 226]\nE6[GEOG 230]\nE7[GEOG 252]\nE8[GEOG 304]\nE9[GEOG 353]\nE10[GEOG 438]\nE11[GEOG 453]\n\nB-->A;\nE1-->E5;\nE3-->E5;\nE4-->E6;\nE7-->E8;\nE7-->E9;\nE9-->E11;\n"},"evals":[],"jsHooks":[]}</script>
 <hr />
 
 <br>
-<a href="#menu_dataviz">Menu</a>
+<strong><a href="#menu_dataviz">Back to Menu</a></strong>
 <br>        
 <!-- =================== Mermaid Ends ==================== -->
 <hr>
@@ -1469,292 +1467,11 @@ Mermaid <a href="#cb149">R Code</a>
 </div> <!-- ########## dataviz Tab ends ################## -->
 
 
-<!-- ########## Project Tab begins ################## -->
-<div id="project" class="tabcontent">
-            
-  <h2 id="menu_work">Interactive UVic Geography Courses Project Work Stuff</h2>
-  <a href="#questions">Questions</a> | <a href="#need">Need</a> | <a href="#wishlist">Wishlist</a> | <a href="#functions">Functions</a> | <a href="#ideas">Ideas</a> | <a href="#todo">To Do</a> | <a href="#done">Done</a> | <a href="#report">Report</a>      
-
-<!-- =================== Questions Begins ==================== -->
-   <h3 id='questions'>Questions</h3>
-          <ul>
-              <li><strong>Reporting: </strong>
-                    <ul>
-                      <li>What form of reporting is required from me?</li>
-                      <li>How often?</li>
-                      <li>What do you want to know?</li>
-                      <li>Process, results, deadlines, targets</li>
-                    </ul>
-                    </li>
-              <li><strong>Formatting: </strong>
-                    <ul>
-                      <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
-                      <li>Course Name format to use
-                      <ul>
-                          <li>e.g. GEOG103, Geog103, or Geog 103</li>
-                          <li>Different in Course Catalog, Geog Website, etc</li>
-                          <li> >> I chose **GEOG 103</li>
-                          <li> >> change database to choice if different</li>
-                      </ul>
-                      </li>
-                    </ul>
-                    </li>
-              <li><strong>Interactive Pathways: </strong>
-                      <ul>
-                          <li>Is it OK to use this pathways coding?</li>
-                          <li>(it can still be very useful to help feel use some other network visualization)</li>
-                          <li>It is copyrighted for the game (link from David A.)</li>
-                          <li>Does educational use qualifies when it might actually be used for UVic department web page, which could be considered marketing?</li>
-                      </ul>
-                      </li>                                        
-              <li><strong>Course Statistics: </strong>
-                      <ul>
-                          <li>What kind of course statistics would be interesting to dig out of the course data table, for example class-size</li>
-                          <li></li>
-                      </ul>
-                      </li>                    
-              <li><strong>Shiny Server: </strong>
-                      <ul>
-                          <li>What's involved with setting-up/installing a Geog Shiny Server?</li>
-                          <li>Ask Rick Sykes: Can a Shiny Server be installed?</li>
-                      </ul>
-                      </li>
-              <li><strong>Students: </strong>
-                    <ul>
-                      <li>Ask some students what kind of format they like to search geography courses for when planning</li>
-                      <li>What info would students like to find?</li>
-                      <li>Easy/Difficult to use/understand?</li>
-                      <li>e.g. Ask geography student society SOGS
-                           <ul>
-                              <li>Test drive</li>
-                              <li>Be given a task, something to search for</li>
-                              <li>have some examples online and choose make a POLL</li>
-                              <li>What do students search for</li>
-                            </ul>
-                            </li>
-                    </ul>
-                    </li>
-        </ul>
-<br>
-<a href="#menu_work">Menu</a>
-<br>
-<!-- =================== Questions Ends ==================== -->
-
-<hr>
-<!-- =================== Need Begins ==================== -->
-      <h3 id='need'>Need</h3>
-              <ul>
-                  <li><strong>Data</strong>
-                          <ul>
-                              <li>list of popular electives, class size</li>
-                              <li>list of Summer courses</li>
-                              <li>Courses, prerequisites (check to see I have them all)</li>
-                          </ul>
-                          </li>
-              </ul>
-<br>
-<a href="#menu_work">Menu</a>
-<br>              
-<!-- =================== Need Ends ==================== -->
-<hr>
-<!-- =================== Wishlist Begins ==================== -->
-      <h3 id='wishlist'>Wishlist</h3>
-          <ul>
-              <li><strong>Demonstations for Use</strong>
-                  <ul>
-                    <li>Video tutorials</li>
-                    <li>Description for use</li>
-                    <li>Mobile device and desktop</li>
-                  </ul>
-                  </li>
-              <li><strong>Documentation</strong>
-                  <ul>
-                    <li>Presentation of current state/progress, use .rmd, create slides </li>
-                    <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
-                    <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
-                    <li>Document workflow, create tab, nest in history </li>
-                    <li>Screenshots</li>
-                  </ul>
-                  </li>
-              <li><strong>Functions Wishlist</strong>
-                  <ul>
-                    <li><strong>Gantt chart: </strong>for semester and four year program, with text field choices to populate Gantt chart</li>
-                    <li><strong>Mermaid flow chart</strong></li>
-                    <li><strong>Network flow chart</strong>
-                    	<ul>
-                    		<li>Highcharts</li>
-                    		<li>D3</li>
-                    		<li>Create Jason file of networking linked courses </li>
-                    		<li>Figure out naming classification for nodes, edges, etc.</li>
-                    	</ul>
-                    	</li>                    
-                    <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
-                    <li>Need a `clear search button` for datatable</li>
-                    <li>Save image of concept maps</li>
-                    <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
-                    <li>Take image of results</li>
-                    <li>Ability to print results</li>
-                    <li>Mobile device and desktop</li>
-                    <li><strong>Interactivity</strong>
-                            <ul>
-                              <li>R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
-                              <li>Highlight path between courses/pre-requisites/concentrations</li>
-                              <li>Highlight the pathways between courses when clicked, or hovering</li>
-                              <li>Choose a path‘s which would be highlighted</li>
-                              <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
-                              <li>Click for more information, link to course catalog</li>
-                              <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
-                            </ul>
-                            </li>
-                    <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
-                    <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
-                    <li>Multi year calendar planner</li>
-                    <li>Note which courses student has taken</li>
-                    <li>Change color of Datatable select (from blue)</li>
-                    <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
-                    <li>Filter new data table >> choose only columns necessary for filtered search > save to csv</li>
-                    <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
-                    <li>Convert to PHP, update training on UVic website</li>
-                  </ul>
-                  </li>
-          </ul> <!-- end of Wishlists  -->
-<br>
-<a href="#menu_work">Menu</a>
-<br>          
-<!-- =================== Wishlist Ends ==================== -->          
-<hr>
-
-<!-- =================== Functions Begins ==================== -->
-          <h3 id='functions'>Functions to Add</h3>
-          <ul>
-              <li>Interactive Table controls for: # to search</li>
-          </ul>
-<br>
-<a href="#menu_work">Menu</a>
-<br>          
-<!-- =================== Functions Ends ==================== -->          
-<hr>
-<!--
-    <li><strong></strong></li>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-
-<li><strong></strong></li>
-  <strong></strong>
-
-<a href=''></a> <a href=''></a>
-<a href=''></a> <a href=''></a> <a href=''></a>
-<a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a>
--->
-<!-- =================== Ideas Begins ==================== -->
-          <h3 id='ideas'>Ideas</h3>
-          <ul>
-              <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
-              <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
-              <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
-              <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
-              <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
-              <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
-              <li>Use Course Planning Flowchart pdfs:
-                    <a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
-                    <a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
-                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
-                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
-                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
-                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
-              </li>
-          </ul>
-<br>
-<a href="#menu_work">Menu</a>
-<br>          
-<!-- =================== Ideas Ends ==================== -->          
-<hr>
-<!-- =================== To Do Begins ==================== -->
-          <h3 id='todo'>To Do</h3>
-          <ul>
-              <li>Can I create HTML webpage from shiny app source code?
-                  <ul>
-                      <li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html#history'>Searchable Web Table</a></strong></li>
-                  </ul>
-                  </li>
-              <li>Check to see if any missing course info for Geography Course data table</li>
-              <li>Figure out how to add relationships to different visualization technique</li>
-              <li>Add resources tab, links </li>
-              <li>Use paper notebook for design ideas, flowcharts </li>
-              <li>Make tabs figure bigger</li>
-              <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
-              <li><strong>Data Table: </strong>Showing number of entries filtered from; Move between pages; colour the download button green; Add tips</li>
-              <li><strong>Program Planning: </strong>Nested tabs; Tab for experiments; Mermaid flow chart, with code; Time log data table: plotly interactive ggplots; Gantt interactive?</li>
-          </ul>
-<br>
-<a href="#menu_work">Menu</a>
-<br>          
-<!-- =================== To Do Ends ==================== -->          
-<hr>
-
-<!--
-          <li></li>
-          <li></li>
-          <li></li>
-
-          <li><a href=''></a></li>
-          <li><a href=''></a></li>
--->
-<!-- =================== Done Begins ==================== -->
-          <h3 id='done'>Done ✅</h3>
-          <ul>              
-              <li>Created animated Word Cloud of Course Description text (2023-01-21)</li>
-              <li>"Changed website title to Interactive Exploration of UVic Geography Courses, from "Exploring UVic Geography Courses Interactively on the Web" (2023-01-21)</li>
-              <li>Code Cleaning to correct any and all errors!! (2023-01-20)</li>
-              <li>Reconstruct Webpage to correct any introduced anomalies (2023-01-20)</li>
-              <li>Adding all Geography Courses to Interactive Pathways DataViz !!! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html'>Curriculum Maps</a></li>
-              <li>Added Leaflet Map with UVic location</li>
-              <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
-              <li>add signature footer to bottom of page</li>
-              <li>Embed links to geography interactive pdf concept maps</li>
-              <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
-              <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
-              <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
-              <li>Get download button to work with filtered data see new web link</li>
-              <li>List of Geography Courses</li>
-              <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
-          </ul>
-<br>
-<a href="#menu_work">Menu</a>
-<br>          
-<!-- =================== Done Ends ==================== -->          
-<hr>
-
-<!-- =================== Report Begins ==================== -->
-<h3 id='report'>Project Report</h3>
-<p>Scroll down the iframe to read the full report
-    <br><br><a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>GeogInteract Report</a>
-    <br><br>
-<a href="#menu_work">Menu</a>
-<br>          
-</p>
-<br>
-<!--  have to keep renaming this lnk from Report to Report-new needs to be a different file name to register change!?!? -->
-    <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy5.html' style='height:790px; width:100%'></iframe>
-<br>
-<a href="#menu_work">Menu</a>
-<br>
-<!-- =================== Report Ends ==================== -->
-<hr>
-
-<!-- ===================  Begins ==================== -->
-<!-- ===================  Ends ==================== -->
-</div> <!-- ########## Tab ends ################## -->
-
 
 <!-- ########## Leaflet Tab begins ################## -->
 <div id="map" class="tabcontent">
 <br>	
-View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html">Leaflet Map</a> as full web page
+View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html"><strong>Leaflet Map</strong></a> as full web page
 <br><br>            
 <iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-nofoot4.html" style='height:790px; width:100%'></iframe>
 
@@ -1764,53 +1481,26 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- ########## About Tab begins ################## -->
 <div id="about" class="tabcontent">
        <h2 id="menu_about">About This App for Interactive UVic Geography Courses Project</h2>
-  					<a href="#goals">Goals</a> | <a href="#workflow">Workflow</a> | <a href="#access">Accessability</a> | <a href="#code">The Code</a> | <a href="#links">Links</a> | <a href="#history">Change History</a>
-  					<br><br>
-				<!-- End of Menu -->
+<strong>About the App: </strong>
+  					<strong><a href="#goals">Goals</a> | <a href="#access">Accessability</a> | <a href="#code">The Code</a> | <a href="#history">Change History</a></strong>
+  					<br>
+<strong>Project Info: </strong>
+<strong>  <a href="#questions">Questions</a> | <a href="#need">Need</a> | <a href="#wishlist">Wishlist</a> | <a href="#functions">Functions</a> | <a href="#ideas">Ideas</a> | <a href="#todo">To Do</a> | <a href="#done">Done</a> | <a href="#report">Report</a>      </strong>
 
-<!-- =================== Intro Begins ==================== -->
-				<p>
-					  An experimental <a href='https://wendyanthony.shinyapps.io/GeogInteract-app/' target="_blank">Shiny Code Sandbox</a> was created to develop an online, interactive interface to facilitate Geography Course Student Planning. 
-					  <br>This Shiny Clone Website is meant to mimic the Shiny App on the web, without relying on a Shiny Server.
-				   <br>
-				</p>
-<!-- =================== Intro Ends ==================== -->
+  					<br>
+				<!-- End of Menu -->
 
 <!-- =================== Goals Begins ==================== -->
 			        <h3 id="goals">Goals:</h3>
-			            <ul>
-			                <li>to make a web page javascript version of the Geog Course Datatable as in <a href="https://wendyanthony.shinyapps.io/GeogInteract-app/" target="_blank">Shiny App</a></li>
-			                <li>Make the table interactive, sortable filterable, saveable</li>
-			            </ul>
-			                <br>
-			                <a href="#menu_about">Menu</a>
-			                <br>   			            
+					  <p>
+					  	To create an online, interactive interface to facilitate Geography Course Student Planning, an experimental <a href='https://wendyanthony.shinyapps.io/GeogInteract-app/' target="_blank"><strong>Shiny Code Sandbox</strong></a> was used to help develop a one-page HTML webpage "Clone", meant to mimic the Shiny App on the web, without relying on a Shiny Server.
+					  </p>
+                
+                <strong><a href="#menu_about">Back to Menu</a></strong>
+                <br>   			            
 <!-- =================== Goals Ends ==================== -->			            
 			<hr>     			            
-
-<!-- =================== Workflow Begins ==================== -->
-			        <h3 id="workflow">Workflow:</h3>
-			            <ul>
-			                <li><strong>HTML Table Code: </strong>
-			                    <ul>
-			                        <li>Opened Shiny App Datatable, changing to Show: 100 which will open whole table</li>
-			                        <li>In Chrome Browser Develoment Tools >> Elements >> Find `table` element 
-			                            <ul>
-			                                <li>Hover over code to see table in webpage highlighted >> </li>
-			                                <li>Right-click `Table` Element in Elements list >> `Edit as HTML` >> </li>
-			                                <li>Right-click inside `Table` Element >> Select all >> Copy >> Paste into html file</li>
-			                            </ul>
-			                            </li>
-			                        <li>Tried originally using `CsvToTable.js`, but it got confused with commas</li>                        
-			                    </ul>
-			                    </li>
-			            </ul>
-			                <br>
-			                <a href="#menu_about">Menu</a>
-			                <br>   
-<!-- =================== Workflow Ends ==================== -->			                
-			<hr>           
-
+			<br>
 <!-- =================== Accessability Begins ==================== -->
 			        <h3 id="access">Accessability Tips</h3>
 			                <ul>
@@ -1824,61 +1514,37 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 			                    </ul>
 			                    </li>
 			                </ul>
-			                <br>
-			                <a href="#menu_about">Menu</a>
+			                
+			                <strong><a href="#menu_about">Back to Menu</a></strong>
 			                <br>   
 <!-- =================== Accessability Ends ==================== -->			                			                
 			<hr>   
-
+			<br>
 <!-- =================== Code Begins ==================== -->
         <h3 id="code">The Code</h3>
-            <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>One-Page Webpage Clone Code on GitHub</a>
-              <br><br>
-            <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
+            <strong>One-Page Webpage "Clone" <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>Code on GitHub</a></strong>
+              <br>
+            <strong>Shiny App <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Code on GitHub</a></strong>
               
 <!--            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
 -->
             <br><br>
             <strong>Want to run the Shiny App on your own computer?</strong><br>
-            If you are an R studio user, download the app.R file and run it on your own computer:
+            If you are an R Studio user, download the app.R file and run it on your own computer:
             <br>
-            >> copy the app.R to a computer folder, opening file in R studio, and press Run App (make sure to install libraries: shiny, shinyWidgets, DT, DiagrammeR, ggplot2, plotly, lubridate, tidyr, leaflet, dplyr), click button Open in Browser; by keeping the app file open in our studio, the browser window stays open for as long as you want to use the App
-                <br><br>
-                <a href="#menu_about">Menu</a>
+            >> Copy the app.R to a computer folder, open file in R Studio, click Run App (make ensure the following R libraries are installed: shiny, shinyWidgets, DT, DiagrammeR, ggplot2, plotly, lubridate, tidyr, leaflet, dplyr), When App runs in R Studio window, click top button Open in Browser; if app is kept open in R studio, the browser window stays open
+                <br>
+			                <strong><a href="#menu_about">Back to Menu</a></strong>
                 <br>   
 <!-- =================== Code Ends ==================== -->	
         <hr>                
-
-<!-- =================== Links Begins ==================== -->	
- 	<h3 id="links">UVic Geography Program Planning Links</h3>
-              <em>Note: These links open in a new window
-                <br>Close new window to return here</em>
-
-            <h3>UVic Course Catalogue</h3>
-              <ul>
-                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/content/62daf5e88b7d47001d0fc385' target='_blank'>Undergrad Calendar</a></li>
-                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/programs/H1e0D6Q0GN?searchTerm=geography&bc=true&bcCurrent=Geography&bcItemType=programs' target='_blank'>Undergrad calendar Admission Requirements</a></li>
-                <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses' target='_blank'>List of Geography Courses Linked to Calendar</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php' target='_blank'>Study Focus Areas</a></li>
-              </ul>
-
-            <h3>Course Planning Worksheet and Flowcharts</h3>
-              <ul>
-                <li><a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'>Geography Major Planning Worksheet</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf' target='_blank'>Environment and Sustainability Flowchart</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf' target='_blank'>Geomatics Flowchart</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf' target='_blank'>Human Geography Flowchart</a></li>
-                <li><a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf' target='_blank'>Physical Geography Flowchart</a></li>
-              </ul>
-                <br>
-                <a href="#menu_about">Menu</a>
-                <br>                 
-<!-- =================== Links Ends ==================== -->	              
-<hr>   
+		<br>
 <!-- =================== History Begins ==================== -->
           <h2 id="history">History of App Changes</h2>
             <h3>2023-01-22</h3>
               <ul>
+              	<li>Updated consistent format for links and pages</li>
+              	<li>Created 1st draft of php Form for Program Planning <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/ProgramPlanning-Form-php-2-html.php">Program Planning Form Draft</a></li>
               	<li>Created clickable pdf of Mermaid Flowchart diagram, linked to UVic Course Catalogue, embedded in an iframe, in DataViz tab</li>
               </ul>
             <h3>2023-01-21</h3>
@@ -1977,10 +1643,290 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                 <li>David Atkinson, UVic Geog Chair, asked if I would be interested in helping develop an online, interactive interface to Geography Course Planning</li>
                 <li>Sent David link to Interactive Concept Map</li>
               </ul>
-                        <br>
-                        <a href="#menu_about">Menu</a>
+                        
+			                <strong><a href="#menu_about">Back to Menu</a></strong>
                         <br>  
 <!-- =================== History Ends ==================== -->
+
+
+  
+  <h2 id="menu_about">Interactive UVic Geography Courses Project Work Stuff</h2>
+
+<!-- =================== Questions Begins ==================== -->
+   <h3 id='questions'>Questions</h3>
+          <ul>
+              <li><strong>Reporting: </strong>
+                    <ul>
+                      <li>What form of reporting is required from me?</li>
+                      <li>How often?</li>
+                      <li>What do you want to know?</li>
+                      <li>Process, results, deadlines, targets</li>
+                    </ul>
+                    </li>
+              <li><strong>Formatting: </strong>
+                    <ul>
+                      <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
+                      <li>Course Name format to use
+                      <ul>
+                          <li>e.g. GEOG103, Geog103, or Geog 103</li>
+                          <li>Different in Course Catalog, Geog Website, etc</li>
+                          <li> >> I chose **GEOG 103</li>
+                          <li> >> change database to choice if different</li>
+                      </ul>
+                      </li>
+                    </ul>
+                    </li>
+              <li><strong>Interactive Pathways: </strong>
+                      <ul>
+                          <li>Is it OK to use this pathways coding?</li>
+                          <li>(it can still be very useful to help feel use some other network visualization)</li>
+                          <li>It is copyrighted for the game (link from David A.)</li>
+                          <li>Does educational use qualifies when it might actually be used for UVic department web page, which could be considered marketing?</li>
+                      </ul>
+                      </li>                                        
+              <li><strong>Course Statistics: </strong>
+                      <ul>
+                          <li>What kind of course statistics would be interesting to dig out of the course data table, for example class-size</li>
+                          <li></li>
+                      </ul>
+                      </li>                    
+              <li><strong>Shiny Server: </strong>
+                      <ul>
+                          <li>What's involved with setting-up/installing a Geog Shiny Server?</li>
+                          <li>Ask Rick Sykes: Can a Shiny Server be installed?</li>
+                      </ul>
+                      </li>
+              <li><strong>Students: </strong>
+                    <ul>
+                      <li>Ask some students what kind of format they like to search geography courses for when planning</li>
+                      <li>What info would students like to find?</li>
+                      <li>Easy/Difficult to use/understand?</li>
+                      <li>e.g. Ask geography student society SOGS
+                           <ul>
+                              <li>Test drive</li>
+                              <li>Be given a task, something to search for</li>
+                              <li>have some examples online and choose make a POLL</li>
+                              <li>What do students search for</li>
+                            </ul>
+                            </li>
+                    </ul>
+                    </li>
+        </ul>
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>
+<!-- =================== Questions Ends ==================== -->
+
+<hr>
+<!-- =================== Need Begins ==================== -->
+      <h3 id='need'>Need</h3>
+              <ul>
+                  <li><strong>Data</strong>
+                          <ul>
+                              <li>list of popular electives, class size</li>
+                              <li>list of Summer courses</li>
+                              <li>Courses, prerequisites (check to see I have them all)</li>
+                          </ul>
+                          </li>
+              </ul>
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>              
+<!-- =================== Need Ends ==================== -->
+<hr>
+<!-- =================== Wishlist Begins ==================== -->
+      <h3 id='wishlist'>Wishlist</h3>
+          <ul>
+              <li><strong>Demonstations for Use</strong>
+                  <ul>
+                    <li>Video tutorials</li>
+                    <li>Description for use</li>
+                    <li>Mobile device and desktop</li>
+                  </ul>
+                  </li>
+              <li><strong>Documentation</strong>
+                  <ul>
+                    <li>Presentation of current state/progress, use .rmd, create slides </li>
+                    <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
+                    <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
+                    <li>Document workflow, create tab, nest in history </li>
+                    <li>Screenshots</li>
+                  </ul>
+                  </li>
+              <li><strong>Functions Wishlist</strong>
+                  <ul>
+                    <li><strong>Gantt chart: </strong>for semester and four year program, with text field choices to populate Gantt chart</li>
+                    <li><strong>Mermaid flow chart</strong></li>
+                    <li><strong>Network flow chart</strong>
+                    	<ul>
+                    		<li>Highcharts</li>
+                    		<li>D3</li>
+                    		<li>Create Jason file of networking linked courses </li>
+                    		<li>Figure out naming classification for nodes, edges, etc.</li>
+                    	</ul>
+                    	</li>                    
+                    <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
+                    <li>Need a `clear search button` for datatable</li>
+                    <li>Save image of concept maps</li>
+                    <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
+                    <li>Take image of results</li>
+                    <li>Ability to print results</li>
+                    <li>Mobile device and desktop</li>
+                    <li><strong>Interactivity</strong>
+                            <ul>
+                              <li>R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
+                              <li>Highlight path between courses/pre-requisites/concentrations</li>
+                              <li>Highlight the pathways between courses when clicked, or hovering</li>
+                              <li>Choose a path‘s which would be highlighted</li>
+                              <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
+                              <li>Click for more information, link to course catalog</li>
+                              <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
+                            </ul>
+                            </li>
+                    <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
+                    <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
+                    <li>Multi year calendar planner</li>
+                    <li>Note which courses student has taken</li>
+                    <li>Change color of Datatable select (from blue)</li>
+                    <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
+                    <li>Filter new data table >> choose only columns necessary for filtered search > save to csv</li>
+                    <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
+                    <li>Convert to PHP, update training on UVic website</li>
+                  </ul>
+                  </li>
+          </ul> <!-- end of Wishlists  -->
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>          
+<!-- =================== Wishlist Ends ==================== -->          
+<hr>
+
+<!-- =================== Functions Begins ==================== -->
+          <h3 id='functions'>Functions to Add</h3>
+          <ul>
+              <li>Interactive Table controls for: # to search</li>
+          </ul>
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>          
+<!-- =================== Functions Ends ==================== -->          
+<hr>
+<!--
+    <li><strong></strong></li>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+<li><strong></strong></li>
+  <strong></strong>
+
+<a href=''></a> <a href=''></a>
+<a href=''></a> <a href=''></a> <a href=''></a>
+<a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a>
+-->
+<!-- =================== Ideas Begins ==================== -->
+          <h3 id='ideas'>Ideas</h3>
+          <ul>
+              <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
+              <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
+              <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
+              <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
+              <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
+              <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
+              <li>Use Course Planning Flowchart pdfs:
+                    <a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
+                    <a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
+                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
+                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
+                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
+                    <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
+              </li>
+          </ul>
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>          
+<!-- =================== Ideas Ends ==================== -->          
+<hr>
+<!-- =================== To Do Begins ==================== -->
+          <h3 id='todo'>To Do</h3>
+          <ul>
+              <li>Can I create HTML webpage from shiny app source code?
+                  <ul>
+                      <li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html#history'>Searchable Web Table</a></strong></li>
+                  </ul>
+                  </li>
+              <li>Check to see if any missing course info for Geography Course data table</li>
+              <li>Figure out how to add relationships to different visualization technique</li>
+              <li>Add resources tab, links </li>
+              <li>Use paper notebook for design ideas, flowcharts </li>
+              <li>Make tabs figure bigger</li>
+              <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
+              <li><strong>Data Table: </strong>Showing number of entries filtered from; Move between pages; colour the download button green; Add tips</li>
+              <li><strong>Program Planning: </strong>Nested tabs; Tab for experiments; Mermaid flow chart, with code; Time log data table: plotly interactive ggplots; Gantt interactive?</li>
+          </ul>
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>          
+<!-- =================== To Do Ends ==================== -->          
+<hr>
+
+<!--
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li><a href=''></a></li>
+          <li><a href=''></a></li>
+-->
+<!-- =================== Done Begins ==================== -->
+          <h3 id='done'>Done ✅</h3>
+          <ul>              
+              <li>Created animated Word Cloud of Course Description text (2023-01-21)</li>
+              <li>"Changed website title to Interactive Exploration of UVic Geography Courses, from "Exploring UVic Geography Courses Interactively on the Web" (2023-01-21)</li>
+              <li>Code Cleaning to correct any and all errors!! (2023-01-20)</li>
+              <li>Reconstruct Webpage to correct any introduced anomalies (2023-01-20)</li>
+              <li>Adding all Geography Courses to Interactive Pathways DataViz !!! <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow.html'>Curriculum Maps</a></li>
+              <li>Added Leaflet Map with UVic location</li>
+              <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
+              <li>add signature footer to bottom of page</li>
+              <li>Embed links to geography interactive pdf concept maps</li>
+              <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
+              <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
+              <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
+              <li>Get download button to work with filtered data see new web link</li>
+              <li>List of Geography Courses</li>
+              <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
+          </ul>
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>          
+<!-- =================== Done Ends ==================== -->          
+<hr>
+
+<!-- =================== Report Begins ==================== -->
+<h3 id='report'>Project Report</h3>
+<p>Scroll down the iframe to read the full report
+    <br><br><a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>GeogInteract Report</a>
+    <br><br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>          
+</p>
+<br>
+<!--  have to keep renaming this lnk from Report to Report-new needs to be a different file name to register change!?!? -->
+    <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy5.html' style='height:790px; width:100%'></iframe>
+<br>
+<strong><a href="#menu_about">Back to Menu</a></strong>
+<br>
+<!-- =================== Report Ends ==================== -->
+<hr>
+
+
+
+
+
 </div> <!-- ########## About Tab ends ################## -->
 
 <!-- ########## Tab Section ends ################## -->
@@ -1990,7 +1936,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- ########## Footer Starts ################## -->
 <footer>	
 	<hr>
-	Wendy Anthony 2023-01-21 wanthony @ uvic.ca
+	Wendy Anthony 2023-01-22 wanthony @ uvic.ca
 	<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png" alt="UVic Dynamic Edge Stripe" height = 50 width = "100%">
 </footer>
 <!-- ########## Footer Ends ################## -->
