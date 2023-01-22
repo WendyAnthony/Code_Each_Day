@@ -1370,16 +1370,101 @@ var $table = $('#table1');
 <!-- ############ dataviz tab Begins ############# --> 
 <div id="dataviz" class="tabcontent">
           
-	<h2>Data Viz</h2>
-    	<p>Experimental visualizations to view UVic Geography courses in different ways ...</p>          
+	<h2 id="menu_dataviz">Data Vizualizations to view UVic Geography courses</h2>
+	<a href="#wordcloud">Wordcloud</a> | <a href="#mermaid">Mermaid Flow Chart</a> 
 
-	<h3>Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h3>
+<!-- =================== Wordcloud Begins ==================== -->
+	<h3 id="wordcloud">Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h3>
         To repeat the animation, refresh the website, and return to this Data Viz tab
-        <br><br>
+        <br>
         Embedded image from <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png' target='_blank'>Animated Word Cloud</a>
         <br><br>
-        <iframe style='height:800px; width:1200px' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png'></iframe>
+        <iframe style='height:800px; width:1000px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png'></iframe>
+<br>
+<a href="#menu_dataviz">Menu</a>
+<br>        
+<!-- =================== Wordcloud Ends ==================== -->
 
+<hr>
+<!-- =================== Mermaid Begins ==================== -->
+<h3 id="mermaid">Mermaid Flowchart Diagrams</h3>
+PDF with clickable links to UVic Course Catalogue (links open in new window)
+<br>
+Mermaid <a href="#cb149">R Code</a>
+<br>
+<iframe style='height:905px; width:1000px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf'></iframe>
+<br><br>
+<!--
+<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.png" alt="Mermaid Flow Diagram" height = 840 width = 554>
+<br>
+<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-2-ss.png" alt="Mermaid Flow Diagram" height = 420 width = 460>
+-->
+<div class="sourceCode" id="cb149"><h4>The R Code for Mermaid Flowchart Diagrams</h4><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mermaid</span>(<span class="st">&quot;graph LR;</span></span>
+<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="st">A[Geography Major BA]</span></span>
+<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="st">B[Focus: Environment]</span></span>
+<span id="cb149-5"><a href="#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="st">E1[GEOG 101A]</span></span>
+<span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a><span class="st">E2[GEOG 101B]</span></span>
+<span id="cb149-7"><a href="#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="st">E3[GEOG 103]</span></span>
+<span id="cb149-8"><a href="#cb149-8" aria-hidden="true" tabindex="-1"></a><span class="st">E4[GEOG 130]</span></span>
+<span id="cb149-9"><a href="#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="st">E5[GEOG 226]</span></span>
+<span id="cb149-10"><a href="#cb149-10" aria-hidden="true" tabindex="-1"></a><span class="st">E6[GEOG 230]</span></span>
+<span id="cb149-11"><a href="#cb149-11" aria-hidden="true" tabindex="-1"></a><span class="st">E7[GEOG 252]</span></span>
+<span id="cb149-12"><a href="#cb149-12" aria-hidden="true" tabindex="-1"></a><span class="st">E8[GEOG 304]</span></span>
+<span id="cb149-13"><a href="#cb149-13" aria-hidden="true" tabindex="-1"></a><span class="st">E9[GEOG 353]</span></span>
+<span id="cb149-14"><a href="#cb149-14" aria-hidden="true" tabindex="-1"></a><span class="st">E10[GEOG 438]</span></span>
+<span id="cb149-15"><a href="#cb149-15" aria-hidden="true" tabindex="-1"></a><span class="st">E11[GEOG 453]</span></span>
+<span id="cb149-16"><a href="#cb149-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-17"><a href="#cb149-17" aria-hidden="true" tabindex="-1"></a><span class="st">B--&gt;A;</span></span>
+<span id="cb149-18"><a href="#cb149-18" aria-hidden="true" tabindex="-1"></a><span class="st">click B &#39;http://www.github.com&#39;</span></span>
+<span id="cb149-19"><a href="#cb149-19" aria-hidden="true" tabindex="-1"></a><span class="st">E1--&gt;E5;</span></span>
+<span id="cb149-20"><a href="#cb149-20" aria-hidden="true" tabindex="-1"></a><span class="st">E3--&gt;E5;</span></span>
+<span id="cb149-21"><a href="#cb149-21" aria-hidden="true" tabindex="-1"></a><span class="st">E4--&gt;E6;</span></span>
+<span id="cb149-22"><a href="#cb149-22" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E8;</span></span>
+<span id="cb149-23"><a href="#cb149-23" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E9;</span></span>
+<span id="cb149-24"><a href="#cb149-24" aria-hidden="true" tabindex="-1"></a><span class="st">E9--&gt;E11;</span></span>
+<span id="cb149-25"><a href="#cb149-25" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<script type="application/json" data-for="htmlwidget-1f92b313986364dc040e">{"x":{"diagram":"graph LR;\nA[Geography Major BA]\nB[Focus: Environment]\nE1[GEOG 101A]\nE2[GEOG 101B]\nE3[GEOG 103]\nE4[GEOG 130]\nE5[GEOG 226]\nE6[GEOG 230]\nE7[GEOG 252]\nE8[GEOG 304]\nE9[GEOG 353]\nE10[GEOG 438]\nE11[GEOG 453]\n\nB-->A;\nclick B 'http://www.github.com'\nE1-->E5;\nE3-->E5;\nE4-->E6;\nE7-->E8;\nE7-->E9;\nE9-->E11;\n"},"evals":[],"jsHooks":[]}</script>
+<hr />
+
+<br>
+<a href="#menu_dataviz">Menu</a>
+<br>        
+<!-- =================== Mermaid Ends ==================== -->
+<hr>
+<!-- =================== Gantt Begins ==================== -->
+<!-- 
+<div id="gantt-chard-using-diagrammer-and-mermaid" class="section level1" number="8">
+<h1 number="8"><span class="header-section-number">8</span> Gantt Chard using <code>DiagrammeR</code> and <code>mermaid</code></h1>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-3"><a href="#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mermaid</span>(<span class="st">&quot;</span></span>
+<span id="cb156-4"><a href="#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="st">gantt</span></span>
+<span id="cb156-5"><a href="#cb156-5" aria-hidden="true" tabindex="-1"></a><span class="st">dateFormat  YYYY-MM-DD</span></span>
+<span id="cb156-6"><a href="#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="st">title A Very Nice Gantt Diagram</span></span>
+<span id="cb156-7"><a href="#cb156-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-8"><a href="#cb156-8" aria-hidden="true" tabindex="-1"></a><span class="st">section Basic Tasks</span></span>
+<span id="cb156-9"><a href="#cb156-9" aria-hidden="true" tabindex="-1"></a><span class="st">This is completed             :done,          first_1,    2014-01-06, 2014-01-08</span></span>
+<span id="cb156-10"><a href="#cb156-10" aria-hidden="true" tabindex="-1"></a><span class="st">This is active                :active,        first_2,    2014-01-09, 3d</span></span>
+<span id="cb156-11"><a href="#cb156-11" aria-hidden="true" tabindex="-1"></a><span class="st">Do this later                 :               first_3,    after first_2, 5d</span></span>
+<span id="cb156-12"><a href="#cb156-12" aria-hidden="true" tabindex="-1"></a><span class="st">Do this after that            :               first_4,    after first_3, 5d</span></span>
+<span id="cb156-13"><a href="#cb156-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-14"><a href="#cb156-14" aria-hidden="true" tabindex="-1"></a><span class="st">section Important Things</span></span>
+<span id="cb156-15"><a href="#cb156-15" aria-hidden="true" tabindex="-1"></a><span class="st">Completed, critical task      :crit, done,    import_1,   2014-01-06,24h</span></span>
+<span id="cb156-16"><a href="#cb156-16" aria-hidden="true" tabindex="-1"></a><span class="st">Also done, also critical      :crit, done,    import_2,   after import_1, 2d</span></span>
+<span id="cb156-17"><a href="#cb156-17" aria-hidden="true" tabindex="-1"></a><span class="st">Doing this important task now :crit, active,  import_3,   after import_2, 3d</span></span>
+<span id="cb156-18"><a href="#cb156-18" aria-hidden="true" tabindex="-1"></a><span class="st">Next critical task            :crit,          import_4,   after import_3, 5d</span></span>
+<span id="cb156-19"><a href="#cb156-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-20"><a href="#cb156-20" aria-hidden="true" tabindex="-1"></a><span class="st">section The Extras</span></span>
+<span id="cb156-21"><a href="#cb156-21" aria-hidden="true" tabindex="-1"></a><span class="st">First extras                  :active,        extras_1,   after import_4,  3d</span></span>
+<span id="cb156-22"><a href="#cb156-22" aria-hidden="true" tabindex="-1"></a><span class="st">Second helping                :               extras_2,   after extras_1, 20h</span></span>
+<span id="cb156-23"><a href="#cb156-23" aria-hidden="true" tabindex="-1"></a><span class="st">More of the extras            :               extras_3,   after extras_1, 48h</span></span>
+<span id="cb156-24"><a href="#cb156-24" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-bb79438e906fab7e84f9" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bb79438e906fab7e84f9">{"x":{"diagram":"\ngantt\ndateFormat  YYYY-MM-DD\ntitle A Very Nice Gantt Diagram\n\nsection Basic Tasks\nThis is completed             :done,          first_1,    2014-01-06, 2014-01-08\nThis is active                :active,        first_2,    2014-01-09, 3d\nDo this later                 :               first_3,    after first_2, 5d\nDo this after that            :               first_4,    after first_3, 5d\n\nsection Important Things\nCompleted, critical task      :crit, done,    import_1,   2014-01-06,24h\nAlso done, also critical      :crit, done,    import_2,   after import_1, 2d\nDoing this important task now :crit, active,  import_3,   after import_2, 3d\nNext critical task            :crit,          import_4,   after import_3, 5d\n\nsection The Extras\nFirst extras                  :active,        extras_1,   after import_4,  3d\nSecond helping                :               extras_2,   after extras_1, 20h\nMore of the extras            :               extras_3,   after extras_1, 48h\n"},"evals":[],"jsHooks":[]}</script>
+<hr />
+ -->
+<!-- =================== Gantt Ends ==================== -->
 
 </div> <!-- ########## dataviz Tab ends ################## -->
 
@@ -1654,7 +1739,7 @@ var $table = $('#table1');
 </p>
 <br>
 <!--  have to keep renaming this lnk from Report to Report-new needs to be a different file name to register change!?!? -->
-    <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy3.html' style='height:790px; width:100%'></iframe>
+    <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy4.html' style='height:790px; width:100%'></iframe>
 <br>
 <a href="#menu_work">Menu</a>
 <br>
@@ -1686,7 +1771,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- =================== Intro Begins ==================== -->
 				<p>
 					  An experimental <a href='https://wendyanthony.shinyapps.io/GeogInteract-app/' target="_blank">Shiny Code Sandbox</a> was created to develop an online, interactive interface to facilitate Geography Course Student Planning. 
-					  <br> This Shiny Clone Website is meant to mimic the Shiny App on the web, without relying on a Shiny Server.
+					  <br>This Shiny Clone Website is meant to mimic the Shiny App on the web, without relying on a Shiny Server.
 				   <br>
 				</p>
 <!-- =================== Intro Ends ==================== -->
@@ -1750,9 +1835,15 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
             <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>One-Page Webpage Clone Code on GitHub</a>
               <br><br>
             <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Shiny App Code on GitHub</a>
-              <br><br>
-            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
-                <br>
+              
+<!--            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
+-->
+            <br><br>
+            <strong>Want to run the Shiny App on your own computer?</strong><br>
+            If you are an R studio user, download the app.R file and run it on your own computer:
+            <br>
+            >> copy the app.R to a computer folder, opening file in R studio, and press Run App (make sure to install libraries: shiny, shinyWidgets, DT, DiagrammeR, ggplot2, plotly, lubridate, tidyr, leaflet, dplyr), click button Open in Browser; by keeping the app file open in our studio, the browser window stays open for as long as you want to use the App
+                <br><br>
                 <a href="#menu_about">Menu</a>
                 <br>   
 <!-- =================== Code Ends ==================== -->	
@@ -1786,9 +1877,14 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <hr>   
 <!-- =================== History Begins ==================== -->
           <h2 id="history">History of App Changes</h2>
+            <h3>2023-01-22</h3>
+              <ul>
+              	<li>Created clickable pdf of Mermaid Flowchart diagram, linked to UVic Course Catalogue, embedded in an iframe, in DataViz tab</li>
+              </ul>
             <h3>2023-01-21</h3>
               <ul>
               	<li>Created wordcloud images of Course Descriptions, each one showing a different word frequency, joined together to make an animated png file, embedded in an iframe</li>
+              	<li>Created clickabe pdf of Mermaid Dataflow diagram, linked to UVic Course Catalogue</li>
               	<li>Created new tab for Data Viz (moved Links to About Tab)</li>
 				<li>"Changed website title to Interactive Exploration of UVic Geography Courses", from "Exploring UVic Geography Courses Interactively on the Web"</li>
               	<li>Created interactive chart for Vizualizing Course Class Size</li>
