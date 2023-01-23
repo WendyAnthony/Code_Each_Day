@@ -11,6 +11,10 @@
 	<link rel="icon" href="https://people.geog.uvic.ca/wanthony/website/favicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="Tool for Interactive Geography Course Exploration and Program Planning">
+    <meta name="keywords" content="Geography, Tool, Interactive, Courses, Exploration, Program Planning">
+    <meta name="author" content="Wendy Anthony">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css">
 	<link rel="stylesheet" href="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
@@ -78,7 +82,8 @@
 		font-size: .99em;
 		color: #69A81D; 
 	}
-
+	
+	img { border-style: none; }
 
 	.bold {
 		font-weight: bold;}	
@@ -139,7 +144,8 @@
 	  border:  1px solid #ccc;
 	  outline: none;
 	  cursor: pointer;
-	  padding: 14px 16px;
+	  /* padding: 14px 16px; */
+	  padding: 7px 8px;
 	  transition: 0.3s;
 	  font-size: 17px;
 	}
@@ -181,7 +187,7 @@
 
 </head>
 <body>
-<h2>Interactive Exploration of UVic Geography Courses <img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Martlet-SocialSciences-transparent.png" alt="UVic Martlet icon" height = 50></h2>
+<h1>Exploring UVic Geography Courses<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Martlet-SocialSciences-transparent.png" alt="UVic Martlet icon" height = 50></h1>
 	<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png" alt="UVic Dynamic Edge Stripe" height = 50 width = "100%">
 <br>
 
@@ -199,7 +205,7 @@
 
 <!-- ########## Data Tab begins ################## -->
 <div id="datatable" class="tabcontent">
-<h1>UVic Geography Courses Data Table</h1>
+<h2>UVic Geography Courses Data Table</h2>
 
               <ul>
                 <li><strong>Search Box:</strong> Filters observations from all columns e.g. Type '103'
@@ -1273,6 +1279,7 @@ var $table = $('#table1');
                 <li><a href='https://www.uvic.ca/calendar/future/undergrad/index.php#/Courses?group=Geography%20(GEOG)&bc=true&bcCurrent=Geography%20(GEOG)&bcItemType=Courses' target='_blank'>List of Geography Courses Linked to Calendar</a></li>
                 <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php' target='_blank'>Study Focus Areas</a></li>
               </ul>
+          <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/ProgramPlanning-Form-php-2-html.php"><strong>Test PHP Form</strong></a><br>
 
         Embedded pdf - <strong>View as Full-size Webpage</strong> <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf' target='_blank'><strong>Program Planning Worksheet</strong></a>
         <br>
@@ -1368,24 +1375,40 @@ var $table = $('#table1');
 <!-- ############ dataviz tab Begins ############# --> 
 <div id="dataviz" class="tabcontent">
           
-	<h2 id="menu_dataviz">Data Vizualizations to view UVic Geography courses</h2>
-	<strong><a href="#wordcloud">Wordcloud</a> | <a href="#mermaid">Mermaid Flow Chart</a> </strong>
-
+	<!-- <h2 id="menu_dataviz">Data Vizualizations to view UVic Geography courses</h2> -->
+	<strong><a href="#wordcloud">Wordcloud</a> | <a href="#class-size">Class Size Interactive Chart</a> | <a href="#mermaid">Mermaid Flow Chart</a> </strong>
+<hr>
 <!-- =================== Wordcloud Begins ==================== -->
-	<h3 id="wordcloud">Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h3>
+	<h2 id="wordcloud">Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h2>
         To repeat animation, refresh webpage, and return to Data Viz tab
         <br>
-        Embedded image from <strong>Full-size Webpage View</strong> <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png' target='_blank'><strong>Animated Word Cloud</strong></a>
-        <br><br>
-        <iframe style='height:800px; width:1000px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png'></iframe>
+        <strong>Full-size Webpage Image View</strong> <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png' target='_blank'><strong>Animated Word Cloud</strong></a>
+        <br>
+<!--        <img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png" style='height:800px; width:1000px;' border="0"> -->
+        <iframe style='height:800px; width:1000px; text-align: center;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png'></iframe>
+              <!--  <iframe style='height:675px; width:745px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-60-10-crop.png'></iframe> -->
 <br>
 <strong><a href="#menu_dataviz">Back to Menu</a></strong>
 <br>        
 <!-- =================== Wordcloud Ends ==================== -->
 
 <hr>
+<!-- =================== Class Size GGPlotly Begins ==================== -->
+	<h2 id="class-size">Geography Class Size - Interactive GGPlotly Chart</h2>
+        Click/hover over chart to reveal details; After interacting with chart, return to original axis-state by doubling-clicking anywhere inside the chart, or click the top-right chart tools to Autoscale or Reset Axis
+        <br>
+        <strong>Full-size Webpage Image View</strong> <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/ClassSize-ggplotly-chart.html' target='_blank'><strong>Interactive GGPlotly Class Size Chart</strong></a>
+        <br>
+<!--        <img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png" style='height:800px; width:1000px;' border="0"> -->
+        <iframe style='height:800px; width:1000px; text-align: center;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/ClassSize-ggplotly-chart.html'></iframe>
+              <!--  <iframe style='height:675px; width:745px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-60-10-crop.png'></iframe> -->
+<br>
+<strong><a href="#menu_dataviz">Back to Menu</a></strong>
+<br>        
+<!-- =================== Class Size GGPlotly Ends ==================== -->
+<hr>
 <!-- =================== Mermaid Begins ==================== -->
-<h3 id="mermaid">Mermaid Flowchart Diagrams</h3>
+<h2 id="mermaid">Mermaid Flowchart Diagrams</h2>
 <strong>Full-size Webpage View</strong> <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf"><strong>PDF</strong></a> with clickable links to UVic Course Catalogue (links open new window)
 
 <br>
@@ -1473,7 +1496,7 @@ var $table = $('#table1');
 <br>	
 View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html"><strong>Leaflet Map</strong></a> as full web page
 <br><br>            
-<iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-nofoot4.html" style='height:790px; width:100%'></iframe>
+<iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-nofoot9.html" style='height:790px; width:100%'></iframe>
 
 </div> <!-- ########## Leaflet Tab ends ################## -->
 
@@ -1665,6 +1688,8 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                     </li>
               <li><strong>Formatting: </strong>
                     <ul>
+                      <li>Title?</li>
+                      <li>keywords for Internet search engine optimization</li>
                       <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
                       <li>Course Name format to use
                       <ul>

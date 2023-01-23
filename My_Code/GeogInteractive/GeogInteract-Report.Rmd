@@ -34,128 +34,75 @@ library(dplyr) # group_by summarise
 
 ---
 
-# Progress of Coding Experiments 
-
-## Things Already Done
-* Cloned **RShiny App** to **one-page HTML Website**
-* Created **Interactive Course Data Table** that can be searched, filtered, sorted, and results saved!
-* **Interactive Leaflet Map** with markers for UVic location, doing field work
-* **Interactive Course Pathway Flow**  networking pre-requisites for UVic Geog course
-* **Tips** for Use and Accessibility
-
-## Thing in Progress
-* **Experimental Data Viz**: **Mermaid Flow Chart**, **Gantt Time Chart**
-* **Visualize Class Size**: [Interactive chart](#summarise-class-size)
-
-## Things Still To Do (Wishlist)
-* **Course Planning Worksheet**: Create an Interactive form to fill out, and save?? https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf
-* **Interactive Leaflet Map**: add markers for **Field Schools**, **UVic Buildings**, **UVic Natural Area Locations**
-* Linked (to course catalogue) Course Flowcharts and/or Data Table
-
-## Still Need
-* List of **Summer Semester** Courses
-* List of **Common Electives**
+# My Goal, Should I Choose To Accept the Challenge
+* I was asked to create an interactive tool for students to use for planning their journey through UVic Geography Courses towards their Geography BA degree.
 
 ---
 
 # The Results
 
-## Shiny App
-https://wendyanthony.shinyapps.io/GeogInteract-app/
+## Shiny App 
+* A Sandbox Playground To Test Concepts  
+* https://wendyanthony.shinyapps.io/GeogInteract-app/
 
-![Shiny App Current Version](Screenshots/Screenshot 2023-01-15 at 3.29.32 PM.png)
+![Image: Shiny App Current Version](Screenshots/Screenshot 2023-01-15 at 3.29.32 PM.png)
 
 ---
 
-## Shiny App Web Clone
-https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html
+## One-page Web Clone of Shiny App 
+* Developed in tandem with Shiny App  
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html
 
-![Shiny App Clone Current Version](Screenshots/Screenshot 2023-01-15 at 3.34.32 PM.png)
+![Image: Shiny App Clone Current Version](Screenshots/Screenshot 2023-01-15 at 3.34.32 PM.png)
 
 ## Interactive Flow
-https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html
 
-![Interactive Flow of Course Studies Progression](Screenshots/Screenshot 2023-01-16 at 7.34.20 PM.png)
-
-
----
-
-# Animated Word Cloud of Course Descriptions
-
-https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png
-
-![Animated Word Cloud of Geog Course Descriptions](Dataviz/Geog-Course-Desc-Wordcloud-images23-delay60-ezgif.com.png)
+![Image: Interactive Flow of Course Studies Progression](Screenshots/Screenshot 2023-01-16 at 7.34.20 PM.png)
 
 ---
 
-# Charts to Visualize Geog Courses
-* **Note**: These charts are interactive - click/hover to see details
+## Programming Planning Worksheet Form
+* In very preliminary design/format/style stages  
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/ProgramPlanning-Form-php-2-html.php
 
-```{r summary-classSize1, class.output="scroll-100", echo=FALSE, warning=FALSE, message=FALSE}
-# ## Summarise Class Size By Course
+![Image: Programming Planning Form Test1](images/Form-styled-ss.png){height=450}
 
-# library(ggplot2)
-# library(dplyr) # group_by summarise
-# 
-# gc <- read.csv("GeogInteract-app-WORKING/Geog-Course-flowcharts.csv")
-# # colnames(gc)
-# # str(gc)
-# 
-# # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
-# gc_group_sub <- gc %>% 
-#   select(Course, Name, Hours, ClassSize, Semester) %>% 
-#   group_by(Course) %>%  
-#   summarise(ClassSize = sum(ClassSize)) 
-# 
-# # dplyr reorder() to reverse the order of the SubTask
-# gc_group_bar_sub <- ggplot(gc_group_sub, 
-#                            aes(x = Course,  
-#                                y = ClassSize)) +
-#                                # aes(x = reorder(Course, desc(Course)), 
-#                                # y = reorder(ClassSize, asc(ClassSize)))) +
-#   # https://stackoverflow.com/questions/36325154/how-to-choose-variable-to-display-in-tooltip-when-using-ggplotly
-#   # tp_group_bar_sub <- ggplot(tl_group_sub, 
-#   #                          aes(x = reorder(SubTask, desc(SubTask)), 
-#   #                              y = TotalTimeHr,
-#   #                              label = SubTask)) +
-#     # tp_group_bar_sub <- ggplot(tl_group_sub, 
-#   #                          aes(x = reorder(SubTask, desc(SubTask)), 
-#   #                              y = TotalTimeHr,
-#   #                              text = SubTask)) +
-#   geom_bar(aes(fill = ClassSize),
-#            #geom_bar(aes(color = TaskType, fill = TaskType),           
-#            stat = "identity", position = "dodge",
-#            width = 0.35,
-#            fill = "#69A81D") +
-#   #ylim(0, 200) +
-#   labs(title = "Geography Course ClassSize",
-#        subtitle = "UVic Geog Interactive Course Explorations Web Tool",
-#        caption = "UVic Geography Wendy Anthony 2023",
-#        x = "Course", y = "Class Size") +
-#   #coord_flip() +
-# 
-#   #scale_fill_brewer("Pastel2") + # 
-#   # scale_fill_brewer() + # blues
-#   # scale_colour_brewer(palette = "Dark2") +
-#   # scale_colour_brewer(palette = "Accent") +
-#   theme_bw() +
-#   theme(legend.title = element_blank(),
-#         axis.text.x = element_text(angle = 45, vjust = 1.05, hjust = 1.0, size = 8))
-# #theme_classic()
-# # stacked position = position_stack()
-# # side by side position = "dodge"
-# 
-#  gc_group_bar_sub
-# 
-# ggplotly(gc_group_bar_sub)
-# 
-# # https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
-# 
-#  ggsave(paste0("images/ClassSize-group-bar-sub", format(Sys.time(), "%Y-%m-%d_%H-%M"),
-#               ".png"), gc_group_bar_sub)
-```
+---
 
-## Summarise Class Size
+# Visualizing Geog Courses
+
+## Animated Word Cloud
+* created from Course Descriptions text  
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png
+
+![Image: Animated Word Cloud of Geog Course Descriptions](Dataviz/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png)
+
+---
+
+## Mermaid Flowchart Diagram 
+* Course Prerequisites as a Clickable PDF  
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf
+
+![Image: Clickable pdf Flowchart of Geog Course Prerequisites](Dataviz/mermaid-1-ss.pdf){width=100% height=750}
+
+---
+
+## Leaflet Map
+* I would like to eventually add Field Courses, Building locations, and other locations of interest  
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html
+
+![Image: Leaflet Map screenshot](images/LeafletMap-ss.png){width=100%}
+
+---
+
+## Chart to Visualize Geog Courses
+* **Note**: This chart is interactive ... 
+    * click/hover to see details
+    * double-click inside chart to return to original extent after interactions
+
+### Summarize Class Size
+* **Note**: some missing class size information, may be summer classes, info not yet available in calendar?
 ```{r summary-classSize2, class.output="scroll-100", echo=FALSE, warning=FALSE, message=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -226,10 +173,69 @@ ggplotly(gc_group_bar_sub)
 
 ---
 
-## Time Log: How I've Spent My Time
-* **Note**: These charts are interactive - click/hover to see details
+# Progress of Coding Experiments 
 
-### Visualizing Time Log Tasks
+## Things Already Done
+* Created [Animated Word Cloud](#animated-word-cloud) from Course Descriptions
+* Created clickable pdf of [Mermaid Flowchart diagram](#mermaid-flowchart-diagram) of course prerequisites, linked to UVic Course Catalogue
+* Cloned **RShiny App** to **one-page HTML Website**
+* Created **Interactive Course Data Table** that can be searched, filtered, sorted, and results saved!
+* **Interactive Leaflet Map** [Leaflet Map](#leaflet-map) with markers for UVic location, doing field work
+* **Interactive Course Pathway Flow**  networking pre-requisites for UVic Geog course
+* **Tips** for Use and Accessibility
+
+## Things in Progress
+* **Program Planning Form Trial ** [phpForm Trial](#programming-planning-worksheet-form)
+* **Experimental Data Viz**: Gantt Time Chart
+* **Visualize Class Size**: [Interactive chart](#summarise-class-size)
+
+## Things Still To Do (Wishlist)
+* **Course Planning Worksheet**: Create an Interactive form to fill out, and save?? https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf
+* **Interactive Leaflet Map**: add markers for **Field Schools**, **UVic Buildings**, **UVic Natural Area Locations**
+* Linked (to course catalogue - e.g. see [Mermaid Flowchart diagram](#mermaid-flowchart-diagram) Course Flowcharts and/or Data Table
+
+## Still Need
+* List of **Summer Semester** Courses
+* List of **Common Electives**
+
+## Questions
+* Title?
+* Keywords for Internet search engine optimization
+* Formatting: fonts (e.g. Serif: Times Roman, or Sans-serif)
+* Course Name format to use (e.g. GEOG103, Geog103, or Geog 103)
+* Interactive Pathways: Is it OK to use this pathways coding, as it is copyright, though used for educational purpose, or should I look into some other networking vizualization tool instead, and just use this for planning / design purposes?
+* What kind of course statistics would be interesting to view interactively?
+* Locations for field schools, etc to add to map
+* student feedback / input?
+
+## Challenges
+* Creating Interactive Table that Saves Filtered Results
+* Creating webpage nested tabs
+* Internet Usage Limits >>> See Problems Encountered: I see now it is from uploading changes too often, particularly regular updates to Report (~30MB)
+
+## Problems Encountered >> Exceeding Internet Useage Limits and Facing Large Monetary Increases
+* **ShinyApp shinyapps.io** active hours limitation of free tier 25 hours (11 days into monthly active hour allowance) >>> I've exceeded 65 hours, and would cost $99+ to upgrade for one month!! 
+
+![Image: Shiny App Free Active Useage Hours Exceeded](images/Shinyapp.io-activehouruse-ss.png)  
+
+* **Telus**: I've used 76% of my monthly internet data allowance, and my UVic course is all online, which means I'm compromised for internet use for this project and school work for the next 22 days!! (@2023-01-22, 11 days into monthly active hour allowance, Internet 25 XT plan 300 GB of monthly data - If I exceed my included monthly data, I'll have overage charges >> $5 for the first 50 GB, $10 for subsequent blocks of 50 GB, to a maximum of $45 per month) 
+
+![Image: Telus Monthly Data Limit Approaching](images/Telus-internetdata-ss.png){width=60%}
+
+![Image: Telus Percentage Data Used](images/Telus-internet-use-graph-ss.png){width=70%}
+
+![Image: Telus Internet Data Use](images/Telus-internetuse-ss.png)
+
+
+
+---
+
+# Time Log: How I've Spent My Time
+* **Note**: These charts are interactive ... 
+    * click/hover to see details
+    * double-click inside chart to return to original extent after interactions
+
+## Visualizing Time Log Tasks
 ```{r, class.output="scroll-100", echo=FALSE}
 # library(ggplot2)
 
@@ -266,7 +272,7 @@ ggplotly(tp_stack)
 # ggsave("images/TimePlot-stack-2023-01-14.png", tp_stack)
 ```
 
-### Summary of Total Hours By Date
+## Summary of Total Hours By Date
 ```{r, class.output="scroll-100", echo=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -314,7 +320,7 @@ ggplotly(tp_group_hour)
 ```
 
 
-### Summarise SubTask By Hours
+## Summarise SubTask By Hours
 ```{r, class.output="scroll-100", echo=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -368,7 +374,7 @@ ggplotly(tp_group_bar_sub)
 # ggsave("images/TimePlot-group-bar_subtask-2023-01-20.png", tp_group_bar_sub)
 ```
 
-### Sum of Total Hours
+## Sum of Total Hours
 ```{r, echo=FALSE}
 TimeLog_current <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 # TimeLog_current
@@ -393,24 +399,24 @@ TotalHours
 ## Shiny App
 
 
-![Original Shiny App Attempt1](Screenshots/Screenshot 2023-01-08 at 7.46.16 PM.png)
+![Image: Original Shiny App Attempt1](Screenshots/Screenshot 2023-01-08 at 7.46.16 PM.png)
 
 
-![Original Shiny App Attempt2](Screenshots/Screenshot 2023-01-09 at 1.08.18 PM.png)
+![Image: Original Shiny App Attempt2](Screenshots/Screenshot 2023-01-09 at 1.08.18 PM.png)
 
 
-![Original Shiny App Attempt3](Screenshots/Screenshot 2023-01-09 at 1.08.49 PM.png)
+![Image: Original Shiny App Attempt3](Screenshots/Screenshot 2023-01-09 at 1.08.49 PM.png)
 
 
-![Original Shiny App Attempt4](Screenshots/Screenshot 2023-01-11 at 3.00.18 AM.png)
+![Image: Original Shiny App Attempt4](Screenshots/Screenshot 2023-01-11 at 3.00.18 AM.png)
 
-![Original Shiny App Attempt5](Screenshots/Screenshot 2023-01-11 at 2.41.03 PM.png)
-
-
-![Original Shiny App Attempt6](Screenshots/Screenshot 2023-01-12 at 9.06.08 AM.png)
+![Image: Original Shiny App Attempt5](Screenshots/Screenshot 2023-01-11 at 2.41.03 PM.png)
 
 
-![Original Shiny App Attempt7](Screenshots/Screenshot 2023-01-14 at 2.46.15 AM-Search-datatable-ss.png)
+![Image: Original Shiny App Attempt6](Screenshots/Screenshot 2023-01-12 at 9.06.08 AM.png)
+
+
+![Image: Original Shiny App Attempt7](Screenshots/Screenshot 2023-01-14 at 2.46.15 AM-Search-datatable-ss.png)
 
 ---
 
@@ -418,14 +424,14 @@ TotalHours
 ## Shiny App Clone
 
 
-![Original Shiny Clone Teble Attempt1](Screenshots/Screenshot 2023-01-14 at 1.47.06 PM.png)
+![Image: Original Shiny Clone Teble Attempt1](Screenshots/Screenshot 2023-01-14 at 1.47.06 PM.png)
 
-![Shiny App Clone  Teble Attempt2](Screenshots/Screenshot 2023-01-15 at 3.34.32 PM.png)
+![Image: Shiny App Clone  Teble Attempt2](Screenshots/Screenshot 2023-01-15 at 3.34.32 PM.png)
 
-![Shiny App Clone Current Version](Screenshots/Screenshot 2023-01-19 at 7.50.09 AM.png)
+![Image: Shiny App Clone Current Version](Screenshots/Screenshot 2023-01-19 at 7.50.09 AM.png)
 ![Shiny App Clone Leaflet Map](Screenshots/Screenshot 2023-01-19 at 6.17.57 AM.png)
 
-
+## Interactive Program Planning Form
 
 
 
