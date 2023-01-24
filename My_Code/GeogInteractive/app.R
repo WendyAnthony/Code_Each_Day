@@ -24,43 +24,6 @@ library(dplyr)
 geog_dt <- read.csv("Geog-Course-flowcharts.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
 
 
-#Data Clean geog_dt_time
-geog_dt_time_all <- read.csv("TimeLog-Current.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
-str(geog_dt_time_all)
-class(geog_dt_time_all$Start)
-
-# duplicate Start and End columns
-geog_dt_time_all$StartCopy <- geog_dt_time_all$Start
-geog_dt_time_all$EndCopy <- geog_dt_time_all$End
-
-# separate Start column into 2
-geog_dt_time_all <- geog_dt_time_all %>% tidyr::separate(StartCopy, c("StartDate", "StartTime"), sep = " ")
-geog_dt_time_all <- geog_dt_time_all %>% tidyr::separate(EndCopy, c("EndDate", "EndTime"), sep = " ")
-
- colnames(geog_dt_time_all)
-# Reorder Columns by Position
-
-geog_dt_time_all = subset(geog_dt_time_all, select = -c(6 ,7, 14, 16))
-colnames(geog_dt_time_all)
-
-geog_dt_time_all <- geog_dt_time_all[, c(1, 2, 3, 5, 8, 9, 10, 11, 4, 6, 12, 13, 7)]
-colnames(geog_dt_time_all)
-
-# keeping this doesn't honour the subset to remove these very columns!!
-# str(geog_dt_time_all)
-# # can't sort Start time because it is a Factor datatype
-# geog_dt_time_all$StartDate <- as.Date(geog_dt_time_all$Start, format = "%Y-%m-%d")
-# geog_dt_time_all$StartDate
-# geog_dt_time_all$EndDate <- as.Date(geog_dt_time_all$End, format = "%Y-%m-%d")
-# geog_dt_time_all$EndDate
-# str(geog_dt_time_all)
-#
-# geog_dt_time_all$Date <- as.Date(geog_dt_time_all$Date, format = "%Y-%m-%d")
-# geog_dt_time_all$Date
-# str(geog_dt_time_all)
-# colnames(geog_dt_time_all)
-
-geog_dt_time <- geog_dt_time_all
 
 ## -----------------------------------------
 # Define UI -----------
@@ -100,10 +63,10 @@ table.dataTable tbody tr td.selected.no-highlight {
   mainPanel(
     tabsetPanel(type = "tabs",
 
-## -----------------------------------------
-          # Data Table tabPanel
-          tabPanel("Datatable",
-                HTML("<h3>Geography Courses Data Table</h3>
+                ## -----------------------------------------
+                # Data Table tabPanel
+                tabPanel("Datatable",
+                         HTML("<h3>Geography Courses Data Table</h3>
               <ul>
                 <li><strong>Search Box:</strong> Filters observations from all columns e.g. Type '103'</li>
                   <ul>
@@ -117,210 +80,160 @@ table.dataTable tbody tr td.selected.no-highlight {
                 <li><strong>Download CSV: </strong> Save Filtered Results, with current date, using Button below table</li>
               </ul>
               <hr>"
-                ),
+                         ),
 
 
-                DT::dataTableOutput("dt"),
-                ### tags$head() is to customize the download button
-                tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
+                         DT::dataTableOutput("dt"),
+                         ### tags$head() is to customize the download button
+                         tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
                        .button-center{text-align: center;}")),
-                # Download button needs to be after datatable to be able to save filtered data
-                div(class = "button-center", downloadButton("download_filtered", "Download CSV", class="button")),
-                hr(),
-                h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-17",
-                   align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                         # Download button needs to be after datatable to be able to save filtered data
+                         div(class = "button-center", downloadButton("download_filtered", "Download CSV", class="button")),
+                         hr(),
+                         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-17",
+                            align="center", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-              ), # end of Data Table tabPanel
+                ), # end of Data Table tabPanel
 
-# ## -----------------------------------------
-# # Template tabPanel
-# tabPanel("Template",  tableOutput("template"),
-#          # Put content here
-#          hr(),
-#          h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-#             align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-# text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#          br(),
-# ), # end of Template tabPanel
+                # ## -----------------------------------------
+                # # Template tabPanel
+                # tabPanel("Template",  tableOutput("template"),
+                #          # Put content here
+                #          hr(),
+                #          h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                #             align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                # text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                #          br(),
+                # ), # end of Template tabPanel
 
-## -----------------------------------------
-          # Nested Course Planning Data Viz tabPanel
-          tabPanel("Course Planning Tools",
-                   tabsetPanel(
+                ## -----------------------------------------
+                # Nested Course Planning Data Viz tabPanel
+                tabPanel("Course Planning Tools",
+                         tabsetPanel(
 
-## -----------------------------------------
-                     # Nested PDF tabPanel
-                     tabPanel("Planning",  tableOutput("pdf"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested PDF tabPanel
+                           tabPanel("Planning",  tableOutput("pdf"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ), # end of PDF tabPanel
+                                    br(),
+                           ), # end of PDF tabPanel
 
-## -----------------------------------------
-                     # Nested tabPanel Data Viz: Course Planning Flowchart
-                     tabPanel("Flowcharts", tableOutput("flowcharts"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested tabPanel Data Viz: Course Planning Flowchart
+                           tabPanel("Flowcharts", tableOutput("flowcharts"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ), # end of Concept Maps  Nested tabPanel
+                                    br(),
+                           ), # end of Concept Maps  Nested tabPanel
 
-## -----------------------------------------
-                    # Nested tabPanel Data Viz: mermaid Flow Charts
-                    tabPanel("Diagrams", tableOutput("mermaid"),
-                             h3("Flow Chart Diagram Experiments with Mermaid"),
-                             DiagrammeROutput('diagram1', width = "50%"),
-                             hr(),
-                             DiagrammeROutput('diagram2', width = "50%"),
-                             hr(),
-                             h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
-                                align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested tabPanel Data Viz: mermaid Flow Charts
+                           tabPanel("Diagrams", tableOutput("mermaid"),
+                                    h3("Flow Chart Diagram Experiments with Mermaid"),
+                                    DiagrammeROutput('diagram1', width = "50%"),
+                                    hr(),
+                                    DiagrammeROutput('diagram2', width = "50%"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                     text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                             br(),
-                    ), # end of mermaid Flow Charts  Nested tabPanel
+                                    br(),
+                           ), # end of mermaid Flow Charts  Nested tabPanel
 
-## -----------------------------------------
-                     # Nested tabPanel Data Viz: Concept Maps
-                     tabPanel("ConceptMap", tableOutput("conceptmap"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested tabPanel Data Viz: Concept Maps
+                           tabPanel("ConceptMap", tableOutput("conceptmap"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ), # end of Concept Maps  Nested tabPanel
+                                    br(),
+                           ), # end of Concept Maps  Nested tabPanel
 
-## -----------------------------------------
-                     # Nested tabPanel Data Viz: Paths Viz
-                     tabPanel("Pathways", tableOutput("dataviz"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-13",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested tabPanel Data Viz: Paths Viz
+                           tabPanel("Pathways", tableOutput("dataviz"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-13",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ), # end of Paths Viz Nested tabPanel
+                                    br(),
+                           ), # end of Paths Viz Nested tabPanel
 
-## -----------------------------------------
-                  # Nested tabPanel About: map
-                  tabPanel("Map",
-                           h3("Map showing UVic Location"),
-                           tableOutput("map"),
-                           hr(),
-                           h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-20",
-                              align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested tabPanel About: map
+                           tabPanel("Map",
+                                    h3("Map showing UVic Location"),
+                                    tableOutput("map"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-20",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                                                                       text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                           br(),
-                  ), # end of Nested tabPanel About: map
+                                    br(),
+                           ), # end of Nested tabPanel About: map
 
-                   )), # end of Nested Course Planning Data Viz tabPanel
+                         )), # end of Nested Course Planning Data Viz tabPanel
 
 
-## -----------------------------------------
-          # Test tabPanel
-          # tabPanel("Tests",
-          # ---------------------
-          # # Nested tabPanel Tests:
-          #          tabsetPanel(
-          #            tabPanel("Test1", tableOutput("test1")),
-          #            tabPanel("Test2", tableOutput("test2")),
-          #            tabPanel("Test3", tableOutput("test3")),
-          #            tabPanel("Test4", tableOutput("test4"))
-          #          )), # end of Nested Tests tabPanel
+                ## -----------------------------------------
+                # Test tabPanel
+                # tabPanel("Tests",
+                # ---------------------
+                # # Nested tabPanel Tests:
+                #          tabsetPanel(
+                #            tabPanel("Test1", tableOutput("test1")),
+                #            tabPanel("Test2", tableOutput("test2")),
+                #            tabPanel("Test3", tableOutput("test3")),
+                #            tabPanel("Test4", tableOutput("test4"))
+                #          )), # end of Nested Tests tabPanel
 
-## -----------------------------------------
-          # About tabPanel
-          tabPanel("About",
-                   tabsetPanel(
-## -----------------------------------------
-                     # Nested tabPanel About: About
-                     tabPanel("About", tableOutput("about"),
-                              hr(),
-                              h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
-                                 align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                ## -----------------------------------------
+                # About tabPanel
+                tabPanel("About",
+                         tabsetPanel(
+                           ## -----------------------------------------
+                           # Nested tabPanel About: About
+                           tabPanel("About", tableOutput("about"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                              br(),
-                     ), # end of Nested tabPanel About
+                                    br(),
+                           ), # end of Nested tabPanel About
 
-## -----------------------------------------
-                      # Nested tabPanel About: History --------------------
-                      tabPanel("History", tableOutput("history"),
-                               hr(),
-                               h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
-                                  align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested tabPanel About: History --------------------
+                           tabPanel("History", tableOutput("history"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-18",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                       text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-                               br(),
-                      ), # end of Nested tabPanel About: History --------------------
+                                    br(),
+                           ), # end of Nested tabPanel About: History --------------------
 
 
-## -----------------------------------------
-# Nested tabPanel About: Links
-tabPanel("Links", tableOutput("links"),
-         hr(),
-         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
-            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           ## -----------------------------------------
+                           # Nested tabPanel About: Links
+                           tabPanel("Links", tableOutput("links"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-10",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
                                 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-         br(),
-), # end of Nested tabPanel About: Links
+                                    br(),
+                           ), # end of Nested tabPanel About: Links
 
-## -----------------------------------------
-# Nested tabPanel About: Timelog
-tabPanel("TimeLog",
-         HTML("
-             <h3>Time Log for Interactive Geography Classes Code Work</h3>
-                <em>Please be patient ...
-                <br /> ... this page takes a few moments to load as it processes time log data results</em>
-              <hr>
-              <h3>Sum of Total Hours To Date</h3>
-              "),
-         tableOutput("totalhours"),
-         # tableOutput("totalhourscode"),
-         # tableOutput("totalhoursadmin"),
-         HTML("
-               <hr>
-               <h3>Time Log Plots</h3>
-                    <ul>
-                        <li>Hover over interactive plots to discover the task time details</li>
-                        <li>To return to original state after graph interactions, click arrowX Autoscale, or Home Reset axis icons above chart</li>
-                    </ul>
-               <hr>
-              "),
-         # hr(),
-         # # <h3></h3>
-         # # h3("Time Log Plots"),
-         # # em("Hover over interactive plots to discover the task time details"),
-         # # br(),
-         # # em("To return to original state after graph interactions, click arrowX Autoscale, or Home Reset axis icons above chart"),
-         # br(),br(),
-         # h4("Time Log Plot: Task Type by Date"),
-         plotlyOutput("timelogplotstack"),
-         hr(),
-         # h4("Time Log Plot (tasks: side-by-side)"),
-         # plotlyOutput("timelogplotside"),
-         # h4("Time Log Plot (Grouped by Date)"),
-         plotOutput("timelogplotgroup"),
-         hr(),
-         plotOutput("timelogplotsubtask"),
-         hr(),
-         h4("Time Log Datatable"),
-         DT::dataTableOutput("dttime"),
-         ### tags$head() is to customize the download button
-         tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
-                       .button-center{text-align: center;}")),
-         # Download button needs to be after datatable to be able to save filtered data
-         div(class = "button-center", downloadButton("download_filtered_time", "Download CSV", class="button")),
 
-         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-16",
-            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-                  text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-         br(),
-), # end of Nested tabPanel About: Timelog
 
-## -----------------------------------------
-# Gantt tabPanel
-tabPanel("Gantt",  tableOutput("gantt"),
-         textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
+                           ## -----------------------------------------
+                           # Gantt tabPanel
+                           # https://stackoverflow.com/questions/57351127/renderdiagrammer-mermaid-diagram-size-in-a-shiny-document
+                           tabPanel("Gantt",  tableOutput("gantt"),
+                                    textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
                                                 gantt
                                   dateFormat  YYYY-MM-DD
                                   title Designing Interactive Geography Course Planning Gantt Diagram
@@ -356,145 +269,145 @@ tabPanel("Gantt",  tableOutput("gantt"),
                                   More of the extras            :               extras_3,   after extras_1, 48h
 
                                   "),
-         DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
-         hr(),
-         h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-            align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                                    DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
+                                    hr(),
+                                    h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                                       align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
 text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-         br(),
-), # end of Gantt tabPanel --------------------
+                                    br(),
+                           ), # end of Gantt tabPanel --------------------
 
-## -----------------------------------------
-# Nested Lists tabPanel
-tabPanel("Lists", tableOutput("lists")),
-         # ---------------------
-         # Nested tabPanel Tests:
-         # tabsetPanel(
-         #   tabPanel("Questions", tableOutput("questions")),
-         #   tabPanel("To Do", tableOutput("todo")),
-         #   tabPanel("Wishlists", tableOutput("wishlists")),
-         # )), # end of Nested Tests tabPanel
+                           ## -----------------------------------------
+                           # Nested Lists tabPanel
+                           tabPanel("Lists", tableOutput("lists")),
+                           # ---------------------
+                           # Nested tabPanel Tests:
+                           # tabsetPanel(
+                           #   tabPanel("Questions", tableOutput("questions")),
+                           #   tabPanel("To Do", tableOutput("todo")),
+                           #   tabPanel("Wishlists", tableOutput("wishlists")),
+                           # )), # end of Nested Tests tabPanel
 
-# )), # end of Nested Tests tabPanel
+                           # )), # end of Nested Tests tabPanel
 
-#
-# ## -----------------------------------------
-#                     # Work tabPanel --------------------
-#                     tabPanel("WorkLog",
-#                     # ---------------------
-#
-# ## -----------------------------------------
-# # Test tabPanel
-# # tabPanel("Tests",
-# # ---------------------
-# # # Nested tabPanel Tests:
-# #          tabsetPanel(
-# #            tabPanel("Test1", tableOutput("test1")),
-# #            tabPanel("Test2", tableOutput("test2")),
-# #            tabPanel("Test3", tableOutput("test3")),
-# #            tabPanel("Test4", tableOutput("test4"))
-# #          )), # end of Nested Tests tabPanel
-#
-#
-# # -----------------------------------------
-#                     # Nested tabPanelWork: --------------------
-#                              tabsetPanel(
-#                                # tabPanel("Questions", tableOutput("questions")),
-#
-# ## -----------------------------------------
-#                                             # Nested tabPanel About: Timelog
-#                                             tabPanel("TimeLog",
-#                                                      h3("Time Log for Interactive Geography Classes Code Work"),
-#                                                      em("The data on this page takes a few moments to load"),
-#                                                      br(),br(),
-#                                                      h4("Sum of Total Hours (to date of plots and datatable)"),
-#                                                      tableOutput("totalhours"),
-#                                                      hr(),
-#                                                      h3("Time Log Plots"),
-#                                                      em("Hover over the plots to discover the task time details"),
-#                                                      br(),br(),
-#                                                      h4("Time Log Plot (tasks: stacked)"),
-#                                                      plotlyOutput("timelogplotstack"),
-#                                                      hr(),
-#                                                      h4("Time Log Plot (tasks: side-by-side)"),
-#                                                      plotlyOutput("timelogplotside"),
-#                                                      hr(),
-#                                                      h4("Time Log Datatable"),
-#                                                      DT::dataTableOutput("dttime"),
-#                                                      ### tags$head() is to customize the download button
-#                                                      tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
-#                        .button-center{text-align: center;}")),
-#                                                      # Download button needs to be after datatable to be able to save filtered data
-#                                                      div(class = "button-center", downloadButton("download_filtered_time", "Download CSV", class="button")),
-#
-#                                                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
-#                                                         align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-#                   text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#                                                      br(),
-#                                             ), # end of Nested tabPanel About: Timelog
-#
-#                                               ## -----------------------------------------
-#                                               # Gantt tabPanel
-#                                               tabPanel("Gantt",  tableOutput("gantt"),
-#                                                        textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
-#                                                 gantt
-#                                   dateFormat  YYYY-MM-DD
-#                                   title Designing Interactive Geography Course Planning Gantt Diagram
-#
-#                                   section Interactive Project
-#                                   Offered Position       :done,     first_7, 2023-01-05, 2023-01-06
-#                                   Accepted Position       :done,     first_8, 2023-01-05, 2023-01-06
-#                                   Started Project      :active,         first_9, 2023-01-06, 90d
-#
-#                                   section Shiny App
-#                                   Created Shiny App             :done,          first_1,    2023-01-06, 2023-01-08
-#                                   Refining Shiny App            :active,        first_5,    2023-01-06, 10d
-#                                   Created Interactive Downloadable Data Table  :done,  first_6, 2023-01-08, 2023-01-09
-#
-#                                   section Data Collection
-#                                   Collecting Course Data        :active,        first_2,    2023-01-09, 10d
-#                                   Finish Collecting Data       :                first_3,    after first_2, 5d
-#                                   Do this after that            :               first_4,    after first_3, 5d
-#
-#                                   section Interactive Data Table
-#                                   Completed, critical task      :crit, done,    import_1,   2023-01-06,24h
-#                                   Also done, also critical      :crit, done,    import_2,   after import_1, 2d
-#                                   Doing this important task now :crit, active,  import_3,   after import_2, 3d
-#                                   Next critical task            :crit,          import_4,   after import_3, 5d
-#
-#                                   section Interactive Data Viz
-#                                   First extras                  :active,        extras_1,   after import_4, 3d
-#                                   Second helping                :               extras_2,   after extras_1, 20h
-#                                   More of the extras            :               extras_3,   after extras_1, 48h
-#
-#                                   "),
-#                                  DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
-#                                  hr(),
-#                                  h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
-#                                     align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
-# text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
-#                                  br(),
-#                         ), # end of Gantt tabPanel --------------------
-#
-#                                         ## -----------------------------------------
-#                                         # Nested Lists tabPanel
-#                                         tabPanel("Lists",
-#                                                  # ---------------------
-#                                                  # Nested tabPanel Tests:
-#                                                  tabsetPanel(
-#                                                    tabPanel("Questions", tableOutput("questions")),
-#                                                    tabPanel("To Do", tableOutput("todo")),
-#                                                    tabPanel("Wishlists", tableOutput("wishlists")),
-#                                                  )), # end of Nested Tests tabPanel
-#
-#                                             # )), # end of Nested Tests tabPanel
-#
-#
-# # -----------------------------------------
-#
-#                              )), # end of NestedWork tabPanel --------------------
+                           #
+                           # ## -----------------------------------------
+                           #                     # Work tabPanel --------------------
+                           #                     tabPanel("WorkLog",
+                           #                     # ---------------------
+                           #
+                           # ## -----------------------------------------
+                           # # Test tabPanel
+                           # # tabPanel("Tests",
+                           # # ---------------------
+                           # # # Nested tabPanel Tests:
+                           # #          tabsetPanel(
+                           # #            tabPanel("Test1", tableOutput("test1")),
+                           # #            tabPanel("Test2", tableOutput("test2")),
+                           # #            tabPanel("Test3", tableOutput("test3")),
+                           # #            tabPanel("Test4", tableOutput("test4"))
+                           # #          )), # end of Nested Tests tabPanel
+                           #
+                           #
+                           # # -----------------------------------------
+                           #                     # Nested tabPanelWork: --------------------
+                           #                              tabsetPanel(
+                           #                                # tabPanel("Questions", tableOutput("questions")),
+                           #
+                           # ## -----------------------------------------
+                           #                                             # Nested tabPanel About: Timelog
+                           #                                             tabPanel("TimeLog",
+                           #                                                      h3("Time Log for Interactive Geography Classes Code Work"),
+                           #                                                      em("The data on this page takes a few moments to load"),
+                           #                                                      br(),br(),
+                           #                                                      h4("Sum of Total Hours (to date of plots and datatable)"),
+                           #                                                      tableOutput("totalhours"),
+                           #                                                      hr(),
+                           #                                                      h3("Time Log Plots"),
+                           #                                                      em("Hover over the plots to discover the task time details"),
+                           #                                                      br(),br(),
+                           #                                                      h4("Time Log Plot (tasks: stacked)"),
+                           #                                                      plotlyOutput("timelogplotstack"),
+                           #                                                      hr(),
+                           #                                                      h4("Time Log Plot (tasks: side-by-side)"),
+                           #                                                      plotlyOutput("timelogplotside"),
+                           #                                                      hr(),
+                           #                                                      h4("Time Log Datatable"),
+                           #                                                      DT::dataTableOutput("dttime"),
+                           #                                                      ### tags$head() is to customize the download button
+                           #                                                      tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
+                           #                        .button-center{text-align: center;}")),
+                           #                                                      # Download button needs to be after datatable to be able to save filtered data
+                           #                                                      div(class = "button-center", downloadButton("download_filtered_time", "Download CSV", class="button")),
+                           #
+                           #                                                      h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-12",
+                           #                                                         align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           #                   text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                           #                                                      br(),
+                           #                                             ), # end of Nested tabPanel About: Timelog
+                           #
+                           #                                               ## -----------------------------------------
+                           #                                               # Gantt tabPanel
+                           #                                               tabPanel("Gantt",  tableOutput("gantt"),
+                           #                                                        textAreaInput(inputId = "inText", label = NULL, width = "900px", height = "370px", rows = 15, value = "
+                           #                                                 gantt
+                           #                                   dateFormat  YYYY-MM-DD
+                           #                                   title Designing Interactive Geography Course Planning Gantt Diagram
+                           #
+                           #                                   section Interactive Project
+                           #                                   Offered Position       :done,     first_7, 2023-01-05, 2023-01-06
+                           #                                   Accepted Position       :done,     first_8, 2023-01-05, 2023-01-06
+                           #                                   Started Project      :active,         first_9, 2023-01-06, 90d
+                           #
+                           #                                   section Shiny App
+                           #                                   Created Shiny App             :done,          first_1,    2023-01-06, 2023-01-08
+                           #                                   Refining Shiny App            :active,        first_5,    2023-01-06, 10d
+                           #                                   Created Interactive Downloadable Data Table  :done,  first_6, 2023-01-08, 2023-01-09
+                           #
+                           #                                   section Data Collection
+                           #                                   Collecting Course Data        :active,        first_2,    2023-01-09, 10d
+                           #                                   Finish Collecting Data       :                first_3,    after first_2, 5d
+                           #                                   Do this after that            :               first_4,    after first_3, 5d
+                           #
+                           #                                   section Interactive Data Table
+                           #                                   Completed, critical task      :crit, done,    import_1,   2023-01-06,24h
+                           #                                   Also done, also critical      :crit, done,    import_2,   after import_1, 2d
+                           #                                   Doing this important task now :crit, active,  import_3,   after import_2, 3d
+                           #                                   Next critical task            :crit,          import_4,   after import_3, 5d
+                           #
+                           #                                   section Interactive Data Viz
+                           #                                   First extras                  :active,        extras_1,   after import_4, 3d
+                           #                                   Second helping                :               extras_2,   after extras_1, 20h
+                           #                                   More of the extras            :               extras_3,   after extras_1, 48h
+                           #
+                           #                                   "),
+                           #                                  DiagrammeR::DiagrammeROutput(outputId = "diagram", width = "950px", height = "auto"),
+                           #                                  hr(),
+                           #                                  h6("Shiny code by Wendy Anthony <wanthony@uvic.ca> 2023-01-11",
+                           #                                     align="left", style = "font-family: sans-serif; font-weight: 1px; font-size: 10px;
+                           # text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
+                           #                                  br(),
+                           #                         ), # end of Gantt tabPanel --------------------
+                           #
+                           #                                         ## -----------------------------------------
+                           #                                         # Nested Lists tabPanel
+                           #                                         tabPanel("Lists",
+                           #                                                  # ---------------------
+                           #                                                  # Nested tabPanel Tests:
+                           #                                                  tabsetPanel(
+                           #                                                    tabPanel("Questions", tableOutput("questions")),
+                           #                                                    tabPanel("To Do", tableOutput("todo")),
+                           #                                                    tabPanel("Wishlists", tableOutput("wishlists")),
+                           #                                                  )), # end of Nested Tests tabPanel
+                           #
+                           #                                             # )), # end of Nested Tests tabPanel
+                           #
+                           #
+                           # # -----------------------------------------
+                           #
+                           #                              )), # end of NestedWork tabPanel --------------------
 
-                   )), #  # end of Nested About tabPanel --------------------
+                         )), #  # end of Nested About tabPanel --------------------
     ) # tabsetPanel end
   ), # mainPanel end
 ) # fluidPage ends
@@ -569,7 +482,7 @@ server <- function(input, output) {
   ) # end of Output:  Timelong downloadHandler
 
 
-## -----------------------------------------
+  ## -----------------------------------------
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
   # Output: PDF
   output$pdf <- renderUI({
@@ -587,7 +500,7 @@ server <- function(input, output) {
          ")
   }) # end of Output: PDF
 
-## -----------------------------------------
+  ## -----------------------------------------
   # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
   # Output: Data Viz: Flowcharts
   output$flowcharts <- renderUI({
@@ -700,7 +613,7 @@ A-->F;
   #     HTML(paste(sp1, sb, sp2))
   #   }) # end of Output: Template
 
-## -----------------------------------------
+  ## -----------------------------------------
   # Output: Concept Maps:
   output$conceptmap <- renderUI({
     sc6 <- paste("
@@ -766,10 +679,10 @@ A-->F;
 <area class='tooltip' title='Prerequisites: 376 and one of 370, 372, 373, 374; permission of the department by 15 March of previous Winter Session.' id='node44' shape='rect' coords='212,229,358,276'></area>
 <area class='tooltip' title='Prerequisites: One of 274, 358, 370, 373, 376; permission of the department by 15 March of previous Winter Session.' id='node45' shape='rect' coords='385,238,535,286'></area>
 <area id='node46' shape='rect' coords='15,16,1001,810'></area> </map></div></body></html>")
-HTML(paste(sc6))
+    HTML(paste(sc6))
   }) # end of OUtput: Concept Maps
 
-## -----------------------------------------
+  ## -----------------------------------------
   # Output: Dataviz
   output$dataviz <- renderUI({
     HTML("
@@ -784,7 +697,7 @@ HTML(paste(sc6))
          ")
   }) # End Output: Dataviz
 
-## -----------------------------------------
+  ## -----------------------------------------
   # Output: Links
   output$links <- renderUI({
     HTML("
@@ -827,7 +740,7 @@ HTML(paste(sc6))
 <br>
 View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html'>Leaflet Map</a> as full web page
 <br><br>
-<iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-copy-6.html' style='height:790px; width:100%'></iframe>
+<iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html' style='height:790px; width:100%'></iframe>
          ")
     # # leaflet map with popup of many characters & image link
     # map <- leaflet(height="8000px", width = "100%") %>%
@@ -862,60 +775,60 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
     #
   })
 
-#
-#   ## -----------------------------------------
-#   # Output: Tests:
-#   #
-#     output$test1 <- renderUI({
-#       strings1 <- paste("Testing ... Testing ... 1,2,3")
-#       HTML(paste(strings1))
-#     }) # end Output: Tests
-#
-#     output$test2 <- renderUI({
-#       strings1 <- paste("Nesting Trials 2")
-#       HTML(paste(strings1))
-#     }) # end Output: Tests
-#
-#     output$test3 <- renderUI({
-#       strings1 <- paste("Nesting Trials 3")
-#       HTML(paste(strings1))
-#     }) # end Output: Tests
-#
-#     output$test4 <- renderUI({
-#       strings1 <- paste("Nesting Trials 4")
-#       HTML(paste(strings1))
-#     }) # end Output: Tests
-#
+  #
+  #   ## -----------------------------------------
+  #   # Output: Tests:
+  #   #
+  #     output$test1 <- renderUI({
+  #       strings1 <- paste("Testing ... Testing ... 1,2,3")
+  #       HTML(paste(strings1))
+  #     }) # end Output: Tests
+  #
+  #     output$test2 <- renderUI({
+  #       strings1 <- paste("Nesting Trials 2")
+  #       HTML(paste(strings1))
+  #     }) # end Output: Tests
+  #
+  #     output$test3 <- renderUI({
+  #       strings1 <- paste("Nesting Trials 3")
+  #       HTML(paste(strings1))
+  #     }) # end Output: Tests
+  #
+  #     output$test4 <- renderUI({
+  #       strings1 <- paste("Nesting Trials 4")
+  #       HTML(paste(strings1))
+  #     }) # end Output: Tests
+  #
 
 
-## -----------------------------------------
+  ## -----------------------------------------
   # Output: Tests:
-#
-#   output$test1 <- renderUI({
-#     strings1 <- paste("Testing ... Testing ... 1,2,3")
-#     HTML(paste(strings1))
-#   }) # end Output: Tests
-#
-#   output$test2 <- renderUI({
-#     strings1 <- paste("Nesting Trials 2")
-#     HTML(paste(strings1))
-#   }) # end Output: Tests
-#
-#   output$test3 <- renderUI({
-#     strings1 <- paste("Nesting Trials 3")
-#     HTML(paste(strings1))
-#   }) # end Output: Tests
-#
-#   output$test4 <- renderUI({
-#     strings1 <- paste("Nesting Trials 4")
-#     HTML(paste(strings1))
-#   }) # end Output: Tests
+  #
+  #   output$test1 <- renderUI({
+  #     strings1 <- paste("Testing ... Testing ... 1,2,3")
+  #     HTML(paste(strings1))
+  #   }) # end Output: Tests
+  #
+  #   output$test2 <- renderUI({
+  #     strings1 <- paste("Nesting Trials 2")
+  #     HTML(paste(strings1))
+  #   }) # end Output: Tests
+  #
+  #   output$test3 <- renderUI({
+  #     strings1 <- paste("Nesting Trials 3")
+  #     HTML(paste(strings1))
+  #   }) # end Output: Tests
+  #
+  #   output$test4 <- renderUI({
+  #     strings1 <- paste("Nesting Trials 4")
+  #     HTML(paste(strings1))
+  #   }) # end Output: Tests
 
-## -----------------------------------------
-## ################ About Begins ###########
-## -----------------------------------------
+  ## -----------------------------------------
+  ## ################ About Begins ###########
+  ## -----------------------------------------
 
-## -----------------------------------------
+  ## -----------------------------------------
   # Output: About: About
   output$about <- renderUI({
     HTML("
@@ -966,7 +879,7 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
   #   <li></li>
   # </ul>
 
-## -----------------------------------------
+  ## -----------------------------------------
   # Output: About: History
   output$history <- renderUI({
     # shh <-
@@ -1245,299 +1158,176 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
               <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
           </ul>
 <hr>
-
-<h3 id='report'>Project Report</h3>
-<p>Scroll down the iframe<br />
-<a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>GeogInteract Report</a></p>
-		        <br />
-          <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-copy10.html' width='100%' height='800px'></iframe>
-          <!-- <iframe src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' width='100%' height='800px'></iframe> -->
-<hr>
-
                         ")
   }) # end Output: Questions
 
-#
-# ## -----------------------------------------
-#   # Output: Questions
-#     output$questions <- renderUI({
-#       HTML("<h3>Questions</h3>
-#           <ul>
-#           <li>What form of reporting is required from me, and how often?</li>
-#           <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
-#           <li>What's involved with setting up a Geog Shiny Server (ask Rick about this)?</li>
-#           <ul>
-#             <li>**Rick Sykes:** Can a Shiny Server be installed?</li>
-#           </ul>
-#           <li>What format to use for Course Name?  >> change database
-# 	- GEOG103, Geog103, or Geog 103 >> I chose **GEOG 103</li>
-#           <li>Make a list of questions to ask David, John, or the student body that David mentioned</li>
-#           <li>Ask some students what kind of format they like to search geography courses for when planning for example the geography student SOGS, have some examples online and choose make a POLL,test drive</li>
-#           <ul>
-#             <li>**Students**: What info would students like to find?</li>
-#           </ul>
-#           </ul>
-# <!--
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-# -->
-#                         ")
-#     }) # end Output: Questions
-#
-# ## -----------------------------------------
-#     # Output: Wishlist
-#     output$wishlists <- renderUI({
-#       HTML("
-#       <h3>Need</h3>
-#           <ul>
-#           <li>**Data** list of popular electives, class size</li>
-#           <li>**Data** list of Summer course</li>
-#           <li>Courses, prerequisites (check to see I have them all)</li>
-#           </ul>
-#
-#       <h3>Wishlist</h3>
-#           <ul>
-#           <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
-#           <li>Video tutorials</li>
-#           <li>Description for use</li>
-#           <li>Screenshots</li>
-#           <li>Presentation of current state/progress, use .rmd, create slides </li>
-#           <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
-#           <li>Document workflow, create tab, nest in history </li>
-#           <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
-#           <li>add save image / pdf ???</li>
-#           <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
-#           <li>Need a `clear search button` for datatable</li>
-#           <li>Save image of concept maps</li>
-#           <li>Highlight path between courses/pre-requisites/concentrations</li>
-#           </ul>
-# <!--
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-# -->
-#           <h3>Functions Wishlist</h3>
-#           <ul>
-#           <li>Interactive</li>
-#           <li>Click for more information, link to course catalog</li>
-#           <li>Highlight the pathways between courses when clicked, or hovering</li>
-#           <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
-#           <li>Choose a path‘s which would be highlighted</li>
-#           <li>Mobile device and desktop</li>
-#           <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
-#           <li>Ability to print results</li>
-#           <li>Take image of results</li>
-#           <li> R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
-#           </ul>
-# <!--
-# <a href=''></a> <a href=''></a>
-# <a href=''></a> <a href=''></a> <a href=''></a>
-# <a href=''></a> <a href=''></a> <a href=''></a>
-# -->
-# <!--
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-# -->
-#           <h3>Ideas</h3>
-#           <ul>
-#           <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
-#           <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
-#           <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
-#           <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
-#           <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
-#           <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
-#           </ul>
-# ")
-#     }) # end Output:Work
-#
-# ## -----------------------------------------
-#     # Output: To Do
-#     output$todo <- renderUI({
-#       HTML("<h3>To Do</h3>
-#           <ul>
-#           <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
-#             <ul><li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li></ul>
-#           <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
-#           <li>Change color of Datatable select (from blue)</li>
-#           <li>Start to fill-in/update missing course info for Geography Course data table</li>
-#           <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
-#           <li>Filter new data table >> choose only columns necessary for filtered search > save to csv
-#           <li>Use Course Planning Flowchart pdfs:
-# 			<a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
-# 			<a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
-# 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
-# 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
-# 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
-# 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
-# 			</li>
-# <!--			 <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> -->
-#           <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
-#           <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
-#           <li>Multi year calendar planner</li>
-#           <li>Note which courses student has taken</li>
-#           <li>Convert to PHP, update training on UVic website</li>
-#           <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
-#           <li>update vIz chart with more courses, figure out how to add relationships to table?</li>
-#           <li>Add program requirements page / tab</li>
-#           <li>Add resources tab, links </li>
-#           <li>Use paper notebook for design ideas, flowcharts </li>
-#           <li>Make tabs figure bigger</li>
-#           <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
-#           </ul>
-# <hr>
-#
-# <!--
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li></li>
-#           <li><a href=''></a></li>
-#           <li><a href=''></a></li>
-#
-#
-# -->
-#           <h3>Done ✅</h3>
-#           <ul>
-#           <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
-#           <li>add signature footer to bottom of page</li>
-#           <li>Embed links to geography interactive pdf concept maps</li>
-#           <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
-#           <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
-#           <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
-#           <li></li>
-#           <li>Get download button to work with filtered data see new web link</li>
-#           <li>List of Geography Courses</li>
-#           <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
-#           </ul>
-#                         ")
-    #}) # end Output:Work
-
-## -----------------------------------------
-  # Output: timelogplot stack
-  output$timelogplotstack <- renderPlotly({
-
-    # this is aborting the session when I click on this tab
-    tl <- read.csv("TimeLog-Current.csv")
-
-    ggplot(tl, aes(x = Date, y = TotalTimeHr, label = SubTask)) +
-      geom_bar(aes(fill = TaskType),
-               stat = "identity", position = position_stack()) +
-      ylim(0, 15) +
-      labs(title = "Daily Task and SubTask Time Log",
-           subtitle = "Geog Interactive Course Explorations",
-           caption = "UVic Geography Wendy Anthony 2023",
-           x = "Date", y = "Total Hours") +
-      # theme_classic() +
-      theme_bw() +
-      theme(legend.title = element_blank(),
-            axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75)) # this needs to go after theme_classic
-  # end ggplot -------------
-      }) # end Output: timelogplot stack
+  #
+  # ## -----------------------------------------
+  #   # Output: Questions
+  #     output$questions <- renderUI({
+  #       HTML("<h3>Questions</h3>
+  #           <ul>
+  #           <li>What form of reporting is required from me, and how often?</li>
+  #           <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
+  #           <li>What's involved with setting up a Geog Shiny Server (ask Rick about this)?</li>
+  #           <ul>
+  #             <li>**Rick Sykes:** Can a Shiny Server be installed?</li>
+  #           </ul>
+  #           <li>What format to use for Course Name?  >> change database
+  # 	- GEOG103, Geog103, or Geog 103 >> I chose **GEOG 103</li>
+  #           <li>Make a list of questions to ask David, John, or the student body that David mentioned</li>
+  #           <li>Ask some students what kind of format they like to search geography courses for when planning for example the geography student SOGS, have some examples online and choose make a POLL,test drive</li>
+  #           <ul>
+  #             <li>**Students**: What info would students like to find?</li>
+  #           </ul>
+  #           </ul>
+  # <!--
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  # -->
+  #                         ")
+  #     }) # end Output: Questions
+  #
+  # ## -----------------------------------------
+  #     # Output: Wishlist
+  #     output$wishlists <- renderUI({
+  #       HTML("
+  #       <h3>Need</h3>
+  #           <ul>
+  #           <li>**Data** list of popular electives, class size</li>
+  #           <li>**Data** list of Summer course</li>
+  #           <li>Courses, prerequisites (check to see I have them all)</li>
+  #           </ul>
+  #
+  #       <h3>Wishlist</h3>
+  #           <ul>
+  #           <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
+  #           <li>Video tutorials</li>
+  #           <li>Description for use</li>
+  #           <li>Screenshots</li>
+  #           <li>Presentation of current state/progress, use .rmd, create slides </li>
+  #           <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
+  #           <li>Document workflow, create tab, nest in history </li>
+  #           <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
+  #           <li>add save image / pdf ???</li>
+  #           <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
+  #           <li>Need a `clear search button` for datatable</li>
+  #           <li>Save image of concept maps</li>
+  #           <li>Highlight path between courses/pre-requisites/concentrations</li>
+  #           </ul>
+  # <!--
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  # -->
+  #           <h3>Functions Wishlist</h3>
+  #           <ul>
+  #           <li>Interactive</li>
+  #           <li>Click for more information, link to course catalog</li>
+  #           <li>Highlight the pathways between courses when clicked, or hovering</li>
+  #           <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
+  #           <li>Choose a path‘s which would be highlighted</li>
+  #           <li>Mobile device and desktop</li>
+  #           <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
+  #           <li>Ability to print results</li>
+  #           <li>Take image of results</li>
+  #           <li> R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
+  #           </ul>
+  # <!--
+  # <a href=''></a> <a href=''></a>
+  # <a href=''></a> <a href=''></a> <a href=''></a>
+  # <a href=''></a> <a href=''></a> <a href=''></a>
+  # -->
+  # <!--
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  # -->
+  #           <h3>Ideas</h3>
+  #           <ul>
+  #           <li><a href='https://app.banner.pdx.edu/cpg/#'>3-Year Course Projections</a></li>
+  #           <li><a href='https://www.georgiancollege.ca/mypath/#video'>Video Orientation</a></li>
+  #           <li><a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Planning</a></li>
+  #           <li><a href='https://www.uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php'>UVic Geog Study Focus Areas</a></li>
+  #           <li><a href='https://www.sccollege.edu/Departments/Counseling/Pages/Online_Education_Plan.aspx'>Online_Education_Plan</a></li>
+  #           <li><a href='https://www.georgiancollege.ca/mypath/#about'>MyPath</a></li>
+  #           </ul>
+  # ")
+  #     }) # end Output:Work
+  #
+  # ## -----------------------------------------
+  #     # Output: To Do
+  #     output$todo <- renderUI({
+  #       HTML("<h3>To Do</h3>
+  #           <ul>
+  #           <li>Can I create HTML webpage from shiny app source code? e.g. hard code links for JavaScript and CSS files write js code?</li>
+  #             <ul><li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li></ul>
+  #           <li>Update Data Vizualization of Study Focus Pathways <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html'>Curriculum Maps</a></li>
+  #           <li>Change color of Datatable select (from blue)</li>
+  #           <li>Start to fill-in/update missing course info for Geography Course data table</li>
+  #           <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
+  #           <li>Filter new data table >> choose only columns necessary for filtered search > save to csv
+  #           <li>Use Course Planning Flowchart pdfs:
+  # 			<a href='https://uvic.ca/socialsciences/geography/undergraduate/advising/study-focus-areas/index.php#Human-Geog'>Focus Areas: Human</a>,
+  # 			<a href='https://www.uvic.ca/services/advising/choose-plan/program-outlines/index.php'>Program Outlines</a>,
+  # 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/physical-geography.pdf'>Physical</a>,
+  # 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/human-geography.pdf'>Human</a>,
+  # 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/environment-and-sustainability.pdf'>Environment</a>,
+  # 			<a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
+  # 			</li>
+  # <!--			 <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> <a href=''></a> -->
+  #           <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
+  #           <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
+  #           <li>Multi year calendar planner</li>
+  #           <li>Note which courses student has taken</li>
+  #           <li>Convert to PHP, update training on UVic website</li>
+  #           <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
+  #           <li>update vIz chart with more courses, figure out how to add relationships to table?</li>
+  #           <li>Add program requirements page / tab</li>
+  #           <li>Add resources tab, links </li>
+  #           <li>Use paper notebook for design ideas, flowcharts </li>
+  #           <li>Make tabs figure bigger</li>
+  #           <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
+  #           </ul>
+  # <hr>
+  #
+  # <!--
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li></li>
+  #           <li><a href=''></a></li>
+  #           <li><a href=''></a></li>
+  #
+  #
+  # -->
+  #           <h3>Done ✅</h3>
+  #           <ul>
+  #           <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
+  #           <li>add signature footer to bottom of page</li>
+  #           <li>Embed links to geography interactive pdf concept maps</li>
+  #           <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
+  #           <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
+  #           <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
+  #           <li></li>
+  #           <li>Get download button to work with filtered data see new web link</li>
+  #           <li>List of Geography Courses</li>
+  #           <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
+  #           </ul>
+  #                         ")
+  #}) # end Output:Work
 
   ## -----------------------------------------
-  # Output: timelogplot
-  output$timelogplotgroup <- renderPlot({
-
-    tl <- geog_dt_time
-    # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
-    tl_group <- tl %>%
-      select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>%
-      group_by(Date) %>%
-      summarise(TotalTimeHr = sum(TotalTimeHr))
-
-    tp_group_bar <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
-      geom_bar(aes(fill = TotalTimeHr),
-               #geom_bar(aes(color = TaskType, fill = TaskType),
-               stat = "identity", position = "dodge",
-               width = 0.75,
-               fill = "#69A81D") +
-      ylim(0, 15) +
-      labs(title = "Daily Time Log for Geog Interactive Course Explorations",
-           subtitle = "Group by Total Hours per Day",
-           caption = "UVic Geography Wendy Anthony 2023",
-           x = "Date", y = "Total Hours") +
-      theme_bw() +
-      theme(legend.title = element_blank(),
-            axis.text.x = element_text(angle = 0,vjust = .45, hjust = 0.75))
-    tp_group_bar
-    # end ggplot -------------
-  }) # end Output: timelogplot
-
-
-
-  ## -----------------------------------------
-  # Output: subtasklogplot stack
-  output$timelogplotsubtask <- renderPlot({
-
-    tl <- read.csv("TimeLog-Current.csv")
-
-    # colnames(tl)
-
-    # group_by() sum()
-    # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
-    tl_group_sub <- tl %>%
-      select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType, SubTask) %>%
-      group_by(SubTask) %>%
-      summarise(TotalTimeHr = sum(TotalTimeHr))
-
-    # dplyr reorder() to reverse the order of the SubTask
-    tp_group_bar_sub <- ggplot(tl_group_sub,
-                               aes(x = reorder(SubTask, desc(SubTask)),
-                                   y = TotalTimeHr)) +
-      geom_bar(aes(fill = SubTask),
-               #geom_bar(aes(color = TaskType, fill = TaskType),
-               stat = "identity", position = "dodge",
-               width = 0.35,
-               fill = "#69A81D") +
-      ylim(0, 17.5) +
-      labs(title = "Time Log by SubTask Type - Jan 6-20, 2023",
-           subtitle = "UVic Geog Interactive Course Explorations Web Tool",
-           caption = "UVic Geography Wendy Anthony 2023",
-           x = "Sub Task", y = "Total Hours") +
-      coord_flip() +
-
-      #scale_fill_brewer("Pastel2") + #
-      # scale_fill_brewer() + # blues
-      # scale_colour_brewer(palette = "Dark2") +
-      # scale_colour_brewer(palette = "Accent") +
-      theme_bw() +
-      theme(legend.title = element_blank(),
-            axis.text.x = element_text(angle = 0,vjust = .45, hjust = 0.75))
-    #theme_classic()
-    # stacked position = position_stack()
-    # side by side position = "dodge"
-
-    tp_group_bar_sub
-    # end ggplot -------------
-  }) # end Output: timelogplot stack
-
-## -----------------------------------------
-    #   # Output: TotalHours
-    output$totalhours <- renderUI({
-      TotalHours <- sum(geog_dt_time[, 'TotalTimeHr'])
-        paste("Total Hours To Date of Plots = ", TotalHours, " hours")
-    }) # end of Output: TotalHours
-
-    ## -----------------------------------------
-    #   # Output: TotalHours
-    # Error: no applicable method for 'summarise' applied to an object of class "factor"
-    output$totalhourscode <- renderUI({
-      TotalHoursCode <- summarise(geog_dt_time[, 'TaskType'])
-      paste("Total Coding Hours To Date of Plots = ", TotalHoursCode, " hours")
-    }) # end of Output: TotalHours code
-
-## -----------------------------------------
   #   # Output: Gantt
   output$gantt <- renderUI({
     HTML("<h2>Interactive Gantt Chart for Planning Timelines</h2>
@@ -1545,7 +1335,7 @@ View <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                  <br /><br />")
   }) # end of Output: Gantt
 
-## -----------------------------------------
+  ## -----------------------------------------
 } # end of server function
 
 ## -----------------------------------------
