@@ -16,14 +16,19 @@ library(plotly)
 library(dplyr) # group_by summarise
 ```
 
-# My Goal
-**Should I Choose To Accept the Challenge**  
+# My Goal | Should I Choose To Accept the Challenge
   
 * I was asked to create an interactive tool for students to use for planning their journey through UVic Geography Courses towards their Geography BA degree.
 
   
 # The Results
+* Shiny App  
 
+* One-page Web Clone of Shiny App  
+
+* Interactive Flow Pathways  
+
+* Programming Planning Form
 
 ## Shiny App 
 * A Sandbox Playground To Test Concepts  
@@ -39,7 +44,7 @@ library(dplyr) # group_by summarise
 ![](images/Webpage-ShinyClone-Screenshot-2023-01-15-3.34.32.png){width=100%}
 
 
-## Interactive Flow
+## Interactive Flow Pathways
 * https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html
 
 ![](images/Interactive-Pathways-Screenshot-2023-01-16-7.34.20.png){width=100%} 
@@ -57,7 +62,13 @@ library(dplyr) # group_by summarise
 
 
 # Visualizing Geog Courses
+* Animated Word Cloud  
 
+* Mermaid Flowchart Diagram  
+
+* Leaflet Map  
+
+* Visualizing Geog Course Class Sizes
 
 ## Animated Word Cloud
 ![](Dataviz/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png){height=550}
@@ -85,7 +96,7 @@ library(dplyr) # group_by summarise
 
 
 ## Visualizing Geog Course Class Sizes
-* **Note**: This chart is interactive ... some missing info (summer classes?)
+* **Note**: Chart is interactive ... some missing info (summer classes?)
 ```{r summary-classSize2, class.output="scroll-100", echo=FALSE, warning=FALSE, message=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -157,7 +168,12 @@ ggplotly(gc_group_bar_sub)
 
 
 # Progress of Coding Experiments 
-
+* Things Already Done  
+* Things in Progress  
+* Things Still To Do (Wishlist)  
+* Still Need  
+* Questions  
+* Challenges Faced
 
 
 ## Things Already Done
@@ -212,10 +228,10 @@ ggplotly(gc_group_bar_sub)
 
 
 
-# Problems Encountered:
+# Problems Encountered: | Exceeding Internet Use Limits
+* ShinyApp  
 
-**Exceeding Internet Use Limits**
-
+* Telus Internet
  
 
 ## ShinyApp shinyapps.io
@@ -236,8 +252,14 @@ ggplotly(gc_group_bar_sub)
 
 
 
-# Time Log: How I Spent Time
+# Time Log: | How I Spent Time
+* Visualizing Tasks  
 
+* Visualizing Total Hours By Date  
+
+* Visualizing SubTask By Hours  
+
+* Sum of Total Hours
 
 
 ## Visualizing Time Log Tasks
@@ -463,9 +485,7 @@ TotalHours
 ## Interactive Program Planning Form v2
 ![](images/Form-styled-ss.png){height=450}
 
-# Thanx for your kind attention ...
-
-# Any questions, comments, feedback?
+# Thanx for your kind attention ... | Any questions, comments, feedback?
 
 Wendy Anthony wanthony@uvic.a
 
