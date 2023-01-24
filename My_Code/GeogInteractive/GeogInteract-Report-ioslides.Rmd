@@ -195,11 +195,14 @@ ggplotly(gc_group_bar_sub)
 
 
 ## Things Still To Do (Wishlist)
-* **Course Planning Worksheet**: Create an Interactive form to fill out, and save?? https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf
-* **Interactive Leaflet Map**: add markers for Field Schools, UVic Buildings, UVic Natural Area Locations, Community Mapping Partners
-* Linked (to course catalogue - e.g. see [Mermaid Flowchart diagram](#mermaid-flowchart-diagram) Course Flowcharts and/or Data Table
-* **Network flow chart** to highlight pathways between associated courses, to replace copyright Interactive Pathway code
-* use **hyperlinks to course catalogue** from data table
+* **Course Planning Worksheet**: Interactive form to fill/save??    
+    * https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/ProgramPlanning-Form-php-2-html.php  
+    * https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf  
+* **Interactive Leaflet Map Markers**: for Field Schools, UVic Buildings & Natural Areas, Community Mapping Partners
+* **Hyperlinks to course catalogue** 
+    * from data table or [Mermaid Course Flowchart diagram](https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf)
+* **Network flow chart:**  highlight pathways between associated courses vs Interactive Pathway
+* **Anything else?**
 
 
 
@@ -209,16 +212,16 @@ ggplotly(gc_group_bar_sub)
 
 
 
-## Questions
+## Website Questions
 * **Title?**
 * **Keywords** for Internet search engine optimization
 * **Formatting**: fonts (e.g. Serif: Times Roman, or Sans-serif)
 * **Colour scheme, logo, etc**
 * **Course Name format** to use (e.g. GEOG103, Geog103, or Geog 103)
-* **Interactive Pathways**: Is it OK to use this pathways coding, as it is copyright, though used for educational purpose, or should I look into some other networking vizualization tool instead, and just use this for planning / design purposes?
-* What kind of **course statistics** would be interesting to view interactively?
+* **Interactive Pathways**: Is it OK to use this pathways coding - it is copyrighted, though used for educational purpose >> or >> should I look into other networking vizualization tools instead (just using this for planning / design purposes)?
+* **Course statistics** What would be interesting to view interactively?
 * **Locations for field schools**, etc to add to map
-* **student feedback** / input?
+* **Student feedback** / input? e.g. SOGS, Community Mapping Class
 
 
 
@@ -242,7 +245,7 @@ ggplotly(gc_group_bar_sub)
 
 
 ## Telus
-* Used 90% of monthly data since January 11  
+* Used 92% of monthly data between January 11 - 23!
 
 ![](images/Telus-internetdata-ss.png){width=40%}
 
