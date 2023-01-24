@@ -416,8 +416,9 @@ ggplotly(tp_group_bar_sub)
 
 
 
-## Sum of Total Hours
-```{r, echo=FALSE}
+## Sum of Total Hours Worked
+
+```{r, echo=FALSE, results = 'asis'}
 TimeLog_current <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 # TimeLog_current
 
@@ -426,8 +427,12 @@ TimeLog_current <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
 # TimeLog_current$TotalTimeHr
 
 TotalHours <- sum(TimeLog_current[, 'TotalTimeHr'])
-TotalHours
+
+# https://bookdown.org/yihui/rmarkdown-cookbook/results-asis.html
+cat(paste0("<b>", "Total Hours to date: ", "</b>",  TotalHours, " hours"))
 ```
+  
+**Timelog: DataTable ** https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/Timelog-Datatable.html
 
 
 
