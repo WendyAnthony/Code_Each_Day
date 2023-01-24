@@ -2,7 +2,8 @@
 ## -------------------------------------------------------------------
 # # App to enable Interactive Exploration of UVic Geography Courses
 # @ Start 2023-01-07, 2023-01-09 reactive table filter and CSV download
-## Updated 2023-01-18 02:59
+## Updated 2023-01-23 17:32 >> removed time log info
+## this file also needs file Geog-Course-flowcharts.csv to created datatable
 # ## Wendy Anthony wanthony@uvic.ca
 ## -------------------------------------------------------------------
 ## -------------------------------------------------------------------
