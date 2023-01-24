@@ -17,11 +17,15 @@ library(dplyr) # group_by summarise
 ```
 
 # My Goal | Should I Choose To Accept the Challenge
-  
-To create an interactive tool for students to use for planning their journey through UVic Geography Courses towards their Geography BA degree.
+![](images/Martlet-SocialSciences-transparent.png){height=50}  
+To create an interactive tool for students to use for planning their journey through UVic Geography Courses towards their Geography BA degree.  
+
+
 
   
-# The Results
+# The Results 
+
+
 * Shiny App  
 
 * One-page Web Clone of Shiny App  
@@ -29,6 +33,7 @@ To create an interactive tool for students to use for planning their journey thr
 * Interactive Flow Pathways  
 
 * Programming Planning Form
+
 
 ## Shiny App 
 * A Sandbox Playground To Test Concepts  
@@ -491,5 +496,5 @@ TotalHours
 
 # Thanx for your kind attention ... | Any questions, comments, feedback?
 
-Wendy Anthony wanthony@uvic.a
-
+Wendy Anthony wanthony@uvic.ca  
+![](images/Dynamic-edge-transparent.png){width=100% height=50}
