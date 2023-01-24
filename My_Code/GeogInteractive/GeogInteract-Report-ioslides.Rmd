@@ -1,5 +1,5 @@
 ---
-title: "Interactive Geography Progress Report"
+title: "Progress Report: Interactive Geography Course Planning"
 author: "Wendy Anthony"
 date: "`r file.info(knitr::current_input())$ctime`"
 output: ioslides_presentation
@@ -18,7 +18,7 @@ library(dplyr) # group_by summarise
 
 # My Goal | Should I Choose To Accept the Challenge
   
-* I was asked to create an interactive tool for students to use for planning their journey through UVic Geography Courses towards their Geography BA degree.
+To create an interactive tool for students to use for planning their journey through UVic Geography Courses towards their Geography BA degree.
 
   
 # The Results
@@ -96,7 +96,7 @@ library(dplyr) # group_by summarise
 
 
 ## Visualizing Geog Course Class Sizes
-* **Note**: Chart is interactive ... some missing info (summer classes?)
+* **Note**: Chart is interactive - missing info (summer classes?)
 ```{r summary-classSize2, class.output="scroll-100", echo=FALSE, warning=FALSE, message=FALSE}
 # library(ggplot2)
 # library(dplyr) # group_by summarise
@@ -302,45 +302,46 @@ ggplotly(tp_stack)
 
 
 
-## Summary of Total Hours By Date
+
 ```{r, class.output="scroll-100", echo=FALSE}
-# library(ggplot2)
-# library(dplyr) # group_by summarise
-
-tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
-
-# colnames(tl)
-
-# group_by() sum()
-# https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
-tl_group <- tl %>% 
-  select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>% 
-  group_by(Date) %>%  
-  summarise(TotalTimeHr = sum(TotalTimeHr)) 
-
-tp_group_hour <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
-  geom_bar(aes(fill = TotalTimeHr),
-           #geom_bar(aes(color = TaskType, fill = TaskType),           
-           stat = "identity", position = "dodge",
-           width = 0.35,
-           fill = "#69A81D") +
-  ylim(0, 15) +
-  labs(title = "Time Log by Day for Geog Interactive Course Explorations",
-       subtitle = "Group by Total Hours per Day",
-       caption = "UVic Geography Wendy Anthony 2023",
-       x = "Date", y = "Total Hours") +
-  #scale_fill_brewer("Pastel2") + # 
-  # scale_fill_brewer() + # blues
-  # scale_colour_brewer(palette = "Dark2") +
-  # scale_colour_brewer(palette = "Accent") +
-  theme_bw() +
-  theme(legend.title = element_blank(),
-        axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
-#theme_classic()
-# stacked position = position_stack()
-# side by side position = "dodge"
-
-ggplotly(tp_group_hour)
+# ## Summary of Total Hours By Date
+# # library(ggplot2)
+# # library(dplyr) # group_by summarise
+# 
+# tl <- read.csv("GeogInteract-app-WORKING/TimeLog-Current.csv")
+# 
+# # colnames(tl)
+# 
+# # group_by() sum()
+# # https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+# tl_group <- tl %>% 
+#   select(Day, Date, TotalTimeMin, TotalTimeHr, TaskType) %>% 
+#   group_by(Date) %>%  
+#   summarise(TotalTimeHr = sum(TotalTimeHr)) 
+# 
+# tp_group_hour <- ggplot(tl_group, aes(x = Date, y = TotalTimeHr)) +
+#   geom_bar(aes(fill = TotalTimeHr),
+#            #geom_bar(aes(color = TaskType, fill = TaskType),           
+#            stat = "identity", position = "dodge",
+#            width = 0.35,
+#            fill = "#69A81D") +
+#   ylim(0, 15) +
+#   labs(title = "Time Log by Day for Geog Interactive Course Explorations",
+#        subtitle = "Group by Total Hours per Day",
+#        caption = "UVic Geography Wendy Anthony 2023",
+#        x = "Date", y = "Total Hours") +
+#   #scale_fill_brewer("Pastel2") + # 
+#   # scale_fill_brewer() + # blues
+#   # scale_colour_brewer(palette = "Dark2") +
+#   # scale_colour_brewer(palette = "Accent") +
+#   theme_bw() +
+#   theme(legend.title = element_blank(),
+#         axis.text.x = element_text(angle = 90,vjust = .45, hjust = 0.75))
+# #theme_classic()
+# # stacked position = position_stack()
+# # side by side position = "dodge"
+# 
+# ggplotly(tp_group_hour)
 
 
 # https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
