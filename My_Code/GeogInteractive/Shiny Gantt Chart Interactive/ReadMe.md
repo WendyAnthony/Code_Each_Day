@@ -6,7 +6,7 @@ to copy into their own Gantt Chart app.R file and run on their own desktop compu
 
 **Want to run the Shiny Gantt Chart App on your own computer?**
 - If you are an R Studio user, download the app.R file and run it on your own computer
-- Copy the <a href="https://github.com/WendyAnthony/Code_Each_Day/edit/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/app.R" target="_blank"><strong>app.R</strong></a> to a computer folder (containing no other app.R file in it), open file in R Studio
+- Copy the <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/app.R" target="_blank"><strong>app.R</strong></a> to a computer folder (containing no other app.R file in it), open file in R Studio
 - Make sure the following R libraries are installed: "shiny", 'DiagrammeR"
 - Click Run App
 - When App opens in R Studio window, click top button Open in Browser
