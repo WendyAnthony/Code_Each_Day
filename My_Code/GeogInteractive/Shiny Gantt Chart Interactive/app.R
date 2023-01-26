@@ -1,7 +1,7 @@
 ## -----------------------------------------
 ## -----------------------------------------
 ## Shiny App File created by Wendy Anthony
-# 2023-01-26  2023-01-26 10:47
+# 2023-01-26  2023-01-26 10:50
 ## for Interactive UVic Geography Course Planning
 ## app inspiration from:
 ## https://stackoverflow.com/questions/57351127/renderdiagrammer-mermaid-diagram-size-in-a-shiny-document
@@ -112,7 +112,7 @@ More of the extras            :               extras_3,   after extras_1, 48h
                    ## End Gantt textInput -----------------------------------
                    ## -------------------------------------------------------
 
-          div(class = "button-center", downloadButton("download_filtered", "Download textInput.txt", class="button")),
+          div(class = "button-center", downloadButton("download", "Download", class="button")),
 
 
                    ## -------------------------------------------------------
