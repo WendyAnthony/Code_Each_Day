@@ -1,6 +1,7 @@
 ## -----------------------------------------
 ## -----------------------------------------
-## Shiny App File created by Wendy Anthony 2023-01-26
+## Shiny App File created by Wendy Anthony
+# 2023-01-26  2023-01-26 10:36
 ## for Interactive UVic Geography Course Planning
 ## app inspiration from:
 ## https://stackoverflow.com/questions/57351127/renderdiagrammer-mermaid-diagram-size-in-a-shiny-document
@@ -27,7 +28,8 @@ ui <- fluidPage(
   ## Application title -------------------
   titlePanel(title = span("Interactive Gantt Time Management Chart", img(src = "https://www.uvic.ca/brand/assets/images/graphics/thumbnails/Martlet-SocialSciences.jpg", height = 50))),
   tags$img(src = "https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png", height = 50, width = "100%"),
-
+  tags$head(tags$style(".button{background-color:#69A81D;} .button{color: #f0f6e8;} .button{margin: auto;}
+                       .button-center{text-align: center;}")),
 
   ## ------------------------------------------
     ## Sidebar with some input ----------------
@@ -110,8 +112,8 @@ More of the extras            :               extras_3,   after extras_1, 48h
                    ## End Gantt textInput -----------------------------------
                    ## -------------------------------------------------------
 
+          div(class = "button-center", downloadButton("download_filtered", "Download textInput.txt", class="button")),
 
-          downloadButton("download", "Download"),
 
                    ## -------------------------------------------------------
                    ## Begin DiagrammeR --------------------------------------
@@ -176,12 +178,11 @@ server <- function(input, output) {
           #   # Output: Gantt
           output$gantt <- renderUI({
             HTML("
-                   <span><strong>Change the section Names and startDates, endDates
-                   <br>in this text section to update the lower Gantt Chart in real-time:
+                   <span><strong>Change the section Names, start and end Dates
+                   <br>in this textInput section to update the lower Gantt Chart in real-time:
                    <br>Scroll down to interact with more sections</strong>
-
-
-                   <br /><br />")
+                   <br>Download textInput results as a text file using Download Button
+                   <br><br>")
           }) # end of Output: Gantt
           ## --------------------------------------
       ## ------------------------------------------
