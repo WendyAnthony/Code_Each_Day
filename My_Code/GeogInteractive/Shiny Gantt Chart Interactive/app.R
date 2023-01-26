@@ -1,7 +1,7 @@
 ## -----------------------------------------
 ## -----------------------------------------
 ## Shiny App File created by Wendy Anthony
-# 2023-01-26  2023-01-26 11:10
+# 2023-01-26  2023-01-26 11:13
 ## for Interactive UVic Geography Course Planning
 ## app inspiration from:
 ## https://stackoverflow.com/questions/57351127/renderdiagrammer-mermaid-diagram-size-in-a-shiny-document
@@ -112,8 +112,11 @@ More of the extras            :               extras_3,   after extras_1, 48h
                    ## End Gantt textInput -----------------------------------
                    ## -------------------------------------------------------
 
-          div(class = "button-center", downloadButton("download", "Download textInput.txt", class="button")),
-
+                  ## -------------------------------------------------------
+                  ## Begin downloadButton --------------------------------------
+                  div(class = "button-center", downloadButton("download", "Download textInput.txt", class="button")),
+                  ## -------------------------------------------------------
+                  ## End downloadButton --------------------------------------
 
                    ## -------------------------------------------------------
                    ## Begin DiagrammeR --------------------------------------
@@ -148,7 +151,9 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 server <- function(input, output) {
 
 
-  # Download button
+  ## ----------------------------------------------
+  ## Begin Download Button ----------------------
+  ## ----------------------------------------------
   output$download_filtered <- downloadHandler(
     filename = function() {
       paste("GeographyCourses-FilteredData-", Sys.Date(), ".csv", sep="")
@@ -160,8 +165,6 @@ server <- function(input, output) {
     }
   ) # end of Output: Datatable downloadHandler
 
-
-
   output$download <- downloadHandler(
     filename = function() {
       paste("ganttTextInput-", Sys.Date(), ".txt", sep="")
@@ -170,6 +173,10 @@ server <- function(input, output) {
       cat(input$inText, file=file)
     }
   )
+  ## ----------------------------------------------
+  ## End Download Button ----------------------
+  ## ----------------------------------------------
+
 
   ## ----------------------------------------------
   ## Begin output$someOutput ----------------------
