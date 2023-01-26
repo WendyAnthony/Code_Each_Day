@@ -148,9 +148,23 @@ text-shadow: 0px 0px 1px #aaa; line-height: 1; color: #404040;"),
 server <- function(input, output) {
 
 
+  # Download button
+  output$download_filtered <- downloadHandler(
+    filename = function() {
+      paste("GeographyCourses-FilteredData-", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(geog_dt[input[["dt_rows_all"]], ],
+                file= file,
+                row.names=F)
+    }
+  ) # end of Output: Datatable downloadHandler
+
+
+
   output$download <- downloadHandler(
     filename = function() {
-      "ganttTextInput.txt"
+      paste("ganttTextInput-", Sys.Date(), ".txt", sep="")
     },
     content = function(file) {
       cat(input$inText, file=file)
