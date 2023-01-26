@@ -10,4 +10,4 @@ to copy into their own Gantt Chart app.R file and run on their own desktop compu
 - Make sure the following R libraries are installed: "shiny", 'DiagrammeR"
 - Click Run App
 - When App opens in R Studio window, click top button Open in Browser
-- If app is kept open in R studio, the browser window stays open
+- If app is kept open in R studio, the browser window stays open to use
