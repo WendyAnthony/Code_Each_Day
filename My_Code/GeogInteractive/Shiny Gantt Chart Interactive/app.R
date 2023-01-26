@@ -1,7 +1,7 @@
 ## -----------------------------------------
 ## -----------------------------------------
 ## Shiny App File created by Wendy Anthony
-# 2023-01-26  2023-01-26 10:52
+# 2023-01-26  2023-01-26 11:06
 ## for Interactive UVic Geography Course Planning
 ## app inspiration from:
 ## https://stackoverflow.com/questions/57351127/renderdiagrammer-mermaid-diagram-size-in-a-shiny-document
@@ -150,7 +150,7 @@ server <- function(input, output) {
 
   output$download <- downloadHandler(
     filename = function() {
-      "textarea.txt"
+      "ganttTextInput.txt"
     },
     content = function(file) {
       cat(input$inText, file=file)
