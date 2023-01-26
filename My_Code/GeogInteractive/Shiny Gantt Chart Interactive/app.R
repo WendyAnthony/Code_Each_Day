@@ -112,7 +112,7 @@ More of the extras            :               extras_3,   after extras_1, 48h
                    ## End Gantt textInput -----------------------------------
                    ## -------------------------------------------------------
 
-          div(class = "button-center", downloadButton("download", "Download", class="button")),
+          div(class = "button-center", downloadButton("download", "Download textInput.txt", class="button")),
 
 
                    ## -------------------------------------------------------
