@@ -167,7 +167,7 @@ server <- function(input, output) {
 
   output$download <- downloadHandler(
     filename = function() {
-      paste("ganttTextInput-", Sys.Date(), ".txt", sep="")
+      paste("gantt-TextInput-", Sys.Date(), ".txt", sep="")
     },
     content = function(file) {
       cat(input$inText, file=file)
@@ -199,10 +199,9 @@ server <- function(input, output) {
           #   # Output: Gantt
           output$gantt <- renderUI({
             HTML("
-                   <span><strong>Change the section Names, start and end Dates
-                   <br>in this textInput section to update the lower Gantt Chart in real-time:
-                   <br>Scroll down to interact with more sections</strong>
-                   <br>Download textInput results as a text file using Download Button
+                   <span><strong>To update the lower Gantt Chart in real-time:</strong>
+                   <br>* Change Section Names, Start, End Dates; Scroll down for more (4) sections
+                   <br>* Download textInput results as gantt-TextInput.txt file
                    <br><br>")
           }) # end of Output: Gantt
           ## --------------------------------------
@@ -222,22 +221,26 @@ server <- function(input, output) {
                    <span><strong>How To Use This Interactive Gantt Chart: </strong>
                    <br>
                        <ul>
-                           <li>Fill text in text box to update Gantt Chart in real-time</li>
-                           <li>This data is not saved locally, but is deleted when exiting page</li>
-                           <li>To save updated Gantt Chart, code must be edited in original Shiny.R file, <em>(until I can find a way to save the text file ...)</em></li>
-                           <li>Some Format can NOT be changed
+                           <li>Edits to text box update Gantt Chart in real-time</li>
+                           <li>Data changes are deleted when exiting webpage unless downloaded as text</li>
+                           <li>Some Formatting text can NOT be changed
                                   <ul>
-                                      <li>the header with gantt, and dateFormat, all in lower case format</li>
-                                      <li>section header, in lower case format; fill in the XXXXX with your own text to head this section</li>
-                                      <li>the colon must be placed immediately before the task completion keywords, followed by a comma, with nested keywords also followed by commas:crit, or :done,</li>
-                                      <li>keyword after colon can be left blank to use a space-holder for tast </li>
-                                      <li>:crit, tasks will be highted in red</li>
-                                      <li>use start and end dates, separated by a comma, or end day added by counting days after start date of previously named task</li>
+                                      <li>Header with gantt, and dateFormat, all in lower case format</li>
+                                      <li>Section Header, in lower case format; replace XXXXX with your own text</li>
+                                      <li>Colon placed immediately before task completion keywords, followed by comma; </li>
+                                      <li>Nested keywords also followed by commas :crit, or :done,</li>
+                                      <li>keyword blank after colon used as task space-holder</li>
+                                      <li>:crit, tasks are highted in red</li>
+                                      <li>Start, End Dates, separated by comma, or #days after start date of previously named task</li>
                                   </ul>
                             </li>
                             <li><strong>To Save Text Input to text file</strong>:
-                            <br>click Download Button to download textInput.txt file
-                            <br>Copy this text to replace the text within the textAreaInput area of this app code
+                                  <ul>
+                                    <li>Download button saves 'gantt-TextInput-currentDate.txt' file</li>
+                                    <li>Replace text within 'textAreaInput' area Gantt app.R file</li>
+                                    <li>Run app to showGantt updates, which can be edited life again</li>
+                                  </ul>
+                           </li>
                             <br><pre>
 ## Begin Gantt textInput -----------------------------------
   textAreaInput(inputId = 'inText, value='
@@ -245,7 +248,8 @@ server <- function(input, output) {
     '),
 ## End Gantt textInput ---------------
                                 </pre>
-                            The text file could also be shared by emailing the text file to someone who can paste it into their own Shiny app.R file and run the updated Gantt app locally in their own RStudio desktop program
+                            Share Text file by email, paste into Shiny app.R file, run updated Gantt app locally
+                            in RStudio
                             </li>
                        </ul>
 <!--
