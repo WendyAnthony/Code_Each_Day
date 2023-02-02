@@ -1,0 +1,233 @@
+---
+title: "Progress Report: Interactive Geography Course Planning Tools ![](images/Dynamic-edge-transparent.png){width=85% height=50}" 
+author: "Wendy Anthony"
+date: "`r file.info(knitr::current_input())$ctime`"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# output: ioslides_presentation
+```
+
+```{r load-package, echo=FALSE, results='hide', message=FALSE}
+library(ggplot2)
+library(plotly)
+library(dplyr) # group_by summarise
+```
+
+# My Goal | Should I Choose To Accept the Challenge
+![](images/Martlet-SocialSciences-transparent.png){height=50}  
+To create interactive tools for students to use for planning their journey through UVic Geography Courses towards their Geography BA degree.  
+
+
+
+  
+# The Results 
+
+* Interactive Pathways of Course Relationships
+
+* All-in-one Web page
+  * Data Table of Courses 
+  * Map of UVic and Field School locations
+  * Links to Planning Worksheets and Flowcharts
+
+
+
+## Interactive Flow of Course Pathways
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/interact-flow-edit.html
+
+![](images/Interactive-Pathways-Screenshot-2023-01-16-7.34.20.png){width=100%} 
+
+
+
+## All-in-one Web page
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html
+
+![](images/webpage-ss-2023-02-02.png){width=100%}
+
+
+## Leaflet Map
+* Field Courses, Building Locations, Natural Areas  
+* Bonus tool: click to find lat/lon coordinates
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/leaflet-layer-ex-foot-2.html
+
+![](images/LeafletMap-ss-2023-02-02.png){width=100%}
+
+
+# Visualizing Geog Courses
+* Animated Word Cloud  
+
+* Visualizing Geog Course Class Sizes
+
+* Mermaid Flowchart Diagram  
+
+
+## Animated Word Cloud of Course Descriptions
+![](Dataviz/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png){height=550}
+
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png
+
+
+
+
+## Visualizing Class Sizes
+* **Note**: Chart is interactive - missing info (summer classes?)
+```{r summary-classSize2, class.output="scroll-100", echo=FALSE, warning=FALSE, message=FALSE}
+# library(ggplot2)
+# library(dplyr) # group_by summarise
+## Summarise SubTask By Hours
+gc <- read.csv("GeogInteract-app-WORKING/Geog-Course-flowcharts.csv")
+
+# colnames(gc)
+
+# group_by() sum()
+# https://rveryday.wordpress.com/2016/11/30/how-to-summarize-a-data-frame-by-groups-in-r/
+gc_group_sub <- gc %>% 
+  select(Course, Name, Hours, ClassSize, Semester) %>% 
+  group_by(Course) %>%  
+  summarise(ClassSize = sum(ClassSize)) 
+
+# dplyr reorder() to reverse the order of the SubTask
+gc_group_bar_sub <- ggplot(gc_group_sub, 
+                           aes(x =Course,  
+                               # aes(x = reorder(Course, desc(Course)), 
+                               y = ClassSize)) +
+  # Error: Discrete value supplied to continuous scale
+  # https://stackoverflow.com/questions/36325154/how-to-choose-variable-to-display-in-tooltip-when-using-ggplotly
+  # tp_group_bar_sub <- ggplot(tl_group_sub, 
+  #                          aes(x = reorder(SubTask, desc(SubTask)), 
+  #                              y = TotalTimeHr,
+  #                              label = SubTask)) +
+    # tp_group_bar_sub <- ggplot(tl_group_sub, 
+  #                          aes(x = reorder(SubTask, desc(SubTask)), 
+  #                              y = TotalTimeHr,
+  #                              text = SubTask)) +
+  geom_bar(aes(fill = ClassSize),
+           #geom_bar(aes(color = TaskType, fill = TaskType),           
+           stat = "identity", position = "dodge",
+           width = 0.35,
+           fill = "#69A81D") +
+  #ylim(0, 200) +
+  # Error: Discrete value supplied to continuous scale
+  #scale_y_continuous(limits = c(0, 200)) +
+  labs(title = "Geography Course ClassSize",
+       subtitle = "UVic Geog Interactive Course Explorations Web Tool",
+       caption = "UVic Geography Wendy Anthony 2023",
+       x = "Course", y = "Class Size") +
+  #coord_flip() +
+
+  #scale_fill_brewer("Pastel2") + # 
+  # scale_fill_brewer() + # blues
+  # scale_colour_brewer(palette = "Dark2") +
+  # scale_colour_brewer(palette = "Accent") +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 45, vjust = 1.05, hjust = 1, size = 6))
+        # axis.text.x = element_text(angle = 45, vjust = -1.75, hjust = 0.95, size = 6))
+#theme_classic()
+# stacked position = position_stack()
+# side by side position = "dodge"
+
+# gc_group_bar_sub
+
+ggplotly(gc_group_bar_sub)
+
+# https://stackoverflow.com/questions/38274213/adding-system-time-and-date-to-pdf-with-ggsave
+
+ # ggsave(paste0("images/ClassSize-group-bar-sub", format(Sys.time(), "%Y-%m-%d_%H-%M"),
+ #              ".png"), gc_group_bar_sub)
+# 
+# ggsave("images/TimePlot-group-bar_subtask-2023-01-20.png", tp_group_bar_sub)
+```
+
+
+## Mermaid Flowchart Diagram 
+* Course Prerequisites as a Clickable PDF   
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf  
+
+![](images/Mermaid-ss-2023-02-02.png){height=400}
+![](images/Mermaid-code-ss-2023-02-02.png){height=400}
+
+
+# Testing Things in Progress
+* **Experimental Data Viz**: Gantt Time Chart
+* **Program Planning Form Trial ** [phpForm Trial](#programming-planning-worksheet-form)
+
+
+## Gantt Interactive Time Management
+
+![](images/gantt-app-2023-02-01-ss.png){height=400}
+
+
+## Programming Planning Form
+
+### In very preliminary design/format/style stages  
+
+![](images/Form-styled-ss.png){height=450}
+
+
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/ProgramPlanning-Form-php-2-html.php
+* https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html#history
+
+
+# Progress of Coding Experiments 
+* Things Already Done  
+* Things Still To Do (Wishlist)  
+* Still Need  
+* Questions  
+* Challenges Faced
+
+
+## Things Already Done
+* Created **Interactive Course Data Table** that can be searched, filtered, sorted, and results saved!
+* Cloned **RShiny App** to **one-page HTML Website**
+* **Interactive Course Pathway Flow**  networking pre-requisites for UVic Geog course
+* **Interactive Leaflet Map** [Leaflet Map](#leaflet-map) with markers for UVic location, doing field work
+* Created [Animated Word Cloud](#animated-word-cloud) from Course Descriptions
+* **Visualize Class Size**: [Interactive chart](#summarise-class-size)
+* Created clickable pdf of [Mermaid Flowchart diagram](#mermaid-flowchart-diagram) of course prerequisites, linked to UVic Course Catalogue
+* **Tips** for Use and Accessibility
+
+
+
+## Things Still To Do (Wishlist)
+* **Course Planning Worksheet**: Interactive form to fill/save??    
+    * https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/ProgramPlanning-Form-php-2-html.php  
+    * https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf  
+* **Interactive Leaflet Map Markers**: for Field Schools, UVic Buildings & Natural Areas, Community Mapping Partners
+* **Hyperlinks to course catalogue** 
+    * from data table or [Mermaid Course Flowchart diagram](https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf)
+* **Network flow chart:**  highlight pathways between associated courses vs Interactive Pathway
+* **Anything else?**
+
+
+
+## Still Need
+* List of **Summer Semester** Courses
+* List of **Common Electives**
+
+
+
+## Website Questions
+* **Title?**
+* **Keywords** for Internet search engine optimization
+* **Formatting**: fonts (e.g. Serif: Times Roman, or Sans-serif)
+* **Colour scheme, logo, etc**
+* **Course Name format** to use (e.g. GEOG103, Geog103, or Geog 103)
+* **Interactive Pathways**: Is it OK to use this pathways coding - it is copyrighted, though used for educational purpose >> or >> should I look into other networking vizualization tools instead (just using this for planning / design purposes)?
+* **Course statistics** What would be interesting to view interactively?
+* **Locations for field schools**, etc to add to map
+* **Student feedback** / input? e.g. SOGS, Community Mapping Class
+
+
+
+## Challenges Faced
+* Creating Interactive Table that Saves Filtered Results
+* Creating webpage nested tabs (still not able to do yet)
+
+
+# Thanx for your kind attention ... | Any questions, comments, feedback?
+
+Wendy Anthony wanthony@uvic.ca  
+![](images/Dynamic-edge-transparent.png){width=100% height=50}
