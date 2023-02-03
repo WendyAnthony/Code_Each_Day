@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description" content="Tool for Interactive Geography Course Exploration and Program Planning">
-    <meta name="keywords" content="Geography, Tool, Interactive, Courses, Exploration, Program Planning">
+    <meta name="keywords" content="Geography, geographic, UVic, University of Victoria, Course Planning, Planning, student, Tool, Interactive, Courses, Exploration, explore, exploring, Program Planning, leaflet map, map, mapping, community, community mapping, network, pathways, field trips, field schools, research, urban, environment, geomatics, physical, climate, spatial, concepts, process, applied, global, social, course requirments, marine, remote sensing, cartography">
     <meta name="author" content="Wendy Anthony">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -20,8 +20,11 @@
 	<link rel="stylesheet" href="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
 
 	<!-- leaflet CSS before js -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet-compass/src/leaflet-compass.css" />
+    <link rel="stylesheet" href="http://people.geog.uvic.ca/wanthony/website/geog490/Control.MiniMap.css" />
+    <link rel="stylesheet" href="http://people.geog.uvic.ca/wanthony/website/geog490/mediaQuery-2.css" />
+    <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.label/leaflet.label.css" />
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -72,7 +75,7 @@
 	hr {
 		display: block;
 		margin: auto;
-		width: 22%;		
+		width: 100%;		
 	}
 	#Links li a {
 		font-size: .85em;
@@ -1376,7 +1379,7 @@ var $table = $('#table1');
 <div id="dataviz" class="tabcontent">
           
 	<!-- <h2 id="menu_dataviz">Data Vizualizations to view UVic Geography courses</h2> -->
-	<strong><a href="#wordcloud">Wordcloud</a> | <a href="#class-size">Class Size Interactive Chart</a> | <a href="#mermaid">Mermaid Flow Chart</a> </strong>
+	<strong><a href="#wordcloud">Wordcloud</a> | <a href="#class-size">Class Size Interactive Chart</a> | <a href="#gantt">Gantt Time Management</a> | <a href="#mermaid">Mermaid Flow Chart</a> </strong>
 <hr>
 <!-- =================== Wordcloud Begins ==================== -->
 	<h2 id="wordcloud">Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h2>
@@ -1389,7 +1392,7 @@ var $table = $('#table1');
               <!--  <iframe style='height:675px; width:745px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-60-10-crop.png'></iframe> -->
 <br>
 <strong><a href="#menu_dataviz">Back to Menu</a></strong>
-<br>        
+<br><br>        
 <!-- =================== Wordcloud Ends ==================== -->
 
 <hr>
@@ -1404,9 +1407,36 @@ var $table = $('#table1');
               <!--  <iframe style='height:675px; width:745px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-60-10-crop.png'></iframe> -->
 <br>
 <strong><a href="#menu_dataviz">Back to Menu</a></strong>
-<br>        
+<br><br>        
 <!-- =================== Class Size GGPlotly Ends ==================== -->
 <hr>
+
+<!-- =================== Gantt Begins ==================== -->
+	<h2 id="gantt">Interactive Gantt Time Management Chart</h2>
+
+			<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/gantt-app-2023-02-01-ss.png" width="1200">
+
+            <br><br>
+            <strong>Want to run the Shiny Gantt Chart App on your own computer?</strong>
+	            <ul>
+	            	<li><strong>If you are an R Studio user, download the app.R file and run it on your own computer:</strong></li>
+	            	<li>Copy the <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/app.R" target="_blank"><strong>app.R</strong></a> to a computer folder (containing no other app.R file in it), open file in R Studio</li>
+	            	<li>Make sure the following R libraries are installed: "shiny", 'DiagrammeR"</li>
+	            	<li>Click Run App</li>
+	            	<li>When App opens in R Studio window, click top button Open in Browser</li>
+	            	<li>If app is kept open in R studio, the browser window stays open</li>
+	            	<li>Change text input to see changes in Gantt Chart real-time</li>
+	            	<li>Save text file using Download Button</li>
+	            	<li>To permanently save Gantt Chart text input changes, Copy/Paste text into textInput section of app.R code to replace surrent text (between value="" quotes)</li>
+	            </ul>
+
+<br>
+<strong><a href="#menu_dataviz">Back to Menu</a></strong>
+<br><br>        
+<!-- =================== Gantt Ends ==================== -->
+<hr>
+
+
 <!-- =================== Mermaid Begins ==================== -->
 <h2 id="mermaid">Mermaid Flowchart Diagrams</h2>
 <strong>Full-size Webpage View</strong> <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf"><strong>PDF</strong></a> with clickable links to UVic Course Catalogue (links open new window)
@@ -1450,7 +1480,7 @@ var $table = $('#table1');
 
 <br>
 <strong><a href="#menu_dataviz">Back to Menu</a></strong>
-<br>        
+<br><br>        
 <!-- =================== Mermaid Ends ==================== -->
 <hr>
 <!-- =================== Gantt Begins ==================== -->
@@ -1492,11 +1522,13 @@ var $table = $('#table1');
 
 
 <!-- ########## Leaflet Tab begins ################## -->
-<div id="map" class="tabcontent">
-<br>	
-View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap.html"><strong>Leaflet Map</strong></a> as full web page
+<div id="map" class="tabcontent" name="map">
+<br>
+Use the layer function at top right corner of map to change base maps, and add other layers
+<br>	<!-- leaflet-layer-ex.html -->
+View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/leaflet-layer-ex-foot-2-nat.html"><strong>Leaflet Map</strong></a> as full web page
 <br><br>            
-<iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/geog-students-leafletmap-nofoot9.html" style='height:790px; width:100%'></iframe>
+<iframe src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/leaflet-layer-ex-nofoot-1.html" style='height:1000px; width:100%'></iframe>
 
 </div> <!-- ########## Leaflet Tab ends ################## -->
 
@@ -1508,7 +1540,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
   					<strong><a href="#goals">Goals</a> | <a href="#access">Accessability</a> | <a href="#code">The Code</a> | <a href="#history">Change History</a></strong>
   					<br>
 <strong>Project Info: </strong>
-<strong>  <a href="#questions">Questions</a> | <a href="#need">Need</a> | <a href="#wishlist">Wishlist</a> | <a href="#functions">Functions</a> | <a href="#ideas">Ideas</a> | <a href="#todo">To Do</a> | <a href="#done">Done</a> | <a href="#report">Report</a>      </strong>
+<strong>  <a href="#questions">Questions</a> | <a href="#need">Need</a> | <a href="#wishlist">Wishlist</a> | <a href="#ideas">Ideas</a> | <a href="#todo">To Do</a> | <a href="#done">Done</a> | <a href="#report">Project Progress Report</a>      </strong>
 
   					<br>
 				<!-- End of Menu -->
@@ -1516,7 +1548,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- =================== Goals Begins ==================== -->
 			        <h3 id="goals">Goals:</h3>
 					  <p>
-					  	To create an online, interactive interface to facilitate Geography Course Student Planning, an experimental <a href='https://wendyanthony.shinyapps.io/GeogInteract-app/' target="_blank"><strong>Shiny Code Sandbox</strong></a> was used to help develop a one-page HTML webpage "Clone", meant to mimic the Shiny App on the web, without relying on a Shiny Server.
+					  	To create an online, interactive interface to facilitate Geography Course Student Planning, an experimental <!--<a href='https://wendyanthony.shinyapps.io/GeogInteract-app/' target="_blank"><strong>Shiny Code Sandbox</strong></a> --> Shiny Code Sandbox was used to help develop a one-page HTML webpage "Clone", meant to mimic the Shiny App on the web, without relying on a Shiny Server.
 					  </p>
                 
                 <strong><a href="#menu_about">Back to Menu</a></strong>
@@ -1546,22 +1578,26 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- =================== Code Begins ==================== -->
         <h3 id="code">The Code</h3>
             <strong>One-Page Webpage "Clone" <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/DataTable-shiny-to-web-tabs.html' target='_blank'>Code on GitHub</a></strong>
-              <br>
+<!--              <br>
             <strong>Shiny App <a href='https://github.com/WendyAnthony/Code_Each_Day/blob/master/My_Code/GeogInteractive/app.R' target='_blank'>Code on GitHub</a></strong>
+-->            
               
 <!--            Filtered table code adapted from Stackoverflow <a href='https://stackoverflow.com/questions/53499066/downloadhandler-with-filtered-data-in-shiny' target='_blank'>Downloadhandler with filtered data in Shiny</a>
 -->
             <br><br>
-            <strong>Want to run the Shiny App on your own computer?</strong>
+            <strong>Want to run the Shiny Gantt Chart App on your own computer?</strong>
 	            <ul>
 	            	<li><strong>If you are an R Studio user, download the app.R file and run it on your own computer:</strong></li>
-	            	<li>Copy the <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/app.R">app.R</a> and <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Geog-Course-flowcharts.csv">course data.csv</a> to a computer folder, open file in R Studio</li>
-	            	<li>Make sure the following R libraries are installed: "shiny", "shinyWidgets", "DT", 'DiagrammeR", "ggplot2", "plotly", "lubridate", "tidyr", "leaflet", "dplyr"</li>
+	            	<li>Copy the <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/app.R" target="_blank"><strong>app.R</strong></a> to a computer folder (containing no other app.R file in it), open file in R Studio</li>
+	            	<li>Make sure the following R libraries are installed: "shiny", 'DiagrammeR"</li>
 	            	<li>Click Run App</li>
 	            	<li>When App opens in R Studio window, click top button Open in Browser</li>
 	            	<li>If app is kept open in R studio, the browser window stays open</li>
+	            	<li>Change text input to see changes in Gantt Chart real-time</li>
+	            	<li>Save text file using Download Button</li>
+	            	<li>To permanently save Gantt Chart text input changes, Copy/Paste text into textInput section of app.R code to replace surrent text (between value="" quotes)</li>
 	            </ul>
-<br><br>
+
 <strong><a href="#menu_about">Back to Menu</a></strong>
 <br>   
 <!-- =================== Code Ends ==================== -->	
@@ -1569,6 +1605,16 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 		<br>
 <!-- =================== History Begins ==================== -->
           <h2 id="history">History of App Changes</h2>
+            <h3>2023-01-25</h3>
+              <ul>
+              	<li>Add field school location markers to Leaflet map</li>
+              	<li>Add satellite base map layer to Leaflet map</li>
+              </ul>
+            <h3>2023-01-24</h3>
+              <ul>
+              	<li>Showcase Interactive prototypes to select Faculty and Staff</li>
+              	<li>Agreed to ask for student input</li>
+              </ul>              
             <h3>2023-01-22</h3>
               <ul>
               	<li>Updated consistent format for links and pages</li>
@@ -1673,8 +1719,10 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
               </ul>
 
 <strong><a href="#menu_about">Back to Menu</a></strong>
-<br>  
+<br>
+<br>
 <!-- =================== History Ends ==================== -->
+<hr>
 
 <!-- =================== Project Work Stuff Begins ==================== -->  
   <h2 id="menu_about">Interactive UVic Geography Courses Project Work Stuff</h2>
@@ -1684,64 +1732,41 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
           <ul>
               <li><strong>Reporting: </strong>
                     <ul>
-                      <li>What form of reporting is required from me?</li>
-                      <li>How often?</li>
-                      <li>What do you want to know?</li>
-                      <li>Process, results, deadlines, targets</li>
+                      <li>What do you want to know? e.g. Process, results, deadlines, targets</li>
                     </ul>
-                    </li>
+              </li>
               <li><strong>Formatting: </strong>
                     <ul>
                       <li>Title?</li>
-                      <li>keywords for Internet search engine optimization</li>
                       <li>What font to use (e.g. Serif: Times Roman, or Sans-serif)?</li>
-                      <li>Course Name format to use
-                      <ul>
-                          <li>e.g. GEOG103, Geog103, or Geog 103</li>
-                          <li>Different in Course Catalog, Geog Website, etc</li>
-                          <li> >> I chose **GEOG 103</li>
-                          <li> >> change database to choice if different</li>
-                      </ul>
-                      </li>
                     </ul>
-                    </li>
-              <li><strong>Interactive Pathways: </strong>
-                      <ul>
-                          <li>Is it OK to use this pathways coding?</li>
-                          <li>(it can still be very useful to help feel use some other network visualization)</li>
-                          <li>It is copyrighted for the game (link from David A.)</li>
-                          <li>Does educational use qualifies when it might actually be used for UVic department web page, which could be considered marketing?</li>
-                      </ul>
-                      </li>                                        
+              </li>
               <li><strong>Course Statistics: </strong>
                       <ul>
-                          <li>What kind of course statistics would be interesting to dig out of the course data table, for example class-size</li>
-                          <li></li>
+                          <li>Are course statistics interesting enough to dig out of Data Table, e.g. class-size</li>
                       </ul>
-                      </li>                    
+              </li>                    
               <li><strong>Shiny Server: </strong>
                       <ul>
                           <li>What's involved with setting-up/installing a Geog Shiny Server?</li>
-                          <li>Ask Rick Sykes: Can a Shiny Server be installed?</li>
                       </ul>
-                      </li>
+              </li>
               <li><strong>Students: </strong>
-                    <ul>
-                      <li>Ask some students what kind of format they like to search geography courses for when planning</li>
-                      <li>What info would students like to find?</li>
-                      <li>Easy/Difficult to use/understand?</li>
-                      <li>e.g. Ask geography student society SOGS
-                           <ul>
-                              <li>Test drive</li>
-                              <li>Be given a task, something to search for</li>
-                              <li>have some examples online and choose make a POLL</li>
-                              <li>What do students search for</li>
-                            </ul>
-                            </li>
-                    </ul>
-                    </li>
+	                   <ul>
+	                      <li>Ask some students what kind of format they like to search geography courses for when planning</li>
+	                      <li>What info would students like to find?</li>
+	                      <li>Easy/Difficult to use/understand? Needs explanation?</li>
+	                      <li>e.g. Ask geography student society SOGS
+	                           <ul>
+	                              <li>Test drive</li>
+	                              <li>Be given a task, something to search for</li>
+	                              <li>have some examples online and choose make a POLL</li>
+	                              <li>What do students search for</li>
+	                            </ul>
+	                      </li>
+	                   </ul>
+              </li>
         </ul>
-<br>
 <strong><a href="#menu_about">Back to Menu</a></strong>
 <br>
 <!-- =================== Questions Ends ==================== -->
@@ -1751,14 +1776,13 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
       <h3 id='need'>Need</h3>
               <ul>
                   <li><strong>Data</strong>
-                          <ul>
-                              <li>list of popular electives, class size</li>
-                              <li>list of Summer courses</li>
-                              <li>Courses, prerequisites (check to see I have them all)</li>
-                          </ul>
-                          </li>
+                      <ul>
+                          <li>list of popular electives, class size</li>
+                          <li>list of Summer courses</li>
+                          <li>Courses, prerequisites (check to see I have them all)</li>
+                      </ul>
+                   </li>
               </ul>
-<br>
 <strong><a href="#menu_about">Back to Menu</a></strong>
 <br>              
 <!-- =================== Need Ends ==================== -->
@@ -1766,22 +1790,19 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- =================== Wishlist Begins ==================== -->
       <h3 id='wishlist'>Wishlist</h3>
           <ul>
-              <li><strong>Demonstations for Use</strong>
+              <li><strong>Demonstations / Documentation for Use</strong>
                   <ul>
                     <li>Video tutorials</li>
                     <li>Description for use</li>
+                    <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>                    
                     <li>Mobile device and desktop</li>
                   </ul>
-                  </li>
+              </li>
               <li><strong>Documentation</strong>
                   <ul>
-                    <li>Presentation of current state/progress, use .rmd, create slides </li>
-                    <li>Use Chrome Audio Capture extension to record use of app chrome-extension://kfokdmfpdnokpmpbjhjbcabgligoelgp/complete.html</li>
-                    <li>Create Gantt chart timeline for progress, completion, meetings, target dates (started 2023-01-12)</li>
-                    <li>Document workflow, create tab, nest in history </li>
-                    <li>Screenshots</li>
+
                   </ul>
-                  </li>
+              </li>
               <li><strong>Functions Wishlist</strong>
                   <ul>
                     <li><strong>Gantt chart: </strong>for semester and four year program, with text field choices to populate Gantt chart</li>
@@ -1793,14 +1814,21 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                     		<li>Create Jason file of networking linked courses </li>
                     		<li>Figure out naming classification for nodes, edges, etc.</li>
                     	</ul>
-                    	</li>                    
-                    <li>try making new filter table save csv into one of the test tabs, output like table tab</li>
-                    <li>Need a `clear search button` for datatable</li>
-                    <li>Save image of concept maps</li>
+                    </li>
+                    <li>Data Table
+	                   	<ul>
+	                    		<li>Link to course catalog</li>
+                    			<li>Need a `clear search filters button`</li>	                    		
+                    			<li>Move Data Table controls for: # to search to top of table</li>
+              					<li>Interactive Data Table: how to clear search filters, other than refreshing the page</li>
+			                    <li>Change color of Datatable select (from blue)</li>
+			                    <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
+	                    		<li>try making new filter table save csv into one of the test tabs, output like table tab</li>
+	                    </ul>
+                    </li>
                     <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
-                    <li>Take image of results</li>
-                    <li>Ability to print results</li>
-                    <li>Mobile device and desktop</li>
+                    <li>Ability to print/capture image of results</li>
+					<li>Save image of Mermaid data flow maps</li>
                     <li><strong>Interactivity</strong>
                             <ul>
                               <li>R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
@@ -1808,38 +1836,23 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                               <li>Highlight the pathways between courses when clicked, or hovering</li>
                               <li>Choose a path‘s which would be highlighted</li>
                               <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
-                              <li>Click for more information, link to course catalog</li>
                               <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
+		                      <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
+ 		                      <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>                              
                             </ul>
-                            </li>
-                    <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
-                    <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>
+                    </li>
                     <li>Multi year calendar planner</li>
                     <li>Note which courses student has taken</li>
-                    <li>Change color of Datatable select (from blue)</li>
-                    <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
-                    <li>Filter new data table >> choose only columns necessary for filtered search > save to csv</li>
                     <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
                     <li>Convert to PHP, update training on UVic website</li>
                   </ul>
                   </li>
           </ul> <!-- end of Wishlists  -->
-<br>
 <strong><a href="#menu_about">Back to Menu</a></strong>
 <br>          
 <!-- =================== Wishlist Ends ==================== -->          
 <hr>
 
-<!-- =================== Functions Begins ==================== -->
-          <h3 id='functions'>Functions to Add</h3>
-          <ul>
-              <li>Interactive Table controls for: # to search</li>
-          </ul>
-<br>
-<strong><a href="#menu_about">Back to Menu</a></strong>
-<br>          
-<!-- =================== Functions Ends ==================== -->          
-<hr>
 <!--
     <li><strong></strong></li>
       <ul>
@@ -1874,7 +1887,6 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                     <a href='https://www.uvic.ca/socialsciences/geography/assets/docs/Geogplan%20pdfs/geomatics.pdf'>Geomatics</a>
               </li>
           </ul>
-<br>
 <strong><a href="#menu_about">Back to Menu</a></strong>
 <br>          
 <!-- =================== Ideas Ends ==================== -->          
@@ -1882,19 +1894,13 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- =================== To Do Begins ==================== -->
           <h3 id='todo'>To Do</h3>
           <ul>
-              <li>Can I create HTML webpage from shiny app source code?
-                  <ul>
-                      <li><strong>Started a web template (2023-01-13), got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/DataTable-shiny-to-web-tabs.html#history'>Searchable Web Table</a></strong></li>
-                  </ul>
-                  </li>
+              <li>Document workflow for updating Data Table</li>              
               <li>Check to see if any missing course info for Geography Course data table</li>
               <li>Figure out how to add relationships to different visualization technique</li>
               <li>Add resources tab, links </li>
-              <li>Use paper notebook for design ideas, flowcharts </li>
-              <li>Make tabs figure bigger</li>
-              <li>Take screenshots of each version of the app Shiny app that I create, upload and publish</li>
-              <li><strong>Data Table: </strong>Showing number of entries filtered from; Move between pages; colour the download button green; Add tips</li>
-              <li><strong>Program Planning: </strong>Nested tabs; Tab for experiments; Mermaid flow chart, with code; Time log data table: plotly interactive ggplots; Gantt interactive?</li>
+              <li>Make tabs, figure, text/font-size bigger</li>
+              <li>Nested tabs?</li>
+              <li>How to stay in same tab when using back button?</li>
           </ul>
 <br>
 <strong><a href="#menu_about">Back to Menu</a></strong>
@@ -1913,7 +1919,11 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- =================== Done Begins ==================== -->
           <h3 id='done'>Done ✅</h3>
           <ul>              
-              <li>Created animated Word Cloud of Course Description text (2023-01-21)</li>
+              <li>Create presentation of current state/progress, use .rmd, create slides</li>			  
+			  <li>Take screenshots of each version of the Shiny and Web app created, uploaded, published</li>
+              <li><strong>Data Table: </strong>Showing number of entries filtered from; Move between pages; colour the download button green; Add tips</li>
+              <li>Filter new data table >> choose only columns necessary for filtered search > save to csv</li> <li>Created animated Word Cloud of Course Description text (2023-01-21)</li>
+              <li>Tab for experiments; Mermaid flow chart, with code; Gantt interactive</li>
               <li>"Changed website title to Interactive Exploration of UVic Geography Courses, from "Exploring UVic Geography Courses Interactively on the Web" (2023-01-21)</li>
               <li>Code Cleaning to correct any and all errors!! (2023-01-20)</li>
               <li>Reconstruct Webpage to correct any introduced anomalies (2023-01-20)</li>
@@ -1922,6 +1932,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
               <li><strong>Started a web template, got a seaerchable table working: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/test/DataTable-shiny-to-web.html'>Searchable Web Table</a></strong></li>
               <li>add signature footer to bottom of page</li>
               <li>Embed links to geography interactive pdf concept maps</li>
+			  <li>Create HTML webpage based on shiny app, build in tandem; got searchable table working (2023-01-13)</li>
               <li>copy/paste Geog course data to datatable (Completed 2023-01-12) ✅  </li>
               <li>DT table row justified to top of cell - also remove remove row number (done 2023-01-11)</li>
               <li>make interactive pdf >> Adobe Acrobot Pro (2023-01-09) >> wrote workflow >> see above</li>
@@ -1930,23 +1941,19 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
               <li> **Computer Registration:** Can a 'back-door access link' be obtained to bypass clunky search</li>
           </ul>
 <strong><a href="#menu_about">Back to Menu</a></strong>
-<br>      	    
+<br><br>      	    
 <!-- =================== Done Ends ==================== -->          
 <hr>
 
 <!-- =================== Report Begins ==================== -->
-<h3 id='report'>Project Report</h3>
-<p>To read the full report: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'><strong>Current Progress Report</strong></a>
-    <br>
+<h3 id='report'>Project Progress Slide Presentations</h3>
+<p>To view the slide presentation: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-ioslides-2023-01-24.html' target='_blank'><strong>Showcase of Progress 2023-01-24</strong></a>
+<br>
+<br>
 <strong><a href="#menu_about">Back to Menu</a></strong>
 <br>          
 </p>
- <h4>Screenshot of Current Progress Report</h4>
-<!--  have to keep renaming this lnk from Report to Report-new needs to be a different file name to register change!?!? -->
-    <img src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Report-ss-2023-01-23-1442.png' style='width:40%; border-color: black;'>
-<br>
-<strong><a href="#menu_about">Back to Menu</a></strong>
-<br>
+
 <!-- =================== Report Ends ==================== -->
 <hr>
 
@@ -1963,7 +1970,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- ########## Footer Starts ################## -->
 <footer>	
 	<hr>
-	Wendy Anthony 2023-01-22 wanthony @ uvic.ca
+	Wendy Anthony 2023-02-01 wanthony @ uvic.ca
 	<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png" alt="UVic Dynamic Edge Stripe" height = 50 width = "100%">
 </footer>
 <!-- ########## Footer Ends ################## -->
