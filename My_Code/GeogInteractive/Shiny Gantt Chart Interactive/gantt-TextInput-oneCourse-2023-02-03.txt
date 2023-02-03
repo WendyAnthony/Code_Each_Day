@@ -1,0 +1,38 @@
+gantt
+dateFormat  YYYY-MM-DD
+
+title Course Planning Gantt Chart
+
+section GEOG XXX
+Course Duration               :               first_1,    2023-01-09, 2023-04-06
+
+section Research Project
+Choose Topic                  :done,          third_1,    2023-01-09, 10d
+Collecting Data               :active,        third_2,    after third_1, 10d
+Readings                      :active         third_3,    after third_1, 40d
+Write Report                  :               third_4,    after third_3, 5d
+Edit Report                   :               third_5,    after third_4, 5d
+Report Due                    :crit,          third_6,    2023-02-13, 1d
+
+section Assignments
+Assignment 1                  :crit, done,    import_1,   2023-01-09, 24d
+Assignment 2                  :crit, active,  import_2,   after import_1, 2d
+Midterm                       :crit, active,  import_3,   after import_2, 3d
+Final Exam                    :crit,          import_4,   after import_3, 5d
+
+section Exams
+Midterm 1 Study                 :crit, active,  quiz_1,   2023-01-12, 2023-01-26
+Midterm 1 Exam                  :crit, done,    quiz_2,   2023-01-27, 1d
+Midterm 2 Study                 :crit, active,  quiz_3,   2023-01-31, 2023-02-26
+Midterm 2 Exam                  :crit,          quiz_4,   2023-02-27, 1d
+Final Exam Study                :crit,          quiz_5,   2023-02-23, 2023-03-26
+Final Exam                      :crit,          quiz_6,   2023-03-27, 1d
+
+section Example Task Flow
+This is completed             :done,          second_1,    2023-01-06, 2023-01-08
+This is active                :active,        second_2,    2023-01-09, 3d
+Do this later                 :               second_3,    after second_2, 5d
+Do this after that            :               second_4,    after second_3, 5d
+Do this after imp task        :crit,          second_5,    after import_4, 3d
+
+                                  
