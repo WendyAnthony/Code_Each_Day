@@ -1,6 +1,6 @@
 ## -----------------------------------------
 ## -----------------------------------------
-## Shiny App File created by Wendy Anthony
+## Gantt Shiny App File created by Wendy Anthony
 ## 2023-01-26  updated 2023-02-03 04:55
 ## for Interactive UVic Geography Course Planning
 ## app inspiration from:
