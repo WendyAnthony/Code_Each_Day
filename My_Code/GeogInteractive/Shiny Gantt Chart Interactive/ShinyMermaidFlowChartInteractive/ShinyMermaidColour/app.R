@@ -1,7 +1,7 @@
 ## -----------------------------------------
 ## -----------------------------------------
 ## Mermaid incolor side panel Shiny App File created by Wendy Anthony
-## 2023-02-03 13:51
+## 2023-02-04 12:22
 ## for Interactive UVic Geography Course Planning
 ## colour: https://colorbrewer2.org/#type=diverging&scheme=BrBG&n=9
 ## app inspiration from:
@@ -224,6 +224,9 @@ server <- function(input, output) {
             HTML("<br>
                    <span><strong>To Save Text Input to text file: </strong>
                    <br>* Download textInput results as mermaid-TextInput-currentDate.txt file
+                   <br>* Replace saved text in 'textAreaInput' of Shiny app.R file
+                   <br>* Save Shiny Mermaid <a href='https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/ShinyMermaidFlowChartInteractive/ShinyMermaidColour/app.R' target='_blank'><strong>app.R</strong></a>
+                                    file to own computer and run in RStudio
                    <br>* Replace saved text in 'textAreaInput' of local app.R file
                    <br>* Run app in RStudio to View saved updates
                             <br>
