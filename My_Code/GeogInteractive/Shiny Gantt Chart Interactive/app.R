@@ -1,7 +1,7 @@
 ## -----------------------------------------
 ## -----------------------------------------
 ## Gantt Shiny App File created by Wendy Anthony
-## 2023-01-26  updated 2023-02-03 04:55
+## 2023-01-26  updated 2023-02-04 12:13
 ## for Interactive UVic Geography Course Planning
 ## app inspiration from:
 ## https://stackoverflow.com/questions/57351127/renderdiagrammer-mermaid-diagram-size-in-a-shiny-document
@@ -55,7 +55,7 @@ ui <- fluidPage(
 gantt
 dateFormat  YYYY-MM-DD
 
-title Course Planning Gantt Chart
+title Course Planning Gantt Chart 2023
 
 section GEOG XXX
 Course Duration               :               first_1,    2023-01-09, 2023-04-06
@@ -205,6 +205,7 @@ server <- function(input, output) {
           ## -----------------------------------------
           output$instruct <- renderUI({
             HTML("
+                   <br>
                    <span><strong>How To Use This Interactive Gantt Chart: </strong>
                    <br>
                        <ul>
@@ -242,35 +243,22 @@ Do after critical task :crit,   second_5, after import_4, 3d
                                     <li>Download button saves 'gantt-TextInput-currentDate.txt' file</li>
                                     <li>Replace text within 'textAreaInput' area Gantt app.R file</li>
                                     <li>Run app to showGantt updates, which can be edited live again</li>
+                                    <li>Save Shiny Gantt <a href='https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/app.R' target='_blank'><strong>app.R</strong></a>
+                                    file to own computer and run in RStudio</li>
+                                    <li>Share Text file by email, paste into Shiny app.R file, run updated Gantt app locally
+                            in RStudio</li>
                                   </ul>
                            </li>
-                            <br><pre>
+                            <br>
+<pre>
 ## Begin Gantt textInput -------------
   textAreaInput(inputId = 'inText,
   value='
      XXX PASTE / REPLACE CODE HERE XXX
   '),
 ## End Gantt textInput ---------------
-                                </pre>
-                            Share Text file by email, paste into Shiny app.R file, run updated Gantt app locally
-                            in RStudio
-                            </li>
-                       </ul>
-<!--
-<pre>
-gantt
-dateFormat  YYYY-MM-DD
-
-section XXXXXXXXXXX
-This task is completed      :done,          first_1,    2023-01-06, 2023-01-08
-This task is active         :active,        first_2,    2023-01-09, 3d
-Do this task later          :               first_3,    after first_2, 5d
-
-section XXXXXXXXXXX
-Completed, critical task    :crit, active,  import_1,   2023-01-06, 24h
-Completed, critical task    :crit, done,    import_2,   2023-01-06, 24h
 </pre>
--->
+                       </ul>
                    </span>
 
 ")
