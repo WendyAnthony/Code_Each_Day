@@ -1,0 +1,219 @@
+---
+title: "Adding Clickable Links to Bootstrap Table Cells"
+author: "Wendy Anthony"
+date: "`r file.info(knitr::current_input())$ctime`"
+output:
+  html_document:
+    highlight: zenburn
+    toc: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 300px; # for vertical scroll
+  max-width: 1500px; # for horizontal scroll
+  overflow-y: auto; # for vertical scroll
+  overflow-x: auto; # for horizontal scroll  
+  background-color: inherit;
+}
+```
+
+
+```{r load-package, echo=FALSE, results=FALSE, message=FALSE}
+# Load Package
+# install.packages("DT")
+# install.packages("knitr")
+library(knitr)
+library(DT)
+```
+
+
+# Read Data
+<details>
+<summary>Open to View Data Structure</summary>
+```{r read-data, class.output="scroll-100", echo=FALSE, message=FALSE, warning=FALSE}
+# Read Data
+geog_dt_links <- read.csv("GeogInteract-app-WORKING/Geog-Course-Data.csv", header = TRUE, sep = ",", stringsAsFactors=TRUE)
+# str(geog_dt_links)
+
+colnames(geog_dt_links)
+```
+</details>
+
+# Create Columns
+<details>
+<summary>Create Columns to Concatenated Link URL</summary>
+```{r add-columns, class.output="scroll-100", echo=FALSE, message=FALSE, warning=FALSE}
+colnames(geog_dt_links)
+#Add Columns
+liveCatLink = ""
+liveRegLink = ""
+
+dt <- cbind(geog_dt_links, liveCatLink, liveRegLink)
+colnames(dt)
+str(dt)
+```
+
+</details>
+
+# Concatenate Column links to URL
+<details>
+<summary>Concatenate Column links to URL</summary>
+```{r, class.output="scroll-100", echo=FALSE, message=FALSE, warning=FALSE}
+colnames(dt)
+
+# liveCatLink
+dt$liveCatLink
+dt$liveCatLink <- paste("<a href='", dt$CatLink, "' target='_blank'>Link to Catalogue</a>")
+dt$liveCatLink
+str(dt$liveCatLink) # character
+
+dt$liveCatLink <- gsub("<a href=' https", "<a href='https", dt$liveCatLink)
+dt$liveCatLink
+str(dt$liveCatLink) # character
+
+dt$liveCatLink <- gsub(" ' target=", "' target=", dt$liveCatLink)
+dt$liveCatLink
+str(dt$liveCatLink) # character
+str(dt)
+
+colnames(dt)
+# liveRegLink
+dt$liveRegLink <- paste("<a href='", dt$RegLink,"' target='_blank'>Link to Catalogue</a>")
+dt$liveRegLink
+
+dt$liveRegLink <- gsub("<a href=' https", "<a href='https", dt$liveRegLink)
+dt$liveRegLink
+
+dt$liveRegLink <- gsub(" ' target=", "' target=", dt$liveRegLink,)
+dt$liveRegLink
+
+# str(dt) # List of 8  ????
+dt
+getwd()
+```
+
+
+```{r}
+# convert character to factor
+# str(dt)
+dt$liveCatLink <- as.factor(dt$liveCatLink)
+dt$liveRegLink <- as.factor(dt$liveRegLink)
+# str(dt)
+```
+
+
+```{r save-csv}
+# save csv
+# str(dt)
+# write_csv(dt, "GeogInteract-app-WORKING/Geog-Course-dt-links.csv")
+```
+
+</details>
+
+# UVic Geog Class Data Table with Links
+```{r, class.output="scroll-100", echo=FALSE, message=FALSE, warning=FALSE}
+dt <- datatable(dt, filter = "top", options =  list(pageLength = 50),
+          rownames = FALSE) %>% # suppress row tables, insert after option ()
+  # https://stackoverflow.com/questions/42908440/align-to-top-of-cell-in-dt-datatable
+  formatStyle(1:12, 'vertical-align'='top') %>%
+  formatStyle(1:12, 'text-align' = 'left')
+
+dt
+```
+
+# Get Table Code from Data table just created
+
+* Knit this markdown file
+* Open html file in chrome
+* Open Developer Tools
+* Scroll over element in R sidebar until table is highlighted
+* Right-click > edit as HTML
+* Right-click > Select all
+* Right-click > Copy
+* Paste into basic HTML file in Sublime, with no spaces between html and table code
+
+# Clean up table data to create good HTML code
+
+* In `<thead>` Delete first 
+
+# Read table html
+```{r read-table, class.output="scroll-100"}
+# read html file
+rawHTML <- paste(readLines("Table-Workflow.html"))
+
+print(rawHTML)
+
+str(rawHTML)
+class(rawHTML)
+```
+
+# Replace Strings
+
+## Replace `<table>`
+
+```{r replace-table-string, class.output="scroll-100"}
+# replace table
+gsub('<table class="display dataTable no-footer" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">', '<table id="table1" 
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-pagination="true"
+             data-toggle="table"
+             data-search="true"
+             data-filter-control="true" 
+             data-show-export="true"
+             data-click-to-select="true"
+             data-toolbar="#toolbar"
+       class="table-responsive">', rawHTML)
+```
+
+## Replace `<tr><th>`
+
+```{r replace-tr-th-string, class.output="scroll-100"}
+# replace table
+gsub('<tr><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Course: activate to sort column ascending">', '<tr>\n<th data-field="state" data-checkbox="true">', rawHTML)
+```
+
+
+## Replace ``
+
+```{r replace-tr-string, class.output="scroll-100"}
+# replace table
+gsub('<tr class="odd">', '', rawHTML)
+```
+
+
+## Replace ``
+
+```{r replace---string, class.output="scroll-100"}
+# replace table
+# gsub('', '', rawHTML)
+```
+
+## Replace ``
+
+```{r replace--string, class.output="scroll-100"}
+# replace table
+# gsub('', '', rawHTML)
+```
+
+
+
+```{r}
+
+```
+
+
+
+
+# save output as html
+```{r}
+# save output as html
+writeLines(rawHTML, "HTMLoutfile.html")
+```
+
+

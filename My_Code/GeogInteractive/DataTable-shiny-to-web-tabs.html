@@ -26,13 +26,28 @@
     <link rel="stylesheet" href="http://people.geog.uvic.ca/wanthony/website/geog490/mediaQuery-2.css" />
     <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.label/leaflet.label.css" />
 
+<!-- try putting jquery before bootstrap -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js"></script>
-	<script src="https://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js"></script>
+
+	<script>
+		// script to keep tab active after use of back button
+	$(document).ready(function(){
+	    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+	        localStorage.setItem('activeTab', $(e.target).attr('href'));
+	    });
+	    var activeTab = localStorage.getItem('activeTab');
+	    if(activeTab){
+	        $('#myTab a[href="' + activeTab + '"]').tab('show');
+	    }
+	});
+	</script>
 
 <style>
 	body {
@@ -40,6 +55,16 @@
 		font-family: sans-serif;
 		display: block;
     	margin: 8px;
+    	font-size: 1.0em;
+	}
+	h1 {
+		display: block;
+	    font-size: 2.5em;
+	    margin-block-start: 0.83em;
+	    margin-block-end: 0.83em;
+	    margin-inline-start: 0px;
+	    margin-inline-end: 0px;
+	    font-weight: bold;
 	}
 	h2 {
 	    display: block;
@@ -71,6 +96,9 @@
 	footer {
 		text-align: center;
 		font-size: 75%;
+	}
+	.sig {
+		font-size: 0.55em;
 	}
 	hr {
 		display: block;
@@ -150,7 +178,7 @@
 	  /* padding: 14px 16px; */
 	  padding: 7px 8px;
 	  transition: 0.3s;
-	  font-size: 17px;
+/*	  font-size: 1.2em; */
 	}
 
 	/* Change background color of buttons on hover */
@@ -174,11 +202,48 @@
 	}
 	/* ******* Tab style ends ********** */
 
-/* export button?
+
+
+
+/*  background-color: #84d325;
+botton to table top and bottom
+ */
+	.dtbutton {
+		background-color: #69A81D;
+		color: #fff;
+		padding: 6px 12px;
+		font-size: 0.85em;
+		margin-left: 30px;
+	}
+
+/* ******* export button begins ********** */
+/* export button
 	.export btn-group {
 		background-color: #69A81D;
 	}
 */	
+/* make UVic green #69A81D a little lighter
+#69A81D  >>
+#84d325
+ */
+	.btn-default {
+		background-color: #69A81D;
+		border-color: #69A81D;
+		color: #fff;
+	}
+
+/* just outlines the bottom background of pagination at bottome right of table
+https://stackoverflow.com/questions/40948408/bootstrap-pagination-style-is-not-applied-to-code
+.pagination>ul>li>a >>> but active square, and numbers are still blue ???
+ */
+	.pagination > ul > li > a {
+		background-color: #69A81D;
+		color: #fff;  /* text colour */
+	}
+	.pagination page-number active {
+		background-color: #84d325;
+		color: #000; /* text colour */
+ 	}
 
 /* Search bar to left */
 /*     float: left!important; */
@@ -186,6 +251,116 @@
 .pull-right {
     float: center!important;
 }
+
+/* ******* export button ends ********** */
+
+.wordcloudimg {
+	height:600px; 
+	width:800px;
+}
+
+/*	 begin MEDIA QUERIES */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	body {
+    	margin: 8px;
+    	font-size: 1.0em;
+	}		
+	.tab button {	 
+	  border:  1px solid #ccc;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 7px 8px;
+	  transition: 0.3s;
+	  font-size: 1.2em;
+	}
+	.wordcloudimg {
+	height:300px; 
+	width:400px;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	body {
+    	margin: 8px;
+    	font-size: 1.0em;
+	}		
+	.tab button {	 
+	  border:  1px solid #ccc;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 7px 8px;
+	  transition: 0.3s;
+	  font-size: 1.2em;
+	}
+	.wordcloudimg {
+	height:600px; 
+	width:800px;
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	body {
+    	margin: 8px;
+    	font-size: 1.0em;
+	}		
+	.tab button {	 
+	  border:  1px solid #ccc;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 7px 8px;
+	  transition: 0.3s;
+	  font-size: 1.2em;
+	}
+	.wordcloudimg {
+	height:600px; 
+	width:800px;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	body {
+    	margin: 8px;
+    	font-size: 1.0em;
+	}		
+	.tab button {	 
+	  border:  1px solid #ccc;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 7px 8px;
+	  transition: 0.3s;
+	  font-size: 1.2em;
+	}	
+	.wordcloudimg {
+	height:600px; 
+	width:800px;
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	body {
+    	margin: 8px;
+    	font-size: 1.4em;
+	}	
+	.tab button {	 
+	  border:  1px solid #ccc;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 7px 8px;
+	  transition: 0.3s;
+	  font-size: 1.2em;
+	}	
+	.wordcloudimg {
+	height:800px; 
+	width:1000px;
+}
+}
+/*	 end MEDIA QUERIES */
+
 </style>
 
 </head>
@@ -195,31 +370,27 @@
 <br>
 
 <!-- ########## Tabs begin here ################## -->
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'datatable')" id="defaultOpen">Data Table</button>
-  <button class="tablinks" onclick="openCity(event, 'planning')">Planning</button>
-  <button class="tablinks" onclick="openCity(event, 'pathways')">Pathways</button>
-  <button class="tablinks" onclick="openCity(event, 'flowcharts')">Flowcharts</button>
-  <button class="tablinks" onclick="openCity(event, 'dataviz')">Data Viz</button>  
-  <button class="tablinks" onclick="openCity(event, 'map')">Map</button>
-  <button class="tablinks" onclick="openCity(event, 'about')">About</button>
+<div class="tab" id="myTab">
+  <button class="tablinks" onclick="openTab(event, 'datatable')" id="defaultOpen">Table</button>
+  <button class="tablinks" onclick="openTab(event, 'pathways')">Pathways</button>
+  <button class="tablinks" onclick="openTab(event, 'planning')">Plan</button>
+  <button class="tablinks" onclick="openTab(event, 'flowcharts')">Flowcharts</button>
+  <button class="tablinks" onclick="openTab(event, 'dataviz')">DataViz</button>  
+  <button class="tablinks" onclick="openTab(event, 'leafletmap')">Map</button>
+  <button class="tablinks" onclick="openTab(event, 'about')">About</button>
 </div>
 
 
 <!-- ########## Data Tab begins ################## -->
 <div id="datatable" class="tabcontent">
-<h2>UVic Geography Courses Data Table</h2>
+<h2 id="menu_dt">UVic Geography Courses Data Table</h2>
 
               <ul>
-                <li><strong>Search Box:</strong> Filters observations from all columns e.g. Type '103'
-                  <ul>
-                  <li><strong>Tip:</strong> Search partial spelling e.g. 'clim' brings up 'climate' and 'climatology'</li>
-                  </ul>
-                  </li>
-                <li><strong>Filter Boxes:</strong> Type in box under Course heading; can use multiple filter boxes</li>
-                <li><strong>Sort Order:</strong> Use arrows next to column name</li>
-                <li><strong>Download: </strong> Save filtered results as JSON, XML, CSV, TXT, SQL, or Excel using Download Button to left of Search Box</li>
+                <li><strong>Search:</strong> global for all columns</li>
+                <li><strong>Filter & Sort:</strong> columns</li>
+                <li><strong>Download Results: </strong> Save using Export Button left of Search</li>
               </ul>
+				<strong><a class="dtbutton" href="#dtbottom">Table Bottom</a></strong>
               <hr>
 
 <table id="table1" 
@@ -233,6 +404,11 @@
              data-click-to-select="true"
              data-toolbar="#toolbar"
        class="table-responsive">
+       <!--             data-show-search-clear-button="true"  -- doesn't clear ??
+			I even tried adding to <th>
+
+				data-pagination="true". >>> blue pagination at bottom
+        -->
     <thead>
         <tr>
             
@@ -369,8 +545,8 @@
             <td>Lab</td>
             <td>2-2-0</td>
             <td>Geomatics</td>
-            <td>Fall Spring</td>
-            <td>110</td>
+            <td>Fall Spring Summer</td>
+            <td>110 - 44</td>
 </tr>
 <tr class="even">
 <td>GEOG 226</td>
@@ -380,8 +556,8 @@
             <td>Lab</td>
             <td>2-3-0</td>
             <td>Environment Physical</td>
-            <td>Fall Spring</td>
-            <td>80</td>
+            <td>Fall Spring Summer</td>
+            <td>80 - 22</td>
 </tr>
 <tr class="odd">
 <td>GEOG 227</td>
@@ -556,8 +732,8 @@
             <td></td>
             <td>3-0-0</td>
             <td>Elective</td>
-            <td>??</td>
-            <td></td>
+            <td>Summer</td>
+            <td>50</td>
 </tr>
 <tr class="odd">
 <td>GEOG 316</td>
@@ -578,8 +754,8 @@
             <td></td>
             <td>3-0-0</td>
             <td>Human</td>
-            <td>??</td>
-            <td></td>
+            <td>Summer</td>
+            <td>24</td>
 </tr>
 <tr class="odd">
 <td>GEOG 319</td>
@@ -798,8 +974,8 @@
             <td></td>
             <td>3-0-0</td>
             <td>Human</td>
-            <td>Fall Spring</td>
-            <td>25</td>
+            <td>Fall Spring Summer</td>
+            <td>25 - 20</td>
 </tr>
 <tr class="odd">
 <td>GEOG 386</td>
@@ -820,8 +996,8 @@
             <td></td>
             <td>3-0-0</td>
             <td>Elective</td>
-            <td>Fall</td>
-            <td>30</td>
+            <td>Fall Summer</td>
+            <td>30 - 25</td>
 </tr>
 <tr class="odd">
 <td>GEOG 391</td>
@@ -831,8 +1007,8 @@
             <td></td>
             <td>3-0-0</td>
             <td>Human</td>
-            <td>Fall</td>
-            <td>30</td>
+            <td>Fall Summer</td>
+            <td>30 - 12</td>
 </tr>
 <tr class="even">
 <td>GEOG 391</td>
@@ -908,8 +1084,8 @@
             <td></td>
             <td>3-0-0</td>
             <td>Human</td>
-            <td>Spring</td>
-            <td>25</td>
+            <td>Spring Summer</td>
+            <td>25 - 20</td>
 </tr>
 <tr class="odd">
 <td>GEOG 411</td>
@@ -1007,8 +1183,8 @@
             <td></td>
             <td>3-0-0</td>
             <td>Environment</td>
-            <td>??</td>
-            <td></td>
+            <td>Summer</td>
+            <td>17</td>
 </tr>
 <tr class="even">
 <td>GEOG 456</td>
@@ -1200,6 +1376,10 @@
     </tbody>
     </table>
 
+<br><br>
+<strong><a class="dtbutton" href="#menu_dt" id="dtbottom">Table Top</a></strong>
+<br>                                        
+<br>
     <script>
   var $table = $('#table1')
 
@@ -1209,13 +1389,13 @@
         exportDataType: $(this).val(),
         exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
         columns: [
-          {
-            field: 'state',
-            checkbox: false,
-            visible: $(this).val() === ''
+//          {
+  //          field: 'state',
+    //        checkbox: false,
+      //      visible: $(this).val() === ''
             // checkbox: true,
             // visible: $(this).val() === 'selected'            
-          },
+        //  },
           {
             field: 'course',
             title: 'Course'
@@ -1379,7 +1559,7 @@ var $table = $('#table1');
 <div id="dataviz" class="tabcontent">
           
 	<!-- <h2 id="menu_dataviz">Data Vizualizations to view UVic Geography courses</h2> -->
-	<strong><a href="#wordcloud">Wordcloud</a> | <a href="#class-size">Class Size Interactive Chart</a> | <a href="#gantt">Gantt Time Management</a> | <a href="#mermaid">Mermaid Flow Chart</a> </strong>
+	<strong><a id="menu_dataviz" href="#wordcloud">Wordcloud</a> | <a href="#class-size">Class Size Interactive Chart</a> | <a href="#gantt">Gantt Time Management</a> | <a href="#mermaid">Mermaid Flow Chart</a> </strong>
 <hr>
 <!-- =================== Wordcloud Begins ==================== -->
 	<h2 id="wordcloud">Animated Wordcloud of how Geog Course Descriptions Build on Each Other</h2>
@@ -1387,8 +1567,10 @@ var $table = $('#table1');
         <br>
         <strong>Full-size Webpage Image View</strong> <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png' target='_blank'><strong>Animated Word Cloud</strong></a>
         <br>
-<!--        <img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png" style='height:800px; width:1000px;' border="0"> -->
+        <img class="wordcloudimg" src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png" border="0">
+<!--        <img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png" style='height:600px; width:800px;' border="0"> 
         <iframe style='height:800px; width:1000px; text-align: center;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png'></iframe>
+-->        
               <!--  <iframe style='height:675px; width:745px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-60-10-crop.png'></iframe> -->
 <br>
 <strong><a href="#menu_dataviz">Back to Menu</a></strong>
@@ -1403,7 +1585,7 @@ var $table = $('#table1');
         <strong>Full-size Webpage Image View</strong> <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/ClassSize-ggplotly-chart.html' target='_blank'><strong>Interactive GGPlotly Class Size Chart</strong></a>
         <br>
 <!--        <img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-delay60-loop1-ezgif.com.png" style='height:800px; width:1000px;' border="0"> -->
-        <iframe style='height:800px; width:1000px; text-align: center;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/ClassSize-ggplotly-chart.html'></iframe>
+        <iframe style='height:600px; width:800px; text-align: center;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/ClassSize-ggplotly-chart.html'></iframe>
               <!--  <iframe style='height:675px; width:745px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Geog-Course-Desc-Wordcloud-images23-60-10-crop.png'></iframe> -->
 <br>
 <strong><a href="#menu_dataviz">Back to Menu</a></strong>
@@ -1414,13 +1596,16 @@ var $table = $('#table1');
 <!-- =================== Gantt Begins ==================== -->
 	<h2 id="gantt">Interactive Gantt Time Management Chart</h2>
 
-			<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/gantt-app-2023-02-01-ss.png" width="1200">
+			<img src="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/Gantt-chart-ss-2023-02-03.png" width="800">
+			<br>
+			<a href="https://geog-interact.shinyapps.io/gantt-app/" target="_blank">Shiny Interactive Gantt App</a>
 
             <br><br>
-            <strong>Want to run the Shiny Gantt Chart App on your own computer?</strong>
+            <strong>Want to run the Shiny Gantt or Mermaid Chart App on your own computer?</strong>
 	            <ul>
 	            	<li><strong>If you are an R Studio user, download the app.R file and run it on your own computer:</strong></li>
-	            	<li>Copy the <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/app.R" target="_blank"><strong>app.R</strong></a> to a computer folder (containing no other app.R file in it), open file in R Studio</li>
+	            	<li>Copy the <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/app.R" target="_blank"><strong>Gantt app.R</strong></a> to a computer folder (containing no other app.R file in it), open file in R Studio</li>
+	            	<li>Copy the <a href="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/ShinyMermaidFlowChartInteractive/ShinyMermaidColour/app.R" target="_blank"><strong>Mermaid app.R</strong></a> to a computer folder (containing no other app.R file in it), open file in R Studio</li>	            	
 	            	<li>Make sure the following R libraries are installed: "shiny", 'DiagrammeR"</li>
 	            	<li>Click Run App</li>
 	            	<li>When App opens in R Studio window, click top button Open in Browser</li>
@@ -1439,43 +1624,17 @@ var $table = $('#table1');
 
 <!-- =================== Mermaid Begins ==================== -->
 <h2 id="mermaid">Mermaid Flowchart Diagrams</h2>
-<strong>Full-size Webpage View</strong> <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf"><strong>PDF</strong></a> with clickable links to UVic Course Catalogue (links open new window)
+<strong>Full-size Webpage View</strong> <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf" target="_blank"><strong>PDF</strong></a> with clickable links to UVic Course Catalogue (links open new window)
+<br>
+<img src="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/ShinyMermaidFlowChartInteractive/ShinyMermaidColour/Mermaid-chart-2023-02-03-1422-ss.png" width="800">
+<br>
+<a href="https://geog-interact.shinyapps.io/mermaid-sidebar-app/" target="_blank">Shiny Interactive Mermaid Course Flow App</a>
 
 <br>
-<strong>Mermaid <a href="#cb149">R Code</a></strong>
 <br>
-<iframe style='height:905px; width:1000px;' src='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.pdf'></iframe>
-<br><br>
-<!--
-<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-1-ss.png" alt="Mermaid Flow Diagram" height = 840 width = 554>
-<br>
-<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/mermaid-2-ss.png" alt="Mermaid Flow Diagram" height = 420 width = 460>
--->
-<div class="sourceCode" id="cb149"><h4>The R Code for Mermaid Flowchart Diagrams</h4><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
-<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mermaid</span>(<span class="st">&quot;graph LR;</span></span>
-<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="st">A[Geography Major BA]</span></span>
-<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="st">B[Focus: Environment]</span></span>
-<span id="cb149-5"><a href="#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="st">E1[GEOG 101A]</span></span>
-<span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a><span class="st">E2[GEOG 101B]</span></span>
-<span id="cb149-7"><a href="#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="st">E3[GEOG 103]</span></span>
-<span id="cb149-8"><a href="#cb149-8" aria-hidden="true" tabindex="-1"></a><span class="st">E4[GEOG 130]</span></span>
-<span id="cb149-9"><a href="#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="st">E5[GEOG 226]</span></span>
-<span id="cb149-10"><a href="#cb149-10" aria-hidden="true" tabindex="-1"></a><span class="st">E6[GEOG 230]</span></span>
-<span id="cb149-11"><a href="#cb149-11" aria-hidden="true" tabindex="-1"></a><span class="st">E7[GEOG 252]</span></span>
-<span id="cb149-12"><a href="#cb149-12" aria-hidden="true" tabindex="-1"></a><span class="st">E8[GEOG 304]</span></span>
-<span id="cb149-13"><a href="#cb149-13" aria-hidden="true" tabindex="-1"></a><span class="st">E9[GEOG 353]</span></span>
-<span id="cb149-14"><a href="#cb149-14" aria-hidden="true" tabindex="-1"></a><span class="st">E10[GEOG 438]</span></span>
-<span id="cb149-15"><a href="#cb149-15" aria-hidden="true" tabindex="-1"></a><span class="st">E11[GEOG 453]</span></span>
-<span id="cb149-16"><a href="#cb149-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-17"><a href="#cb149-17" aria-hidden="true" tabindex="-1"></a><span class="st">B--&gt;A;</span></span>
-<span id="cb149-18"><a href="#cb149-19" aria-hidden="true" tabindex="-1"></a><span class="st">E1--&gt;E5;</span></span>
-<span id="cb149-19"><a href="#cb149-20" aria-hidden="true" tabindex="-1"></a><span class="st">E3--&gt;E5;</span></span>
-<span id="cb149-20"><a href="#cb149-21" aria-hidden="true" tabindex="-1"></a><span class="st">E4--&gt;E6;</span></span>
-<span id="cb149-21"><a href="#cb149-22" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E8;</span></span>
-<span id="cb149-22"><a href="#cb149-23" aria-hidden="true" tabindex="-1"></a><span class="st">E7--&gt;E9;</span></span>
-<span id="cb149-23"><a href="#cb149-24" aria-hidden="true" tabindex="-1"></a><span class="st">E9--&gt;E11;</span></span>
-<span id="cb149-24"><a href="#cb149-25" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
-<script type="application/json" data-for="htmlwidget-1f92b313986364dc040e">{"x":{"diagram":"graph LR;\nA[Geography Major BA]\nB[Focus: Environment]\nE1[GEOG 101A]\nE2[GEOG 101B]\nE3[GEOG 103]\nE4[GEOG 130]\nE5[GEOG 226]\nE6[GEOG 230]\nE7[GEOG 252]\nE8[GEOG 304]\nE9[GEOG 353]\nE10[GEOG 438]\nE11[GEOG 453]\n\nB-->A;\nE1-->E5;\nE3-->E5;\nE4-->E6;\nE7-->E8;\nE7-->E9;\nE9-->E11;\n"},"evals":[],"jsHooks":[]}</script>
+<img src="https://raw.githubusercontent.com/WendyAnthony/Code_Each_Day/master/My_Code/GeogInteractive/Shiny%20Gantt%20Chart%20Interactive/ShinyMermaidFlowChartInteractive/ShinyMermaidColour/Mermaid-code-2023-02-03-1422-ss.png" width="350">
+
+
 <hr />
 
 <br>
@@ -1522,8 +1681,8 @@ var $table = $('#table1');
 
 
 <!-- ########## Leaflet Tab begins ################## -->
-<div id="map" class="tabcontent" name="map">
-<br>
+<div id="leafletmap" class="tabcontent" name="map">
+<h2>Leaflet Map</h2>
 Use the layer function at top right corner of map to change base maps, and add other layers
 <br>	<!-- leaflet-layer-ex.html -->
 View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/leaflet-layer-ex-foot-2-nat.html"><strong>Leaflet Map</strong></a> as full web page
@@ -1605,6 +1764,14 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 		<br>
 <!-- =================== History Begins ==================== -->
           <h2 id="history">History of App Changes</h2>
+            <h3>2023-02-04</h3>
+              <ul>
+              	<li>Add link to bottom/top of data table</li>
+              </ul>
+          <h3>2023-02-03</h3>
+              <ul>
+              	<li>Publish Shiny Interactive Gantt Time Management and Mermaid Class Flow Diagrams</li>
+              </ul>
             <h3>2023-01-25</h3>
               <ul>
               	<li>Add field school location markers to Leaflet map</li>
@@ -1660,7 +1827,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
               </ul>
             <h3>2023-01-15</h3>
               <ul>
-                <li>Created my First Draft Project Report <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report.html' target='_blank'>Draft Project Report</a></li>
+                <li>Created my First Draft Project Report (as slide show) <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-ioslides-2023-01-24.html' target='_blank'>Project Report</a></li>
                 <li>Changed Datatable Search Tips</li>
                 <li>Add Code tab contents to About tab</li>
                 <li>Using Chrome Developer Tools, copied Datatable in HTML format to use in Shiny Clone website</li>
@@ -1748,22 +1915,15 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
               </li>                    
               <li><strong>Shiny Server: </strong>
                       <ul>
-                          <li>What's involved with setting-up/installing a Geog Shiny Server?</li>
+                          <li>What's involved with setting-up/installing a Geog Shiny Server for Interactive Gantt and Mermaid Charts?</li>
                       </ul>
               </li>
               <li><strong>Students: </strong>
 	                   <ul>
-	                      <li>Ask some students what kind of format they like to search geography courses for when planning</li>
+	                      <li>What kind of format they like to search geography courses for when planning?</li>
 	                      <li>What info would students like to find?</li>
 	                      <li>Easy/Difficult to use/understand? Needs explanation?</li>
-	                      <li>e.g. Ask geography student society SOGS
-	                           <ul>
-	                              <li>Test drive</li>
-	                              <li>Be given a task, something to search for</li>
-	                              <li>have some examples online and choose make a POLL</li>
-	                              <li>What do students search for</li>
-	                            </ul>
-	                      </li>
+	                      <li>e.g. Ask geography student society SOGS</li>
 	                   </ul>
               </li>
         </ul>
@@ -1817,34 +1977,23 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
                     </li>
                     <li>Data Table
 	                   	<ul>
-	                    		<li>Link to course catalog</li>
                     			<li>Need a `clear search filters button`</li>	                    		
                     			<li>Move Data Table controls for: # to search to top of table</li>
               					<li>Interactive Data Table: how to clear search filters, other than refreshing the page</li>
 			                    <li>Change color of Datatable select (from blue)</li>
-			                    <li>Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
+			                    <li>to Link to course catalog: Figure out how to use hyperlinks in datatable <a href=' https://stackoverflow.com/questions/73449491/shiny-datatable-hyperlink-column'>shiny-datatable-hyperlink-column</a></li>
 	                    		<li>try making new filter table save csv into one of the test tabs, output like table tab</li>
 	                    </ul>
                     </li>
                     <li>Create form to fill out based on <a href='https://www.uvic.ca/students/undergraduate/program-planning/program-worksheets/worksheets/ppw-ss-geog-ba.pdf'>Program Worksheets</a></li>
-                    <li>Ability to print/capture image of results</li>
-					<li>Save image of Mermaid data flow maps</li>
+					<li>Save image of Gantt Time Chart and Mermaid data flow maps</li>
                     <li><strong>Interactivity</strong>
                             <ul>
-                              <li>R shiny interface, different panels with tables, mind map, courses completed, course wish list >> Getting there ...</li>
-                              <li>Highlight path between courses/pre-requisites/concentrations</li>
-                              <li>Highlight the pathways between courses when clicked, or hovering</li>
-                              <li>Choose a path‘s which would be highlighted</li>
-                              <li>Choosing courses will create a dynamic map of prerequisites and future potential</li>
                               <li>Fill in form, like paper form to list courses courses, colour coordinated for once already taken versus ones under consideration</li>
-		                      <li>Change Colour of Shiny Tabs: <a href='https://stackoverflow.com/questions/35025145/background-color-of-tabs-in-shiny-tabpanel'>Background Tab Colour</a></li>
- 		                      <li>Shiny dashboard, different styles, using more of main space, don't use sidebar</li>                              
                             </ul>
                     </li>
                     <li>Multi year calendar planner</li>
                     <li>Note which courses student has taken</li>
-                    <li>create a form ... add courses (to a form like the planning pdf) for planning purposes; radio buttons / select from list to populate fields >>> save as pdf</li>
-                    <li>Convert to PHP, update training on UVic website</li>
                   </ul>
                   </li>
           </ul> <!-- end of Wishlists  -->
@@ -1896,7 +2045,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
           <ul>
               <li>Document workflow for updating Data Table</li>              
               <li>Check to see if any missing course info for Geography Course data table</li>
-              <li>Figure out how to add relationships to different visualization technique</li>
+              <li>Figure out how to add relationships to different visualization technique e.g. Mermaid</li>
               <li>Add resources tab, links </li>
               <li>Make tabs, figure, text/font-size bigger</li>
               <li>Nested tabs?</li>
@@ -1947,9 +2096,17 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 
 <!-- =================== Report Begins ==================== -->
 <h3 id='report'>Project Progress Slide Presentations</h3>
-<p>To view the slide presentation: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-ioslides-2023-01-24.html' target='_blank'><strong>Showcase of Progress 2023-01-24</strong></a>
+<p>
+	Showcase of Progress: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-Report-ioslides-2023-01-24.html' target='_blank'><strong>2023-01-24</strong></a>
 <br>
 <br>
+	Showcase to SOGS for Feedback: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/GeogInteract-SOGS-ioslides-2023-02-06.html' target='_blank'><strong>2023-02-06</strong></a>
+<br>
+<br>
+	Link to Links: <a href='https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/index.html' target='_blank'><strong>Progress Links</strong></a>
+<br>
+<br>
+
 <strong><a href="#menu_about">Back to Menu</a></strong>
 <br>          
 </p>
@@ -1970,7 +2127,7 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 <!-- ########## Footer Starts ################## -->
 <footer>	
 	<hr>
-	Wendy Anthony 2023-02-01 wanthony @ uvic.ca
+<span class="sig" style="margin-left: 150px;">Wendy Anthony 2023-02-13 wanthony @ uvic.ca</span>
 	<img src="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/images/Dynamic-edge-transparent-1.png" alt="UVic Dynamic Edge Stripe" height = 50 width = "100%">
 </footer>
 <!-- ########## Footer Ends ################## -->
@@ -1978,9 +2135,9 @@ View <a href="https://people.geog.uvic.ca/wanthony/website/geog-curriculum-maps/
 
 <!-- ########## Tab Script Starts ################## -->
 <script>
-// Tab script
+// Tab script. datatable
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs
-function openCity(evt, cityName) {
+function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -1990,7 +2147,7 @@ function openCity(evt, cityName) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 </script>
