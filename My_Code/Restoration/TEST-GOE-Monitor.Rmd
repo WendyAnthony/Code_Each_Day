@@ -1,14 +1,16 @@
 ---
 title: "TEST Shiny GOE Monitor DataViz"
 author: "Wendy Anthony"
-date: "2025/08/04"
+date: "2025/08/20"
 output:
   html_document:
-    toc: yes
+    toc: yes 
     toc_depth: 3
     toc_float: yes
     number_sections: yes
 ---
+Creation date: 2025/08/04
+Modified Date & Time: 2025/08/27 @ 08:29
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -18,66 +20,115 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r load_libraries}
 library(shiny)
 library(tidyverse)
+library(plotly)
 ```
 
 
-# Load Data
+# Data
+- Note Data is in `TEST-GOE-Monitor.xlsx` file, with one worksheet for Data, and one worksheet for Site info
+- Save each worksheet to 2 separate csv files `Site-Data-TEST-GOE-Monitor.csv` & `SiteData-TEST-GOE-Monitor.csv`
+
+## Load Data
+- Data Cleaning to ensure no space at beginning of any text values and column headings
+Note: SiteDetails-TEST-GOE-Monitor.csv has space in front of values 
+ NEED TO change `TEST-GOE-Monitor.xlsx` excel file first, then resave as csv
 ```{r load_data}
-geo_eccc <- read.csv("TEST-GOE-Monitor.csv", header = TRUE, sep = ",")
+# Site Data
+geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",")
+# Site Details
 Sites_eccc <- read.csv("SiteDetails-TEST-GOE-Monitor.csv", header = TRUE, sep = ",")
 ```
 
-# Data 
+## Data Discovery
 
-## Column Names
-```{r data}
+## Column Names Data
+```{r data_1}
 colnames(geo_eccc)
+```
+
+## Column Names Sites
+```{r data_2}
 colnames(Sites_eccc)
 ```
 
-## Data Structure
-```{r data_structure}
+# Data Manipulation
+
+## proportion to Percentage_of_native_species
+```{r create_percentage_number}
+# using scales creates % character instead of number
+# Percentage_of_native_species <- scales::percent(geo_eccc$Proportion_of_native_species)
+# Percentage_of_native_species 
+
+Percentage_ns <- geo_eccc$Proportion_of_native_species * 100
+Percentage_ns
+```
+
+
+## add `Percentage_ns` data to column
+<details><summary><b><i>Click to see results of `data`</i></b></summary><p>
+```{r add_column}
+# https://sparkbyexamples.com/r-programming/add-column-to-dataframe-in-r/
+# geo_eccc_1 <- cbind(geo_eccc, Percentage_of_native_species)
+# geo_eccc_1
+
+geo_eccc <- cbind(geo_eccc, Percentage_ns)
+geo_eccc
+```
+
+## Check data structure of new column
+```{r data_structure_new_column}
 str(geo_eccc)
+```
+
+</p></details>
+
+## Data Structure Data
+- make sure each column is same data type in both data files
+```{r data_structure_1}
+str(geo_eccc)
+```
+
+## Data Structure Sites
+- make sure each column is same data type
+```{r data_structure_2}
 str(Sites_eccc)
 ```
 
 ## Combine Dataframes 
+- first make sure they have the same number of rows 
 ```{r cbind}
 length(unique(geo_eccc$Site))
 length(unique(Sites_eccc$Site))
 ```
 
 ### Arrange Order
+- Site details Site names are in different order than Site Data, so put each site in alphabetical order first
 ```{r arange_order_df}
 # tidyverse
 # https://stackoverflow.com/questions/68989228/sort-dataframe-by-column-value-r
-Sites_eccc_1 <- Sites_eccc %>% arrange(Site)
-geo_eccc_1 <- geo_eccc %>% arrange(Site)
+Sites_eccc_1 <- Sites_eccc %>% arrange(Sites_eccc$Site)
+geo_eccc_1 <- geo_eccc %>% arrange(geo_eccc$Site)
 ```
 
 ### cbind arranged df works
-- merge doesn't work, leaves columns empty
-- now there are 2 Site columns and 2 Subregion columns with same name
+- (`merge` doesn't work, leaves columns empty)
+
 ```{r cbind_arranged_df}
 geo_eccc_sites <- cbind(Sites_eccc_1, geo_eccc_1)
+names(geo_eccc_sites)
 ```
 
 ### remove duplicate columns
+- now there are 2 columns with same name for, Subregion, Site
+
 ```{r remove_duplicate_columns}
-names(geo_eccc_sites)
 # https://stackoverflow.com/questions/7072159/how-do-you-remove-columns-from-a-data-frame
 geo_eccc_sites_1 <- geo_eccc_sites[c(-9,-10)]
-names(geo_eccc_sites_1)
-```
-### Rename columns with . using dplyr
-```{r rename_columns_dplyr}
 names(geo_eccc_sites_1)
 ```
 
 ### Rename columns with . using base R
 ```{r rename_columns_baseR}
-names(geo_eccc_sites_1)
-# names(my_data)[names(my_data) == "Sepal.Length"] <- "sepal_length"
 
 names(geo_eccc_sites_1)[names(geo_eccc_sites_1) == "Land.Manager"] <- "Land_Manager"
 names(geo_eccc_sites_1)[names(geo_eccc_sites_1) == "Main.Restoration.Type"] <- "Main_Restoration_Type"
@@ -89,46 +140,13 @@ names(geo_eccc_sites_1)
 
 
 
-### Create new csv file with both datasets
+### Create and save new csv file with both datasets 
 ```{r create_csv_combined_datasets}
 write.csv(geo_eccc_sites_1, "geo_eccc_all_site_data.csv", row.names = FALSE)
 ```
 
 
-
-
-
-
-# Data Manipulation
-```{r proportion_to_percentage}
-Percentage_of_native_species <- scales::percent(geo_eccc$Proportion_of_native_species)
-Percentage_of_native_species
-```
-
-### proportion to Percentage_of_native_species
-```{r create percentage number}
-Percentage_ns <- geo_eccc$Proportion_of_native_species * 100
-Percentage_ns
-```
-
-
-# add column
-<details><summary><b><i>Click to see results of `data`</i></b></summary><p>
-```{r add_column}
-# https://sparkbyexamples.com/r-programming/add-column-to-dataframe-in-r/
-# geo_eccc_1 <- cbind(geo_eccc, Percentage_of_native_species)
-# geo_eccc_1
-
-geo_eccc_1 <- cbind(geo_eccc, Percentage_ns)
-geo_eccc_1
-```
-</p></details>
-
-## Column Names 2
-```{r data_colnames_second_col}
-colnames(geo_eccc_1)
-```
-
+---
 
 # Plots
 ## Site by Percentage Native Species
@@ -139,7 +157,7 @@ site_natsp <- ggplot(geo_eccc,
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-                    labs(title='Ploting Site by Percentage Native Species',
+                    labs(title='Plotting Site by Percentage Native Species',
                       subtitle='ECCC',
                       caption = "Chart by Wendy Anthony \n 2025-08-04")
 site_natsp
@@ -154,10 +172,245 @@ site_natsp <- ggplot(geo_eccc,
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-                    labs(title='Ploting Site by Composite Index',
+                    labs(title='Plotting Site by Composite Index',
                       subtitle='ECCC',
                       caption = "Chart by Wendy Anthony \n 2025-08-04")
 site_natsp
+```
+
+## TEST DOESn't Reorder Site by Restoration_Intensity
+- note Reay Islet was showing a separate High, so in original csv I copied High value from another site,
+aslo Scafe Hill had a different low value ...
+- also all high values have a space in front ... change all ... 
+- Having trouble ordering Restoration_Intensity values ... see next example
+
+<details><summary><b><i>Click to see results of `TEST`</i></b></summary><p>
+```{r plots_site_Restoration_Intensity}
+# names(geo_eccc_sites_1)
+# str(geo_eccc_sites_1)
+# unique(geo_eccc_sites_1$Restoration_Intensity)
+# 
+# # change character to factor
+# geo_eccc_sites_1$Restoration_Intensity <- as.factor(geo_eccc_sites_1$Restoration_Intensity)
+# # change factor to character
+# geo_eccc_sites_1 <- data.frame(lapply(geo_eccc_sites_1, as.character), stringsAsFactors=FALSE)
+# 
+# # WORKS !!!
+# Restoration_Intensity_order <- c("high", "moderate", "low", "minimal")
+# arranged_geo_eccc_sites_1 <- geo_eccc_sites_1 %>% 
+#   arrange(factor(Restoration_Intensity, levels = Restoration_Intensity_order))
+# arranged_geo_eccc_sites_1
+# str(arranged_geo_eccc_sites_1)
+# 
+# # still not showing the order
+# site_restInt <- ggplot(arranged_geo_eccc_sites_1,
+#        aes(x = Site, y = Restoration_Intensity, color = Subregion)) +
+#                     geom_point(shape = 18, size = 2) +
+#   #geom_bar(stat="identity") +
+#                     theme_minimal() + #get rid of grey background and tick marks 
+#                     theme(legend.position="bottom") + #remove legend 
+#                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+#                     labs(title='Plotting Site by Restoration_Intensity',
+#                       subtitle='ECCC',
+#                       caption = "Chart by Wendy Anthony \n 2025-08-20")
+# site_restInt
+
+# ggplotly(site_restInt)
+```
+
+</p></details>
+
+
+
+## ORDER NOT WORKING TEST Site by Restoration_Intensity and Exotic_species
+
+```{r plots_site_Restoration_Intensity_Exotic}
+names(geo_eccc_sites_1)
+str(geo_eccc_sites_1)
+
+# Step 1
+desired_levels <- c("high", "moderate", "low", "minimal")
+# create new df to create desired levels
+geo_eccc_sites_2 <- geo_eccc_sites_1
+# this changes data type from character to factor
+geo_eccc_sites_2$Restoration_Intensity <- factor(geo_eccc_sites_1$Restoration_Intensity, levels = desired_levels)
+print(levels(geo_eccc_sites_2$Restoration_Intensity)) # New order of levels
+str(geo_eccc_sites_2)
+# step 2
+geo_eccc_sites_2 <- geo_eccc_sites_2[order(geo_eccc_sites_2$Restoration_Intensity),]
+
+site_restInt_exotic <- ggplot(geo_eccc_sites_2,
+       aes(x = Exotic_species, y = Restoration_Intensity, color = Site)) +
+                    geom_point(shape = 18, size = 2) +
+  #geom_bar(stat="identity") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="none") + #remove legend legen won't stick to bottom with ggplotly
+                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Plotting Site by Restoration_Intensity & Exotic Species',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-20")
+site_restInt_exotic
+
+# ggplotly(site_restInt_exotic)
+# change ggplotly legend to bottom
+  # %>% 
+ #      plotly::layout(legend=list(x=0, 
+ #                                 xanchor='left',
+ #                                 yanchor='bottom',
+ #                                 orientation='h'))    
+```
+
+
+## ORDER WORKs Point Plot Site by Restoration_Intensity
+
+```{r plots_site_Restoration_Intensity_order_point}
+names(geo_eccc_sites_1)
+# Reorder following a precise order
+# https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
+# https://stackoverflow.com/questions/18413756/re-ordering-factor-levels-in-data-frame
+# mydf$task <- factor(mydf$task, levels = c("up", "down", "left", "right", "front", "back"))
+#geo_eccc_sites_1$Restoration_Intensity <- factor(geo_eccc_sites_1$Restoration_Intensity, levels = #c("high", "moderate", "low", "minimal"))
+str(geo_eccc_sites_1)
+
+# change character to factor
+# str(geo_eccc_sites_1)
+# geo_eccc_sites_1$Restoration_Intensity <- as.factor(geo_eccc_sites_1$Restoration_Intensity)
+# str(geo_eccc_sites_1)
+# # change factor to character
+# geo_eccc_sites_1 <- data.frame(lapply(geo_eccc_sites_1, as.character), stringsAsFactors=FALSE)
+# str(geo_eccc_sites_1)
+
+# Step 1
+desired_levels <- c("high", "moderate", "low", "minimal")
+# create new df to create desired levels
+geo_eccc_sites_2 <- geo_eccc_sites_1
+# this changes data type from character to factor
+geo_eccc_sites_2$Restoration_Intensity <- factor(geo_eccc_sites_1$Restoration_Intensity, levels = desired_levels)
+print(levels(geo_eccc_sites_2$Restoration_Intensity)) # New order of levels
+str(geo_eccc_sites_2)
+# step 2
+geo_eccc_sites_2 <- geo_eccc_sites_2[order(geo_eccc_sites_2$Restoration_Intensity),]
+
+# values in order now -- ?? how to change to reverse order 
+site_restInt <- ggplot(geo_eccc_sites_2,
+       aes(x = Site, y = reorder(Restoration_Intensity, desc(Restoration_Intensity)), color = Subregion)) +
+  # reorder y variable axis
+  # https://stackoverflow.com/questions/28391850/reverse-order-of-discrete-y-axis-in-ggplot2s
+# y = Restoration_Intensity
+                    geom_point(shape = 18, size = 2) +
+  #geom_bar(stat="identity") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="bottom") + #remove legend 
+                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Plotting Sites by Restoration Intensity',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-22", x = "Site", y = "Restoration Intensity")
+
+site_restInt
+
+
+ggplotly(site_restInt)
+```
+
+## Change x axis ORDER WORKs Point Plot Site by Restoration_Intensity
+
+```{r plots_site_Restoration_Intensity_order_point_1}
+names(geo_eccc_sites_1)
+# Reorder following a precise order
+# https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
+# https://stackoverflow.com/questions/18413756/re-ordering-factor-levels-in-data-frame
+# mydf$task <- factor(mydf$task, levels = c("up", "down", "left", "right", "front", "back"))
+#geo_eccc_sites_1$Restoration_Intensity <- factor(geo_eccc_sites_1$Restoration_Intensity, levels = #c("high", "moderate", "low", "minimal"))
+str(geo_eccc_sites_1)
+
+# change character to factor
+# str(geo_eccc_sites_1)
+# geo_eccc_sites_1$Restoration_Intensity <- as.factor(geo_eccc_sites_1$Restoration_Intensity)
+# str(geo_eccc_sites_1)
+# # change factor to character
+# geo_eccc_sites_1 <- data.frame(lapply(geo_eccc_sites_1, as.character), stringsAsFactors=FALSE)
+# str(geo_eccc_sites_1)
+
+# Step 1
+desired_levels <- c("high", "moderate", "low", "minimal")
+# create new df to create desired levels
+geo_eccc_sites_2 <- geo_eccc_sites_1
+# this changes data type from character to factor
+geo_eccc_sites_2$Restoration_Intensity <- factor(geo_eccc_sites_1$Restoration_Intensity, levels = desired_levels)
+print(levels(geo_eccc_sites_2$Restoration_Intensity)) # New order of levels
+str(geo_eccc_sites_2)
+# step 2
+geo_eccc_sites_2 <- geo_eccc_sites_2[order(geo_eccc_sites_2$Restoration_Intensity),]
+
+# values in order now -- ?? how to change to reverse order 
+site_restInt_x <- ggplot(geo_eccc_sites_2,
+       aes(x = reorder(Site, 
+                       desc(Restoration_Intensity)), 
+           y = reorder(Restoration_Intensity, desc(Restoration_Intensity)), color = Subregion)) +
+  # reorder y variable axis
+  # https://stackoverflow.com/questions/28391850/reverse-order-of-discrete-y-axis-in-ggplot2s
+# y = Restoration_Intensity
+                    geom_point(shape = 18, size = 2) +
+  #geom_bar(stat="identity") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="bottom") + #remove legend 
+                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Plotting Site by Restoration_Intensity',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-26",
+                      x = "Site", y = "Restoration_Intensity")
+site_restInt_x
+
+
+ggplotly(site_restInt_x)
+```
+
+## BAR Plot WORKS Site by Restoration_Intensity
+
+```{r plots_site_Restoration_Intensity_order_bar}
+names(geo_eccc_sites_1)
+# Reorder following a precise order
+# https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
+# https://stackoverflow.com/questions/18413756/re-ordering-factor-levels-in-data-frame
+# mydf$task <- factor(mydf$task, levels = c("up", "down", "left", "right", "front", "back"))
+#geo_eccc_sites_1$Restoration_Intensity <- factor(geo_eccc_sites_1$Restoration_Intensity, levels = #c("high", "moderate", "low", "minimal"))
+str(geo_eccc_sites_1)
+
+# change character to factor
+# str(geo_eccc_sites_1)
+# geo_eccc_sites_1$Restoration_Intensity <- as.factor(geo_eccc_sites_1$Restoration_Intensity)
+# str(geo_eccc_sites_1)
+# # change factor to character
+# geo_eccc_sites_1 <- data.frame(lapply(geo_eccc_sites_1, as.character), stringsAsFactors=FALSE)
+# str(geo_eccc_sites_1)
+
+# Step 1
+desired_levels <- c("high", "moderate", "low", "minimal")
+# this changes data type from character to factor
+geo_eccc_sites_2$Restoration_Intensity <- factor(geo_eccc_sites_1$Restoration_Intensity, levels = desired_levels)
+print(levels(geo_eccc_sites_2$Restoration_Intensity)) # New order of levels
+str(geo_eccc_sites_2)
+# step 2
+geo_eccc_sites_2 <- geo_eccc_sites_2[order(geo_eccc_sites_2$Restoration_Intensity),]
+
+# values in order now -- ?? how to change to reverse order 
+site_restInt_bar <- ggplot(geo_eccc_sites_2,
+       aes(y = reorder(Restoration_Intensity, desc(Restoration_Intensity)), color = Site, fill = Site)) +
+  # reorder y variable axis
+  # https://stackoverflow.com/questions/28391850/reverse-order-of-discrete-y-axis-in-ggplot2s
+# y = Restoration_Intensity
+                    geom_bar() +
+  #geom_bar(stat="identity") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="bottom") + #remove legend 
+                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Plotting Site by Restoration_Intensity',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-26", y = "Restoration_Intensity")
+site_restInt_bar
+
+
+ggplotly(site_restInt_bar)
 ```
 
 ## Violin Subregion by Exotic_species
@@ -168,11 +421,66 @@ subregion_exsp <- ggplot(geo_eccc,
                     geom_boxplot(width = 0.1, fill = "sandybrown") +
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
-                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-                    labs(title='Ploting Subregion by Exotic_species',
+                    theme(axis.text.x = element_text(vjust = 1, size = 9)) +
+                    labs(title='Plotting Subregion by Exotic_species',
                       subtitle='ECCC',
                       caption = "Chart by Wendy Anthony \n 2025-08-04")
 subregion_exsp
+# plotly won't work here
+```
+
+## Violin Subregion by Percentage_ns
+```{r plots_Percentage_ns}
+names(geo_eccc)
+subregion_nsp <- ggplot(geo_eccc, 
+                    aes(x = Subregion, y = Percentage_ns)) +
+                    geom_violin(fill = "seagreen2") +
+                    geom_boxplot(width = 0.1, fill = "sandybrown") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="none") + #remove legend 
+                    theme(axis.text.x = element_text(vjust = 1, size = 9)) +
+                    labs(title='Plotting Subregion by Percentage of Native Species',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-27")
+subregion_nsp
+# plotly won't work here
+```
+
+## Cowplot Violin Subregion plot_grid
+```{r cowplot_violin_subr}
+library(cowplot)
+
+subregion_exsp_1 <- subregion_exsp + labs(title='Exotic Species',
+                      subtitle='ECCC',
+                      caption = "2025-08-27")
+
+subregion_nsp_1 <- subregion_nsp + labs(title='Native Species',
+                      subtitle='ECCC',
+                      caption = "2025-08-27")
+
+plot_grid(subregion_exsp_1, subregion_nsp_1, labels = "AUTO")
+
+```
+
+
+## TEST NOTWorking Bar Chart Subregion by Restoration_Intensity
+```{r plots_Restoration_Intensity}
+names(geo_eccc_sites_1)
+str(geo_eccc_sites_1)
+
+subregion_restInt <- ggplot(geo_eccc_sites_1, 
+                    aes(y = Restoration_Intensity)) +
+#                    geom_violin(fill = "seagreen2") +
+                    geom_bar(width = 0.1, fill = "sandybrown") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="none") + #remove legend 
+                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Plotting Subregion by Restoration_Intensity',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-20")
+subregion_restInt
+ggplotly()
+# plotly won't work here
 ```
 
 ## Subregion by Proportion_of_native_species
@@ -184,7 +492,7 @@ subregion_natsp <- ggplot(geo_eccc_1,
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-                    labs(title='Ploting Subregion by Proportion_of_native_species',
+                    labs(title='Plotting Subregion by Proportion_of_native_species',
                       subtitle='ECCC',
                       caption = "Chart by Wendy Anthony \n 2025-08-04")
 subregion_natsp
@@ -192,35 +500,45 @@ subregion_natsp
 
 
 
-## pivot longer one row to long df
-```{r pivot_longer}
-colnames(geo_eccc_1)
-Anniversary_Island <- geo_eccc_1[1, ]
-Anniversary_Island
-
-Uplands <- geo_eccc_1[24, ]
-Uplands
-
-Gonzales <- geo_eccc_1[15, ]
-Gonzales
-Gonzales <- Gonzales[, -c(1,2,3)]
-Gonzales
-Gonzales_long <- Gonzales %>% pivot_longer(everything(), names_to = "variable", values_to = "value")
-Gonzales_long
-
-# delete first 2 columns as they can't be characters also Percentage
-Uplands <- Uplands[, -c(1,2,3)]
-Uplands
-
-Uplands_long <- Uplands %>% pivot_longer(everything(), names_to = "variable", values_to = "value")
-Uplands_long
-```
+---
+---
 
 
 # Plots by Separate Sites
 - use pivot_longer() for single row with multiple columns convert to long
 
-## Plot Long Uplands
+## pivot longer one row to long df
+```{r pivot_longer}
+colnames(geo_eccc_1)
+# choose index row from data sorted alphabetically
+# delete first 2 columns as they can't be characters ? also Proportion to leave Percentage 
+# delete year column
+
+# Anniversary_Island
+Anniversary_Island <- geo_eccc_1[1, ]
+Anniversary_Island
+Anniversary_Island <- Anniversary_Island[, -c(1,2,9)]
+Anniversary_Island_long <- Anniversary_Island %>% pivot_longer(everything(), names_to = "variable", values_to = "value")
+Anniversary_Island_long
+
+# Gonzales
+Gonzales <- geo_eccc_1[15, ]
+Gonzales
+Gonzales <- Gonzales[, -c(1,2,9)]
+Gonzales
+Gonzales_long <- Gonzales %>% pivot_longer(everything(), names_to = "variable", values_to = "value")
+Gonzales_long
+
+# Uplands
+Uplands <- geo_eccc_1[24, ]
+Uplands
+Uplands <- Uplands[, -c(1,2,9)]
+Uplands
+Uplands_long <- Uplands %>% pivot_longer(everything(), names_to = "variable", values_to = "value")
+Uplands_long
+```
+
+## Point Plot Long Uplands
 ```{r plots_Uplands}
 Uplands_long_plot  <-  ggplot(Uplands_long, 
                     aes(x = variable, y = value)) +
@@ -230,14 +548,14 @@ Uplands_long_plot  <-  ggplot(Uplands_long,
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-                    labs(title='Ploting Uplands Variables',
+                    labs(title='Plotting Uplands Variables',
                       subtitle='ECCC',
                       caption = "Chart by Wendy Anthony \n 2025-08-04")
 Uplands_long_plot
 ```
 
-## Plot Long Gonzales
-```{r plots_Gonzales}
+## Point Plot to Compare Gonzales Variables
+```{r plots_Gonzales_compare_1}
 Gonzales_long_plot  <-  ggplot(Gonzales_long, 
                     aes(x = variable, y = value)) +
   # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
@@ -246,15 +564,31 @@ Gonzales_long_plot  <-  ggplot(Gonzales_long,
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-                    labs(title='Ploting Gonzales Variables',
+                    labs(title='Plotting Gonzales Variables',
                       subtitle='ECCC',
                       caption = "Chart by Wendy Anthony \n 2025-08-04")
 Gonzales_long_plot
 ```
 
-## Compare Bar Variables Uplands
-```{r compare_bar_Variables}
+## Point Plot Long Anniversary_Island_long
+```{r plots_Gonzales}
+Anniversary_Island_long_plot  <-  ggplot(Anniversary_Island_long, 
+                    aes(x = variable, y = value)) +
+  # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+                    ylim(0, 100) +
+                    geom_point() +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="none") + #remove legend 
+                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Plotting Anniversary Island Variables',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-04")
+Anniversary_Island_long_plot
+```
 
+
+## Bar Variables Compare Uplands
+```{r compare_bar_Variables_uplands}
 
 compare_bar_uplands  <-  ggplot(Uplands_long, 
                     aes(x = variable, y = value)) +
@@ -272,17 +606,101 @@ compare_bar_uplands  <-  ggplot(Uplands_long,
 compare_bar_uplands
 ```
 
-## NOTWORKING Compare Column Variables Uplands
+## Compare Bar Variables multiple sites
+```{r compare_bar_Variables_multiple_sites}
+
+names(geo_eccc_1)
+compare_bar_multiple_sites  <-  ggplot(geo_eccc_1,
+                    aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+  
+# Exotic_species
+  # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+                    ylim(0, 100) +
+                    geom_bar(stat = "identity") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="none") + #remove legend 
+                    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Comparinging Site Variables',
+                      subtitle='ECCC',
+                      caption = "Chart by Wendy Anthony \n 2025-08-08")
+compare_bar_multiple_sites
+```
+
+## Arrange Compare Bar Variables multiple sites
+```{r compare_bar_Variables_multiple_sites_order}
+# https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
+names(geo_eccc_1)
+# arrange values
+#str(arr)
+# geo_eccc_1 %>% arrange(Percentage_ns) -> arr
+geo_eccc_1 %>% arrange(desc(Percentage_ns)) %>%
+  # updates Site with new arrangement
+   mutate(Site = factor(Site, levels = Site)) %>% 
+    ggplot(
+      aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+  # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+                    ylim(0, 100) +
+                    geom_bar(stat = "identity") +
+                    theme_minimal() + #get rid of grey background and tick marks 
+                    theme(legend.position="bottom") + 
+                    theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+                    labs(title='Comparinging Sites',
+                      subtitle='ECCC GOE Site Monitoring',
+                      caption = "Chart by Wendy Anthony \n 2025-08-19")
+
+```
+
+
+## TEST Stacking Bar Variables multiple sites
+```{r stacking_bar_Variables_multiple_sites}
+# https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
+# View(mpg)
+# g <- ggplot(geo_eccc_1, aes(Subregion))  
+# p <-  g + geom_bar(aes(fill = Site))
+# ggplotly(p)
+# 
+# #https://stackoverflow.com/questions/6693257/making-a-stacked-bar-plot-for-multiple-variables-ggplot2-in-r
+# dfr <- data.frame(
+#   V1 = c(0.1, 0.2, 0.3),
+#   V2 = c(0.2, 0.3, 0.2),
+#   V3 = c(0.3, 0.6, 0.5),
+#   V4 = c(0.5, 0.1, 0.7),
+#   row.names = LETTERS[1:3]
+# )
+# 
+# geo_eccc_2 <- subset(geo_eccc_1, , -c(Subregion))
+# 
+# geo_eccc_2 %>% rownames_to_column("ID") %>% pivot_longer(!ID) %>%
+#   ggplot() +
+#   geom_col(aes(x = ID, y = value, fill = name), position = 'fill')
+# # Error in `pivot_longer_spec()`:
+# #! Can't combine `Site` <character> and `Proportion_of_native_species` <double>.
+# 
+# names(geo_eccc_1)
+#     ggplot(geo_eccc_1,
+#       aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+#   # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+#                     ylim(0, 100) +
+#                     geom_bar(stat = "identity") +
+#                     theme_minimal() + #get rid of grey background and tick marks 
+#                     theme(legend.position="bottom") + 
+#                     theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+#                     labs(title='Comparinging Sites',
+#                       subtitle='ECCC GOE Site Monitoring',
+#                       caption = "Chart by Wendy Anthony \n 2025-08-19")
+
+```
+
+## ??? NOTWORKING Compare Column Variables Uplands
 ```{r compare_col_Variables}
 colnames(geo_eccc_1)
 
-geo_eccc_1_filter <- filter(geo_eccc_1, Site %in% c("Uplands Park", "Trial Island")) 
-
-geo_eccc_2_filter <- filter(geo_eccc_1, Site %in% c("Gulf Islands", "Saanich Peninsula")) 
+geo_eccc_1_filter <- filter(geo_eccc_1, geo_eccc_1$Site %in% c("Uplands Park", "Trial Island")) 
 
 
 compare_col_uplands <- ggplot(geo_eccc_1_filter, 
-  aes(Site, fill = Exotic_species)) + geom_bar(position = "dodge", alpha = 0.5) +
+  aes(Site, fill = Exotic_species)) + 
+  geom_bar(position = "dodge", alpha = 0.5) +
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
@@ -291,6 +709,408 @@ compare_col_uplands <- ggplot(geo_eccc_1_filter,
                       caption = "Chart by Wendy Anthony \n 2025-08-08")
 compare_col_uplands
 ```
+
+
+
+---
+
+
+# TEST NOT WORKING Facet wraps
+## facet_wrap(~Subregion)
+- need to filter Subregion for each ???
+```{r facet_wraps}
+names(geo_eccc_1)
+
+ggplot(geo_eccc_1, 
+       aes(x = Site, y = Exotic_species)) +
+  geom_col() +
+  facet_wrap(~Subregion) +
+  theme(legend.position="none") + #remove legend 
+   theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+   labs(title='Comparinging Uplands Variables',
+      subtitle='ECCC',
+      caption = "Chart by Wendy Anthony \n 2025-08-19")
+```
+
+## ??? TEST FILTER SAME AS PREVIOUS NOT WORKINGfacet_wrap
+- need to filter Subregion for each ???
+```{r facet_wraps_}
+names(geo_eccc_1)
+
+ggplot(geo_eccc_1, 
+       aes(x = Site, y = Exotic_species)) +
+  geom_col() +
+  facet_wrap(~Subregion) +
+  theme(legend.position="none") + #remove legend 
+   theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+   labs(title='Comparinging Uplands Variables',
+      subtitle='ECCC',
+      caption = "Chart by Wendy Anthony \n 2025-08-19")
+```
+
+
+---
+
+# Test GGplot Function
+## Violin Chart Function
+```{r Test_GGplot_Function_violin}
+geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
+str(geo_eccc)
+names(geo_eccc)
+
+subregion_var_violin <- function(file, title, subtitle, colx, coly, xlab, ylab, caption){
+  
+    ggplot2::ggplot(file,
+        ggplot2::aes(x = colx, y = coly)) +
+    ggplot2::geom_violin(fill = "seagreen2") +
+    ggplot2::geom_boxplot(width = 0.1, fill = "sandybrown") +
+    ggplot2::theme_minimal() + #get rid of grey background and tick marks
+    ggplot2::theme(legend.position="none") + #remove legend
+    ggplot2::theme(
+      axis.text.x = ggplot2::element_text(vjust = 1, hjust = .5, size = 8),
+      axis.text.y = ggplot2::element_text(size = 5),
+      plot.title = ggplot2::element_text(hjust = 0.5, size = 12),
+      plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 12)) +
+    #theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+    ggplot2::labs(title=title,
+         subtitle=subtitle,
+         caption = caption,
+         x = xlab, y = ylab)
+  #subregion_exsp
+  
+}
+
+subregion_var_violin(geo_eccc, 'Plotting Subregion by Exotic_species', 'ECCC Data Paper', geo_eccc$Subregion, geo_eccc$Exotic_species, "Subregion", "Exotic_species", "Chart by Wendy Anthony \n 2025-08-04")
+subregion_var_violin(geo_eccc,'Plotting Subregion by Cultural_species_richness', 'ECCC Data Paper', geo_eccc$Subregion, geo_eccc$Cultural_species_richness, "Subregion", "Cultural_species_richness", "Chart by Wendy Anthony \n 2025-08-16")
+
+```
+
+## Point Chart Function
+### ggplot point chart
+```{r Test_GGplot_Function_point}
+geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
+
+str(geo_eccc)
+names(geo_eccc)
+
+
+subregion_var_point <- function(file, title, subtitle, colx, coly, xlab, ylab, caption){
+
+ggplot(file, 
+                    aes(x = colx, y = coly, colour = Subregion)) +
+                    geom_point(shape = 18, size = 2) +
+                    theme_minimal() + #get rid of grey background and tick marks
+                    theme(legend.position="bottom") +
+                    # theme(legend.position="none") + #remove legend 
+                    theme(axis.text.x = element_text(angle =35, vjust = 1, hjust=1, size = 7)) +
+                    labs(title=title,
+                      subtitle=subtitle,
+                      caption = caption,
+                      x = xlab, y = ylab)
+}
+
+subregion_var_point(geo_eccc,'Plotting Site by Percentage Native Species', 'Malloff & Shackelford. (2024). \nFeeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. \nRestoration Futures Lab at the University of Victoria.
+', geo_eccc$Site, geo_eccc$Proportion_of_native_species, "Site", "Proportion of native species", "Chart by Wendy Anthony \n 2025-09-16 \n ECCC Data: (Malloff & Shackelford, 2024)")
+
+subregion_var_point(geo_eccc,'Plotting Site by Exotic Species', 'Malloff & Shackelford. (2024). \nFeeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. \nRestoration Futures Lab at the University of Victoria.
+', geo_eccc$Site, geo_eccc$Exotic_species, "Site", "Exotic Species", "Chart by Wendy Anthony \n 2025-09-16 \n ECCC Data: (Malloff & Shackelford, 2024)")
+```
+
+### plotly ggplot point chart
+```{r Test_GGplot_Function_point_plotly}
+geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
+
+str(geo_eccc)
+names(geo_eccc)
+
+
+subregion_var_point <- function(file, title, subtitle, colx, coly, xlab, ylab, caption){
+
+ggplot(file, 
+                    aes(x = colx, y = coly, colour = Subregion)) +
+                    geom_point(shape = 18, size = 2) +
+                    theme_minimal() + #get rid of grey background and tick marks
+                    theme(legend.position="bottom") +
+                    # theme(legend.position="none") + #remove legend 
+                    theme(axis.text.x = element_text(angle =35, vjust = 1, hjust=1, size = 7)) +
+                    labs(title=title,
+                      subtitle=subtitle,
+                      caption = caption,
+                      x = xlab, y = ylab)
+}
+
+p2 <- subregion_var_point(geo_eccc,'Plotting Site by Percentage Native Species', 'Malloff & Shackelford. (2024). \nFeeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. \nRestoration Futures Lab at the University of Victoria.
+', geo_eccc$Site, geo_eccc$Proportion_of_native_species, "Site", "Proportion of native species", "Chart by Wendy Anthony \n 2025-09-16 \n ECCC Data: (Malloff & Shackelford, 2024)")
+
+subregion_var_point(geo_eccc,'Plotting Site by Exotic Species', 'Malloff & Shackelford. (2024). \nFeeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. \nRestoration Futures Lab at the University of Victoria.
+', geo_eccc$Site, geo_eccc$Exotic_species, "Site", "Exotic Species", "Chart by Wendy Anthony \n 2025-09-16 \n ECCC Data: (Malloff & Shackelford, 2024)")
+
+ggplotly(p2)
+
+```
+
+
+# Leaflet Map
+## Custom Icons
+```{r leaflet_map_custom_icons}
+
+Sites_eccc <- read.csv("SiteDetails-TEST-GOE-Monitor.csv", header = TRUE, sep = ",")
+
+names(Sites_eccc)
+
+library(dplyr)
+library(leaflet)
+library(htmlwidgets) # for responsive web map
+
+# custom icon
+# https://leafletjs.com/examples/custom-icons/
+greenLeafIcon <- makeIcon(
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
+  iconWidth = 38, iconHeight = 95,
+  iconAnchorX = 22, iconAnchorY = 94,
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 50, shadowHeight = 64,
+  shadowAnchorX = 4, shadowAnchorY = 62
+)
+# change LeafIcon size 1/2
+greenLeafIconSm <- makeIcon(
+  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
+  iconWidth = 19, iconHeight = 47,
+  iconAnchorX = 11, iconAnchorY = 47,
+  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+  shadowWidth = 25, shadowHeight = 32,
+  shadowAnchorX = 2, shadowAnchorY = 31
+)
+
+# Title control
+title <- tags$div(HTML('<b>ECC Site Maps</b><br>Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria'))
+  
+
+ECCC_map <- leaflet(Sites_eccc) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addMarkers(
+             ~ Lng, ~ Lat, icon = greenLeafIconSm,
+             popup = paste0("<b>Subregion:</b> ", Sites_eccc$Subregion, "<br>", "<b>Site:</b> ", Sites_eccc$Site, "<br>", "<b>Latitude:</b> ", Sites_eccc$Lat, "<br>", "<b>Longitude:</b> ", Sites_eccc$Lng,  "<br><br>", "<b>Land Manager:</b> ", Sites_eccc$Land.Manager, "<br>", "<b>Main Restoration:</b> ", Sites_eccc$Main.Restoration.Type, "<br>", "<b>Restoration Intensity:</b> ", Sites_eccc$Restoration.Intensity, "<br>", "<b> Area:</b> ", Sites_eccc$Area.ha, " ha")) %>%
+  setView(-123.44799, 48.64919, 9) %>%
+  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
+  addControl(title, position = "topright")
+
+# Display map
+ECCC_map
+
+# Save map
+saveWidget(ECCC_map, "ECCC_map.html")
+
+```
+
+## Circle Markers
+```{r leaflet_map_circle_markers}
+
+# NOT WORKING - Sites not same
+#geo_eccc_sites <- cbind(geo_eccc, Sites_eccc)
+# try to add , "<br>",  "<b>Composite Index:</b> ", geo_eccc_sites$Composite_Index
+# names(geo_eccc_sites)
+names(Sites_eccc)
+
+library(dplyr)
+library(leaflet)
+library(htmlwidgets) # for responsive web map
+
+
+# Title control
+title <- tags$div(HTML('<b>ECC Site Maps</b><br>Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria'))
+ 
+# https://rstudio.github.io/leaflet/articles/markers.html 
+# Create a palette that maps factor levels to colors
+pal <- colorFactor(c("green", "orange"), domain = c("Saanich Peninsula", "Gulf Islands"))
+
+ECCC_map <- leaflet(Sites_eccc) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addCircleMarkers(
+             ~ Lng, ~ Lat, radius = ~ifelse(Subregion == "Saanich Peninsula", 4, 5),
+    color = ~pal(Subregion),
+    stroke = FALSE, fillOpacity = 0.5,
+             popup = paste0("<b>Site:</b> ", Sites_eccc$Site, "<br>", "<b>Subregion:</b> ", Sites_eccc$Subregion, "<br>", "<b>Latitude:</b> ", Sites_eccc$Lat, "<br>", "<b>Longitude:</b> ", Sites_eccc$Lng,  "<br><br>", "<b>Land Manager:</b> ", Sites_eccc$Land.Manager, "<br>", "<b>Main Restoration:</b> ", Sites_eccc$Main.Restoration.Type, "<br>", "<b>Restoration Intensity:</b> ", Sites_eccc$Restoration.Intensity, "<br>", "<b> Area:</b> ", Sites_eccc$Area.ha, " ha")) %>%
+  setView(-123.44799, 48.64919, 9) %>%
+  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
+  addControl(title, position = "topright")
+
+# Display map
+ECCC_map
+
+# Save map
+saveWidget(ECCC_map, "ECCC_map.html")
+
+```
+
+## Circle Markers Sized to Area
+```{r leaflet_map_circle_markers_sized_area}
+
+names(Sites_eccc)
+
+library(dplyr)
+library(leaflet)
+library(htmlwidgets) # for responsive web map
+
+
+# Title control
+# Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria
+title <- tags$div(HTML('<p style="font-size:12px;font-weight:bold">ECC Sites Map</p>'))
+ 
+# https://rstudio.github.io/leaflet/articles/markers.html 
+# Create a palette that maps factor levels to colors
+pal <- colorFactor(c("green", "orange"), domain = c("Saanich Peninsula", "Gulf Islands"))
+
+ECCC_map <- leaflet(Sites_eccc) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addCircleMarkers(
+             ~ Lng, ~ Lat, 
+# https://stackoverflow.com/questions/40137212/variable-marker-size-feature-in-leaflet-r
+              radius = ~geo_eccc$Composite_Index * 3,    
+              # radius = ~Sites_eccc$Area.ha,
+                  # radius = ~sqrt(Sites_eccc$Area.ha),
+ # size smaller is Saanich, else larger if Gulf            
+#             radius = ~ifelse(Subregion == "Saanich Peninsula", 4, 5),
+    color = ~pal(Subregion),
+    stroke = FALSE, fillOpacity = 0.5,
+             popup = paste0("<b>Site:</b> ", Sites_eccc$Site, "<br>", "<b>Subregion:</b> ", Sites_eccc$Subregion, "<br>", "<b>Latitude:</b> ", Sites_eccc$Lat, "<br>", "<b>Longitude:</b> ", Sites_eccc$Lng,  "<br><br>", "<b>Land Manager:</b> ", Sites_eccc$Land.Manager, "<br>", "<b>Main Restoration:</b> ", Sites_eccc$Main.Restoration.Type, "<br>", "<b>Restoration Intensity:</b> ", Sites_eccc$Restoration.Intensity, "<br>", "<b> Area:</b> ", Sites_eccc$Area.ha, " ha")) %>%
+  setView(-123.44799, 48.64919, 9) %>%
+  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
+  addControl(title, position = "topright")
+
+# Display map
+ECCC_map
+
+# Save map
+saveWidget(ECCC_map, "ECCC_map.html")
+
+```
+
+
+## Circle Markers Sized to Composite_Index
+geo_eccc_all_site_data.csv
+```{r leaflet_map_circle_markers_sized_Composite_Index}
+
+geo_eccc_sites_1 <- read.csv("geo_eccc_all_site_data.csv")
+names(geo_eccc_sites_1)
+
+library(dplyr)
+library(leaflet)
+library(htmlwidgets) # for responsive web map
+
+
+# Title control
+# Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria
+title <- tags$div(HTML('<p style="font-size:12px;font-weight:bold">ECC Sites Map</p>'))
+ 
+# https://rstudio.github.io/leaflet/articles/markers.html 
+# Create a palette that maps factor levels to colors
+pal <- colorFactor(c("#d7191c", "#2c7bb6"), domain = c("Saanich Peninsula", "Gulf Islands"))
+
+ECCC_map_1 <- leaflet(geo_eccc_sites_1) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addCircleMarkers(
+             ~ Lng, ~ Lat, 
+# https://stackoverflow.com/questions/40137212/variable-marker-size-feature-in-leaflet-r
+              radius = ~geo_eccc_sites_1$Composite_Index * 5,    
+              # radius = ~geo_eccc_sites_1$Area.ha,
+                  # radius = ~sqrt(geo_eccc_sites_1$Area.ha),
+ # size smaller is Saanich, else larger if Gulf            
+#             radius = ~ifelse(Subregion == "Saanich Peninsula", 4, 5),
+    fillColor = ~pal(Subregion),
+    color = "black",
+    weight = 3, # size of circle border
+    stroke = TRUE, fillOpacity = 0.5,
+             popup = paste0("<b>Site:</b> ", "<b>", "<b>", geo_eccc_sites_1$Site, "</b>", "</b>", "<br><br>", "<b>Subregion:</b> ", geo_eccc_sites_1$Subregion, "<br>",
+                        "<b>Latitude:</b> ", geo_eccc_sites_1$Lat, "<br>", "<b>Longitude:</b> ", geo_eccc_sites_1$Lng,  "<br><br>",
+                        "<b>Land Manager:</b> ", geo_eccc_sites_1$Land_Manager, "<br>",
+                        "<b>Main Restoration:</b> ", geo_eccc_sites_1$Main_Restoration_Type, "<br>",
+                        "<b>Restoration Intensity:</b> ", geo_eccc_sites_1$Restoration_Intensity, "<br>",
+                        "<b> Area:</b> ", geo_eccc_sites_1$Area_ha, " ha",
+                        "<br><br>",
+                        "<b>Proportion of native species:</b> ", geo_eccc_sites_1$Proportion_of_native_species, "<br>",
+                        "<b>Cultural species richness:</b> ", geo_eccc_sites_1$Cultural_species_richness, "<br>",
+                        "<b>Exotic species:</b> ", geo_eccc_sites_1$Exotic_species, "<br>",
+                        "<b>Trampling:</b> ", geo_eccc_sites_1$Trampling, "<br>",
+                        "<b>Herbivory:</b> ", geo_eccc_sites_1$Herbivory, "<br>",
+                        "<b>Composite Index:</b> ", geo_eccc_sites_1$Composite_Index, "<br>")) %>%
+  setView(-123.44799, 48.64919, 10) %>%
+  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
+  addControl(title, position = "topright")
+
+# Display map
+ECCC_map_1
+
+# Save map
+saveWidget(ECCC_map_1, "ECCC_map_CI.html")
+
+```
+
+## Circle Markers Sized to Radius
+### Title code
+geo_eccc_all_site_data.csv
+```{r leaflet_map_circle_markers_sized_radius}
+
+geo_eccc_sites_1 <- read.csv("geo_eccc_all_site_data.csv")
+names(geo_eccc_sites_1)
+
+library(dplyr)
+library(leaflet)
+library(htmlwidgets) # for responsive web map
+
+
+# Title control
+# Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria
+title <- '<p style="text-align: center; height: 30px; ">
+<span style="font-size:10px;font-weight:bold; background-color: rgba(255, 255, 255, 0.9;");>ECCC GOE 2023 Monitoring Sites</span><br>
+<span style="font-size:8px;font-style:italic; background-color: rgba(255, 255, 255, 0.9;">(Malloff & Shackelford, 2024)</span></p>'
+ 
+# https://rstudio.github.io/leaflet/articles/markers.html 
+# Create a palette that maps factor levels to colors
+pal <- colorFactor(c("#d7191c", "#2c7bb6"), domain = c("Saanich Peninsula", "Gulf Islands"))
+
+ECCC_map_2 <- leaflet(geo_eccc_sites_1) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addCircleMarkers(
+             ~ Lng, ~ Lat, 
+# https://stackoverflow.com/questions/40137212/variable-marker-size-feature-in-leaflet-r
+#              radius = ~geo_eccc_sites_1$Composite_Index * 5,    
+              # radius = ~geo_eccc_sites_1$Area.ha,
+                  # radius = ~sqrt(geo_eccc_sites_1$Area.ha),
+ # size smaller is Saanich, else larger if Gulf            
+             radius = ~ifelse(Subregion == "Saanich Peninsula", 8, 8),
+    fillColor = ~pal(Subregion),
+    color = "black",
+    weight = 3, # size of circle border
+    stroke = TRUE, fillOpacity = 0.5,
+             popup = paste0("<b>ECCC GOE 2023 Monitoring Data</b>", "<br>", "<i>(Malloff & Shackelford, 2024)</i>", "<br><br>",
+               "<b>Site:</b> ", "<b>", geo_eccc_sites_1$Site, "</b>", "</b>", "<br><br>", "<b>Subregion:</b> ", geo_eccc_sites_1$Subregion, "<br>",
+                        "<b>Latitude:</b> ", geo_eccc_sites_1$Lat, "<br>", "<b>Longitude:</b> ", geo_eccc_sites_1$Lng,  "<br><br>",
+                        "<b>Land Manager:</b> ", geo_eccc_sites_1$Land_Manager, "<br>",
+                        "<b>Main Restoration:</b> ", geo_eccc_sites_1$Main_Restoration_Type, "<br>",
+                        "<b>Restoration Intensity:</b> ", geo_eccc_sites_1$Restoration_Intensity, "<br>",
+                        "<b> Area:</b> ", geo_eccc_sites_1$Area_ha, " ha",
+                        "<br><br>",
+                        "<b>Proportion of native species:</b> ", geo_eccc_sites_1$Proportion_of_native_species, "<br>",
+                        "<b>Cultural species richness:</b> ", geo_eccc_sites_1$Cultural_species_richness, "<br>",
+                        "<b>Exotic species:</b> ", geo_eccc_sites_1$Exotic_species, "<br>",
+                        "<b>Trampling:</b> ", geo_eccc_sites_1$Trampling, "<br>",
+                        "<b>Herbivory:</b> ", geo_eccc_sites_1$Herbivory, "<br>",
+                        "<b>Composite Index:</b> ", geo_eccc_sites_1$Composite_Index, "<br>")) %>%
+  setView(-123.44799, 48.64919, 10) %>%
+  # add controls
+  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
+  addControl(title, position = "topright")
+
+# Display map
+ECCC_map_2
+
+# Save map
+saveWidget(ECCC_map_2, "ECCC_map_radius-1.html")
+
+```
+
+---
 
 # Shiny 
 ## Shiny Gadget
@@ -399,7 +1219,7 @@ lmGadget(iris, "Sepal.Length", "Sepal.Width")
 ### Reactive choose 
 ```{r, Shiny_app_inline, echo=FALSE}
 library(shiny)
-geo_eccc <- read.csv("TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
+geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
 colnames(geo_eccc)
 str(geo_eccc)
 
@@ -491,6 +1311,7 @@ library(dplyr)
 
 ############################################################
 ## Data
+# note Restoration_Intensity column values all had a space in front of value - wasn't sorting properly ... changed
 geo_eccc_sites <- read.csv("geo_eccc_all_site_data.csv", header = TRUE, sep = ",")
 names(geo_eccc_sites)
 str(geo_eccc_sites)
@@ -779,7 +1600,7 @@ server <- function(input, output) {
       theme_minimal() + #get rid of grey background and tick marks
       theme(legend.position="bottom") + #remove legend
       theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-      labs(title='Ploting Subregion Variables by Select Input',
+      labs(title='Plotting Subregion Variables by Select Input',
            subtitle='ECCC GEO Monitoring Data',
            caption = "Chart by Wendy Anthony \n 2025-08-18",
            x = input$x_select, y = input$y_select,
@@ -795,273 +1616,6 @@ server <- function(input, output) {
 
 
 ---
-
-# Test GGplot Function
-## Violin Chart Function
-```{r Test_GGplot_Function_violin}
-geo_eccc <- read.csv("TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
-str(geo_eccc)
-names(geo_eccc)
-
-subregion_var_violin <- function(file, title, subtitle, colx, coly, xlab, ylab, caption){
-  
-    ggplot2::ggplot(file,
-        ggplot2::aes(x = colx, y = coly)) +
-    ggplot2::geom_violin(fill = "seagreen2") +
-    ggplot2::geom_boxplot(width = 0.1, fill = "sandybrown") +
-    ggplot2::theme_minimal() + #get rid of grey background and tick marks
-    ggplot2::theme(legend.position="none") + #remove legend
-    ggplot2::theme(
-      axis.text.x = ggplot2::element_text(vjust = 1, hjust = .5, size = 8),
-      axis.text.y = ggplot2::element_text(size = 5),
-      plot.title = ggplot2::element_text(hjust = 0.5, size = 12),
-      plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 12)) +
-    #theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
-    ggplot2::labs(title=title,
-         subtitle=subtitle,
-         caption = caption,
-         x = xlab, y = ylab)
-  #subregion_exsp
-  
-}
-
-subregion_var_violin(geo_eccc, 'Plotting Subregion by Exotic_species', 'ECCC Data Paper', geo_eccc$Subregion, geo_eccc$Exotic_species, "Subregion", "Exotic_species", "Chart by Wendy Anthony \n 2025-09-04")
-subregion_var_violin(geo_eccc,'Plotting Subregion by Cultural_species_richness', 'ECCC Data Paper', geo_eccc$Subregion, geo_eccc$Cultural_species_richness, "Subregion", "Cultural_species_richness", "Chart by Wendy Anthony \n 2025-08-16")
-
-```
-
-## Point Chart Function
-
-```{r Test_GGplot_Function_point}
-geo_eccc <- read.csv("TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
-
-str(geo_eccc)
-names(geo_eccc)
-
-
-subregion_var_point <- function(file, title, subtitle, colx, coly, xlab, ylab, caption){
-
-ggplot(file, 
-                    aes(x = colx, y = coly, colour = Subregion)) +
-                    geom_point(shape = 18, size = 2) +
-                    theme_minimal() + #get rid of grey background and tick marks
-                    theme(legend.position="bottom") +
-                    # theme(legend.position="none") + #remove legend 
-                    theme(axis.text.x = element_text(angle =35, vjust = 1, hjust=1, size = 7)) +
-                    labs(title=title,
-                      subtitle=subtitle,
-                      caption = caption,
-                      x = xlab, y = ylab)
-}
-
-subregion_var_point(geo_eccc,'Plotting Site by Percentage Native Species', 'Malloff & Shackelford. (2024). \nFeeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. \nRestoration Futures Lab at the University of Victoria.
-', geo_eccc$Site, geo_eccc$Proportion_of_native_species, "Site", "Proportion of native species", "Chart by Wendy Anthony \n 2025-09-16 \n ECCC Data: (Malloff & Shackelford, 2024)")
-
-subregion_var_point(geo_eccc,'Plotting Site by Exotic Species', 'Malloff & Shackelford. (2024). \nFeeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. \nRestoration Futures Lab at the University of Victoria.
-', geo_eccc$Site, geo_eccc$Exotic_species, "Site", "Exotic Species", "Chart by Wendy Anthony \n 2025-09-16 \n ECCC Data: (Malloff & Shackelford, 2024)")
-```
-
-
-# Leaflet Map
-## Custom Icons
-```{r leaflet_map_custom_icons}
-
-Sites_eccc <- read.csv("SiteDetails-TEST-GOE-Monitor.csv", header = TRUE, sep = ",")
-
-names(Sites_eccc)
-
-library(dplyr)
-library(leaflet)
-library(htmlwidgets) # for responsive web map
-
-# custom icon
-# https://leafletjs.com/examples/custom-icons/
-greenLeafIcon <- makeIcon(
-  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
-  iconWidth = 38, iconHeight = 95,
-  iconAnchorX = 22, iconAnchorY = 94,
-  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
-  shadowWidth = 50, shadowHeight = 64,
-  shadowAnchorX = 4, shadowAnchorY = 62
-)
-# change LeafIcon size 1/2
-greenLeafIconSm <- makeIcon(
-  iconUrl = "https://leafletjs.com/examples/custom-icons/leaf-green.png",
-  iconWidth = 19, iconHeight = 47,
-  iconAnchorX = 11, iconAnchorY = 47,
-  shadowUrl = "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
-  shadowWidth = 25, shadowHeight = 32,
-  shadowAnchorX = 2, shadowAnchorY = 31
-)
-
-# Title control
-title <- tags$div(HTML('<b>ECC Site Maps</b><br>Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria'))
-  
-
-ECCC_map <- leaflet(Sites_eccc) %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addMarkers(
-             ~ Lng, ~ Lat, icon = greenLeafIconSm,
-             popup = paste0("<b>Subregion:</b> ", Sites_eccc$Subregion, "<br>", "<b>Site:</b> ", Sites_eccc$Site, "<br>", "<b>Latitude:</b> ", Sites_eccc$Lat, "<br>", "<b>Longitude:</b> ", Sites_eccc$Lng,  "<br><br>", "<b>Land Manager:</b> ", Sites_eccc$Land.Manager, "<br>", "<b>Main Restoration:</b> ", Sites_eccc$Main.Restoration.Type, "<br>", "<b>Restoration Intensity:</b> ", Sites_eccc$Restoration.Intensity, "<br>", "<b> Area:</b> ", Sites_eccc$Area.ha, " ha")) %>%
-  setView(-123.44799, 48.64919, 9) %>%
-  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
-  addControl(title, position = "topright")
-
-# Display map
-ECCC_map
-
-# Save map
-saveWidget(ECCC_map, "ECCC_map.html")
-
-```
-
-## Circle Markers
-```{r leaflet_map_circle_markers}
-
-# NOT WORKING - Sites not same
-#geo_eccc_sites <- cbind(geo_eccc, Sites_eccc)
-# try to add , "<br>",  "<b>Composite Index:</b> ", geo_eccc_sites$Composite_Index
-# names(geo_eccc_sites)
-names(Sites_eccc)
-
-library(dplyr)
-library(leaflet)
-library(htmlwidgets) # for responsive web map
-
-
-# Title control
-title <- tags$div(HTML('<b>ECC Site Maps</b><br>Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria'))
- 
-# https://rstudio.github.io/leaflet/articles/markers.html 
-# Create a palette that maps factor levels to colors
-pal <- colorFactor(c("green", "orange"), domain = c("Saanich Peninsula", "Gulf Islands"))
-
-ECCC_map <- leaflet(Sites_eccc) %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addCircleMarkers(
-             ~ Lng, ~ Lat, radius = ~ifelse(Subregion == "Saanich Peninsula", 4, 5),
-    color = ~pal(Subregion),
-    stroke = FALSE, fillOpacity = 0.5,
-             popup = paste0("<b>Site:</b> ", Sites_eccc$Site, "<br>", "<b>Subregion:</b> ", Sites_eccc$Subregion, "<br>", "<b>Latitude:</b> ", Sites_eccc$Lat, "<br>", "<b>Longitude:</b> ", Sites_eccc$Lng,  "<br><br>", "<b>Land Manager:</b> ", Sites_eccc$Land.Manager, "<br>", "<b>Main Restoration:</b> ", Sites_eccc$Main.Restoration.Type, "<br>", "<b>Restoration Intensity:</b> ", Sites_eccc$Restoration.Intensity, "<br>", "<b> Area:</b> ", Sites_eccc$Area.ha, " ha")) %>%
-  setView(-123.44799, 48.64919, 9) %>%
-  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
-  addControl(title, position = "topright")
-
-# Display map
-ECCC_map
-
-# Save map
-saveWidget(ECCC_map, "ECCC_map.html")
-
-```
-
-## Circle Markers Sized to Area
-```{r leaflet_map_circle_markers_sized_area}
-
-# NOT WORKING - Sites not same
-#geo_eccc_sites <- cbind(geo_eccc, Sites_eccc)
-# try to add , "<br>",  "<b>Composite Index:</b> ", geo_eccc_sites$Composite_Index
-# names(geo_eccc_sites)
-names(Sites_eccc)
-
-library(dplyr)
-library(leaflet)
-library(htmlwidgets) # for responsive web map
-
-
-# Title control
-# Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria
-title <- tags$div(HTML('<p style="font-size:12px;font-weight:bold">ECC Sites Map</p>'))
- 
-# https://rstudio.github.io/leaflet/articles/markers.html 
-# Create a palette that maps factor levels to colors
-pal <- colorFactor(c("green", "orange"), domain = c("Saanich Peninsula", "Gulf Islands"))
-
-ECCC_map <- leaflet(Sites_eccc) %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addCircleMarkers(
-             ~ Lng, ~ Lat, 
-# https://stackoverflow.com/questions/40137212/variable-marker-size-feature-in-leaflet-r
-              radius = ~geo_eccc$Composite_Index * 3,    
-              # radius = ~Sites_eccc$Area.ha,
-                  # radius = ~sqrt(Sites_eccc$Area.ha),
- # size smaller is Saanich, else larger if Gulf            
-#             radius = ~ifelse(Subregion == "Saanich Peninsula", 4, 5),
-    color = ~pal(Subregion),
-    stroke = FALSE, fillOpacity = 0.5,
-             popup = paste0("<b>Site:</b> ", Sites_eccc$Site, "<br>", "<b>Subregion:</b> ", Sites_eccc$Subregion, "<br>", "<b>Latitude:</b> ", Sites_eccc$Lat, "<br>", "<b>Longitude:</b> ", Sites_eccc$Lng,  "<br><br>", "<b>Land Manager:</b> ", Sites_eccc$Land.Manager, "<br>", "<b>Main Restoration:</b> ", Sites_eccc$Main.Restoration.Type, "<br>", "<b>Restoration Intensity:</b> ", Sites_eccc$Restoration.Intensity, "<br>", "<b> Area:</b> ", Sites_eccc$Area.ha, " ha")) %>%
-  setView(-123.44799, 48.64919, 9) %>%
-  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
-  addControl(title, position = "topright")
-
-# Display map
-ECCC_map
-
-# Save map
-saveWidget(ECCC_map, "ECCC_map.html")
-
-```
-
-
-## Circle Markers Sized to Composite_Index
-geo_eccc_all_site_data.csv
-```{r leaflet_map_circle_markers_sized_Composite_Index}
-
-geo_eccc_sites_1 <- read.csv("geo_eccc_all_site_data.csv")
-names(geo_eccc_sites_1)
-
-library(dplyr)
-library(leaflet)
-library(htmlwidgets) # for responsive web map
-
-
-# Title control
-# Malloff & Shackelford. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria
-title <- tags$div(HTML('<p style="font-size:12px;font-weight:bold">ECC Sites Map</p>'))
- 
-# https://rstudio.github.io/leaflet/articles/markers.html 
-# Create a palette that maps factor levels to colors
-pal <- colorFactor(c("#d7191c", "#2c7bb6"), domain = c("Saanich Peninsula", "Gulf Islands"))
-
-ECCC_map_1 <- leaflet(geo_eccc_sites_1) %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addCircleMarkers(
-             ~ Lng, ~ Lat, 
-# https://stackoverflow.com/questions/40137212/variable-marker-size-feature-in-leaflet-r
-              radius = ~geo_eccc_sites_1$Composite_Index * 5,    
-              # radius = ~geo_eccc_sites_1$Area.ha,
-                  # radius = ~sqrt(geo_eccc_sites_1$Area.ha),
- # size smaller is Saanich, else larger if Gulf            
-#             radius = ~ifelse(Subregion == "Saanich Peninsula", 4, 5),
-    fillColor = ~pal(Subregion),
-    color = "black",
-    weight = 3, # size of circle border
-    stroke = TRUE, fillOpacity = 0.5,
-             popup = paste0("<b>Site:</b> ", "<b>", "<b>", geo_eccc_sites_1$Site, "</b>", "</b>", "<br><br>", "<b>Subregion:</b> ", geo_eccc_sites_1$Subregion, "<br>",
-                        "<b>Latitude:</b> ", geo_eccc_sites_1$Lat, "<br>", "<b>Longitude:</b> ", geo_eccc_sites_1$Lng,  "<br><br>",
-                        "<b>Land Manager:</b> ", geo_eccc_sites_1$Land_Manager, "<br>",
-                        "<b>Main Restoration:</b> ", geo_eccc_sites_1$Main_Restoration_Type, "<br>",
-                        "<b>Restoration Intensity:</b> ", geo_eccc_sites_1$Restoration_Intensity, "<br>",
-                        "<b> Area:</b> ", geo_eccc_sites_1$Area_ha, " ha",
-                        "<br><br>",
-                        "<b>Proportion of native species:</b> ", geo_eccc_sites_1$Proportion_of_native_species, "<br>",
-                        "<b>Cultural species richness:</b> ", geo_eccc_sites_1$Cultural_species_richness, "<br>",
-                        "<b>Exotic species:</b> ", geo_eccc_sites_1$Exotic_species, "<br>",
-                        "<b>Trampling:</b> ", geo_eccc_sites_1$Trampling, "<br>",
-                        "<b>Herbivory:</b> ", geo_eccc_sites_1$Herbivory, "<br>",
-                        "<b>Composite Index:</b> ", geo_eccc_sites_1$Composite_Index, "<br>")) %>%
-  setView(-123.44799, 48.64919, 10) %>%
-  addMiniMap(width = 150, height = 150, zoomLevelOffset = -4) %>%
-  addControl(title, position = "topright")
-
-# Display map
-ECCC_map_1
-
-# Save map
-saveWidget(ECCC_map_1, "ECCC_map_CI.html")
-
-```
-
 
 # TO DO
 - leaflet map jumps when clicking popup (in RStudio, not in html file)
