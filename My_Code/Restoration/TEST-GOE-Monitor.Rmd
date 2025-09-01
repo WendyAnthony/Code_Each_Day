@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(shiny)
 library(tidyverse)
 library(plotly)
+library(DiagrammeR)
 ```
 
 
@@ -32,7 +33,7 @@ library(plotly)
 - Data Cleaning to ensure no space at beginning of any text values and column headings
 Note: SiteDetails-TEST-GOE-Monitor.csv has space in front of values 
  NEED TO change `TEST-GOE-Monitor.xlsx` excel file first, then resave as csv
-```{r load_data}
+```{r load-data}
 # Site Data
 geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",")
 # Site Details
@@ -42,19 +43,19 @@ Sites_eccc <- read.csv("SiteDetails-TEST-GOE-Monitor.csv", header = TRUE, sep = 
 ## Data Discovery
 
 ## Column Names Data
-```{r data_1}
+```{r data-1}
 colnames(geo_eccc)
 ```
 
 ## Column Names Sites
-```{r data_2}
+```{r data-2}
 colnames(Sites_eccc)
 ```
 
 # Data Manipulation
 
 ## proportion to Percentage_of_native_species
-```{r create_percentage_number}
+```{r create-percentage-number}
 # using scales creates % character instead of number
 # Percentage_of_native_species <- scales::percent(geo_eccc$Proportion_of_native_species)
 # Percentage_of_native_species 
@@ -66,7 +67,7 @@ Percentage_ns
 
 ## add `Percentage_ns` data to column
 <details><summary><b><i>Click to see results of `data`</i></b></summary><p>
-```{r add_column}
+```{r add-column}
 # https://sparkbyexamples.com/r-programming/add-column-to-dataframe-in-r/
 # geo_eccc_1 <- cbind(geo_eccc, Percentage_of_native_species)
 # geo_eccc_1
@@ -76,7 +77,7 @@ geo_eccc
 ```
 
 ## Check data structure of new column
-```{r data_structure_new_column}
+```{r data-structure-new-column}
 str(geo_eccc)
 ```
 
@@ -84,13 +85,13 @@ str(geo_eccc)
 
 ## Data Structure Data
 - make sure each column is same data type in both data files
-```{r data_structure_1}
+```{r data-structure-1}
 str(geo_eccc)
 ```
 
 ## Data Structure Sites
 - make sure each column is same data type
-```{r data_structure_2}
+```{r data-structure-2}
 str(Sites_eccc)
 ```
 
@@ -103,7 +104,7 @@ length(unique(Sites_eccc$Site))
 
 ### Arrange Order
 - Site details Site names are in different order than Site Data, so put each site in alphabetical order first
-```{r arange_order_df}
+```{r arange-order-df}
 # tidyverse
 # https://stackoverflow.com/questions/68989228/sort-dataframe-by-column-value-r
 Sites_eccc_1 <- Sites_eccc %>% arrange(Sites_eccc$Site)
@@ -113,7 +114,7 @@ geo_eccc_1 <- geo_eccc %>% arrange(geo_eccc$Site)
 ### cbind arranged df works
 - (`merge` doesn't work, leaves columns empty)
 
-```{r cbind_arranged_df}
+```{r cbind-arranged-df}
 geo_eccc_sites <- cbind(Sites_eccc_1, geo_eccc_1)
 names(geo_eccc_sites)
 ```
@@ -121,14 +122,14 @@ names(geo_eccc_sites)
 ### remove duplicate columns
 - now there are 2 columns with same name for, Subregion, Site
 
-```{r remove_duplicate_columns}
+```{r remove-duplicate-columns}
 # https://stackoverflow.com/questions/7072159/how-do-you-remove-columns-from-a-data-frame
 geo_eccc_sites_1 <- geo_eccc_sites[c(-9,-10)]
 names(geo_eccc_sites_1)
 ```
 
 ### Rename columns with . using base R
-```{r rename_columns_baseR}
+```{r rename-columns-baseR}
 
 names(geo_eccc_sites_1)[names(geo_eccc_sites_1) == "Land.Manager"] <- "Land_Manager"
 names(geo_eccc_sites_1)[names(geo_eccc_sites_1) == "Main.Restoration.Type"] <- "Main_Restoration_Type"
@@ -141,7 +142,7 @@ names(geo_eccc_sites_1)
 
 
 ### Create and save new csv file with both datasets 
-```{r create_csv_combined_datasets}
+```{r create-csv-combined-datasets}
 write.csv(geo_eccc_sites_1, "geo_eccc_all_site_data.csv", row.names = FALSE)
 ```
 
@@ -150,7 +151,7 @@ write.csv(geo_eccc_sites_1, "geo_eccc_all_site_data.csv", row.names = FALSE)
 
 # Plots
 ## Site by Percentage Native Species
-```{r plots_site_native_species}
+```{r plots-site-native-species}
 site_natsp <- ggplot(geo_eccc, 
                     aes(x = Site, y = Percentage_ns)) +
                     geom_point(shape = 18, size = 2) +
@@ -165,7 +166,7 @@ site_natsp
 ```
 
 ## Site by Composite_Index
-```{r plots_Composite_Index}
+```{r plots-Composite-Index}
 site_natsp <- ggplot(geo_eccc, 
                     aes(x = Site, y = Composite_Index)) +
                     geom_point(shape = 18, size = 2) +
@@ -185,7 +186,7 @@ aslo Scafe Hill had a different low value ...
 - Having trouble ordering Restoration_Intensity values ... see next example
 
 <details><summary><b><i>Click to see results of `TEST`</i></b></summary><p>
-```{r plots_site_Restoration_Intensity}
+```{r plots-site-Restoration-Intensity}
 # names(geo_eccc_sites_1)
 # str(geo_eccc_sites_1)
 # unique(geo_eccc_sites_1$Restoration_Intensity)
@@ -224,7 +225,7 @@ aslo Scafe Hill had a different low value ...
 
 ## ORDER NOT WORKING TEST Site by Restoration_Intensity and Exotic_species
 
-```{r plots_site_Restoration_Intensity_Exotic}
+```{r plots-site-Restoration-Intensity-Exotic}
 names(geo_eccc_sites_1)
 str(geo_eccc_sites_1)
 
@@ -263,7 +264,7 @@ site_restInt_exotic
 
 ## ORDER WORKs Point Plot Site by Restoration_Intensity
 
-```{r plots_site_Restoration_Intensity_order_point}
+```{r plots-site-Restoration-Intensity-order-point}
 names(geo_eccc_sites_1)
 # Reorder following a precise order
 # https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
@@ -299,6 +300,8 @@ site_restInt <- ggplot(geo_eccc_sites_2,
 # y = Restoration_Intensity
                     geom_point(shape = 18, size = 2) +
   #geom_bar(stat="identity") +
+  # Replace default palette of pink & blue
+  scale_fill_brewer(palette = "Dark2") +
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="bottom") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
@@ -314,7 +317,7 @@ ggplotly(site_restInt)
 
 ## Change x axis ORDER WORKs Point Plot Site by Restoration_Intensity
 
-```{r plots_site_Restoration_Intensity_order_point_1}
+```{r plots-site-Restoration-Intensity-order-point-1}
 names(geo_eccc_sites_1)
 # Reorder following a precise order
 # https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
@@ -345,13 +348,17 @@ geo_eccc_sites_2 <- geo_eccc_sites_2[order(geo_eccc_sites_2$Restoration_Intensit
 # values in order now -- ?? how to change to reverse order 
 site_restInt_x <- ggplot(geo_eccc_sites_2,
        aes(x = reorder(Site, 
-                       desc(Restoration_Intensity)), 
+                       # -desc reverses descending
+                       -desc(Restoration_Intensity)), 
            y = reorder(Restoration_Intensity, desc(Restoration_Intensity)), color = Subregion)) +
   # reorder y variable axis
   # https://stackoverflow.com/questions/28391850/reverse-order-of-discrete-y-axis-in-ggplot2s
 # y = Restoration_Intensity
                     geom_point(shape = 18, size = 2) +
   #geom_bar(stat="identity") +
+  # Replace default palette of pink & blue
+  # makes ggploty legend show (Saanich Peninsula,1)
+#  scale_fill_brewer(palette = "Dark2") +
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="bottom") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
@@ -361,13 +368,12 @@ site_restInt_x <- ggplot(geo_eccc_sites_2,
                       x = "Site", y = "Restoration_Intensity")
 site_restInt_x
 
-
 ggplotly(site_restInt_x)
 ```
 
 ## BAR Plot WORKS Site by Restoration_Intensity
 
-```{r plots_site_Restoration_Intensity_order_bar}
+```{r plots-site-Restoration-Intensity-order-bar}
 names(geo_eccc_sites_1)
 # Reorder following a precise order
 # https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
@@ -414,7 +420,7 @@ ggplotly(site_restInt_bar)
 ```
 
 ## Violin Subregion by Exotic_species
-```{r plots_Exotic_species}
+```{r plots-Exotic-species}
 subregion_exsp <- ggplot(geo_eccc, 
                     aes(x = Subregion, y = Exotic_species)) +
                     geom_violin(fill = "seagreen2") +
@@ -430,7 +436,7 @@ subregion_exsp
 ```
 
 ## Violin Subregion by Percentage_ns
-```{r plots_Percentage_ns}
+```{r plots-Percentage-ns}
 names(geo_eccc)
 subregion_nsp <- ggplot(geo_eccc, 
                     aes(x = Subregion, y = Percentage_ns)) +
@@ -447,7 +453,7 @@ subregion_nsp
 ```
 
 ## Cowplot Violin Subregion plot_grid
-```{r cowplot_violin_subr}
+```{r cowplot-violin-subr}
 library(cowplot)
 
 subregion_exsp_1 <- subregion_exsp + labs(title='Exotic Species',
@@ -464,7 +470,7 @@ plot_grid(subregion_exsp_1, subregion_nsp_1, labels = "AUTO")
 
 
 ## TEST NOTWorking Bar Chart Subregion by Restoration_Intensity
-```{r plots_Restoration_Intensity}
+```{r plots-Restoration-Intensity}
 names(geo_eccc_sites_1)
 str(geo_eccc_sites_1)
 
@@ -484,7 +490,7 @@ ggplotly()
 ```
 
 ## Subregion by Proportion_of_native_species
-```{r plots_Subregion_Percentage_of_native_species}
+```{r plots-Subregion-Percentage-of-native-species}
 subregion_natsp <- ggplot(geo_eccc_1, 
                     aes(x = Subregion, y = Percentage_ns)) +
                     geom_violin(fill = "seagreen2") +
@@ -508,7 +514,7 @@ subregion_natsp
 - use pivot_longer() for single row with multiple columns convert to long
 
 ## pivot longer one row to long df
-```{r pivot_longer}
+```{r pivot-longer}
 colnames(geo_eccc_1)
 # choose index row from data sorted alphabetically
 # delete first 2 columns as they can't be characters ? also Proportion to leave Percentage 
@@ -539,7 +545,7 @@ Uplands_long
 ```
 
 ## Point Plot Long Uplands
-```{r plots_Uplands}
+```{r plots-Uplands}
 Uplands_long_plot  <-  ggplot(Uplands_long, 
                     aes(x = variable, y = value)) +
   # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
@@ -555,7 +561,7 @@ Uplands_long_plot
 ```
 
 ## Point Plot to Compare Gonzales Variables
-```{r plots_Gonzales_compare_1}
+```{r plots-Gonzales-compare-1}
 Gonzales_long_plot  <-  ggplot(Gonzales_long, 
                     aes(x = variable, y = value)) +
   # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
@@ -571,7 +577,7 @@ Gonzales_long_plot
 ```
 
 ## Point Plot Long Anniversary_Island_long
-```{r plots_Gonzales}
+```{r plots-Gonzales}
 Anniversary_Island_long_plot  <-  ggplot(Anniversary_Island_long, 
                     aes(x = variable, y = value)) +
   # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
@@ -588,7 +594,7 @@ Anniversary_Island_long_plot
 
 
 ## Bar Variables Compare Uplands
-```{r compare_bar_Variables_uplands}
+```{r compare-bar-Variables-uplands}
 
 compare_bar_uplands  <-  ggplot(Uplands_long, 
                     aes(x = variable, y = value)) +
@@ -607,16 +613,18 @@ compare_bar_uplands
 ```
 
 ## Compare Bar Variables multiple sites
-```{r compare_bar_Variables_multiple_sites}
+```{r compare-bar-Variables-multiple-sites}
 
 names(geo_eccc_1)
 compare_bar_multiple_sites  <-  ggplot(geo_eccc_1,
-                    aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+                    aes(x = Site, y = Percentage_ns, fill = Subregion)) +
   
 # Exotic_species
   # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
                     ylim(0, 100) +
                     geom_bar(stat = "identity") +
+  # Replace default palette of pink & blue
+  scale_fill_brewer(palette = "Dark2") +
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="none") + #remove legend 
                     theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
@@ -627,7 +635,7 @@ compare_bar_multiple_sites
 ```
 
 ## Arrange Compare Bar Variables multiple sites
-```{r compare_bar_Variables_multiple_sites_order}
+```{r compare-bar-Variables-multiple-sites-order}
 # https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
 names(geo_eccc_1)
 # arrange values
@@ -637,10 +645,12 @@ geo_eccc_1 %>% arrange(desc(Percentage_ns)) %>%
   # updates Site with new arrangement
    mutate(Site = factor(Site, levels = Site)) %>% 
     ggplot(
-      aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+      aes(x = Site, y = Percentage_ns, fill = Subregion)) +
   # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
                     ylim(0, 100) +
                     geom_bar(stat = "identity") +
+  # Replace default palette of pink & blue
+  scale_fill_brewer(palette = "Dark2") +
                     theme_minimal() + #get rid of grey background and tick marks 
                     theme(legend.position="bottom") + 
                     theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
@@ -652,7 +662,7 @@ geo_eccc_1 %>% arrange(desc(Percentage_ns)) %>%
 
 
 ## TEST Stacking Bar Variables multiple sites
-```{r stacking_bar_Variables_multiple_sites}
+```{r stacking-bar-Variables-multiple-sites}
 # https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html
 # View(mpg)
 # g <- ggplot(geo_eccc_1, aes(Subregion))  
@@ -692,7 +702,7 @@ geo_eccc_1 %>% arrange(desc(Percentage_ns)) %>%
 ```
 
 ## ??? NOTWORKING Compare Column Variables Uplands
-```{r compare_col_Variables}
+```{r compare-col-Variables}
 colnames(geo_eccc_1)
 
 geo_eccc_1_filter <- filter(geo_eccc_1, geo_eccc_1$Site %in% c("Uplands Park", "Trial Island")) 
@@ -718,7 +728,7 @@ compare_col_uplands
 # TEST NOT WORKING Facet wraps
 ## facet_wrap(~Subregion)
 - need to filter Subregion for each ???
-```{r facet_wraps}
+```{r facet-wraps}
 names(geo_eccc_1)
 
 ggplot(geo_eccc_1, 
@@ -734,7 +744,7 @@ ggplot(geo_eccc_1,
 
 ## ??? TEST FILTER SAME AS PREVIOUS NOT WORKINGfacet_wrap
 - need to filter Subregion for each ???
-```{r facet_wraps_}
+```{r facet-wraps-test}
 names(geo_eccc_1)
 
 ggplot(geo_eccc_1, 
@@ -753,7 +763,7 @@ ggplot(geo_eccc_1,
 
 # Test GGplot Function
 ## Violin Chart Function
-```{r Test_GGplot_Function_violin}
+```{r Test-GGplot-Function-violin}
 geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
 str(geo_eccc)
 names(geo_eccc)
@@ -787,7 +797,7 @@ subregion_var_violin(geo_eccc,'Plotting Subregion by Cultural_species_richness',
 
 ## Point Chart Function
 ### ggplot point chart
-```{r Test_GGplot_Function_point}
+```{r Test-GGplot-Function-point}
 geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
 
 str(geo_eccc)
@@ -799,6 +809,8 @@ subregion_var_point <- function(file, title, subtitle, colx, coly, xlab, ylab, c
 ggplot(file, 
                     aes(x = colx, y = coly, colour = Subregion)) +
                     geom_point(shape = 18, size = 2) +
+    # Replace default palette of pink & blue
+    scale_fill_brewer(palette = "Dark2") +
                     theme_minimal() + #get rid of grey background and tick marks
                     theme(legend.position="bottom") +
                     # theme(legend.position="none") + #remove legend 
@@ -817,7 +829,7 @@ subregion_var_point(geo_eccc,'Plotting Site by Exotic Species', 'Malloff & Shack
 ```
 
 ### plotly ggplot point chart
-```{r Test_GGplot_Function_point_plotly}
+```{r Test-GGplot-Function-point-plotly}
 geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
 
 str(geo_eccc)
@@ -829,6 +841,8 @@ subregion_var_point <- function(file, title, subtitle, colx, coly, xlab, ylab, c
 ggplot(file, 
                     aes(x = colx, y = coly, colour = Subregion)) +
                     geom_point(shape = 18, size = 2) +
+    # Replace default palette of pink & blue
+    scale_fill_brewer(palette = "Dark2") +
                     theme_minimal() + #get rid of grey background and tick marks
                     theme(legend.position="bottom") +
                     # theme(legend.position="none") + #remove legend 
@@ -852,7 +866,7 @@ ggplotly(p2)
 
 # Leaflet Map
 ## Custom Icons
-```{r leaflet_map_custom_icons}
+```{r leaflet-map-custom-icons}
 
 Sites_eccc <- read.csv("SiteDetails-TEST-GOE-Monitor.csv", header = TRUE, sep = ",")
 
@@ -904,7 +918,7 @@ saveWidget(ECCC_map, "ECCC_map.html")
 ```
 
 ## Circle Markers
-```{r leaflet_map_circle_markers}
+```{r leaflet-map-circle-markers}
 
 # NOT WORKING - Sites not same
 #geo_eccc_sites <- cbind(geo_eccc, Sites_eccc)
@@ -944,7 +958,7 @@ saveWidget(ECCC_map, "ECCC_map.html")
 ```
 
 ## Circle Markers Sized to Area
-```{r leaflet_map_circle_markers_sized_area}
+```{r leaflet-map-circle-markers-sized-area}
 
 names(Sites_eccc)
 
@@ -989,7 +1003,7 @@ saveWidget(ECCC_map, "ECCC_map.html")
 
 ## Circle Markers Sized to Composite_Index
 geo_eccc_all_site_data.csv
-```{r leaflet_map_circle_markers_sized_Composite_Index}
+```{r leaflet-map-circle-markers-sized-Composite-Index}
 
 geo_eccc_sites_1 <- read.csv("geo_eccc_all_site_data.csv")
 names(geo_eccc_sites_1)
@@ -1049,7 +1063,7 @@ saveWidget(ECCC_map_1, "ECCC_map_CI.html")
 ## Circle Markers Sized to Radius
 ### Title code
 geo_eccc_all_site_data.csv
-```{r leaflet_map_circle_markers_sized_radius}
+```{r leaflet-map-circle-markers-sized-radius}
 
 geo_eccc_sites_1 <- read.csv("geo_eccc_all_site_data.csv")
 names(geo_eccc_sites_1)
@@ -1117,7 +1131,7 @@ saveWidget(ECCC_map_2, "ECCC_map_radius-1.html")
 ### lmGadget all sites
 - code works but can't knit html file unless
 adding "echo=TRUE, eval = FALSE"
-```{r shiny_lmgadget, echo=TRUE, eval = FALSE}
+```{r shiny-lmgadget, echo=FALSE, eval = FALSE}
 # colnames(geo_eccc_1)
 
 library(shiny)
@@ -1216,8 +1230,428 @@ lmGadget(iris, "Sepal.Length", "Sepal.Width")
 
 
 ## Inline Shiny app 
+
+
+### Shiny Showcase
+`app-WORKS-TabsetLayout-choose-Reactive-Table-Plot-BoxNames-comments-showcase.R`
+```{r, Shiny-app-inline-showcase, echo=FALSE, eval = TRUE}
+# Download data
+geo_eccc_sites_2 <- read.csv("geo_eccc_all_site_data.csv", header = TRUE, sep = ",")
+
+# Package Libraries
+library(shiny)
+library(leaflet)
+library(ggplot2)
+library(plotly)
+
+#ui
+shinyApp(
+ui = fluidPage(
+  # app Title
+  titlePanel("Exploring GOE Monitoring Dataviz"),
+sidebarLayout(
+  # sidebarPanel
+  sidebarPanel(width = 3,
+    selectInput("Menu1","Choose a Subregion", choices = c("All", unique(geo_eccc_sites_2$Subregion))),
+    selectInput("Menu2","Choose an Site", choices = c("All", unique(geo_eccc_sites_2$Site))),
+    span(style = "font-weight:bold; font-size:11px;", "Using App: "),
+    span(style = "font-size:10px;", "Choose all or one Subregion and/or Site, then click tab to view results: Table, Comparing Subregions, and Comparing Sites"),
+    br(),
+    span(style = "font-weight:bold; font-size:11px;", "About the Data: "),
+    span(style = "font-size:9px;", "GOE Data from report tables: Malloff, J., & Shackelford, N. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria.
+")
+  ),
+  # mainPanel
+  mainPanel(
+    # tabsetPanel
+tabsetPanel(
+  id = "tabset",
+  selected = "About This App",
+tabPanel("About This App",  htmlOutput("text")),
+tabPanel("Data Table", p(style = "font-size:9px;", "GOE Data from report tables: Malloff, J., & Shackelford, N. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria.
+"), tableOutput("table1")),
+tabPanel("Comparing Subregions",
+         p(style = "font-size:9px;", "GOE Data from report tables: Malloff, J., & Shackelford, N. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria.
+"),
+         fluidRow(
+            column(6, plotOutput("plot2")),
+            #column(6, plotOutput("plot3")),
+            #column(6, plotOutput("plot8")),
+            column(6, plotOutput("plot9"))
+         )),
+# tabs seem to break if I tryto reuse plot
+tabPanel("Comparing Sites",
+         p(style = "font-size:9px;", "GOE Data from report tables: Malloff, J., & Shackelford, N. (2024). Feeling the Pulse: Monitoring methods and initial outcomes in oak meadow ecosystems. Restoration Futures Lab at the University of Victoria.
+"),
+         fluidRow(
+           column(6, plotlyOutput("plot5")),
+           column(6, plotlyOutput("plot10")),
+           column(6, plotlyOutput("plot6")),
+           column(6, plotlyOutput("plot11"))
+         ))
+#,
+# tabPanel("Plot Output",  plotOutput("plot")),
+# tabPanel("Subregion Plots Output",  plotOutput("plot2")),
+# tabPanel("Comparing Site Plots Output",  plotOutput("plot4")),
+# tabPanel("More Subregion Plots Output",  plotOutput("plot5")),
+# tabPanel("More Subregion Plots Output",  plotOutput("plot6")),
+# tabPanel("Plotly Output",  plotlyOutput("plot7"))
+# ,
+# tabPanel("Map Output",  leafletOutput("map",height = 650,width=605))
+
+# end tabsetPanel
+)
+# end mainPanel
+  )
+# end sidebarLayout
+)
+# end Fluid Page
+),
+
+# server
+server = function(input, output, session){
+
+  data_1 <- reactive({
+    if(input$Menu1 == "All"){
+      geo_eccc_sites_2
+    }else{
+      geo_eccc_sites_2[which(geo_eccc_sites_2$Subregion == input$Menu1),]
+    }
+  })
+
+  data_2 <- reactive({
+    if (input$Menu2 == "All"){
+      geo_eccc_sites_2
+    }else{
+      geo_eccc_sites_2[which(geo_eccc_sites_2$Site == input$Menu2),]
+    }
+  })
+
+  observe({
+    if(input$Menu1 != "All"){
+      updateSelectInput(session,"Menu2","Choose a Site", choices = c("All",unique(data_1()$Site)))
+    }
+    else if(input$Menu2 != 'All'){
+      updateSelectInput(session,"Menu1","Choose a name", choices = c('All',unique(data_2()$Subregion)))
+    }
+    else if (input$Menu1 == "All" & input$Menu2 == "All"){
+      updateSelectInput(session,"Menu2","Choose a Site", choices = c('All',unique(geo_eccc_sites_2$Site)))
+      updateSelectInput(session,"Menu1","Choose a Subregion", choices = c('All',unique(geo_eccc_sites_2$Subregion)))
+    }
+  })
+
+
+  data3 <- reactive({
+    if(input$Menu2 == "All"){
+      data_1()
+    }else if (input$Menu1 == "All"){
+      data_2()
+    }else if (input$Menu2 == "All" & input$Menu1 == "All"){
+      geo_eccc_sites_2
+    }
+    else{
+      geo_eccc_sites_2[which(geo_eccc_sites_2$Site == input$Menu2 & geo_eccc_sites_2$Subregion == input$Menu1),]
+    }
+  })
+
+
+  # text output
+  # https://stackoverflow.com/questions/23233497/outputting-multiple-lines-of-text-with-rendertext-in-r-shiny
+  # https://stackoverflow.com/questions/33392784/make-bold-text-in-html-output-r-shiny
+  output$text <- renderUI({
+    str1 <- paste("for HAT's GOE Monitoring Data")
+    str2 <- paste("Here is what I propose to offer ...")
+    str3 <- paste("I. Final Products")
+    str3a <- paste("Shiny Interactive Dataviz Tool, RMarkdown Code Document that cleans data, and creates dataviz")
+    str4 <- paste("II. Data Preparation")
+    str4a <- paste("Clean data, ensure consistent naming and data formats, saving outputs, storing data")
+    str5 <- paste("III. Interactive Data Tables")
+    str5a <- paste("Filter by Subregion Group or Site; Search; Save Results")
+    str6 <- paste("IV. Plots")
+    str6a <- paste("Dot plots, bar charts, violin plots, Individual Sites, Subregion Group, save results")
+    str7 <- paste("V. Maps")
+    str7a <- paste("With markers sized equally, or by a variable value, ")
+    str7b <- paste('<a href="https://wendyanthony.github.io/ECCC_map_radius-1.html" target="_blank">Interactive Webpage Leaflet Map</a>')
+    HTML(paste0('<H2>', "Proposed Interactive Data Viz Tool", '</H2>',
+                '<H3>', str1, '</H3>',
+                str2, '<br/>',
+                '<H4>', str3, '</H4>',
+                '° ', str3a, '<br/>',
+                '<H4>', str4, '</H4>',
+                '° ', str4a, '<br/>',
+                '<H4>', str5, '</H4>',
+                '° ', str5a, '<br/>',
+                '<H4>', str6, '</H4>',
+                '° ', str6a, '<br/>',
+                '<H4>', str7, '</H4>',
+                '° ', str7a, str7b, '<br/>'
+                ))
+  })
+
+  # table output
+  output$table1 <- renderTable({
+    data3()
+  })
+
+# Plot works
+# output$plot <- renderPlot({
+#   d <- data3()
+#   plot(d$Exotic_species,d$Composite_Index)
+# })
+
+
+# Plot works
+output$plot <- renderPlot({
+  d <- data3()
+  ggplot(d,
+         aes(x = Site, y = Percentage_ns)) +
+    geom_point(shape = 18, size = 2) +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="none") + #remove legend
+    theme(axis.text.x = element_text(angle = 25, vjust = 1, hjust=1, size = 7)) +
+    labs(title='Plotting Site by Percentage Native Species',
+         subtitle='ECCC (Malloff & Shackelford, 2024)',
+         caption = "Chart by Wendy Anthony \n 2025-08-04")
+})
+
+# Plot works
+output$plot2 <- renderPlot({
+  d <- data3()
+
+  ggplot(d,
+         aes(x = Subregion, y = Exotic_species)) +
+    geom_violin(fill = "seagreen2") +
+    geom_boxplot(width = 0.1, fill = "sandybrown") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="none") + #remove legend
+    theme(axis.text.x = element_text(vjust = 1, size = 9)) +
+    labs(title='Plotting Subregion by Exotic Species',
+         subtitle='ECCC (Malloff & Shackelford, 2024)',
+         caption = "Chart by Wendy Anthony \n 2025-08-04")
+})
+
+
+# Plot works
+output$plot3 <- renderPlot({
+  d <- data3()
+
+  ggplot(d,
+         aes(x = Subregion, y = Composite_Index)) +
+    geom_violin(fill = "seagreen2") +
+    geom_boxplot(width = 0.1, fill = "sandybrown") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="none") + #remove legend
+    theme(axis.text.x = element_text(vjust = 1, size = 9)) +
+    labs(title='Plotting Subregion by Composite_Index',
+         subtitle='ECCC (Malloff & Shackelford, 2024)',
+         caption = "Chart by Wendy Anthony \n 2025-08-04")
+})
+
+# Plot works
+output$plot8 <- renderPlot({
+  d <- data3()
+
+  ggplot(d,
+         aes(x = Subregion, y = Cultural_species_richness)) +
+    geom_violin(fill = "seagreen2") +
+    geom_boxplot(width = 0.1, fill = "sandybrown") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="none") + #remove legend
+    theme(axis.text.x = element_text(vjust = 1, size = 9)) +
+    labs(title='Plotting Subregion by Cultural_species_richness',
+         subtitle='ECCC (Malloff & Shackelford, 2024)',
+         caption = "Chart by Wendy Anthony \n 2025-08-04")
+})
+
+# Plot works
+output$plot9 <- renderPlot({
+  d <- data3()
+names(geo_eccc_sites_2)
+  ggplot(d,
+         aes(x = Subregion, y = Percentage_ns)) +
+    geom_violin(fill = "seagreen2") +
+    geom_boxplot(width = 0.1, fill = "sandybrown") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="none") + #remove legend
+    theme(axis.text.x = element_text(vjust = 1, size = 9)) +
+    labs(title='Plotting Subregion by Percentage Native Species',
+         subtitle='ECCC (Malloff & Shackelford, 2024)',
+         caption = "Chart by Wendy Anthony \n 2025-08-04")
+})
+
+
+# Plot works
+output$plot4 <- renderPlot({
+  d <- data3()
+
+  d %>% arrange(desc(Percentage_ns)) %>%
+    # updates Site with new arrangement
+    mutate(Site = factor(Site, levels = Site)) %>%
+    ggplot(
+      aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+    # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+    ylim(0, 100) +
+    geom_bar(stat = "identity") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="bottom") +
+    theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+    labs(title='Comparinging Sites by Percentage Native Species',
+         subtitle='ECCC GOE Site Monitoring',
+         caption = "Chart by Wendy Anthony \n 2025-08-19")
+})
+
+
+# Plot works
+output$plot5 <- renderPlotly({
+  d <- data3()
+
+  d %>% arrange(desc(Exotic_species)) %>%
+    # updates Site with new arrangement
+    mutate(Site = factor(Site, levels = Site)) %>%
+    ggplot(
+      aes(x = Site, y = Exotic_species, fill = Subregion, color = Subregion)) +
+    # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+    ylim(0, 100) +
+    geom_bar(stat = "identity") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="bottom") +
+    theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+    labs(title='Comparing Sites by Exotic Species (High-Low)',
+         subtitle='ECCC GOE Site Monitoring',
+         caption = "Chart by Wendy Anthony \n 2025-08-19")
+})
+
+
+
+# Plot works
+output$plot6 <- renderPlotly({
+  d <- data3()
+
+  d %>% arrange(desc(Percentage_ns)) %>%
+    # updates Site with new arrangement
+    mutate(Site = factor(Site, levels = Site)) %>%
+    ggplot(
+      aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+    # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+    ylim(0, 100) +
+    geom_bar(stat = "identity") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="bottom") +
+    theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+    labs(title='Compare Sites by % Native Species (High-Low)',
+         subtitle='ECCC GOE Site Monitoring',
+         caption = "Chart by Wendy Anthony \n 2025-08-19")
+})
+
+
+# Plot works
+output$plot10 <- renderPlotly({
+  d <- data3()
+
+  # d %>% arrange(desc(Exotic_species)) %>%
+  #   # updates Site with new arrangement
+  #   mutate(Site = factor(Site, levels = Site)) %>%
+  d %>% ggplot(
+      aes(x = Site, y = Exotic_species, fill = Subregion, color = Subregion)) +
+    # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+    ylim(0, 100) +
+    geom_bar(stat = "identity") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="bottom") +
+    theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+    labs(title='Compare Sites by Exotic Species (alpha)',
+         subtitle='ECCC GOE Site Monitoring',
+         caption = "Chart by Wendy Anthony \n 2025-08-19")
+})
+
+
+
+# Plot works
+output$plot11 <- renderPlotly({
+  d <- data3()
+
+  # d %>% arrange(desc(Herbivory)) %>%
+  #   # updates Site with new arrangement
+  #   mutate(Site = factor(Site, levels = Site)) %>%
+  d %>% ggplot(
+      aes(x = Site, y = Percentage_ns, fill = Subregion, color = Subregion)) +
+    # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+    ylim(0, 100) +
+    geom_bar(stat = "identity") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="bottom") +
+    theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+    labs(title='Compare Sites by % Native Species (alpha)',
+         subtitle='ECCC GOE Site Monitoring',
+         caption = "Chart by Wendy Anthony \n 2025-08-19")
+})
+
+# Plot works
+output$plot7 <- renderPlotly({
+  d <- data3()
+
+  d %>% arrange(desc(Herbivory)) %>%
+    # updates Site with new arrangement
+    mutate(Site = factor(Site, levels = Site)) %>%
+    ggplot(
+      aes(x = Site, y = Herbivory, fill = Subregion, color = Subregion)) +
+    # https://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations
+    ylim(0, 100) +
+    geom_bar(stat = "identity") +
+    theme_minimal() + #get rid of grey background and tick marks
+    theme(legend.position="bottom") +
+    theme(axis.text.x = element_text(angle = 35, vjust = 1, hjust=1, size = 7)) +
+    labs(title='Comparinging Sites by Herbivory',
+         subtitle='ECCC GOE Site Monitoring',
+         caption = "Chart by Wendy Anthony \n 2025-08-19")
+})
+
+# # Create the base map
+# output$map <- renderLeaflet({
+#   leaflet() %>%
+#     addProviderTiles("Esri.WorldImagery") %>%
+#     setView(-123.44799, 48.64919, 9) # Center of US
+# })
+#
+# # Observer to update markers when filtered data changes
+# observe({
+#   data <- data3()
+#
+#   leafletProxy("map") %>%
+#     clearMarkers() %>%  # Remove existing markers
+#     addCircleMarkers(
+#       color = ~pal(Subregion),
+#       # size by multiple of Composite_Index
+#       radius = ~Composite_Index * 5,
+#       stroke = FALSE, fillOpacity = 0.5,
+#       data = data,
+#       lng = ~Lng,
+#       lat = ~Lat,
+#       popup = ~paste0("<b>Site:</b> ", "<b>", Site, "</b>", "<br><br>", "<b>Subregion:</b> ", Subregion, "<br>",
+#                       "<b>Latitude:</b> ", Lat, "<br>", "<b>Longitude:</b> ", Lng,  "<br><br>",
+#                       "<b>Land Manager:</b> ", Land_Manager, "<br>",
+#                       "<b>Main Restoration:</b> ", Main_Restoration_Type, "<br>",
+#                       "<b>Restoration Intensity:</b> ", Restoration_Intensity, "<br>",
+#                       "<b> Area:</b> ", Area_ha, " ha",
+#                       "<br><br>",
+#                       "<b>Proportion of native species:</b> ", Proportion_of_native_species, "<br>",
+#                       "<b>Cultural species richness:</b> ", Cultural_species_richness, "<br>",
+#                       "<b>Exotic species:</b> ", Exotic_species, "<br>",
+#                       "<b>Trampling:</b> ", Trampling, "<br>",
+#                       "<b>Herbivory:</b> ", Herbivory, "<br>",
+#                       "<b>Composite Index:</b> ", Composite_Index, "<br>"
+#       )
+#     )
+# })
+
+# end of server
+}
+)
+#shinyApp(ui,server)
+```
+
 ### Reactive choose 
-```{r, Shiny_app_inline, echo=FALSE}
+```{r, Shiny-app-inline, echo=FALSE}
 library(shiny)
 geo_eccc <- read.csv("SiteData-TEST-GOE-Monitor.csv", header = TRUE, sep = ",", stringsAsFactors=FALSE)
 colnames(geo_eccc)
@@ -1298,7 +1732,7 @@ server <- shinyServer(function(input,output, session){
 ### Leaflet Reactive Site Details
 `app-leaflet-reactive-AllSiteDetails-WORKING`
 
-```{r, Shiny_app_inline_leaflet, echo=FALSE}
+```{r, Shiny-app-inline-leaflet, echo=FALSE}
 ## https://stackoverflow.com/questions/46979328/how-to-make-shiny-leaflet-map-react-to-change-in-input-value-r
 # Map is filtering Subregion Sites, but drop down list isn't
 # Modelled on `app-test-leaflet-reactive.R`
@@ -1416,7 +1850,7 @@ server <- function(input, output, session) {
 ### Datatable search plot 
 `app-datatable-search-plot-update-ECCC-TEST`
 https://stackoverflow.com/questions/52880657/in-an-shiny-app-i-want-a-plot-to-update-based-on-the-search-results-in-a-datat 
-```{r, Shiny_app_inline_datatable, echo=FALSE}
+```{r, Shiny-app-inline-datatable, echo=FALSE}
 
 library(shiny)
 library(DT)
@@ -1611,6 +2045,360 @@ server <- function(input, output) {
 }
 )
 # shinyApp(ui = ui, server = server)
+
+```
+
+
+
+
+# Mermaid Methods Flow Chart
+## Flow for ER390 Monitoring Data 
+```{r diagramr-Wendy-Hat-Tech-Data}
+DiagrammeR("
+sequenceDiagram;
+   Wendy->>HAT: ask for data;
+   database->>HAT: monitoring data;
+   database->>RStudio: upload and filter data;
+   RStudio->>HAT: Report;
+   HAT->>Wendy: data;
+   alt monitoring data available
+     RestorationTech->>database: upload data;
+     RestorationTech->>Site: monitor;
+     Site->>database: Site Monitoring Data;
+     RStudio->>database: query data;
+     Wendy->>RStudio: create data viz code;
+   else data unavailable
+     database->>RestorationTech: data not available;
+     RestorationTech->>Site: remonitor;
+     RestorationTech->>SiteCommunity: ask to remonitor;
+     SiteCommunity->>RestorationTech: OK to remonitor;
+   end
+")
+
+```
+
+##  Graph for ER390 Methods Workflow
+```{r ER390-mermaid-graph-shapes, echo=FALSE}
+DiagrammeR("
+graph TB
+ A[Wendy]-- send proposal -->B[Vanessa HAT]
+ A[Wendy]-- send proposal -->F[Nancy RNS]
+ B-- decision needed -->C(Decide if I can start ER390 Fall 2025)
+ F-- decision needed -->C(Decide if I can start ER390 Fall 2025)
+ A-- analyzes & cleans -->B1(Data)
+ B1-- results in -->G(Filtered Data)
+ D-.->|if Yes ask for Data|B
+ B-.->|send HAT data|A
+ C-- if -->D((YES))
+ C-- if -->E((NO))
+ H[Variable Names]-- in -->G
+ E-->I[Reconsider please?]
+ I-- ask -->F
+ A-- codes in -->K(RMarkdown)
+ K-- to create -->J(DataVisualizations)
+ J-- using -->H
+ D-- begin -->L((Start Project))
+ J-- used in -->M{Shiny}
+ M-- reactively -->G
+ L-- using -->K
+ M-- produces user-chosen -->J
+ 
+ 
+ style A fill:#E5E25F, stroke:#333, stroke-width:1px  
+ style B fill:#87AB51, stroke:#333, stroke-width:1px  
+ style B1 fill:#9AA
+ style C fill:#E5E25F, stroke:#333, stroke-width:2px  
+ style D fill:#87AB51
+ style E fill:#cf1d2f
+ style F fill:#87AB51, stroke:#333, stroke-width:1px  
+ style G fill:#9AA
+ style H fill:
+ style I fill:
+ style J fill:
+ style K fill:#E5E25F, stroke:#333, stroke-width:2px  
+ style L fill:#87AB51, stroke:#333, stroke-width:3px  
+")
+# #3C8937 Forest Green
+
+# A Wendy
+# B Vanessa
+# B1 Data
+# C Decide if I can start ER390 Fall 2025
+# D Yes
+# E No
+# F Nancy
+# G Filtered Data
+# H Variable Names
+# I Reconsider please?
+# J DataVisualizations
+# K RMarkdown
+# L Start ER390 HAT Project
+# M Shiny
+```
+## Examples
+
+### Example graph
+```{r mermaid-methods-flowchart-example}
+DiagrammeR("
+graph TB
+ A-->B
+ A-->C
+ C-->E
+ B-->D
+ C-->D
+ D-->F
+ E-->F
+")
+
+```
+### example Diagrammer shapes
+```{r diagrammer-graph-shapes, echo=FALSE}
+DiagrammeR("
+graph LR
+ A(Rounded)-->B[Squared]
+ B-->C{A Decision}
+ C-->D[Square One]
+ C-->E[Square Two]
+ E-->F((Circle))
+ D-->F
+ style A fill:#E5E25F, stroke:#333, stroke-width:4px  
+ style B fill:#87AB51, stroke:#9AA, stroke-width:2px
+ style C fill:#3C8937, stroke:#333, stroke-width:1px
+ style D fill:#23772C, stroke:#333, stroke-width:2px
+ style E fill:#B6E6E6, stroke:#9C2, stroke-width:2px
+")
+# Note: using ; semi-colons includes code at top of graph, and style doesn't work
+# graph LR;A(Rounded)-->B[Squared];B-->C{A Decision};
+#  C-->D[Square One];C-->E[Square Two];
+#  style A fill:#E5E25F;  style B fill:#87AB51; style C fill:#3C8937;
+#  style D fill:#23772C;  style E fill:#B6E6E6;
+```
+
+### example Mermaid shapes
+```{r mermaid-shapes}
+mermaid("
+        graph BT
+        A((Salinity))
+        A-->B(Barnacles)
+        B-.->|-0.10|B1{Mussels}
+        A-- 0.30 -->B1
+ 
+        C[Air Temp]
+        C-->B
+        C-.->E(Macroalgae)
+        E-->B1
+        C== 0.89 ==>B1
+ 
+        style A fill:#FFF, stroke:#333, stroke-width:4px
+        style B fill:#9AA, stroke:#9AA, stroke-width:2px
+        style B1 fill:#879, stroke:#333, stroke-width:1px
+        style C fill:#ADF, stroke:#333, stroke-width:2px
+        style E fill:#9C2, stroke:#9C2, stroke-width:2px
+ 
+        ")
+
+```
+
+
+### Example sequenceDiagram
+```{r example-sequenceDiagram}
+  DiagrammeR("
+sequenceDiagram;
+   customer->>ticket seller: ask for a ticket;
+   ticket seller->>database: seats;
+   alt tickets available
+     database->>ticket seller: ok;
+     ticket seller->>customer: confirm;
+     customer->>ticket seller: ok;
+     ticket seller->>database: book a seat;
+     ticket seller->>printer: print a ticket;
+   else sold out
+     database->>ticket seller: none left;
+     ticket seller->>customer: sorry;
+   end
+")
+```
+
+
+## Gantt Charts for Timelines
+### Style Gantt code chunk
+- supposed to widen Gantt chart, but doesn't
+```{css, echo = FALSE}
+# https://github.com/laurent22/joplin/issues/6711
+# https://bookdown.org/yihui/rmarkdown-cookbook/chunk-styling.html
+  .wider-gantt {
+	width:100%;
+  font-size:14;
+  }
+```
+### Gantt Chart ER390
+```{r class.source="wider-gantt",  gantt}
+mermaid("
+gantt
+dateFormat  YYYY-MM-DD
+title ER390 HAT Data Viz Project Timeline
+
+section ER390 Project
+  Nancy suggested Topic          :crit, done, first_7, 2025-07-22, 2025-07-23
+  Talked to Vanessa at HAT       :crit, done, first_8, 2025-08-27,  2025-08-28
+  Writing Proposal               :crit, active, first_9, 2025-08-27, 5d
+  Start Project  			           :active, first_10, 2025-09-03, 356d
+
+section Important Things
+  Applied For RNS Program         :crit, done, 2025-08-21, 24h
+  Created Gantt Chart             :active, 2025-08-31, 24h
+
+section Basic Tasks
+  Creating RMarkdown code    :done, a1, 2025-08-04, 2025-08-31
+  Writing Proposal            :active, after a1, 2025-08-31, 3d
+  Email Nancy-RNS & Vanessa-HAT :active, 2025-09-02
+
+section Shiny App
+  Created Shiny App             :done, first_1, 2025-08-18, 2025-08-28
+  Refining Shiny App            :active, first_5, 2025-08-18, 130d
+  Interactive Data Table        :done, 2025-08-18, 2025-08-19
+
+section RMarkdown
+  Created Test Document         :done, first_6, 2025-08-04, 2025-08-05
+
+section Shiny Clone
+  Create Shiny Clone            :active, first_11, 2025-09-30, 150d
+
+section Data Collection
+  Collecting Example Data       :done, first_2, 2025-08-04, 10d
+  Finish Collecting Data        : first_3, after first_2, 5d
+  Do this after that            : first_4, after first_3, 5d
+
+section Critical Tasks
+  Completed, critical task      :done, done, import_1, 2025-08-18, 24h
+  Also done, also critical      :active, done, import_2, after import_1, 2d
+  Doing this important task now :active, active, import_3, after import_2, 3d
+  Next critical task            :active, import_4, after import_3, 5d
+
+
+section Interactive Data Viz
+  First extras                  : extras_1, after import_4, 3d
+  Second helping                : extras_2, after extras_1, 20h
+  More of the extras            : extras_3, after extras_1, 48h
+  
+section The Extras
+  Customize colours for HAT     :  2025-10-01, 2025-12-15
+  Create R Package for HAT      :  2026-01-31, 2026-04-30
+
+
+")
+
+```
+
+### Gantt ER390 dataframe
+```{r gantt-df}
+ER390_gantt <- read.csv("ER390-Gantt-Tasks.csv", header = TRUE, sep = ",")
+
+library(tidyr)
+library(dplyr)
+library(DiagrammeR)
+
+mermaid(
+  paste0(
+    # mermaid "header", each component separated with "\n" (line break)
+    "gantt", "\n",
+    "dateFormat  YYYY-MM-DD", "\n",
+    "title ER390 HAT Data Viz Project Timeline", "\n",
+    # unite the first two columns (task & status) and separate them with ":"
+    # then, unite the other columns and separate them with ","
+    # this will create the required mermaid "body"
+    paste(ER390_gantt %>%
+            unite(i, task, status, sep = ":") %>%
+            unite(j, i, pos, start, end, sep = ",") %>%
+            .$j,
+          collapse = "\n"
+    ), "\n"
+  )
+)
+
+```
+
+
+
+### Gantt ggplot 1
+```{r}
+library(reshape2)
+library(ggplot2)
+
+tasks <- c("Review literature", "Mung data", "Stats analysis", "Write Report")
+dfr <- data.frame(
+  name        = factor(tasks, levels = tasks),
+  start.date  = as.Date(c("2010-08-24", "2010-10-01", "2010-11-01", "2011-02-14")),
+  end.date    = as.Date(c("2010-10-31", "2010-12-14", "2011-02-28", "2011-04-30")),
+  is.critical = c(TRUE, FALSE, FALSE, TRUE)
+)
+mdfr <- melt(dfr, measure.vars = c("start.date", "end.date"))
+
+gantt_ggplot <- ggplot(mdfr, aes(value, name, colour = is.critical)) + 
+  geom_line(size = 6) +
+  xlab(NULL) + 
+  ylab(NULL)
+gantt_ggplot
+
+```
+
+```{r}
+# https://stackoverflow.com/questions/3550341/gantt-charts-with-r
+
+tasks <- c("Review literature", "Mung data", "Stats analysis", "Write Report")
+dfr <- data.frame(
+  name        = factor(tasks, levels = tasks),
+  start.date  = as.Date(c("2010-08-24", "2010-10-01", "2010-11-01", "2011-02-14")),
+  end.date    = as.Date(c("2010-10-31", "2010-12-14", "2011-02-28", "2011-04-30")),
+  is.critical = c(TRUE, FALSE, FALSE, TRUE)
+)
+
+ggplot(dfr, aes(x =start.date, xend= end.date, y=name, yend = name, color=is.critical)) +
+  geom_segment(size = 6) +
+  xlab(NULL) + ylab(NULL)
+```
+
+### Gantt ggplot 2
+```{r}
+library(reshape2)
+tasks <- c("Review literature", "Mung data", "Stats analysis", "Write Report")
+dfrP <- data.frame(
+  name        = factor(tasks, levels = tasks),
+  start.date  = as.Date(c("2010-08-24", "2010-10-01", "2010-11-01", "2011-02-14")),
+  end.date    = as.Date(c("2010-10-31", "2010-12-14", "2011-02-28", "2011-04-30")),
+  is.critical = c(TRUE, FALSE, FALSE, TRUE)
+)
+dfrR <- data.frame(
+  name        = factor(tasks, levels = tasks),
+  start.date  = as.Date(c("2010-08-22", "2010-10-10", "2010-11-01", NA)),
+  end.date    = as.Date(c("2010-11-03", "2010-12-22", "2011-02-24", NA)),
+  is.critical = c(TRUE, FALSE, FALSE,TRUE)
+)
+mdfr <- merge(data.frame(type="Plan", melt(dfrP, measure.vars = c("start.date", "end.date"))),
+  data.frame(type="Real", melt(dfrR, measure.vars = c("start.date", "end.date"))), all=T)
+
+library(ggplot2)
+ggplot(mdfr, aes(x=value, y=type, color=is.critical))+
+  geom_line(size=6)+
+  facet_grid(name ~ .) +
+  scale_y_discrete(limits=c("Real", "Plan")) +
+  xlab(NULL) + ylab(NULL)
+
+```
+
+### Gantt timevis interactive
+```{r}
+# https://stackoverflow.com/questions/3550341/gantt-charts-with-r
+library(timevis)
+
+data <- data.frame(
+  id      = 1:4,
+  content = c("Item one"  , "Item two"  ,"Ranged item", "Item four"),
+  start   = c("2016-01-10", "2016-01-11", "2016-01-20", "2016-02-14 15:00:00"),
+  end     = c(NA          ,           NA, "2016-02-04", NA)
+)
+
+timevis(data)
 
 ```
 
