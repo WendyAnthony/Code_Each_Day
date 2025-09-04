@@ -1,6 +1,6 @@
 # Log for 2025 Code_Each_Day - Wendy Anthony
 
-**The log of Round 5 of my #100DaysOfCode challenge. Started on 2025-01-03**  
+**The log of Round 5 of my #100DaysOfCode challenge. Started on 2025-08-04**  
  ... not everything makes it to GitHub ;)
 - [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 - [2020 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2020.md)
