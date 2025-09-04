@@ -1,4 +1,4 @@
-# Log for #Code_Each_Day - Wendy Anthony
+# Log for 2021 Code_Each_Day - Wendy Anthony
 
 **The log of Round 2 of my #100DaysOfCode challenge. Started on 2021-01-01**  
 - [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
