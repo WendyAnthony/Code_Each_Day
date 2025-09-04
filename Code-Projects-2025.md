@@ -24,11 +24,13 @@
 **Today's Progress**: 
 - Created New Code Each Day for 2025 Updated Code Each Day main pages
 - Drafting email to Nancy Shackelford at RNS to send Draft Project Proposal ER390 with HAT
+- updated Gantt Chart for ER390 proposed timeline
 
 **Thoughts:** 
 - I hope I can get approval for Fall ER390 Project so I can continue on my roll with updating my relearning RShiny and RMarkdown
 
 **Links to code work:** 
+- https://wendyanthony.github.io/Draft_Project_Proposal_for_Vizualizing_HAT_GOE_Monitoring_Data.html
 - https://github.com/WendyAnthony/WendyAnthony.github.io
 - https://wendyanthony.github.io/
 - https://goe-interact.shinyapps.io/Test-Shiny-GOE-Monitor/
