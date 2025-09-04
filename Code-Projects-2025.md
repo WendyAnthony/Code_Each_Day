@@ -22,6 +22,7 @@
 ***
 ## r5d247 2025-09-04 <a name="r5d2467"/></a>
 **Today's Progress**: 
+- got Stats Summary to work in Shiny tab
 - Created New Code Each Day for 2025 Updated Code Each Day main pages
 - Drafting email to Nancy Shackelford at RNS to send Draft Project Proposal ER390 with HAT
 - updated Gantt Chart for ER390 proposed timeline
