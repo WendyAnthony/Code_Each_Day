@@ -1,4 +1,4 @@
-# Log for #Code_Each_Day - Wendy Anthony
+# Log for 2022 Code_Each_Day - Wendy Anthony
 
 **The log of Round 3 of my #100DaysOfCode challenge. Started on 2022-01-03**  
  ... not everything makes it to GitHub ;)
