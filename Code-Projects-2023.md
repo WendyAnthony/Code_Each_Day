@@ -2,9 +2,9 @@ Code-Projects-2023.md
 
 
 
-# Log for #Code_Each_Day - Wendy Anthony
+# Log for 2023 Code_Each_Day - Wendy Anthony
 
-**The log of Round 4 of my #100DaysOfCode challenge. Started on 2022-01-03**  
+**The log of Round 4 of my #100DaysOfCode challenge. Started on 2023-01-07**  
  ... not everything makes it to GitHub ;)
 - [My Code](https://github.com/WendyAnthony/Code_Each_Day/tree/master/My_Code)
 - [2020 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2020.md)
