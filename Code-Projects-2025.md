@@ -1,7 +1,3 @@
-Code-Projects-2023.md
-
-
-
 # Log for 2025 Code_Each_Day - Wendy Anthony
 
 **The log of Round 5 of my #100DaysOfCode challenge. Started on 2025-01-03**  
@@ -14,14 +10,35 @@ Code-Projects-2023.md
 
 ***
 ## Table of Contents  <a name="toc"/></a>
-- **[Week XXXII](#weekxxxiii)**    
-  - [r5d149 2025-08-04](#r5d149)
+- **[Week XXXVI](#weekxxxvi)**    
+  - [r5d247 2025-09-04](#r5d247)
+- **[Week XXXII](#weekxxxii)**    
+  - [r5d216 2025-08-04](#r5d216)
 - **[Wishlist](#wishlist)**  
 
+
 ***
-# Week XXXII <a name="weekxxxiii"/></a>
+# Week XXXVI <a name="weekxxxvi"/></a>
 ***
-## r5d149 2025-08-04 <a name="r5d149"/></a>
+## r5d247 2025-09-04 <a name="r5d2467"/></a>
+**Today's Progress**: 
+- Created New Code Each Day for 2025 Updated Code Each Day main pages
+- Drafting email to Nancy Shackelford at RNS to send Draft Project Proposal ER390 with HAT
+
+**Thoughts:** 
+- I hope I can get approval for Fall ER390 Project so I can continue on my roll with updating my relearning RShiny and RMarkdown
+
+**Links to code work:** 
+- https://github.com/WendyAnthony/WendyAnthony.github.io
+- https://wendyanthony.github.io/
+- https://goe-interact.shinyapps.io/Test-Shiny-GOE-Monitor/
+- https://github.com/WendyAnthony/Code_Each_Day/tree/master
+
+
+***
+# Week XXXII <a name="weekxxxii"/></a>
+***
+## r5d216 2025-08-04 <a name="r5d216"/></a>
 **Today's Progress**: 
 - Started creating data visualization code RMD and Shiny app for ER390 Final Project Proposal for HAT
 - got gitub.io personal webpage working again
