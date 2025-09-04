@@ -6,6 +6,7 @@
 - [2020 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2020.md)
 - [2021 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2021.md)
 - [2023 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2023.md)
+- [2025 Code Projects](https://github.com/WendyAnthony/Code_Each_Day/blob/master/Code-Projects-2025.md)
 
 ***
 ## Table of Contents  <a name="toc"/></a>
